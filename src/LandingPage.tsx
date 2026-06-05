@@ -1,6 +1,64 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
+
+// Handles the Spotify PKCE OAuth callback that redirects back to vaultgold.net/?code=...
+// Exchanges the code for tokens and forwards them back to whichever tracker initiated the flow.
+function useSpotifyCallback() {
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const stateParam = params.get('state');
+    if (!code || !stateParam) return;
+
+    window.history.replaceState({}, '', window.location.pathname);
+
+    let parsed: { v?: string; r?: string };
+    try { parsed = JSON.parse(atob(stateParam)); } catch { return; }
+
+    const codeVerifier = parsed.v;
+    const returnTo = parsed.r;
+    if (!codeVerifier || !returnTo) return;
+
+    // Allow any tracker running on vaultgold.net, plus legacy origins and local dev
+    const ALLOWED = [
+      'https://vaultgold.net',
+      'https://yzyarchives.org',
+      'https://yzy-gold.childsmax56.workers.dev',
+      'https://vamp-gold.childsmax56.workers.dev',
+      'https://kdot-gold.childsmax56.workers.dev',
+      'https://drizzy-gold.childsmax56.workers.dev',
+      'http://127.0.0.1:5173',
+      'http://localhost:5173',
+      'http://localhost:5183',
+    ];
+    if (!ALLOWED.some(o => returnTo.startsWith(o))) return;
+
+    fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: 'https://vaultgold.net/',
+        client_id: 'c9bdd79bf657487d8973f4c1510523ea',
+        code_verifier: codeVerifier,
+      }),
+    })
+      .then(r => r.json())
+      .then((data: { access_token?: string; refresh_token?: string; expires_in?: number }) => {
+        if (!data.access_token) return;
+        const hash = new URLSearchParams({
+          spotify_access_token: data.access_token,
+          spotify_refresh_token: data.refresh_token || '',
+          spotify_expires_in: String(data.expires_in || 3600),
+        });
+        window.location.href = returnTo + '/#' + hash.toString();
+      })
+      .catch(() => {});
+  }, []);
+}
 
 function ArrowIcon() {
   return (
@@ -287,6 +345,7 @@ function MyTrackerCard() {
 }
 
 export function LandingPage() {
+  useSpotifyCallback();
   return (
     <div style={{
       minHeight: '100vh',
