@@ -11,7 +11,7 @@ export const dregoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
-  accentColor: '#1a1a2e',
+  accentColor: '#4a90d9',
   artistLabel: 'Dr. Dre',
   cardLetter: 'DRE',
   logoUrl: '',
