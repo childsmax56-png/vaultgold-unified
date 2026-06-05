@@ -14,6 +14,7 @@ export const xgoldConfig: ArtistConfig = {
   accentColor: '#4a0e8f',
   artistLabel: 'XXXTENTACION',
   cardLetter: 'XXX',
+  logoUrl: '/logos/xgold.png',
 
   getArtistName(_eraName) { return 'XXXTENTACION'; },
 

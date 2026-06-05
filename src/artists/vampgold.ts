@@ -31,6 +31,7 @@ export const vampgoldConfig: ArtistConfig = {
   accentColor: '#8b0000',
   artistLabel: 'Playboi Carti',
   cardLetter: 'VMP',
+  logoUrl: '/logos/vampgold.png',
 
   getArtistName(_eraName) { return 'Playboi Carti'; },
 

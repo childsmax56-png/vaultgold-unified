@@ -14,6 +14,7 @@ export const yzygoldConfig: ArtistConfig = {
   accentColor: '#C9A224',
   artistLabel: 'Ye',
   cardLetter: 'YZY',
+  logoUrl: '/logos/yzygold.png',
 
   getArtistName(eraName) {
     if (!eraName) return 'Kanye West';

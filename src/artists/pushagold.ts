@@ -14,6 +14,7 @@ export const pushagoldConfig: ArtistConfig = {
   accentColor: '#C9A224',
   artistLabel: 'Pusha T / Clipse',
   cardLetter: 'PSH',
+  logoUrl: '',
 
   getArtistName(eraName) {
     if (!eraName) return 'Pusha T';

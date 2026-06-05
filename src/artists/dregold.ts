@@ -14,6 +14,7 @@ export const dregoldConfig: ArtistConfig = {
   accentColor: '#1a1a2e',
   artistLabel: 'Dr. Dre',
   cardLetter: 'DRE',
+  logoUrl: '',
 
   getArtistName(_eraName) { return 'Dr. Dre'; },
 

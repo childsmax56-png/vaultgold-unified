@@ -14,6 +14,7 @@ export const drizzygoldConfig: ArtistConfig = {
   accentColor: '#b8860b',
   artistLabel: 'Drake',
   cardLetter: 'OVO',
+  logoUrl: '/logos/drizzygold.png',
 
   getArtistName(_eraName) { return 'Drake'; },
 

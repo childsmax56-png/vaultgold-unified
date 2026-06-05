@@ -32,8 +32,9 @@ export interface ArtistConfig {
   // Themes
   ERA_THEMES: Record<string, { topBanner?: string; bottomBanner?: string }>;
 
-  // Landing page card accent color
+  // Landing page card
   accentColor: string;
   artistLabel: string;
   cardLetter: string;
+  logoUrl: string; // path to logo image, e.g. /logos/yzygold.png
 }

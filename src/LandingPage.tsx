@@ -81,7 +81,7 @@ function ArtistCard({ config }: { config: ArtistConfig }) {
         }}
       />
 
-      {/* Top: tag + name */}
+      {/* Top: tag + logo/name */}
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div style={{
           display: 'inline-block',
@@ -98,7 +98,27 @@ function ArtistCard({ config }: { config: ArtistConfig }) {
         }}>
           {config.artistLabel}
         </div>
-        <div style={{ fontSize: 26, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+        {config.logoUrl ? (
+          <img
+            src={config.logoUrl}
+            alt={config.SITE_NAME}
+            style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }}
+            onError={e => {
+              // Fallback to text if logo fails to load
+              const img = e.currentTarget;
+              img.style.display = 'none';
+              const fallback = img.nextElementSibling as HTMLElement;
+              if (fallback) fallback.style.display = 'block';
+            }}
+          />
+        ) : null}
+        <div style={{
+          fontSize: 26,
+          fontWeight: 900,
+          letterSpacing: '-0.02em',
+          lineHeight: 1.1,
+          display: config.logoUrl ? 'none' : 'block',
+        }}>
           {config.SITE_NAME.replace(/([A-Z][a-z]+)$/, '').trim()}
           <span style={{ color: accent }}>
             {config.SITE_NAME.match(/([A-Z][a-z]+)$/)?.[0] ?? ''}

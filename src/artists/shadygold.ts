@@ -14,6 +14,7 @@ export const shadygoldConfig: ArtistConfig = {
   accentColor: '#555555',
   artistLabel: 'Eminem',
   cardLetter: 'SHY',
+  logoUrl: '',
 
   getArtistName(eraName) {
     if (!eraName) return 'Eminem';

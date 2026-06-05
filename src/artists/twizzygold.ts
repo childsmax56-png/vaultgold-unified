@@ -14,6 +14,7 @@ export const twizzygoldConfig: ArtistConfig = {
   accentColor: '#00ff88',
   artistLabel: 'YEAT',
   cardLetter: 'YT',
+  logoUrl: '',
 
   getArtistName(_eraName) { return 'YEAT'; },
 

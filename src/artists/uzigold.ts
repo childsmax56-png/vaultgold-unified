@@ -14,6 +14,7 @@ export const uzigoldConfig: ArtistConfig = {
   accentColor: '#ff69b4',
   artistLabel: 'Lil Uzi Vert',
   cardLetter: 'UZI',
+  logoUrl: '',
 
   getArtistName(_eraName) { return 'Lil Uzi Vert'; },
 
