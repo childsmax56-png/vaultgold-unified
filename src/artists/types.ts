@@ -32,6 +32,9 @@ export interface ArtistConfig {
   // Themes
   ERA_THEMES: Record<string, { topBanner?: string; bottomBanner?: string; miniPlayer?: string; fullPicturePlayer?: string }>;
 
+  // Optional tabs
+  hasProductionTab?: boolean;
+
   // Landing page card
   accentColor: string;
   artistLabel: string;

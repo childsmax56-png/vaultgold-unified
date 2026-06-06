@@ -8,7 +8,7 @@ import { useSettings } from '../SettingsContext';
 import { activeConfig } from '../artists/activeConfig';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
-export type Category = 'music' | 'art' | 'recent' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts';
+export type Category = 'music' | 'art' | 'recent' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production';
 
 interface NavbarProps {
   searchQuery: string;
@@ -44,6 +44,7 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'playlists', label: 'Playlists' },
   { key: 'subalbums', label: 'Sub Albums' },
   { key: 'concerts', label: 'Concerts' },
+  { key: 'production', label: 'Production Projects' },
 ];
 
 export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHomeClick, activeCategory, onCategoryChange, onRandomSongClick, isRandomMode, isTimelineMode, onTimelineToggle, yeiOpen, onYEIClick, globalSearchResults, onSelectGlobalResult }: NavbarProps) {
@@ -65,7 +66,11 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     return () => document.removeEventListener('mousedown', handler);
   }, [dropdownOpen]);
 
-  const visibleCategories = NAV_CATEGORIES.filter(({ key }) => !(settings.yzyGoldMode && key === 'yedits'));
+  const visibleCategories = NAV_CATEGORIES.filter(({ key }) => {
+    if (settings.yzyGoldMode && key === 'yedits') return false;
+    if (key === 'production' && !activeConfig.hasProductionTab) return false;
+    return true;
+  });
   const activeLabel = visibleCategories.find(c => c.key === activeCategory)?.label ?? 'Navigate';
 
   const handleCategoryClick = (cat: Category) => {

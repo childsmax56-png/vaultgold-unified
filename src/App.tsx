@@ -140,6 +140,7 @@ export default function App() {
   const [stemsData, setStemsData] = useState<StemEntry[]>([]);
   const [miscData, setMiscData] = useState<MiscEntry[]>([]);
   const [fakesData, setFakesData] = useState<FakesEntry[]>([]);
+  const [productionData, setProductionData] = useState<TrackerData | null>(null);
   const [tracklistsData, setTracklistsData] = useState<TracklistAlbum[]>([]);
   const [releasedData, setReleasedData] = useState<ReleasedEntry[]>([]);
   const [videosData, setVideosData] = useState<VideoRawEntry[]>([]);
@@ -182,6 +183,7 @@ export default function App() {
     if (path.startsWith('/yedits')) return 'yedits';
     if (path.startsWith('/subalbums')) return 'subalbums';
     if (path.startsWith('/concerts')) return 'concerts';
+    if (path.startsWith('/production')) return 'production';
     return 'music';
   });
 
@@ -1047,6 +1049,16 @@ export default function App() {
         console.error("Failed to fetch Misc data:", err);
       });
 
+    if (activeConfig.hasProductionTab) {
+      axios.get(`/api/${ARTIST_SLUG}/production`)
+        .then(res => {
+          setProductionData(JSON.parse(JSON.stringify(res.data)));
+        })
+        .catch(err => {
+          console.error("Failed to fetch Production data:", err);
+        });
+    }
+
     axios.get(`/api/${ARTIST_SLUG}/released`)
       .then(res => {
         setReleasedData(res.data as ReleasedEntry[]);
@@ -1306,6 +1318,10 @@ export default function App() {
       if (!currentPath.startsWith('/concerts')) {
         window.history.pushState({ category: 'concerts' }, '', '/concerts');
       }
+    } else if (activeCategory === 'production') {
+      if (!currentPath.startsWith('/production')) {
+        window.history.pushState({ category: 'production' }, '', '/production');
+      }
     } else {
       if (selectedAlbum) {
         const newPath = `/album/${createSlug(selectedAlbum.name)}`;
@@ -1385,6 +1401,8 @@ export default function App() {
         setActiveCategory('subalbums');
       } else if (path.startsWith('/concerts')) {
         setActiveCategory('concerts');
+      } else if (path.startsWith('/production')) {
+        setActiveCategory('production');
       }
     };
     window.addEventListener('popstate', handlePopState);
@@ -2106,6 +2124,10 @@ export default function App() {
       if (!finalErasArray.find(e => e.name === selectedAlbum.name)) {
         setSelectedAlbum(null);
       }
+    } else if (cat === 'production' && selectedAlbum) {
+      if (!productionErasArray.find(e => e.name === selectedAlbum.name)) {
+        setSelectedAlbum(null);
+      }
     } else {
       setSelectedAlbum(null);
     }
@@ -2165,6 +2187,8 @@ let erasArray = (Object.values(data.eras || {}) as Era[])
     ...era,
     fileInfo: CUSTOM_ALBUM_INFO[era.name] || era.fileInfo
   })) as Era[];
+
+const productionErasArray = (Object.values(productionData?.eras || {}) as Era[]);
 
 const RELATED_ERA_ORDER = [
   'DAYTONA',
@@ -2714,6 +2738,24 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   searchQuery={searchQuery}
                   eras={erasArray}
                 />
+              ) : activeCategory === 'production' && selectedAlbum ? (
+                <EraDetail
+                  key={`production-${selectedAlbum.name}`}
+                  era={selectedAlbum}
+                  searchQuery={searchQuery}
+                  filters={filters}
+                  onPlaySong={handlePlaySong}
+                  currentSong={currentSong}
+                  isPlaying={isPlaying}
+                  toggleFavorite={toggleFavorite}
+                  favoriteKeys={favoriteKeys}
+                />
+              ) : activeCategory === 'production' ? (
+                <EraGrid key="production-grid" eras={productionErasArray.filter(e => {
+                  if (!searchQuery) return true;
+                  const q = searchQuery.toLowerCase();
+                  return e.name.toLowerCase().includes(q) || Object.values(e.data || {}).flat().some((s: any) => s.name?.toLowerCase().includes(q));
+                })} onSelectEra={setSelectedAlbum} />
               ) : activeCategory === 'comps' ? (
                 <CompsView
                   key="comps"
