@@ -2712,6 +2712,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                 <ConcertsView
                   key="concerts"
                   searchQuery={searchQuery}
+                  eras={erasArray}
                 />
               ) : activeCategory === 'comps' ? (
                 <CompsView

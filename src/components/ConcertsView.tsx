@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, X, Star, MapPin, Calendar, Mic2, Youtube, ChevronDown, ChevronUp, Edit2, Trash2 } from 'lucide-react';
+import { Era } from '../types';
 
 export interface Concert {
   id: string;
   date: string;
   venue: string;
   city: string;
+  era: string;
   supportActs: string;
   setlistNotes: string;
   youtubeUrl: string;
@@ -40,55 +42,67 @@ function formatDisplayDate(dateStr: string): string {
   return `${months[parseInt(m) - 1]} ${parseInt(d)}, ${y}`;
 }
 
-const EMPTY_FORM: Omit<Concert, 'id'> = {
+const emptyForm = (): Omit<Concert, 'id'> => ({
   date: '',
   venue: '',
   city: '',
+  era: '',
   supportActs: '',
   setlistNotes: '',
   youtubeUrl: '',
   rating: 0,
   notes: '',
-};
+});
 
 interface ConcertFormProps {
   initial?: Omit<Concert, 'id'>;
+  eras: Era[];
   onSave: (data: Omit<Concert, 'id'>) => void;
   onCancel: () => void;
   title: string;
 }
 
-function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
-  const [form, setForm] = useState<Omit<Concert, 'id'>>(initial ?? EMPTY_FORM);
+function ConcertForm({ initial, eras, onSave, onCancel, title }: ConcertFormProps) {
+  const [form, setForm] = useState<Omit<Concert, 'id'>>(initial ?? emptyForm());
 
   const set = (key: keyof typeof form, value: string | number) =>
     setForm(f => ({ ...f, [key]: value }));
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.97 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.97 }}
-      transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15 }}
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
       onClick={onCancel}
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-      <div
-        className="relative bg-[#111] border border-white/10 rounded-xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-6 shadow-2xl"
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 40, opacity: 0 }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
+        className="relative bg-[#0e0e0e] border border-white/10 rounded-t-2xl sm:rounded-2xl w-full sm:max-w-lg flex flex-col shadow-2xl"
+        style={{ maxHeight: '92vh' }}
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="text-base font-bold text-white uppercase tracking-widest">{title}</h2>
-          <button onClick={onCancel} className="text-white/40 hover:text-white transition-colors">
-            <X className="w-5 h-5" />
+        {/* Sticky header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-white/8 shrink-0">
+          <h2 className="text-sm font-bold text-white uppercase tracking-widest">{title}</h2>
+          <button onClick={onCancel} className="text-white/40 hover:text-white transition-colors p-1">
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="space-y-4">
+        {/* Scrollable body */}
+        <div className="overflow-y-auto flex-1 px-5 py-4 space-y-4">
+
+          {/* Date + Rating row */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1 block">Date</label>
+              <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">Date</label>
               <input
                 type="date"
                 value={form.date}
@@ -97,11 +111,12 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
               />
             </div>
             <div>
-              <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1 block">Rating</label>
-              <div className="flex items-center gap-1 mt-1">
+              <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">Rating</label>
+              <div className="flex items-center gap-1 h-[34px]">
                 {[1,2,3,4,5].map(n => (
                   <button
                     key={n}
+                    type="button"
                     onClick={() => set('rating', form.rating === n ? 0 : n)}
                     className="transition-colors"
                     style={{ color: n <= form.rating ? 'var(--theme-color)' : 'rgba(255,255,255,0.2)' }}
@@ -113,8 +128,9 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
             </div>
           </div>
 
+          {/* Venue */}
           <div>
-            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1 block">Venue</label>
+            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">Venue</label>
             <input
               type="text"
               value={form.venue}
@@ -124,8 +140,9 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
             />
           </div>
 
+          {/* City */}
           <div>
-            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1 block">City</label>
+            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">City</label>
             <input
               type="text"
               value={form.city}
@@ -135,8 +152,25 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
             />
           </div>
 
+          {/* Era */}
           <div>
-            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1 block">Support Acts</label>
+            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">Era / Tour</label>
+            <select
+              value={form.era}
+              onChange={e => set('era', e.target.value)}
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-white/30 transition-colors appearance-none"
+              style={{ backgroundImage: 'none' }}
+            >
+              <option value="" className="bg-[#111]">— Select an era —</option>
+              {eras.map(era => (
+                <option key={era.name} value={era.name} className="bg-[#111]">{era.name}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Support Acts */}
+          <div>
+            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">Support Acts</label>
             <input
               type="text"
               value={form.supportActs}
@@ -146,8 +180,9 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
             />
           </div>
 
+          {/* Setlist Notes */}
           <div>
-            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1 block">Setlist Notes</label>
+            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">Setlist Notes</label>
             <textarea
               value={form.setlistNotes}
               onChange={e => set('setlistNotes', e.target.value)}
@@ -157,8 +192,9 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
             />
           </div>
 
+          {/* YouTube */}
           <div>
-            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1 block">YouTube Link</label>
+            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">YouTube Link</label>
             <input
               type="url"
               value={form.youtubeUrl}
@@ -168,8 +204,9 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
             />
           </div>
 
+          {/* Personal Notes */}
           <div>
-            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1 block">Personal Notes</label>
+            <label className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1.5 block">Personal Notes</label>
             <textarea
               value={form.notes}
               onChange={e => set('notes', e.target.value)}
@@ -180,14 +217,17 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
           </div>
         </div>
 
-        <div className="flex gap-3 mt-6">
+        {/* Sticky footer */}
+        <div className="flex gap-3 px-5 py-4 border-t border-white/8 shrink-0">
           <button
+            type="button"
             onClick={onCancel}
             className="flex-1 py-2.5 rounded-lg border border-white/10 text-white/50 text-sm font-semibold uppercase tracking-wider hover:bg-white/5 transition-colors"
           >
             Cancel
           </button>
           <button
+            type="button"
             onClick={() => {
               if (!form.venue && !form.date) return;
               onSave(form);
@@ -198,16 +238,17 @@ function ConcertForm({ initial, onSave, onCancel, title }: ConcertFormProps) {
             Save
           </button>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
 
 interface ConcertsViewProps {
   searchQuery: string;
+  eras: Era[];
 }
 
-export function ConcertsView({ searchQuery }: ConcertsViewProps) {
+export function ConcertsView({ searchQuery, eras }: ConcertsViewProps) {
   const [concerts, setConcerts] = useState<Concert[]>(loadConcerts);
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -218,7 +259,7 @@ export function ConcertsView({ searchQuery }: ConcertsViewProps) {
 
   const filtered = concerts.filter(c => {
     const q = searchQuery.toLowerCase();
-    return !q || c.venue.toLowerCase().includes(q) || c.city.toLowerCase().includes(q) || c.supportActs.toLowerCase().includes(q) || c.notes.toLowerCase().includes(q);
+    return !q || c.venue.toLowerCase().includes(q) || c.city.toLowerCase().includes(q) || c.era.toLowerCase().includes(q) || c.supportActs.toLowerCase().includes(q) || c.notes.toLowerCase().includes(q);
   });
 
   const sorted = [...filtered].sort((a, b) => b.date.localeCompare(a.date));
@@ -298,14 +339,19 @@ export function ConcertsView({ searchQuery }: ConcertsViewProps) {
                       </span>
                     )}
                   </div>
-                  <div className="flex items-center gap-3 mt-0.5">
+                  <div className="flex items-center gap-3 mt-0.5 flex-wrap">
                     {concert.date && (
                       <span className="flex items-center gap-1 text-[11px] text-white/35">
                         <Calendar className="w-3 h-3" />{formatDisplayDate(concert.date)}
                       </span>
                     )}
+                    {concert.era && (
+                      <span className="text-[11px] px-1.5 py-0.5 rounded border border-white/10 text-white/40 font-medium truncate max-w-[140px]">
+                        {concert.era}
+                      </span>
+                    )}
                     {concert.supportActs && (
-                      <span className="flex items-center gap-1 text-[11px] text-white/35 truncate max-w-[180px]">
+                      <span className="flex items-center gap-1 text-[11px] text-white/35 truncate max-w-[160px]">
                         <Mic2 className="w-3 h-3" />{concert.supportActs}
                       </span>
                     )}
@@ -370,7 +416,6 @@ export function ConcertsView({ searchQuery }: ConcertsViewProps) {
                         </div>
                       )}
 
-                      {/* Actions */}
                       <div className="flex items-center gap-2 pt-1">
                         <button
                           onClick={() => setEditingId(concert.id)}
@@ -380,7 +425,7 @@ export function ConcertsView({ searchQuery }: ConcertsViewProps) {
                         </button>
                         {deleteConfirmId === concert.id ? (
                           <div className="flex items-center gap-2">
-                            <span className="text-xs text-white/40">Are you sure?</span>
+                            <span className="text-xs text-white/40">Sure?</span>
                             <button
                               onClick={() => handleDelete(concert.id)}
                               className="px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider text-red-400 border border-red-400/30 hover:bg-red-400/10 transition-colors"
@@ -417,16 +462,8 @@ export function ConcertsView({ searchQuery }: ConcertsViewProps) {
           <ConcertForm
             key={editingId ?? 'new'}
             title={editingId ? 'Edit Show' : 'Log a Show'}
-            initial={editingConcert ? {
-              date: editingConcert.date,
-              venue: editingConcert.venue,
-              city: editingConcert.city,
-              supportActs: editingConcert.supportActs,
-              setlistNotes: editingConcert.setlistNotes,
-              youtubeUrl: editingConcert.youtubeUrl,
-              rating: editingConcert.rating,
-              notes: editingConcert.notes,
-            } : undefined}
+            eras={eras}
+            initial={editingConcert ? { ...editingConcert } : undefined}
             onSave={editingId ? handleEdit : handleAdd}
             onCancel={() => { setShowForm(false); setEditingId(null); }}
           />
