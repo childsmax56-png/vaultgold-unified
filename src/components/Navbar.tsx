@@ -5,6 +5,7 @@ import { SiDiscord, SiReddit, SiTiktok } from 'react-icons/si';
 import { FilterMenu } from './FilterMenu';
 import { SearchFilters } from '../types';
 import { useSettings } from '../SettingsContext';
+import { activeConfig } from '../artists/activeConfig';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
 export type Category = 'music' | 'art' | 'recent' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts';
@@ -80,10 +81,10 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
         <div className="flex-1 flex flex-row items-center justify-between md:justify-start w-full relative gap-3">
           <div className="md:hidden flex items-center shrink-0">
             <img
-              src="/logo.png"
-              alt="YZY Gold"
+              src={activeConfig.logoUrl || '/logo.png'}
+              alt={activeConfig.SITE_NAME}
               onClick={onHomeClick}
-              className="h-[48px] w-[160px] object-cover object-center cursor-pointer hover:opacity-80 transition-opacity duration-300"
+              className="h-[48px] w-[160px] object-contain object-left cursor-pointer hover:opacity-80 transition-opacity duration-300"
             />
           </div>
 
@@ -124,11 +125,11 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
               </div>
               <div className="hidden md:block w-[170px] h-[60px] shrink-0 overflow-hidden">
                 <img
-                  src="/logo.png"
-                  alt="YZY Gold"
+                  src={activeConfig.logoUrl || '/logo.png'}
+                  alt={activeConfig.SITE_NAME}
                   onClick={onHomeClick}
-                  className="w-full h-full object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300"
-                  style={{ objectPosition: 'center center' }}
+                  className="w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300"
+                  style={{ objectPosition: 'left center' }}
                 />
               </div>
             </div>
