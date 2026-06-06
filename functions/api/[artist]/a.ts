@@ -147,17 +147,24 @@ export const onRequestGet: PagesFunction = async (context) => {
     const url = new URL(context.request.url);
     const artist = (context.params as Record<string, string>).artist ?? "yzygold";
 
-    // Try unreleased.csv first, fall back to unreleased-main.csv (e.g. dregold)
+    // Try unreleased.csv first, fall back to unreleased-main.csv (e.g. dregold).
+    // Note: the SPA catch-all (_redirects /* /index.html 200) means missing static
+    // files return index.html with status 200 — detect HTML by content-type or prefix.
+    const isCsvText = (t: string) => !t.trimStart().startsWith('<');
+
     let text: string;
     const csvUrl = `${url.origin}/${artist}/data/unreleased.csv`;
     const res = await fetch(csvUrl);
-    if (res.ok) {
-      text = await res.text();
+    const resText = res.ok ? await res.text() : '';
+    if (res.ok && isCsvText(resText)) {
+      text = resText;
     } else {
       const fallbackUrl = `${url.origin}/${artist}/data/unreleased-main.csv`;
       const fallbackRes = await fetch(fallbackUrl);
       if (!fallbackRes.ok) return new Response('CSV not found', { status: 404 });
-      text = await fallbackRes.text();
+      const fallbackText = await fallbackRes.text();
+      if (!isCsvText(fallbackText)) return new Response('CSV not found', { status: 404 });
+      text = fallbackText;
     }
 
     const rows = parseCSV(text);
