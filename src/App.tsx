@@ -249,6 +249,7 @@ export default function App() {
 
   const navigateToContributor = useCallback((name: string) => {
     setContributorBackCategory(activeCategory);
+    setSelectedAlbum(null);
     setSelectedContributor(name);
     setActiveCategory('contributor');
   }, [activeCategory]);

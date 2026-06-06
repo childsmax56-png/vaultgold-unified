@@ -27,9 +27,8 @@ function songsForContributor(name: string, eras: Era[]): ContributorSong[] {
   for (const era of eras) {
     for (const songs of Object.values(era.data || {})) {
       for (const song of songs as Song[]) {
-        const songLower = song.name.toLowerCase();
-        // Check if name appears in the song's contributors
-        const contributors = parseContributors(song.name);
+        // Contributors live in song.extra (second+ lines of the CSV name cell)
+        const contributors = parseContributors(song.extra || '');
         const isContributor = contributors.some(c => c.toLowerCase() === lower);
 
         // Also check if name is the primary artist in "Name - Title" format
