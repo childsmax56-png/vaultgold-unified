@@ -42,7 +42,7 @@ export const dregoldConfig: ArtistConfig = {
     "LP4": "https://i.ibb.co/N6vkwn6X/IMG-4212.png",
     "Planets [V2]": "https://i.ibb.co/yct1HRHw/IMG-4213.jpg",
     "The Wash": "https://i.ibb.co/dwZ4cwmd/image-2026-04-27-185921217.png",
-    "The Aftermath": "https://i.ibb.co/dwZ4cwmd/image-2026-04-27-185921217.png",
+    "The Aftermath": "",
   },
 
   ALBUM_RELEASE_DATES: {
