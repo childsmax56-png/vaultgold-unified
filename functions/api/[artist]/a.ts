@@ -120,7 +120,6 @@ const ARTIST_ERA_ORDERS: Record<string, string[]> = {
     'The Chronic',
     'Helter Skelter',
     'The Chronic II',
-    'The Aftermath',
     '2001',
     'The Wash',
     'Break Up To Make Up',
