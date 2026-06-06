@@ -11,10 +11,10 @@ export const twizzygoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
-  accentColor: '#00ff88',
+  accentColor: '#a8e63d',
   artistLabel: 'YEAT',
   cardLetter: 'YT',
-  logoUrl: '',
+  logoUrl: '/logos/twizzygold.png',
 
   getArtistName(_eraName) { return 'YEAT'; },
 

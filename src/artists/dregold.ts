@@ -11,10 +11,10 @@ export const dregoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
-  accentColor: '#4a90d9',
+  accentColor: '#e53e3e',
   artistLabel: 'Dr. Dre',
   cardLetter: 'DRE',
-  logoUrl: '',
+  logoUrl: '/logos/dregold.png',
 
   getArtistName(_eraName) { return 'Dr. Dre'; },
 

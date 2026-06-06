@@ -11,10 +11,10 @@ export const shadygoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
-  accentColor: '#555555',
+  accentColor: '#e53e3e',
   artistLabel: 'Eminem',
   cardLetter: 'SHY',
-  logoUrl: '',
+  logoUrl: '/logos/shadygold.png',
 
   getArtistName(eraName) {
     if (!eraName) return 'Eminem';

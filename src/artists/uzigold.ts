@@ -11,10 +11,10 @@ export const uzigoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
-  accentColor: '#ff69b4',
+  accentColor: '#e8621a',
   artistLabel: 'Lil Uzi Vert',
   cardLetter: 'UZI',
-  logoUrl: '',
+  logoUrl: '/logos/uzigold.png',
 
   getArtistName(_eraName) { return 'Lil Uzi Vert'; },
 

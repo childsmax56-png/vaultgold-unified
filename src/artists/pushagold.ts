@@ -11,10 +11,10 @@ export const pushagoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: 'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/gviz/tq?tqx=out:csv&sheet=Unreleased',
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/gviz/tq?tqx=out:csv&sheet=Recent',
-  accentColor: '#C9A224',
+  accentColor: '#e88fa0',
   artistLabel: 'Pusha T / Clipse',
   cardLetter: 'PSH',
-  logoUrl: '',
+  logoUrl: '/logos/pushagold.png',
 
   getArtistName(eraName) {
     if (!eraName) return 'Pusha T';
