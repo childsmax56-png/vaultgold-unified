@@ -4,6 +4,7 @@ import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loa
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
 import { formatTextWithTags, getCleanSongNameWithTags, createSlug, getSongSlug, ALBUM_RELEASE_DATES, matchesFilters, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription } from '../utils';
+import { SongTitle } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
@@ -484,7 +485,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
 
                       <div className="flex-1 min-w-0 pr-4">
                         <div className={`flex items-baseline gap-2 truncate font-medium ${isCurrentlyPlaying ? 'text-[var(--theme-color)]' : 'text-white'}`}>
-                          {formatTextWithTags(song.name)}
+                          <SongTitle name={song.name} />
                         </div>
                         {song.description && (() => {
                           const { note, ogFilename } = parseNoteDescription(song.description);

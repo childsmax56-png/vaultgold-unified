@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Play, Volume2, X, Star, Share2, Download } fro
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
 import { formatTextWithTags, getCleanSongNameWithTags, createSlug, isSongNotAvailable, matchesFilters, CUSTOM_IMAGES, parseNoteDescription } from '../utils';
+import { SongTitle } from './SongTitle';
 import { FakesEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 
@@ -362,7 +363,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
 
                         <div className="flex-1 min-w-0 pr-4">
                            <div className={`flex items-baseline gap-2 truncate font-medium ${isCurrentlyPlaying ? 'text-[var(--theme-color)]' : 'text-white'}`}>
-                              {formatTextWithTags(song.name)}
+                              <SongTitle name={song.name} />
                            </div>
                            {song.description && (() => {
                               const { note, ogFilename } = parseNoteDescription(song.description);

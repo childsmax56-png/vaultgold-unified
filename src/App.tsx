@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { XCircle, ChevronUp, X } from 'lucide-react';
@@ -17,6 +17,8 @@ import { QueueModal } from './components/QueueModal';
 import { handleShareSilent } from './components/EraDetail';
 
 import { TrackerData, Era, Song, SearchFilters } from './types';
+import { ContributorContext } from './ContributorContext';
+import { ContributorView } from './components/ContributorView';
 import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, getArtistName, buildArtistTag, handleDownloadFile } from './utils';
 import { isLastfmLoggedIn, saveLastfmSession, clearLastfmSession, scrobbleTrack, updateNowPlaying, cleanTrackName, parseArtistFromSong, cleanAlbumName } from './lastfm';
 import { isSpotifyLoggedIn, clearSpotifySession, startSpotifyAuth, handleSpotifyCallback } from './spotify';
@@ -238,6 +240,18 @@ export default function App() {
   }, [activeCategory]);
 
   const [selectedAlbum, setSelectedAlbum] = useState<Era | null>(null);
+  const [selectedContributor, setSelectedContributor] = useState<string | null>(() => {
+    const path = window.location.pathname;
+    if (path.startsWith('/contributor/')) return decodeURIComponent(path.split('/contributor/')[1]);
+    return null;
+  });
+  const [contributorBackCategory, setContributorBackCategory] = useState<Category>('music');
+
+  const navigateToContributor = useCallback((name: string) => {
+    setContributorBackCategory(activeCategory);
+    setSelectedContributor(name);
+    setActiveCategory('contributor');
+  }, [activeCategory]);
 
   const [currentEra, setCurrentEra] = useState<Era | null>(null);
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
@@ -1322,6 +1336,11 @@ export default function App() {
       if (!currentPath.startsWith('/production')) {
         window.history.pushState({ category: 'production' }, '', '/production');
       }
+    } else if (activeCategory === 'contributor' && selectedContributor) {
+      const newPath = `/contributor/${encodeURIComponent(selectedContributor)}`;
+      if (currentPath !== newPath) {
+        window.history.pushState({ category: 'contributor', contributor: selectedContributor }, '', newPath);
+      }
     } else {
       if (selectedAlbum) {
         const newPath = `/album/${createSlug(selectedAlbum.name)}`;
@@ -1334,7 +1353,7 @@ export default function App() {
         }
       }
     }
-  }, [selectedAlbum, loading, activeCategory]);
+  }, [selectedAlbum, loading, activeCategory, selectedContributor]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -1403,6 +1422,10 @@ export default function App() {
         setActiveCategory('concerts');
       } else if (path.startsWith('/production')) {
         setActiveCategory('production');
+      } else if (path.startsWith('/contributor/')) {
+        const name = decodeURIComponent(path.split('/contributor/')[1]);
+        setSelectedContributor(name);
+        setActiveCategory('contributor');
       }
     };
     window.addEventListener('popstate', handlePopState);
@@ -2491,6 +2514,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
   const showPlayer = !!effectiveSong && !isFullScreen && !isPlayerClosed;
 
   return (
+    <ContributorContext.Provider value={{ navigateToContributor }}>
     <PlaylistProvider>
     <div className="h-dvh w-full flex overflow-hidden relative bg-yzy-black">
       <audio
@@ -2756,6 +2780,19 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   const q = searchQuery.toLowerCase();
                   return e.name.toLowerCase().includes(q) || Object.values(e.data || {}).flat().some((s: any) => s.name?.toLowerCase().includes(q));
                 })} onSelectEra={setSelectedAlbum} />
+              ) : activeCategory === 'contributor' && selectedContributor ? (
+                <ContributorView
+                  key={`contributor-${selectedContributor}`}
+                  contributorName={selectedContributor}
+                  eras={[...erasArray, ...relatedErasArray]}
+                  onBack={() => {
+                    setSelectedContributor(null);
+                    setActiveCategory(contributorBackCategory);
+                  }}
+                  onPlaySong={handlePlaySong}
+                  currentSong={currentSong}
+                  isPlaying={isPlaying}
+                />
               ) : activeCategory === 'comps' ? (
                 <CompsView
                   key="comps"
@@ -3236,6 +3273,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
       />
     )}
     </PlaylistProvider>
+    </ContributorContext.Provider>
   );
 }
 

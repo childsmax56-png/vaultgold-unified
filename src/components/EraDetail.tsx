@@ -5,6 +5,7 @@ import { SiYoutube } from 'react-icons/si';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
 import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES } from '../utils';
+import { SongTitle } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
 import { isLastfmLoggedIn } from '../lastfm';
@@ -713,7 +714,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
                         <div className="flex-1 min-w-0 pr-4">
                           <div className={`flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2 font-medium ${isCurrentlyPlaying ? 'text-[var(--theme-color)]' : 'text-white'}`}>
-                            <span className="break-words whitespace-normal leading-snug">{formatTextWithTags(song.name)}</span>
+                            <SongTitle name={song.name} className="break-words whitespace-normal leading-snug" />
                             {song.extra && <span className={`text-xs break-words whitespace-normal leading-snug ${isCurrentlyPlaying ? 'text-[var(--theme-color)]/60' : 'text-white/40'}`}>{formatTextWithTags(song.extra)}</span>}
                           </div>
                           {song.description && (() => {

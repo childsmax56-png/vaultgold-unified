@@ -116,6 +116,63 @@ export function buildArtistTag(songName: string, eraName: string | undefined): s
   return primary;
 }
 
+/**
+ * Parses contributor names (feat., ft., prod. by, w/, with, &) from a song name.
+ * Returns an array of unique names found in the song name.
+ */
+export function parseContributors(songName: string): string[] {
+  const contributors: string[] = [];
+
+  // feat. / ft. inside parens or brackets: (feat. A, B & C) or [ft. X]
+  const featPattern = /[\[(](?:feat\.|ft\.)\s*([^\])\n]+)[\])]/gi;
+  let m;
+  while ((m = featPattern.exec(songName)) !== null) {
+    // split on comma or ampersand
+    m[1].split(/,|&/).map(s => s.trim()).filter(Boolean).forEach(n => contributors.push(n));
+  }
+
+  // prod. by / prod. inside parens
+  const prodPattern = /[\[(]prod\.(?:\s*by)?\s*([^\])\n]+)[\])]/gi;
+  while ((m = prodPattern.exec(songName)) !== null) {
+    m[1].split(/,|&/).map(s => s.trim()).filter(Boolean).forEach(n => contributors.push(n));
+  }
+
+  // w/ Name or with Name after a dash separator (not at start of string)
+  const wPattern = /\bw\/\s*([^()\[\]\n,]+)/gi;
+  while ((m = wPattern.exec(songName)) !== null) {
+    m[1].trim() && contributors.push(m[1].trim());
+  }
+
+  // strip tag emojis from contributor names and deduplicate
+  return [...new Set(contributors.map(c => c.replace(/[️]/g, '').trim()).filter(Boolean))];
+}
+
+/**
+ * Given a song name string, returns segments split so contributor names
+ * are identified separately. Each segment has text and optionally a contributor name.
+ */
+export function splitSongNameWithContributors(
+  songName: string
+): Array<{ text: string; contributor?: string }> {
+  if (!songName) return [{ text: songName }];
+
+  const contributors = parseContributors(songName);
+  if (contributors.length === 0) return [{ text: songName }];
+
+  const segments: Array<{ text: string; contributor?: string }> = [];
+  let remaining = songName;
+
+  for (const contributor of contributors) {
+    const idx = remaining.indexOf(contributor);
+    if (idx === -1) continue;
+    if (idx > 0) segments.push({ text: remaining.slice(0, idx) });
+    segments.push({ text: contributor, contributor });
+    remaining = remaining.slice(idx + contributor.length);
+  }
+  if (remaining) segments.push({ text: remaining });
+  return segments;
+}
+
 export function formatTextForNotification(text: string | undefined | null, tagsAsEmojis: boolean): string {
   if (!text) return '';
   let formattedText = text;
