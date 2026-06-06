@@ -275,6 +275,8 @@ export const yzygoldConfig: ArtistConfig = {
     "Graduation": {
       topBanner: "/yzygold/TopBannerGraduation.png",
       bottomBanner: "/yzygold/BottomBannerGraduation.png",
+      miniPlayer: "/yzygold/MiniPlayerGraduation.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerGraduation.png",
     },
   },
 

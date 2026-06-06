@@ -30,7 +30,7 @@ export interface ArtistConfig {
   TAG_TOOLTIP_MAP: Record<string, string>;
 
   // Themes
-  ERA_THEMES: Record<string, { topBanner?: string; bottomBanner?: string }>;
+  ERA_THEMES: Record<string, { topBanner?: string; bottomBanner?: string; miniPlayer?: string; fullPicturePlayer?: string }>;
 
   // Landing page card
   accentColor: string;

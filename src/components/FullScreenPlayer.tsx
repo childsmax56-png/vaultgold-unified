@@ -3,7 +3,7 @@ import { Play, Pause, X, SkipBack, SkipForward, Shuffle, Repeat, Repeat1, Mic2, 
 import { parseArtistFromSong, cleanTrackName } from '../lastfm';
 import { Song, Era } from '../types';
 import { useEffect, useRef, useState } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, CUSTOM_IMAGES, parseNoteDescription } from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, CUSTOM_IMAGES, parseNoteDescription, ERA_THEMES } from '../utils';
 import { useLyrics } from '../useLyrics';
 
 function formatTime(seconds: number) {
@@ -273,6 +273,11 @@ export function FullScreenPlayer({
       exit={{ opacity: 0, y: '100%', filter: 'blur(10px)' }}
       transition={{ type: 'spring', damping: 25, stiffness: 200 }}
       className="fixed inset-0 z-[100] bg-yzy-black flex flex-col"
+      style={ERA_THEMES[era?.name ?? '']?.fullPicturePlayer ? {
+        backgroundImage: `url(${ERA_THEMES[era!.name].fullPicturePlayer})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      } : undefined}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {currentImgUrl && <img src={currentImgUrl} alt="" className="w-full h-full object-cover opacity-10 blur-3xl scale-110" referrerPolicy="no-referrer" />}
