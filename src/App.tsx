@@ -100,6 +100,7 @@ import { SettingsView } from './components/SettingsView';
 import { HistoryView } from './components/HistoryView';
 import { FakesView } from './components/FakesView';
 import { CompsView } from './components/CompsView';
+import { ConcertsView } from './components/ConcertsView';
 import { YEditsView } from './components/YEditsView';
 import { ReleasedView, ReleasedEntry } from './components/ReleasedView';
 import { VideosView, VideoRawEntry } from './components/VideosView';
@@ -180,6 +181,7 @@ export default function App() {
     if (path.startsWith('/comps')) return 'comps';
     if (path.startsWith('/yedits')) return 'yedits';
     if (path.startsWith('/subalbums')) return 'subalbums';
+    if (path.startsWith('/concerts')) return 'concerts';
     return 'music';
   });
 
@@ -1300,6 +1302,10 @@ export default function App() {
       if (!currentPath.startsWith('/subalbums')) {
         window.history.pushState({ category: 'subalbums' }, '', '/subalbums');
       }
+    } else if (activeCategory === 'concerts') {
+      if (!currentPath.startsWith('/concerts')) {
+        window.history.pushState({ category: 'concerts' }, '', '/concerts');
+      }
     } else {
       if (selectedAlbum) {
         const newPath = `/album/${createSlug(selectedAlbum.name)}`;
@@ -1377,6 +1383,8 @@ export default function App() {
         setActiveCategory('yedits');
       } else if (path.startsWith('/subalbums')) {
         setActiveCategory('subalbums');
+      } else if (path.startsWith('/concerts')) {
+        setActiveCategory('concerts');
       }
     };
     window.addEventListener('popstate', handlePopState);
@@ -2699,6 +2707,11 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   searchQuery={searchQuery}
                   onPlaySong={handlePlaySong}
                   onToast={showToast}
+                />
+              ) : activeCategory === 'concerts' ? (
+                <ConcertsView
+                  key="concerts"
+                  searchQuery={searchQuery}
                 />
               ) : activeCategory === 'comps' ? (
                 <CompsView

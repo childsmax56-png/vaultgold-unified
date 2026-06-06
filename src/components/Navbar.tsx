@@ -7,7 +7,7 @@ import { SearchFilters } from '../types';
 import { useSettings } from '../SettingsContext';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
-export type Category = 'music' | 'art' | 'recent' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums';
+export type Category = 'music' | 'art' | 'recent' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts';
 
 interface NavbarProps {
   searchQuery: string;
@@ -42,6 +42,7 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'videos', label: 'Videos' },
   { key: 'playlists', label: 'Playlists' },
   { key: 'subalbums', label: 'Sub Albums' },
+  { key: 'concerts', label: 'Concerts' },
 ];
 
 export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHomeClick, activeCategory, onCategoryChange, onRandomSongClick, isRandomMode, isTimelineMode, onTimelineToggle, yeiOpen, onYEIClick, globalSearchResults, onSelectGlobalResult }: NavbarProps) {
