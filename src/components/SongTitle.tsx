@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatTextWithTags, splitSongNameWithContributors } from '../utils';
+import { formatTextWithTags, splitTextWithContributors } from '../utils';
 import { useContributor } from '../ContributorContext';
 
 interface SongTitleProps {
@@ -7,12 +7,12 @@ interface SongTitleProps {
   className?: string;
 }
 
-export function SongTitle({ name, className }: SongTitleProps) {
+function ContributorSegments({ text, className }: { text: string; className?: string }) {
   const { navigateToContributor } = useContributor();
-  const segments = splitSongNameWithContributors(name);
+  const segments = splitTextWithContributors(text);
 
   if (segments.length === 1 && !segments[0].contributor) {
-    return <span className={className}>{formatTextWithTags(name)}</span>;
+    return <span className={className}>{formatTextWithTags(text)}</span>;
   }
 
   return (
@@ -25,7 +25,7 @@ export function SongTitle({ name, className }: SongTitleProps) {
               e.stopPropagation();
               navigateToContributor(seg.contributor!);
             }}
-            className="underline decoration-white/30 hover:decoration-white/70 hover:text-white transition-colors cursor-pointer"
+            className="underline decoration-white/30 hover:decoration-white/70 hover:text-white/80 transition-colors cursor-pointer"
           >
             {seg.text}
           </button>
@@ -35,4 +35,14 @@ export function SongTitle({ name, className }: SongTitleProps) {
       )}
     </span>
   );
+}
+
+// Used for the song name (first line — usually just the title, no contributors)
+export function SongTitle({ name, className }: SongTitleProps) {
+  return <ContributorSegments text={name} className={className} />;
+}
+
+// Used for song.extra (second line — contains feat./prod./perf. info)
+export function SongExtra({ extra, className }: { extra: string; className?: string }) {
+  return <ContributorSegments text={extra} className={className} />;
 }
