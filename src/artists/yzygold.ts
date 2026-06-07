@@ -139,12 +139,12 @@ export const yzygoldConfig: ArtistConfig = {
     "VULTURES 2": "08/03/2024",
     "The Elementary School Dropout": "03/10/2024",
     "VULTURES 3": "??/??/????",
-    "BULLY [V2]": "03/28/2026",
     "BULLY [V1]": "03/18/2025",
     "CUCK": "03/06/2025",
     "DONDA 2 (2025)": "04/29/2025",
     "NEVER STOP": "06/27/2025",
     "IN A PERFECT WORLD": "06/22/2025",
+    "BULLY [V2]": "03/28/2026",
     "YE-I": "10/16/2023",
   },
 

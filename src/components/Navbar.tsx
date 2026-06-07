@@ -103,7 +103,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
               src={activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png'}
               alt={activeConfig.SITE_NAME}
               onClick={onHomeClick}
-              className="h-[48px] w-[160px] object-contain object-left cursor-pointer hover:opacity-80 transition-opacity duration-300"
+              className={`object-contain object-left cursor-pointer hover:opacity-80 transition-opacity duration-300 ${activeConfig.navLogoUrl ? 'h-[64px] w-[200px]' : 'h-[48px] w-[160px]'}`}
             />
           </div>
 
@@ -142,7 +142,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
                   )}
                 </AnimatePresence>
               </div>
-              <div className="hidden md:block w-[170px] h-[60px] shrink-0 overflow-hidden">
+              <div className={`hidden md:block shrink-0 overflow-hidden ${activeConfig.navLogoUrl ? 'w-[220px] h-[80px]' : 'w-[170px] h-[60px]'}`}>
                 <img
                   src={activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png'}
                   alt={activeConfig.SITE_NAME}
