@@ -66,11 +66,16 @@ function parseStemsToEras(stemsData: StemEntry[], allEras: Era[]): { eraName: st
     } catch { return d; }
   };
 
-  const CATEGORY_NAMES = ['Instrumentals', 'Acapellas', 'Studio Stems', 'Sessions', 'Live Acapellas', 'Live Stems', 'TV Tracks'];
+  const CATEGORY_NAMES = ['Instrumentals', 'Acapellas', 'Studio Stems', 'Sessions', 'Live Acapellas', 'Live Stems', 'TV Tracks', 'Samples', 'Multitracks', 'Snippets'];
 
   for (const item of stemsData) {
     const isBrokenEra = typeof item.Era === 'string' && (item.Era.includes('OG File') || item.Era.includes('Unavailable'));
-    const isEraHeader = (!item.Era || isBrokenEra) && item.Name && (typeof item["Leak Date"] === 'object' || (item["Full Length"] && typeof item["Full Length"] === 'string' && item["Full Length"].length > 50));
+    const isEraHeader = (!item.Era || isBrokenEra) && item.Name && (
+      typeof item["Leak Date"] === 'object'
+      || (item["Full Length"] && typeof item["Full Length"] === 'string' && item["Full Length"].length > 50)
+      // Short-name era header format (e.g. vampgold): blank Era, era name in Name, nothing else
+      || (!item["Link(s)"] && !item.Quality && !CATEGORY_NAMES.includes(item.Name))
+    );
     const isCategoryHeader = !item.Era && item.Name && !item.Quality && !item["Link(s)"] && CATEGORY_NAMES.includes(item.Name);
 
     if (isEraHeader && !isCategoryHeader) {
@@ -106,6 +111,26 @@ function parseStemsToEras(stemsData: StemEntry[], allEras: Era[]): { eraName: st
     }
 
     if (item.Era && item.Name) {
+      // If the era column changed (flat-format CSVs), start a new era group
+      if (item.Era !== currentEraName) {
+        if (currentCategorySongs.length > 0) {
+          currentEraCategories.push({ name: currentCategory, songs: currentCategorySongs });
+        }
+        if (currentEraName && currentEraCategories.length > 0) {
+          const prevEra = allEras.find(e => e.name === currentEraName);
+          result.push({
+            eraName: currentEraName + ' [Stems Album]',
+            image: CUSTOM_IMAGES[currentEraName] || prevEra?.image,
+            categories: currentEraCategories,
+          });
+        }
+        const matchedKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === item.Era.toLowerCase());
+        currentEraName = matchedKey ? ERA_MAPPINGS[matchedKey] : item.Era;
+        currentCategory = 'Default';
+        currentCategorySongs = [];
+        currentEraCategories = [];
+      }
+
       const notes = item["Notes\n(Join the Discord to help fix any issues + help with dead links)"] || (item as any).Notes || '';
 
       const links = item["Link(s)"] ? item["Link(s)"].split('\n').filter(l => l.trim()) : [];

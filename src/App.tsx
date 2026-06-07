@@ -2850,7 +2850,14 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   onSelectEra={setSelectedAlbum}
                 />
               ) : (
-                <EraGrid key="grid" eras={filteredEras} onSelectEra={setSelectedAlbum} />
+                <>
+                  {ARTIST_SLUG === 'pushagold' && (
+                    <div className="mx-6 mt-6 p-4 rounded-xl border border-[var(--theme-color)]/30 bg-[var(--theme-color)]/5 text-sm text-white/60">
+                      ⚠️ This tracker is a work in progress. Some eras and songs may be incomplete or missing.
+                    </div>
+                  )}
+                  <EraGrid key="grid" eras={filteredEras} onSelectEra={setSelectedAlbum} />
+                </>
               )}
             </AnimatePresence>
           </div>

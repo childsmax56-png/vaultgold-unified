@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SiDiscord, SiReddit, SiTiktok } from 'react-icons/si';
 import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
 import { useSettings, LOADING_SCREENS } from './SettingsContext';
@@ -580,8 +581,32 @@ export function LandingPage() {
         <MyTrackerCard />
       </div>
 
-      <footer style={{ marginTop: 56, fontSize: 12, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-        © 2026 VAULTgold
+      {/* Social + Account */}
+      <div style={{ width: '100%', maxWidth: 720, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+        <a href="https://discord.gg/xYhKgCDX8h" target="_blank" rel="noopener noreferrer"
+          style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(88,101,242,0.12)', border: '1px solid rgba(88,101,242,0.25)', color: '#5865F2', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
+          <SiDiscord style={{ width: 16, height: 16 }} /> Discord
+        </a>
+        <a href="https://www.reddit.com/r/2YZY2GOLD/" target="_blank" rel="noopener noreferrer"
+          style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,69,0,0.12)', border: '1px solid rgba(255,69,0,0.25)', color: '#FF4500', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
+          <SiReddit style={{ width: 16, height: 16 }} /> Reddit
+        </a>
+        <a href="https://www.tiktok.com/t/ZTBerQPF2/" target="_blank" rel="noopener noreferrer"
+          style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
+          <SiTiktok style={{ width: 16, height: 16 }} /> TikTok
+        </a>
+        <a href="/account" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(201,162,36,0.12)', border: '1px solid rgba(201,162,36,0.3)', color: '#C9A224', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
+          Manage Account
+        </a>
+      </div>
+
+      <footer style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+        <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          © 2026 VAULTgold
+        </span>
+        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.15)' }}>
+          Logos created by YZYsam &amp; north on Discord
+        </span>
       </footer>
 
       <style>{`

@@ -21,6 +21,7 @@ export const kdotgoldConfig: ArtistConfig = {
   CUSTOM_IMAGES: {
     "Y.H.N.I.C.": "https://i.ibb.co/RBDrKXS/Y-N-I-C.jpg",
     "Training Day": "https://i.ibb.co/4McYcND/Training-Day.jpg",
+    "C4": "https://i.ibb.co/FWCG4C5/C4.jpg",
     "No Sleep 'Til NYC": "https://i.ibb.co/d4kX6Bng/AHOq17-EI6-C3-GUai6he-Tl-RIs0-nz-P1iq5-Ax9n-1t37q-K4pxku-A997-UIn-TY0mav8-YXe-Ewuf-H0e-CTZf72ylm-FEe.jpg",
     "The Kendrick Lamar EP": "https://i.ibb.co/8XC0LcQ/Kendrick-Lamar-EP.jpg",
     "Overly Dedicated": "https://i.ibb.co/VW7gryWb/download.jpg",
@@ -51,6 +52,8 @@ export const kdotgoldConfig: ArtistConfig = {
     "Rap Album": "??/??/2003",
     "Look Woman": "??/??/2004",
     "Training Day": "??/??/2005",
+    "No Sleep 'Til NYC": "11/13/2007",
+    "C4": "01/30/2009",
     "The Kendrick Lamar EP": "??/??/2009",
     "Overly Dedicated": "09/14/2010",
     "Section.80": "07/02/2011",
@@ -63,7 +66,6 @@ export const kdotgoldConfig: ArtistConfig = {
     "untitled unmastered.": "03/04/2016",
     "DAMN.": "04/14/2017",
     "Black Panther: The Album": "02/09/2018",
-    "No Sleep 'Til NYC": "??/??/????",
     "Everybody Sensitive [V1]": "??/??/????",
     "Mr. Morale [V2]": "??/??/????",
     "Mr. Morale [V3]": "??/??/????",
@@ -78,6 +80,8 @@ export const kdotgoldConfig: ArtistConfig = {
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
   ERA_MAPPINGS: {},
+  hasCompsTab: false,
+  hasConcertsTab: false,
 
   TAG_MAP: {
     '⭐': 'Best Of', '🏆': 'Grails', '🥇': 'Wanted', '🏅': 'Wanted',

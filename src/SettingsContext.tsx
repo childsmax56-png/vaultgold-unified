@@ -58,6 +58,7 @@ export interface AppSettings {
   videosMiniPlayer: boolean;
   aiErrorDetails: boolean;
   shareLinkType: 'site' | 'pillowcase';
+  disableEraThemes: boolean;
 }
 
 interface SettingsContextType {
@@ -100,6 +101,7 @@ export const defaultSettings: AppSettings = {
   videosMiniPlayer: true,
   aiErrorDetails: false,
   shareLinkType: 'site',
+  disableEraThemes: false,
 };
 
 const SettingsContext = createContext<SettingsContextType>({

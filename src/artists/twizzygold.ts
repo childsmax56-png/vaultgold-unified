@@ -93,6 +93,8 @@ export const twizzygoldConfig: ArtistConfig = {
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
   ERA_MAPPINGS: {},
+  hasCompsTab: false,
+  hasConcertsTab: false,
 
   TAG_MAP: {
     '⭐': 'Best Of', '🏆': 'Grails', '🥇': 'Wanted', '🏅': 'Wanted',

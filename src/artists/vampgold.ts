@@ -36,6 +36,9 @@ export const vampgoldConfig: ArtistConfig = {
   getArtistName(_eraName) { return 'Playboi Carti'; },
 
   CUSTOM_IMAGES: {
+    "Aviation Class": "https://i.ibb.co/pT7t9hB/IMG-4079.png",
+    "Killing Me Softly": "https://i.ibb.co/DHtzvpTS/NVj-Lc-ZW-Imgur.png",
+    "Kream": "https://i.ibb.co/CK8KMmYp/a3383006450-16.jpg",
     "Young Mi$fit": "https://i.ibb.co/kVFwht33/tumblr-mdcd9s2-I9-G1qfnd2oo1-500.jpg",
     "Sen$ation": "https://i.ibb.co/CK8KMmYp/a3383006450-16.jpg",
     "Awful Records": "https://i.ibb.co/VW5xv70J/artworks-000116608046-icqf3o-t1080x1080.jpg",
@@ -136,6 +139,8 @@ export const vampgoldConfig: ArtistConfig = {
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
   ERA_MAPPINGS: {},
+  hasCompsTab: false,
+  hasConcertsTab: false,
   TAG_MAP: { ...defaultTagMap, '💛': 'By VAMPgold' },
   ERA_THEMES: {},
   TAG_TOOLTIP_MAP: { ...defaultTagTooltips, 'By VAMPgold': 'Leaks & Songs added by the owner of the site.' },

@@ -428,7 +428,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
       >
         <div
           className="p-6 md:p-8 flex flex-col md:flex-row items-start gap-6 md:gap-8 border-b border-white/5"
-          style={ERA_THEMES[era.name]?.topBanner ? {
+          style={!settings.disableEraThemes && ERA_THEMES[era.name]?.topBanner ? {
             backgroundImage: `url(${ERA_THEMES[era.name].topBanner})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -651,13 +651,13 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
         <div
           className="flex-1"
-          style={ERA_THEMES[era.name]?.bottomBanner ? {
+          style={!settings.disableEraThemes && ERA_THEMES[era.name]?.bottomBanner ? {
             backgroundImage: `url(${ERA_THEMES[era.name].bottomBanner})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           } : undefined}
         >
-        <div className={`px-6 md:px-8 pt-8 max-w-6xl mx-auto${ERA_THEMES[era.name]?.bottomBanner ? ' drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : ''}`}>
+        <div className={`px-6 md:px-8 pt-8 max-w-6xl mx-auto${!settings.disableEraThemes && ERA_THEMES[era.name]?.bottomBanner ? ' drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : ''}`}>
           {processedCategories.map(({ category, songs: processedSongs }) => {
             return (
               <div key={category} className="mb-10">

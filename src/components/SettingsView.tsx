@@ -1,4 +1,5 @@
 import { useSettings, LOADING_SCREENS } from '../SettingsContext';
+import { activeConfig } from '../artists/activeConfig';
 import { AlignLeft, AlignCenter, AlignRight, History, Trash2, RotateCcw, X, RefreshCw, Check, Download } from 'lucide-react';
 import { VaultGoldSection } from './VaultGoldSection';
 import { motion, AnimatePresence } from 'motion/react';
@@ -326,6 +327,21 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
               className={`w-11 h-6 rounded-full transition-colors relative shrink-0 ${settings.tagsAsEmojis ? 'bg-[var(--theme-color)]' : 'bg-white/10'}`}
             >
               <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-transform ${settings.tagsAsEmojis ? 'translate-x-5.5' : 'translate-x-0.5'}`} />
+            </button>
+          </div>
+        )}
+
+        {Object.keys(activeConfig.ERA_THEMES).length > 0 && matchesSearch('era themes disable background') && (
+          <div className="flex items-center justify-between p-4 bg-[#111] border border-white/5 rounded-xl">
+            <div className="flex flex-col">
+              <span className="text-sm font-medium text-white/90">Disable Era Themes</span>
+              <span className="text-xs text-white/40">Turn off era-based background art and images</span>
+            </div>
+            <button
+              onClick={() => updateSettings({ disableEraThemes: !settings.disableEraThemes })}
+              className={`w-11 h-6 rounded-full transition-colors relative shrink-0 ${settings.disableEraThemes ? 'bg-[var(--theme-color)]' : 'bg-white/10'}`}
+            >
+              <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-transform ${settings.disableEraThemes ? 'translate-x-5.5' : 'translate-x-0.5'}`} />
             </button>
           </div>
         )}

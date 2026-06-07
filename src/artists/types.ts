@@ -35,6 +35,9 @@ export interface ArtistConfig {
   // Optional tabs
   hasProductionTab?: boolean;
   hasYeditsTab?: boolean;
+  hasCompsTab?: boolean;
+  hasConcertsTab?: boolean;
+  productionFirst?: boolean; // show Production Projects before Music in navbar
 
   // Landing page card
   accentColor: string;

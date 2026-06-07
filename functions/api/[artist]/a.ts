@@ -25,6 +25,9 @@ const ERA_NAME_MAP: Record<string, string> = {
   "The Chronic II: A New World Odor (Poppa's Got A Brand New Funk)": 'The Chronic II',
   'The Chronic II: A New World Odor': 'The Chronic II',
   'N.W.A. Reunion Album': 'N.W.A. Reunion',
+  // vampgold
+  'THC: The High Chronical$': 'The High Chronical$',
+  'Ye - DONDA': 'Donda',
   // pushagold
   'Fear of God II: Let Us Pray': 'Fear of God II',
   'King Push – Darkest Before Dawn: The Prelude': 'Darkest Before Dawn',
@@ -39,17 +42,18 @@ function mapEraName(name: string): string {
 const ARTIST_ERA_ORDERS: Record<string, string[]> = {
   uzigold: [
     'Purple Thoughtz',
+    'Home Economic$',
     'The Real Uzi',
     '1017 vs. The World',
     'Luv Is Rage',
-    'Luv Is Rage 1.5',
     'Lil Uzi Vert vs. The World',
+    'Luv Is Rage 1.5',
     '2 Luv Is 2 Rage',
     'Barter 16',
-    '16*29',
-    'Lil Uzi Vert vs. The World 2 [V1]',
     'The Perfect LUV Tape',
     'Luv Is Rage 2 [V1]',
+    '16*29',
+    'Lil Uzi Vert vs. The World 2 [V1]',
     'Luv Is Rage 2 [V2]',
     'Too Fast',
     'Tsunami Island',
@@ -63,11 +67,10 @@ const ARTIST_ERA_ORDERS: Record<string, string[]> = {
     'Pink Tape [V1]',
     'Pink Tape [V2]',
     'Pink Tape [V3]',
-    'Home Economic$',
+    'RED & WHITE',
     'METROOOO PINK',
     'ALL WHITE',
     'Forever Young',
-    'RED & WHITE',
     'Super geeky',
     'Super geëky',
     'DPONTHEBEAT Vol 5',
@@ -121,8 +124,8 @@ const ARTIST_ERA_ORDERS: Record<string, string[]> = {
     'Helter Skelter',
     'The Chronic II',
     '2001',
-    'The Wash',
     'Break Up To Make Up',
+    'The Wash',
     'N.W.A. Reunion',
     'Detox [V1]',
     'Detox [V2]',
@@ -138,6 +141,38 @@ const ARTIST_ERA_ORDERS: Record<string, string[]> = {
     'LP4',
     'Planets [V2]',
     'Ongoing',
+  ],
+  xgold: [
+    'CD MIxtape',
+    'XXX (UNMASTERED)',
+    'Ice Hotel',
+    'e.motion',
+    'THE NOBODYS',
+    'The Fall',
+    '♡ ʳ ᵃ ʳ ᵉ ♡',
+    'Heartbreak Hotel',
+    'Red Light District',
+    'Members Only Vol. 1',
+    'Members Only Vol. 2',
+    'KIDS',
+    'IWABOS',
+    'Bad Vibes Forever',
+    'Death Note',
+    'Members Only Vol. 3',
+    'Revenge',
+    'UGLY',
+    '17',
+    'A GHETTO CHRISTMAS CAROL',
+    'I Need Jesus',
+    '?',
+    'SKINS',
+    'Members Only Vol. 4',
+    '? (Deluxe)',
+    'Bad Vibes Forever (2019)',
+    'LOOK AT ME: THE ALBUM',
+    'LOOK AT ME: XXXTENTACION',
+    'Ongoing',
+    'Unknown',
   ],
 };
 
@@ -186,12 +221,16 @@ export const onRequestGet: PagesFunction = async (context) => {
     // First pass: collect real era names from header rows (mapped to final names).
     // Header rows have newlines in the Era field (file counts). Stats rows also have newlines
     // but their Name field starts with a digit — skip those.
-    const validEraNames = new Set<string>(); // raw CSV names
+    const validEraNames = new Set<string>(); // raw CSV names AND mapped names
     for (const row of rows) {
       const eraField = row['Era'] ?? '';
       if (!eraField.includes('\n')) continue;
       const { name: eraName } = parseSongName(row[NAME_KEY] ?? '');
-      if (eraName && !/^\d+\s/.test(eraName)) validEraNames.add(eraName);
+      if (eraName && !/^\d+\s/.test(eraName)) {
+        validEraNames.add(eraName);
+        // Also add the mapped name so song rows whose Era column uses the short name are found
+        validEraNames.add(mapEraName(eraName));
+      }
     }
 
     // Flat-format CSVs (e.g. cactigold) have no era header rows — just plain era names in

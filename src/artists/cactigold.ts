@@ -94,6 +94,9 @@ export const cactigoldConfig: ArtistConfig = {
     "Utopia": "Utopia [P2]",
   },
 
+  hasCompsTab: false,
+  hasConcertsTab: false,
+
   TAG_MAP: {
     "⭐": "Best Of", "🏆": "Grails", "🥇": "Wanted", "🏅": "Wanted",
     "✨": "Notable", "💛": "By CACTIgold", "🗑️": "Worst Of", "🗑": "Worst Of",

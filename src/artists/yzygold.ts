@@ -12,6 +12,7 @@ export const yzygoldConfig: ArtistConfig = {
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
   hasYeditsTab: true,
+  hasCompsTab: true,
   accentColor: '#C9A224',
   artistLabel: 'Ye',
   cardLetter: 'YZY',

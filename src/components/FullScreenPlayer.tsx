@@ -273,7 +273,7 @@ export function FullScreenPlayer({
       exit={{ opacity: 0, y: '100%', filter: 'blur(10px)' }}
       transition={{ type: 'spring', damping: 25, stiffness: 200 }}
       className="fixed inset-0 z-[100] bg-yzy-black flex flex-col"
-      style={ERA_THEMES[era?.name ?? '']?.fullPicturePlayer ? {
+      style={!settings.disableEraThemes && ERA_THEMES[era?.name ?? '']?.fullPicturePlayer ? {
         backgroundImage: `url(${ERA_THEMES[era!.name].fullPicturePlayer})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',

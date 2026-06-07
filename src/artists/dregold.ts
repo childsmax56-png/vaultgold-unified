@@ -146,6 +146,9 @@ export const dregoldConfig: ArtistConfig = {
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
   ERA_MAPPINGS: {},
+  hasCompsTab: false,
+  hasConcertsTab: false,
+  productionFirst: true,
 
   TAG_MAP: {
     '⭐': 'Best Of', '🏆': 'Grails', '🥇': 'Wanted', '🏅': 'Wanted',

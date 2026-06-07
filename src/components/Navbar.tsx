@@ -70,9 +70,18 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     return () => document.removeEventListener('mousedown', handler);
   }, [dropdownOpen]);
 
-  const visibleCategories = NAV_CATEGORIES.filter(({ key }) => {
+  const baseCategories = activeConfig.productionFirst
+    ? [
+        NAV_CATEGORIES.find(c => c.key === 'production')!,
+        ...NAV_CATEGORIES.filter(c => c.key !== 'production'),
+      ]
+    : NAV_CATEGORIES;
+
+  const visibleCategories = baseCategories.filter(({ key }) => {
     if (key === 'yedits' && !activeConfig.hasYeditsTab) return false;
     if (key === 'production' && !activeConfig.hasProductionTab) return false;
+    if (key === 'concerts' && !activeConfig.hasConcertsTab) return false;
+    if (key === 'comps' && !activeConfig.hasCompsTab) return false;
     if (DATA_DRIVEN_TABS.has(key) && fetchedTabs?.has(key) && !tabsWithData?.has(key)) return false;
     return true;
   });
