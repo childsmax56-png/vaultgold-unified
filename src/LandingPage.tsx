@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
+import { useSettings, LOADING_SCREENS } from './SettingsContext';
 
 // Handles the Spotify PKCE OAuth callback that redirects back to vaultgold.net/?code=...
 // Exchanges the code for tokens and forwards them back to whichever tracker initiated the flow.
@@ -344,8 +345,165 @@ function MyTrackerCard() {
   );
 }
 
+function Toggle({ on, onToggle }: { on: boolean; onToggle: () => void }) {
+  return (
+    <button
+      onClick={onToggle}
+      style={{
+        width: 44, height: 24, borderRadius: 12, border: 'none', cursor: 'pointer',
+        background: on ? '#FFD700' : 'rgba(255,255,255,0.1)',
+        position: 'relative', flexShrink: 0, transition: 'background 0.2s',
+      }}
+    >
+      <div style={{
+        width: 20, height: 20, borderRadius: '50%', background: '#fff',
+        position: 'absolute', top: 2, left: on ? 22 : 2, transition: 'left 0.2s',
+      }} />
+    </button>
+  );
+}
+
+function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
+  const { settings, updateSettings, resetSettings } = useSettings();
+  const [confirmReset, setConfirmReset] = useState(false);
+  const row: React.CSSProperties = {
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    padding: '14px 16px', background: '#111', border: '1px solid rgba(255,255,255,0.06)',
+    borderRadius: 12,
+  };
+  const label: React.CSSProperties = { fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.9)' };
+  const sublabel: React.CSSProperties = { fontSize: 12, color: 'rgba(255,255,255,0.4)', marginTop: 2 };
+
+  const handleReset = () => {
+    if (confirmReset) { resetSettings(); setConfirmReset(false); }
+    else { setConfirmReset(true); setTimeout(() => setConfirmReset(false), 3000); }
+  };
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        onClick={onClose}
+        style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 100 }}
+      />
+      {/* Panel */}
+      <div style={{
+        position: 'fixed', top: 0, right: 0, bottom: 0, width: 340, maxWidth: '90vw',
+        background: '#0a0a0a', borderLeft: '1px solid rgba(255,255,255,0.08)',
+        zIndex: 101, overflowY: 'auto', padding: '24px 20px',
+        display: 'flex', flexDirection: 'column', gap: 12,
+        fontFamily: "'Inter', system-ui, sans-serif",
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+          <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.01em' }}>Settings</span>
+          <button
+            onClick={onClose}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.5)', fontSize: 20, lineHeight: 1 }}
+          >✕</button>
+        </div>
+
+        {/* Theme Color */}
+        <div style={row}>
+          <div>
+            <div style={label}>Theme Color</div>
+          </div>
+          <input
+            type="color"
+            value={settings.themeColor}
+            onChange={e => updateSettings({ themeColor: e.target.value })}
+            style={{ width: 36, height: 28, border: 'none', borderRadius: 6, cursor: 'pointer', background: 'none', padding: 0 }}
+          />
+        </div>
+
+        {/* Font Size */}
+        <div style={row}>
+          <div style={label}>Font Size</div>
+          <div style={{ display: 'flex', gap: 4, background: 'rgba(255,255,255,0.05)', borderRadius: 8, padding: 4 }}>
+            {(['small', 'medium', 'large'] as const).map(s => (
+              <button
+                key={s}
+                onClick={() => updateSettings({ globalFontSize: s })}
+                style={{
+                  padding: '4px 10px', borderRadius: 6, border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 500,
+                  background: settings.globalFontSize === s ? '#FFD700' : 'transparent',
+                  color: settings.globalFontSize === s ? '#000' : 'rgba(255,255,255,0.5)',
+                  transition: 'background 0.15s, color 0.15s',
+                }}
+              >{s[0].toUpperCase() + s.slice(1)}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* Loading Screen */}
+        <div style={{ ...row, flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
+          <div style={label}>Loading Screen</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, width: '100%' }}>
+            {LOADING_SCREENS.map(s => (
+              <button
+                key={s.id}
+                onClick={() => updateSettings({ loadingScreen: s.id })}
+                style={{
+                  padding: '4px 10px', borderRadius: 6, border: '1px solid',
+                  borderColor: settings.loadingScreen === s.id ? '#FFD700' : 'rgba(255,255,255,0.1)',
+                  background: settings.loadingScreen === s.id ? 'rgba(255,215,0,0.12)' : 'transparent',
+                  color: settings.loadingScreen === s.id ? '#FFD700' : 'rgba(255,255,255,0.5)',
+                  fontSize: 12, cursor: 'pointer', transition: 'all 0.15s',
+                }}
+              >{s.label}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* Tags as Emojis */}
+        <div style={row}>
+          <div style={label}>Tags as Emojis</div>
+          <Toggle on={settings.tagsAsEmojis} onToggle={() => updateSettings({ tagsAsEmojis: !settings.tagsAsEmojis })} />
+        </div>
+
+        {/* Startup Shuffle */}
+        <div style={row}>
+          <div>
+            <div style={label}>Startup Shuffle</div>
+            <div style={sublabel}>Shuffle on first load</div>
+          </div>
+          <Toggle on={settings.startupShuffle} onToggle={() => updateSettings({ startupShuffle: !settings.startupShuffle })} />
+        </div>
+
+        {/* Synced Lyrics Only */}
+        <div style={row}>
+          <div style={label}>Synced Lyrics Only</div>
+          <Toggle on={settings.syncedLyricsOnly} onToggle={() => updateSettings({ syncedLyricsOnly: !settings.syncedLyricsOnly })} />
+        </div>
+
+        {/* Reset */}
+        <button
+          onClick={handleReset}
+          style={{
+            marginTop: 8, padding: '12px 16px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.1)',
+            background: confirmReset ? 'rgba(239,68,68,0.15)' : 'transparent',
+            color: confirmReset ? '#ef4444' : 'rgba(255,255,255,0.4)',
+            fontSize: 14, fontWeight: 500, cursor: 'pointer', transition: 'all 0.2s',
+          }}
+        >
+          {confirmReset ? 'Click again to confirm reset' : 'Reset All Settings'}
+        </button>
+      </div>
+    </>
+  );
+}
+
+function GearIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  );
+}
+
 export function LandingPage() {
   useSpotifyCallback();
+  const [showSettings, setShowSettings] = useState(false);
   return (
     <div style={{
       minHeight: '100vh',
@@ -358,7 +516,22 @@ export function LandingPage() {
       flexDirection: 'column',
       alignItems: 'center',
     }}>
-      <header style={{ textAlign: 'center', marginBottom: 64, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      {showSettings && <LandingSettingsPanel onClose={() => setShowSettings(false)} />}
+      <header style={{ textAlign: 'center', marginBottom: 64, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+        <button
+          onClick={() => setShowSettings(true)}
+          style={{
+            position: 'absolute', top: 0, right: 0,
+            background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: 8, padding: '8px', cursor: 'pointer', color: 'rgba(255,255,255,0.5)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            transition: 'background 0.15s, color 0.15s',
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.1)'; (e.currentTarget as HTMLButtonElement).style.color = '#fff'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.05)'; (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.5)'; }}
+        >
+          <GearIcon />
+        </button>
         <img
           src="/logo.png"
           alt="VAULTgold"

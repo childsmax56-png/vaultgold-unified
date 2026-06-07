@@ -5,6 +5,7 @@ import App from './App.tsx';
 import { LandingPage } from './LandingPage.tsx';
 import './index.css';
 import { SettingsProvider } from './SettingsContext.tsx';
+
 import { ErrorBoundary } from './ErrorBoundary.tsx';
 import { setActiveConfig } from './artists/activeConfig.ts';
 import { getArtistConfig } from './artists/registry.ts';
@@ -34,7 +35,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
         <Route path="/:artist/*" element={<ArtistRoute />} />
       </Routes>
     </BrowserRouter>

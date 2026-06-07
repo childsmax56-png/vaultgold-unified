@@ -108,16 +108,17 @@ const SettingsContext = createContext<SettingsContextType>({
   resetSettings: () => {},
 });
 
-export function SettingsProvider({ children, storagePrefix: _prefix }: { children: React.ReactNode; storagePrefix?: string }) {
-  const STORAGE_PREFIX = _prefix ?? activeConfig.STORAGE_PREFIX;
+const SHARED_SETTINGS_KEY = 'vaultgold_shared_settings';
+
+export function SettingsProvider({ children }: { children: React.ReactNode; storagePrefix?: string }) {
   const [settings, setSettings] = useState<AppSettings>(() => {
     let initialSettings = defaultSettings;
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
       initialSettings = { ...initialSettings, globalFontSize: 'small' };
     }
-    
+
     if (typeof localStorage !== 'undefined') {
-      const saved = localStorage.getItem(`${STORAGE_PREFIX}settings`);
+      const saved = localStorage.getItem(SHARED_SETTINGS_KEY);
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
@@ -138,7 +139,7 @@ export function SettingsProvider({ children, storagePrefix: _prefix }: { childre
 
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(`${STORAGE_PREFIX}settings`, JSON.stringify(settings));
+      localStorage.setItem(SHARED_SETTINGS_KEY, JSON.stringify(settings));
     }
   }, [settings]);
 
