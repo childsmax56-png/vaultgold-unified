@@ -36,7 +36,8 @@ export const vampgoldConfig: ArtistConfig = {
   getArtistName(_eraName) { return 'Playboi Carti'; },
 
   CUSTOM_IMAGES: {
-    "Killing Me Softly": "https://i.ibb.co/DHtzvpTS/NVj-Lc-ZW-Imgur.png",
+    "Aviation Class": "https://i.ibb.co/R8WT57M/IMG-0678.png",
+    "Killing Me Softly": "https://i.ibb.co/8g2jJc1b/tumblr-lkbw3l-Lx-Ad1qfnd2oo1-540.jpg",
     "Young Mi$fit": "https://i.ibb.co/kVFwht33/tumblr-mdcd9s2-I9-G1qfnd2oo1-500.jpg",
     "Sen$ation": "https://i.ibb.co/CK8KMmYp/a3383006450-16.jpg",
     "Awful Records": "https://i.ibb.co/VW5xv70J/artworks-000116608046-icqf3o-t1080x1080.jpg",
@@ -73,9 +74,10 @@ export const vampgoldConfig: ArtistConfig = {
   ALBUM_RELEASE_DATES: {
     "Aviation Class": "??/??/2010",
     "Killing Me Softly": "??/??/2011",
+    "THC: The High Chronical$": "11/05/2011",
+    "The High Chronical$": "11/05/2011",
+    "$ir Cartier": "??/??/2012",
     "Kream": "??/??/2012",
-    "THC: The High Chronical$": "??/??/2013",
-    "The High Chronical$": "??/??/2013",
     "death in tune": "??/??/2014",
     "Young Mi$fit": "??/??/2014",
     "Awful Records": "??/??/2014",
@@ -108,7 +110,7 @@ export const vampgoldConfig: ArtistConfig = {
     "BABY BOI": "??/??/2024",
   },
 
-  HIDDEN_ALBUMS: ["CARTI YE", "Ye - DONDA", "VULTURES"],
+  HIDDEN_ALBUMS: ["CARTI YE", "Ye - DONDA", "Donda", "VULTURES"],
 
   ALBUM_DESCRIPTIONS: {
     "Aviation Class": "Carti would first start working on music around 2009. His first musical appearance was the \"Jordan acting stupid\" video, going by the name \"JCee.\" He announced a mixtape called \"Aviation class\" on Sep 19, 2010 but released nothing except a couple of singles 5 months later.",
@@ -137,7 +139,12 @@ export const vampgoldConfig: ArtistConfig = {
 
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
-  ERA_MAPPINGS: {},
+  ERA_MAPPINGS: {
+    // Normalize song-row era names to match their header-row names
+    "THC: The High Chronical$": "The High Chronical$",
+    "THC: The High Chronicals": "The High Chronical$",
+    "Ye - DONDA": "Donda",
+  },
   hasCompsTab: false,
   hasConcertsTab: false,
   TAG_MAP: { ...defaultTagMap, '💛': 'By VAMPgold' },

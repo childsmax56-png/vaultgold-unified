@@ -27,6 +27,7 @@ const ERA_NAME_MAP: Record<string, string> = {
   'N.W.A. Reunion Album': 'N.W.A. Reunion',
   // vampgold
   'THC: The High Chronical$': 'The High Chronical$',
+  'THC: The High Chronicals': 'The High Chronical$',
   'Ye - DONDA': 'Donda',
   // pushagold
   'Fear of God II: Let Us Pray': 'Fear of God II',
@@ -260,8 +261,9 @@ export const onRequestGet: PagesFunction = async (context) => {
           fileInfo: eraField.split('\n').map((l: string) => l.trim()).filter(Boolean),
           data: { 'Unreleased Tracks': [] },
         };
-      } else if (eraField && validEraNames.has(eraField.trim())) {
-        // Regular song row — only if it belongs to a known era
+      } else if (eraField && (validEraNames.has(eraField.trim()) || validEraNames.has(mapEraName(eraField.trim())))) {
+        // Regular song row — only if it belongs to a known era.
+        // Also accept rows whose era maps to a known name (e.g. "THC: The High Chronical$" → "The High Chronical$").
         const eraName = mapEraName(eraField.trim());
         if (!eras[eraName]) {
           eras[eraName] = { name: eraName, data: { 'Unreleased Tracks': [] } };
