@@ -11,6 +11,7 @@ export const yzygoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '1385926980',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
+  hasYeditsTab: true,
   accentColor: '#C9A224',
   artistLabel: 'Ye',
   cardLetter: 'YZY',

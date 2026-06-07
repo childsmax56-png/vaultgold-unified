@@ -34,6 +34,7 @@ export interface ArtistConfig {
 
   // Optional tabs
   hasProductionTab?: boolean;
+  hasYeditsTab?: boolean;
 
   // Landing page card
   accentColor: string;

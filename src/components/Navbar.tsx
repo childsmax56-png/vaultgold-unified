@@ -71,7 +71,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
   }, [dropdownOpen]);
 
   const visibleCategories = NAV_CATEGORIES.filter(({ key }) => {
-    if (settings.yzyGoldMode && key === 'yedits') return false;
+    if (key === 'yedits' && !activeConfig.hasYeditsTab) return false;
     if (key === 'production' && !activeConfig.hasProductionTab) return false;
     if (DATA_DRIVEN_TABS.has(key) && fetchedTabs?.has(key) && !tabsWithData?.has(key)) return false;
     return true;
