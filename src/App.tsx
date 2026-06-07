@@ -657,7 +657,11 @@ export default function App() {
 
       const matchedMapKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === rawEra.toLowerCase());
       const eraName = matchedMapKey ? ERA_MAPPINGS[matchedMapKey] : rawEra;
-      if (!targetJson.eras?.[eraName]) return;
+      if (!targetJson.eras) targetJson.eras = {};
+      if (!targetJson.eras[eraName]) {
+        // Era exists in sheet but not in local CSV — create it so songs aren't lost
+        targetJson.eras[eraName] = { name: eraName, data: { 'Unreleased Tracks': [] } };
+      }
 
       const rawName = (item[nameKey] || '').trim();
       const nameLines = rawName.split('\n');
@@ -2235,12 +2239,21 @@ export default function App() {
     );
   }
 
+const _releaseOrder = Object.keys(ALBUM_RELEASE_DATES);
 let erasArray = (Object.values(data.eras || {}) as Era[])
   .filter(era => !HIDDEN_ALBUMS.includes(era.name))
   .map(era => ({
     ...era,
     fileInfo: CUSTOM_ALBUM_INFO[era.name] || era.fileInfo
-  })) as Era[];
+  }))
+  .sort((a, b) => {
+    const ai = _releaseOrder.indexOf(a.name);
+    const bi = _releaseOrder.indexOf(b.name);
+    if (ai === -1 && bi === -1) return 0;
+    if (ai === -1) return 1;
+    if (bi === -1) return -1;
+    return ai - bi;
+  }) as Era[];
 
 const productionErasArray = (Object.values(productionData?.eras || {}) as Era[]);
 
