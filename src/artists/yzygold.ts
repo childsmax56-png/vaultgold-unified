@@ -17,6 +17,7 @@ export const yzygoldConfig: ArtistConfig = {
   artistLabel: 'Ye',
   cardLetter: 'YZY',
   logoUrl: '/logos/yzygold.png',
+  navLogoUrl: '/yzygold/logo.png',
 
   getArtistName(eraName) {
     if (!eraName) return 'Kanye West';

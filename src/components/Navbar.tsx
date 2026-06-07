@@ -100,7 +100,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
         <div className="flex-1 flex flex-row items-center justify-between md:justify-start w-full relative gap-3">
           <div className="md:hidden flex items-center shrink-0">
             <img
-              src={activeConfig.logoUrl || '/logo.png'}
+              src={activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png'}
               alt={activeConfig.SITE_NAME}
               onClick={onHomeClick}
               className="h-[48px] w-[160px] object-contain object-left cursor-pointer hover:opacity-80 transition-opacity duration-300"
@@ -144,7 +144,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
               </div>
               <div className="hidden md:block w-[170px] h-[60px] shrink-0 overflow-hidden">
                 <img
-                  src={activeConfig.logoUrl || '/logo.png'}
+                  src={activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png'}
                   alt={activeConfig.SITE_NAME}
                   onClick={onHomeClick}
                   className="w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300"

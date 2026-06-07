@@ -44,4 +44,5 @@ export interface ArtistConfig {
   artistLabel: string;
   cardLetter: string;
   logoUrl: string; // path to logo image, e.g. /logos/yzygold.png
+  navLogoUrl?: string; // optional override logo for the navbar
 }
