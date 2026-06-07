@@ -234,12 +234,13 @@ export const onRequestGet: PagesFunction = async (context) => {
       }
     }
 
-    // Flat-format CSVs (e.g. cactigold) have no era header rows — just plain era names in
-    // each song row. Collect unique era names from the song rows as a fallback.
-    if (validEraNames.size === 0) {
-      for (const row of rows) {
-        const eraField = (row['Era'] ?? '').trim();
-        if (eraField && !eraField.includes('\n')) validEraNames.add(eraField);
+    // Always supplement validEraNames with song-row era names so eras that have songs
+    // but no header row (e.g. TrapMoneyBenny Collab, 004PF in vampgold) are not dropped.
+    for (const row of rows) {
+      const eraField = (row['Era'] ?? '').trim();
+      if (eraField && !eraField.includes('\n') && !/^\d+/.test(eraField)) {
+        validEraNames.add(eraField);
+        validEraNames.add(mapEraName(eraField));
       }
     }
 

@@ -38,6 +38,7 @@ export const vampgoldConfig: ArtistConfig = {
   CUSTOM_IMAGES: {
     "Aviation Class": "https://i.ibb.co/R8WT57M/IMG-0678.png",
     "Killing Me Softly": "https://i.ibb.co/8g2jJc1b/tumblr-lkbw3l-Lx-Ad1qfnd2oo1-540.jpg",
+    "Kream": "https://i.ibb.co/G4JF7f7N/tumblr-m76a2c-Bm-D51qfnd2oo1-500.jpg",
     "Young Mi$fit": "https://i.ibb.co/kVFwht33/tumblr-mdcd9s2-I9-G1qfnd2oo1-500.jpg",
     "Sen$ation": "https://i.ibb.co/CK8KMmYp/a3383006450-16.jpg",
     "Awful Records": "https://i.ibb.co/VW5xv70J/artworks-000116608046-icqf3o-t1080x1080.jpg",
@@ -68,6 +69,7 @@ export const vampgoldConfig: ArtistConfig = {
     "VULTURES": "https://i.ibb.co/b5CxHHPw/VULTURES-1.jpg",
     "CARTI YE": "https://i.ibb.co/VYzzYWNK/484831956-18026675570648887-6286441502178479497-n.jpg",
     "004KT": "https://i.ibb.co/6cQGqrqN/IMG-4074.jpg",
+    "004PF": "https://i.ibb.co/6cQGqrqN/IMG-4074.jpg",
     "BABY BOI": "https://i.ibb.co/5WmWFQcJ/IMG-4073.jpg",
   },
 
@@ -107,6 +109,7 @@ export const vampgoldConfig: ArtistConfig = {
     "VULTURES": "??/??/2024",
     "CARTI YE": "??/??/2025",
     "004KT": "??/??/2024",
+    "004PF": "??/??/2024",
     "BABY BOI": "??/??/2024",
   },
 
