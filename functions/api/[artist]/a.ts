@@ -169,9 +169,17 @@ export const onRequestGet: PagesFunction = async (context) => {
     const rows = parseCSV(text);
 
     // Detect which column holds the song/era name — different CSVs use different headers.
-    const NAME_KEY = rows.length > 0 && 'Name\n(Join The Discord!)' in rows[0]
-      ? 'Name\n(Join The Discord!)'
+    // Some use 'Name\n(Join The Discord!)', others use 'Name\n(Check out the Tracker website!)', etc.
+    const NAME_KEY = rows.length > 0
+      ? (Object.keys(rows[0]).find(k => k === 'Name\n(Join The Discord!)')
+        ?? Object.keys(rows[0]).find(k => k.startsWith('Name'))
+        ?? 'Name')
       : 'Name';
+
+    // Similarly detect the Notes column.
+    const NOTES_KEY = rows.length > 0
+      ? (Object.keys(rows[0]).find(k => k === 'Notes') ?? Object.keys(rows[0]).find(k => k.startsWith('Notes')) ?? 'Notes')
+      : 'Notes';
 
     const eras: Record<string, any> = {};
 
@@ -184,6 +192,15 @@ export const onRequestGet: PagesFunction = async (context) => {
       if (!eraField.includes('\n')) continue;
       const { name: eraName } = parseSongName(row[NAME_KEY] ?? '');
       if (eraName && !/^\d+\s/.test(eraName)) validEraNames.add(eraName);
+    }
+
+    // Flat-format CSVs (e.g. cactigold) have no era header rows — just plain era names in
+    // each song row. Collect unique era names from the song rows as a fallback.
+    if (validEraNames.size === 0) {
+      for (const row of rows) {
+        const eraField = (row['Era'] ?? '').trim();
+        if (eraField && !eraField.includes('\n')) validEraNames.add(eraField);
+      }
     }
 
     // Second pass: build eras and songs, ignoring anything outside known eras.
@@ -200,7 +217,7 @@ export const onRequestGet: PagesFunction = async (context) => {
         eras[eraName] = {
           name: eraName,
           extra: extra ?? undefined,
-          timeline: row['Notes']?.trim() || undefined,
+          timeline: row[NOTES_KEY]?.trim() || undefined,
           fileInfo: eraField.split('\n').map((l: string) => l.trim()).filter(Boolean),
           data: { 'Unreleased Tracks': [] },
         };
@@ -217,7 +234,7 @@ export const onRequestGet: PagesFunction = async (context) => {
         eras[eraName].data['Unreleased Tracks'].push({
           name,
           extra: extra ?? undefined,
-          description: row['Notes'] ?? '',
+          description: row[NOTES_KEY] ?? '',
           track_length: row['Track Length'] ?? '',
           file_date: row['File Date'] ?? row['Origin'] ?? '',
           leak_date: row['Leak Date'] ?? '',
