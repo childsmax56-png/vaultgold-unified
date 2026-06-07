@@ -147,6 +147,8 @@ export default function App() {
   const [releasedData, setReleasedData] = useState<ReleasedEntry[]>([]);
   const [videosData, setVideosData] = useState<VideoRawEntry[]>([]);
   const [subAlbumsData, setSubAlbumsData] = useState<SubAlbumEntry[]>([]);
+  const [fetchedTabs, setFetchedTabs] = useState<Set<string>>(new Set());
+  const [tabsWithData, setTabsWithData] = useState<Set<string>>(new Set());
   const [isRandomMode, setIsRandomMode] = useState(false);
   const [isTimelineMode, setIsTimelineMode] = useState(false);
   const [popupUrl, setPopupUrl] = useState<string | null>(null);
@@ -1015,10 +1017,14 @@ export default function App() {
 
     axios.get(`/api/${ARTIST_SLUG}/music-videos`)
       .then(res => {
-        setVideosData(res.data as VideoRawEntry[]);
+        const vids = res.data as VideoRawEntry[];
+        setVideosData(vids);
+        setFetchedTabs(prev => new Set([...prev, 'videos']));
+        if (vids.length > 0) setTabsWithData(prev => new Set([...prev, 'videos']));
       })
       .catch(err => {
         console.error("Failed to fetch music videos data:", err);
+        setFetchedTabs(prev => new Set([...prev, 'videos']));
       });
 
     Promise.resolve({ data: [] })
@@ -1037,9 +1043,12 @@ export default function App() {
           return !l.includes('link needed') && !l.includes('link%20needed') && !l.includes('source needed') && !l.includes('source%20needed');
         });
         setArtData(filteredData);
+        setFetchedTabs(prev => new Set([...prev, 'art']));
+        if (filteredData.length > 0) setTabsWithData(prev => new Set([...prev, 'art']));
       })
       .catch(err => {
         console.error("Failed to fetch Art data:", err);
+        setFetchedTabs(prev => new Set([...prev, 'art']));
       });
 
     fetch(`/${ARTIST_SLUG}/data/stems.csv`)
@@ -1047,21 +1056,30 @@ export default function App() {
       .then(text => {
         try {
           const rows = parseCSVText(text);
-          setStemsData(normalizeEraField(rows) as StemEntry[]);
+          const stems = normalizeEraField(rows) as StemEntry[];
+          setStemsData(stems);
+          setFetchedTabs(prev => new Set([...prev, 'stems']));
+          if (stems.length > 0) setTabsWithData(prev => new Set([...prev, 'stems']));
         } catch (err) {
           console.error("Failed to process Stems data:", err);
+          setFetchedTabs(prev => new Set([...prev, 'stems']));
         }
       })
       .catch(err => {
         console.error("Failed to fetch Stems data:", err);
+        setFetchedTabs(prev => new Set([...prev, 'stems']));
       });
 
     axios.get(`/api/${ARTIST_SLUG}/misc`)
       .then(res => {
-        setMiscData(normalizeEraField(res.data) as MiscEntry[]);
+        const misc = normalizeEraField(res.data) as MiscEntry[];
+        setMiscData(misc);
+        setFetchedTabs(prev => new Set([...prev, 'misc']));
+        if (misc.length > 0) setTabsWithData(prev => new Set([...prev, 'misc']));
       })
       .catch(err => {
         console.error("Failed to fetch Misc data:", err);
+        setFetchedTabs(prev => new Set([...prev, 'misc']));
       });
 
     if (activeConfig.hasProductionTab) {
@@ -1115,12 +1133,16 @@ export default function App() {
           return newItem;
         });
         setFakesData(mappedFakes as FakesEntry[]);
+        setFetchedTabs(prev => new Set([...prev, 'fakes']));
+        if (mappedFakes.length > 0) setTabsWithData(prev => new Set([...prev, 'fakes']));
         } catch (err) {
           console.error("Failed to process Fakes data:", err);
+          setFetchedTabs(prev => new Set([...prev, 'fakes']));
         }
       })
       .catch(err => {
         console.error("Failed to fetch Fakes data:", err);
+        setFetchedTabs(prev => new Set([...prev, 'fakes']));
       });
 
     Promise.resolve({ data: [] })
@@ -1133,18 +1155,26 @@ export default function App() {
 
     axios.get(`/${ARTIST_SLUG}/Tracklists.json`)
       .then(res => {
-        setTracklistsData(res.data as TracklistAlbum[]);
+        const tl = res.data as TracklistAlbum[];
+        setTracklistsData(tl);
+        setFetchedTabs(prev => new Set([...prev, 'tracklists']));
+        if (tl.length > 0) setTabsWithData(prev => new Set([...prev, 'tracklists']));
       })
       .catch(err => {
         console.error("Failed to fetch Tracklists data:", err);
+        setFetchedTabs(prev => new Set([...prev, 'tracklists']));
       });
 
     axios.get(`/${ARTIST_SLUG}/data/subalbums.json`)
       .then(res => {
-        setSubAlbumsData(res.data as SubAlbumEntry[]);
+        const sa = res.data as SubAlbumEntry[];
+        setSubAlbumsData(sa);
+        setFetchedTabs(prev => new Set([...prev, 'subalbums']));
+        if (sa.length > 0) setTabsWithData(prev => new Set([...prev, 'subalbums']));
       })
       .catch(err => {
         console.error("Failed to fetch Sub Albums data:", err);
+        setFetchedTabs(prev => new Set([...prev, 'subalbums']));
       });
 
     const userAgent = navigator.userAgent.toLowerCase();
@@ -2585,6 +2615,8 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
           onYEIClick={() => setYeiOpen(o => !o)}
           globalSearchResults={globalSearchResults}
           onSelectGlobalResult={handleSelectGlobalResult}
+          fetchedTabs={fetchedTabs}
+          tabsWithData={tabsWithData}
         />
 
         <main className={`flex-1 overflow-y-auto relative scroll-smooth bg-[#0a0a0a] flex flex-col ${showPlayer ? 'pb-44 md:pb-28' : ''}`}>

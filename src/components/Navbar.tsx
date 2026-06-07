@@ -10,6 +10,8 @@ import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
 export type Category = 'music' | 'art' | 'recent' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
 
+const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'videos', 'tracklists', 'subalbums']);
+
 interface NavbarProps {
   searchQuery: string;
   setSearchQuery: (q: string) => void;
@@ -26,6 +28,8 @@ interface NavbarProps {
   onYEIClick: () => void;
   globalSearchResults?: GlobalSearchResult[];
   onSelectGlobalResult?: (result: GlobalSearchResult) => void;
+  fetchedTabs?: Set<string>;
+  tabsWithData?: Set<string>;
 }
 
 const NAV_CATEGORIES: { key: Category; label: string }[] = [
@@ -47,7 +51,7 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'production', label: 'Production Projects' },
 ];
 
-export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHomeClick, activeCategory, onCategoryChange, onRandomSongClick, isRandomMode, isTimelineMode, onTimelineToggle, yeiOpen, onYEIClick, globalSearchResults, onSelectGlobalResult }: NavbarProps) {
+export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHomeClick, activeCategory, onCategoryChange, onRandomSongClick, isRandomMode, isTimelineMode, onTimelineToggle, yeiOpen, onYEIClick, globalSearchResults, onSelectGlobalResult, fetchedTabs, tabsWithData }: NavbarProps) {
   const { settings } = useSettings();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -69,6 +73,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
   const visibleCategories = NAV_CATEGORIES.filter(({ key }) => {
     if (settings.yzyGoldMode && key === 'yedits') return false;
     if (key === 'production' && !activeConfig.hasProductionTab) return false;
+    if (DATA_DRIVEN_TABS.has(key) && fetchedTabs?.has(key) && !tabsWithData?.has(key)) return false;
     return true;
   });
   const activeLabel = visibleCategories.find(c => c.key === activeCategory)?.label ?? 'Navigate';
