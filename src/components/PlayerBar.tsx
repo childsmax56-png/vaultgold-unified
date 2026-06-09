@@ -200,7 +200,7 @@ export function PlayerBar({
               </div>
             );
           })()}
-          <div className="min-w-0">
+          <div className={`min-w-0${!settings.disableEraThemes && ERA_THEMES[era?.name ?? '']?.miniPlayer ? ' drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : ''}`}>
             <div className="text-white font-bold break-words whitespace-normal leading-tight text-sm md:text-base pr-2">{formatTextWithTags(titleDisplay)}</div>
             <div className="text-white/50 text-xs truncate mt-0.5">{artistName} • {formatTextWithTags(currentSong.extra || (currentSong as any).realEra?.name || era?.name)}</div>
           </div>
