@@ -357,10 +357,8 @@ export const onRequestGet: PagesFunction = async (context) => {
       for (const name of ERA_ORDER) {
         if (eras[name]) orderedEras[name] = eras[name];
       }
-      // Append any eras from the CSV not in the order list
-      for (const name of Object.keys(eras)) {
-        if (!orderedEras[name]) orderedEras[name] = eras[name];
-      }
+      // Do NOT append extras for yzygold — ERA_ORDER is exhaustive and
+      // any unlisted rows are changelog/footer garbage from the sheet.
     } else if (ARTIST_ERA_ORDERS[artist]) {
       // Apply artist-specific era ordering
       const eraOrder = ARTIST_ERA_ORDERS[artist];
