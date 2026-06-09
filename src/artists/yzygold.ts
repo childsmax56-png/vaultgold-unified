@@ -284,6 +284,18 @@ export const yzygoldConfig: ArtistConfig = {
       miniPlayer: "/yzygold/MiniPlayerGraduation.png",
       fullPicturePlayer: "/yzygold/FullPicturePlayerGraduation.png",
     },
+    "Yandhi [V1]": {
+      topBanner: "/yzygold/TopBannerYandhi.png",
+      bottomBanner: "/yzygold/BottomBannerYandhi.png",
+      miniPlayer: "/yzygold/MiniPlayerYandhi.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerYandhi.png",
+    },
+    "Yandhi [V2]": {
+      topBanner: "/yzygold/TopBannerYandhi.png",
+      bottomBanner: "/yzygold/BottomBannerYandhi.png",
+      miniPlayer: "/yzygold/MiniPlayerYandhi.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerYandhi.png",
+    },
   },
 
   TAG_TOOLTIP_MAP: {
