@@ -206,7 +206,7 @@ export function PlayerBar({
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center col-span-2 row-start-2 md:col-auto md:row-auto md:flex-[2] w-full px-1 md:px-4">
+        <div className={`flex flex-col items-center justify-center col-span-2 row-start-2 md:col-auto md:row-auto md:flex-[2] w-full px-1 md:px-4${!settings.disableEraThemes && ERA_THEMES[era?.name ?? '']?.miniPlayer ? ' drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : ''}`}>
           <div className="flex items-center justify-between md:justify-center w-full md:w-auto gap-4 md:gap-6 mb-3 md:mb-2 px-2 md:px-0">
             <button onClick={toggleShuffle} className={`w-8 h-8 flex items-center justify-center transition-colors cursor-pointer ${isShuffle ? 'text-white' : 'text-white/40 hover:text-white/80'}`}>
               <Shuffle className="w-4 h-4" />
@@ -246,7 +246,7 @@ export function PlayerBar({
           </div>
         </div>
 
-        <div className="flex items-center justify-end gap-3 md:gap-6 col-start-2 col-end-3 row-start-1 md:flex-1 relative md:static">
+        <div className={`flex items-center justify-end gap-3 md:gap-6 col-start-2 col-end-3 row-start-1 md:flex-1 relative md:static${!settings.disableEraThemes && ERA_THEMES[era?.name ?? '']?.miniPlayer ? ' drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : ''}`}>
           <button 
             onClick={() => {
               if (showLyrics) setShowLyrics(false);
