@@ -151,34 +151,38 @@ export function useLyrics(currentSong: Song | null, era: Era | null) {
       // Genius metadata saved here if lyrics scraping is blocked, so we can attach to lrclib results
       let geniusMeta: { annotations: LyricsData['annotations']; geniusUrl: string | null; songInfo: LyricsData['songInfo'] } | null = null;
 
-      // Try Genius (all calls server-side via CF Worker)
-      if (isMounted) {
-        try {
-          const geniusRes = await axios.get('/api/lyrics', {
-            params: { artist: initialArtist, track: cleanTrackName(currentSong.name) },
-          });
-          if (geniusRes.data?.lyrics) {
-            finalData = {
-              plainLyrics: geniusRes.data.lyrics,
-              syncedLyrics: null,
-              parsedSyncedLyrics: null,
-              source: 'genius',
-              annotations: geniusRes.data.annotations ?? null,
-              geniusUrl: geniusRes.data.geniusUrl ?? null,
-              songInfo: geniusRes.data.songInfo ?? null,
-            };
-            foundLyrics = true;
-            if (isMounted) setLyricsData(finalData);
-          } else if (geniusRes.data?.geniusUrl) {
-            // Lyrics scraping blocked but metadata came through — attach to lrclib
-            geniusMeta = {
-              annotations: geniusRes.data.annotations ?? null,
-              geniusUrl: geniusRes.data.geniusUrl,
-              songInfo: geniusRes.data.songInfo ?? null,
-            };
+      // Try Genius (all calls server-side via CF Worker) — iterate all artist/track combos
+      outer: for (const artist of artistsToTry) {
+        for (const trackName of trackNamesToTry) {
+          if (!isMounted) break outer;
+          try {
+            const geniusRes = await axios.get('/api/lyrics', {
+              params: { artist, track: trackName },
+            });
+            if (geniusRes.data?.lyrics) {
+              finalData = {
+                plainLyrics: geniusRes.data.lyrics,
+                syncedLyrics: null,
+                parsedSyncedLyrics: null,
+                source: 'genius',
+                annotations: geniusRes.data.annotations ?? null,
+                geniusUrl: geniusRes.data.geniusUrl ?? null,
+                songInfo: geniusRes.data.songInfo ?? null,
+              };
+              foundLyrics = true;
+              if (isMounted) setLyricsData(finalData);
+              break outer;
+            } else if (geniusRes.data?.geniusUrl && !geniusMeta) {
+              // Lyrics scraping blocked but metadata came through — attach to lrclib
+              geniusMeta = {
+                annotations: geniusRes.data.annotations ?? null,
+                geniusUrl: geniusRes.data.geniusUrl,
+                songInfo: geniusRes.data.songInfo ?? null,
+              };
+            }
+          } catch {
+            // Genius unreachable — continue trying
           }
-        } catch {
-          // Genius unreachable — fall through to lrclib only
         }
       }
 
