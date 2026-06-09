@@ -655,6 +655,13 @@ export default function App() {
       // Skip era header rows (file count summaries) — their Era cell is multiline
       if (!rawEra || rawEra.includes('\n')) return;
 
+      const rawName = (item[nameKey] || '').trim();
+      const nameLines = rawName.split('\n');
+      const songName = nameLines[0].trim();
+      const extra = nameLines.slice(1).join('\n').trim() || undefined;
+      // Skip rows with no song name (e.g. changelog entries at the bottom of the sheet)
+      if (!songName) return;
+
       const matchedMapKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === rawEra.toLowerCase());
       const eraName = matchedMapKey ? ERA_MAPPINGS[matchedMapKey] : rawEra;
       if (!targetJson.eras) targetJson.eras = {};
@@ -662,12 +669,6 @@ export default function App() {
         // Era exists in sheet but not in local CSV — create it so songs aren't lost
         targetJson.eras[eraName] = { name: eraName, data: { 'Unreleased Tracks': [] } };
       }
-
-      const rawName = (item[nameKey] || '').trim();
-      const nameLines = rawName.split('\n');
-      const songName = nameLines[0].trim();
-      const extra = nameLines.slice(1).join('\n').trim() || undefined;
-      if (!songName) return;
 
       let rawUrl = (item['Link(s)'] || '').trim();
       const linkMatch = rawUrl.match(/\]\((.*?)\)/);
