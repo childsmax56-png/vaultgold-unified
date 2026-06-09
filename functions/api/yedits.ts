@@ -1,6 +1,12 @@
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { YEDITS_BUCKET } = context.env;
 
+  if (!YEDITS_BUCKET) {
+    return new Response(JSON.stringify([]), {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   let cursor: string | undefined;
   const keys: string[] = [];
 

@@ -112,7 +112,9 @@ function parseStemsToEras(stemsData: StemEntry[], allEras: Era[]): { eraName: st
 
     if (item.Era && item.Name) {
       // If the era column changed (flat-format CSVs), start a new era group
-      if (item.Era !== currentEraName) {
+      const matchedKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === item.Era.toLowerCase());
+      const mappedEraName = matchedKey ? ERA_MAPPINGS[matchedKey] : item.Era;
+      if (mappedEraName !== currentEraName) {
         if (currentCategorySongs.length > 0) {
           currentEraCategories.push({ name: currentCategory, songs: currentCategorySongs });
         }
@@ -124,8 +126,7 @@ function parseStemsToEras(stemsData: StemEntry[], allEras: Era[]): { eraName: st
             categories: currentEraCategories,
           });
         }
-        const matchedKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === item.Era.toLowerCase());
-        currentEraName = matchedKey ? ERA_MAPPINGS[matchedKey] : item.Era;
+        currentEraName = mappedEraName;
         currentCategory = 'Default';
         currentCategorySongs = [];
         currentEraCategories = [];

@@ -7,4 +7,5 @@ interface Env {
   GOOGLE_CLIENT_ID: string;
   GOOGLE_CLIENT_SECRET: string;
   SESSION_SECRET: string;
+  YEDITS_BUCKET: R2Bucket;
 }

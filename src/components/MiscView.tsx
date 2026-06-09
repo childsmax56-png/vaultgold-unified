@@ -87,7 +87,8 @@ function parseMiscToEras(miscData: MiscEntry[], allEras: Era[]): { eraName: stri
     if (item.Era && item.Name) {
       if (item.Era.includes('OG File(s)')) continue;
 
-      const eraName = item.Era;
+      const matchedKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === item.Era.toLowerCase());
+      const eraName = matchedKey ? ERA_MAPPINGS[matchedKey] : item.Era;
       if (!songsByEra[eraName]) songsByEra[eraName] = [];
 
       const links = item["Link(s)"] ? item["Link(s)"].split('\n').filter(l => l.trim()) : [];

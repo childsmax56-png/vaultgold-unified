@@ -12,7 +12,7 @@ export const yzygoldConfig: ArtistConfig = {
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
   hasYeditsTab: true,
-  hasCompsTab: true,
+  hasCompsTab: false,
   accentColor: '#C9A224',
   artistLabel: 'Ye',
   cardLetter: 'YZY',
@@ -256,6 +256,9 @@ export const yzygoldConfig: ArtistConfig = {
 
   ERA_MAPPINGS: {
     "Turbo Grafix 16": "Turbo Grafx 16",
+    "BULLY": "BULLY [V1]",
+    "Bully": "BULLY [V1]",
+    "Donda [V1]": "DONDA [V1]",
   },
 
   TAG_MAP: {
