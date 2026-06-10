@@ -2240,9 +2240,10 @@ export default function App() {
     );
   }
 
+const EXCLUDED_ALBUMS: string[] = activeConfig.EXCLUDED_ALBUMS || [];
 const _releaseOrder = Object.keys(ALBUM_RELEASE_DATES);
 let erasArray = (Object.values(data.eras || {}) as Era[])
-  .filter(era => !HIDDEN_ALBUMS.includes(era.name))
+  .filter(era => !HIDDEN_ALBUMS.includes(era.name) && !EXCLUDED_ALBUMS.includes(era.name))
   .map(era => ({
     ...era,
     fileInfo: CUSTOM_ALBUM_INFO[era.name] || era.fileInfo
@@ -2259,6 +2260,10 @@ let erasArray = (Object.values(data.eras || {}) as Era[])
 const productionErasArray = (Object.values(productionData?.eras || {}) as Era[]);
 
 const RELATED_ERA_ORDER = [
+  'CARTI YE',
+  'VULTURES',
+  'Donda',
+  'Ye - DONDA',
   'DAYTONA',
   'NASIR',
   'K.T.S.E.',
@@ -2270,7 +2275,7 @@ const RELATED_ERA_ORDER = [
 ];
 
 let relatedErasArray = (Object.values(data.eras || {}) as Era[])
-  .filter(era => HIDDEN_ALBUMS.includes(era.name))
+  .filter(era => HIDDEN_ALBUMS.includes(era.name) && !EXCLUDED_ALBUMS.includes(era.name))
   .map(era => ({
     ...era,
     fileInfo: CUSTOM_ALBUM_INFO[era.name] || era.fileInfo
@@ -2688,7 +2693,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   onBack={() => setSelectedAlbum(null)}
                 />
               ) : activeCategory === 'tracklists' ? (
-                <EraGrid key="tracklists-grid" eras={filteredEras.filter(e => e.name !== 'Favorites')} onSelectEra={setSelectedAlbum} />
+                <EraGrid key="tracklists-grid" eras={filteredEras.filter(e => e.name !== 'Favorites' && tracklistsData.some(t => t.era.toLowerCase() === e.name.toLowerCase()))} onSelectEra={setSelectedAlbum} />
               ) : activeCategory === 'fakes' ? (
                 <FakesView
                   key="fakes"
@@ -2891,7 +2896,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               <span>·</span>
               <a href="https://docs.google.com/document/d/1b8aidNuSLLHfzgzrJ0uGdWHPuo-uNk6wI21Vscwzid4/edit?tab=t.0#heading=h.coxp3mvb86xr" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Changelog</a>
               <span>·</span>
-              <a href="https://docs.google.com/spreadsheets/d/12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM/" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Link For The Sheet</a>
+              <a href={`https://docs.google.com/spreadsheets/d/${activeConfig.HARDCODED_SHEET_ID}/`} target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Link For The Sheet</a>
             </p>
           </div>
         </main>

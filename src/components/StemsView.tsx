@@ -175,7 +175,24 @@ function parseStemsToEras(stemsData: StemEntry[], allEras: Era[]): { eraName: st
     });
   }
 
-  return result;
+  // Merge duplicate era groups (same eraName) into one
+  const merged: typeof result = [];
+  for (const entry of result) {
+    const existing = merged.find(e => e.eraName === entry.eraName);
+    if (existing) {
+      for (const cat of entry.categories) {
+        const existingCat = existing.categories.find(c => c.name === cat.name);
+        if (existingCat) {
+          existingCat.songs.push(...cat.songs);
+        } else {
+          existing.categories.push(cat);
+        }
+      }
+    } else {
+      merged.push(entry);
+    }
+  }
+  return merged;
 }
 
 export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, currentSong, isPlaying, mvData = [], remixData = [], samplesData = [], toggleFavorite, favoriteKeys = [] }: StemsViewProps) {
