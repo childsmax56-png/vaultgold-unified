@@ -8,5 +8,9 @@ import { yzygoldConfig } from './yzygold';
 export const activeConfig: ArtistConfig = { ...yzygoldConfig };
 
 export function setActiveConfig(config: ArtistConfig): void {
+  // Remove keys not present in the new config so optional fields (e.g. navLogoUrl) don't bleed over
+  for (const key of Object.keys(activeConfig) as (keyof ArtistConfig)[]) {
+    if (!(key in config)) delete (activeConfig as Record<string, unknown>)[key];
+  }
   Object.assign(activeConfig, config);
 }
