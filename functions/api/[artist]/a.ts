@@ -39,8 +39,39 @@ function mapEraName(name: string): string {
   return ERA_NAME_MAP[name] ?? name;
 }
 
+// Artists whose ERA_ORDER is exhaustive — unlisted rows (e.g. changelog footer) are dropped.
+const EXHAUSTIVE_ERA_ORDER_ARTISTS = new Set(['yzygold', 'kdotgold']);
+
 // Per-artist ERA_ORDER for artists whose CSVs have eras in the wrong order.
 const ARTIST_ERA_ORDERS: Record<string, string[]> = {
+  kdotgold: [
+    'Y.H.N.I.C.',
+    'Rap Album',
+    'Look Woman',
+    'Training Day',
+    "No Sleep 'Til NYC",
+    'C4',
+    'The Kendrick Lamar EP',
+    'Overly Dedicated',
+    'Section.80',
+    'Collaboration with J. Cole',
+    'good kid, m.A.A.d city',
+    'Tu Pimp A Caterpillar [V1]',
+    'Tu Pimp A Caterpillar',
+    'To Pimp A Butterfly',
+    'To Pimp A Butterfly [V2]',
+    'untitled unmastered.',
+    'DAMN.',
+    'Black Panther: The Album',
+    'Everybody Sensitive [V1]',
+    'Mr. Morale [V2]',
+    'Mr. Morale [V3]',
+    'Mr. Morale & The Big Steppers',
+    'Drake vs. Kendrick Lamar',
+    'GNX',
+    'Compton Cowboys',
+    'Ongoing',
+  ],
   uzigold: [
     'Purple Thoughtz',
     'Home Economic$',
@@ -366,9 +397,12 @@ export const onRequestGet: PagesFunction = async (context) => {
       for (const name of eraOrder) {
         if (eras[name]) orderedEras[name] = eras[name];
       }
-      // Append any eras from the CSV not in the order list
-      for (const name of Object.keys(eras)) {
-        if (!orderedEras[name]) orderedEras[name] = eras[name];
+      // For exhaustive orders, drop unlisted rows (changelog/footer garbage).
+      // For non-exhaustive orders, append any eras not in the order list.
+      if (!EXHAUSTIVE_ERA_ORDER_ARTISTS.has(artist)) {
+        for (const name of Object.keys(eras)) {
+          if (!orderedEras[name]) orderedEras[name] = eras[name];
+        }
       }
     } else {
       // For other artists, preserve CSV row order as-is.
