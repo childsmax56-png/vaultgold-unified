@@ -666,7 +666,9 @@ export default function App() {
       const eraName = matchedMapKey ? ERA_MAPPINGS[matchedMapKey] : rawEra;
       if (!targetJson.eras) targetJson.eras = {};
       if (!targetJson.eras[eraName]) {
-        // Era exists in sheet but not in local CSV — create it so songs aren't lost
+        // Only create eras that are in the known era list — prevents changelog/garbage
+        // rows in the sheet from spawning phantom eras in the grid.
+        if (!(eraName in ALBUM_RELEASE_DATES) && !HIDDEN_ALBUMS.includes(eraName)) return;
         targetJson.eras[eraName] = { name: eraName, data: { 'Unreleased Tracks': [] } };
       }
 
