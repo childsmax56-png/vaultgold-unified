@@ -92,6 +92,7 @@ export const vampgoldConfig: ArtistConfig = {
     "No Pressure": "??/??/2017",
     "16*29": "??/??/2017",
     "16*29 [V1]": "??/??/2017",
+    "TrapMoneyBenny Collab": "??/??/2018",
     "Die Lit": "05/11/2018",
     "Whole Lotta Red [V1]": "??/??/2018",
     "WE DON'T DIAL 911": "??/??/2019",
