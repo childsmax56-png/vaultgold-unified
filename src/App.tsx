@@ -2260,7 +2260,6 @@ let erasArray = (Object.values(data.eras || {}) as Era[])
 const productionErasArray = (Object.values(productionData?.eras || {}) as Era[]);
 
 const RELATED_ERA_ORDER = [
-  'CARTI YE',
   'VULTURES',
   'Donda',
   'Ye - DONDA',
@@ -2272,6 +2271,7 @@ const RELATED_ERA_ORDER = [
   'The Elementary School Dropout',
   'NEVER STOP',
   'YE-I',
+  'CARTI YE',
 ];
 
 let relatedErasArray = (Object.values(data.eras || {}) as Era[])
