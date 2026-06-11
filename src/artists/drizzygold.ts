@@ -10,7 +10,7 @@ export const drizzygoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI',
   HARDCODED_SHEET_GID: '755606328',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: `https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/gviz/tq?tqx=out:csv&sheet=🆕 Recent`,
   accentColor: '#b8860b',
   artistLabel: 'Drake',
   cardLetter: 'OVO',
@@ -78,13 +78,14 @@ export const drizzygoldConfig: ArtistConfig = {
     "Unknown": "??/??/????",
   },
 
-  HIDDEN_ALBUMS: ["Unknown"],
+  HIDDEN_ALBUMS: ["Unknown", "Scary Hours 3"],
   ALBUM_DESCRIPTIONS: {},
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
-  ERA_MAPPINGS: { "ICEMAN": "ICEMAN [V2]" },
+  ERA_MAPPINGS: { "ICEMAN": "ICEMAN [V2]", "Scary Hours 3": "For All The Dogs" },
   hasCompsTab: false,
   hasConcertsTab: false,
+  hasSubAlbumsTab: false,
 
   TAG_MAP: {
     '⭐': 'Best Of', '🏆': 'Grails', '🥇': 'Wanted', '🏅': 'Wanted',
