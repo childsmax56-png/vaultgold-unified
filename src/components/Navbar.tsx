@@ -8,7 +8,7 @@ import { useSettings } from '../SettingsContext';
 import { activeConfig } from '../artists/activeConfig';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
-export type Category = 'music' | 'art' | 'recent' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
+export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
 
 const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'videos', 'tracklists', 'subalbums']);
 
@@ -41,6 +41,7 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'released', label: 'Released' },
   { key: 'related', label: 'Related' },
   { key: 'recent', label: 'Recent' },
+  { key: 'recent-production', label: 'Recent Production' },
   { key: 'tracklists', label: 'Tracklists' },
   { key: 'yedits', label: 'Yedit Affiliates' },
   { key: 'comps', label: 'Comps' },
@@ -89,6 +90,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     if (key === 'production' && !activeConfig.hasProductionTab) return false;
     if (key === 'concerts' && !activeConfig.hasConcertsTab) return false;
     if (key === 'recent' && activeConfig.hasRecentTab === false) return false;
+    if (key === 'recent-production' && !activeConfig.SHEET_URL_RECENT_PRODUCTION) return false;
     if (key === 'comps' && !activeConfig.hasCompsTab) return false;
     if (key === 'subalbums' && activeConfig.hasSubAlbumsTab === false) return false;
     if (key === 'related' && activeConfig.HIDDEN_ALBUMS.length === 0) return false;

@@ -149,7 +149,7 @@ import { activeConfig } from './artists/activeConfig';
 
 export default function App() {
   // Read artist config at component render time (after setActiveConfig was called by ArtistRoute)
-  const { STORAGE_PREFIX, HARDCODED_SHEET_ID, HARDCODED_SHEET_GID, SHEET_URL_UNRELEASED, SHEET_URL_RECENT, ERA_MAPPINGS, CUSTOM_ALBUM_INFO, slug: ARTIST_SLUG } = activeConfig;
+  const { STORAGE_PREFIX, HARDCODED_SHEET_ID, HARDCODED_SHEET_GID, SHEET_URL_UNRELEASED, SHEET_URL_RECENT, SHEET_URL_RECENT_PRODUCTION, ERA_MAPPINGS, CUSTOM_ALBUM_INFO, slug: ARTIST_SLUG } = activeConfig;
   const { settings } = useSettings();
   const [data, setData] = useState<TrackerData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -170,6 +170,7 @@ export default function App() {
   const [samplesData, setSamplesData] = useState<SampleEntry[]>([]);
   const [artData, setArtData] = useState<ArtEntry[]>([]);
   const [recentData, setRecentData] = useState<Song[]>([]);
+  const [recentProductionData, setRecentProductionData] = useState<Song[]>([]);
   const [stemsData, setStemsData] = useState<StemEntry[]>([]);
   const [miscData, setMiscData] = useState<MiscEntry[]>([]);
   const [fakesData, setFakesData] = useState<FakesEntry[]>([]);
@@ -209,6 +210,7 @@ export default function App() {
     if (path.startsWith('/fakes')) return 'fakes';
     if (path.startsWith('/released')) return 'released';
     if (path.startsWith('/related')) return 'related';
+    if (path.startsWith('/recent-production')) return 'recent-production';
     if (path.startsWith('/recent')) return 'recent';
     if (path.startsWith('/settings')) return 'settings';
     if (path.startsWith('/history')) return 'history';
@@ -972,6 +974,45 @@ export default function App() {
         // Use the Google Sheet as the source of truth for Recent; fall back to
         // recent.csv only if the sheet fetch returned nothing.
         setRecentData(sheetRecentSongs.length > 0 ? sheetRecentSongs : recentMapped);
+
+        // Fetch Recent Production tab if configured
+        if (SHEET_URL_RECENT_PRODUCTION) {
+          axios.get(`/api/sheets-proxy?url=${encodeURIComponent(SHEET_URL_RECENT_PRODUCTION)}`, { timeout: FETCH_TIMEOUT })
+            .then(res => {
+              if (!Array.isArray(res.data) || res.data.length === 0) return;
+              const nameKey = Object.keys(res.data[0]).find((k: string) => k.startsWith('Name')) || 'Name';
+              const songs: Song[] = (res.data as any[])
+                .filter((item: any) => (item.Era || '').trim() && !(item.Era || '').includes('\n'))
+                .map((item: any) => {
+                  const rawName = (item[nameKey] || '').trim();
+                  const nameLines = rawName.split('\n');
+                  const songName = nameLines[0].trim();
+                  const songExtra = nameLines.slice(1).join('\n').trim() || undefined;
+                  const rawEra = (item.Era || '').trim();
+                  const mk = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === rawEra.toLowerCase());
+                  const eraName = mk ? ERA_MAPPINGS[mk] : rawEra;
+                  let rawUrl = (item['Link(s)'] || '').trim();
+                  const lm = rawUrl.match(/\]\((.*?)\)/);
+                  if (lm?.[1]) rawUrl = lm[1];
+                  return {
+                    name: songName,
+                    extra: songExtra,
+                    extra2: eraName,
+                    description: item.Notes || '',
+                    track_length: item['Track Length'] || '',
+                    leak_date: item['Leak\nDate'] || item['Leak Date'] || '',
+                    file_date: item['File\nDate'] || item['File Date'] || '',
+                    available_length: item['Available Length'] || '',
+                    quality: item.Quality || '',
+                    url: rawUrl,
+                    urls: rawUrl ? [rawUrl] : [],
+                  } as Song;
+                })
+                .filter((s: Song) => !!s.name);
+              setRecentProductionData(songs);
+            })
+            .catch(err => console.error('Failed to fetch Recent Production data:', err));
+        }
         setLoading(false);
 
         const path = window.location.pathname;
@@ -986,6 +1027,8 @@ export default function App() {
           setActiveCategory('fakes');
         } else if (path.startsWith('/released')) {
           setActiveCategory('released');
+        } else if (path.startsWith('/recent-production')) {
+          setActiveCategory('recent-production');
         } else if (path.startsWith('/recent')) {
           setActiveCategory('recent');
         } else if (path.startsWith('/settings')) {
@@ -1351,8 +1394,12 @@ export default function App() {
         window.history.pushState({ category: 'released' }, '', '/released');
       }
     } else if (activeCategory === 'recent') {
-      if (!currentPath.startsWith('/recent')) {
+      if (!currentPath.startsWith('/recent') || currentPath.startsWith('/recent-production')) {
         window.history.pushState({ category: 'recent' }, '', '/recent');
+      }
+    } else if (activeCategory === 'recent-production') {
+      if (!currentPath.startsWith('/recent-production')) {
+        window.history.pushState({ category: 'recent-production' }, '', '/recent-production');
       }
     } else if (activeCategory === 'settings') {
       if (!currentPath.startsWith('/settings')) {
@@ -1480,6 +1527,8 @@ export default function App() {
         setActiveCategory('misc');
       } else if (path.startsWith('/released')) {
         setActiveCategory('released');
+      } else if (path.startsWith('/recent-production')) {
+        setActiveCategory('recent-production');
       } else if (path.startsWith('/recent')) {
         setActiveCategory('recent');
       } else if (path.startsWith('/settings')) {
@@ -2542,6 +2591,23 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
     }
   };
 
+  const recentProductionEra: Era = {
+    name: "Recent Production Leaks",
+    image: "https://i.ibb.co/8DxZ3HLN/IMG-4167.jpg",
+    data: {
+      "Latest Additions": recentProductionData.map(song => {
+        const rawEraName = song.extra2 || song.extra;
+        const cleanEraName = rawEraName ? getCleanSongNameWithTags(rawEraName) : '';
+        const realEra = Object.values(productionData?.eras || {}).find((e: any) => e.name === rawEraName || e.name === cleanEraName) as Era;
+        return {
+          ...song,
+          image: CUSTOM_IMAGES[rawEraName || ''] || CUSTOM_IMAGES[cleanEraName || ''] || realEra?.image || song.image,
+          realEra
+        };
+      })
+    }
+  };
+
   const handleRandomSongClick = () => {
     if (!data?.eras) return;
     
@@ -2846,6 +2912,26 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                     const fullEra = [...erasArray, ...relatedErasArray].find(e => e.name === targetEra.name) || targetEra;
                     setSelectedAlbum(fullEra);
                     setActiveCategory(isHidden ? 'related' : 'music');
+                  }}
+                />
+              ) : activeCategory === 'recent-production' ? (
+                <EraDetail
+                  key="recent-production"
+                  era={recentProductionEra}
+                  onPlaySong={handlePlaySong}
+                  searchQuery={searchQuery}
+                  filters={filters}
+                  currentSong={currentSong}
+                  isPlaying={isPlaying}
+                  mvData={mvData}
+                  remixData={remixData}
+                  samplesData={samplesData}
+                  favoriteKeys={favoriteKeys}
+                  toggleFavorite={toggleFavorite}
+                  onNavigateToEra={(targetEra) => {
+                    const fullEra = productionErasArray.find(e => e.name === targetEra.name) || targetEra;
+                    setSelectedAlbum(fullEra);
+                    setActiveCategory('production');
                   }}
                 />
               ) : selectedAlbum ? (
