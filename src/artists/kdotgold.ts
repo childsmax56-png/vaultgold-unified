@@ -10,7 +10,7 @@ export const kdotgoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI',
   HARDCODED_SHEET_GID: '1169728352',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: `https://docs.google.com/spreadsheets/d/1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI/gviz/tq?tqx=out:csv&sheet=Recent`,
+  SHEET_URL_RECENT: '',
   accentColor: '#1e3a5f',
   artistLabel: 'Kendrick Lamar',
   cardLetter: 'KDT',

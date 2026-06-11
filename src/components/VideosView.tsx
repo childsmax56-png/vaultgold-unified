@@ -73,11 +73,23 @@ type EmbedInfo =
   | { type: 'pillowcase'; src: string }
   | null;
 
+function extractDailymotionId(url: string): string | null {
+  const m = url.match(/dailymotion\.com\/video\/([a-zA-Z0-9]+)/);
+  return m ? m[1] : null;
+}
+
 function getEmbedInfo(links: string[]): EmbedInfo {
   for (const link of links) {
     if (link.includes('youtube.com') || link.includes('youtu.be')) {
       const id = extractYouTubeId(link);
-      if (id) return { type: 'youtube', src: `https://www.youtube.com/embed/${id}` };
+      // Use youtube-nocookie.com to avoid embedding restrictions on many videos
+      if (id) return { type: 'youtube', src: `https://www.youtube-nocookie.com/embed/${id}?rel=0` };
+    }
+  }
+  for (const link of links) {
+    if (link.includes('dailymotion.com')) {
+      const id = extractDailymotionId(link);
+      if (id) return { type: 'youtube', src: `https://www.dailymotion.com/embed/video/${id}` };
     }
   }
   for (const link of links) {

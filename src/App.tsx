@@ -928,11 +928,13 @@ export default function App() {
         };
         const recentMapped: Song[] = (recentRes.data as any[]).map(mapRecentItem);
 
-        // Build sheet songs in recent format from the dedicated Recent tab fetch
+        // Build sheet songs in recent format — only when a dedicated SHEET_URL_RECENT is
+        // configured. When empty the fallback URL points to the unreleased tab, and we
+        // must NOT use that data for the Recent tab display (it would duplicate the main view).
         const sheetNameKey = Array.isArray(recentTabRes.data) && recentTabRes.data.length > 0
           ? (Object.keys(recentTabRes.data[0]).find((k: string) => k.startsWith('Name')) || 'Name')
           : 'Name';
-        const sheetRecentSongs: Song[] = Array.isArray(recentTabRes.data)
+        const sheetRecentSongs: Song[] = (SHEET_URL_RECENT && Array.isArray(recentTabRes.data))
           ? (recentTabRes.data as any[])
               .filter((item: any) => {
                 const rawEra = (item.Era || '').trim();
@@ -1277,7 +1279,7 @@ export default function App() {
         const sheetNameKey = Array.isArray(recentTabRes.data) && recentTabRes.data.length > 0
           ? (Object.keys(recentTabRes.data[0]).find((k: string) => k.startsWith('Name')) || 'Name')
           : 'Name';
-        const sheetRecentSongs: Song[] = Array.isArray(recentTabRes.data)
+        const sheetRecentSongs: Song[] = (SHEET_URL_RECENT && Array.isArray(recentTabRes.data))
           ? (recentTabRes.data as any[])
               .filter((item: any) => { const r = (item.Era || '').trim(); return r && !r.includes('\n'); })
               .map((item: any) => {
