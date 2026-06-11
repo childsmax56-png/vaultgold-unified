@@ -493,6 +493,7 @@ export default function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
+  const preloadedNextRef = useRef<{ rawUrl: string; streamUrl: string } | null>(null);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -1528,6 +1529,18 @@ export default function App() {
     });
   };
 
+  const resolveStreamUrl = async (rawUrl: string): Promise<string> => {
+    if (rawUrl.includes('temp.imgur.gg/f/')) {
+      const id = rawUrl.split('/f/')[1];
+      const res = await axios.get(`https://temp.imgur.gg/api/file/${id}`);
+      return res.data?.cdnUrl ?? rawUrl;
+    } else if (rawUrl.includes('pillows.su/f/')) {
+      const id = rawUrl.split('/f/')[1];
+      return `https://api.pillows.su/api/get/${id}`;
+    }
+    return rawUrl;
+  };
+
   const handlePlaySong = async (song: Song, era: Era, contextTracks?: Song[], resetShuffleHistory = true, autoPlay = true, isRandomSelection = false) => {
     if (activePlayer === 'spotify') spotifyControls.pause();
     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
@@ -1551,8 +1564,14 @@ export default function App() {
       let streamUrl = '';
       let isPlayable = true;
 
+      // Use preloaded URL if available (avoids async fetch when screen is off on mobile)
+      const preloaded = preloadedNextRef.current?.rawUrl === rawUrl ? preloadedNextRef.current.streamUrl : null;
+      preloadedNextRef.current = null;
+
       try {
-        if (rawUrl.includes('temp.imgur.gg/f/')) {
+        if (preloaded) {
+          streamUrl = preloaded;
+        } else if (rawUrl.includes('temp.imgur.gg/f/')) {
           const id = rawUrl.split('/f/')[1];
           const res = await axios.get(`https://temp.imgur.gg/api/file/${id}`);
 
@@ -1803,6 +1822,28 @@ export default function App() {
   useEffect(() => {
     handlersRef.current = { playNext, playPrev, togglePlay };
   }, [playNext, playPrev, togglePlay]);
+
+  // Preload next song's stream URL while current song plays so screen-off transitions are instant
+  useEffect(() => {
+    if (playlist.length === 0) return;
+    let cancelled = false;
+    let nextIndex = currentSongIndex + 1;
+    if (isShuffle && shuffledQueue.length > 0) {
+      const idx = shuffledQueue.indexOf(currentSongIndex);
+      nextIndex = idx !== -1 && idx < shuffledQueue.length - 1 ? shuffledQueue[idx + 1] : shuffledQueue[0];
+    } else if (nextIndex >= playlist.length) {
+      nextIndex = 0;
+    }
+    const nextSong = playlist[nextIndex];
+    if (!nextSong) return;
+    const rawUrl = nextSong.url || (nextSong.urls && nextSong.urls[0]) || '';
+    if (!rawUrl || rawUrl === preloadedNextRef.current?.rawUrl) return;
+    preloadedNextRef.current = null;
+    resolveStreamUrl(rawUrl).then(streamUrl => {
+      if (!cancelled) preloadedNextRef.current = { rawUrl, streamUrl };
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [currentSongIndex, playlist, isShuffle, shuffledQueue]);
 
   useEffect(() => {
     if ('mediaSession' in navigator && currentSong && currentEra) {
