@@ -111,7 +111,7 @@ export const dregoldConfig: ArtistConfig = {
     "Missionary": "https://i.ibb.co/pj6R4Qr6/IMG-4209.jpg",
     "LP4": "https://i.ibb.co/N6vkwn6X/IMG-4212.png",
     "Planets [V2]": "https://i.ibb.co/yct1HRHw/IMG-4213.jpg",
-    "The Wash": "https://i.ibb.co/dwZ4cwmd/image-2026-04-27-185921217.png",
+    "The Wash": "https://i.ibb.co/8DxZ3HLN/IMG-4167.jpg",
     // Era name aliases for tabs that use short names
     "100 Miles & Runnin'": "https://i.ibb.co/RktJV5fF/250px-NWA-100-Miles-And-Runnin.jpg",
     "The Aftermath": "https://i.ibb.co/1GvrGh7H/images.jpg",
