@@ -760,7 +760,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                               {song.available_length}
                             </span>
                           )}
-                          {era.name === 'Recent Leaks' && song.leak_date && (
+                          {(era.name === 'Recent Leaks' || era.name === 'Recent Production Leaks') && song.leak_date && (
                             <span className={`text-[10px] px-2 py-0.5 rounded border ${isCurrentlyPlaying ? 'border-[var(--theme-color)]/20 text-[var(--theme-color)]/80 bg-[var(--theme-color)]/5' : 'border-white/10 text-white/60 bg-white/5'}`}>
                               Leak: {song.leak_date.split('T')[0]}
                             </span>

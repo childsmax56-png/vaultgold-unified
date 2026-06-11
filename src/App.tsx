@@ -2593,7 +2593,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
 
   const recentProductionEra: Era = {
     name: "Recent Production Leaks",
-    image: "https://i.ibb.co/8DxZ3HLN/IMG-4167.jpg",
+    image: "https://i.ibb.co/7xRv4H2r/sdffsdsdf.png",
     data: {
       "Latest Additions": recentProductionData.map(song => {
         const rawEraName = song.extra2 || song.extra;
