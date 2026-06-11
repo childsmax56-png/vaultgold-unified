@@ -9,6 +9,7 @@ import { SettingsProvider } from './SettingsContext.tsx';
 import { ErrorBoundary } from './ErrorBoundary.tsx';
 import { setActiveConfig } from './artists/activeConfig.ts';
 import { getArtistConfig } from './artists/registry.ts';
+import { MyTrackerPage } from './MyTrackerPage.tsx';
 
 function ArtistRoute() {
   const { artist } = useParams<{ artist: string }>();
@@ -36,6 +37,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
+        <Route path="/my-tracker" element={<SettingsProvider><MyTrackerPage /></SettingsProvider>} />
         <Route path="/:artist/*" element={<ArtistRoute />} />
       </Routes>
     </BrowserRouter>
