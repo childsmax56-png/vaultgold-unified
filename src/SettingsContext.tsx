@@ -3,7 +3,8 @@ import { activeConfig } from './artists/activeConfig';
 
 export type MiniLyricsAlignment = 'left' | 'center' | 'right';
 export type GlobalFontSize = 'small' | 'medium' | 'large';
-export type LoadingScreenId = 'none' | 'shuffle' | 'donda2' | 'swish' | 'thankgod' | 'yandhi' | 'yeezus' | 'graduation' | 'wtt';
+export type LoadingScreenId = 'none' | 'shuffle' | 'donda2' | 'swish' | 'thankgod' | 'yandhi' | 'yeezus' | 'graduation' | 'wtt'
+  | 'takecare' | 'thankmelater' | 'nwts' | 'clb' | 'honestlynevermind' | 'iyrtitl' | 'herloss' | 'morelife' | 'scorpion' | 'sofargone' | 'views';
 
 export interface LoadingScreenOption {
   id: LoadingScreenId;
@@ -12,7 +13,7 @@ export interface LoadingScreenOption {
   url?: string;
 }
 
-export const LOADING_SCREENS: LoadingScreenOption[] = [
+const DEFAULT_LOADING_SCREENS: LoadingScreenOption[] = [
   { id: 'none', label: 'None', type: 'none' },
   { id: 'shuffle', label: 'Shuffle', type: 'none' },
   { id: 'donda2', label: 'Donda 2', type: 'gif', url: 'https://i.ibb.co/BH4D6dZm/Donda-2-Loading-Screen.gif' },
@@ -23,6 +24,8 @@ export const LOADING_SCREENS: LoadingScreenOption[] = [
   { id: 'graduation', label: 'Graduation', type: 'gif', url: 'https://i.ibb.co/5gNfGhmZ/Graduation-loading-screen-1.gif' },
   { id: 'wtt', label: 'Watch the Throne', type: 'gif', url: 'https://i.ibb.co/fGPV83fc/Watch-the-throne-loading-screen.gif' },
 ];
+
+export const LOADING_SCREENS: LoadingScreenOption[] = (activeConfig.loadingScreens as LoadingScreenOption[] | undefined) ?? DEFAULT_LOADING_SCREENS;
 
 export interface AppSettings {
   loadingScreen: LoadingScreenId;
