@@ -11,8 +11,26 @@ import { setActiveConfig } from './artists/activeConfig.ts';
 import { getArtistConfig } from './artists/registry.ts';
 import { MyTrackerPage } from './MyTrackerPage.tsx';
 
+function CACTIgoldUnavailable() {
+  return (
+    <div style={{ minHeight: '100vh', background: '#0a0a0a', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif' }}>
+      <div style={{ textAlign: 'center', color: '#fff', maxWidth: 480, padding: '2rem' }}>
+        <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.8)' }}>
+          CACTIgold is not compatible with the merged version of VaultGold at the moment — it will be added at a later date. For now, we've kept the original CACTIgold open{' '}
+          <a href="https://cactigold.pages.dev/" style={{ color: '#4ade80', textDecoration: 'underline' }}>here</a>.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function ArtistRoute() {
   const { artist } = useParams<{ artist: string }>();
+
+  if (artist === 'cactigold') {
+    return <CACTIgoldUnavailable />;
+  }
+
   const config = artist ? getArtistConfig(artist) : undefined;
 
   if (!config) {
