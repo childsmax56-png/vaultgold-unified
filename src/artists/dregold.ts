@@ -112,6 +112,9 @@ export const dregoldConfig: ArtistConfig = {
     "LP4": "https://i.ibb.co/N6vkwn6X/IMG-4212.png",
     "Planets [V2]": "https://i.ibb.co/yct1HRHw/IMG-4213.jpg",
     "The Wash": "https://i.ibb.co/dwZ4cwmd/image-2026-04-27-185921217.png",
+    // Era name aliases for tabs that use short names
+    "The Aftermath": "https://i.ibb.co/1GvrGh7H/images.jpg",
+    "Planets": "https://i.ibb.co/9kPCFjb3/IMG-4188.png",
   },
 
   ALBUM_RELEASE_DATES: {
@@ -146,9 +149,37 @@ export const dregoldConfig: ArtistConfig = {
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
   ERA_MAPPINGS: {},
+  // Explicit order avoids JS hoisting integer-like keys (e.g. "2001") to the front of Object.keys()
+  ALBUM_ORDER: [
+    "N.W.A. And The Posse",
+    "Straight Outta Compton",
+    "100 Miles & Runnin'",
+    "efiL4zaggiN",
+    "The Chronic",
+    "Helter Skelter",
+    "The Chronic II",
+    "2001",
+    "The Wash",
+    "Break Up To Make Up",
+    "N.W.A. Reunion",
+    "Detox [V1]",
+    "Detox [V2]",
+    "Detox [V3]",
+    "Planets [V1]",
+    "Detox [V4]",
+    "Detox [V5]",
+    "Compton",
+    "Detox [V6]",
+    "JESUS IS KING: The Dr. Dre Version",
+    "Detox [V7]",
+    "Missionary",
+    "LP4",
+    "Planets [V2]",
+  ],
   hasCompsTab: false,
   hasConcertsTab: false,
-  productionFirst: true,
+  hasSubAlbumsTab: false,
+  productionSecond: true,
 
   TAG_MAP: {
     '⭐': 'Best Of', '🏆': 'Grails', '🥇': 'Wanted', '🏅': 'Wanted',

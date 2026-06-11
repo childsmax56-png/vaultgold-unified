@@ -41,6 +41,7 @@ export interface ArtistConfig {
   hasConcertsTab?: boolean;
   hasSubAlbumsTab?: boolean;
   productionFirst?: boolean; // show Production Projects before Music in navbar
+  productionSecond?: boolean; // show Production Projects second (right after Music) in navbar
 
   // Albums to exclude from all views (neither Music nor Related)
   EXCLUDED_ALBUMS?: string[];

@@ -69,7 +69,12 @@ function parseStemsToEras(stemsData: StemEntry[], allEras: Era[]): { eraName: st
   const CATEGORY_NAMES = ['Instrumentals', 'Acapellas', 'Studio Stems', 'Sessions', 'Live Acapellas', 'Live Stems', 'TV Tracks', 'Samples', 'Multitracks', 'Snippets'];
 
   for (const item of stemsData) {
-    const isBrokenEra = typeof item.Era === 'string' && (item.Era.includes('OG File') || item.Era.includes('Unavailable'));
+    const isBrokenEra = typeof item.Era === 'string' && (
+      item.Era.includes('OG File') ||
+      item.Era.includes('Unavailable') ||
+      // Stat-only era fields like "3 Total\n3 Instrumental" or "2 Acapella"
+      item.Era.split('\n').every(line => /^\d+\s+\w/.test(line.trim()))
+    );
     const isEraHeader = (!item.Era || isBrokenEra) && item.Name && (
       typeof item["Leak Date"] === 'object'
       || (item["Full Length"] && typeof item["Full Length"] === 'string' && item["Full Length"].length > 50)

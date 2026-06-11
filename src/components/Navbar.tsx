@@ -75,6 +75,13 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
         NAV_CATEGORIES.find(c => c.key === 'production')!,
         ...NAV_CATEGORIES.filter(c => c.key !== 'production'),
       ]
+    : activeConfig.productionSecond
+    ? (() => {
+        const music = NAV_CATEGORIES.find(c => c.key === 'music')!;
+        const production = NAV_CATEGORIES.find(c => c.key === 'production')!;
+        const rest = NAV_CATEGORIES.filter(c => c.key !== 'music' && c.key !== 'production');
+        return [music, production, ...rest];
+      })()
     : NAV_CATEGORIES;
 
   const visibleCategories = baseCategories.filter(({ key }) => {
