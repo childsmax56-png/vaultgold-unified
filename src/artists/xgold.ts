@@ -83,6 +83,16 @@ export const xgoldConfig: ArtistConfig = {
     "Unknown": "??/??/????",
   },
 
+  ALBUM_ORDER: [
+    "CD MIxtape", "XXX (UNMASTERED)", "Ice Hotel", "e.motion", "THE NOBODYS",
+    "The Fall", "♡ ʳ ᵃ ʳ ᵉ ♡", "Heartbreak Hotel", "Red Light District",
+    "Members Only Vol. 1", "Members Only Vol. 2", "KIDS", "IWABOS",
+    "Bad Vibes Forever", "Death Note", "Members Only Vol. 3", "Revenge",
+    "I Need Jesus", "UGLY", "17", "A GHETTO CHRISTMAS CAROL",
+    "?", "SKINS", "Members Only Vol. 4", "? (Deluxe)", "Bad Vibes Forever (2019)",
+    "LOOK AT ME: THE ALBUM", "LOOK AT ME: XXXTENTACION", "Ongoing", "Unknown",
+  ],
+
   HIDDEN_ALBUMS: [],
   ALBUM_DESCRIPTIONS: {},
   ALBUM_SONG_COUNTS: {},

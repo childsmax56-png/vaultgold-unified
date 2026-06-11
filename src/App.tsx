@@ -2317,7 +2317,7 @@ export default function App() {
   }
 
 const EXCLUDED_ALBUMS: string[] = activeConfig.EXCLUDED_ALBUMS || [];
-const _releaseOrder = Object.keys(ALBUM_RELEASE_DATES);
+const _releaseOrder = activeConfig.ALBUM_ORDER || Object.keys(ALBUM_RELEASE_DATES);
 let erasArray = (Object.values(data.eras || {}) as Era[])
   .filter(era => !HIDDEN_ALBUMS.includes(era.name) && !EXCLUDED_ALBUMS.includes(era.name) && (era.name in ALBUM_RELEASE_DATES))
   .map(era => ({

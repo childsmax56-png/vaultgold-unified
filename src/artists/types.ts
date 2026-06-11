@@ -24,6 +24,7 @@ export interface ArtistConfig {
   ALBUM_SONG_COUNTS: Record<string, number>;
   CUSTOM_ALBUM_INFO: Record<string, string[]>;
   ERA_MAPPINGS: Record<string, string>;
+  ALBUM_ORDER?: string[]; // explicit era order, overrides Object.keys(ALBUM_RELEASE_DATES) which hoists integer-named keys
 
   // Tags
   TAG_MAP: Record<string, string>;
