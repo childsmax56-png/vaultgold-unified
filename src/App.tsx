@@ -1075,7 +1075,7 @@ export default function App() {
 
     axios.get(`/api/${ARTIST_SLUG}/art`)
       .then(res => {
-        const data = normalizeEraField(res.data) as ArtEntry[];
+        const data = normalizeEraField(normalizeParsedRows(res.data)) as ArtEntry[];
         const filteredData = data.filter(item => {
           const l = (item['Link(s)'] || '').toLowerCase();
           return !l.includes('link needed') && !l.includes('link%20needed') && !l.includes('source needed') && !l.includes('source%20needed');
@@ -1132,7 +1132,7 @@ export default function App() {
 
     axios.get(`/api/${ARTIST_SLUG}/released`)
       .then(res => {
-        setReleasedData(res.data as ReleasedEntry[]);
+        setReleasedData(normalizeParsedRows(res.data) as ReleasedEntry[]);
       })
       .catch(err => {
         console.error("Failed to fetch Released data:", err);

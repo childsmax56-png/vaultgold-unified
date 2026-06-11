@@ -124,6 +124,8 @@ function parseVideosData(rows: VideoRawEntry[], allEras: Era[]): VideoEraGroup[]
       else if (name === 'Released') currentSection = 'Released';
       continue;
     }
+    // Skip section-header rows where Era contains stats (e.g. "3 Released\n0 Unreleased\n...")
+    if (era.includes('\n')) continue;
     if (!name) continue;
 
     if (!eraGroups[era]) {
