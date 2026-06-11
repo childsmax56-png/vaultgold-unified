@@ -81,6 +81,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     if (key === 'yedits' && !activeConfig.hasYeditsTab) return false;
     if (key === 'production' && !activeConfig.hasProductionTab) return false;
     if (key === 'concerts' && !activeConfig.hasConcertsTab) return false;
+    if (key === 'recent' && activeConfig.hasRecentTab === false) return false;
     if (key === 'comps' && !activeConfig.hasCompsTab) return false;
     if (key === 'subalbums' && activeConfig.hasSubAlbumsTab === false) return false;
     if (key === 'related' && activeConfig.HIDDEN_ALBUMS.length === 0) return false;

@@ -36,6 +36,7 @@ export interface ArtistConfig {
   // Optional tabs
   hasProductionTab?: boolean;
   hasYeditsTab?: boolean;
+  hasRecentTab?: boolean;
   hasCompsTab?: boolean;
   hasConcertsTab?: boolean;
   hasSubAlbumsTab?: boolean;

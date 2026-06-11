@@ -98,6 +98,7 @@ export const xgoldConfig: ArtistConfig = {
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
   ERA_MAPPINGS: {},
+  hasRecentTab: false,
   hasCompsTab: false,
   hasConcertsTab: false,
 
