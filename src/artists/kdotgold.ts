@@ -10,7 +10,7 @@ export const kdotgoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI',
   HARDCODED_SHEET_GID: '1169728352',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: `https://docs.google.com/spreadsheets/d/1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI/gviz/tq?tqx=out:csv&sheet=Recent`,
   accentColor: '#1e3a5f',
   artistLabel: 'Kendrick Lamar',
   cardLetter: 'KDT',
@@ -49,8 +49,6 @@ export const kdotgoldConfig: ArtistConfig = {
 
   ALBUM_RELEASE_DATES: {
     "Y.H.N.I.C.": "??/??/2003",
-    "Rap Album": "??/??/2003",
-    "Look Woman": "??/??/2004",
     "Training Day": "??/??/2005",
     "No Sleep 'Til NYC": "11/13/2007",
     "C4": "01/30/2009",
@@ -60,18 +58,18 @@ export const kdotgoldConfig: ArtistConfig = {
     "Collaboration with J. Cole": "??/??/????",
     "good kid, m.A.A.d city": "10/22/2012",
     "Tu Pimp A Caterpillar [V1]": "??/??/2014",
-    "Tu Pimp A Caterpillar": "??/??/2014",
     "To Pimp A Butterfly": "03/15/2015",
-    "To Pimp A Butterfly [V2]": "??/??/????",
     "untitled unmastered.": "03/04/2016",
     "DAMN.": "04/14/2017",
     "Black Panther: The Album": "02/09/2018",
+    "Look Woman": "??/??/????",
     "Everybody Sensitive [V1]": "??/??/????",
     "Mr. Morale [V2]": "??/??/????",
     "Mr. Morale [V3]": "??/??/????",
     "Mr. Morale & The Big Steppers": "05/13/2022",
     "Drake vs. Kendrick Lamar": "??/??/2024",
     "GNX": "11/22/2024",
+    "Rap Album": "??/??/????",
     "Compton Cowboys": "??/??/????",
   },
 
@@ -82,6 +80,7 @@ export const kdotgoldConfig: ArtistConfig = {
   ERA_MAPPINGS: {},
   hasCompsTab: false,
   hasConcertsTab: false,
+  hasSubAlbumsTab: false,
 
   TAG_MAP: {
     '⭐': 'Best Of', '🏆': 'Grails', '🥇': 'Wanted', '🏅': 'Wanted',

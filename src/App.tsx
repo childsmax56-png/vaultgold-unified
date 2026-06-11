@@ -26,6 +26,37 @@ import { useSpotify, SpotifyTrack } from './useSpotify';
 import { useYoutube } from './useYoutube';
 import { useSoundCloud } from './useSoundCloud';
 
+// Normalize multiline column headers (e.g. "Name\n(Check out the Tracker website!)") to
+// plain column names so views can access item.Name, item.Notes, etc.
+// Also maps music-videos-specific headers to the standard field names.
+function normalizeParsedRows(rows: Record<string, string>[]): Record<string, string>[] {
+  if (rows.length === 0) return rows;
+  const keys = Object.keys(rows[0]);
+  const buildMap = (): Record<string, string> => {
+    const map: Record<string, string> = {};
+    for (const k of keys) {
+      if (k === 'Name' || k === 'Notes') continue; // already clean
+      if (k.startsWith('Name')) { map[k] = 'Name'; continue; }
+      if (k.startsWith('Notes')) { map[k] = 'Notes'; continue; }
+      // music-videos: "Media \nLength" → "Length", "Release\nDate" → "Date Made",
+      // "Streaming" → "Quality" (Yes/No streaming availability shown in quality badge)
+      if (k.startsWith('Media') && k.includes('Length')) { map[k] = 'Length'; continue; }
+      if (k.startsWith('Release') && k.includes('Date')) { map[k] = 'Date Made'; continue; }
+      if (k === 'Streaming') { map[k] = 'Quality'; continue; }
+    }
+    return map;
+  };
+  const colMap = buildMap();
+  if (Object.keys(colMap).length === 0) return rows;
+  return rows.map(row => {
+    const out: Record<string, string> = {};
+    for (const [k, v] of Object.entries(row)) {
+      out[colMap[k] ?? k] = v;
+    }
+    return out;
+  });
+}
+
 function parseCSVText(text: string): Record<string, string>[] {
   const rows: string[][] = [];
   let current: string[] = [];
@@ -1016,7 +1047,7 @@ export default function App() {
 
     axios.get(`/api/${ARTIST_SLUG}/music-videos`)
       .then(res => {
-        setMvData(normalizeEraField(res.data) as MvEntry[]);
+        setMvData(normalizeEraField(normalizeParsedRows(res.data)) as MvEntry[]);
       })
       .catch(err => {
         console.error("Failed to fetch MV data:", err);
@@ -1024,7 +1055,7 @@ export default function App() {
 
     axios.get(`/api/${ARTIST_SLUG}/music-videos`)
       .then(res => {
-        const vids = res.data as VideoRawEntry[];
+        const vids = normalizeParsedRows(res.data) as VideoRawEntry[];
         setVideosData(vids);
         setFetchedTabs(prev => new Set([...prev, 'videos']));
         if (vids.length > 0) setTabsWithData(prev => new Set([...prev, 'videos']));
@@ -1062,7 +1093,7 @@ export default function App() {
       .then(res => res.text())
       .then(text => {
         try {
-          const rows = parseCSVText(text);
+          const rows = normalizeParsedRows(parseCSVText(text));
           const stems = normalizeEraField(rows) as StemEntry[];
           setStemsData(stems);
           setFetchedTabs(prev => new Set([...prev, 'stems']));
@@ -1079,7 +1110,7 @@ export default function App() {
 
     axios.get(`/api/${ARTIST_SLUG}/misc`)
       .then(res => {
-        const misc = normalizeEraField(res.data) as MiscEntry[];
+        const misc = normalizeEraField(normalizeParsedRows(res.data)) as MiscEntry[];
         setMiscData(misc);
         setFetchedTabs(prev => new Set([...prev, 'misc']));
         if (misc.length > 0) setTabsWithData(prev => new Set([...prev, 'misc']));
@@ -1111,7 +1142,7 @@ export default function App() {
       .then(res => res.text())
       .then(text => {
         try {
-        const rawFakes = normalizeEraField(parseCSVText(text)) as any[];
+        const rawFakes = normalizeEraField(normalizeParsedRows(parseCSVText(text))) as any[];
         const mappedFakes = rawFakes.map(item => {
           let name = item.Name || '';
           let featureExtra = undefined;
