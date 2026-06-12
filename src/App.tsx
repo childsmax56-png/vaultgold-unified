@@ -1082,9 +1082,15 @@ export default function App() {
     const normalizeEraField = (dataArray: any[]) => {
       return dataArray.map(item => {
         if (item.Era) {
-          const matchedMapKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === item.Era.toLowerCase());
+          // Sheet exports sometimes wrap era names across lines inside quotes;
+          // collapse internal whitespace so they still match era names exactly.
+          const cleaned = item.Era.replace(/\s+/g, ' ').trim();
+          const matchedMapKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === cleaned.toLowerCase());
           if (matchedMapKey) {
             return { ...item, Era: ERA_MAPPINGS[matchedMapKey] };
+          }
+          if (cleaned !== item.Era) {
+            return { ...item, Era: cleaned };
           }
         }
         return item;
