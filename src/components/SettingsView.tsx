@@ -1,7 +1,6 @@
 import { useSettings, LOADING_SCREENS } from '../SettingsContext';
 import { activeConfig } from '../artists/activeConfig';
 import { AlignLeft, AlignCenter, AlignRight, History, Trash2, RotateCcw, X, RefreshCw, Check, Download } from 'lucide-react';
-import { VaultGoldSection } from './VaultGoldSection';
 import { motion, AnimatePresence } from 'motion/react';
 import { Category } from './Navbar';
 import { useState } from 'react';
@@ -316,8 +315,6 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
       className="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-12 bg-[#050505]"
     >
       <div className="max-w-4xl mx-auto space-y-4">
-
-        <VaultGoldSection matchesSearch={matchesSearch} />
 
         {matchesSearch('tags as emojis') && (
           <div className="flex items-center justify-between p-4 bg-[#111] border border-white/5 rounded-xl">
