@@ -934,9 +934,25 @@ export default function App() {
         // Build sheet songs in recent format — only when a dedicated SHEET_URL_RECENT is
         // configured. When empty the fallback URL points to the unreleased tab, and we
         // must NOT use that data for the Recent tab display (it would duplicate the main view).
-        const sheetNameKey = Array.isArray(recentTabRes.data) && recentTabRes.data.length > 0
-          ? (Object.keys(recentTabRes.data[0]).find((k: string) => k.startsWith('Name')) || 'Name')
-          : 'Name';
+        // Sheets use varying header names (e.g. uzigold: "Surface\nDate", "Date of
+        // Recording", "Quality/On DSPs?", "Links ...") — resolve each field by prefix.
+        const recentKeys = Array.isArray(recentTabRes.data) && recentTabRes.data.length > 0
+          ? Object.keys(recentTabRes.data[0])
+          : [];
+        const findRecentKey = (...prefixes: string[]) => {
+          for (const p of prefixes) {
+            const k = recentKeys.find((key: string) => key.startsWith(p));
+            if (k) return k;
+          }
+          return prefixes[0];
+        };
+        const sheetNameKey = findRecentKey('Name');
+        const sheetNotesKey = findRecentKey('Notes');
+        const sheetLinksKey = findRecentKey('Link(s)', 'Links', 'Link');
+        const sheetQualityKey = findRecentKey('Quality');
+        const sheetLeakDateKey = findRecentKey('Leak\nDate', 'Leak Date', 'Surface\nDate', 'Surface Date');
+        const sheetFileDateKey = findRecentKey('File\nDate', 'File Date', 'Date of Recording');
+        const sheetAvailableKey = findRecentKey('Available Length', 'Availability');
         const sheetRecentSongs: Song[] = (SHEET_URL_RECENT && Array.isArray(recentTabRes.data))
           ? (recentTabRes.data as any[])
               .filter((item: any) => {
@@ -951,19 +967,19 @@ export default function App() {
                 const rawEra = (item.Era || '').trim();
                 const mk = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === rawEra.toLowerCase());
                 const eraName = mk ? ERA_MAPPINGS[mk] : rawEra;
-                let rawUrl = (item['Link(s)'] || '').trim();
+                let rawUrl = (item[sheetLinksKey] || '').trim();
                 const lm = rawUrl.match(/\]\((.*?)\)/);
                 if (lm?.[1]) rawUrl = lm[1];
                 return {
                   name: songName,
                   extra: songExtra,
                   extra2: eraName,
-                  description: item.Notes || '',
+                  description: item[sheetNotesKey] || '',
                   track_length: item['Track Length'] || '',
-                  leak_date: item['Leak\nDate'] || item['Leak Date'] || '',
-                  file_date: item['File\nDate'] || item['File Date'] || '',
-                  available_length: item['Available Length'] || '',
-                  quality: item.Quality || '',
+                  leak_date: item[sheetLeakDateKey] || '',
+                  file_date: item[sheetFileDateKey] || '',
+                  available_length: item[sheetAvailableKey] || '',
+                  quality: item[sheetQualityKey] || '',
                   url: rawUrl,
                   urls: rawUrl ? [rawUrl] : [],
                 } as Song;
@@ -1317,7 +1333,8 @@ export default function App() {
         const sheetCsvUrl = getSheetCsvExportUrl(
           settings.googleSheetsUrl || `https://docs.google.com/spreadsheets/d/${HARDCODED_SHEET_ID}/edit#gid=${HARDCODED_SHEET_GID}`
         );
-        const recentTabCsvUrl = `https://docs.google.com/spreadsheets/d/${HARDCODED_SHEET_ID}/export?format=csv&gid=${HARDCODED_SHEET_GID}`;
+        const recentTabCsvUrl = SHEET_URL_RECENT ||
+          `https://docs.google.com/spreadsheets/d/${HARDCODED_SHEET_ID}/export?format=csv&gid=${HARDCODED_SHEET_GID}`;
 
         const [sheetsRes, recentRes, recentTabRes] = await Promise.all([
           axios.get(`/api/sheets-proxy?url=${encodeURIComponent(sheetCsvUrl!)}`, { timeout: 20000 }).catch(() => ({ data: [] })),
@@ -1325,10 +1342,24 @@ export default function App() {
           axios.get(`/api/sheets-proxy?url=${encodeURIComponent(recentTabCsvUrl)}`, { timeout: 20000 }).catch(() => ({ data: [] })),
         ]);
 
-        // Update recent data from sheet
-        const sheetNameKey = Array.isArray(recentTabRes.data) && recentTabRes.data.length > 0
-          ? (Object.keys(recentTabRes.data[0]).find((k: string) => k.startsWith('Name')) || 'Name')
-          : 'Name';
+        // Update recent data from sheet — resolve varying header names by prefix.
+        const recentKeys = Array.isArray(recentTabRes.data) && recentTabRes.data.length > 0
+          ? Object.keys(recentTabRes.data[0])
+          : [];
+        const findRecentKey = (...prefixes: string[]) => {
+          for (const p of prefixes) {
+            const k = recentKeys.find((key: string) => key.startsWith(p));
+            if (k) return k;
+          }
+          return prefixes[0];
+        };
+        const sheetNameKey = findRecentKey('Name');
+        const sheetNotesKey = findRecentKey('Notes');
+        const sheetLinksKey = findRecentKey('Link(s)', 'Links', 'Link');
+        const sheetQualityKey = findRecentKey('Quality');
+        const sheetLeakDateKey = findRecentKey('Leak\nDate', 'Leak Date', 'Surface\nDate', 'Surface Date');
+        const sheetFileDateKey = findRecentKey('File\nDate', 'File Date', 'Date of Recording');
+        const sheetAvailableKey = findRecentKey('Available Length', 'Availability');
         const sheetRecentSongs: Song[] = (SHEET_URL_RECENT && Array.isArray(recentTabRes.data))
           ? (recentTabRes.data as any[])
               .filter((item: any) => { const r = (item.Era || '').trim(); return r && !r.includes('\n'); })
@@ -1340,15 +1371,15 @@ export default function App() {
                 const rawEra = (item.Era || '').trim();
                 const mk = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === rawEra.toLowerCase());
                 const eraName = mk ? ERA_MAPPINGS[mk] : rawEra;
-                let rawUrl = (item['Link(s)'] || '').trim();
+                let rawUrl = (item[sheetLinksKey] || '').trim();
                 const lm = rawUrl.match(/\]\((.*?)\)/);
                 if (lm?.[1]) rawUrl = lm[1];
                 return {
                   name: songName, extra: songExtra, extra2: eraName,
-                  description: item.Notes || '', track_length: item['Track Length'] || '',
-                  leak_date: item['Leak\nDate'] || item['Leak Date'] || '',
-                  file_date: item['File\nDate'] || item['File Date'] || '',
-                  available_length: item['Available Length'] || '', quality: item.Quality || '',
+                  description: item[sheetNotesKey] || '', track_length: item['Track Length'] || '',
+                  leak_date: item[sheetLeakDateKey] || '',
+                  file_date: item[sheetFileDateKey] || '',
+                  available_length: item[sheetAvailableKey] || '', quality: item[sheetQualityKey] || '',
                   url: rawUrl, urls: rawUrl ? [rawUrl] : [],
                 } as Song;
               })
