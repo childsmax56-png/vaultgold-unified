@@ -16,11 +16,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ error: 'Missing required fields' }, 400);
   }
 
-  const authRes = await fetch('https://vaultgold.net/api/auth/me', {
+  const authRes = await fetch('https://unvaulted.cc/api/auth/me', {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!authRes.ok) {
-    return json({ error: 'Unauthorized — sign in to VaultGold first' }, 401);
+    return json({ error: 'Unauthorized — sign in to UNVAULTED first' }, 401);
   }
 
   const sanitize = (s: string) =>

@@ -4,7 +4,7 @@ export const yzygoldConfig: ArtistConfig = {
   slug: 'yzygold',
   SITE_NAME: 'YƵYGOLD',
   SITE_DESCRIPTION: 'The Best YeTracker In The World!',
-  SITE_URL: 'https://vaultgold.net/yzygold/',
+  SITE_URL: 'https://unvaulted.cc/yzygold/',
   OG_IMAGE_URL: 'https://i.ibb.co/LhXdRh7j/2026-03-23-T184041-712.png',
   STORAGE_PREFIX: 'yzygold_',
   HARDCODED_SHEET_ID: '12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM',

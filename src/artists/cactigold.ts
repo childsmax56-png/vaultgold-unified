@@ -4,7 +4,7 @@ export const cactigoldConfig: ArtistConfig = {
   slug: 'cactigold',
   SITE_NAME: 'CACTIgold',
   SITE_DESCRIPTION: 'The Best Travis Scott Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/cactigold/',
+  SITE_URL: 'https://unvaulted.cc/cactigold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'cactigold_',
   HARDCODED_SHEET_ID: '',

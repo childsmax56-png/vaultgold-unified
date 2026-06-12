@@ -100,7 +100,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 function errorPage(msg: string) {
   return new Response(`<!doctype html><html><body style="font-family:sans-serif;padding:2rem;background:#050505;color:#fff">
     <h2 style="color:#e55">Error</h2><p>${msg}</p>
-    <p><a href="https://vaultgold.net/account" style="color:#C9A224">Back to account</a></p>
+    <p><a href="https://unvaulted.cc/account" style="color:#C9A224">Back to account</a></p>
   </body></html>`, { status: 400, headers: { 'Content-Type': 'text/html' } });
 }
 
@@ -108,7 +108,7 @@ function successPage() {
   return `<!doctype html><html><head><script>
     try { localStorage.setItem('vg_linked', JSON.stringify({ service: 'lastfm', t: Date.now() })); } catch(e) {}
     if (window.opener) { window.opener.postMessage({ vaultgold: 'lastfm_linked' }, '*'); window.close(); }
-    else { setTimeout(() => { window.location.href = 'https://vaultgold.net/account'; }, 1500); }
+    else { setTimeout(() => { window.location.href = 'https://unvaulted.cc/account'; }, 1500); }
   </script></head><body style="font-family:sans-serif;padding:2rem;background:#050505;color:#fff">
     <p style="color:#C9A224">Last.fm connected! You can close this window.</p>
   </body></html>`;

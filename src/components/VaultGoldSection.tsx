@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { LogIn, LogOut, RefreshCw, ExternalLink, User, X } from 'lucide-react';
 import { SiSpotify, SiLastdotfm } from 'react-icons/si';
 
-const API = 'https://vaultgold.net';
+const API = 'https://unvaulted.cc';
 const TOKEN_KEY = 'vg_token';
 const USER_KEY = 'vg_user';
 
@@ -128,7 +128,7 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
       synced.push('Spotify');
     } else if (l.spotify && spotifyExpired) {
       setSyncing(false);
-      setSyncMsg('Spotify session expired — re-link Spotify at vaultgold.net/account');
+      setSyncMsg('Spotify session expired — re-link Spotify at unvaulted.cc/account');
       setTimeout(() => setSyncMsg(''), 6000);
       return;
     }
@@ -144,7 +144,7 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
     setTimeout(() => setSyncMsg(''), 3000);
   };
 
-  if (!matchesSearch('vaultgold account sign in spotify lastfm sync services xgold xxxtentacion cactigold travis scott tracker')) return null;
+  if (!matchesSearch('unvaulted account sign in spotify lastfm sync services xgold xxxtentacion cactigold travis scott tracker')) return null;
 
   return (
     <>
@@ -170,7 +170,7 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
                     <p className="text-xs text-[#1DB954]">{linked.spotify.username}</p>
                   )}
                   {linked && !linked.spotify && (
-                    <p className="text-xs text-white/40">Not linked — connect at vaultgold.net/account</p>
+                    <p className="text-xs text-white/40">Not linked — connect at unvaulted.cc/account</p>
                   )}
                 </div>
               </div>
@@ -187,7 +187,7 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
                     <p className="text-xs text-[#d51007]">{linked.lastfm.username}</p>
                   )}
                   {linked && !linked.lastfm && (
-                    <p className="text-xs text-white/40">Not linked — connect at vaultgold.net/account</p>
+                    <p className="text-xs text-white/40">Not linked — connect at unvaulted.cc/account</p>
                   )}
                 </div>
               </div>
@@ -240,7 +240,7 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
                 className="w-full flex items-center justify-center gap-2 text-xs font-bold py-2.5 px-4 rounded-lg bg-[var(--theme-color)] text-black hover:opacity-90 transition-opacity cursor-pointer"
               >
                 <User className="w-3.5 h-3.5" />
-                Sign in to VaultGold
+                Sign in to UNVAULTED
               </button>
               <button
                 onClick={doGoogle}

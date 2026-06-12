@@ -4,7 +4,7 @@ export const dregoldConfig: ArtistConfig = {
   slug: 'dregold',
   SITE_NAME: 'DREGOLD',
   SITE_DESCRIPTION: 'The Best Dr. Dre Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/dregold/',
+  SITE_URL: 'https://unvaulted.cc/dregold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'dregold_',
   HARDCODED_SHEET_ID: '',

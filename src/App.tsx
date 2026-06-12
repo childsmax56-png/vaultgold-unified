@@ -511,7 +511,7 @@ export default function App() {
     }
   }, []);
 
-  // Re-read auth state when VaultGold syncs credentials into localStorage
+  // Re-read auth state when UNVAULTED syncs credentials into localStorage
   // Force useSpotify to fully reinitialize by toggling enabled false→true
   useEffect(() => {
     const handleVgSync = () => {
@@ -3317,8 +3317,8 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                     <p className="mt-1">Lossless downloads now include full metadata and embedded artwork</p>
                   </li>
                   <li>
-                    <strong className="text-white">VAULTgold My Tracker</strong>
-                    <p className="mt-1">Load any custom Google Sheets tracker with audio playback at vaultgold.pages.dev</p>
+                    <strong className="text-white">UNVAULTED My Tracker</strong>
+                    <p className="mt-1">Load any custom Google Sheets tracker with audio playback at unvaulted.cc</p>
                   </li>
                 </ul>
               </div>
@@ -3374,7 +3374,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                     <p className="mt-1">This tab was created for albums that don't really have that many songs or are apart of different eras</p>
                   </li>
                   <li>
-                    <strong className="text-white">VAULTgold Accounts</strong>
+                    <strong className="text-white">UNVAULTED Accounts</strong>
                     <p className="mt-1">This was made so to link your Spotify and Last.fm accounts easier, just make an account in settings</p>
                   </li>
                   <li className="text-white/50">And more general stability and bug fixes</li>

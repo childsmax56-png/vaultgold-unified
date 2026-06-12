@@ -4,7 +4,7 @@ export const uzigoldConfig: ArtistConfig = {
   slug: 'uzigold',
   SITE_NAME: 'UZIGOLD',
   SITE_DESCRIPTION: 'The Best Lil Uzi Vert Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/uzigold/',
+  SITE_URL: 'https://unvaulted.cc/uzigold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'uzigold_',
   HARDCODED_SHEET_ID: '',

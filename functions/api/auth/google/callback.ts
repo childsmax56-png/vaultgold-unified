@@ -103,7 +103,7 @@ function decodeJwtPayload(token: string): Record<string, unknown> | null {
 function errorPage(msg: string) {
   return new Response(`<!doctype html><html><body style="font-family:sans-serif;padding:2rem;background:#050505;color:#fff">
     <h2 style="color:#e55">Error</h2><p>${msg}</p>
-    <p><a href="https://vaultgold.net" style="color:#C9A224">Back to VAULTgold</a></p>
+    <p><a href="https://unvaulted.cc" style="color:#C9A224">Back to UNVAULTED</a></p>
   </body></html>`, { status: 400, headers: { 'Content-Type': 'text/html' } });
 }
 
@@ -114,7 +114,7 @@ function signedInPage(token: string, user: { id: string; username: string; email
     else {
       localStorage.setItem('vg_token', data.token);
       localStorage.setItem('vg_user', JSON.stringify(data.user));
-      window.location.href = 'https://vaultgold.net/account';
+      window.location.href = 'https://unvaulted.cc/account';
     }
   </script></head><body style="font-family:sans-serif;padding:2rem;background:#050505;color:#fff">
     <p style="color:#C9A224">Signed in as ${user.username}!</p>

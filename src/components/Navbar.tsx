@@ -317,22 +317,22 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
               <SiTiktok className="w-5 h-5" />
             </a>
             <a
-              href="https://vaultgold.net/"
+              href="https://unvaulted.cc/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center p-2.5 rounded-full transition-all duration-300 cursor-pointer"
               style={{ backgroundColor: 'rgba(212, 175, 55, 0.15)', color: '#D4AF37' }}
-              title="VAULTgold"
+              title="UNVAULTED"
             >
               <DollarSign className="w-5 h-5" />
             </a>
             <a
-              href="https://vaultgold.net/account"
+              href="https://unvaulted.cc/account"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center p-2.5 rounded-full transition-all duration-300 cursor-pointer"
               style={{ backgroundColor: 'rgba(212, 175, 55, 0.25)', color: '#D4AF37', border: '1px solid rgba(212, 175, 55, 0.4)' }}
-              title="Create a VAULTgold Account"
+              title="Create an UNVAULTED Account"
             >
               <UserPlus className="w-5 h-5" />
             </a>
@@ -461,23 +461,23 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
           <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">TikTok</span>
         </a>
         <a
-          href="https://vaultgold.net/"
+          href="https://unvaulted.cc/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-105"
           style={{ backgroundColor: 'rgba(212, 175, 55, 0.15)', color: '#D4AF37' }}
-          title="VAULTgold"
+          title="UNVAULTED"
         >
           <DollarSign className="w-4 h-4" />
           <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Other Artist Trackers</span>
         </a>
         <a
-          href="https://vaultgold.net/account"
+          href="https://unvaulted.cc/account"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-105"
           style={{ backgroundColor: 'rgba(212, 175, 55, 0.25)', color: '#D4AF37', border: '1px solid rgba(212, 175, 55, 0.4)' }}
-          title="Create a VAULTgold Account"
+          title="Create an UNVAULTED Account"
         >
           <UserPlus className="w-4 h-4" />
           <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Create Account</span>

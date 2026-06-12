@@ -4,7 +4,7 @@ export const shadygoldConfig: ArtistConfig = {
   slug: 'shadygold',
   SITE_NAME: 'SHADYGOLD',
   SITE_DESCRIPTION: 'The Best Eminem Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/shadygold/',
+  SITE_URL: 'https://unvaulted.cc/shadygold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'shadygold_',
   HARDCODED_SHEET_ID: '',

@@ -21,7 +21,7 @@ export const vampgoldConfig: ArtistConfig = {
   slug: 'vampgold',
   SITE_NAME: 'VAMPgold',
   SITE_DESCRIPTION: 'The Best Playboi Carti Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/vampgold/',
+  SITE_URL: 'https://unvaulted.cc/vampgold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'vampgold_',
   HARDCODED_SHEET_ID: '1Irtfvymu26CShYowLMMfD-rM0o9CJqE6-BBSlYsAaF4',

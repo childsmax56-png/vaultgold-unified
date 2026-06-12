@@ -4,7 +4,7 @@ export const pushagoldConfig: ArtistConfig = {
   slug: 'pushagold',
   SITE_NAME: 'PUSHAGOLD',
   SITE_DESCRIPTION: 'The Best Clipse / Pusha T Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/pushagold/',
+  SITE_URL: 'https://unvaulted.cc/pushagold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'pushagold_',
   HARDCODED_SHEET_ID: '19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA',

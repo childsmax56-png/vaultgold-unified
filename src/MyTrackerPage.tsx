@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const VG_API = 'https://vaultgold.net';
+const VG_API = 'https://unvaulted.cc';
 const STORAGE_KEY = 'vg_my_tracker_url';
 const TOKEN_KEY = 'vg_token';
 
@@ -437,7 +437,7 @@ export function MyTrackerPage() {
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ customTrackerUrl: url }),
     })
-      .then(r => showStatus(r.ok ? 'Saved to VaultGold account' : 'Saved locally', r.ok ? 'ok' : 'err'))
+      .then(r => showStatus(r.ok ? 'Saved to UNVAULTED account' : 'Saved locally', r.ok ? 'ok' : 'err'))
       .catch(() => showStatus('Saved locally', 'ok'));
   }
 
@@ -508,7 +508,7 @@ export function MyTrackerPage() {
       {/* Nav */}
       <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <a href="/" onClick={e => { e.preventDefault(); navigate('/'); }} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
-          <img src="/logo.png" alt="VAULTgold" style={{ height: 36, width: 'auto' }} />
+          <img src="/logo.png" alt="UNVAULTED" style={{ height: 36, width: 'auto' }} />
           <span style={{ color: 'rgba(255,255,255,0.15)', fontSize: 18, fontWeight: 300 }}>/</span>
           <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#C9A224' }}>My Tracker</span>
         </a>

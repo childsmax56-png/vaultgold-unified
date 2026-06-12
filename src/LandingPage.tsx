@@ -5,7 +5,7 @@ import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
 import { useSettings, LOADING_SCREENS } from './SettingsContext';
 
-// Handles the Spotify PKCE OAuth callback that redirects back to vaultgold.net/?code=...
+// Handles the Spotify PKCE OAuth callback that redirects back to unvaulted.cc/?code=...
 // Exchanges the code for tokens and forwards them back to whichever tracker initiated the flow.
 function useSpotifyCallback() {
   useEffect(() => {
@@ -23,8 +23,9 @@ function useSpotifyCallback() {
     const returnTo = parsed.r;
     if (!codeVerifier || !returnTo) return;
 
-    // Allow any tracker running on vaultgold.net, plus legacy origins and local dev
+    // Allow any tracker running on unvaulted.cc, plus legacy origins and local dev
     const ALLOWED = [
+      'https://unvaulted.cc',
       'https://vaultgold.net',
       'https://yzyarchives.org',
       'https://yzy-gold.childsmax56.workers.dev',
@@ -43,7 +44,7 @@ function useSpotifyCallback() {
       body: new URLSearchParams({
         grant_type: 'authorization_code',
         code,
-        redirect_uri: 'https://vaultgold.net/',
+        redirect_uri: `${window.location.origin}/`,
         client_id: 'c9bdd79bf657487d8973f4c1510523ea',
         code_verifier: codeVerifier,
       }),
@@ -535,7 +536,7 @@ export function LandingPage() {
         </button>
         <img
           src="/logo.png"
-          alt="VAULTgold"
+          alt="UNVAULTED"
           style={{ height: 'clamp(140px, 22vw, 240px)', width: 'auto', transform: 'translateX(-50px)' }}
           onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />
@@ -602,7 +603,7 @@ export function LandingPage() {
 
       <footer style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
         <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-          © 2026 VAULTgold
+          © 2026 UNVAULTED
         </span>
         <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.15)' }}>
           Logos created by YZYsam &amp; north on Discord

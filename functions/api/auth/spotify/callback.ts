@@ -79,7 +79,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 function errorPage(msg: string) {
   return new Response(`<!doctype html><html><body style="font-family:sans-serif;padding:2rem;background:#050505;color:#fff">
     <h2 style="color:#e55">Error</h2><p>${msg}</p>
-    <p><a href="https://vaultgold.net" style="color:#C9A224">Back to VAULTgold</a></p>
+    <p><a href="https://unvaulted.cc" style="color:#C9A224">Back to UNVAULTED</a></p>
   </body></html>`, { status: 400, headers: { 'Content-Type': 'text/html' } });
 }
 
@@ -87,7 +87,7 @@ function successPage(service: string) {
   return `<!doctype html><html><head><script>
     try { localStorage.setItem('vg_linked', JSON.stringify({ service: '${service}', t: Date.now() })); } catch(e) {}
     if (window.opener) { window.opener.postMessage({ vaultgold: '${service}_linked' }, '*'); window.close(); }
-    else { setTimeout(() => { window.location.href = 'https://vaultgold.net/account'; }, 1500); }
+    else { setTimeout(() => { window.location.href = 'https://unvaulted.cc/account'; }, 1500); }
   </script></head><body style="font-family:sans-serif;padding:2rem;background:#050505;color:#fff">
     <p style="color:#C9A224">${service} connected! You can close this window.</p>
   </body></html>`;

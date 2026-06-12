@@ -4,7 +4,7 @@ export const twizzygoldConfig: ArtistConfig = {
   slug: 'twizzygold',
   SITE_NAME: 'TWIZZYgold',
   SITE_DESCRIPTION: 'The Best YEAT Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/twizzygold/',
+  SITE_URL: 'https://unvaulted.cc/twizzygold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'twizzygold_',
   HARDCODED_SHEET_ID: '',

@@ -4,7 +4,7 @@ export const xgoldConfig: ArtistConfig = {
   slug: 'xgold',
   SITE_NAME: 'XGOLD',
   SITE_DESCRIPTION: 'The Best XXXTENTACION Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/xgold/',
+  SITE_URL: 'https://unvaulted.cc/xgold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'xgold_',
   HARDCODED_SHEET_ID: '',

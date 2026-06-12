@@ -94,7 +94,7 @@ export function useSpotify(enabled: boolean): { state: SpotifyState; controls: S
 
     const init = async () => {
       const token = await getSpotifyToken();
-      if (!token) { setState(s => ({ ...s, error: 'Spotify session expired — sync VaultGold Accounts again.' })); return; }
+      if (!token) { setState(s => ({ ...s, error: 'Spotify session expired — sync UNVAULTED Accounts again.' })); return; }
 
       // Validate token before SDK init (Premium is enforced by the SDK's account_error event)
       try {

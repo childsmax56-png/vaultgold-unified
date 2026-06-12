@@ -4,7 +4,7 @@ export const drizzygoldConfig: ArtistConfig = {
   slug: 'drizzygold',
   SITE_NAME: 'DRIZZYGOLD',
   SITE_DESCRIPTION: 'The Best Drake Tracker In The World!',
-  SITE_URL: 'https://vaultgold.net/drizzygold/',
+  SITE_URL: 'https://unvaulted.cc/drizzygold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'drizzygold_',
   HARDCODED_SHEET_ID: '1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI',
