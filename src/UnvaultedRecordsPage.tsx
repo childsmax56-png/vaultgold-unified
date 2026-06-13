@@ -47,7 +47,7 @@ const ARTISTS = [
     description: 'Hip-Hop / Rap',
   },
   {
-    name: 'N7th',
+    name: 'Nr7th',
     letter: 'N',
     accent: '#B57BFF',
     description: 'R&B / Neo-Soul',
@@ -315,7 +315,7 @@ export function UnvaultedRecordsPage() {
           }}>
             Unvaulted Records is an independent label dedicated to pushing the
             boundaries of sound. Home to Alexias, CIATANNER, Don Juan, YZY Sam,
-            LUX, MAX3:16420999, YZYGOLD, and N7th — we build music that lasts.
+            LUX, MAX3:16420999, YZYGOLD, and Nr7th — we build music that lasts.
           </p>
         </div>
       </section>
