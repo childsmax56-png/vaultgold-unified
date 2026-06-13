@@ -537,7 +537,7 @@ export function LandingPage() {
         <img
           src="/logo.png"
           alt="UNVAULTED"
-          style={{ height: 'clamp(140px, 22vw, 240px)', width: 'auto', transform: 'translateX(-50px)' }}
+          style={{ height: 'auto', width: 'clamp(200px, 35vw, 360px)' }}
           onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />
         <p style={{ marginTop: 20, fontSize: 15, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 500 }}>
