@@ -11,7 +11,7 @@ const ARTISTS = [
     description: 'R&B / Soul',
   },
   {
-    name: 'Cantinner',
+    name: 'CIATANNER',
     letter: 'C',
     accent: '#4EA8C9',
     description: 'Alternative / Indie',
@@ -27,6 +27,30 @@ const ARTISTS = [
     letter: 'Y',
     accent: '#E05C5C',
     description: 'Hip-Hop / Electronic',
+  },
+  {
+    name: 'LUX',
+    letter: 'L',
+    accent: '#F0A500',
+    description: 'Electronic / Ambient',
+  },
+  {
+    name: 'MAX3:16420999',
+    letter: 'M',
+    accent: '#5CC9A8',
+    description: 'Hip-Hop / Experimental',
+  },
+  {
+    name: 'YZYGOLD',
+    letter: 'G',
+    accent: '#FFD700',
+    description: 'Hip-Hop / Rap',
+  },
+  {
+    name: 'N7th',
+    letter: 'N',
+    accent: '#B57BFF',
+    description: 'R&B / Neo-Soul',
   },
 ];
 
@@ -290,8 +314,8 @@ export function UnvaultedRecordsPage() {
             color: 'rgba(255,255,255,0.5)',
           }}>
             Unvaulted Records is an independent label dedicated to pushing the
-            boundaries of sound. Home to Alexias, Cantinner, Don Juan, and YZY Sam —
-            we build music that lasts.
+            boundaries of sound. Home to Alexias, CIATANNER, Don Juan, YZY Sam,
+            LUX, MAX3:16420999, YZYGOLD, and N7th — we build music that lasts.
           </p>
         </div>
       </section>
