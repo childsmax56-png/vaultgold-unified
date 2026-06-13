@@ -1,6 +1,7 @@
 import { json, generateToken, generateId, SESSION_TTL_MS, CORS_HEADERS } from '../../_auth';
 
 const ALLOWED_RETURN = [
+  'https://unvaulted.cc',
   'https://yzyarchives.org',
   'https://yzy-gold.pages.dev',
   'https://vampgold.pages.dev',
