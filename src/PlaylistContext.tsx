@@ -30,6 +30,17 @@ export function PlaylistProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(playlists));
   }, [playlists]);
 
+  useEffect(() => {
+    const handler = () => {
+      try {
+        const s = localStorage.getItem(STORAGE_KEY);
+        if (s) setPlaylists(JSON.parse(s));
+      } catch {}
+    };
+    window.addEventListener('vg-data-synced', handler);
+    return () => window.removeEventListener('vg-data-synced', handler);
+  }, []);
+
   const createPlaylist = (name: string): string => {
     const id = Math.random().toString(36).slice(2, 10);
     setPlaylists(prev => [...prev, { id, name, songs: [] }]);

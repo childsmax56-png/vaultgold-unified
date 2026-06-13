@@ -525,6 +525,15 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const handleDataSync = () => {
+      const saved = localStorage.getItem(`${STORAGE_PREFIX}favorite_keys`);
+      try { if (saved) setFavoriteKeys(JSON.parse(saved)); } catch {}
+    };
+    window.addEventListener('vg-data-synced', handleDataSync);
+    return () => window.removeEventListener('vg-data-synced', handleDataSync);
+  }, [STORAGE_PREFIX]);
+
+  useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const vgToken = params.get('vg_token');
     const vgUserRaw = params.get('vg_user');

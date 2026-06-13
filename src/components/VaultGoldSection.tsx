@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { LogIn, LogOut, RefreshCw, ExternalLink, User, X } from 'lucide-react';
 import { SiSpotify, SiLastdotfm } from 'react-icons/si';
+import { activeConfig } from '../artists/activeConfig';
 
 const API = 'https://unvaulted.cc';
 const TOKEN_KEY = 'vg_token';
@@ -138,9 +139,27 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
       synced.push('Last.fm');
     }
 
+    // Pull favorites + playlists from cloud
+    const { slug, STORAGE_PREFIX } = activeConfig;
+    const dataRes = await fetch(`${API}/api/sync/${slug}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (dataRes.ok) {
+      const userData = await dataRes.json() as {
+        favorites: { songName: string; eraName: string; url: string }[];
+        playlists: { id: string; name: string; cover?: string; songs: { songName: string; eraName: string; url: string }[] }[];
+      };
+      if (userData.favorites?.length || userData.playlists?.length) {
+        localStorage.setItem(`${STORAGE_PREFIX}favorite_keys`, JSON.stringify(userData.favorites ?? []));
+        localStorage.setItem(`${STORAGE_PREFIX}playlists`, JSON.stringify(userData.playlists ?? []));
+        synced.push('data');
+        window.dispatchEvent(new CustomEvent('vg-data-synced'));
+      }
+    }
+
     setSyncing(false);
     setSyncMsg(synced.length ? `Synced ${synced.join(' & ')}` : 'No services linked yet');
-    if (synced.length) window.dispatchEvent(new CustomEvent('vg-synced'));
+    if (synced.some(s => s !== 'data')) window.dispatchEvent(new CustomEvent('vg-synced'));
     setTimeout(() => setSyncMsg(''), 3000);
   };
 
