@@ -82,6 +82,7 @@ function PhotoCard({ onClick, photoUrl, label, accent }: { onClick: () => void; 
         cursor: 'pointer',
         aspectRatio: '3/4',
         border: '2px solid transparent',
+        background: '#0f0f0f',
         transition: 'border-color 0.2s, transform 0.15s, box-shadow 0.2s',
       }}
       onMouseEnter={e => {
