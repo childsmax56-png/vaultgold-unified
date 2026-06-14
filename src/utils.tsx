@@ -851,6 +851,10 @@ export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isIma
     const pathPart = url.split('/f/')[1];
     return { fetchUrl: pathPart ? `https://api.pillows.su/api/download/${pathPart}` : url, isImage: false };
   }
+  if (url.includes('drive.google.com')) {
+    const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if (m) return { fetchUrl: `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`, isImage: false };
+  }
   if (url.includes('ibb.co')) {
     const apiRes = await fetch(`https://imgbb-file-get-api.vercel.app/api?url=${url}`).catch(() => null);
     if (apiRes && apiRes.ok) {
@@ -913,9 +917,11 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
     } else if (url.includes('pillows.su/f/')) {
         const pathPart = url.split('/f/')[1];
         if (pathPart) {
-            // Route through Pages Function proxy to avoid CORS block on api.pillows.su
             finalUrl = `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/download/${pathPart}`)}`;
         }
+    } else if (url.includes('drive.google.com')) {
+        const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        if (m) finalUrl = `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`;
     } else if (url.includes('ibb.co')) {
        isImage = true;
        ext = '';
@@ -948,6 +954,9 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
       if (url.includes('pillows.su/f/')) {
         const pathPart = url.split('/f/')[1];
         if (pathPart) directUrl = `https://api.pillows.su/api/download/${pathPart}`;
+      } else if (url.includes('drive.google.com')) {
+        const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        if (m) directUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
       }
       window.location.href = directUrl;
       return;
@@ -1204,7 +1213,7 @@ export function matchesFilters(song: any, searchQuery: string, filters: any): bo
   if (filters.playableOnly) {
     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
     const isNotAvailable = song.quality?.toLowerCase() === 'not available';
-    if (!rawUrl || !rawUrl.includes('pillows.su/f/') || isNotAvailable) {
+    if (!rawUrl || (!rawUrl.includes('pillows.su/f/') && !rawUrl.includes('drive.google.com')) || isNotAvailable) {
       return false;
     }
   }

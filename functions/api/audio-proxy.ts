@@ -1,4 +1,4 @@
-const ALLOWED_HOSTS = ['api.pillows.su', 'temp.imgur.gg'];
+const ALLOWED_HOSTS = ['api.pillows.su', 'temp.imgur.gg', 'drive.google.com', 'drive.usercontent.google.com'];
 
 export const onRequestGet: PagesFunction = async (context) => {
   const url = new URL(context.request.url);
