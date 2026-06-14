@@ -20,6 +20,7 @@ const ALBUMS = [
     label: 'Debut Album',
     year: '2026',
     cover: '/unvaulted-records-debut-cover.jpg',
+    streamUrl: 'https://untitled.stream/library/project/bSnHBgkbVlvZtjb1kPrs8',
     tracks: [
       { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'YZY Sam' },
       { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKER)',                  artist: 'ciatanner' },
@@ -150,6 +151,28 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
           }}>
             Unvaulted Records · {album.year} · {album.tracks.length} tracks
           </div>
+          {album.streamUrl && (
+            <a
+              href={album.streamUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                marginTop: 20, padding: '10px 20px',
+                background: ACCENT, color: '#000',
+                borderRadius: 8, textDecoration: 'none',
+                fontSize: 13, fontWeight: 700, letterSpacing: '0.05em',
+                transition: 'opacity 0.15s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Listen Now
+            </a>
+          )}
         </div>
       </div>
 
