@@ -71,11 +71,61 @@ function ArrowIcon() {
   );
 }
 
+function PhotoCard({ onClick, photoUrl, label, accent }: { onClick: () => void; photoUrl: string; label: string; accent: string }) {
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        position: 'relative',
+        borderRadius: 14,
+        overflow: 'hidden',
+        cursor: 'pointer',
+        aspectRatio: '3/4',
+        border: '2px solid transparent',
+        transition: 'border-color 0.2s, transform 0.15s, box-shadow 0.2s',
+      }}
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLDivElement;
+        el.style.borderColor = accent;
+        el.style.transform = 'translateY(-3px)';
+        el.style.boxShadow = `0 16px 40px rgba(0,0,0,0.6), 0 0 0 1px ${accent}44`;
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLDivElement;
+        el.style.borderColor = 'transparent';
+        el.style.transform = '';
+        el.style.boxShadow = '';
+      }}
+    >
+      <img
+        src={photoUrl}
+        alt={label}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
+      {/* Bottom gradient + name */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)',
+        padding: '28px 14px 12px',
+      }}>
+        <span style={{
+          fontSize: 13, fontWeight: 700, color: '#fff',
+          letterSpacing: '0.02em', textShadow: '0 1px 4px rgba(0,0,0,0.8)',
+        }}>{label}</span>
+      </div>
+    </div>
+  );
+}
+
 function ArtistCard({ config, showPhoto }: { config: ArtistConfig; showPhoto: boolean }) {
   const navigate = useNavigate();
   const accent = config.accentColor;
   const dim = `${accent}22`;
   const photoUrl = showPhoto && config.artistPhotoUrl ? config.artistPhotoUrl : null;
+
+  if (photoUrl) {
+    return <PhotoCard onClick={() => navigate(`/${config.slug}`)} photoUrl={photoUrl} label={config.artistLabel} accent={accent} />;
+  }
 
   return (
     <div
@@ -129,44 +179,12 @@ function ArtistCard({ config, showPhoto }: { config: ArtistConfig; showPhoto: bo
         }
       }}
     >
-      {/* Glow overlay */}
-      <div
-        className="card-glow"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: `radial-gradient(ellipse at 0% 100%, ${dim}, transparent 70%)`,
-          opacity: 0,
-          transition: 'opacity 0.3s',
-          pointerEvents: 'none',
-          borderRadius: 'inherit',
-        }}
-      />
-
-      {/* Top: tag + logo/name */}
+      <div className="card-glow" style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 0% 100%, ${dim}, transparent 70%)`, opacity: 0, transition: 'opacity 0.3s', pointerEvents: 'none', borderRadius: 'inherit' }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{
-          display: 'inline-block',
-          fontSize: 10,
-          fontWeight: 700,
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color: accent,
-          background: `${accent}1a`,
-          border: `1px solid ${accent}33`,
-          borderRadius: 4,
-          padding: '3px 8px',
-          marginBottom: 14,
-        }}>
+        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>
           {config.artistLabel}
         </div>
-        {photoUrl ? (
-          <img
-            src={photoUrl}
-            alt={config.artistLabel}
-            style={{ display: 'block', height: 90, width: 90, objectFit: 'cover', borderRadius: 10, border: `1px solid ${accent}33` }}
-          />
-        ) : config.logoUrl ? (
+        {config.logoUrl ? (
           <img
             src={config.logoUrl}
             alt={config.SITE_NAME}
@@ -179,56 +197,20 @@ function ArtistCard({ config, showPhoto }: { config: ArtistConfig; showPhoto: bo
             }}
           />
         ) : null}
-        {!photoUrl && (
-          <div style={{
-            fontSize: 26,
-            fontWeight: 900,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.1,
-            display: config.logoUrl ? 'none' : 'block',
-          }}>
-            {config.SITE_NAME.replace(/([A-Z][a-z]+)$/, '').trim()}
-            <span style={{ color: accent }}>
-              {config.SITE_NAME.match(/([A-Z][a-z]+)$/)?.[0] ?? ''}
-            </span>
-          </div>
-        )}
+        <div style={{ fontSize: 26, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1, display: config.logoUrl ? 'none' : 'block' }}>
+          {config.SITE_NAME.replace(/([A-Z][a-z]+)$/, '').trim()}
+          <span style={{ color: accent }}>{config.SITE_NAME.match(/([A-Z][a-z]+)$/)?.[0] ?? ''}</span>
+        </div>
       </div>
-
-      {/* Bottom: artist name + arrow */}
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        {!photoUrl && (
-          <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-            {config.artistLabel}
-          </span>
-        )}
-        <div
-          className="card-arrow"
-          style={{ marginLeft: 'auto' }}
-          style={{
-            width: 28, height: 28, borderRadius: '50%',
-            border: '1px solid rgba(255,255,255,0.1)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            transition: 'border-color 0.2s, background 0.2s',
-          }}
-        >
+        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{config.artistLabel}</span>
+        <div className="card-arrow" style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s' }}>
           <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)', transition: 'stroke 0.2s' }}>
             <path d="M2 10L10 2M10 2H4M10 2v6" />
           </svg>
         </div>
       </div>
-
-      {/* Background letter */}
-      <div
-        className="card-letter"
-        style={{
-          position: 'absolute', right: -8, bottom: -16,
-          fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em',
-          color: 'rgba(255,255,255,0.025)', lineHeight: 1,
-          pointerEvents: 'none', userSelect: 'none',
-          transition: 'color 0.2s',
-        }}
-      >
+      <div className="card-letter" style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none', transition: 'color 0.2s' }}>
         {config.cardLetter}
       </div>
     </div>
@@ -239,6 +221,11 @@ function ExternalCard({ href, label, logoSrc, logoAlt, cardLetter, accent, photo
   href: string; label: string; logoSrc: string; logoAlt: string; cardLetter: string; accent: string; photoSrc?: string;
 }) {
   const dim = `${accent}22`;
+
+  if (photoSrc) {
+    return <PhotoCard onClick={() => window.open(href, '_blank', 'noopener,noreferrer')} photoUrl={photoSrc} label={label} accent={accent} />;
+  }
+
   return (
     <a
       href={href}
@@ -297,15 +284,11 @@ function ExternalCard({ href, label, logoSrc, logoAlt, cardLetter, accent, photo
       <div className="card-glow" style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 0% 100%, ${dim}, transparent 70%)`, opacity: 0, transition: 'opacity 0.3s', pointerEvents: 'none', borderRadius: 'inherit' }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>{label}</div>
-        {photoSrc ? (
-          <img src={photoSrc} alt={logoAlt} style={{ display: 'block', height: 90, width: 90, objectFit: 'cover', borderRadius: 10, border: `1px solid ${accent}33` }} />
-        ) : (
-          <img src={logoSrc} alt={logoAlt} style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }} />
-        )}
+        <img src={logoSrc} alt={logoAlt} style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }} />
       </div>
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        {!photoSrc && <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{label}</span>}
-        <div className="card-arrow" style={{ marginLeft: 'auto', width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s' }}>
+        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{label}</span>
+        <div className="card-arrow" style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s' }}>
           <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)', transition: 'stroke 0.2s' }}><path d="M2 10L10 2M10 2H4M10 2v6" /></svg>
         </div>
       </div>
@@ -573,10 +556,11 @@ export function LandingPage() {
 
       <main style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gap: 16,
+        gridTemplateColumns: showPhotos ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
+        gap: showPhotos ? 12 : 16,
         width: '100%',
-        maxWidth: 720,
+        maxWidth: showPhotos ? 960 : 720,
+        transition: 'max-width 0.3s',
       }}>
         {ARTIST_LIST.map(config => (
           <ArtistCard key={config.slug} config={config} showPhoto={showPhotos} />
@@ -606,12 +590,12 @@ export function LandingPage() {
       </main>
 
       {/* My Tracker — full width */}
-      <div style={{ width: '100%', maxWidth: 720, marginTop: 16 }}>
+      <div style={{ width: '100%', maxWidth: showPhotos ? 960 : 720, marginTop: 16 }}>
         <MyTrackerCard />
       </div>
 
       {/* Social + Account */}
-      <div style={{ width: '100%', maxWidth: 720, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+      <div style={{ width: '100%', maxWidth: showPhotos ? 960 : 720, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         <a href="https://discord.gg/xYhKgCDX8h" target="_blank" rel="noopener noreferrer"
           style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(88,101,242,0.12)', border: '1px solid rgba(88,101,242,0.25)', color: '#5865F2', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
           <SiDiscord style={{ width: 16, height: 16 }} /> Discord
