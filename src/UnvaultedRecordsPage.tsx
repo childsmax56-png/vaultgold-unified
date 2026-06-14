@@ -279,6 +279,7 @@ function TrackRow({ track, isPlaying, isActive, onClick }: {
   track: Track; isPlaying: boolean; isActive: boolean; onClick: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
+  const hasAudio = !!track.src;
 
   return (
     <div
