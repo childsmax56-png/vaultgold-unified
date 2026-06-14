@@ -137,8 +137,8 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
     a.currentTime = ((e.clientX - rect.left) / rect.width) * duration;
   };
 
-  const handleTrackClick = (track: Track) => {
-    if (!track.src) return;
+  const handleTrackClick = (track: Track, streamUrl: string) => {
+    if (!track.src) { window.open(streamUrl, '_blank', 'noopener,noreferrer'); return; }
     if (currentTrack?.n === track.n) { togglePlay(); return; }
     setProgress(0);
     setDuration(0);
@@ -268,7 +268,7 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
           track={track}
           isPlaying={playing && currentTrack?.n === track.n}
           isActive={currentTrack?.n === track.n}
-          onClick={() => handleTrackClick(track)}
+          onClick={() => handleTrackClick(track, album.streamUrl)}
         />
       ))}
     </div>
@@ -279,19 +279,18 @@ function TrackRow({ track, isPlaying, isActive, onClick }: {
   track: Track; isPlaying: boolean; isActive: boolean; onClick: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
-  const hasAudio = !!track.src;
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={hasAudio ? onClick : undefined}
+      onClick={onClick}
       style={{
         display: 'grid', gridTemplateColumns: '40px 1fr auto',
         padding: '12px 12px', borderRadius: 8, gap: 8, alignItems: 'center',
-        background: isActive ? `${ACCENT}0d` : hovered && hasAudio ? 'rgba(255,255,255,0.04)' : 'transparent',
+        background: isActive ? `${ACCENT}0d` : hovered ? 'rgba(255,255,255,0.04)' : 'transparent',
         transition: 'background 0.15s',
-        cursor: hasAudio ? 'pointer' : 'default',
+        cursor: 'pointer',
       }}
     >
       <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 20 }}>
@@ -299,7 +298,7 @@ function TrackRow({ track, isPlaying, isActive, onClick }: {
           <svg viewBox="0 0 24 24" fill={ACCENT} width="14" height="14"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
         ) : isActive ? (
           <svg viewBox="0 0 24 24" fill={ACCENT} width="14" height="14"><path d="M8 5v14l11-7z" /></svg>
-        ) : hovered && hasAudio ? (
+        ) : hovered ? (
           <svg viewBox="0 0 24 24" fill="#fff" width="14" height="14"><path d="M8 5v14l11-7z" /></svg>
         ) : (
           <span style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.25)', fontVariantNumeric: 'tabular-nums' }}>{track.n}</span>
