@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const ACCENT = '#C9A224';
 
@@ -22,20 +22,20 @@ const ALBUMS = [
     cover: '/unvaulted-records-debut-cover.jpg',
     streamUrl: 'https://untitled.stream/library/project/bSnHBgkbVlvZtjb1kPrs8',
     tracks: [
-      { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'YZY Sam' },
-      { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKER)',                  artist: 'ciatanner' },
-      { n: 3,  title: 'BABY I TRIED (feat. FROMDABUNKER & Sheffmade)',      artist: 'ciatanner' },
-      { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'YZY Sam' },
-      { n: 5,  title: 'MAGAZINES',                                          artist: 'YZY Sam' },
-      { n: 6,  title: 'COUSINS',                                            artist: 'Alexais' },
-      { n: 7,  title: 'VIRGIL',                                             artist: 'YZY Sam' },
-      { n: 8,  title: 'JESUS',                                              artist: 'Alexais' },
-      { n: 9,  title: 'SUNDAY',                                             artist: 'YZY Sam' },
-      { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'YZY Sam' },
-      { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD' },
-      { n: 12, title: 'BIANCA',                                             artist: 'YZY Sam' },
-      { n: 13, title: 'WISH',                                               artist: 'Don Juan' },
-      { n: 14, title: 'ALL THE LOVE',                                       artist: 'MAX 3:16, YZYGOLD' },
+      { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'YZY Sam',            src: null },
+      { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKER)',                  artist: 'ciatanner',           src: '/unvaulted-records/audio/king-of-soul.wav' },
+      { n: 3,  title: 'BABY I TRIED (feat. FROMDABUNKER & Sheffmade)',      artist: 'ciatanner',           src: '/unvaulted-records/audio/baby-i-tried.mp3' },
+      { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'YZY Sam',      src: null },
+      { n: 5,  title: 'MAGAZINES',                                          artist: 'YZY Sam',            src: null },
+      { n: 6,  title: 'COUSINS',                                            artist: 'Alexais',            src: '/unvaulted-records/audio/cousins.mp3' },
+      { n: 7,  title: 'VIRGIL',                                             artist: 'YZY Sam',            src: null },
+      { n: 8,  title: 'JESUS',                                              artist: 'Alexais',            src: '/unvaulted-records/audio/jesus.mp3' },
+      { n: 9,  title: 'SUNDAY',                                             artist: 'YZY Sam',            src: null },
+      { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'YZY Sam',            src: null },
+      { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: null },
+      { n: 12, title: 'BIANCA',                                             artist: 'YZY Sam',            src: null },
+      { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
+      { n: 14, title: 'ALL THE LOVE',                                       artist: 'MAX 3:16, YZYGOLD',  src: null },
     ],
   },
 ];
@@ -112,14 +112,60 @@ function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
   );
 }
 
+type Track = typeof ALBUMS[0]['tracks'][0];
+
 function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (!currentTrack?.src) return;
+    if (!audioRef.current) audioRef.current = new Audio();
+    const audio = audioRef.current;
+    audio.src = currentTrack.src;
+    audio.play().then(() => setPlaying(true)).catch(() => {});
+    const onTime = () => setProgress(audio.currentTime);
+    const onDuration = () => setDuration(audio.duration);
+    const onEnded = () => { setPlaying(false); setProgress(0); };
+    audio.addEventListener('timeupdate', onTime);
+    audio.addEventListener('loadedmetadata', onDuration);
+    audio.addEventListener('ended', onEnded);
+    return () => {
+      audio.removeEventListener('timeupdate', onTime);
+      audio.removeEventListener('loadedmetadata', onDuration);
+      audio.removeEventListener('ended', onEnded);
+    };
+  }, [currentTrack]);
+
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+    if (playing) { audioRef.current.pause(); setPlaying(false); }
+    else { audioRef.current.play(); setPlaying(true); }
+  };
+
+  const seek = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!audioRef.current || !duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    audioRef.current.currentTime = ((e.clientX - rect.left) / rect.width) * duration;
+  };
+
+  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+
+  const handleTrackClick = (track: Track) => {
+    if (!track.src) return;
+    if (currentTrack?.n === track.n) { togglePlay(); return; }
+    if (audioRef.current) { audioRef.current.pause(); setProgress(0); }
+    setCurrentTrack(track);
+    setPlaying(false);
+  };
+
   return (
     <div style={{ maxWidth: 800, margin: '0 auto', padding: '0 24px 80px' }}>
       {/* Album hero */}
-      <div style={{
-        display: 'flex', gap: 36, alignItems: 'flex-start',
-        marginBottom: 48, flexWrap: 'wrap',
-      }}>
+      <div style={{ display: 'flex', gap: 36, alignItems: 'flex-start', marginBottom: 48, flexWrap: 'wrap' }}>
         <img
           src={album.cover}
           alt={album.title}
@@ -139,101 +185,135 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
           }}>
             {album.label}
           </div>
-          <h2 style={{
-            fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 900,
-            letterSpacing: '-0.03em', lineHeight: 1.05, margin: 0,
-          }}>
+          <h2 style={{ fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.05, margin: 0 }}>
             {album.title}
           </h2>
-          <div style={{
-            marginTop: 12, fontSize: 13, color: 'rgba(255,255,255,0.4)',
-            letterSpacing: '0.06em', textTransform: 'uppercase',
-          }}>
+          <div style={{ marginTop: 12, fontSize: 13, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
             Unvaulted Records · {album.year} · {album.tracks.length} tracks
           </div>
           {album.streamUrl && (
-            <a
-              href={album.streamUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <a href={album.streamUrl} target="_blank" rel="noopener noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 marginTop: 20, padding: '10px 20px',
                 background: ACCENT, color: '#000',
                 borderRadius: 8, textDecoration: 'none',
                 fontSize: 13, fontWeight: 700, letterSpacing: '0.05em',
-                transition: 'opacity 0.15s',
+                transition: 'opacity 0.15s', width: 'fit-content',
               }}
               onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z" /></svg>
               Listen Now
             </a>
           )}
         </div>
       </div>
 
-      {/* Divider */}
-      <div style={{ height: 1, background: 'rgba(255,255,255,0.07)', marginBottom: 8 }} />
+      {/* Mini player */}
+      {currentTrack && (
+        <div style={{
+          display: 'flex', flexDirection: 'column', gap: 10,
+          padding: '16px 18px', marginBottom: 16,
+          background: '#111', border: `1px solid ${ACCENT}33`,
+          borderRadius: 12,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <button onClick={togglePlay} style={{
+              width: 36, height: 36, borderRadius: '50%', border: 'none',
+              background: ACCENT, color: '#000', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+            }}>
+              {playing
+                ? <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
+                : <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z" /></svg>
+              }
+            </button>
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{currentTrack.title}</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{currentTrack.artist}</div>
+            </div>
+            <span style={{ marginLeft: 'auto', fontSize: 11, color: 'rgba(255,255,255,0.3)', flexShrink: 0, fontVariantNumeric: 'tabular-nums' }}>
+              {fmt(progress)} / {fmt(duration)}
+            </span>
+          </div>
+          {/* Progress bar */}
+          <div onClick={seek} style={{
+            height: 4, background: 'rgba(255,255,255,0.1)', borderRadius: 2, cursor: 'pointer', position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute', left: 0, top: 0, height: '100%',
+              width: duration ? `${(progress / duration) * 100}%` : '0%',
+              background: ACCENT, borderRadius: 2, transition: 'width 0.1s linear',
+            }} />
+          </div>
+        </div>
+      )}
 
       {/* Tracklist header */}
+      <div style={{ height: 1, background: 'rgba(255,255,255,0.07)', marginBottom: 8 }} />
       <div style={{
         display: 'grid', gridTemplateColumns: '40px 1fr auto',
         padding: '8px 12px', marginBottom: 4,
         fontSize: 11, fontWeight: 600, letterSpacing: '0.12em',
         textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)',
       }}>
-        <span>#</span>
-        <span>Title</span>
-        <span>Artist</span>
+        <span>#</span><span>Title</span><span>Artist</span>
       </div>
 
-      {/* Tracks */}
       {album.tracks.map(track => (
-        <TrackRow key={track.n} track={track} />
+        <TrackRow
+          key={track.n}
+          track={track}
+          isPlaying={playing && currentTrack?.n === track.n}
+          isActive={currentTrack?.n === track.n}
+          onClick={() => handleTrackClick(track)}
+        />
       ))}
     </div>
   );
 }
 
-function TrackRow({ track }: { track: { n: number; title: string; artist: string } }) {
+function TrackRow({ track, isPlaying, isActive, onClick }: {
+  track: Track; isPlaying: boolean; isActive: boolean; onClick: () => void;
+}) {
   const [hovered, setHovered] = useState(false);
+  const hasAudio = !!track.src;
+
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={hasAudio ? onClick : undefined}
       style={{
         display: 'grid', gridTemplateColumns: '40px 1fr auto',
-        padding: '12px 12px',
-        borderRadius: 8,
-        background: hovered ? 'rgba(255,255,255,0.04)' : 'transparent',
+        padding: '12px 12px', borderRadius: 8, gap: 8, alignItems: 'center',
+        background: isActive ? `${ACCENT}0d` : hovered && hasAudio ? 'rgba(255,255,255,0.04)' : 'transparent',
         transition: 'background 0.15s',
-        alignItems: 'center',
-        gap: 8,
+        cursor: hasAudio ? 'pointer' : 'default',
       }}
     >
-      <span style={{
-        fontSize: 13, fontWeight: 500,
-        color: hovered ? ACCENT : 'rgba(255,255,255,0.25)',
-        transition: 'color 0.15s', fontVariantNumeric: 'tabular-nums',
-      }}>
-        {track.n}
+      <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 20 }}>
+        {isActive && isPlaying ? (
+          <svg viewBox="0 0 24 24" fill={ACCENT} width="14" height="14"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
+        ) : isActive ? (
+          <svg viewBox="0 0 24 24" fill={ACCENT} width="14" height="14"><path d="M8 5v14l11-7z" /></svg>
+        ) : hovered && hasAudio ? (
+          <svg viewBox="0 0 24 24" fill="#fff" width="14" height="14"><path d="M8 5v14l11-7z" /></svg>
+        ) : (
+          <span style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.25)', fontVariantNumeric: 'tabular-nums' }}>{track.n}</span>
+        )}
       </span>
       <span style={{
         fontSize: 14, fontWeight: 600,
-        color: hovered ? '#fff' : 'rgba(255,255,255,0.85)',
+        color: isActive ? ACCENT : hovered && hasAudio ? '#fff' : 'rgba(255,255,255,0.85)',
         transition: 'color 0.15s',
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>
         {track.title}
       </span>
-      <span style={{
-        fontSize: 12, color: 'rgba(255,255,255,0.35)',
-        whiteSpace: 'nowrap', letterSpacing: '0.02em',
-      }}>
+      <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', whiteSpace: 'nowrap' }}>
         {track.artist}
       </span>
     </div>
