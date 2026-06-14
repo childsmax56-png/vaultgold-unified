@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 const ACCENT = '#C9A224';
 
@@ -121,45 +121,29 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
   const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    if (!currentTrack?.src) return;
-    if (!audioRef.current) audioRef.current = new Audio();
-    const audio = audioRef.current;
-    audio.src = currentTrack.src;
-    audio.play().then(() => setPlaying(true)).catch(() => {});
-    const onTime = () => setProgress(audio.currentTime);
-    const onDuration = () => setDuration(audio.duration);
-    const onEnded = () => { setPlaying(false); setProgress(0); };
-    audio.addEventListener('timeupdate', onTime);
-    audio.addEventListener('loadedmetadata', onDuration);
-    audio.addEventListener('ended', onEnded);
-    return () => {
-      audio.removeEventListener('timeupdate', onTime);
-      audio.removeEventListener('loadedmetadata', onDuration);
-      audio.removeEventListener('ended', onEnded);
-    };
-  }, [currentTrack]);
+  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 
   const togglePlay = () => {
-    if (!audioRef.current) return;
-    if (playing) { audioRef.current.pause(); setPlaying(false); }
-    else { audioRef.current.play(); setPlaying(true); }
+    const a = audioRef.current;
+    if (!a) return;
+    if (playing) { a.pause(); setPlaying(false); }
+    else { a.play().catch(() => {}); setPlaying(true); }
   };
 
   const seek = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!audioRef.current || !duration) return;
+    const a = audioRef.current;
+    if (!a || !duration) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    audioRef.current.currentTime = ((e.clientX - rect.left) / rect.width) * duration;
+    a.currentTime = ((e.clientX - rect.left) / rect.width) * duration;
   };
-
-  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 
   const handleTrackClick = (track: Track) => {
     if (!track.src) return;
     if (currentTrack?.n === track.n) { togglePlay(); return; }
-    if (audioRef.current) { audioRef.current.pause(); setProgress(0); }
+    setProgress(0);
+    setDuration(0);
     setCurrentTrack(track);
-    setPlaying(false);
+    setPlaying(true);
   };
 
   return (
@@ -210,6 +194,22 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
           )}
         </div>
       </div>
+
+      {/* Hidden audio element — key forces remount on track change */}
+      {currentTrack?.src && (
+        <audio
+          key={currentTrack.n}
+          ref={audioRef}
+          src={currentTrack.src}
+          autoPlay
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onEnded={() => { setPlaying(false); setProgress(0); }}
+          onTimeUpdate={e => setProgress(e.currentTarget.currentTime)}
+          onLoadedMetadata={e => setDuration(e.currentTarget.duration)}
+          style={{ display: 'none' }}
+        />
+      )}
 
       {/* Mini player */}
       {currentTrack && (
