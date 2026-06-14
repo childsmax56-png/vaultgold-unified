@@ -11,6 +11,7 @@ const ARTISTS = [
   { name: 'MAX3:16420999',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'YZYGOLD',        letter: 'G', accent: '#FFD700', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
+  { name: 'PAW',            letter: 'P', accent: '#E8734A', description: 'Hip-Hop' },
 ];
 
 const ALBUMS = [
@@ -358,7 +359,7 @@ export function UnvaultedRecordsPage() {
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)' }}>
             Unvaulted Records is an independent label dedicated to pushing the
             boundaries of sound. Home to Alexias, CIATANNER, Don Juan, YZY Sam,
-            LUX, MAX3:16420999, YZYGOLD, and Nr7th — we build music that lasts.
+            LUX, MAX3:16420999, YZYGOLD, Nr7th, and PAW — we build music that lasts.
           </p>
         </div>
       </section>
