@@ -15,6 +15,7 @@ export const xgoldConfig: ArtistConfig = {
   artistLabel: 'XXXTENTACION',
   cardLetter: 'XXX',
   logoUrl: '/logos/xgold.png',
+  artistPhotoUrl: '/artists/xxx.webp',
 
   getArtistName(_eraName) { return 'XXXTENTACION'; },
 

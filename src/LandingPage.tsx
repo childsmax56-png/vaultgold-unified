@@ -164,7 +164,7 @@ function ArtistCard({ config, showPhoto }: { config: ArtistConfig; showPhoto: bo
           <img
             src={photoUrl}
             alt={config.artistLabel}
-            style={{ display: 'block', height: 60, width: 60, objectFit: 'cover', borderRadius: 8, border: `1px solid ${accent}33` }}
+            style={{ display: 'block', height: 90, width: 90, objectFit: 'cover', borderRadius: 10, border: `1px solid ${accent}33` }}
           />
         ) : config.logoUrl ? (
           <img
@@ -179,27 +179,32 @@ function ArtistCard({ config, showPhoto }: { config: ArtistConfig; showPhoto: bo
             }}
           />
         ) : null}
-        <div style={{
-          fontSize: 26,
-          fontWeight: 900,
-          letterSpacing: '-0.02em',
-          lineHeight: 1.1,
-          display: config.logoUrl && !photoUrl ? 'none' : 'block',
-        }}>
-          {config.SITE_NAME.replace(/([A-Z][a-z]+)$/, '').trim()}
-          <span style={{ color: accent }}>
-            {config.SITE_NAME.match(/([A-Z][a-z]+)$/)?.[0] ?? ''}
-          </span>
-        </div>
+        {!photoUrl && (
+          <div style={{
+            fontSize: 26,
+            fontWeight: 900,
+            letterSpacing: '-0.02em',
+            lineHeight: 1.1,
+            display: config.logoUrl ? 'none' : 'block',
+          }}>
+            {config.SITE_NAME.replace(/([A-Z][a-z]+)$/, '').trim()}
+            <span style={{ color: accent }}>
+              {config.SITE_NAME.match(/([A-Z][a-z]+)$/)?.[0] ?? ''}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Bottom: artist name + arrow */}
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-          {config.artistLabel}
-        </span>
+        {!photoUrl && (
+          <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            {config.artistLabel}
+          </span>
+        )}
         <div
           className="card-arrow"
+          style={{ marginLeft: 'auto' }}
           style={{
             width: 28, height: 28, borderRadius: '50%',
             border: '1px solid rgba(255,255,255,0.1)',
@@ -293,14 +298,14 @@ function ExternalCard({ href, label, logoSrc, logoAlt, cardLetter, accent, photo
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>{label}</div>
         {photoSrc ? (
-          <img src={photoSrc} alt={logoAlt} style={{ display: 'block', height: 60, width: 60, objectFit: 'cover', borderRadius: 8, border: `1px solid ${accent}33` }} />
+          <img src={photoSrc} alt={logoAlt} style={{ display: 'block', height: 90, width: 90, objectFit: 'cover', borderRadius: 10, border: `1px solid ${accent}33` }} />
         ) : (
           <img src={logoSrc} alt={logoAlt} style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }} />
         )}
       </div>
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{label}</span>
-        <div className="card-arrow" style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s' }}>
+        {!photoSrc && <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{label}</span>}
+        <div className="card-arrow" style={{ marginLeft: 'auto', width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s' }}>
           <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)', transition: 'stroke 0.2s' }}><path d="M2 10L10 2M10 2H4M10 2v6" /></svg>
         </div>
       </div>

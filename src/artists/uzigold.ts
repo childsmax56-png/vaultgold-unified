@@ -15,6 +15,7 @@ export const uzigoldConfig: ArtistConfig = {
   artistLabel: 'Lil Uzi Vert',
   cardLetter: 'UZI',
   logoUrl: '/logos/uzigold.png',
+  artistPhotoUrl: '/artists/uzi.png',
 
   getArtistName(_eraName) { return 'Lil Uzi Vert'; },
 

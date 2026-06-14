@@ -15,6 +15,7 @@ export const drizzygoldConfig: ArtistConfig = {
   artistLabel: 'Drake',
   cardLetter: 'OVO',
   logoUrl: '/logos/drizzygold.png',
+  artistPhotoUrl: '/artists/drake.jpg',
 
   getArtistName(_eraName) { return 'Drake'; },
 
