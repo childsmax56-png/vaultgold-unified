@@ -16,6 +16,7 @@ export const dregoldConfig: ArtistConfig = {
   artistLabel: 'Dr. Dre',
   cardLetter: 'DRE',
   logoUrl: '/logos/dregold.png',
+  artistPhotoUrl: '/artists/drdre.jpg',
 
   hasProductionTab: true,
 

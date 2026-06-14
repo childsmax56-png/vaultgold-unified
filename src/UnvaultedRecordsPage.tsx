@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 const ACCENT = '#C9A224';
 
@@ -28,12 +28,12 @@ const ALBUMS = [
       { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'YZY Sam, ciatanner',      src: null },
       { n: 5,  title: 'MAGAZINES',                                          artist: 'YZY Sam',            src: null },
       { n: 6,  title: 'COUSINS',                                            artist: 'Alexais',            src: '/unvaulted-records/audio/cousins.mp3' },
-      { n: 7,  title: 'VIRGIL',                                             artist: 'YZY Sam',            src: null },
+      { n: 7,  title: 'VIRGIL',                                             artist: 'YZY Sam',            src: '/unvaulted-records/audio/virgil.m4a' },
       { n: 8,  title: 'JESUS',                                              artist: 'Alexais',            src: '/unvaulted-records/audio/jesus.mp3' },
-      { n: 9,  title: 'SUNDAY',                                             artist: 'YZY Sam',            src: null },
-      { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'YZY Sam',            src: null },
-      { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: null },
-      { n: 12, title: 'BIANCA',                                             artist: 'YZY Sam',            src: null },
+      { n: 9,  title: 'SUNDAY',                                             artist: 'YZY Sam',            src: '/unvaulted-records/audio/sunday.m4a' },
+      { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'YZY Sam',            src: '/unvaulted-records/audio/mission-control.m4a' },
+      { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
+      { n: 12, title: 'BIANCA',                                             artist: 'YZY Sam',            src: '/unvaulted-records/audio/bianca.m4a' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
       { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYGOLD',  src: null },
     ],
@@ -121,45 +121,29 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
   const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    if (!currentTrack?.src) return;
-    if (!audioRef.current) audioRef.current = new Audio();
-    const audio = audioRef.current;
-    audio.src = currentTrack.src;
-    audio.play().then(() => setPlaying(true)).catch(() => {});
-    const onTime = () => setProgress(audio.currentTime);
-    const onDuration = () => setDuration(audio.duration);
-    const onEnded = () => { setPlaying(false); setProgress(0); };
-    audio.addEventListener('timeupdate', onTime);
-    audio.addEventListener('loadedmetadata', onDuration);
-    audio.addEventListener('ended', onEnded);
-    return () => {
-      audio.removeEventListener('timeupdate', onTime);
-      audio.removeEventListener('loadedmetadata', onDuration);
-      audio.removeEventListener('ended', onEnded);
-    };
-  }, [currentTrack]);
+  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 
   const togglePlay = () => {
-    if (!audioRef.current) return;
-    if (playing) { audioRef.current.pause(); setPlaying(false); }
-    else { audioRef.current.play(); setPlaying(true); }
+    const a = audioRef.current;
+    if (!a) return;
+    if (playing) { a.pause(); setPlaying(false); }
+    else { a.play().catch(() => {}); setPlaying(true); }
   };
 
   const seek = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!audioRef.current || !duration) return;
+    const a = audioRef.current;
+    if (!a || !duration) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    audioRef.current.currentTime = ((e.clientX - rect.left) / rect.width) * duration;
+    a.currentTime = ((e.clientX - rect.left) / rect.width) * duration;
   };
 
-  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-
-  const handleTrackClick = (track: Track) => {
-    if (!track.src) return;
+  const handleTrackClick = (track: Track, streamUrl: string) => {
+    if (!track.src) { window.open(streamUrl, '_blank', 'noopener,noreferrer'); return; }
     if (currentTrack?.n === track.n) { togglePlay(); return; }
-    if (audioRef.current) { audioRef.current.pause(); setProgress(0); }
+    setProgress(0);
+    setDuration(0);
     setCurrentTrack(track);
-    setPlaying(false);
+    setPlaying(true);
   };
 
   return (
@@ -210,6 +194,22 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
           )}
         </div>
       </div>
+
+      {/* Hidden audio element — key forces remount on track change */}
+      {currentTrack?.src && (
+        <audio
+          key={currentTrack.n}
+          ref={audioRef}
+          src={currentTrack.src}
+          autoPlay
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onEnded={() => { setPlaying(false); setProgress(0); }}
+          onTimeUpdate={e => setProgress(e.currentTarget.currentTime)}
+          onLoadedMetadata={e => setDuration(e.currentTarget.duration)}
+          style={{ display: 'none' }}
+        />
+      )}
 
       {/* Mini player */}
       {currentTrack && (
@@ -268,7 +268,7 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
           track={track}
           isPlaying={playing && currentTrack?.n === track.n}
           isActive={currentTrack?.n === track.n}
-          onClick={() => handleTrackClick(track)}
+          onClick={() => handleTrackClick(track, album.streamUrl)}
         />
       ))}
     </div>
@@ -279,19 +279,18 @@ function TrackRow({ track, isPlaying, isActive, onClick }: {
   track: Track; isPlaying: boolean; isActive: boolean; onClick: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
-  const hasAudio = !!track.src;
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={hasAudio ? onClick : undefined}
+      onClick={onClick}
       style={{
         display: 'grid', gridTemplateColumns: '40px 1fr auto',
         padding: '12px 12px', borderRadius: 8, gap: 8, alignItems: 'center',
-        background: isActive ? `${ACCENT}0d` : hovered && hasAudio ? 'rgba(255,255,255,0.04)' : 'transparent',
+        background: isActive ? `${ACCENT}0d` : hovered ? 'rgba(255,255,255,0.04)' : 'transparent',
         transition: 'background 0.15s',
-        cursor: hasAudio ? 'pointer' : 'default',
+        cursor: 'pointer',
       }}
     >
       <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 20 }}>
@@ -299,7 +298,7 @@ function TrackRow({ track, isPlaying, isActive, onClick }: {
           <svg viewBox="0 0 24 24" fill={ACCENT} width="14" height="14"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
         ) : isActive ? (
           <svg viewBox="0 0 24 24" fill={ACCENT} width="14" height="14"><path d="M8 5v14l11-7z" /></svg>
-        ) : hovered && hasAudio ? (
+        ) : hovered ? (
           <svg viewBox="0 0 24 24" fill="#fff" width="14" height="14"><path d="M8 5v14l11-7z" /></svg>
         ) : (
           <span style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.25)', fontVariantNumeric: 'tabular-nums' }}>{track.n}</span>

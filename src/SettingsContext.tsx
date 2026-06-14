@@ -62,6 +62,7 @@ export interface AppSettings {
   aiErrorDetails: boolean;
   shareLinkType: 'site' | 'pillowcase';
   disableEraThemes: boolean;
+  landingArtistPhotos: boolean;
 }
 
 interface SettingsContextType {
@@ -105,6 +106,7 @@ export const defaultSettings: AppSettings = {
   aiErrorDetails: false,
   shareLinkType: 'site',
   disableEraThemes: false,
+  landingArtistPhotos: false,
 };
 
 const SettingsContext = createContext<SettingsContextType>({
