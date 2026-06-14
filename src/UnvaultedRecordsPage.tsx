@@ -8,7 +8,7 @@ const ARTISTS = [
   { name: 'Don Juan',       letter: 'D', accent: '#C9A224', description: 'Hip-Hop' },
   { name: 'YZY Sam',        letter: 'Y', accent: '#E05C5C', description: 'Hip-Hop' },
   { name: 'LUX',            letter: 'L', accent: '#F0A500', description: 'Hip-Hop' },
-  { name: 'MAX3:16420999',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
+  { name: 'MAX 3:16',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'YZYGOLD',        letter: 'G', accent: '#FFD700', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
   { name: 'PAW',            letter: 'P', accent: '#E8734A', description: 'Hip-Hop' },
@@ -35,7 +35,7 @@ const ALBUMS = [
       { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD' },
       { n: 12, title: 'BIANCA',                                             artist: 'YZY Sam' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan' },
-      { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYGOLD' },
+      { n: 14, title: 'ALL THE LOVE',                                       artist: 'MAX 3:16, YZYGOLD' },
     ],
   },
 ];
@@ -382,7 +382,7 @@ export function UnvaultedRecordsPage() {
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)' }}>
             Unvaulted Records is an independent label dedicated to pushing the
             boundaries of sound. Home to Alexias, CIATANNER, Don Juan, YZY Sam,
-            LUX, MAX3:16420999, YZYGOLD, Nr7th, and PAW — we build music that lasts.
+            LUX, MAX 3:16, YZYGOLD, Nr7th, and PAW — we build music that lasts.
           </p>
         </div>
       </section>
