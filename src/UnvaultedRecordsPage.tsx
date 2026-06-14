@@ -8,25 +8,25 @@ const ARTISTS = [
   { name: 'Don Juan',       letter: 'D', accent: '#C9A224', description: 'Hip-Hop' },
   { name: 'YZY Sam',        letter: 'Y', accent: '#E05C5C', description: 'Hip-Hop' },
   { name: 'LUX',            letter: 'L', accent: '#F0A500', description: 'Hip-Hop' },
-  { name: 'MAX 3:16',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
+  { name: 'Max3:16420999',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'YZYGOLD',        letter: 'G', accent: '#FFD700', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
-  { name: 'PAW',            letter: 'P', accent: '#E8734A', description: 'Hip-Hop' },
+  { name: 'Paw',            letter: 'P', accent: '#E8734A', description: 'Hip-Hop' },
 ];
 
 const ALBUMS = [
   {
-    title: 'In An Imperfect World',
+    title: 'IN AN IMPERFECT WORLD',
     label: 'Debut Album',
     year: '2026',
     cover: '/unvaulted-records-debut-cover.jpg',
     streamUrl: 'https://untitled.stream/library/project/bSnHBgkbVlvZtjb1kPrs8',
     tracks: [
-      { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'YZY Sam',            src: '/unvaulted-records/audio/sisters-and-brothers.m4a' },
-      { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKER)',                  artist: 'ciatanner',           src: null },
-      { n: 3,  title: 'BABY I TRIED (feat. FROMDABUNKER & Sheffmade)',      artist: 'ciatanner',           src: '/unvaulted-records/audio/baby-i-tried.mp3' },
-      { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'YZY Sam',      src: '/unvaulted-records/audio/alive.mp3' },
-      { n: 5,  title: 'MAGAZINES',                                          artist: 'YZY Sam',            src: '/unvaulted-records/audio/magazines.m4a' },
+      { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'YZY Sam',            src: null },
+      { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKA)',                  artist: 'ciatanner',           src: null },
+      { n: 3,  title: 'BABY I TRIED (feat. FROMDABUNKA & Sheffmade)',      artist: 'ciatanner',           src: '/unvaulted-records/audio/baby-i-tried.mp3' },
+      { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'YZY Sam, ciatanner',      src: null },
+      { n: 5,  title: 'MAGAZINES',                                          artist: 'YZY Sam',            src: null },
       { n: 6,  title: 'COUSINS',                                            artist: 'Alexais',            src: '/unvaulted-records/audio/cousins.mp3' },
       { n: 7,  title: 'VIRGIL',                                             artist: 'YZY Sam',            src: '/unvaulted-records/audio/virgil.m4a' },
       { n: 8,  title: 'JESUS',                                              artist: 'Alexais',            src: '/unvaulted-records/audio/jesus.mp3' },
@@ -35,7 +35,7 @@ const ALBUMS = [
       { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
       { n: 12, title: 'BIANCA',                                             artist: 'YZY Sam',            src: '/unvaulted-records/audio/bianca.m4a' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
-      { n: 14, title: 'ALL THE LOVE',                                       artist: 'MAX 3:16, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
+      { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYGOLD',  src: null },
     ],
   },
 ];
