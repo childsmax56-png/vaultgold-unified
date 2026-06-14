@@ -71,10 +71,11 @@ function ArrowIcon() {
   );
 }
 
-function ArtistCard({ config }: { config: ArtistConfig }) {
+function ArtistCard({ config, showPhoto }: { config: ArtistConfig; showPhoto: boolean }) {
   const navigate = useNavigate();
   const accent = config.accentColor;
   const dim = `${accent}22`;
+  const photoUrl = showPhoto && config.artistPhotoUrl ? config.artistPhotoUrl : null;
 
   return (
     <div
@@ -159,13 +160,18 @@ function ArtistCard({ config }: { config: ArtistConfig }) {
         }}>
           {config.artistLabel}
         </div>
-        {config.logoUrl ? (
+        {photoUrl ? (
+          <img
+            src={photoUrl}
+            alt={config.artistLabel}
+            style={{ display: 'block', height: 60, width: 60, objectFit: 'cover', borderRadius: 8, border: `1px solid ${accent}33` }}
+          />
+        ) : config.logoUrl ? (
           <img
             src={config.logoUrl}
             alt={config.SITE_NAME}
             style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }}
             onError={e => {
-              // Fallback to text if logo fails to load
               const img = e.currentTarget;
               img.style.display = 'none';
               const fallback = img.nextElementSibling as HTMLElement;
@@ -178,7 +184,7 @@ function ArtistCard({ config }: { config: ArtistConfig }) {
           fontWeight: 900,
           letterSpacing: '-0.02em',
           lineHeight: 1.1,
-          display: config.logoUrl ? 'none' : 'block',
+          display: config.logoUrl && !photoUrl ? 'none' : 'block',
         }}>
           {config.SITE_NAME.replace(/([A-Z][a-z]+)$/, '').trim()}
           <span style={{ color: accent }}>
@@ -224,8 +230,8 @@ function ArtistCard({ config }: { config: ArtistConfig }) {
   );
 }
 
-function ExternalCard({ href, label, logoSrc, logoAlt, cardLetter, accent }: {
-  href: string; label: string; logoSrc: string; logoAlt: string; cardLetter: string; accent: string;
+function ExternalCard({ href, label, logoSrc, logoAlt, cardLetter, accent, photoSrc }: {
+  href: string; label: string; logoSrc: string; logoAlt: string; cardLetter: string; accent: string; photoSrc?: string;
 }) {
   const dim = `${accent}22`;
   return (
@@ -286,7 +292,11 @@ function ExternalCard({ href, label, logoSrc, logoAlt, cardLetter, accent }: {
       <div className="card-glow" style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 0% 100%, ${dim}, transparent 70%)`, opacity: 0, transition: 'opacity 0.3s', pointerEvents: 'none', borderRadius: 'inherit' }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>{label}</div>
-        <img src={logoSrc} alt={logoAlt} style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }} />
+        {photoSrc ? (
+          <img src={photoSrc} alt={logoAlt} style={{ display: 'block', height: 60, width: 60, objectFit: 'cover', borderRadius: 8, border: `1px solid ${accent}33` }} />
+        ) : (
+          <img src={logoSrc} alt={logoAlt} style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }} />
+        )}
       </div>
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
         <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{label}</span>
@@ -456,6 +466,15 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
+        {/* Artist Photos */}
+        <div style={row}>
+          <div>
+            <div style={label}>Artist Photos</div>
+            <div style={sublabel}>Show artist photos on cards</div>
+          </div>
+          <Toggle on={settings.landingArtistPhotos} onToggle={() => updateSettings({ landingArtistPhotos: !settings.landingArtistPhotos })} />
+        </div>
+
         {/* Tags as Emojis */}
         <div style={row}>
           <div style={label}>Tags as Emojis</div>
@@ -506,6 +525,8 @@ function GearIcon() {
 export function LandingPage() {
   useSpotifyCallback();
   const [showSettings, setShowSettings] = useState(false);
+  const { settings } = useSettings();
+  const showPhotos = settings.landingArtistPhotos;
   return (
     <div style={{
       minHeight: '100vh',
@@ -553,7 +574,7 @@ export function LandingPage() {
         maxWidth: 720,
       }}>
         {ARTIST_LIST.map(config => (
-          <ArtistCard key={config.slug} config={config} />
+          <ArtistCard key={config.slug} config={config} showPhoto={showPhotos} />
         ))}
 
         {/* WOLFgold — external Google Sheet */}
@@ -564,6 +585,7 @@ export function LandingPage() {
           logoAlt="WOLFgold"
           cardLetter="WLF"
           accent="#e53e3e"
+          photoSrc={showPhotos ? '/artists/tyler.webp' : undefined}
         />
 
         {/* Juicegold — external Google Sheet */}
@@ -574,6 +596,7 @@ export function LandingPage() {
           logoAlt="Juicegold"
           cardLetter="JCE"
           accent="#e53e3e"
+          photoSrc={showPhotos ? '/artists/juice.webp' : undefined}
         />
       </main>
 
