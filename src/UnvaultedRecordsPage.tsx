@@ -16,7 +16,7 @@ const ARTISTS = [
 
 const ALBUMS = [
   {
-    title: 'In A Imperfect World',
+    title: 'In An Imperfect World',
     label: 'Debut Album',
     year: '2026',
     cover: '/unvaulted-records-debut-cover.jpg',
