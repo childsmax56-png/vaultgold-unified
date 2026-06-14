@@ -106,7 +106,7 @@ export const defaultSettings: AppSettings = {
   aiErrorDetails: false,
   shareLinkType: 'site',
   disableEraThemes: false,
-  landingArtistPhotos: false,
+  landingArtistPhotos: true,
 };
 
 const SettingsContext = createContext<SettingsContextType>({
