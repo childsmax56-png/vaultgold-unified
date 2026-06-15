@@ -233,7 +233,15 @@ export const onRequestGet: PagesFunction = async (context) => {
       text = fallbackText;
     }
 
-    const rows = parseCSV(text);
+    // Some CSVs have a DISCLAIMER row before the real header (e.g. wolfgold).
+    // Strip any leading lines until we hit the row that starts with 'Era,'.
+    const normalizedText = (() => {
+      const lines = text.split('\n');
+      const headerIdx = lines.findIndex(l => l.trimStart().startsWith('Era,') || l.trimStart().startsWith('"Era"'));
+      return headerIdx > 0 ? lines.slice(headerIdx).join('\n') : text;
+    })();
+
+    const rows = parseCSV(normalizedText);
 
     // Detect which column holds the song/era name — different CSVs use different headers.
     // Some use 'Name\n(Join The Discord!)', others use 'Name\n(Check out the Tracker website!)', etc.
