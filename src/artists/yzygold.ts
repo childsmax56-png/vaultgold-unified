@@ -280,6 +280,12 @@ export const yzygoldConfig: ArtistConfig = {
   },
 
   ERA_THEMES: {
+    "The College Dropout": {
+      topBanner: "/yzygold/TopBannerTCD.png",
+      bottomBanner: "/yzygold/BottomBannerTCD.png",
+      miniPlayer: "/yzygold/MiniPlayerTCD.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerTCD.png",
+    },
     "Graduation": {
       topBanner: "/yzygold/TopBannerGraduation.png",
       bottomBanner: "/yzygold/BottomBannerGraduation.png",
