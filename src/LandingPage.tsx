@@ -567,16 +567,7 @@ export function LandingPage() {
           <ArtistCard key={config.slug} config={config} showPhoto={showPhotos} />
         ))}
 
-        {/* WOLFgold — external Google Sheet */}
-        <ExternalCard
-          href="https://docs.google.com/spreadsheets/d/1CMwzf-YO7yoNr5d-dsAOGFfHnYfGwXSFh1glniNlrck/edit?gid=1246511510#gid=1246511510"
-          label="Tyler, the Creator"
-          logoSrc="/logos/wolfgold.png"
-          logoAlt="WOLFgold"
-          cardLetter="WLF"
-          accent="#e53e3e"
-          photoSrc={showPhotos ? '/artists/tyler.webp' : undefined}
-        />
+        {/* WOLFgold is now a full tracker — card rendered via ARTIST_LIST above */}
 
         {/* Juicegold — external Google Sheet */}
         <ExternalCard
