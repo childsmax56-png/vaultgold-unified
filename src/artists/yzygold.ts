@@ -10,7 +10,7 @@ export const yzygoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM',
   HARDCODED_SHEET_GID: '1385926980',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM/export?format=csv&gid=1385926980',
   hasYeditsTab: true,
   hasCompsTab: false,
   accentColor: '#C9A224',
