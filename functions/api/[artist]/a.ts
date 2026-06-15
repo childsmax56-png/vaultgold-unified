@@ -240,12 +240,16 @@ export const onRequestGet: PagesFunction = async (context) => {
     const NAME_KEY = rows.length > 0
       ? (Object.keys(rows[0]).find(k => k === 'Name\n(Join The Discord!)')
         ?? Object.keys(rows[0]).find(k => k.startsWith('Name'))
+        ?? Object.keys(rows[0]).find(k => k.startsWith('Title'))
         ?? 'Name')
       : 'Name';
 
-    // Similarly detect the Notes column.
+    // Similarly detect the Notes/Info column.
     const NOTES_KEY = rows.length > 0
-      ? (Object.keys(rows[0]).find(k => k === 'Notes') ?? Object.keys(rows[0]).find(k => k.startsWith('Notes')) ?? 'Notes')
+      ? (Object.keys(rows[0]).find(k => k === 'Notes')
+        ?? Object.keys(rows[0]).find(k => k.startsWith('Notes'))
+        ?? Object.keys(rows[0]).find(k => k === 'Info')
+        ?? 'Notes')
       : 'Notes';
 
     const eras: Record<string, any> = {};
@@ -308,10 +312,10 @@ export const onRequestGet: PagesFunction = async (context) => {
           name,
           extra: extra ?? undefined,
           description: row[NOTES_KEY] ?? '',
-          track_length: row['Track Length'] ?? '',
+          track_length: row['Track Length'] ?? row['Length'] ?? '',
           file_date: row['File Date'] ?? row['Origin'] ?? '',
           leak_date: row['Leak Date'] ?? '',
-          available_length: row['Available Length'] ?? row['Portion'] ?? '',
+          available_length: row['Available Length'] ?? row['Availability'] ?? row['Portion'] ?? '',
           quality: row['Quality'] ?? '',
           url: links[0] ?? '',
           urls: links,
