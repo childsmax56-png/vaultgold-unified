@@ -125,27 +125,10 @@ function findMatch(trackName: string, albumEra: string, idx: SongIndexes): SongM
   const normTrack = normalizeName(trackName);
   if (!normTrack) return null;
 
-  // 1. Era-specific search (preferred categories sorted first)
+  // Search only within the matching era — preferred (⭐/✨) songs sorted first
   const eraCandidates = idx.byEra.get(normalizeName(albumEra)) || [];
   for (const c of eraCandidates) {
     if (namesMatch(normTrack, normalizeName(c.song.name))) return c;
-  }
-
-  // 2. Exact global name lookup — O(1), returns best version across all eras
-  const exact = idx.byName.get(normTrack);
-  if (exact) return exact;
-
-  // 3. Prefix scan over byName keys — only if we haven't matched yet
-  if (normTrack.length >= 5) {
-    let best: SongMatch | null = null;
-    for (const [key, match] of idx.byName) {
-      if (namesMatch(normTrack, key)) {
-        if (!best || (!isPreferredSong(best.song) && isPreferredSong(match.song))) {
-          best = match;
-        }
-      }
-    }
-    if (best) return best;
   }
 
   return null;
