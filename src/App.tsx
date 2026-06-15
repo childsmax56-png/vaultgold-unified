@@ -151,6 +151,18 @@ export default function App() {
   // Read artist config at component render time (after setActiveConfig was called by ArtistRoute)
   const { STORAGE_PREFIX, HARDCODED_SHEET_ID, HARDCODED_SHEET_GID, SHEET_URL_UNRELEASED, SHEET_URL_RECENT, SHEET_URL_RECENT_PRODUCTION, ERA_MAPPINGS, CUSTOM_ALBUM_INFO, slug: ARTIST_SLUG } = activeConfig;
   const { settings } = useSettings();
+
+  // When running under /:artist/ prefix on a unified host (e.g. unvaulted.cc/yzygold/),
+  // window.location.pathname includes the artist segment. Capture this once so all path
+  // comparisons and pushState calls work correctly regardless of deployment.
+  const artistUrlPrefix = useRef((() => {
+    const p = `/${ARTIST_SLUG}`;
+    const loc = window.location.pathname;
+    return (loc === p || loc.startsWith(p + '/')) ? p : '';
+  })()).current;
+  // relPath strips the artist prefix; absPath adds it back for pushState/replaceState.
+  const relPath = (abs: string) => artistUrlPrefix && abs.startsWith(artistUrlPrefix) ? abs.slice(artistUrlPrefix.length) || '/' : abs;
+  const absPath = (rel: string) => rel === '/' ? (artistUrlPrefix || '/') : artistUrlPrefix + rel;
   const [data, setData] = useState<TrackerData | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadingFading, setLoadingFading] = useState(false);
@@ -203,7 +215,7 @@ export default function App() {
   });
 
   const [activeCategory, setActiveCategory] = useState<Category>(() => {
-    const path = window.location.pathname;
+    const path = relPath(window.location.pathname);
     if (path.startsWith('/art')) return 'art';
     if (path.startsWith('/stems')) return 'stems';
     if (path.startsWith('/misc')) return 'misc';
@@ -276,7 +288,7 @@ export default function App() {
 
   const [selectedAlbum, setSelectedAlbum] = useState<Era | null>(null);
   const [selectedContributor, setSelectedContributor] = useState<string | null>(() => {
-    const path = window.location.pathname;
+    const path = relPath(window.location.pathname);
     if (path.startsWith('/contributor/')) return decodeURIComponent(path.split('/contributor/')[1]);
     return null;
   });
@@ -1051,7 +1063,7 @@ export default function App() {
         }
         setLoading(false);
 
-        const path = window.location.pathname;
+        const path = relPath(window.location.pathname);
         const hash = window.location.hash;
         if (path.startsWith('/art') || hash.startsWith('#art')) {
           setActiveCategory('art');
@@ -1079,7 +1091,7 @@ export default function App() {
           if (match) {
             setSelectedAlbum({ ...match, fileInfo: CUSTOM_ALBUM_INFO[match.name] || match.fileInfo, image: CUSTOM_IMAGES[match.name] || match.image });
           } else {
-            window.history.replaceState({ category: 'tracklists' }, '', '/tracklists');
+            window.history.replaceState({ category: 'tracklists' }, '', absPath('/tracklists'));
           }
         } else if (path.startsWith('/tracklists')) {
           setActiveCategory('tracklists');
@@ -1095,12 +1107,12 @@ export default function App() {
           if (match) {
             setSelectedAlbum({ ...match, fileInfo: CUSTOM_ALBUM_INFO[match.name] || match.fileInfo, image: CUSTOM_IMAGES[match.name] || match.image });
           } else {
-            window.history.replaceState({ category: 'related' }, '', '/related');
+            window.history.replaceState({ category: 'related' }, '', absPath('/related'));
           }
         } else if (path.startsWith('/album/')) {
           const slug = path.split('/album/')[1];
           if (slug === 'nasir' || slug === 'ktse' || slug === 'never stop' || slug === 'daytona' || slug === 'the elementary school dropout') {
-            window.history.replaceState({ album: null }, '', '/');
+            window.history.replaceState({ album: null }, '', absPath('/'));
             return;
           }
           const erasValues = Object.values(json.eras || {}) as Era[];
@@ -1428,104 +1440,104 @@ export default function App() {
 
   useEffect(() => {
     if (loading) return;
-    const currentPath = window.location.pathname;
+    const currentPath = relPath(window.location.pathname);
 
     if (activeCategory === 'art') {
       if (!currentPath.startsWith('/art')) {
-        window.history.pushState({ category: 'art' }, '', '/art');
+        window.history.pushState({ category: 'art' }, '', absPath('/art'));
       }
     } else if (activeCategory === 'stems') {
       if (!currentPath.startsWith('/stems')) {
-        window.history.pushState({ category: 'stems' }, '', '/stems');
+        window.history.pushState({ category: 'stems' }, '', absPath('/stems'));
       }
     } else if (activeCategory === 'misc') {
       if (!currentPath.startsWith('/misc')) {
-        window.history.pushState({ category: 'misc' }, '', '/misc');
+        window.history.pushState({ category: 'misc' }, '', absPath('/misc'));
       }
     } else if (activeCategory === 'fakes') {
       if (!currentPath.startsWith('/fakes')) {
-        window.history.pushState({ category: 'fakes' }, '', '/fakes');
+        window.history.pushState({ category: 'fakes' }, '', absPath('/fakes'));
       }
     } else if (activeCategory === 'released') {
       if (!currentPath.startsWith('/released')) {
-        window.history.pushState({ category: 'released' }, '', '/released');
+        window.history.pushState({ category: 'released' }, '', absPath('/released'));
       }
     } else if (activeCategory === 'recent') {
       if (!currentPath.startsWith('/recent') || currentPath.startsWith('/recent-production')) {
-        window.history.pushState({ category: 'recent' }, '', '/recent');
+        window.history.pushState({ category: 'recent' }, '', absPath('/recent'));
       }
     } else if (activeCategory === 'recent-production') {
       if (!currentPath.startsWith('/recent-production')) {
-        window.history.pushState({ category: 'recent-production' }, '', '/recent-production');
+        window.history.pushState({ category: 'recent-production' }, '', absPath('/recent-production'));
       }
     } else if (activeCategory === 'settings') {
       if (!currentPath.startsWith('/settings')) {
-        window.history.pushState({ category: 'settings' }, '', '/settings');
+        window.history.pushState({ category: 'settings' }, '', absPath('/settings'));
       }
     } else if (activeCategory === 'history') {
       if (!currentPath.startsWith('/history')) {
-        window.history.pushState({ category: 'history' }, '', '/history');
+        window.history.pushState({ category: 'history' }, '', absPath('/history'));
       }
     } else if (activeCategory === 'related') {
       if (selectedAlbum) {
         const newPath = `/related/${createSlug(selectedAlbum.name)}`;
         if (currentPath !== newPath && !currentPath.includes('?song=')) {
-          window.history.pushState({ album: selectedAlbum.name, category: 'related' }, '', newPath);
+          window.history.pushState({ album: selectedAlbum.name, category: 'related' }, '', absPath(newPath));
         }
       } else {
         if (currentPath !== '/related') {
-          window.history.pushState({ category: 'related' }, '', '/related');
+          window.history.pushState({ category: 'related' }, '', absPath('/related'));
         }
       }
     } else if (activeCategory === 'tracklists') {
       if (selectedAlbum) {
         const newPath = `/tracklists/${createSlug(selectedAlbum.name)}`;
         if (currentPath !== newPath && !currentPath.includes('?song=')) {
-          window.history.pushState({ album: selectedAlbum.name, category: 'tracklists' }, '', newPath);
+          window.history.pushState({ album: selectedAlbum.name, category: 'tracklists' }, '', absPath(newPath));
         }
       } else {
         if (currentPath !== '/tracklists') {
-          window.history.pushState({ category: 'tracklists' }, '', '/tracklists');
+          window.history.pushState({ category: 'tracklists' }, '', absPath('/tracklists'));
         }
       }
     } else if (activeCategory === 'videos') {
       if (!currentPath.startsWith('/videos')) {
-        window.history.pushState({ category: 'videos' }, '', '/videos');
+        window.history.pushState({ category: 'videos' }, '', absPath('/videos'));
       }
     } else if (activeCategory === 'comps') {
       if (!currentPath.startsWith('/comps')) {
-        window.history.pushState({ category: 'comps' }, '', '/comps');
+        window.history.pushState({ category: 'comps' }, '', absPath('/comps'));
       }
     } else if (activeCategory === 'yedits') {
       if (!currentPath.startsWith('/yedits')) {
-        window.history.pushState({ category: 'yedits' }, '', '/yedits');
+        window.history.pushState({ category: 'yedits' }, '', absPath('/yedits'));
       }
     } else if (activeCategory === 'subalbums') {
       if (!currentPath.startsWith('/subalbums')) {
-        window.history.pushState({ category: 'subalbums' }, '', '/subalbums');
+        window.history.pushState({ category: 'subalbums' }, '', absPath('/subalbums'));
       }
     } else if (activeCategory === 'concerts') {
       if (!currentPath.startsWith('/concerts')) {
-        window.history.pushState({ category: 'concerts' }, '', '/concerts');
+        window.history.pushState({ category: 'concerts' }, '', absPath('/concerts'));
       }
     } else if (activeCategory === 'production') {
       if (!currentPath.startsWith('/production')) {
-        window.history.pushState({ category: 'production' }, '', '/production');
+        window.history.pushState({ category: 'production' }, '', absPath('/production'));
       }
     } else if (activeCategory === 'contributor' && selectedContributor) {
       const newPath = `/contributor/${encodeURIComponent(selectedContributor)}`;
       if (currentPath !== newPath) {
-        window.history.pushState({ category: 'contributor', contributor: selectedContributor }, '', newPath);
+        window.history.pushState({ category: 'contributor', contributor: selectedContributor }, '', absPath(newPath));
       }
     } else {
       if (selectedAlbum) {
         const newPath = `/album/${createSlug(selectedAlbum.name)}`;
         if (currentPath !== newPath && !currentPath.includes('?song=')) {
-          window.history.pushState({ album: selectedAlbum.name }, '', newPath);
+          window.history.pushState({ album: selectedAlbum.name }, '', absPath(newPath));
         }
       } else {
         if (currentPath !== '/') {
-          window.history.pushState({ album: null }, '', '/');
+          window.history.pushState({ album: null }, '', absPath('/'));
         }
       }
     }
@@ -1533,7 +1545,7 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname;
+      const path = relPath(window.location.pathname);
       if (path === '/') {
         setSelectedAlbum(null);
         setActiveCategory('music');

@@ -5,6 +5,7 @@ import { SiYoutube } from 'react-icons/si';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
 import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES } from '../utils';
+import { activeConfig } from '../artists/activeConfig';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
@@ -172,17 +173,27 @@ export function findSamplesForSong(songName: string, eraName: string, samplesDat
   });
 }
 
+// Returns the artist URL prefix (e.g. "/yzygold") when running under /:artist/ on a
+// unified host, or "" when running at the root of a standalone deployment.
+function getArtistUrlPrefix(): string {
+  const slug = activeConfig.slug;
+  if (!slug) return '';
+  const prefix = `/${slug}`;
+  return (window.location.pathname === prefix || window.location.pathname.startsWith(prefix + '/')) ? prefix : '';
+}
+
 export const handleShareSilent = (song: Song, era: Era): string => {
   let baseUrl = window.location.origin + window.location.pathname;
 
   if ((era.name === "Recent Leaks" || era.name === "Favorites") && song.realEra) {
     const isHidden = HIDDEN_ALBUMS.includes(song.realEra.name);
-    baseUrl = window.location.origin + (isHidden ? "/related/" : "/album/") + createSlug(song.realEra.name);
+    const prefix = getArtistUrlPrefix();
+    baseUrl = window.location.origin + prefix + (isHidden ? "/related/" : "/album/") + createSlug(song.realEra.name);
   }
 
   const allSongsInEra = Object.values(era.data || {}).flat();
   const songParam = getSongSlug(song, allSongsInEra);
-  
+
   return `${baseUrl}?song=${songParam}`;
 };
 
@@ -221,7 +232,8 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
     if ((era.name === 'Recent Leaks' || era.name === 'Favorites') && (song as any).realEra) {
       const isHidden = HIDDEN_ALBUMS.includes((song as any).realEra.name);
-      baseUrl = window.location.origin + (isHidden ? '/related/' : '/album/') + createSlug((song as any).realEra.name);
+      const prefix = getArtistUrlPrefix();
+      baseUrl = window.location.origin + prefix + (isHidden ? '/related/' : '/album/') + createSlug((song as any).realEra.name);
     }
 
     const allSongsInEra = Object.values(era.data || {}).flat();
