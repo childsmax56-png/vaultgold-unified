@@ -615,6 +615,15 @@ export default function App() {
     return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv${gid ? `&gid=${gid}` : ''}`;
   }
 
+  function injectMissingEraStubs(targetJson: any) {
+    if (!targetJson.eras) targetJson.eras = {};
+    Object.keys(ALBUM_RELEASE_DATES).forEach(eraName => {
+      if (!targetJson.eras[eraName]) {
+        targetJson.eras[eraName] = { name: eraName, data: { 'Unreleased Tracks': [] } };
+      }
+    });
+  }
+
   function applyLocalSongs(targetJson: any, localData: any) {
     if (!Array.isArray(localData)) return;
     localData.forEach((item: any) => {
@@ -890,6 +899,7 @@ export default function App() {
           applyTrackerSheetSongs(nextJson, sheetsRes.data);
           applyTrackerSheetSongs(nextJson, recentTabRes.data);
           applyTrackerSheetSongs(nextJson, recentRes.data);
+          injectMissingEraStubs(nextJson);
           setData(nextJson);
         } else {
           const baseJson = JSON.parse(JSON.stringify(json));
@@ -897,6 +907,7 @@ export default function App() {
           applyTrackerSheetSongs(baseJson, sheetsRes.data);
           applyTrackerSheetSongs(baseJson, recentTabRes.data);
           applyTrackerSheetSongs(baseJson, recentRes.data);
+          injectMissingEraStubs(baseJson);
           setData(baseJson);
         }
         // Map recent.csv rows
