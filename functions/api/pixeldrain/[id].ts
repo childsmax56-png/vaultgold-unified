@@ -7,26 +7,32 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   if (!id) return new Response('Missing file ID', { status: 400 });
 
   const apiKey = context.env.PIXELDRAIN_API_KEY ?? '';
-  const headers: Record<string, string> = {};
+  const upstreamHeaders: Record<string, string> = {};
   if (apiKey) {
-    headers['Authorization'] = 'Basic ' + btoa(':' + apiKey);
+    upstreamHeaders['Authorization'] = 'Basic ' + btoa(':' + apiKey);
   }
 
-  const upstream = await fetch(`https://pixeldrain.com/api/file/${id}`, { headers });
+  // Forward Range header so the browser can seek and the response is 206
+  const range = context.request.headers.get('Range');
+  if (range) upstreamHeaders['Range'] = range;
 
-  if (!upstream.ok) {
+  const upstream = await fetch(`https://pixeldrain.com/api/file/${id}`, {
+    headers: upstreamHeaders,
+  });
+
+  if (!upstream.ok && upstream.status !== 206) {
     return new Response('Upstream error', { status: upstream.status });
   }
 
   const responseHeaders = new Headers();
   responseHeaders.set('Access-Control-Allow-Origin', '*');
+  responseHeaders.set('Accept-Ranges', 'bytes');
   responseHeaders.set('Content-Type', upstream.headers.get('Content-Type') ?? 'audio/mpeg');
-  const cl = upstream.headers.get('Content-Length');
-  if (cl) responseHeaders.set('Content-Length', cl);
-  const cr = upstream.headers.get('Content-Range');
-  if (cr) responseHeaders.set('Content-Range', cr);
-  const ac = upstream.headers.get('Accept-Ranges');
-  if (ac) responseHeaders.set('Accept-Ranges', ac);
+
+  for (const h of ['Content-Length', 'Content-Range', 'Content-Disposition']) {
+    const v = upstream.headers.get(h);
+    if (v) responseHeaders.set(h, v);
+  }
 
   return new Response(upstream.body, {
     status: upstream.status,
@@ -37,13 +43,17 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 export const onRequestHead: PagesFunction<Env> = async (context) => {
   const id = (context.params as Record<string, string>).id ?? '';
   const apiKey = context.env.PIXELDRAIN_API_KEY ?? '';
-  const headers: Record<string, string> = {};
-  if (apiKey) headers['Authorization'] = 'Basic ' + btoa(':' + apiKey);
+  const upstreamHeaders: Record<string, string> = {};
+  if (apiKey) upstreamHeaders['Authorization'] = 'Basic ' + btoa(':' + apiKey);
 
-  const upstream = await fetch(`https://pixeldrain.com/api/file/${id}`, { method: 'HEAD', headers });
+  const upstream = await fetch(`https://pixeldrain.com/api/file/${id}`, {
+    method: 'HEAD',
+    headers: upstreamHeaders,
+  });
 
   const responseHeaders = new Headers();
   responseHeaders.set('Access-Control-Allow-Origin', '*');
+  responseHeaders.set('Accept-Ranges', 'bytes');
   responseHeaders.set('Content-Type', upstream.headers.get('Content-Type') ?? 'audio/mpeg');
   const cl = upstream.headers.get('Content-Length');
   if (cl) responseHeaders.set('Content-Length', cl);
