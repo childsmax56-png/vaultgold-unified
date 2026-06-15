@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, DollarSign, LogIn, LogOut, Settings, Dice5, X, ChevronDown, GanttChart, LayoutGrid, UserPlus } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
+import { Search, DollarSign, LogIn, LogOut, Settings, Dice5, X, ChevronDown, GanttChart, LayoutGrid, UserPlus, Share2, Check } from 'lucide-react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { SiDiscord, SiReddit, SiTiktok } from 'react-icons/si';
 import { FilterMenu } from './FilterMenu';
 import { SearchFilters } from '../types';
@@ -56,6 +56,14 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
   const { settings } = useSettings();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
+
+  const handleShareTracker = useCallback(() => {
+    const url = `${window.location.origin}/${activeConfig.slug}`;
+    navigator.clipboard.writeText(url);
+    setShareCopied(true);
+    setTimeout(() => setShareCopied(false), 2000);
+  }, []);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
   const desktopDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -283,6 +291,9 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
             ))
           )}
           <div className="flex items-center gap-4 w-full border-t border-white/10 pt-3 mt-1">
+            <button onClick={handleShareTracker} className="flex items-center p-2.5 rounded-full transition-all bg-white/5 text-white/50 hover:bg-white/10 hover:text-white" title="Copy tracker link">
+              {shareCopied ? <Check className="w-5 h-5 text-green-400" /> : <Share2 className="w-5 h-5" />}
+            </button>
             <button onClick={() => handleCategoryClick('settings')} className={`flex items-center p-2.5 rounded-full transition-all bg-white/5 text-white/50 hover:bg-white/10 hover:text-white ${activeCategory === 'settings' ? 'text-white bg-white/10' : ''}`}>
                <Settings className="w-5 h-5" />
             </button>
@@ -493,6 +504,13 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
         >
           <img src="https://i.ibb.co/TMFsFsSp/YE-I-01.png" alt="YE-I" className="w-4 h-4 rounded-full object-cover" />
           <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">YE-I</span>
+        </button>
+        <button
+          onClick={handleShareTracker}
+          className="flex items-center justify-center p-2 rounded-full transition-all duration-300 bg-white/5 text-white/50 hover:bg-white/10 hover:text-white hover:scale-110"
+          title="Copy tracker link"
+        >
+          {shareCopied ? <Check className="w-5 h-5 text-green-400" /> : <Share2 className="w-5 h-5" />}
         </button>
         <button
           onClick={() => {

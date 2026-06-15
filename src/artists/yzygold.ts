@@ -146,6 +146,7 @@ export const yzygoldConfig: ArtistConfig = {
     "NEVER STOP": "06/27/2025",
     "IN A PERFECT WORLD": "06/22/2025",
     "BULLY [V2]": "03/28/2026",
+    "Ongoing": "??/??/????",
     "YE-I": "10/16/2023",
   },
 
