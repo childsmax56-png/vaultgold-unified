@@ -61,6 +61,9 @@ function namesMatch(a: string, b: string): boolean {
   if (a === b) return true;
   if (a.length >= 5 && b.startsWith(a)) return true;
   if (b.length >= 5 && a.startsWith(b)) return true;
+  // Also match when one name is a substring of the other (catches "Early - Song Name" etc.)
+  if (a.length >= 6 && b.includes(a)) return true;
+  if (b.length >= 6 && a.includes(b)) return true;
   return false;
 }
 
