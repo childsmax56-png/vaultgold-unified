@@ -1657,7 +1657,7 @@ export default function App() {
       return `https://api.pillows.su/api/get/${id}`;
     } else if (rawUrl.includes('pixeldrain.com/u/')) {
       const id = rawUrl.split('/u/')[1];
-      return `https://pixeldrain.com/api/file/${id}`;
+      return `/api/pixeldrain/${id}`;
     } else if (rawUrl.includes('drive.google.com')) {
       const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
@@ -1713,7 +1713,7 @@ export default function App() {
           streamUrl = `https://api.pillows.su/api/get/${id}`;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1];
-          streamUrl = `https://pixeldrain.com/api/file/${id}`;
+          streamUrl = `/api/pixeldrain/${id}`;
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
           if (m) streamUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
@@ -1997,7 +1997,7 @@ export default function App() {
         const directLink = rawSongUrl.includes('pillows.su/f/')
           ? `https://api.pillows.su/api/download/${rawSongUrl.split('/f/')[1]}`
           : rawSongUrl.includes('pixeldrain.com/u/')
-            ? `https://pixeldrain.com/api/file/${rawSongUrl.split('/u/')[1]}?download`
+            ? `/api/pixeldrain/${rawSongUrl.split('/u/')[1]}`
             : rawSongUrl.includes('drive.google.com')
               ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
               : rawSongUrl;
