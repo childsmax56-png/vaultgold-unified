@@ -66,10 +66,12 @@ function namesMatch(a: string, b: string): boolean {
 
 interface SongMatch { song: Song; era: Era; category: string }
 
-const PREFERRED_CATEGORIES = new Set(['best of', 'special']);
+// ⭐ = Best Of, ✨ = Special — these emoji prefix song names across all trackers
+const PREFERRED_EMOJIS = ['⭐', '✨'];
 
-function isPreferred(category: string): boolean {
-  return PREFERRED_CATEGORIES.has(category.toLowerCase());
+function isPreferredSong(song: Song): boolean {
+  const name = song.name || '';
+  return PREFERRED_EMOJIS.some(e => name.includes(e));
 }
 
 interface SongIndexes {
@@ -98,18 +100,18 @@ function buildIndexes(eras: Era[]): SongIndexes {
         const normSong = normalizeName(song.name);
         if (normSong) {
           const existing = byName.get(normSong);
-          // Prefer Best Of / Special over whatever was stored first
-          if (!existing || (!isPreferred(existing.category) && isPreferred(category))) {
+          // Prefer Best Of (⭐) / Special (✨) over whatever was stored first
+          if (!existing || (!isPreferredSong(existing.song) && isPreferredSong(song))) {
             byName.set(normSong, match);
           }
         }
       }
     }
 
-    // Sort so preferred categories come first within each era
+    // Sort so preferred songs come first within each era
     eraMatches.sort((a, b) => {
-      const ap = isPreferred(a.category) ? 0 : 1;
-      const bp = isPreferred(b.category) ? 0 : 1;
+      const ap = isPreferredSong(a.song) ? 0 : 1;
+      const bp = isPreferredSong(b.song) ? 0 : 1;
       return ap - bp;
     });
 
@@ -138,7 +140,7 @@ function findMatch(trackName: string, albumEra: string, idx: SongIndexes): SongM
     let best: SongMatch | null = null;
     for (const [key, match] of idx.byName) {
       if (namesMatch(normTrack, key)) {
-        if (!best || (!isPreferred(best.category) && isPreferred(match.category))) {
+        if (!best || (!isPreferredSong(best.song) && isPreferredSong(match.song))) {
           best = match;
         }
       }
