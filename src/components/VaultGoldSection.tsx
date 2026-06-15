@@ -7,6 +7,21 @@ const API = 'https://unvaulted.cc';
 const TOKEN_KEY = 'vg_token';
 const USER_KEY = 'vg_user';
 
+// slug → localStorage prefix for every tracker
+const TRACKER_PREFIXES: Record<string, string> = {
+  yzygold: 'yzygold_',
+  vampgold: 'vampgold_',
+  kdotgold: 'kdotgold_',
+  drizzygold: 'drizzygold_',
+  xgold: 'xgold_',
+  twizzygold: 'twizzygold_',
+  uzigold: 'uzigold_',
+  pushagold: 'pushagold_',
+  shadygold: 'shadygold_',
+  cactigold: 'cactigold_',
+  dregold: 'dregold_',
+};
+
 interface VGUser { id: string; username: string; email: string; }
 interface VGLinked {
   spotify?: { access_token: string; refresh_token: string; expires_at: number; username: string | null };
@@ -139,20 +154,27 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
       synced.push('Last.fm');
     }
 
-    // Pull favorites + playlists from cloud
-    const { slug, STORAGE_PREFIX } = activeConfig;
-    const dataRes = await fetch(`${API}/api/sync/${slug}`, {
+    // Pull favorites + playlists for ALL trackers in one call
+    const dataRes = await fetch(`${API}/api/sync`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (dataRes.ok) {
-      const userData = await dataRes.json() as {
+      const allData = await dataRes.json() as Record<string, {
         favorites: { songName: string; eraName: string; url: string }[];
         playlists: { id: string; name: string; cover?: string; songs: { songName: string; eraName: string; url: string }[] }[];
-      };
-      if (userData.favorites?.length || userData.playlists?.length) {
-        localStorage.setItem(`${STORAGE_PREFIX}favorite_keys`, JSON.stringify(userData.favorites ?? []));
-        localStorage.setItem(`${STORAGE_PREFIX}playlists`, JSON.stringify(userData.playlists ?? []));
-        synced.push('data');
+      }>;
+      let totalFavs = 0;
+      let totalPls = 0;
+      for (const [trackerId, data] of Object.entries(allData)) {
+        const prefix = TRACKER_PREFIXES[trackerId];
+        if (!prefix) continue;
+        localStorage.setItem(`${prefix}favorite_keys`, JSON.stringify(data.favorites ?? []));
+        localStorage.setItem(`${prefix}playlists`, JSON.stringify(data.playlists ?? []));
+        totalFavs += data.favorites?.length ?? 0;
+        totalPls += data.playlists?.length ?? 0;
+      }
+      if (totalFavs > 0 || totalPls > 0) {
+        synced.push(`${totalFavs} favorite${totalFavs !== 1 ? 's' : ''} & ${totalPls} playlist${totalPls !== 1 ? 's' : ''}`);
         window.dispatchEvent(new CustomEvent('vg-data-synced'));
       }
     }
