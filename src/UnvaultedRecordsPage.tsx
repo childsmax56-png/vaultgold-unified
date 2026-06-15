@@ -23,7 +23,7 @@ const ALBUMS = [
     streamUrl: 'https://untitled.stream/library/project/bSnHBgkbVlvZtjb1kPrs8',
     tracks: [
       { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'YZY Sam',            src: '/unvaulted-records/audio/sisters-and-brothers.m4a' },
-      { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKER)',                 artist: 'ciatanner',           src: '/unvaulted-records/audio/king-of-soul.wav' },
+      { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKER)',                 artist: 'ciatanner',           src: '/unvaulted-records/audio/king-of-soul.m4a' },
       { n: 3,  title: 'BABY I TRIED (feat. FROMDABUNKA & Sheffmade)',      artist: 'ciatanner',           src: '/unvaulted-records/audio/baby-i-tried.mp3' },
       { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'YZY Sam, ciatanner',      src: '/unvaulted-records/audio/alive.mp3' },
       { n: 5,  title: 'MAGAZINES',                                          artist: 'YZY Sam',            src: '/unvaulted-records/audio/magazines.m4a' },
