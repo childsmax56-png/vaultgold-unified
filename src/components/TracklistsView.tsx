@@ -64,12 +64,18 @@ function namesMatch(a: string, b: string): boolean {
   return false;
 }
 
-interface SongMatch { song: Song; era: Era }
+interface SongMatch { song: Song; era: Era; category: string }
+
+const PREFERRED_CATEGORIES = new Set(['best of', 'special']);
+
+function isPreferred(category: string): boolean {
+  return PREFERRED_CATEGORIES.has(category.toLowerCase());
+}
 
 interface SongIndexes {
-  // era key → songs in that era (playable only)
+  // era key → songs in that era (playable only), preferred categories first
   byEra: Map<string, SongMatch[]>;
-  // exact normalized name → first playable match
+  // exact normalized name → best playable match (preferred > first)
   byName: Map<string, SongMatch>;
 }
 
@@ -81,20 +87,31 @@ function buildIndexes(eras: Era[]): SongIndexes {
     const eraKey = normalizeName(era.name);
     const eraMatches: SongMatch[] = [];
 
-    for (const songs of Object.values(era.data || {})) {
+    for (const [category, songs] of Object.entries(era.data || {})) {
       for (const song of songs as Song[]) {
         const rawUrl = song.url || (song.urls?.[0]) || '';
         if (isSongNotAvailable(song, rawUrl) || !rawUrl) continue;
 
-        const match: SongMatch = { song, era };
+        const match: SongMatch = { song, era, category };
         eraMatches.push(match);
 
         const normSong = normalizeName(song.name);
-        if (normSong && !byName.has(normSong)) {
-          byName.set(normSong, match);
+        if (normSong) {
+          const existing = byName.get(normSong);
+          // Prefer Best Of / Special over whatever was stored first
+          if (!existing || (!isPreferred(existing.category) && isPreferred(category))) {
+            byName.set(normSong, match);
+          }
         }
       }
     }
+
+    // Sort so preferred categories come first within each era
+    eraMatches.sort((a, b) => {
+      const ap = isPreferred(a.category) ? 0 : 1;
+      const bp = isPreferred(b.category) ? 0 : 1;
+      return ap - bp;
+    });
 
     if (eraMatches.length) byEra.set(eraKey, eraMatches);
   }
@@ -106,22 +123,27 @@ function findMatch(trackName: string, albumEra: string, idx: SongIndexes): SongM
   const normTrack = normalizeName(trackName);
   if (!normTrack) return null;
 
-  // 1. Era-specific search
+  // 1. Era-specific search (preferred categories sorted first)
   const eraCandidates = idx.byEra.get(normalizeName(albumEra)) || [];
   for (const c of eraCandidates) {
     if (namesMatch(normTrack, normalizeName(c.song.name))) return c;
   }
 
-  // 2. Exact global name lookup — O(1)
+  // 2. Exact global name lookup — O(1), returns best version across all eras
   const exact = idx.byName.get(normTrack);
   if (exact) return exact;
 
   // 3. Prefix scan over byName keys — only if we haven't matched yet
-  //    Limit to first 5 chars prefix to keep it fast
   if (normTrack.length >= 5) {
+    let best: SongMatch | null = null;
     for (const [key, match] of idx.byName) {
-      if (namesMatch(normTrack, key)) return match;
+      if (namesMatch(normTrack, key)) {
+        if (!best || (!isPreferred(best.category) && isPreferred(match.category))) {
+          best = match;
+        }
+      }
     }
+    if (best) return best;
   }
 
   return null;
