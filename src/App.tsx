@@ -1760,6 +1760,7 @@ export default function App() {
       if (audioRef.current) {
         if (streamUrl.includes('pixeldrain.com')) {
           audioRef.current.removeAttribute('crossorigin');
+          console.log('[pixeldrain] Setting src:', streamUrl);
         } else {
           audioRef.current.setAttribute('crossorigin', 'anonymous');
         }
@@ -2812,6 +2813,11 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         onPlay={() => setIsPlaying(true)}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
+        onError={(e) => {
+          const el = e.currentTarget;
+          const err = el.error;
+          console.error('Audio element error', err?.code, err?.message, 'src:', el.src, 'crossOrigin:', el.crossOrigin, 'networkState:', el.networkState, 'readyState:', el.readyState);
+        }}
         playsInline
       />
 
