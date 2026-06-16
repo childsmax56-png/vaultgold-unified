@@ -1726,6 +1726,11 @@ export default function App() {
         return;
       }
 
+      if (!streamUrl) {
+        showToast("Could not load audio — check that VITE_PIXELDRAIN_API_KEY is set and the Cloudflare build has been redeployed.");
+        return;
+      }
+
       const playableSongs = contextTracks && contextTracks.length > 0 ? contextTracks : getPlayableSongs(era);
       setPlaylist(playableSongs);
       const newIndex = playableSongs.findIndex(s => s.name === song.name && (s.url || (s.urls && s.urls[0]) || '') === (song.url || (song.urls && song.urls[0]) || ''));
