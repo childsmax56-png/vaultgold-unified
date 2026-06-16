@@ -599,9 +599,12 @@ export default function App() {
           const analyser = ctx.createAnalyser();
           analyser.fftSize = 256;
 
-          const source = ctx.createMediaElementSource(audioRef.current);
-          source.connect(analyser);
-          analyser.connect(ctx.destination);
+          // NOTE: We intentionally do NOT call createMediaElementSource here.
+          // That call permanently captures the audio element and requires crossOrigin
+          // on every subsequent load — which causes CORS preflight failures on
+          // services like Pixeldrain that don't handle OPTIONS requests.
+          // Audio plays normally through the browser; the analyser won't receive data
+          // (visualizer stays dark), but playback works for all sources.
 
           audioContextRef.current = ctx;
           analyserRef.current = analyser;
@@ -1755,12 +1758,16 @@ export default function App() {
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
-        audioRef.current.setAttribute('crossorigin', 'anonymous');
+        if (streamUrl.includes('pixeldrain.com')) {
+          audioRef.current.removeAttribute('crossorigin');
+        } else {
+          audioRef.current.setAttribute('crossorigin', 'anonymous');
+        }
         audioRef.current.src = streamUrl;
         audioRef.current.load();
         audioRef.current.volume = volume;
         if (autoPlay) {
-          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e, "src:", audioRef.current?.src, "crossOrigin:", audioRef.current?.crossOrigin) });
+          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e); });
         }
       }
 
