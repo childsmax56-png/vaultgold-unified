@@ -36,6 +36,8 @@ const ERA_NAME_MAP: Record<string, string> = {
   'Fear of God II: Let Us Pray': 'Fear of God II',
   'King Push – Darkest Before Dawn: The Prelude': 'Darkest Before Dawn',
   'King Push - Darkest Before Dawn: The Prelude': 'Darkest Before Dawn',
+  // wolfgold — header row name differs from song row era name
+  'CALL ME WHEN YOU GET LOST': 'CALL ME IF YOU GET LOST [V1]',
 };
 
 function mapEraName(name: string): string {

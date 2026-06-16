@@ -125,7 +125,6 @@ export const wolfgoldConfig: ArtistConfig = {
     'At Your Own Risk [V2]*': 'At Your Own Risk [V2]',
     'At Your Own Risk*': 'At Your Own Risk',
     'CHROMAKOPIA*': 'CHROMAKOPIA',
-    'Flower Boy': 'Scum Fuck Flower Boy',
   },
 
   hasCompsTab: false,
