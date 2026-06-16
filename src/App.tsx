@@ -1696,15 +1696,19 @@ export default function App() {
           const id = rawUrl.split('/u/')[1]?.split('?')[0];
           const pdUrl = `https://pixeldrain.com/api/file/${id}`;
           const pdKey = import.meta.env.VITE_PIXELDRAIN_API_KEY ?? '';
+          console.log('[pixeldrain] key present:', !!pdKey, 'url:', pdUrl);
           const pdHeaders: HeadersInit = pdKey
             ? { Authorization: 'Basic ' + btoa(':' + pdKey) }
             : {};
           const pdRes = await fetch(pdUrl, { headers: pdHeaders });
+          console.log('[pixeldrain] fetch status:', pdRes.status, pdRes.statusText);
           if (pdRes.ok) {
             const blob = await pdRes.blob();
+            console.log('[pixeldrain] blob size:', blob.size, 'type:', blob.type);
             streamUrl = URL.createObjectURL(blob);
           } else {
-            console.error('[pixeldrain] Fetch failed:', pdRes.status);
+            const errText = await pdRes.text();
+            console.error('[pixeldrain] Fetch failed:', pdRes.status, errText);
           }
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
