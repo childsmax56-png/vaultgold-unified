@@ -1717,13 +1717,14 @@ export default function App() {
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1]?.split('?')[0];
           const pdUrl = `https://pixeldrain.com/api/file/${id}`;
-          console.log('[pixeldrain] Fetching as blob:', pdUrl);
-          const pdRes = await fetch(pdUrl);
-          console.log('[pixeldrain] Response:', pdRes.status, pdRes.headers.get('content-type'));
+          const pdKey = import.meta.env.VITE_PIXELDRAIN_API_KEY ?? '';
+          const pdHeaders: HeadersInit = pdKey
+            ? { Authorization: 'Basic ' + btoa(':' + pdKey) }
+            : {};
+          const pdRes = await fetch(pdUrl, { headers: pdHeaders });
           if (pdRes.ok) {
             const blob = await pdRes.blob();
             streamUrl = URL.createObjectURL(blob);
-            console.log('[pixeldrain] Blob URL created:', streamUrl, 'size:', blob.size);
           } else {
             console.error('[pixeldrain] Fetch failed:', pdRes.status);
           }
