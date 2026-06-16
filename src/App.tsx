@@ -1762,10 +1762,12 @@ export default function App() {
         } else {
           audioRef.current.setAttribute('crossorigin', 'anonymous');
         }
+        audioRef.current.load();
         audioRef.current.src = streamUrl;
+        audioRef.current.load();
         audioRef.current.volume = volume;
         if (autoPlay) {
-          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e) });
+          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e, "src:", audioRef.current?.src, "crossOrigin:", audioRef.current?.crossOrigin) });
         }
       }
 
