@@ -1657,7 +1657,7 @@ export default function App() {
       return `https://api.pillows.su/api/get/${id}`;
     } else if (rawUrl.includes('pixeldrain.com/u/')) {
       const id = rawUrl.split('/u/')[1];
-      return `/api/pixeldrain/${id}`;
+      return `https://pixeldrain.com/api/file/${id}`;
     } else if (rawUrl.includes('drive.google.com')) {
       const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
@@ -1713,7 +1713,9 @@ export default function App() {
           streamUrl = `https://api.pillows.su/api/get/${id}`;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1];
-          streamUrl = `/api/pixeldrain/${id}`;
+          // Use direct URL — Cloudflare Workers get blocked by pixeldrain (cf-worker header).
+          // We remove crossOrigin below so the browser doesn't send CORS preflights.
+          streamUrl = `https://pixeldrain.com/api/file/${id}`;
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
           if (m) streamUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
@@ -1753,6 +1755,13 @@ export default function App() {
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
+        // Pixeldrain blocks CORS preflights (OPTIONS) so we must play without crossOrigin.
+        // Restore it for all other sources so AudioContext works.
+        if (streamUrl.includes('pixeldrain.com')) {
+          audioRef.current.removeAttribute('crossorigin');
+        } else {
+          audioRef.current.setAttribute('crossorigin', 'anonymous');
+        }
         audioRef.current.src = streamUrl;
         audioRef.current.volume = volume;
         if (autoPlay) {
@@ -1997,7 +2006,7 @@ export default function App() {
         const directLink = rawSongUrl.includes('pillows.su/f/')
           ? `https://api.pillows.su/api/download/${rawSongUrl.split('/f/')[1]}`
           : rawSongUrl.includes('pixeldrain.com/u/')
-            ? `/api/pixeldrain/${rawSongUrl.split('/u/')[1]}`
+            ? `https://pixeldrain.com/api/file/${rawSongUrl.split('/u/')[1]}`
             : rawSongUrl.includes('drive.google.com')
               ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
               : rawSongUrl;
