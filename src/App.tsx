@@ -1716,8 +1716,17 @@ export default function App() {
           streamUrl = `https://api.pillows.su/api/get/${id}`;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1]?.split('?')[0];
-          // Cache-bust with timestamp — earlier CORS failures may be cached as errors.
-          streamUrl = `https://pixeldrain.com/api/file/${id}?_=${Date.now()}`;
+          const pdUrl = `https://pixeldrain.com/api/file/${id}`;
+          console.log('[pixeldrain] Fetching as blob:', pdUrl);
+          const pdRes = await fetch(pdUrl);
+          console.log('[pixeldrain] Response:', pdRes.status, pdRes.headers.get('content-type'));
+          if (pdRes.ok) {
+            const blob = await pdRes.blob();
+            streamUrl = URL.createObjectURL(blob);
+            console.log('[pixeldrain] Blob URL created:', streamUrl, 'size:', blob.size);
+          } else {
+            console.error('[pixeldrain] Fetch failed:', pdRes.status);
+          }
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
           if (m) streamUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
