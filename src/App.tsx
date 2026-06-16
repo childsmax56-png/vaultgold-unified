@@ -1755,14 +1755,7 @@ export default function App() {
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
-        // crossOrigin must be set before src. Pixeldrain blocks CORS preflights so
-        // we omit it there; all other sources need it for AudioContext.
-        if (streamUrl.includes('pixeldrain.com')) {
-          audioRef.current.removeAttribute('crossorigin');
-        } else {
-          audioRef.current.setAttribute('crossorigin', 'anonymous');
-        }
-        audioRef.current.load();
+        audioRef.current.setAttribute('crossorigin', 'anonymous');
         audioRef.current.src = streamUrl;
         audioRef.current.load();
         audioRef.current.volume = volume;
