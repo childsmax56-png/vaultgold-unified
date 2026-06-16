@@ -1715,10 +1715,9 @@ export default function App() {
           const id = rawUrl.split('/f/')[1];
           streamUrl = `https://api.pillows.su/api/get/${id}`;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
-          const id = rawUrl.split('/u/')[1];
-          // Use direct URL — Cloudflare Workers get blocked by pixeldrain (cf-worker header).
-          // We remove crossOrigin below so the browser doesn't send CORS preflights.
-          streamUrl = `https://pixeldrain.com/api/file/${id}`;
+          const id = rawUrl.split('/u/')[1]?.split('?')[0];
+          // Cache-bust with timestamp — earlier CORS failures may be cached as errors.
+          streamUrl = `https://pixeldrain.com/api/file/${id}?_=${Date.now()}`;
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
           if (m) streamUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
