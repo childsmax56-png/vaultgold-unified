@@ -1755,8 +1755,8 @@ export default function App() {
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
-        // Pixeldrain blocks CORS preflights (OPTIONS) so we must play without crossOrigin.
-        // Restore it for all other sources so AudioContext works.
+        // crossOrigin must be set before src. Pixeldrain blocks CORS preflights so
+        // we omit it there; all other sources need it for AudioContext.
         if (streamUrl.includes('pixeldrain.com')) {
           audioRef.current.removeAttribute('crossorigin');
         } else {
@@ -2810,7 +2810,6 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         onPlay={() => setIsPlaying(true)}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
-        crossOrigin="anonymous"
         playsInline
       />
 
