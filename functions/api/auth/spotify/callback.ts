@@ -1,10 +1,12 @@
 import { getSession, CORS_HEADERS } from '../../_auth';
 
 const ALLOWED_RETURN = [
+  'https://unvaulted.cc',
   'https://yzyarchives.org',
   'https://vampgold.pages.dev',
   'https://kdotgold.pages.dev',
   'https://drizzygold.pages.dev',
+  'https://wolfgold.pages.dev',
   'http://127.0.0.1:5173',
   'http://localhost:5173',
 ];

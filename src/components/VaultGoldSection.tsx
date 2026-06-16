@@ -79,6 +79,19 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
     return () => window.removeEventListener('message', handler);
   }, []);
 
+  // Pick up sign-in that happened in another tab (e.g. landing page)
+  useEffect(() => {
+    const handler = (e: StorageEvent) => {
+      if (e.key === USER_KEY) {
+        const u = getUser();
+        setUser(u);
+        if (!u) setLinked(null);
+      }
+    };
+    window.addEventListener('storage', handler);
+    return () => window.removeEventListener('storage', handler);
+  }, []);
+
   const doLogin = async () => {
     setError('');
     const res = await fetch(`${API}/api/auth/login`, {

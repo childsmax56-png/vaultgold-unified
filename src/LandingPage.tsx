@@ -511,11 +511,68 @@ function GearIcon() {
   );
 }
 
+const VG_API = 'https://unvaulted.cc';
+const TOKEN_KEY = 'vg_token';
+const USER_KEY = 'vg_user';
+
+interface VGUser { id: string; username: string; email: string; }
+
+function getVGUser(): VGUser | null {
+  try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); } catch { return null; }
+}
+
+function GoogleIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 18 18">
+      <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/>
+      <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/>
+      <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/>
+      <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"/>
+    </svg>
+  );
+}
+
+function useVGAuth() {
+  const [user, setUser] = useState<VGUser | null>(getVGUser);
+
+  useEffect(() => {
+    const handler = (e: MessageEvent) => {
+      if (!e.data?.vaultgold) return;
+      if (e.data.vaultgold === 'signed_in' && e.data.token && e.data.user) {
+        localStorage.setItem(TOKEN_KEY, e.data.token);
+        localStorage.setItem(USER_KEY, JSON.stringify(e.data.user));
+        setUser(e.data.user);
+      }
+    };
+    window.addEventListener('message', handler);
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const signInWithGoogle = () => {
+    window.open(
+      `${VG_API}/api/auth/google/connect?return_to=${encodeURIComponent(window.location.origin)}`,
+      'vg-google',
+      'width=500,height=600'
+    );
+  };
+
+  const signOut = () => {
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (token) fetch(`${VG_API}/api/auth/logout`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => {});
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
+    setUser(null);
+  };
+
+  return { user, signInWithGoogle, signOut };
+}
+
 export function LandingPage() {
   useSpotifyCallback();
   const [showSettings, setShowSettings] = useState(false);
   const { settings } = useSettings();
   const showPhotos = settings.landingArtistPhotos;
+  const { user, signInWithGoogle, signOut } = useVGAuth();
   return (
     <div style={{
       minHeight: '100vh',
@@ -612,9 +669,24 @@ export function LandingPage() {
         <a href="/label" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(201,162,36,0.08)', border: '1px solid rgba(201,162,36,0.2)', color: '#C9A224', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
           Unvaulted Records
         </a>
-        <a href="/account" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(201,162,36,0.12)', border: '1px solid rgba(201,162,36,0.3)', color: '#C9A224', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          Manage Account
-        </a>
+        {user ? (
+          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>{user.username}</span>
+            <button
+              onClick={signOut}
+              style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(201,162,36,0.12)', border: '1px solid rgba(201,162,36,0.3)', color: '#C9A224', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em', cursor: 'pointer' }}
+            >
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={signInWithGoogle}
+            style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em', cursor: 'pointer' }}
+          >
+            <GoogleIcon /> Sign in with Google
+          </button>
+        )}
       </div>
 
       <footer style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
