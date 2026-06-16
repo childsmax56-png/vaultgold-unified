@@ -1637,8 +1637,9 @@ export default function App() {
       const id = rawUrl.split('/f/')[1];
       return `https://api.pillows.su/api/get/${id}`;
     } else if (rawUrl.includes('pixeldrain.com/u/')) {
-      const id = rawUrl.split('/u/')[1];
-      return `https://pixeldrain.com/api/file/${id}`;
+      const id = rawUrl.split('/u/')[1]?.split('?')[0];
+      const proxyBase = import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '';
+      return proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
     } else if (rawUrl.includes('drive.google.com')) {
       const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
@@ -1694,21 +1695,11 @@ export default function App() {
           streamUrl = `https://api.pillows.su/api/get/${id}`;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1]?.split('?')[0];
-          const pdUrl = `https://pixeldrain.com/api/file/${id}`;
-          const pdKey = import.meta.env.VITE_PIXELDRAIN_API_KEY ?? '';
-          console.log('[pixeldrain] key present:', !!pdKey, 'url:', pdUrl);
-          const pdHeaders: HeadersInit = pdKey
-            ? { Authorization: 'Basic ' + btoa(':' + pdKey) }
-            : {};
-          const pdRes = await fetch(pdUrl, { headers: pdHeaders });
-          console.log('[pixeldrain] fetch status:', pdRes.status, pdRes.statusText);
-          if (pdRes.ok) {
-            const blob = await pdRes.blob();
-            console.log('[pixeldrain] blob size:', blob.size, 'type:', blob.type);
-            streamUrl = URL.createObjectURL(blob);
+          const proxyBase = import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '';
+          if (proxyBase) {
+            streamUrl = `${proxyBase}/api/${id}`;
           } else {
-            const errText = await pdRes.text();
-            console.error('[pixeldrain] Fetch failed:', pdRes.status, errText);
+            console.error('[pixeldrain] VITE_PIXELDRAIN_PROXY_URL not set');
           }
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
@@ -1754,12 +1745,7 @@ export default function App() {
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
-        if (streamUrl.includes('pixeldrain.com')) {
-          audioRef.current.removeAttribute('crossorigin');
-          console.log('[pixeldrain] Setting src:', streamUrl);
-        } else {
-          audioRef.current.setAttribute('crossorigin', 'anonymous');
-        }
+        audioRef.current.setAttribute('crossorigin', 'anonymous');
         audioRef.current.src = streamUrl;
         audioRef.current.load();
         audioRef.current.volume = volume;
@@ -2006,7 +1992,7 @@ export default function App() {
         const directLink = rawSongUrl.includes('pillows.su/f/')
           ? `https://api.pillows.su/api/download/${rawSongUrl.split('/f/')[1]}`
           : rawSongUrl.includes('pixeldrain.com/u/')
-            ? `https://pixeldrain.com/api/file/${rawSongUrl.split('/u/')[1]}`
+            ? (() => { const id = rawSongUrl.split('/u/')[1]?.split('?')[0]; const pb = import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? ''; return pb ? `${pb}/api/${id}` : `https://pixeldrain.com/api/file/${id}`; })()
             : rawSongUrl.includes('drive.google.com')
               ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
               : rawSongUrl;
