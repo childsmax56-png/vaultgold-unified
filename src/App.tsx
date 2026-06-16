@@ -1768,7 +1768,8 @@ export default function App() {
         audioRef.current.load();
         audioRef.current.volume = volume;
         if (autoPlay) {
-          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e); });
+          console.log('[audio] About to play:', audioRef.current.src, 'networkState:', audioRef.current.networkState, 'readyState:', audioRef.current.readyState, 'crossOrigin:', audioRef.current.crossOrigin);
+          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e, "src:", audioRef.current?.src, "networkState:", audioRef.current?.networkState); });
         }
       }
 
