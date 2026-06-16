@@ -587,31 +587,9 @@ export default function App() {
 
   useEffect(() => {
     const initAudio = () => {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-      if (!audioContextRef.current && audioRef.current && !isIOS) {
-        const windowAny = window as any;
-        const AudioContext = window.AudioContext || windowAny.webkitAudioContext;
-        if (!AudioContext) return;
-
-        try {
-          const ctx = new AudioContext();
-          const analyser = ctx.createAnalyser();
-          analyser.fftSize = 256;
-
-          // NOTE: We intentionally do NOT call createMediaElementSource here.
-          // That call permanently captures the audio element and requires crossOrigin
-          // on every subsequent load — which causes CORS preflight failures on
-          // services like Pixeldrain that don't handle OPTIONS requests.
-          // Audio plays normally through the browser; the analyser won't receive data
-          // (visualizer stays dark), but playback works for all sources.
-
-          audioContextRef.current = ctx;
-          analyserRef.current = analyser;
-        } catch (e) {
-          console.error("Failed to initialize AudioContext", e);
-        }
-      }
+      // AudioContext intentionally disabled: createMediaElementSource permanently
+      // captures the audio element requiring crossOrigin on all loads, which breaks
+      // Pixeldrain playback. The visualizer (analyserRef) stays null/dark.
     };
 
     document.addEventListener('click', initAudio, { once: true });
