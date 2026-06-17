@@ -1,0 +1,146 @@
+import type { ArtistConfig } from './types';
+
+const SHEET_ID = '1tD3ytt5wPx4zfcefXi5ATeYhIiDaugWjMS46nZrP568';
+
+// gviz endpoint works for public sheets without auth cookies
+const gviz = (gid: string) =>
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}`;
+
+export const juicegoldConfig: ArtistConfig = {
+  slug: 'juicegold',
+  SITE_NAME: 'JUICEgold',
+  SITE_DESCRIPTION: 'The Best Juice WRLD Tracker In The World!',
+  SITE_URL: 'https://unvaulted.cc/juicegold/',
+  OG_IMAGE_URL: '',
+  STORAGE_PREFIX: 'juicegold_',
+  HARDCODED_SHEET_ID: SHEET_ID,
+  HARDCODED_SHEET_GID: '0',
+  SHEET_URL_UNRELEASED: gviz('0'),
+  SHEET_URL_RECENT: gviz('1558109614'),
+
+  accentColor: '#e53e3e',
+  artistLabel: 'Juice WRLD',
+  cardLetter: 'JCE',
+  logoUrl: '/logos/juicegold.png',
+  artistPhotoUrl: '/artists/juice.webp',
+
+  getArtistName(_eraName) { return 'Juice WRLD'; },
+
+  CUSTOM_IMAGES: {
+    'JUICED UP THE EP': '',
+    'affliction': '',
+    'Heartbroken In Hollywood 9 9 9': '',
+    'JuiceWRLD 9 9 9': '',
+    'Untitled Project': '',
+    'NOTHINGS DIFFERENT ﹤/3': '',
+    'Goodbye & Good Riddance': 'https://upload.wikimedia.org/wikipedia/en/6/6f/Juice_Wrld_Goodbye_Good_Riddance.jpg',
+    'Evil Twins': '',
+    'WRLD ON DRUGS': 'https://upload.wikimedia.org/wikipedia/en/8/8c/Juice_Wrld_Future_-_WRLD_on_Drugs.jpg',
+    'Death Race for Love': 'https://upload.wikimedia.org/wikipedia/en/5/57/Juice_WRLD_Death_Race_for_Love_album_cover.jpg',
+    'The Outsiders': '',
+    'Posthumous': '',
+    'Unknown': '',
+    'Ongoing': '',
+  },
+
+  ALBUM_RELEASE_DATES: {
+    'JUICED UP THE EP': '01/30/2016',
+    'affliction': '??/??/2016',
+    'Heartbroken In Hollywood 9 9 9': '??/??/2017',
+    'JuiceWRLD 9 9 9': '??/??/2017',
+    'Untitled Project': '??/??/2017',
+    'NOTHINGS DIFFERENT ﹤/3': '??/??/2017',
+    'Goodbye & Good Riddance': '05/23/2018',
+    'Evil Twins': '??/??/2018',
+    'WRLD ON DRUGS': '10/19/2018',
+    'Death Race for Love': '03/08/2019',
+    'The Outsiders': '??/??/2019',
+    'Posthumous': '??/??/2019',
+    'Unknown': '??/??/????',
+    'Ongoing': '??/??/????',
+  },
+
+  HIDDEN_ALBUMS: ['Unknown'],
+
+  ALBUM_DESCRIPTIONS: {
+    'JUICED UP THE EP': 'Juice WRLD\'s earliest project, released January 30, 2016 on SoundCloud as JuiceTheKidd. A collection of drug-induced freestyles from his pre-signing days.',
+    'affliction': 'Early SoundCloud era material from 2016.',
+    'Heartbroken In Hollywood 9 9 9': 'Pre-signing sessions from 2017.',
+    'JuiceWRLD 9 9 9': 'Early 2017 sessions under the Juice WRLD name.',
+    'Untitled Project': 'Unreleased 2017 project sessions.',
+    'NOTHINGS DIFFERENT ﹤/3': 'Pre-debut sessions from 2017.',
+    'Goodbye & Good Riddance': 'Juice WRLD\'s debut studio album, released May 23, 2018 on Grade A Productions / Interscope.',
+    'Evil Twins': 'Collab era sessions from 2018.',
+    'WRLD ON DRUGS': 'Collaborative album with Future, released October 19, 2018.',
+    'Death Race for Love': 'Juice WRLD\'s second studio album, released March 8, 2019. Debuted at #1 on the Billboard 200.',
+    'The Outsiders': 'Unreleased project from 2019.',
+    'Posthumous': 'Posthumous material recorded before December 8, 2019.',
+    'Unknown': 'Songs without a confirmed era.',
+    'Ongoing': 'Ongoing posthumous projects.',
+  },
+
+  ALBUM_SONG_COUNTS: {},
+  CUSTOM_ALBUM_INFO: {},
+
+  ERA_MAPPINGS: {
+    // Map any capitalization variants from the sheet to canonical names
+    'JUICED UP THE EP': 'JUICED UP THE EP',
+    'affliction': 'affliction',
+    'Heartbroken In Hollywood 9 9 9': 'Heartbroken In Hollywood 9 9 9',
+    'JuiceWRLD 9 9 9': 'JuiceWRLD 9 9 9',
+    'Juice WRLD 9 9 9': 'JuiceWRLD 9 9 9',
+    'Untitled Project': 'Untitled Project',
+    'Untitled 2017 Project': 'Untitled Project',
+    'NOTHINGS DIFFERENT ﹤/3': 'NOTHINGS DIFFERENT ﹤/3',
+    "NOTHING'S DIFFERENT </3": 'NOTHINGS DIFFERENT ﹤/3',
+    'Goodbye & Good Riddance': 'Goodbye & Good Riddance',
+    'Evil Twins': 'Evil Twins',
+    'WRLD ON DRUGS': 'WRLD ON DRUGS',
+    'WRLD On Drugs': 'WRLD ON DRUGS',
+    'Death Race for Love': 'Death Race for Love',
+    'Death Race For Love': 'Death Race for Love',
+    'The Outsiders': 'The Outsiders',
+    'Posthumous': 'Posthumous',
+  },
+
+  hasRecentTab: true,
+  hasCompsTab: false,
+  hasConcertsTab: false,
+
+  TAG_MAP: {
+    '⭐': 'Best Of',
+    '🏆': 'Grails',
+    '🥇': 'Wanted',
+    '🏅': 'Wanted',
+    '✨': 'Notable',
+    '💚': 'By JUICEgold',
+    '🗑️': 'Worst Of',
+    '🗑': 'Worst Of',
+    '🚮': 'Unwanted',
+    '🤖': 'AI',
+    '⁉️': 'Lost Media',
+    '⁉': 'Lost Media',
+    '❓': 'Unknown',
+    '⭐️': 'Best Of',
+  },
+
+  ERA_THEMES: {
+    'Goodbye & Good Riddance': {},
+    'WRLD ON DRUGS': {},
+    'Death Race for Love': {},
+    'Posthumous': {},
+  },
+
+  TAG_TOOLTIP_MAP: {
+    'Best Of': 'Some of the best leaks on the tracker.',
+    'Grails': 'The most wanted songs that have not yet leaked in full.',
+    'Wanted': 'Songs that are wanted, but not as much as Grails.',
+    'Notable': 'Notable songs worth highlighting.',
+    'Worst Of': 'Some of the worst leaks on the tracker.',
+    'Unwanted': 'Songs we don\'t want to see leak in full.',
+    'AI': 'Track contains AI vocals.',
+    'Lost Media': 'Currently lost, or no link to the media is known.',
+    'By JUICEgold': 'Leaks & songs added by the owner of the site.',
+    'Unknown': 'Availability or status is unknown.',
+  },
+};
