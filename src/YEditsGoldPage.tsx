@@ -1,155 +1,131 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, Loader2 } from 'lucide-react';
-import { EmbedPlayerModal, detectEmbedService, type EmbedTarget } from './components/EmbedPlayerModal';
+import { ArrowLeft, Play, Pause, SkipBack, SkipForward, Volume2, X } from 'lucide-react';
+import { YEditsView } from './components/YEditsView';
+import type { Song, Era } from './types';
 
-const DOC_URL = 'https://docs.google.com/document/d/1Yuqbwe3TwY0soU72M2PYTaN-NW1N3ooAgxHzlL4WsCM/edit?usp=sharing';
 const ACCENT = '#FFD700';
 
-const URL_RE = /https?:\/\/[^\s\])"]+/g;
-const BULLET_RE = /^[•‣◦⁃∙•·\-\*]\s*/;
-const NUM_RE = /^\d+[\.\)]\s*/;
-
-interface Project {
-  title: string;
-  creator: string;
-  links: string[];
-  raw: string;
+function formatTime(s: number): string {
+  if (!isFinite(s)) return '0:00';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2, '0')}`;
 }
 
-function parseDoc(text: string): { sections: { heading: string; projects: Project[] }[] } {
-  const lines = text.split('\n').map(l => l.trimEnd());
-  const sections: { heading: string; projects: Project[] }[] = [];
-  let current: { heading: string; projects: Project[] } = { heading: '', projects: [] };
+function MiniPlayer({
+  song,
+  era,
+  queue,
+  isPlaying,
+  onToggle,
+  onPrev,
+  onNext,
+  onClose,
+  audioRef,
+}: {
+  song: Song;
+  era: Era;
+  queue: Song[];
+  isPlaying: boolean;
+  onToggle: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+  onClose: () => void;
+  audioRef: React.RefObject<HTMLAudioElement>;
+}) {
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
 
-  for (const raw of lines) {
-    const trimmed = raw.trim();
-    if (!trimmed) continue;
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => setCurrentTime(audio.currentTime);
+    const onMeta = () => setDuration(audio.duration);
+    audio.addEventListener('timeupdate', onTime);
+    audio.addEventListener('loadedmetadata', onMeta);
+    audio.addEventListener('durationchange', onMeta);
+    return () => {
+      audio.removeEventListener('timeupdate', onTime);
+      audio.removeEventListener('loadedmetadata', onMeta);
+      audio.removeEventListener('durationchange', onMeta);
+    };
+  }, [audioRef]);
 
-    const urls = trimmed.match(URL_RE) ?? [];
-    const stripped = trimmed
-      .replace(BULLET_RE, '')
-      .replace(NUM_RE, '')
-      .trim();
+  const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const t = Number(e.target.value);
+    if (audioRef.current) audioRef.current.currentTime = t;
+    setCurrentTime(t);
+  };
 
-    if (urls.length === 0) {
-      // Likely a section heading or plain text note
-      if (stripped.length > 0 && stripped.length < 80) {
-        if (current.projects.length > 0 || current.heading) {
-          sections.push(current);
-        }
-        current = { heading: stripped, projects: [] };
-      }
-      continue;
-    }
+  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const v = Number(e.target.value);
+    setVolume(v);
+    if (audioRef.current) audioRef.current.volume = v;
+  };
 
-    // Line has at least one URL — treat as a project entry
-    let rest = stripped;
-    for (const u of urls) rest = rest.replace(u, '').trim();
-    rest = rest.replace(/[-–—|,]+$/, '').replace(/^[-–—|,]+/, '').trim();
+  const idx = queue.findIndex(s => s.url === song.url);
+  const hasPrev = idx > 0;
+  const hasNext = idx < queue.length - 1;
 
-    // Try to split "Title - Creator" or "Title by Creator"
-    let title = rest;
-    let creator = '';
-    const byMatch = rest.match(/^(.+?)\s+by\s+(.+)$/i);
-    const dashMatch = rest.match(/^(.+?)\s*[-–—]\s*(.+)$/);
-    if (byMatch) {
-      title = byMatch[1].trim();
-      creator = byMatch[2].trim();
-    } else if (dashMatch) {
-      title = dashMatch[1].trim();
-      creator = dashMatch[2].trim();
-    }
-
-    if (!title) title = urls[0];
-
-    current.projects.push({ title, creator, links: urls, raw: trimmed });
-  }
-
-  if (current.projects.length > 0 || current.heading) {
-    sections.push(current);
-  }
-
-  return { sections };
-}
-
-function ProjectCard({ project, onEmbed }: { project: Project; onEmbed: (target: EmbedTarget) => void }) {
   return (
     <div style={{
-      background: '#111',
-      border: '1px solid rgba(255,255,255,0.07)',
-      borderRadius: 12,
-      padding: '16px 18px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 10,
-      transition: 'border-color 0.2s, transform 0.15s',
-    }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = `${ACCENT}44`;
-        el.style.transform = 'translateY(-2px)';
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = 'rgba(255,255,255,0.07)';
-        el.style.transform = '';
-      }}
-    >
-      <div>
-        <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>
-          {project.title}
+      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000,
+      background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.08)',
+      padding: '10px 20px', display: 'flex', alignItems: 'center', gap: 16,
+      fontFamily: "'Inter', system-ui, sans-serif",
+    }}>
+      {/* Track info */}
+      <div style={{ flex: '0 0 200px', minWidth: 0 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {song.name}
         </div>
-        {project.creator && (
-          <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', marginTop: 3 }}>
-            {project.creator}
-          </div>
-        )}
+        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {era.name}
+        </div>
       </div>
-      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-        {project.links.map((url, i) => {
-          const service = detectEmbedService(url);
-          const label = project.links.length > 1 ? `Link ${i + 1}` : 'Play';
-          if (service) {
-            return (
-              <button
-                key={i}
-                onClick={() => onEmbed({ service, url, label: project.title })}
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 4,
-                  fontSize: 11, fontWeight: 600, padding: '5px 10px', borderRadius: 6,
-                  background: `${ACCENT}12`, border: `1px solid ${ACCENT}33`,
-                  color: ACCENT, cursor: 'pointer',
-                  transition: 'background 0.15s',
-                }}
-                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = `${ACCENT}22`; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = `${ACCENT}12`; }}
-              >
-                ▶ {label}
-              </button>
-            );
-          }
-          return (
-            <a
-              key={i}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 4,
-                fontSize: 11, fontWeight: 600, padding: '5px 10px', borderRadius: 6,
-                background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)',
-                color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
-                transition: 'background 0.15s',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.1)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.06)'; }}
-            >
-              <ExternalLink size={10} />
-              {label}
-            </a>
-          );
-        })}
+
+      {/* Controls */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flex: 1 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <button onClick={onPrev} disabled={!hasPrev} style={{ background: 'none', border: 'none', cursor: hasPrev ? 'pointer' : 'default', color: hasPrev ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)', padding: 0 }}>
+            <SkipBack size={16} />
+          </button>
+          <button onClick={onToggle} style={{
+            width: 36, height: 36, borderRadius: '50%', border: 'none', cursor: 'pointer',
+            background: ACCENT, color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+          </button>
+          <button onClick={onNext} disabled={!hasNext} style={{ background: 'none', border: 'none', cursor: hasNext ? 'pointer' : 'default', color: hasNext ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)', padding: 0 }}>
+            <SkipForward size={16} />
+          </button>
+        </div>
+
+        {/* Seek bar */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, width: '100%', maxWidth: 400 }}>
+          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', minWidth: 32, textAlign: 'right' }}>{formatTime(currentTime)}</span>
+          <input
+            type="range" min={0} max={duration || 0} step={0.1} value={currentTime}
+            onChange={seek}
+            style={{ flex: 1, accentColor: ACCENT, cursor: 'pointer' }}
+          />
+          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', minWidth: 32 }}>{formatTime(duration)}</span>
+        </div>
+      </div>
+
+      {/* Volume + close */}
+      <div style={{ flex: '0 0 160px', display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'flex-end' }}>
+        <Volume2 size={14} style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0 }} />
+        <input
+          type="range" min={0} max={1} step={0.01} value={volume}
+          onChange={changeVolume}
+          style={{ width: 72, accentColor: ACCENT, cursor: 'pointer' }}
+        />
+        <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.35)', padding: 4, display: 'flex' }}>
+          <X size={14} />
+        </button>
       </div>
     </div>
   );
@@ -157,167 +133,155 @@ function ProjectCard({ project, onEmbed }: { project: Project; onEmbed: (target:
 
 export function YEditsGoldPage() {
   const navigate = useNavigate();
-  const [text, setText] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [search, setSearch] = useState('');
-  const [embedTarget, setEmbedTarget] = useState<EmbedTarget | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentSong, setCurrentSong] = useState<Song | null>(null);
+  const [currentEra, setCurrentEra] = useState<Era | null>(null);
+  const [queue, setQueue] = useState<Song[]>([]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
+  // Sync audio src when song changes
   useEffect(() => {
-    fetch('/api/yeditsgold-doc')
-      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() as Promise<{ text?: string; error?: string }>; })
-      .then(d => { if (d.text) { setText(d.text); } else { setError(d.error ?? 'Unknown error'); } })
-      .catch(e => setError(e.message ?? 'Failed to load'))
-      .finally(() => setLoading(false));
-  }, []);
+    const audio = audioRef.current;
+    if (!audio || !currentSong?.url) return;
+    audio.src = currentSong.url;
+    audio.load();
+    audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+  }, [currentSong]);
 
-  const parsed = useMemo(() => text ? parseDoc(text) : { sections: [] }, [text]);
+  // Sync play/pause
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) { audio.play().catch(() => setIsPlaying(false)); }
+    else { audio.pause(); }
+  }, [isPlaying]);
 
-  const filtered = useMemo(() => {
-    if (!search.trim()) return parsed.sections;
-    const q = search.toLowerCase();
-    return parsed.sections
-      .map(s => ({
-        ...s,
-        projects: s.projects.filter(p =>
-          p.title.toLowerCase().includes(q) ||
-          p.creator.toLowerCase().includes(q)
-        ),
-      }))
-      .filter(s => s.projects.length > 0);
-  }, [parsed, search]);
+  // Auto-advance to next track
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onEnded = () => {
+      const idx = queue.findIndex(s => s.url === currentSong?.url);
+      if (idx !== -1 && idx < queue.length - 1) {
+        setCurrentSong(queue[idx + 1]);
+      } else {
+        setIsPlaying(false);
+      }
+    };
+    audio.addEventListener('ended', onEnded);
+    return () => audio.removeEventListener('ended', onEnded);
+  }, [queue, currentSong]);
 
-  const totalCount = parsed.sections.reduce((n, s) => n + s.projects.length, 0);
+  const handlePlaySong = useCallback((song: Song, era: Era, contextTracks: Song[]) => {
+    setCurrentEra(era);
+    setQueue(contextTracks);
+    if (currentSong?.url === song.url) {
+      setIsPlaying(p => !p);
+    } else {
+      setCurrentSong(song);
+    }
+  }, [currentSong]);
+
+  const handlePrev = () => {
+    const idx = queue.findIndex(s => s.url === currentSong?.url);
+    if (idx > 0) setCurrentSong(queue[idx - 1]);
+  };
+
+  const handleNext = () => {
+    const idx = queue.findIndex(s => s.url === currentSong?.url);
+    if (idx < queue.length - 1) setCurrentSong(queue[idx + 1]);
+  };
+
+  const handleClose = () => {
+    audioRef.current?.pause();
+    setIsPlaying(false);
+    setCurrentSong(null);
+    setCurrentEra(null);
+    setQueue([]);
+  };
 
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#050505',
+      background: '#0a0a0a',
       color: '#fff',
       fontFamily: "'Inter', system-ui, sans-serif",
       WebkitFontSmoothing: 'antialiased',
-      padding: '24px 24px 64px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+      paddingBottom: currentSong ? 100 : 0,
     }}>
-      <div style={{ width: '100%', maxWidth: 900 }}>
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 40 }}>
-          <button
-            onClick={() => navigate('/')}
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              width: 36, height: 36, borderRadius: '50%',
-              background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
-              color: 'rgba(255,255,255,0.6)', cursor: 'pointer',
-              transition: 'background 0.15s, color 0.15s',
-            }}
-            onMouseEnter={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.12)'; b.style.color = '#fff'; }}
-            onMouseLeave={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.06)'; b.style.color = 'rgba(255,255,255,0.6)'; }}
-          >
-            <ArrowLeft size={16} />
-          </button>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-              <h1 style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.02em', color: '#fff' }}>
-                yedits<span style={{ color: ACCENT }}>gold</span>
-              </h1>
-              {totalCount > 0 && (
-                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontWeight: 500 }}>
-                  {totalCount} projects
-                </span>
-              )}
-            </div>
-            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>
-              Community-made projects, sourced from the community doc
-            </p>
-          </div>
-          <a
-            href={DOC_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6,
-              fontSize: 12, fontWeight: 600, padding: '8px 14px', borderRadius: 8,
-              background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-              color: 'rgba(255,255,255,0.5)', textDecoration: 'none',
-              transition: 'background 0.15s, color 0.15s',
-            }}
-            onMouseEnter={e => { const a = e.currentTarget; a.style.background = 'rgba(255,255,255,0.1)'; a.style.color = '#fff'; }}
-            onMouseLeave={e => { const a = e.currentTarget; a.style.background = 'rgba(255,255,255,0.05)'; a.style.color = 'rgba(255,255,255,0.5)'; }}
-          >
-            <ExternalLink size={12} />
-            View Doc
-          </a>
+      {/* Hidden audio element */}
+      <audio ref={audioRef} />
+
+      {/* Header */}
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: 14,
+        padding: '20px 24px 0',
+        maxWidth: 1200, margin: '0 auto',
+      }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width: 34, height: 34, borderRadius: '50%', flexShrink: 0,
+            background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+            color: 'rgba(255,255,255,0.6)', cursor: 'pointer',
+          }}
+          onMouseEnter={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.12)'; b.style.color = '#fff'; }}
+          onMouseLeave={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.06)'; b.style.color = 'rgba(255,255,255,0.6)'; }}
+        >
+          <ArrowLeft size={15} />
+        </button>
+
+        <div style={{ flex: 1 }}>
+          <h1 style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1 }}>
+            yedits<span style={{ color: ACCENT }}>gold</span>
+          </h1>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginTop: 3 }}>
+            Community fan-edit projects
+          </p>
         </div>
 
         {/* Search */}
-        {!loading && !error && totalCount > 0 && (
-          <input
-            type="text"
-            placeholder="Search projects…"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            style={{
-              width: '100%', padding: '10px 16px', borderRadius: 10, marginBottom: 32,
-              background: '#111', border: '1px solid rgba(255,255,255,0.1)',
-              color: '#fff', fontSize: 14, outline: 'none',
-              boxSizing: 'border-box',
-              transition: 'border-color 0.15s',
-            }}
-            onFocus={e => { e.currentTarget.style.borderColor = `${ACCENT}55`; }}
-            onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
-          />
-        )}
-
-        {/* States */}
-        {loading && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'rgba(255,255,255,0.4)', padding: '60px 0' }}>
-            <Loader2 size={18} style={{ animation: 'spin 1s linear infinite' }} />
-            <span style={{ fontSize: 14 }}>Loading community projects…</span>
-            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-          </div>
-        )}
-
-        {error && (
-          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, padding: '60px 0' }}>
-            Failed to load: {error}
-          </div>
-        )}
-
-        {/* Sections */}
-        {!loading && !error && filtered.map((section, si) => (
-          <div key={si} style={{ marginBottom: 40 }}>
-            {section.heading && (
-              <h2 style={{
-                fontSize: 11, fontWeight: 700, textTransform: 'uppercase',
-                letterSpacing: '0.12em', color: 'rgba(255,255,255,0.35)',
-                marginBottom: 16,
-              }}>
-                {section.heading}
-              </h2>
-            )}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-              gap: 10,
-            }}>
-              {section.projects.map((p, pi) => (
-                <ProjectCard key={pi} project={p} onEmbed={setEmbedTarget} />
-              ))}
-            </div>
-          </div>
-        ))}
-
-        <EmbedPlayerModal target={embedTarget} onClose={() => setEmbedTarget(null)} />
-
-        {!loading && !error && filtered.length === 0 && search && (
-          <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, padding: '40px 0' }}>
-            No results for "{search}"
-          </div>
-        )}
+        <input
+          type="text"
+          placeholder="Search…"
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+          style={{
+            padding: '8px 14px', borderRadius: 8, width: 200,
+            background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+            color: '#fff', fontSize: 13, outline: 'none',
+          }}
+          onFocus={e => { e.currentTarget.style.borderColor = `${ACCENT}55`; }}
+          onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
+        />
       </div>
+
+      {/* YEditsView — full existing logic: groups, upload, delete */}
+      <div style={{ position: 'relative', minHeight: 400 }}>
+        <YEditsView
+          searchQuery={searchQuery}
+          onPlaySong={handlePlaySong}
+          currentSong={currentSong}
+          isPlaying={isPlaying}
+        />
+      </div>
+
+      {/* Mini player */}
+      {currentSong && currentEra && (
+        <MiniPlayer
+          song={currentSong}
+          era={currentEra}
+          queue={queue}
+          isPlaying={isPlaying}
+          onToggle={() => setIsPlaying(p => !p)}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          onClose={handleClose}
+          audioRef={audioRef as React.RefObject<HTMLAudioElement>}
+        />
+      )}
     </div>
   );
 }
