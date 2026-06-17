@@ -15,7 +15,7 @@ export const pushagoldConfig: ArtistConfig = {
   artistLabel: 'Pusha T / Clipse',
   cardLetter: 'PSH',
   logoUrl: '/logos/pushagold.png',
-  artistPhotoUrl: '/artists/clipse.jpg',
+  artistPhotoUrl: '/artists/pusha.webp',
 
   getArtistName(eraName) {
     if (!eraName) return 'Pusha T';
