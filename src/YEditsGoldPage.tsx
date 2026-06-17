@@ -31,7 +31,10 @@ function ClaimModal({ profileName, onClose }: { profileName: string; onClose: ()
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, profileName }),
       });
-      const data = await res.json() as { ok?: boolean; message?: string; error?: string };
+      const ct = res.headers.get('content-type') ?? '';
+      const data = ct.includes('application/json')
+        ? await res.json() as { ok?: boolean; message?: string; error?: string }
+        : { error: `Server error ${res.status}` };
       if (!res.ok) { setMsg(data.error ?? 'Something went wrong.'); setStatus('error'); }
       else { setMsg(data.message ?? 'Claim submitted!'); setStatus('success'); }
     } catch (err) {
