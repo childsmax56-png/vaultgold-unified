@@ -172,14 +172,19 @@ function ArtistSelect({ value, onChange, disabled }: ArtistSelectProps) {
   );
 }
 
+export interface ClaimInfo { userId: string; username: string; }
+
 interface YEditsViewProps {
   searchQuery: string;
   onPlaySong: (song: Song, era: Era, contextTracks: Song[]) => void;
   currentSong?: Song | null;
   isPlaying?: boolean;
+  claims?: Record<string, ClaimInfo>;
+  onClaim?: (profileName: string) => void;
+  isAdmin?: boolean;
 }
 
-export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: YEditsViewProps) {
+export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, claims = {}, onClaim, isAdmin = false }: YEditsViewProps) {
   const [keys, setKeys] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -585,6 +590,9 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
   };
 
   const groups = useMemo(() => parseGroups(keys), [keys]);
+  const existingCreators = useMemo(() =>
+    [...new Set(groups.map(g => g.parentName).filter(Boolean))].sort((a, b) => a.localeCompare(b))
+  , [groups]);
 
   useEffect(() => {
     fetch('/api/yedits-tracklists')
@@ -662,7 +670,11 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
     };
     const activeCoverUrl = showBackCover ? selectedGroup.backCoverUrl : selectedGroup.imageUrl;
     const hasBackCover = !!selectedGroup.backCoverUrl;
-    const isOwner = !!vgUser && selectedGroup.parentName.toLowerCase() === vgUser.username.toLowerCase();
+    const claimEntry = claims[selectedGroup.parentName];
+    const isOwner = !!vgUser && (
+      selectedGroup.parentName.toLowerCase() === vgUser.username.toLowerCase() ||
+      claimEntry?.userId === vgUser.id
+    );
     const meta = albumMeta[selectedGroup.folderPath] ?? {};
 
     return (
@@ -1395,13 +1407,41 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
             <div className="space-y-3">
               <div>
                 <label className="text-xs text-white/40 mb-1 block">Creator Name</label>
-                <input
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
-                  placeholder="Your name / handle"
-                  value={uploadCreator}
-                  onChange={e => setUploadCreator(e.target.value)}
-                  disabled={uploading}
-                />
+                {isAdmin && existingCreators.length > 0 ? (
+                  <div className="space-y-1.5">
+                    <select
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors cursor-pointer"
+                      value={existingCreators.includes(uploadCreator) ? uploadCreator : '__new__'}
+                      onChange={e => {
+                        if (e.target.value === '__new__') setUploadCreator('');
+                        else setUploadCreator(e.target.value);
+                      }}
+                      disabled={uploading}
+                    >
+                      <option value="__new__">＋ New creator…</option>
+                      {existingCreators.map(name => (
+                        <option key={name} value={name}>{name}</option>
+                      ))}
+                    </select>
+                    {!existingCreators.includes(uploadCreator) && (
+                      <input
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                        placeholder="New creator name"
+                        value={uploadCreator}
+                        onChange={e => setUploadCreator(e.target.value)}
+                        disabled={uploading}
+                      />
+                    )}
+                  </div>
+                ) : (
+                  <input
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                    placeholder="Your name / handle"
+                    value={uploadCreator}
+                    onChange={e => setUploadCreator(e.target.value)}
+                    disabled={uploading}
+                  />
+                )}
               </div>
 
               <div>
@@ -1519,6 +1559,15 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
                   onChange={e => setUploadTracks(e.target.files ? Array.from(e.target.files) : [])}
                 />
               </div>
+
+              {(() => {
+                const totalBytes = (uploadCover?.size ?? 0) + uploadTracks.reduce((sum, f) => sum + f.size, 0);
+                return totalBytes > 128 * 1024 * 1024 ? (
+                  <p className="text-xs text-amber-400 text-center leading-relaxed">
+                    The attached files exceed the 128 MB limit. Upload as many as you can here, then add the rest after.
+                  </p>
+                ) : null;
+              })()}
 
               {uploadResult && (
                 <p className={`text-xs text-center ${uploadResult.ok ? 'text-green-400' : 'text-red-400'}`}>
