@@ -26,7 +26,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     });
     if (!authRes.ok) return json({ error: 'Unauthorized — sign in first' }, 401);
 
-    const user = await authRes.json() as { id: string; username: string; email: string };
+    const user = await authRes.json() as { id?: string; username?: string; email?: string };
+    if (!user.id || !user.username) return json({ error: 'Could not read user info' }, 401);
 
     await ensureTable(DB);
 
@@ -47,7 +48,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     await DB.prepare(
       `INSERT OR REPLACE INTO yeditsgold_claims (id, profile_name, user_id, username, email, status, claimed_at)
        VALUES (?, ?, ?, ?, ?, 'pending', ?)`
-    ).bind(id, profileName.trim(), user.id, user.username, user.email, new Date().toISOString()).run();
+    ).bind(id, profileName.trim(), user.id, user.username, user.email ?? '', new Date().toISOString()).run();
 
     return json({ ok: true, message: 'Claim submitted — pending admin approval' });
   } catch (err) {
