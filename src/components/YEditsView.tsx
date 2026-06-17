@@ -242,9 +242,8 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         setDeleteResult({ ok: true, msg: `Deleted ${data.deleted?.length ?? 0} file(s)` });
         fetch('/api/yedits', { cache: 'no-store' })
           .then(r => r.json() as Promise<string[]>)
-          .then(d => setKeys(d))
-          .catch(() => {});
-        setTimeout(() => setDeleteTarget(null), 1200);
+          .then(d => { setKeys(d); setDeleteTarget(null); setSelectedGroup(null); })
+          .catch(() => setDeleteTarget(null));
       }
     } catch {
       setDeleteResult({ ok: false, msg: 'Network error' });
