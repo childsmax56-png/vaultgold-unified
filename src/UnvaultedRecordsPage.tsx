@@ -12,6 +12,7 @@ const ARTISTS = [
   { name: 'YZYGOLD',        letter: 'G', accent: '#FFD700', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
   { name: 'BIANCAGOLD',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
+  { name: 'Buffet West',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
 ];
 
 const ALBUMS = [
