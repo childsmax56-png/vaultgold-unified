@@ -1,19 +1,7 @@
 import { json } from './_auth';
 
 async function ensureTable(db: D1Database) {
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS yeditsgold_claims (
-      id TEXT PRIMARY KEY,
-      profile_name TEXT NOT NULL,
-      user_id TEXT NOT NULL,
-      username TEXT NOT NULL,
-      email TEXT NOT NULL,
-      status TEXT NOT NULL DEFAULT 'pending',
-      claimed_at TEXT NOT NULL,
-      reviewed_at TEXT,
-      UNIQUE(profile_name)
-    )
-  `);
+  await db.prepare(`CREATE TABLE IF NOT EXISTS yeditsgold_claims (id TEXT PRIMARY KEY, profile_name TEXT NOT NULL, user_id TEXT NOT NULL, username TEXT NOT NULL, email TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', claimed_at TEXT NOT NULL, reviewed_at TEXT, UNIQUE(profile_name))`).run();
 }
 
 // GET — returns all approved claims as { profileName: userId }
@@ -35,7 +23,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   return new Response(JSON.stringify(claims), {
     headers: {
       'Content-Type': 'application/json',
-      'Cache-Control': 'public, max-age=60, stale-while-revalidate=120',
+      'Cache-Control': 'no-store',
       'Access-Control-Allow-Origin': '*',
     },
   });
