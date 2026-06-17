@@ -495,7 +495,6 @@ function MyTrackerCard() {
 const SHEET_URLS: Record<string, string> = {
   yzygold:    'https://docs.google.com/spreadsheets/d/12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM/edit?gid=199908479#gid=199908479',
   vampgold:   'https://docs.google.com/spreadsheets/d/1Irtfvymu26CShYowLMMfD-rM0o9CJqE6-BBSlYsAaF4/edit?gid=0#gid=0',
-  wolfgold:   'https://docs.google.com/spreadsheets/d/19GJTNp7PxK1OtyVBmGelZSMm5i8Fy82EGtcFdIkBpsY/edit?gid=1246511510#gid=1246511510',
   drizzygold: 'https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/edit?gid=755606328#gid=755606328',
   xgold:      'https://docs.google.com/spreadsheets/d/1wKq7lSERmXYutRFxipNbFFc-DUdqhVXWWlFnqkzwRFA/edit?usp=sharing',
   cactigold:  'https://docs.google.com/spreadsheets/d/1gJqbQrb3dIWF-PLMsKkNUrftpQb8zxsZFDAIpSvT5Fo/edit?gid=846204501#gid=846204501',
@@ -504,6 +503,7 @@ const SHEET_URLS: Record<string, string> = {
   uzigold:    'https://docs.google.com/spreadsheets/d/1zqqdIds1iwnx4lh29iF1IlraeuqfGhxH9qLNlWOnryo/edit?gid=1160569231#gid=1160569231',
   dregold:    'https://docs.google.com/spreadsheets/d/10_QK8xP-WCdrfO6RaIkhdDtYUXaM966e6D1xWD__iIo/edit?gid=1520634709#gid=1520634709',
   pushagold:  'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/edit?gid=1932839414#gid=1932839414',
+  juicegold:  'https://docs.google.com/spreadsheets/d/1tD3ytt5wPx4zfcefXi5ATeYhIiDaugWjMS46nZrP568/edit?gid=0#gid=0',
 };
 
 function ShareButton({ url, accent }: { url: string; accent?: string }) {
@@ -611,8 +611,8 @@ export function LandingPage() {
   const featured = ARTIST_LIST[0];
   // Carti, Tyler in top-right row 1; Drake in top-right row 2
   const topRight = ARTIST_LIST.slice(1, 4);
-  const juiceCard = { href: 'https://docs.google.com/spreadsheets/d/1tD3ytt5wPx4zfcefXi5ATeYhIiDaugWjMS46nZrP568/edit?gid=0#gid=0', label: 'Juice WRLD', logoSrc: '/logos/juicegold.png', logoAlt: 'Juicegold', accent: '#e53e3e', photo: '/artists/juice.webp' };
-  const smallArtists = ARTIST_LIST.slice(4);
+  const juiceConfig = ARTIST_LIST.find(c => c.slug === 'juicegold')!;
+  const smallArtists = ARTIST_LIST.slice(4).filter(c => c.slug !== 'juicegold');
   const allSmall = smallArtists.map(c => ({ type: 'artist' as const, config: c }));
   const INITIAL_SMALL = 4;
   const visibleSmall = showAll ? allSmall : allSmall.slice(0, INITIAL_SMALL);
@@ -675,21 +675,15 @@ export function LandingPage() {
                 </div>
               </div>
             ))}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <ExternalSmallCard
-                href={juiceCard.href}
-                label={juiceCard.label}
-                logoSrc={juiceCard.logoSrc}
-                logoAlt={juiceCard.logoAlt}
-                accent={juiceCard.accent}
-                photoSrc={showPhotos ? juiceCard.photo : undefined}
-                variant="medium"
-              />
-              <div style={{ display: 'flex', gap: 6 }}>
-                <SheetButton href={juiceCard.href} accent={juiceCard.accent} />
-                <ShareButton url={juiceCard.href} accent={juiceCard.accent} />
+            {juiceConfig && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <EditorialArtistCard config={juiceConfig} showPhoto={showPhotos} variant="medium" />
+                <div style={{ display: 'flex', gap: 6 }}>
+                  {SHEET_URLS[juiceConfig.slug] && <SheetButton href={SHEET_URLS[juiceConfig.slug]} accent={juiceConfig.accentColor} />}
+                  <ShareButton url={`${window.location.origin}/${juiceConfig.slug}`} accent={juiceConfig.accentColor} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 
