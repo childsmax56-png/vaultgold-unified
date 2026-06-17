@@ -1,14 +1,25 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
-import { ArrowLeft, Play, Volume2, Download, Loader2, FlipHorizontal2, Upload, X, Trash2, ImagePlus, Plus } from 'lucide-react';
+import { ArrowLeft, Play, Volume2, Download, Loader2, FlipHorizontal2, Upload, X, Trash2, ImagePlus, Plus, Pencil, Share2, RefreshCw, FileEdit, Music2, Link } from 'lucide-react';
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { Song, Era } from '../types';
+import { ARTIST_LIST } from '../artists/registry';
 
 interface VGUser { id: string; username: string; email: string; }
 
 const AUDIO_EXTS = /\.(mp3|m4a|wav|ogg|flac|aac)$/i;
 const IMAGE_EXTS = /\.(png|jpe?g|gif|webp)$/i;
 const BACK_COVER_FILE = /back\s*cover/i;
+
+interface AlbumMeta {
+  sourceArtist?: string;
+  sourceEra?: string;
+  description?: string;
+  samplyUrl?: string;
+  untitledUrl?: string;
+  allowDownload?: boolean;
+  songs?: Record<string, { displayName?: string; notes?: string }>;
+}
 
 interface YEditsGroup {
   folderPath: string;
@@ -28,6 +39,8 @@ function parseGroups(keys: string[]): YEditsGroup[] {
     const folderPath = key.substring(0, lastSlash);
     const filename = key.substring(lastSlash + 1);
     if (!filename) continue;
+    // Skip metadata sidecar
+    if (filename === '_metadata.json') continue;
 
     if (!folderMap.has(folderPath)) {
       folderMap.set(folderPath, { audioKeys: [] });
@@ -91,14 +104,11 @@ function applyTracklistOrder(songs: Song[], tracklistText: string): Song[] {
     const normLine = normalizeTitle(line);
     const colLine = collapseTitle(line);
 
-    // 1. exact normalized match
     let idx = remaining.findIndex(s => normalizeTitle(s.name) === normLine);
-    // 2. normalized substring match
     if (idx === -1) idx = remaining.findIndex(s => {
       const n = normalizeTitle(s.name);
       return n.includes(normLine) || normLine.includes(n);
     });
-    // 3. collapsed match — handles apostrophe→space differences like "you're" vs "you re"
     if (idx === -1) idx = remaining.findIndex(s => {
       const c = collapseTitle(s.name);
       return c === colLine || c.includes(colLine) || colLine.includes(c);
@@ -110,6 +120,56 @@ function applyTracklistOrder(songs: Song[], tracklistText: string): Song[] {
     }
   }
   return [...ordered, ...remaining];
+}
+
+function getVGToken(): string | null {
+  return localStorage.getItem('vg_token');
+}
+
+interface ArtistSelectProps {
+  value: string;
+  onChange: (v: string) => void;
+  disabled?: boolean;
+}
+
+function ArtistSelect({ value, onChange, disabled }: ArtistSelectProps) {
+  const isOther = value !== '' && !ARTIST_LIST.some(a => a.SITE_NAME === value);
+  const [customVal, setCustomVal] = useState(isOther ? value : '');
+  const selectVal = isOther ? '__other__' : value;
+
+  const handleSelect = (v: string) => {
+    if (v === '__other__') {
+      onChange(customVal || '');
+    } else {
+      onChange(v);
+    }
+  };
+
+  return (
+    <div className="space-y-2">
+      <select
+        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+        value={selectVal}
+        onChange={e => handleSelect(e.target.value)}
+        disabled={disabled}
+      >
+        <option value="">None / Original</option>
+        {ARTIST_LIST.map(a => (
+          <option key={a.slug} value={a.SITE_NAME}>{a.SITE_NAME}</option>
+        ))}
+        <option value="__other__">Other…</option>
+      </select>
+      {(selectVal === '__other__') && (
+        <input
+          className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+          placeholder="Enter artist name…"
+          value={customVal}
+          onChange={e => { setCustomVal(e.target.value); onChange(e.target.value); }}
+          disabled={disabled}
+        />
+      )}
+    </div>
+  );
 }
 
 interface YEditsViewProps {
@@ -129,6 +189,8 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
   const [showBackCover, setShowBackCover] = useState(false);
   const [tracklistOverrides, setTracklistOverrides] = useState<Map<string, Song[]>>(new Map());
 
+  const [albumMeta, setAlbumMeta] = useState<Record<string, AlbumMeta>>({});
+
   const [vgUser, setVgUser] = useState<VGUser | null>(() => {
     try { return JSON.parse(localStorage.getItem('vg_user') || 'null'); } catch { return null; }
   });
@@ -141,6 +203,14 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
   const [uploadResult, setUploadResult] = useState<{ ok: boolean; msg: string } | null>(null);
   const coverInputRef = useRef<HTMLInputElement>(null);
   const tracksInputRef = useRef<HTMLInputElement>(null);
+
+  // Upload metadata fields
+  const [uploadSourceArtist, setUploadSourceArtist] = useState('');
+  const [uploadSourceEra, setUploadSourceEra] = useState('');
+  const [uploadDescription, setUploadDescription] = useState('');
+  const [uploadSamplyUrl, setUploadSamplyUrl] = useState('');
+  const [uploadUntitledUrl, setUploadUntitledUrl] = useState('');
+  const [uploadAllowDownload, setUploadAllowDownload] = useState(false);
 
   const [deleteTarget, setDeleteTarget] = useState<YEditsGroup | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -165,6 +235,31 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
   const [changeCoverResult, setChangeCoverResult] = useState<{ ok: boolean; msg: string } | null>(null);
   const changeCoverInputRef = useRef<HTMLInputElement>(null);
 
+  // edit project info modal
+  const [showEditMeta, setShowEditMeta] = useState(false);
+  const [editMetaSourceArtist, setEditMetaSourceArtist] = useState('');
+  const [editMetaSourceEra, setEditMetaSourceEra] = useState('');
+  const [editMetaDescription, setEditMetaDescription] = useState('');
+  const [editMetaSamplyUrl, setEditMetaSamplyUrl] = useState('');
+  const [editMetaUntitledUrl, setEditMetaUntitledUrl] = useState('');
+  const [editMetaAllowDownload, setEditMetaAllowDownload] = useState(false);
+  const [savingMeta, setSavingMeta] = useState(false);
+  const [saveMetaResult, setSaveMetaResult] = useState<{ ok: boolean; msg: string } | null>(null);
+
+  // per-song actions
+  const [renamingSongKey, setRenamingSongKey] = useState<string | null>(null);
+  const [renameValue, setRenameValue] = useState('');
+  const [renamingInProgress, setRenamingInProgress] = useState(false);
+  const [renameResult, setRenameResult] = useState<{ ok: boolean; msg: string } | null>(null);
+
+  const [replacingSongKey, setReplacingSongKey] = useState<string | null>(null);
+  const replaceFileRef = useRef<HTMLInputElement>(null);
+  const [replacingInProgress, setReplacingInProgress] = useState(false);
+
+  const [notesSongKey, setNotesSongKey] = useState<string | null>(null);
+  const [notesValue, setNotesValue] = useState('');
+  const [savingNotes, setSavingNotes] = useState(false);
+
   useEffect(() => {
     fetch('/api/yedits')
       .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() as Promise<string[]>; })
@@ -181,17 +276,33 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
     return () => { window.removeEventListener('storage', sync); window.removeEventListener('vg-synced', sync); };
   }, []);
 
+  // Fetch metadata when opening an album
+  useEffect(() => {
+    if (!selectedGroup) return;
+    const fp = selectedGroup.folderPath;
+    fetch(`/api/yedits-metadata?key=${encodeURIComponent(fp)}`)
+      .then(r => r.ok ? r.json() as Promise<AlbumMeta> : Promise.resolve({} as AlbumMeta))
+      .then(meta => setAlbumMeta(prev => ({ ...prev, [fp]: meta })))
+      .catch(() => {});
+  }, [selectedGroup]);
+
   const openUpload = () => {
     setUploadCreator(vgUser?.username ?? '');
     setUploadAlbum('');
     setUploadCover(null);
     setUploadTracks([]);
     setUploadResult(null);
+    setUploadSourceArtist('');
+    setUploadSourceEra('');
+    setUploadDescription('');
+    setUploadSamplyUrl('');
+    setUploadUntitledUrl('');
+    setUploadAllowDownload(false);
     setShowUpload(true);
   };
 
   const doUpload = async () => {
-    const token = localStorage.getItem('vg_token');
+    const token = getVGToken();
     if (!token || !uploadCreator.trim() || !uploadAlbum.trim() || uploadTracks.length === 0) return;
     setUploading(true);
     setUploadResult(null);
@@ -201,17 +312,31 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
     fd.append('album', uploadAlbum.trim());
     if (uploadCover) fd.append('cover', uploadCover);
     for (const t of uploadTracks) fd.append('tracks', t);
+    if (uploadSourceArtist) fd.append('sourceArtist', uploadSourceArtist);
+    if (uploadSourceEra) fd.append('sourceEra', uploadSourceEra);
+    if (uploadDescription) fd.append('description', uploadDescription);
+    if (uploadSamplyUrl) fd.append('samplyUrl', uploadSamplyUrl);
+    if (uploadUntitledUrl) fd.append('untitledUrl', uploadUntitledUrl);
+    fd.append('allowDownload', uploadAllowDownload ? 'true' : 'false');
     try {
       const res = await fetch('/api/yedits-upload', { method: 'POST', body: fd });
-      const data = await res.json() as { uploaded?: string[]; error?: string };
+      const data = await res.json() as { uploaded?: string[]; folderPath?: string; error?: string };
       if (!res.ok) {
         setUploadResult({ ok: false, msg: data.error ?? 'Upload failed' });
       } else {
         setUploadResult({ ok: true, msg: `Uploaded ${data.uploaded?.length ?? 0} file(s)!` });
-        fetch('/api/yedits', { cache: 'no-store' })
+        const freshKeys = await fetch('/api/yedits', { cache: 'no-store' })
           .then(r => r.json() as Promise<string[]>)
-          .then(d => setKeys(d))
-          .catch(() => {});
+          .catch(() => null);
+        if (freshKeys) setKeys(freshKeys);
+        // Fetch metadata for the new album
+        if (data.folderPath) {
+          const fp = data.folderPath;
+          fetch(`/api/yedits-metadata?key=${encodeURIComponent(fp)}`)
+            .then(r => r.ok ? r.json() as Promise<AlbumMeta> : Promise.resolve({} as AlbumMeta))
+            .then(meta => setAlbumMeta(prev => ({ ...prev, [fp]: meta })))
+            .catch(() => {});
+        }
       }
     } catch {
       setUploadResult({ ok: false, msg: 'Network error' });
@@ -221,7 +346,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
   };
 
   const doDelete = async (group: YEditsGroup) => {
-    const token = localStorage.getItem('vg_token');
+    const token = getVGToken();
     if (!token) return;
     setDeleting(true);
     setDeleteResult(null);
@@ -250,7 +375,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
   };
 
   const doDeleteSong = async (key: string) => {
-    const token = localStorage.getItem('vg_token');
+    const token = getVGToken();
     if (!token) return;
     setDeletingSong(true);
     setDeleteSongResult(null);
@@ -277,7 +402,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
   };
 
   const doAddTracks = async (group: YEditsGroup) => {
-    const token = localStorage.getItem('vg_token');
+    const token = getVGToken();
     if (!token || addTrackFiles.length === 0) return;
     setAddingTracks(true);
     setAddTracksResult(null);
@@ -306,7 +431,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
   };
 
   const doChangeCover = async (group: YEditsGroup) => {
-    const token = localStorage.getItem('vg_token');
+    const token = getVGToken();
     if (!token || !newCoverFile) return;
     setChangingCover(true);
     setChangeCoverResult(null);
@@ -331,6 +456,131 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
       setChangeCoverResult({ ok: false, msg: 'Network error' });
     } finally {
       setChangingCover(false);
+    }
+  };
+
+  const openEditMeta = (group: YEditsGroup) => {
+    const meta = albumMeta[group.folderPath] ?? {};
+    setEditMetaSourceArtist(meta.sourceArtist ?? '');
+    setEditMetaSourceEra(meta.sourceEra ?? '');
+    setEditMetaDescription(meta.description ?? '');
+    setEditMetaSamplyUrl(meta.samplyUrl ?? '');
+    setEditMetaUntitledUrl(meta.untitledUrl ?? '');
+    setEditMetaAllowDownload(meta.allowDownload ?? false);
+    setSaveMetaResult(null);
+    setShowEditMeta(true);
+  };
+
+  const doSaveMeta = async (group: YEditsGroup) => {
+    const token = getVGToken();
+    if (!token) return;
+    setSavingMeta(true);
+    setSaveMetaResult(null);
+    const existingMeta = albumMeta[group.folderPath] ?? {};
+    const meta: AlbumMeta = {
+      ...existingMeta,
+      sourceArtist: editMetaSourceArtist || undefined,
+      sourceEra: editMetaSourceEra || undefined,
+      description: editMetaDescription || undefined,
+      samplyUrl: editMetaSamplyUrl || undefined,
+      untitledUrl: editMetaUntitledUrl || undefined,
+      allowDownload: editMetaAllowDownload,
+    };
+    try {
+      const res = await fetch('/api/yedits-metadata', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, folderPath: group.folderPath, meta }),
+      });
+      const data = await res.json() as { ok?: boolean; error?: string };
+      if (!res.ok) {
+        setSaveMetaResult({ ok: false, msg: data.error ?? 'Save failed' });
+      } else {
+        setAlbumMeta(prev => ({ ...prev, [group.folderPath]: meta }));
+        setSaveMetaResult({ ok: true, msg: 'Saved!' });
+        setTimeout(() => { setShowEditMeta(false); setSaveMetaResult(null); }, 900);
+      }
+    } catch {
+      setSaveMetaResult({ ok: false, msg: 'Network error' });
+    } finally {
+      setSavingMeta(false);
+    }
+  };
+
+  const doRenameSong = async (group: YEditsGroup) => {
+    const token = getVGToken();
+    if (!token || !renamingSongKey || !renameValue.trim()) return;
+    setRenamingInProgress(true);
+    setRenameResult(null);
+    try {
+      const res = await fetch('/api/yedits-rename-song', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, oldKey: renamingSongKey, newFilename: renameValue.trim() }),
+      });
+      const data = await res.json() as { ok?: boolean; newKey?: string; error?: string };
+      if (!res.ok) {
+        setRenameResult({ ok: false, msg: data.error ?? 'Rename failed' });
+      } else {
+        setRenameResult({ ok: true, msg: 'Renamed!' });
+        const fresh = await fetch('/api/yedits', { cache: 'no-store' }).then(r => r.json() as Promise<string[]>);
+        setKeys(fresh);
+        setTimeout(() => { setRenamingSongKey(null); setRenameResult(null); }, 700);
+      }
+    } catch {
+      setRenameResult({ ok: false, msg: 'Network error' });
+    } finally {
+      setRenamingInProgress(false);
+    }
+  };
+
+  const doReplaceSong = async (group: YEditsGroup, key: string, file: File) => {
+    const token = getVGToken();
+    if (!token) return;
+    setReplacingInProgress(true);
+    const fd = new FormData();
+    fd.append('token', token);
+    fd.append('key', key);
+    fd.append('file', file);
+    try {
+      await fetch('/api/yedits-replace-song', { method: 'POST', body: fd });
+    } catch {
+      // silent
+    } finally {
+      setReplacingInProgress(false);
+      setReplacingSongKey(null);
+    }
+  };
+
+  const doSaveNotes = async (group: YEditsGroup, filename: string) => {
+    const token = getVGToken();
+    if (!token) return;
+    setSavingNotes(true);
+    const existingMeta = albumMeta[group.folderPath] ?? {};
+    const meta: AlbumMeta = {
+      ...existingMeta,
+      songs: {
+        ...(existingMeta.songs ?? {}),
+        [filename]: {
+          ...(existingMeta.songs?.[filename] ?? {}),
+          notes: notesValue,
+        },
+      },
+    };
+    try {
+      const res = await fetch('/api/yedits-metadata', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, folderPath: group.folderPath, meta }),
+      });
+      if (res.ok) {
+        setAlbumMeta(prev => ({ ...prev, [group.folderPath]: meta }));
+        setTimeout(() => { setNotesSongKey(null); }, 500);
+      }
+    } catch {
+      // silent
+    } finally {
+      setSavingNotes(false);
     }
   };
 
@@ -413,6 +663,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
     const activeCoverUrl = showBackCover ? selectedGroup.backCoverUrl : selectedGroup.imageUrl;
     const hasBackCover = !!selectedGroup.backCoverUrl;
     const isOwner = !!vgUser && selectedGroup.parentName.toLowerCase() === vgUser.username.toLowerCase();
+    const meta = albumMeta[selectedGroup.folderPath] ?? {};
 
     return (
       <>
@@ -482,7 +733,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
               )}
             </div>
 
-            <div className="flex flex-col justify-end h-full py-2">
+            <div className="flex flex-col justify-end h-full py-2 flex-1 min-w-0">
               {selectedGroup.parentName && (
                 <p className="text-[var(--theme-color)] text-sm font-semibold uppercase tracking-widest mb-2">
                   {selectedGroup.parentName}
@@ -491,6 +742,21 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
               <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
                 {selectedGroup.displayName}
               </h1>
+
+              {/* Source artist / era */}
+              {(meta.sourceArtist || meta.sourceEra) && (
+                <p className="text-white/50 text-sm mt-1">
+                  {[meta.sourceArtist, meta.sourceEra].filter(Boolean).join(' — ')}
+                </p>
+              )}
+
+              {/* Description */}
+              {meta.description && (
+                <p className="text-white/40 text-sm mt-2 max-w-xl leading-relaxed">
+                  {meta.description}
+                </p>
+              )}
+
               <div className="flex items-center gap-3 mt-3 flex-wrap">
                 <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[var(--theme-color)]/10 text-[var(--theme-color)] border border-[var(--theme-color)]/20">
                   Yedit Affiliates
@@ -498,14 +764,52 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
                 <p className="text-white/40 text-sm">
                   {selectedGroup.songs.length} track{selectedGroup.songs.length !== 1 ? 's' : ''}
                 </p>
-                {isOwner && (
-                  <button
-                    onClick={() => { setAddTrackFiles([]); setAddTracksResult(null); setShowAddTracks(true); }}
-                    className="flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg bg-[var(--theme-color)]/10 hover:bg-[var(--theme-color)]/20 text-[var(--theme-color)] border border-[var(--theme-color)]/20 transition-colors cursor-pointer"
+
+                {/* Streaming links */}
+                {meta.samplyUrl && (
+                  <a
+                    href={meta.samplyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="flex items-center gap-1 text-xs font-bold py-1 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white border border-white/10 transition-colors"
+                    title="Open on Samply"
                   >
-                    <Plus className="w-3 h-3" />
-                    Add Tracks
-                  </button>
+                    <Music2 className="w-3 h-3" />
+                    Samply
+                  </a>
+                )}
+                {meta.untitledUrl && (
+                  <a
+                    href={meta.untitledUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="flex items-center gap-1 text-xs font-bold py-1 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white border border-white/10 transition-colors"
+                    title="Open on Untitled"
+                  >
+                    <Link className="w-3 h-3" />
+                    Untitled
+                  </a>
+                )}
+
+                {isOwner && (
+                  <>
+                    <button
+                      onClick={() => { setAddTrackFiles([]); setAddTracksResult(null); setShowAddTracks(true); }}
+                      className="flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg bg-[var(--theme-color)]/10 hover:bg-[var(--theme-color)]/20 text-[var(--theme-color)] border border-[var(--theme-color)]/20 transition-colors cursor-pointer"
+                    >
+                      <Plus className="w-3 h-3" />
+                      Add Tracks
+                    </button>
+                    <button
+                      onClick={() => openEditMeta(selectedGroup)}
+                      className="flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white border border-white/10 transition-colors cursor-pointer"
+                    >
+                      <Pencil className="w-3 h-3" />
+                      Edit Info
+                    </button>
+                  </>
                 )}
               </div>
             </div>
@@ -522,58 +826,207 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
               {filteredSongs.map((song, i) => {
                 const isCurrentSong = currentSong?.url === song.url;
                 const isCurrentPlaying = isCurrentSong && isPlaying;
-                return (
-                  <div
-                    key={song.url}
-                    onClick={() => onPlaySong(song, era, filteredSongs)}
-                    className={`group flex items-center px-4 py-2.5 rounded-md transition-colors cursor-pointer hover:bg-white/5 ${isCurrentSong ? 'bg-white/5' : ''}`}
-                  >
-                    <div className={`w-8 text-sm font-mono flex items-center ${isCurrentSong ? 'text-[var(--theme-color)]' : 'text-white/40 group-hover:text-white'}`}>
-                      <span className="group-hover:hidden">
-                        {isCurrentSong
-                          ? <Volume2 className={`w-4 h-4 ${isCurrentPlaying ? 'animate-pulse' : ''}`} />
-                          : (i + 1)}
-                      </span>
-                      <Play className="w-4 h-4 hidden group-hover:block" />
-                    </div>
+                // Get the R2 key from the URL
+                const songKey = song.url ? decodeURIComponent(song.url.replace('/api/yedits-file?key=', '')) : '';
+                const filename = songKey.split('/').pop() ?? '';
+                const songMeta = meta.songs?.[filename];
+                const displayName = songMeta?.displayName || song.name;
+                const isRenaming = renamingSongKey === songKey;
+                const isNotes = notesSongKey === songKey;
+                const isReplacing = replacingSongKey === songKey;
 
-                    <div className="flex-1 min-w-0 pr-4">
-                      <div className={`font-medium truncate ${isCurrentSong ? 'text-[var(--theme-color)]' : 'text-white'}`}>
-                        {song.name}
+                return (
+                  <div key={song.url} className="flex flex-col">
+                    <div
+                      onClick={() => { if (!isRenaming && !isNotes) onPlaySong(song, era, filteredSongs); }}
+                      className={`group flex items-center px-4 py-2.5 rounded-md transition-colors cursor-pointer hover:bg-white/5 ${isCurrentSong ? 'bg-white/5' : ''}`}
+                    >
+                      <div className={`w-8 text-sm font-mono flex items-center ${isCurrentSong ? 'text-[var(--theme-color)]' : 'text-white/40 group-hover:text-white'}`}>
+                        <span className="group-hover:hidden">
+                          {isCurrentSong
+                            ? <Volume2 className={`w-4 h-4 ${isCurrentPlaying ? 'animate-pulse' : ''}`} />
+                            : (i + 1)}
+                        </span>
+                        <Play className="w-4 h-4 hidden group-hover:block" />
+                      </div>
+
+                      <div className="flex-1 min-w-0 pr-4">
+                        <div className={`font-medium truncate ${isCurrentSong ? 'text-[var(--theme-color)]' : 'text-white'}`}>
+                          {displayName}
+                        </div>
+                        {songMeta?.notes && (
+                          <div className="text-xs text-white/30 truncate">{songMeta.notes}</div>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        {(meta.allowDownload !== false) && (
+                          <a
+                            href={song.url}
+                            download
+                            onClick={e => e.stopPropagation()}
+                            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-white/40 hover:text-white/80"
+                            title="Download"
+                          >
+                            <Download className="w-4 h-4" />
+                          </a>
+                        )}
+                        {isOwner && song.url && (
+                          <>
+                            <button
+                              onClick={e => {
+                                e.stopPropagation();
+                                // Copy direct URL to clipboard
+                                navigator.clipboard.writeText(window.location.origin + song.url!).catch(() => {});
+                              }}
+                              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-white/40 hover:text-white/80 transition-colors cursor-pointer"
+                              title="Copy link"
+                            >
+                              <Share2 className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              onClick={e => {
+                                e.stopPropagation();
+                                setDeleteSongResult(null);
+                                setDeleteSongKey(songKey);
+                              }}
+                              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-600/30 text-white/40 hover:text-red-400 transition-colors cursor-pointer"
+                              title="Delete track"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <a
-                        href={song.url}
-                        download
-                        onClick={e => e.stopPropagation()}
-                        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-white/40 hover:text-white/80"
-                        title="Download"
-                      >
-                        <Download className="w-4 h-4" />
-                      </a>
-                      {isOwner && song.url && (
-                        <button
-                          onClick={e => {
-                            e.stopPropagation();
-                            const key = decodeURIComponent(song.url!.replace('/api/yedits-file?key=', ''));
-                            setDeleteSongResult(null);
-                            setDeleteSongKey(key);
-                          }}
-                          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-600/30 text-white/40 hover:text-red-400 transition-colors cursor-pointer"
-                          title="Delete track"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      )}
-                    </div>
+                    {/* Owner action row */}
+                    {isOwner && (
+                      <div className="flex items-center gap-2 px-4 pb-2 ml-8">
+                        {/* Rename */}
+                        {isRenaming ? (
+                          <div className="flex items-center gap-1.5 flex-1" onClick={e => e.stopPropagation()}>
+                            <input
+                              autoFocus
+                              className="flex-1 bg-white/5 border border-white/10 rounded px-2 py-0.5 text-xs text-white outline-none focus:border-[var(--theme-color)]"
+                              value={renameValue}
+                              onChange={e => setRenameValue(e.target.value)}
+                              onKeyDown={e => {
+                                if (e.key === 'Enter') doRenameSong(selectedGroup);
+                                if (e.key === 'Escape') { setRenamingSongKey(null); setRenameResult(null); }
+                              }}
+                            />
+                            <button
+                              onClick={() => doRenameSong(selectedGroup)}
+                              disabled={renamingInProgress}
+                              className="text-xs px-2 py-0.5 rounded bg-[var(--theme-color)]/20 text-[var(--theme-color)] hover:bg-[var(--theme-color)]/30 disabled:opacity-40 cursor-pointer"
+                            >
+                              {renamingInProgress ? <Loader2 className="w-3 h-3 animate-spin" /> : 'Save'}
+                            </button>
+                            <button
+                              onClick={() => { setRenamingSongKey(null); setRenameResult(null); }}
+                              className="text-white/30 hover:text-white cursor-pointer"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                            {renameResult && (
+                              <span className={`text-[10px] ${renameResult.ok ? 'text-green-400' : 'text-red-400'}`}>{renameResult.msg}</span>
+                            )}
+                          </div>
+                        ) : (
+                          <button
+                            onClick={e => { e.stopPropagation(); setRenameValue(filename); setRenamingSongKey(songKey); setRenameResult(null); }}
+                            className="flex items-center gap-1 text-[10px] text-white/30 hover:text-white/60 transition-colors cursor-pointer"
+                            title="Rename"
+                          >
+                            <FileEdit className="w-3 h-3" />
+                            Rename
+                          </button>
+                        )}
+
+                        {/* Replace */}
+                        {!isRenaming && (
+                          <>
+                            <span className="text-white/10">·</span>
+                            <button
+                              onClick={e => {
+                                e.stopPropagation();
+                                setReplacingSongKey(songKey);
+                                replaceFileRef.current?.click();
+                              }}
+                              disabled={replacingInProgress && isReplacing}
+                              className="flex items-center gap-1 text-[10px] text-white/30 hover:text-white/60 transition-colors cursor-pointer disabled:opacity-40"
+                              title="Replace file"
+                            >
+                              {replacingInProgress && isReplacing
+                                ? <Loader2 className="w-3 h-3 animate-spin" />
+                                : <RefreshCw className="w-3 h-3" />}
+                              Replace
+                            </button>
+                          </>
+                        )}
+
+                        {/* Notes */}
+                        {!isRenaming && (
+                          <>
+                            <span className="text-white/10">·</span>
+                            {isNotes ? (
+                              <div className="flex items-center gap-1.5 flex-1" onClick={e => e.stopPropagation()}>
+                                <textarea
+                                  autoFocus
+                                  rows={2}
+                                  className="flex-1 bg-white/5 border border-white/10 rounded px-2 py-0.5 text-xs text-white outline-none focus:border-[var(--theme-color)] resize-none"
+                                  value={notesValue}
+                                  onChange={e => setNotesValue(e.target.value)}
+                                  placeholder="Add notes…"
+                                />
+                                <button
+                                  onClick={() => doSaveNotes(selectedGroup, filename)}
+                                  disabled={savingNotes}
+                                  className="text-xs px-2 py-0.5 rounded bg-[var(--theme-color)]/20 text-[var(--theme-color)] hover:bg-[var(--theme-color)]/30 disabled:opacity-40 cursor-pointer"
+                                >
+                                  {savingNotes ? <Loader2 className="w-3 h-3 animate-spin" /> : 'Save'}
+                                </button>
+                                <button
+                                  onClick={() => setNotesSongKey(null)}
+                                  className="text-white/30 hover:text-white cursor-pointer"
+                                >
+                                  <X className="w-3 h-3" />
+                                </button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={e => { e.stopPropagation(); setNotesValue(songMeta?.notes ?? ''); setNotesSongKey(songKey); }}
+                                className="flex items-center gap-1 text-[10px] text-white/30 hover:text-white/60 transition-colors cursor-pointer"
+                                title="Add notes"
+                              >
+                                <Pencil className="w-3 h-3" />
+                                Notes
+                              </button>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    )}
                   </div>
                 );
               })}
             </div>
           </div>
         </motion.div>
+
+        {/* Hidden replace file input */}
+        <input
+          ref={replaceFileRef}
+          type="file"
+          accept="audio/*"
+          className="hidden"
+          onChange={e => {
+            const f = e.target.files?.[0];
+            if (f && replacingSongKey) doReplaceSong(selectedGroup, replacingSongKey, f);
+            e.target.value = '';
+          }}
+        />
 
         {/* Delete song confirm modal */}
         {deleteSongKey && typeof document !== 'undefined' && createPortal(
@@ -694,6 +1147,94 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
                   className="w-full py-2.5 rounded-lg bg-[var(--theme-color)] text-black text-xs font-bold hover:opacity-90 disabled:opacity-40 transition-opacity cursor-pointer flex items-center justify-center gap-2"
                 >
                   {changingCover ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Uploading…</> : <><ImagePlus className="w-3.5 h-3.5" /> Update Cover</>}
+                </button>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+
+        {/* Edit Project Info modal */}
+        {showEditMeta && typeof document !== 'undefined' && createPortal(
+          <div
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => { if (!savingMeta) { setShowEditMeta(false); setSaveMetaResult(null); } }}
+          >
+            <div className="bg-[#111] border border-white/10 rounded-xl w-full max-w-md p-6 shadow-2xl overflow-y-auto max-h-[90vh]" onClick={e => e.stopPropagation()}>
+              <div className="flex items-center justify-between mb-5">
+                <h3 className="text-base font-bold text-white">Edit Project Info</h3>
+                <button onClick={() => { if (!savingMeta) { setShowEditMeta(false); setSaveMetaResult(null); } }} className="text-white/40 hover:text-white cursor-pointer">
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-xs text-white/40 mb-1 block">Source Artist</label>
+                  <ArtistSelect value={editMetaSourceArtist} onChange={setEditMetaSourceArtist} disabled={savingMeta} />
+                </div>
+                {editMetaSourceArtist && (
+                  <div>
+                    <label className="text-xs text-white/40 mb-1 block">Source Era / Album</label>
+                    <input
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                      placeholder="e.g. folklore"
+                      value={editMetaSourceEra}
+                      onChange={e => setEditMetaSourceEra(e.target.value)}
+                      disabled={savingMeta}
+                    />
+                  </div>
+                )}
+                <div>
+                  <label className="text-xs text-white/40 mb-1 block">Description</label>
+                  <textarea
+                    rows={3}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors resize-none"
+                    placeholder="Project description…"
+                    value={editMetaDescription}
+                    onChange={e => setEditMetaDescription(e.target.value)}
+                    disabled={savingMeta}
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-white/40 mb-1 block">Samply URL</label>
+                  <input
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                    placeholder="https://samply.app/p/..."
+                    value={editMetaSamplyUrl}
+                    onChange={e => setEditMetaSamplyUrl(e.target.value)}
+                    disabled={savingMeta}
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-white/40 mb-1 block">Untitled URL</label>
+                  <input
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                    placeholder="https://untitled.stream/library/project/..."
+                    value={editMetaUntitledUrl}
+                    onChange={e => setEditMetaUntitledUrl(e.target.value)}
+                    disabled={savingMeta}
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <input
+                    id="edit-allow-download"
+                    type="checkbox"
+                    checked={editMetaAllowDownload}
+                    onChange={e => setEditMetaAllowDownload(e.target.checked)}
+                    disabled={savingMeta}
+                    className="w-4 h-4 accent-[var(--theme-color)]"
+                  />
+                  <label htmlFor="edit-allow-download" className="text-sm text-white/60 cursor-pointer">Allow track downloads</label>
+                </div>
+                {saveMetaResult && (
+                  <p className={`text-xs text-center ${saveMetaResult.ok ? 'text-green-400' : 'text-red-400'}`}>{saveMetaResult.msg}</p>
+                )}
+                <button
+                  onClick={() => doSaveMeta(selectedGroup)}
+                  disabled={savingMeta}
+                  className="w-full py-2.5 rounded-lg bg-[var(--theme-color)] text-black text-xs font-bold hover:opacity-90 disabled:opacity-40 transition-opacity cursor-pointer flex items-center justify-center gap-2"
+                >
+                  {savingMeta ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Saving…</> : 'Save Changes'}
                 </button>
               </div>
             </div>
@@ -838,7 +1379,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
           onClick={() => { if (!uploading) setShowUpload(false); }}
         >
           <div
-            className="bg-[#111] border border-white/10 rounded-xl w-full max-w-md p-6 shadow-2xl"
+            className="bg-[#111] border border-white/10 rounded-xl w-full max-w-md p-6 shadow-2xl overflow-y-auto max-h-[90vh]"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-5">
@@ -872,6 +1413,70 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying }: 
                   onChange={e => setUploadAlbum(e.target.value)}
                   disabled={uploading}
                 />
+              </div>
+
+              <div>
+                <label className="text-xs text-white/40 mb-1 block">Source Artist</label>
+                <ArtistSelect value={uploadSourceArtist} onChange={setUploadSourceArtist} disabled={uploading} />
+              </div>
+
+              {uploadSourceArtist && (
+                <div>
+                  <label className="text-xs text-white/40 mb-1 block">Source Era / Album</label>
+                  <input
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                    placeholder="e.g. folklore"
+                    value={uploadSourceEra}
+                    onChange={e => setUploadSourceEra(e.target.value)}
+                    disabled={uploading}
+                  />
+                </div>
+              )}
+
+              <div>
+                <label className="text-xs text-white/40 mb-1 block">Description <span className="text-white/20">(optional)</span></label>
+                <textarea
+                  rows={3}
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors resize-none"
+                  placeholder="Project description…"
+                  value={uploadDescription}
+                  onChange={e => setUploadDescription(e.target.value)}
+                  disabled={uploading}
+                />
+              </div>
+
+              <div>
+                <label className="text-xs text-white/40 mb-1 block">Samply URL <span className="text-white/20">(optional)</span></label>
+                <input
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                  placeholder="https://samply.app/p/..."
+                  value={uploadSamplyUrl}
+                  onChange={e => setUploadSamplyUrl(e.target.value)}
+                  disabled={uploading}
+                />
+              </div>
+
+              <div>
+                <label className="text-xs text-white/40 mb-1 block">Untitled URL <span className="text-white/20">(optional)</span></label>
+                <input
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                  placeholder="https://untitled.stream/library/project/..."
+                  value={uploadUntitledUrl}
+                  onChange={e => setUploadUntitledUrl(e.target.value)}
+                  disabled={uploading}
+                />
+              </div>
+
+              <div className="flex items-center gap-3">
+                <input
+                  id="upload-allow-download"
+                  type="checkbox"
+                  checked={uploadAllowDownload}
+                  onChange={e => setUploadAllowDownload(e.target.checked)}
+                  disabled={uploading}
+                  className="w-4 h-4 accent-[var(--theme-color)]"
+                />
+                <label htmlFor="upload-allow-download" className="text-sm text-white/60 cursor-pointer">Allow track downloads</label>
               </div>
 
               <div>
