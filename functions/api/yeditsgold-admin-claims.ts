@@ -14,17 +14,25 @@ async function ensureTable(db: D1Database) {
       claimed_at TEXT NOT NULL,
       reviewed_at TEXT,
       UNIQUE(profile_name)
-    )
+    );
+    CREATE TABLE IF NOT EXISTS yeditsgold_admins (
+      user_id TEXT PRIMARY KEY,
+      username TEXT NOT NULL,
+      email TEXT NOT NULL,
+      granted_at TEXT NOT NULL
+    );
   `);
 }
 
-async function getAdminUser(token: string) {
+async function getAdminUser(token: string, db: D1Database) {
   const res = await fetch('https://unvaulted.cc/api/auth/me', {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) return null;
   const user = await res.json() as { id: string; username: string; email: string };
-  return user.email === ADMIN_EMAIL ? user : null;
+  if (user.email === ADMIN_EMAIL) return user;
+  const row = await db.prepare('SELECT user_id FROM yeditsgold_admins WHERE user_id = ?').bind(user.id).first();
+  return row ? user : null;
 }
 
 export const onRequestOptions: PagesFunction = () => options();
@@ -35,7 +43,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   if (!DB) return json({ error: 'DB not configured' }, 500);
 
   const token = context.request.headers.get('Authorization')?.replace('Bearer ', '');
-  if (!token || !await getAdminUser(token)) return json({ error: 'Forbidden' }, 403);
+  if (!token || !await getAdminUser(token, DB)) return json({ error: 'Forbidden' }, 403);
 
   await ensureTable(DB);
 
@@ -53,7 +61,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (!DB) return json({ error: 'DB not configured' }, 500);
 
   const token = context.request.headers.get('Authorization')?.replace('Bearer ', '');
-  if (!token || !await getAdminUser(token)) return json({ error: 'Forbidden' }, 403);
+  if (!token || !await getAdminUser(token, DB)) return json({ error: 'Forbidden' }, 403);
 
   let body: { id?: string; action?: 'approve' | 'reject' };
   try { body = await context.request.json(); } catch { return json({ error: 'Invalid JSON' }, 400); }
