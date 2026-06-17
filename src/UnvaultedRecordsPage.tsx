@@ -115,8 +115,8 @@ function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
 
 const SINGLES = [
   {
-    title: 'ALL THE ALEXAIS',
-    artist: 'alexais',
+    title: 'All The Alexais (The Chakra) ',
+    artist: 'Alexais',
     year: '2026',
     src: '/unvaulted-records/audio/all-the-alexais.mp3',
   },
