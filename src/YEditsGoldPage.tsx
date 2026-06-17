@@ -581,16 +581,14 @@ export function YEditsGoldPage() {
         />
       </div>
 
-      <div style={{ position: 'relative', minHeight: 400 }}>
-        <YEditsView
-          searchQuery={searchQuery}
-          onPlaySong={handlePlaySong}
-          currentSong={currentSong}
-          isPlaying={isPlaying}
-          claims={claims}
-          onClaim={setClaimTarget}
-        />
-      </div>
+      <YEditsView
+        searchQuery={searchQuery}
+        onPlaySong={handlePlaySong}
+        currentSong={currentSong}
+        isPlaying={isPlaying}
+        claims={claims}
+        onClaim={setClaimTarget}
+      />
 
       {currentSong && (
         <PlayerBar
