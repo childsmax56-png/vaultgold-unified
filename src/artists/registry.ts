@@ -10,11 +10,13 @@ import { pushagoldConfig } from './pushagold';
 // import { shadygoldConfig } from './shadygold';
 import { twizzygoldConfig } from './twizzygold';
 import { uzigoldConfig } from './uzigold';
+import { wolfgoldConfig } from './wolfgold';
 import { juicegoldConfig } from './juicegold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   yzygold: yzygoldConfig,
   vampgold: vampgoldConfig,
+  wolfgold: wolfgoldConfig,
   drizzygold: drizzygoldConfig,
   xgold: xgoldConfig,
   cactigold: cactigoldConfig,

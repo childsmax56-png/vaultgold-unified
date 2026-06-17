@@ -495,6 +495,7 @@ function MyTrackerCard() {
 const SHEET_URLS: Record<string, string> = {
   yzygold:    'https://docs.google.com/spreadsheets/d/12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM/edit?gid=199908479#gid=199908479',
   vampgold:   'https://docs.google.com/spreadsheets/d/1Irtfvymu26CShYowLMMfD-rM0o9CJqE6-BBSlYsAaF4/edit?gid=0#gid=0',
+  wolfgold:   'https://docs.google.com/spreadsheets/d/19GJTNp7PxK1OtyVBmGelZSMm5i8Fy82EGtcFdIkBpsY/edit?gid=1246511510#gid=1246511510',
   drizzygold: 'https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/edit?gid=755606328#gid=755606328',
   xgold:      'https://docs.google.com/spreadsheets/d/1wKq7lSERmXYutRFxipNbFFc-DUdqhVXWWlFnqkzwRFA/edit?usp=sharing',
   cactigold:  'https://docs.google.com/spreadsheets/d/1gJqbQrb3dIWF-PLMsKkNUrftpQb8zxsZFDAIpSvT5Fo/edit?gid=846204501#gid=846204501',
