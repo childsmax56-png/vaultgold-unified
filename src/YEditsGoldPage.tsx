@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Loader2 } from 'lucide-react';
+import { EmbedPlayerModal, detectEmbedService, type EmbedTarget } from './components/EmbedPlayerModal';
 
 const DOC_URL = 'https://docs.google.com/document/d/1Yuqbwe3TwY0soU72M2PYTaN-NW1N3ooAgxHzlL4WsCM/edit?usp=sharing';
 const ACCENT = '#FFD700';
@@ -72,7 +73,7 @@ function parseDoc(text: string): { sections: { heading: string; projects: Projec
   return { sections };
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, onEmbed }: { project: Project; onEmbed: (target: EmbedTarget) => void }) {
   return (
     <div style={{
       background: '#111',
@@ -106,26 +107,49 @@ function ProjectCard({ project }: { project: Project }) {
         )}
       </div>
       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-        {project.links.map((url, i) => (
-          <a
-            key={i}
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: 4,
-              fontSize: 11, fontWeight: 600, padding: '5px 10px', borderRadius: 6,
-              background: `${ACCENT}12`, border: `1px solid ${ACCENT}33`,
-              color: ACCENT, textDecoration: 'none',
-              transition: 'background 0.15s',
-            }}
-            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = `${ACCENT}22`; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = `${ACCENT}12`; }}
-          >
-            <ExternalLink size={10} />
-            {project.links.length > 1 ? `Link ${i + 1}` : 'Open'}
-          </a>
-        ))}
+        {project.links.map((url, i) => {
+          const service = detectEmbedService(url);
+          const label = project.links.length > 1 ? `Link ${i + 1}` : 'Play';
+          if (service) {
+            return (
+              <button
+                key={i}
+                onClick={() => onEmbed({ service, url, label: project.title })}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 4,
+                  fontSize: 11, fontWeight: 600, padding: '5px 10px', borderRadius: 6,
+                  background: `${ACCENT}12`, border: `1px solid ${ACCENT}33`,
+                  color: ACCENT, cursor: 'pointer',
+                  transition: 'background 0.15s',
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = `${ACCENT}22`; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = `${ACCENT}12`; }}
+              >
+                ▶ {label}
+              </button>
+            );
+          }
+          return (
+            <a
+              key={i}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 4,
+                fontSize: 11, fontWeight: 600, padding: '5px 10px', borderRadius: 6,
+                background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)',
+                color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
+                transition: 'background 0.15s',
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.1)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.06)'; }}
+            >
+              <ExternalLink size={10} />
+              {label}
+            </a>
+          );
+        })}
       </div>
     </div>
   );
@@ -137,6 +161,7 @@ export function YEditsGoldPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
+  const [embedTarget, setEmbedTarget] = useState<EmbedTarget | null>(null);
 
   useEffect(() => {
     fetch('/api/yeditsgold-doc')
@@ -279,11 +304,13 @@ export function YEditsGoldPage() {
               gap: 10,
             }}>
               {section.projects.map((p, pi) => (
-                <ProjectCard key={pi} project={p} />
+                <ProjectCard key={pi} project={p} onEmbed={setEmbedTarget} />
               ))}
             </div>
           </div>
         ))}
+
+        <EmbedPlayerModal target={embedTarget} onClose={() => setEmbedTarget(null)} />
 
         {!loading && !error && filtered.length === 0 && search && (
           <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, padding: '40px 0' }}>
