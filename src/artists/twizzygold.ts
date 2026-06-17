@@ -15,7 +15,7 @@ export const twizzygoldConfig: ArtistConfig = {
   artistLabel: 'YEAT',
   cardLetter: 'YT',
   logoUrl: '/logos/twizzygold.png',
-  artistPhotoUrl: '/artists/yeat.jpg',
+  artistPhotoUrl: '/artists/yeat.webp',
 
   getArtistName(_eraName) { return 'YEAT'; },
 

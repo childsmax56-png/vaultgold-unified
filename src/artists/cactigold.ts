@@ -15,7 +15,7 @@ export const cactigoldConfig: ArtistConfig = {
   artistLabel: 'Travis Scott',
   cardLetter: 'CCT',
   logoUrl: '/logos/cactigold.png',
-  artistPhotoUrl: '/artists/travis.png',
+  artistPhotoUrl: '/artists/travis.webp',
 
   getArtistName(_eraName) { return 'Travis Scott'; },
 
