@@ -66,38 +66,43 @@ function MiniPlayer({
     <div style={{
       position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000,
       background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.08)',
-      padding: '10px 20px', display: 'flex', alignItems: 'center', gap: 16,
-      fontFamily: "'Inter', system-ui, sans-serif",
+      padding: '8px 16px', display: 'flex', alignItems: 'center', gap: 12,
+      fontFamily: "'Inter', system-ui, sans-serif", height: 56,
     }}>
-      <div style={{ flex: '0 0 200px', minWidth: 0 }}>
-        <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{song.name}</div>
-        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{era.name}</div>
+      {/* Song info */}
+      <div style={{ flex: '0 0 160px', minWidth: 0 }}>
+        <div style={{ fontSize: 12, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{song.name}</div>
+        <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{era.name}</div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flex: 1 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <button onClick={onPrev} disabled={idx <= 0} style={{ background: 'none', border: 'none', cursor: idx > 0 ? 'pointer' : 'default', color: idx > 0 ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)', padding: 0 }}>
-            <SkipBack size={16} />
-          </button>
-          <button onClick={onToggle} style={{ width: 36, height: 36, borderRadius: '50%', border: 'none', cursor: 'pointer', background: ACCENT, color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-          </button>
-          <button onClick={onNext} disabled={idx >= queue.length - 1} style={{ background: 'none', border: 'none', cursor: idx < queue.length - 1 ? 'pointer' : 'default', color: idx < queue.length - 1 ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)', padding: 0 }}>
-            <SkipForward size={16} />
-          </button>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, width: '100%', maxWidth: 400 }}>
-          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', minWidth: 32, textAlign: 'right' }}>{formatTime(currentTime)}</span>
-          <input type="range" min={0} max={duration || 0} step={0.1} value={currentTime} onChange={seek} style={{ flex: 1, accentColor: ACCENT, cursor: 'pointer' }} />
-          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', minWidth: 32 }}>{formatTime(duration)}</span>
-        </div>
-      </div>
-      <div style={{ flex: '0 0 160px', display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'flex-end' }}>
-        <Volume2 size={14} style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0 }} />
-        <input type="range" min={0} max={1} step={0.01} value={volume} onChange={changeVolume} style={{ width: 72, accentColor: ACCENT, cursor: 'pointer' }} />
-        <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.35)', padding: 4, display: 'flex' }}>
-          <X size={14} />
-        </button>
-      </div>
+
+      {/* Prev */}
+      <button onClick={onPrev} disabled={idx <= 0} style={{ background: 'none', border: 'none', cursor: idx > 0 ? 'pointer' : 'default', color: idx > 0 ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)', padding: 0, flexShrink: 0 }}>
+        <SkipBack size={15} />
+      </button>
+
+      {/* Play/Pause */}
+      <button onClick={onToggle} style={{ width: 30, height: 30, borderRadius: '50%', border: 'none', cursor: 'pointer', background: ACCENT, color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        {isPlaying ? <Pause size={13} /> : <Play size={13} />}
+      </button>
+
+      {/* Next */}
+      <button onClick={onNext} disabled={idx >= queue.length - 1} style={{ background: 'none', border: 'none', cursor: idx < queue.length - 1 ? 'pointer' : 'default', color: idx < queue.length - 1 ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)', padding: 0, flexShrink: 0 }}>
+        <SkipForward size={15} />
+      </button>
+
+      {/* Scrubber */}
+      <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', flexShrink: 0 }}>{formatTime(currentTime)}</span>
+      <input type="range" min={0} max={duration || 0} step={0.1} value={currentTime} onChange={seek} style={{ flex: 1, accentColor: ACCENT, cursor: 'pointer' }} />
+      <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', flexShrink: 0 }}>{formatTime(duration)}</span>
+
+      {/* Volume */}
+      <Volume2 size={13} style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0 }} />
+      <input type="range" min={0} max={1} step={0.01} value={volume} onChange={changeVolume} style={{ width: 60, accentColor: ACCENT, cursor: 'pointer', flexShrink: 0 }} />
+
+      {/* Close */}
+      <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.35)', padding: 4, display: 'flex', flexShrink: 0 }}>
+        <X size={14} />
+      </button>
     </div>
   );
 }
@@ -578,7 +583,7 @@ export function YEditsGoldPage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased', paddingBottom: currentSong ? 100 : 0 }}>
+    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased', paddingBottom: currentSong ? 56 : 0 }}>
       <audio ref={audioRef} />
 
       {/* Header */}
