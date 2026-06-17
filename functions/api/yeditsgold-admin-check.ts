@@ -20,9 +20,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (!DB) return json({ admin: false });
 
   try {
-    await DB.exec(`CREATE TABLE IF NOT EXISTS yeditsgold_admins (
-      user_id TEXT PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL, granted_at TEXT NOT NULL
-    )`);
+    await DB.prepare(`CREATE TABLE IF NOT EXISTS yeditsgold_admins (user_id TEXT PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL, granted_at TEXT NOT NULL)`).run();
     const row = await DB.prepare('SELECT user_id FROM yeditsgold_admins WHERE user_id = ?').bind(user.id).first();
     return json({ admin: !!row, owner: false });
   } catch {

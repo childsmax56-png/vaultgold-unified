@@ -3,25 +3,8 @@ import { json, options } from './_auth';
 const ADMIN_EMAIL = 'childsmax56@gmail.com';
 
 async function ensureTable(db: D1Database) {
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS yeditsgold_claims (
-      id TEXT PRIMARY KEY,
-      profile_name TEXT NOT NULL,
-      user_id TEXT NOT NULL,
-      username TEXT NOT NULL,
-      email TEXT NOT NULL,
-      status TEXT NOT NULL DEFAULT 'pending',
-      claimed_at TEXT NOT NULL,
-      reviewed_at TEXT,
-      UNIQUE(profile_name)
-    );
-    CREATE TABLE IF NOT EXISTS yeditsgold_admins (
-      user_id TEXT PRIMARY KEY,
-      username TEXT NOT NULL,
-      email TEXT NOT NULL,
-      granted_at TEXT NOT NULL
-    );
-  `);
+  await db.prepare(`CREATE TABLE IF NOT EXISTS yeditsgold_claims (id TEXT PRIMARY KEY, profile_name TEXT NOT NULL, user_id TEXT NOT NULL, username TEXT NOT NULL, email TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', claimed_at TEXT NOT NULL, reviewed_at TEXT, UNIQUE(profile_name))`).run();
+  await db.prepare(`CREATE TABLE IF NOT EXISTS yeditsgold_admins (user_id TEXT PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL, granted_at TEXT NOT NULL)`).run();
 }
 
 async function getAdminUser(token: string, db: D1Database) {
