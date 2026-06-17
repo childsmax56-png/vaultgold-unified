@@ -33,7 +33,7 @@ const ALBUMS = [
       { n: 9,  title: 'SUNDAY',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/sunday.m4a' },
       { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/mission-control.m4a' },
       { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
-      { n: 12, title: 'BIANCA',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/bianca.m4a' },
+      { n: 12, title: 'BIANCA',                                             artist: 'Don Juan',            src: 'unvaulted-records/audio/Bianca_3.0.mp3' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
       { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
     ],
