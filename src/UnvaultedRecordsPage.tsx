@@ -119,6 +119,7 @@ const SINGLES = [
     artist: 'Alexais',
     year: '2026',
     src: '/unvaulted-records/audio/all-the-alexais.mp3',
+    cover: '/unvaulted-records/all-the-alexais-cover.jpg',
   },
 ];
 
@@ -363,6 +364,10 @@ function SinglesView() {
             background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.07)',
             marginBottom: 12,
           }}>
+            {single.cover && (
+              <img src={single.cover} alt={single.title}
+                style={{ flexShrink: 0, width: 60, height: 60, borderRadius: 8, objectFit: 'cover' }} />
+            )}
             <button
               onClick={() => togglePlay(single.src)}
               style={{
