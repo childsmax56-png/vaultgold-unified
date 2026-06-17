@@ -592,6 +592,7 @@ export function YEditsGoldPage() {
         isPlaying={isPlaying}
         claims={claims}
         onClaim={setClaimTarget}
+        isAdmin={isAdmin}
       />
 
       {currentSong && (
