@@ -6,12 +6,12 @@ const ARTISTS = [
   { name: 'Alexias',        letter: 'A', accent: '#7C6FCD', description: 'Hip-Hop' },
   { name: 'ciatanner',      letter: 'C', accent: '#4EA8C9', description: 'Hip-Hop' },
   { name: 'Don Juan',       letter: 'D', accent: '#C9A224', description: 'Hip-Hop' },
-  { name: 'Big Poppa Perc',        letter: 'Y', accent: '#E05C5C', description: 'Hip-Hop' },
+  { name: 'Big Poppa Perc',        letter: 'P', accent: '#E05C5C', description: 'Hip-Hop' },
   { name: 'Lux',            letter: 'L', accent: '#F0A500', description: 'Hip-Hop' },
   { name: 'Max3:16420999',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'YZYGOLD',        letter: 'G', accent: '#FFD700', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
-  { name: 'Paw',            letter: 'P', accent: '#E8734A', description: 'Hip-Hop' },
+  { name: 'BIANCAGOLD',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
 ];
 
 const ALBUMS = [
@@ -461,8 +461,8 @@ export function UnvaultedRecordsPage() {
           </div>
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)' }}>
             Unvaulted Records is an independent label dedicated to pushing the
-            boundaries of sound. Home to Alexias, CIATANNER, Don Juan, YZY Sam,
-            LUX, MAX 3:16, YZYGOLD, Nr7th, and PAW — we build music that lasts.
+            boundaries of sound. Home to Alexias, ciatanner, Don Juan, Big Poppa Perc,
+            Lux, Max3:16420999, YZYGOLD, Nr7th, and BIANCAGOLD — we build music that lasts.
           </p>
         </div>
       </section>
