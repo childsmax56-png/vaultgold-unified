@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Play, Pause, SkipBack, SkipForward, Volume2, X, Check, ShieldCheck, Copy, KeyRound } from 'lucide-react';
+import { ArrowLeft, X, Check, ShieldCheck, Copy, KeyRound } from 'lucide-react';
 import { YEditsView, type ClaimInfo } from './components/YEditsView';
+import { PlayerBar } from './components/PlayerBar';
+import { FullScreenPlayer } from './components/FullScreenPlayer';
 import type { Song, Era } from './types';
 
 const ACCENT = '#FFD700';
@@ -12,100 +14,6 @@ function getVGUser(): VGUser | null {
   try { return JSON.parse(localStorage.getItem('vg_user') || 'null'); } catch { return null; }
 }
 function getVGToken(): string | null { return localStorage.getItem('vg_token'); }
-
-function formatTime(s: number): string {
-  if (!isFinite(s)) return '0:00';
-  const m = Math.floor(s / 60);
-  const sec = Math.floor(s % 60);
-  return `${m}:${sec.toString().padStart(2, '0')}`;
-}
-
-// ─── Mini Player ─────────────────────────────────────────────────────────────
-
-function MiniPlayer({
-  song, era, queue, isPlaying, onToggle, onPrev, onNext, onClose, audioRef,
-}: {
-  song: Song; era: Era; queue: Song[]; isPlaying: boolean;
-  onToggle: () => void; onPrev: () => void; onNext: () => void; onClose: () => void;
-  audioRef: React.RefObject<HTMLAudioElement>;
-}) {
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const onTime = () => setCurrentTime(audio.currentTime);
-    const onMeta = () => setDuration(audio.duration);
-    audio.addEventListener('timeupdate', onTime);
-    audio.addEventListener('loadedmetadata', onMeta);
-    audio.addEventListener('durationchange', onMeta);
-    return () => {
-      audio.removeEventListener('timeupdate', onTime);
-      audio.removeEventListener('loadedmetadata', onMeta);
-      audio.removeEventListener('durationchange', onMeta);
-    };
-  }, [audioRef]);
-
-  const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const t = Number(e.target.value);
-    if (audioRef.current) audioRef.current.currentTime = t;
-    setCurrentTime(t);
-  };
-
-  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const v = Number(e.target.value);
-    setVolume(v);
-    if (audioRef.current) audioRef.current.volume = v;
-  };
-
-  const idx = queue.findIndex(s => s.url === song.url);
-
-  return (
-    <div style={{
-      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1000,
-      background: '#0d0d0d', borderTop: '1px solid rgba(255,255,255,0.08)',
-      padding: '8px 16px', display: 'flex', alignItems: 'center', gap: 12,
-      fontFamily: "'Inter', system-ui, sans-serif", height: 56,
-    }}>
-      {/* Song info */}
-      <div style={{ flex: '0 0 160px', minWidth: 0 }}>
-        <div style={{ fontSize: 12, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{song.name}</div>
-        <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{era.name}</div>
-      </div>
-
-      {/* Prev */}
-      <button onClick={onPrev} disabled={idx <= 0} style={{ background: 'none', border: 'none', cursor: idx > 0 ? 'pointer' : 'default', color: idx > 0 ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)', padding: 0, flexShrink: 0 }}>
-        <SkipBack size={15} />
-      </button>
-
-      {/* Play/Pause */}
-      <button onClick={onToggle} style={{ width: 30, height: 30, borderRadius: '50%', border: 'none', cursor: 'pointer', background: ACCENT, color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-        {isPlaying ? <Pause size={13} /> : <Play size={13} />}
-      </button>
-
-      {/* Next */}
-      <button onClick={onNext} disabled={idx >= queue.length - 1} style={{ background: 'none', border: 'none', cursor: idx < queue.length - 1 ? 'pointer' : 'default', color: idx < queue.length - 1 ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)', padding: 0, flexShrink: 0 }}>
-        <SkipForward size={15} />
-      </button>
-
-      {/* Scrubber */}
-      <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', flexShrink: 0 }}>{formatTime(currentTime)}</span>
-      <input type="range" min={0} max={duration || 0} step={0.1} value={currentTime} onChange={seek} style={{ flex: 1, accentColor: ACCENT, cursor: 'pointer' }} />
-      <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', flexShrink: 0 }}>{formatTime(duration)}</span>
-
-      {/* Volume */}
-      <Volume2 size={13} style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0 }} />
-      <input type="range" min={0} max={1} step={0.01} value={volume} onChange={changeVolume} style={{ width: 60, accentColor: ACCENT, cursor: 'pointer', flexShrink: 0 }} />
-
-      {/* Close */}
-      <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.35)', padding: 4, display: 'flex', flexShrink: 0 }}>
-        <X size={14} />
-      </button>
-    </div>
-  );
-}
 
 // ─── Claim Modal ──────────────────────────────────────────────────────────────
 
@@ -497,6 +405,10 @@ export function YEditsGoldPage() {
   const [currentEra, setCurrentEra] = useState<Era | null>(null);
   const [queue, setQueue] = useState<Song[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [showFullScreen, setShowFullScreen] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const [claims, setClaims] = useState<Record<string, ClaimInfo>>({});
@@ -544,9 +456,25 @@ export function YEditsGoldPage() {
     const audio = audioRef.current;
     if (!audio || !currentSong?.url) return;
     audio.src = currentSong.url;
+    audio.volume = volume;
     audio.load();
     audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
   }, [currentSong]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => setCurrentTime(audio.currentTime);
+    const onMeta = () => setDuration(audio.duration || 0);
+    audio.addEventListener('timeupdate', onTime);
+    audio.addEventListener('loadedmetadata', onMeta);
+    audio.addEventListener('durationchange', onMeta);
+    return () => {
+      audio.removeEventListener('timeupdate', onTime);
+      audio.removeEventListener('loadedmetadata', onMeta);
+      audio.removeEventListener('durationchange', onMeta);
+    };
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -580,10 +508,31 @@ export function YEditsGoldPage() {
     setCurrentSong(null);
     setCurrentEra(null);
     setQueue([]);
+    setShowFullScreen(false);
+  };
+
+  const handlePrev = () => {
+    const idx = queue.findIndex(s => s.url === currentSong?.url);
+    if (idx > 0) setCurrentSong(queue[idx - 1]);
+  };
+
+  const handleNext = () => {
+    const idx = queue.findIndex(s => s.url === currentSong?.url);
+    if (idx !== -1 && idx < queue.length - 1) setCurrentSong(queue[idx + 1]);
+  };
+
+  const handleSeek = (t: number) => {
+    if (audioRef.current) audioRef.current.currentTime = t;
+    setCurrentTime(t);
+  };
+
+  const handleVolume = (v: number) => {
+    if (audioRef.current) audioRef.current.volume = v;
+    setVolume(v);
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased', paddingBottom: currentSong ? 56 : 0 }}>
+    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased', paddingBottom: currentSong ? 90 : 0 }}>
       <audio ref={audioRef} />
 
       {/* Header */}
@@ -643,15 +592,43 @@ export function YEditsGoldPage() {
         />
       </div>
 
-      {currentSong && currentEra && (
-        <MiniPlayer
-          song={currentSong} era={currentEra} queue={queue}
+      {currentSong && (
+        <PlayerBar
+          currentSong={currentSong}
+          era={currentEra}
           isPlaying={isPlaying}
-          onToggle={() => setIsPlaying(p => !p)}
-          onPrev={() => { const idx = queue.findIndex(s => s.url === currentSong.url); if (idx > 0) setCurrentSong(queue[idx - 1]); }}
-          onNext={() => { const idx = queue.findIndex(s => s.url === currentSong.url); if (idx < queue.length - 1) setCurrentSong(queue[idx + 1]); }}
+          togglePlay={() => setIsPlaying(p => !p)}
+          onFullScreen={() => setShowFullScreen(true)}
           onClose={handleClose}
+          currentTime={currentTime}
+          duration={duration}
+          onSeek={handleSeek}
+          volume={volume}
+          onVolumeChange={handleVolume}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          allowDownload={false}
+        />
+      )}
+
+      {showFullScreen && currentSong && (
+        <FullScreenPlayer
+          currentSong={currentSong}
+          era={currentEra}
+          isPlaying={isPlaying}
+          togglePlay={() => setIsPlaying(p => !p)}
+          onClose={() => setShowFullScreen(false)}
+          currentTime={currentTime}
+          duration={duration}
+          onSeek={handleSeek}
           audioRef={audioRef as React.RefObject<HTMLAudioElement>}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          volume={volume}
+          onVolumeChange={handleVolume}
+          playlist={queue}
+          currentSongIndex={queue.findIndex(s => s.url === currentSong.url)}
+          onPlaySong={i => setCurrentSong(queue[i])}
         />
       )}
 
