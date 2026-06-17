@@ -36,6 +36,8 @@ const ERA_NAME_MAP: Record<string, string> = {
   'Fear of God II: Let Us Pray': 'Fear of God II',
   'King Push – Darkest Before Dawn: The Prelude': 'Darkest Before Dawn',
   'King Push - Darkest Before Dawn: The Prelude': 'Darkest Before Dawn',
+  // wolfgold — header row name differs from song row era name
+  'CALL ME WHEN YOU GET LOST': 'CALL ME IF YOU GET LOST [V1]',
 };
 
 function mapEraName(name: string): string {
@@ -233,19 +235,31 @@ export const onRequestGet: PagesFunction = async (context) => {
       text = fallbackText;
     }
 
-    const rows = parseCSV(text);
+    // Some CSVs have a DISCLAIMER row before the real header (e.g. wolfgold).
+    // Strip any leading lines until we hit the row that starts with 'Era,'.
+    const normalizedText = (() => {
+      const lines = text.split('\n');
+      const headerIdx = lines.findIndex(l => l.trimStart().startsWith('Era,') || l.trimStart().startsWith('"Era"'));
+      return headerIdx > 0 ? lines.slice(headerIdx).join('\n') : text;
+    })();
+
+    const rows = parseCSV(normalizedText);
 
     // Detect which column holds the song/era name — different CSVs use different headers.
     // Some use 'Name\n(Join The Discord!)', others use 'Name\n(Check out the Tracker website!)', etc.
     const NAME_KEY = rows.length > 0
       ? (Object.keys(rows[0]).find(k => k === 'Name\n(Join The Discord!)')
         ?? Object.keys(rows[0]).find(k => k.startsWith('Name'))
+        ?? Object.keys(rows[0]).find(k => k.startsWith('Title'))
         ?? 'Name')
       : 'Name';
 
-    // Similarly detect the Notes column.
+    // Similarly detect the Notes/Info column.
     const NOTES_KEY = rows.length > 0
-      ? (Object.keys(rows[0]).find(k => k === 'Notes') ?? Object.keys(rows[0]).find(k => k.startsWith('Notes')) ?? 'Notes')
+      ? (Object.keys(rows[0]).find(k => k === 'Notes')
+        ?? Object.keys(rows[0]).find(k => k.startsWith('Notes'))
+        ?? Object.keys(rows[0]).find(k => k === 'Info')
+        ?? 'Notes')
       : 'Notes';
 
     const eras: Record<string, any> = {};
@@ -308,10 +322,10 @@ export const onRequestGet: PagesFunction = async (context) => {
           name,
           extra: extra ?? undefined,
           description: row[NOTES_KEY] ?? '',
-          track_length: row['Track Length'] ?? '',
+          track_length: row['Track Length'] ?? row['Length'] ?? '',
           file_date: row['File Date'] ?? row['Origin'] ?? '',
           leak_date: row['Leak Date'] ?? '',
-          available_length: row['Available Length'] ?? row['Portion'] ?? '',
+          available_length: row['Available Length'] ?? row['Availability'] ?? row['Portion'] ?? '',
           quality: row['Quality'] ?? '',
           url: links[0] ?? '',
           urls: links,

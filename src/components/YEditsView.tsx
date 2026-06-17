@@ -172,6 +172,7 @@ function ArtistSelect({ value, onChange, disabled }: ArtistSelectProps) {
   );
 }
 
+
 export interface ClaimInfo { userId: string; username: string; }
 
 interface YEditsViewProps {
@@ -368,9 +369,8 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         setDeleteResult({ ok: true, msg: `Deleted ${data.deleted?.length ?? 0} file(s)` });
         fetch('/api/yedits', { cache: 'no-store' })
           .then(r => r.json() as Promise<string[]>)
-          .then(d => setKeys(d))
-          .catch(() => {});
-        setTimeout(() => setDeleteTarget(null), 1200);
+          .then(d => { setKeys(d); setDeleteTarget(null); setSelectedGroup(null); })
+          .catch(() => setDeleteTarget(null));
       }
     } catch {
       setDeleteResult({ ok: false, msg: 'Network error' });
@@ -1311,8 +1311,15 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                     )}
                   </div>
                   <div className="text-left">
-                    <div className={`text-sm font-semibold leading-tight ${isActive ? 'text-[var(--theme-color)]' : ''}`}>
-                      {creator.name}
+                    <div className="flex items-center gap-1.5">
+                      <div className={`text-sm font-semibold leading-tight ${isActive ? 'text-[var(--theme-color)]' : ''}`}>
+                        {creator.name}
+                      </div>
+                      {claims[creator.name] && (
+                        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-[var(--theme-color)]/15 text-[var(--theme-color)] border border-[var(--theme-color)]/30 leading-none">
+                          ✓
+                        </span>
+                      )}
                     </div>
                     <div className="text-[10px] text-white/40">
                       {creator.albumCount} album{creator.albumCount !== 1 ? 's' : ''}
@@ -1357,15 +1364,36 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   {group.displayName}
                 </div>
               )}
-              {vgUser && group.parentName.toLowerCase() === vgUser.username.toLowerCase() && (
-                <button
-                  onClick={e => { e.stopPropagation(); setDeleteResult(null); setDeleteTarget(group); }}
-                  className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center w-7 h-7 rounded-full bg-black/70 hover:bg-red-600/80 text-white/60 hover:text-white backdrop-blur-sm cursor-pointer"
-                  title="Delete project"
-                >
-                  <Trash2 className="w-3.5 h-3.5" />
-                </button>
-              )}
+              {(() => {
+                const claimEntry = claims[group.parentName];
+                const isGroupOwner = !!vgUser && (
+                  group.parentName.toLowerCase() === vgUser.username.toLowerCase() ||
+                  claimEntry?.userId === vgUser.id
+                );
+                const isClaimed = !!claimEntry;
+                return (
+                  <>
+                    {isGroupOwner && (
+                      <button
+                        onClick={e => { e.stopPropagation(); setDeleteResult(null); setDeleteTarget(group); }}
+                        className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center w-7 h-7 rounded-full bg-black/70 hover:bg-red-600/80 text-white/60 hover:text-white backdrop-blur-sm cursor-pointer"
+                        title="Delete project"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                    {!isClaimed && onClaim && vgUser && !isGroupOwner && (
+                      <button
+                        onClick={e => { e.stopPropagation(); onClaim(group.parentName); }}
+                        className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 px-2 h-6 rounded-full bg-black/70 hover:bg-[var(--theme-color)]/80 text-white/60 hover:text-white backdrop-blur-sm cursor-pointer text-[10px] font-semibold"
+                        title="Claim this profile"
+                      >
+                        Claim
+                      </button>
+                    )}
+                  </>
+                );
+              })()}
             </div>
             <div>
               <h3 className="text-sm font-bold text-white group-hover:underline truncate">

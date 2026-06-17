@@ -1,6 +1,10 @@
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { YEDITS_BUCKET } = context.env;
 
+  if (!YEDITS_BUCKET) {
+    return json({ error: 'Storage not configured' }, 500);
+  }
+
   let formData: FormData;
   try {
     formData = await context.request.formData();
@@ -29,29 +33,38 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const creatorDir = sanitize(creator);
   const albumDir = sanitize(album);
 
-  const uploaded: string[] = [];
+  const uploads: Promise<string | null>[] = [];
 
   const cover = formData.get('cover');
   if (cover instanceof File && cover.size > 0) {
-    const key = `${creatorDir}/${albumDir}/${sanitize(cover.name)}`;
-    await YEDITS_BUCKET.put(key, cover.stream(), {
-      httpMetadata: { contentType: cover.type || 'image/jpeg' },
-    });
-    uploaded.push(key);
+    uploads.push(
+      cover.arrayBuffer().then(buf => {
+        const key = `${creatorDir}/${albumDir}/${sanitize(cover.name)}`;
+        return YEDITS_BUCKET.put(key, buf, {
+          httpMetadata: { contentType: cover.type || 'image/jpeg' },
+        }).then(() => key);
+      })
+    );
   }
 
   for (const track of formData.getAll('tracks')) {
     if (!(track instanceof File) || track.size === 0) continue;
-    const key = `${creatorDir}/${albumDir}/${sanitize(track.name)}`;
-    await YEDITS_BUCKET.put(key, track.stream(), {
-      httpMetadata: { contentType: track.type || 'audio/mpeg' },
-    });
-    uploaded.push(key);
+    uploads.push(
+      track.arrayBuffer().then(buf => {
+        const key = `${creatorDir}/${albumDir}/${sanitize(track.name)}`;
+        return YEDITS_BUCKET.put(key, buf, {
+          httpMetadata: { contentType: track.type || 'audio/mpeg' },
+        }).then(() => key);
+      })
+    );
   }
 
-  if (uploaded.length === 0) {
+  if (uploads.length === 0) {
     return json({ error: 'No files were uploaded' }, 400);
   }
+
+  const results = await Promise.all(uploads);
+  const uploaded = results.filter((k): k is string => k !== null);
 
   // Write metadata sidecar if any metadata fields were provided
   const sourceArtist = (formData.get('sourceArtist') as string | null) ?? '';
