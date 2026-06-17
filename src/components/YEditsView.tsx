@@ -951,6 +951,15 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 />
               </div>
 
+              {(() => {
+                const totalBytes = (uploadCover?.size ?? 0) + uploadTracks.reduce((sum, f) => sum + f.size, 0);
+                return totalBytes > 128 * 1024 * 1024 ? (
+                  <p className="text-xs text-amber-400 text-center leading-relaxed">
+                    The attached files exceed the 128 MB limit. Upload as many as you can here, then add the rest after.
+                  </p>
+                ) : null;
+              })()}
+
               {uploadResult && (
                 <p className={`text-xs text-center ${uploadResult.ok ? 'text-green-400' : 'text-red-400'}`}>
                   {uploadResult.msg}
