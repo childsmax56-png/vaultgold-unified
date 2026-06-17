@@ -546,7 +546,7 @@ export function UnvaultedRecordsPage() {
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)' }}>
             Unvaulted Records is an independent label dedicated to pushing the
             boundaries of sound. Home to Alexias, ciatanner, Don Juan, Big Poppa Perc,
-            Lux, Max3:16420999, YZYGOLD, Nr7th, and BIANCAGOLD — we build music that lasts.
+            Lux, Max3:16420999, YZYGOLD, Nr7th, BIANCAGOLD and Buffet West — we build music that lasts.
           </p>
         </div>
       </section>
