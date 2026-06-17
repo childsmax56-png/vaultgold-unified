@@ -34,8 +34,9 @@ function ClaimModal({ profileName, onClose }: { profileName: string; onClose: ()
       const data = await res.json() as { ok?: boolean; message?: string; error?: string };
       if (!res.ok) { setMsg(data.error ?? 'Something went wrong.'); setStatus('error'); }
       else { setMsg(data.message ?? 'Claim submitted!'); setStatus('success'); }
-    } catch {
-      setMsg('Network error.'); setStatus('error');
+    } catch (err) {
+      setMsg(`Error: ${err instanceof Error ? err.message : String(err)}`);
+      setStatus('error');
     }
   };
 
