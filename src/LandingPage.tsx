@@ -63,289 +63,6 @@ function useSpotifyCallback() {
   }, []);
 }
 
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12 }}>
-      <path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" />
-    </svg>
-  );
-}
-
-function PhotoCard({ onClick, photoUrl, label, accent }: { onClick: () => void; photoUrl: string; label: string; accent: string }) {
-  return (
-    <div
-      onClick={onClick}
-      style={{
-        position: 'relative',
-        borderRadius: 14,
-        overflow: 'hidden',
-        cursor: 'pointer',
-        aspectRatio: '3/4',
-        border: '2px solid transparent',
-        background: '#0f0f0f',
-        transition: 'border-color 0.2s, transform 0.15s, box-shadow 0.2s',
-      }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = accent;
-        el.style.transform = 'translateY(-3px)';
-        el.style.boxShadow = `0 16px 40px rgba(0,0,0,0.6), 0 0 0 1px ${accent}44`;
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = 'transparent';
-        el.style.transform = '';
-        el.style.boxShadow = '';
-      }}
-    >
-      <img
-        src={photoUrl}
-        alt={label}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-      />
-      {/* Bottom gradient + name */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0,
-        background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)',
-        padding: '28px 14px 12px',
-      }}>
-        <span style={{
-          fontSize: 13, fontWeight: 700, color: '#fff',
-          letterSpacing: '0.02em', textShadow: '0 1px 4px rgba(0,0,0,0.8)',
-        }}>{label}</span>
-      </div>
-    </div>
-  );
-}
-
-function ArtistCard({ config, showPhoto }: { config: ArtistConfig; showPhoto: boolean }) {
-  const navigate = useNavigate();
-  const accent = config.accentColor;
-  const dim = `${accent}22`;
-  const photoUrl = showPhoto && config.artistPhotoUrl ? config.artistPhotoUrl : null;
-
-  if (photoUrl) {
-    return <PhotoCard onClick={() => navigate(`/${config.slug}`)} photoUrl={photoUrl} label={config.artistLabel} accent={accent} />;
-  }
-
-  return (
-    <div
-      onClick={() => navigate(`/${config.slug}`)}
-      style={{
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '28px 28px 24px',
-        background: '#0f0f0f',
-        border: '1px solid rgba(255,255,255,0.06)',
-        borderRadius: 16,
-        cursor: 'pointer',
-        overflow: 'hidden',
-        minHeight: 180,
-        transition: 'border-color 0.2s, transform 0.15s, box-shadow 0.2s',
-      }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = `${accent}66`;
-        el.style.transform = 'translateY(-3px)';
-        el.style.boxShadow = `0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px ${accent}22`;
-        const glow = el.querySelector('.card-glow') as HTMLDivElement;
-        if (glow) glow.style.opacity = '1';
-        const letter = el.querySelector('.card-letter') as HTMLDivElement;
-        if (letter) letter.style.color = `${accent}18`;
-        const arrow = el.querySelector('.card-arrow') as HTMLDivElement;
-        if (arrow) {
-          arrow.style.borderColor = accent;
-          arrow.style.background = `${accent}22`;
-          const svg = arrow.querySelector('svg');
-          if (svg) svg.style.stroke = accent;
-        }
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.borderColor = 'rgba(255,255,255,0.06)';
-        el.style.transform = '';
-        el.style.boxShadow = '';
-        const glow = el.querySelector('.card-glow') as HTMLDivElement;
-        if (glow) glow.style.opacity = '0';
-        const letter = el.querySelector('.card-letter') as HTMLDivElement;
-        if (letter) letter.style.color = 'rgba(255,255,255,0.025)';
-        const arrow = el.querySelector('.card-arrow') as HTMLDivElement;
-        if (arrow) {
-          arrow.style.borderColor = 'rgba(255,255,255,0.1)';
-          arrow.style.background = 'transparent';
-          const svg = arrow.querySelector('svg');
-          if (svg) svg.style.stroke = 'rgba(255,255,255,0.45)';
-        }
-      }}
-    >
-      <div className="card-glow" style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 0% 100%, ${dim}, transparent 70%)`, opacity: 0, transition: 'opacity 0.3s', pointerEvents: 'none', borderRadius: 'inherit' }} />
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>
-          {config.artistLabel}
-        </div>
-        {config.logoUrl ? (
-          <img
-            src={config.logoUrl}
-            alt={config.SITE_NAME}
-            style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }}
-            onError={e => {
-              const img = e.currentTarget;
-              img.style.display = 'none';
-              const fallback = img.nextElementSibling as HTMLElement;
-              if (fallback) fallback.style.display = 'block';
-            }}
-          />
-        ) : null}
-        <div style={{ fontSize: 26, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1, display: config.logoUrl ? 'none' : 'block' }}>
-          {config.SITE_NAME.replace(/([A-Z][a-z]+)$/, '').trim()}
-          <span style={{ color: accent }}>{config.SITE_NAME.match(/([A-Z][a-z]+)$/)?.[0] ?? ''}</span>
-        </div>
-      </div>
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{config.artistLabel}</span>
-        <div className="card-arrow" style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s' }}>
-          <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)', transition: 'stroke 0.2s' }}>
-            <path d="M2 10L10 2M10 2H4M10 2v6" />
-          </svg>
-        </div>
-      </div>
-      <div className="card-letter" style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none', transition: 'color 0.2s' }}>
-        {config.cardLetter}
-      </div>
-    </div>
-  );
-}
-
-function ExternalCard({ href, label, logoSrc, logoAlt, cardLetter, accent, photoSrc }: {
-  href: string; label: string; logoSrc: string; logoAlt: string; cardLetter: string; accent: string; photoSrc?: string;
-}) {
-  const dim = `${accent}22`;
-
-  if (photoSrc) {
-    return <PhotoCard onClick={() => window.open(href, '_blank', 'noopener,noreferrer')} photoUrl={photoSrc} label={label} accent={accent} />;
-  }
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '28px 28px 24px',
-        background: '#0f0f0f',
-        border: '1px solid rgba(255,255,255,0.06)',
-        borderRadius: 16,
-        textDecoration: 'none',
-        color: '#fff',
-        overflow: 'hidden',
-        minHeight: 180,
-        transition: 'border-color 0.2s, transform 0.15s, box-shadow 0.2s',
-      }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLAnchorElement;
-        el.style.borderColor = `${accent}66`;
-        el.style.transform = 'translateY(-3px)';
-        el.style.boxShadow = `0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px ${accent}22`;
-        const glow = el.querySelector('.card-glow') as HTMLDivElement;
-        if (glow) glow.style.opacity = '1';
-        const letter = el.querySelector('.card-letter') as HTMLDivElement;
-        if (letter) letter.style.color = `${accent}18`;
-        const arrow = el.querySelector('.card-arrow') as HTMLDivElement;
-        if (arrow) {
-          arrow.style.borderColor = accent;
-          arrow.style.background = `${accent}22`;
-          const svg = arrow.querySelector('svg');
-          if (svg) svg.style.stroke = accent;
-        }
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLAnchorElement;
-        el.style.borderColor = 'rgba(255,255,255,0.06)';
-        el.style.transform = '';
-        el.style.boxShadow = '';
-        const glow = el.querySelector('.card-glow') as HTMLDivElement;
-        if (glow) glow.style.opacity = '0';
-        const letter = el.querySelector('.card-letter') as HTMLDivElement;
-        if (letter) letter.style.color = 'rgba(255,255,255,0.025)';
-        const arrow = el.querySelector('.card-arrow') as HTMLDivElement;
-        if (arrow) {
-          arrow.style.borderColor = 'rgba(255,255,255,0.1)';
-          arrow.style.background = 'transparent';
-          const svg = arrow.querySelector('svg');
-          if (svg) svg.style.stroke = 'rgba(255,255,255,0.45)';
-        }
-      }}
-    >
-      <div className="card-glow" style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 0% 100%, ${dim}, transparent 70%)`, opacity: 0, transition: 'opacity 0.3s', pointerEvents: 'none', borderRadius: 'inherit' }} />
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>{label}</div>
-        <img src={logoSrc} alt={logoAlt} style={{ display: 'block', height: 44, width: 'auto', maxWidth: 220, objectFit: 'contain', objectPosition: 'left center' }} />
-      </div>
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{label}</span>
-        <div className="card-arrow" style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s' }}>
-          <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)', transition: 'stroke 0.2s' }}><path d="M2 10L10 2M10 2H4M10 2v6" /></svg>
-        </div>
-      </div>
-      <div className="card-letter" style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none', transition: 'color 0.2s' }}>{cardLetter}</div>
-    </a>
-  );
-}
-
-function MyTrackerCard() {
-  const accent = '#C9A224';
-  return (
-    <a
-      href="/my-tracker"
-      style={{
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '28px 28px 24px',
-        background: '#0f0f0f',
-        border: '1px solid rgba(255,255,255,0.06)',
-        borderRadius: 16,
-        textDecoration: 'none',
-        color: '#fff',
-        overflow: 'hidden',
-        minHeight: 140,
-        transition: 'border-color 0.2s, transform 0.15s, box-shadow 0.2s',
-      }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLAnchorElement;
-        el.style.borderColor = `${accent}66`;
-        el.style.transform = 'translateY(-3px)';
-        el.style.boxShadow = `0 16px 48px rgba(0,0,0,0.5)`;
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLAnchorElement;
-        el.style.borderColor = 'rgba(255,255,255,0.06)';
-        el.style.transform = '';
-        el.style.boxShadow = '';
-      }}
-    >
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>Custom</div>
-        <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1 }}>MY <span style={{ color: accent }}>TRACKER</span></div>
-      </div>
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Link your own Google Sheet</span>
-        <div style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)' }}><path d="M2 10L10 2M10 2H4M10 2v6" /></svg>
-        </div>
-      </div>
-      <div style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>MTR</div>
-    </a>
-  );
-}
-
 function Toggle({ on, onToggle }: { on: boolean; onToggle: () => void }) {
   return (
     <button
@@ -382,12 +99,10 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
 
   return (
     <>
-      {/* Backdrop */}
       <div
         onClick={onClose}
         style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 100 }}
       />
-      {/* Panel */}
       <div style={{
         position: 'fixed', top: 0, right: 0, bottom: 0, width: 340, maxWidth: '90vw',
         background: '#0a0a0a', borderLeft: '1px solid rgba(255,255,255,0.08)',
@@ -403,11 +118,8 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           >✕</button>
         </div>
 
-        {/* Theme Color */}
         <div style={row}>
-          <div>
-            <div style={label}>Theme Color</div>
-          </div>
+          <div><div style={label}>Theme Color</div></div>
           <input
             type="color"
             value={settings.themeColor}
@@ -416,7 +128,6 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           />
         </div>
 
-        {/* Font Size */}
         <div style={row}>
           <div style={label}>Font Size</div>
           <div style={{ display: 'flex', gap: 4, background: 'rgba(255,255,255,0.05)', borderRadius: 8, padding: 4 }}>
@@ -435,7 +146,6 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
-        {/* Loading Screen */}
         <div style={{ ...row, flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
           <div style={label}>Loading Screen</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, width: '100%' }}>
@@ -455,7 +165,6 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
-        {/* Artist Photos */}
         <div style={row}>
           <div>
             <div style={label}>Artist Photos</div>
@@ -464,13 +173,11 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           <Toggle on={settings.landingArtistPhotos} onToggle={() => updateSettings({ landingArtistPhotos: !settings.landingArtistPhotos })} />
         </div>
 
-        {/* Tags as Emojis */}
         <div style={row}>
           <div style={label}>Tags as Emojis</div>
           <Toggle on={settings.tagsAsEmojis} onToggle={() => updateSettings({ tagsAsEmojis: !settings.tagsAsEmojis })} />
         </div>
 
-        {/* Startup Shuffle */}
         <div style={row}>
           <div>
             <div style={label}>Startup Shuffle</div>
@@ -479,13 +186,11 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           <Toggle on={settings.startupShuffle} onToggle={() => updateSettings({ startupShuffle: !settings.startupShuffle })} />
         </div>
 
-        {/* Synced Lyrics Only */}
         <div style={row}>
           <div style={label}>Synced Lyrics Only</div>
           <Toggle on={settings.syncedLyricsOnly} onToggle={() => updateSettings({ syncedLyricsOnly: !settings.syncedLyricsOnly })} />
         </div>
 
-        {/* Reset */}
         <button
           onClick={handleReset}
           style={{
@@ -567,12 +272,352 @@ function useVGAuth() {
   return { user, signInWithGoogle, signOut };
 }
 
+// ─── Card components ──────────────────────────────────────────────────────────
+
+type CardVariant = 'featured' | 'medium' | 'small';
+
+const VARIANT_ASPECT: Record<CardVariant, string> = { featured: '1/1', medium: '1/1', small: '1/1' };
+const VARIANT_LOGO_HEIGHT_PX: Record<CardVariant, number> = { featured: 260, medium: 160, small: 100 };
+const VARIANT_RADIUS: Record<CardVariant, number> = { featured: 14, medium: 14, small: 10 };
+const LOGO_HEIGHT: Record<CardVariant, number> = { featured: 38, medium: 28, small: 20 };
+const NAME_SIZE: Record<CardVariant, number> = { featured: 18, medium: 14, small: 11 };
+const ARTIST_SIZE: Record<CardVariant, number> = { featured: 12, medium: 11, small: 9 };
+const CARD_PADDING: Record<CardVariant, string> = { featured: '24px 16px 14px', medium: '20px 12px 10px', small: '14px 10px 8px' };
+const LOGO_PADDING: Record<CardVariant, string> = { featured: '18px', medium: '14px', small: '10px' };
+
+function EditorialArtistCard({ config, showPhoto, variant }: {
+  config: ArtistConfig;
+  showPhoto: boolean;
+  variant: CardVariant;
+}) {
+  const navigate = useNavigate();
+  const accent = config.accentColor;
+  const photoUrl = showPhoto && config.artistPhotoUrl ? config.artistPhotoUrl : null;
+  const aspectRatio = VARIANT_ASPECT[variant];
+  const borderRadius = VARIANT_RADIUS[variant];
+
+  const onEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.borderColor = `${accent}66`;
+    e.currentTarget.style.transform = 'translateY(-2px)';
+  };
+  const onLeave = (e: React.MouseEvent<HTMLDivElement>, base: string) => {
+    e.currentTarget.style.borderColor = base;
+    e.currentTarget.style.transform = '';
+  };
+
+  if (photoUrl) {
+    return (
+      <div
+        onClick={() => navigate(`/${config.slug}`)}
+        onMouseEnter={onEnter}
+        onMouseLeave={e => onLeave(e, 'transparent')}
+        style={{
+          position: 'relative', borderRadius, overflow: 'hidden', cursor: 'pointer',
+          aspectRatio, border: '1px solid transparent', background: '#111',
+          transition: 'border-color 0.2s, transform 0.15s',
+        }}
+      >
+        <img
+          src={photoUrl}
+          alt={config.artistLabel}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
+        <div style={{ position: 'absolute', top: 10, right: 10, width: 7, height: 7, borderRadius: '50%', background: accent }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: CARD_PADDING[variant] }}>
+          {variant === 'featured' && (
+            <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', background: 'rgba(201,162,36,0.25)', color: '#C9A224', padding: '2px 7px', borderRadius: 4, marginBottom: 6 }}>Featured</div>
+          )}
+          <div style={{ fontSize: NAME_SIZE[variant], fontWeight: 800, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.1 }}>{config.artistLabel}</div>
+          <div style={{ fontSize: ARTIST_SIZE[variant], color: 'rgba(255,255,255,0.5)', marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{config.SITE_NAME}</div>
+        </div>
+      </div>
+    );
+  }
+
+  // Logo / text mode
+  const baseBorder = variant === 'featured' ? `${accent}30` : 'rgba(255,255,255,0.07)';
+  return (
+    <div
+      onClick={() => navigate(`/${config.slug}`)}
+      onMouseEnter={onEnter}
+      onMouseLeave={e => onLeave(e, baseBorder)}
+      style={{
+        position: 'relative', borderRadius, overflow: 'hidden', cursor: 'pointer',
+        minHeight: VARIANT_LOGO_HEIGHT_PX[variant], background: variant === 'featured' ? `${accent}0a` : '#0f0f0f',
+        border: `1px solid ${baseBorder}`,
+        padding: LOGO_PADDING[variant],
+        display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        transition: 'border-color 0.2s, transform 0.15s',
+      }}
+    >
+      <div>
+        {variant === 'featured' && (
+          <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', background: `${accent}20`, color: accent, padding: '2px 7px', borderRadius: 4, marginBottom: 10 }}>Featured</div>
+        )}
+        {config.logoUrl ? (
+          <>
+            <img
+              src={config.logoUrl}
+              alt={config.SITE_NAME}
+              style={{ display: 'block', height: LOGO_HEIGHT[variant], width: 'auto', maxWidth: '100%', objectFit: 'contain', objectPosition: 'left center' }}
+              onError={e => {
+                const img = e.currentTarget;
+                img.style.display = 'none';
+                const fb = img.nextElementSibling as HTMLElement;
+                if (fb) fb.style.display = 'block';
+              }}
+            />
+            <div style={{ display: 'none', fontSize: NAME_SIZE[variant], fontWeight: 900, color: accent, letterSpacing: '-0.02em' }}>{config.SITE_NAME}</div>
+          </>
+        ) : (
+          <div style={{ fontSize: NAME_SIZE[variant], fontWeight: 900, color: accent, letterSpacing: '-0.02em' }}>{config.SITE_NAME}</div>
+        )}
+      </div>
+      <div style={{ fontSize: 9, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: `${accent}aa` }}>{config.artistLabel}</div>
+    </div>
+  );
+}
+
+function ExternalSmallCard({ href, label, logoSrc, logoAlt, accent, photoSrc, variant = 'small' }: {
+  href: string; label: string; logoSrc: string; logoAlt: string; accent: string; photoSrc?: string; variant?: CardVariant;
+}) {
+  const onEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.borderColor = `${accent}66`;
+    e.currentTarget.style.transform = 'translateY(-2px)';
+  };
+  const onLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.borderColor = photoSrc ? 'transparent' : 'rgba(255,255,255,0.07)';
+    e.currentTarget.style.transform = '';
+  };
+
+  if (photoSrc) {
+    return (
+      <a
+        href={href} target="_blank" rel="noopener noreferrer"
+        onMouseEnter={onEnter} onMouseLeave={onLeave}
+        style={{
+          position: 'relative', borderRadius: 10, overflow: 'hidden', cursor: 'pointer',
+          aspectRatio: '1/1', border: '1px solid transparent', background: '#111',
+          display: 'block', textDecoration: 'none',
+          transition: 'border-color 0.2s, transform 0.15s',
+        }}
+      >
+        <img src={photoSrc} alt={label} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
+        <div style={{ position: 'absolute', top: 10, right: 10, width: 7, height: 7, borderRadius: '50%', background: accent }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '14px 10px 8px' }}>
+          <div style={{ fontSize: 11, fontWeight: 800, color: '#fff', lineHeight: 1.1 }}>{label}</div>
+          <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{logoAlt}</div>
+        </div>
+      </a>
+    );
+  }
+
+  return (
+    <a
+      href={href} target="_blank" rel="noopener noreferrer"
+      onMouseEnter={onEnter} onMouseLeave={onLeave}
+      style={{
+        position: 'relative', borderRadius: VARIANT_RADIUS[variant], overflow: 'hidden', cursor: 'pointer',
+        minHeight: VARIANT_LOGO_HEIGHT_PX[variant], background: '#0f0f0f',
+        border: '1px solid rgba(255,255,255,0.07)',
+        padding: LOGO_PADDING.small,
+        display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+        textDecoration: 'none',
+        transition: 'border-color 0.2s, transform 0.15s',
+      }}
+    >
+      <img
+        src={logoSrc} alt={logoAlt}
+        style={{ display: 'block', height: LOGO_HEIGHT.small, width: 'auto', maxWidth: '100%', objectFit: 'contain', objectPosition: 'left center' }}
+        onError={e => {
+          const img = e.currentTarget;
+          img.style.display = 'none';
+          const fb = img.nextElementSibling as HTMLElement;
+          if (fb) fb.style.display = 'block';
+        }}
+      />
+      <div style={{ display: 'none', fontSize: 13, fontWeight: 900, color: accent }}>{logoAlt}</div>
+      <div style={{ fontSize: 9, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: `${accent}aa` }}>{label}</div>
+    </a>
+  );
+}
+
+function MyTrackerCard() {
+  const accent = '#C9A224';
+  return (
+    <a
+      href="/my-tracker"
+      style={{
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: '28px 28px 24px',
+        background: '#0f0f0f',
+        border: '1px solid rgba(255,255,255,0.06)',
+        borderRadius: 16,
+        textDecoration: 'none',
+        color: '#fff',
+        overflow: 'hidden',
+        minHeight: 140,
+        transition: 'border-color 0.2s, transform 0.15s, box-shadow 0.2s',
+      }}
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLAnchorElement;
+        el.style.borderColor = `${accent}66`;
+        el.style.transform = 'translateY(-3px)';
+        el.style.boxShadow = `0 16px 48px rgba(0,0,0,0.5)`;
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLAnchorElement;
+        el.style.borderColor = 'rgba(255,255,255,0.06)';
+        el.style.transform = '';
+        el.style.boxShadow = '';
+      }}
+    >
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>Custom</div>
+        <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1 }}>MY <span style={{ color: accent }}>TRACKER</span></div>
+      </div>
+      <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
+        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Link your own Google Sheet</span>
+        <div style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)' }}><path d="M2 10L10 2M10 2H4M10 2v6" /></svg>
+        </div>
+      </div>
+      <div style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>MTR</div>
+    </a>
+  );
+}
+
+const SHEET_URLS: Record<string, string> = {
+  yzygold:    'https://docs.google.com/spreadsheets/d/12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM/edit?gid=199908479#gid=199908479',
+  vampgold:   'https://docs.google.com/spreadsheets/d/1Irtfvymu26CShYowLMMfD-rM0o9CJqE6-BBSlYsAaF4/edit?gid=0#gid=0',
+  wolfgold:   'https://docs.google.com/spreadsheets/d/19GJTNp7PxK1OtyVBmGelZSMm5i8Fy82EGtcFdIkBpsY/edit?gid=1246511510#gid=1246511510',
+  drizzygold: 'https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/edit?gid=755606328#gid=755606328',
+  xgold:      'https://docs.google.com/spreadsheets/d/1wKq7lSERmXYutRFxipNbFFc-DUdqhVXWWlFnqkzwRFA/edit?usp=sharing',
+  cactigold:  'https://docs.google.com/spreadsheets/d/1gJqbQrb3dIWF-PLMsKkNUrftpQb8zxsZFDAIpSvT5Fo/edit?gid=846204501#gid=846204501',
+  kdotgold:   'https://docs.google.com/spreadsheets/d/1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI/edit?gid=1169728352#gid=1169728352',
+  twizzygold: 'https://docs.google.com/spreadsheets/d/1FUzAZyTCgFTVxQ--qbCAS2bUk4dsAw6ASxwjURPHbyI',
+  uzigold:    'https://docs.google.com/spreadsheets/d/1zqqdIds1iwnx4lh29iF1IlraeuqfGhxH9qLNlWOnryo/edit?gid=1160569231#gid=1160569231',
+  dregold:    'https://docs.google.com/spreadsheets/d/10_QK8xP-WCdrfO6RaIkhdDtYUXaM966e6D1xWD__iIo/edit?gid=1520634709#gid=1520634709',
+  pushagold:  'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/edit?gid=1932839414#gid=1932839414',
+};
+
+function ShareButton({ url, accent }: { url: string; accent?: string }) {
+  const [copied, setCopied] = useState(false);
+  const color = accent ?? 'rgba(255,255,255,0.4)';
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    });
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+        padding: '7px 10px', borderRadius: 8,
+        background: copied ? `${color}18` : 'rgba(255,255,255,0.04)',
+        border: `1px solid ${copied ? `${color}44` : 'rgba(255,255,255,0.08)'}`,
+        color: copied ? color : 'rgba(255,255,255,0.45)',
+        fontSize: 11, fontWeight: 600, letterSpacing: '0.04em',
+        cursor: 'pointer', transition: 'background 0.15s, color 0.15s, border-color 0.15s',
+        flex: 1,
+      }}
+      onMouseEnter={e => {
+        if (copied) return;
+        const el = e.currentTarget;
+        el.style.background = `${color}18`;
+        el.style.borderColor = `${color}44`;
+        el.style.color = color;
+      }}
+      onMouseLeave={e => {
+        if (copied) return;
+        const el = e.currentTarget;
+        el.style.background = 'rgba(255,255,255,0.04)';
+        el.style.borderColor = 'rgba(255,255,255,0.08)';
+        el.style.color = 'rgba(255,255,255,0.45)';
+      }}
+    >
+      {copied ? (
+        <>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Copied!
+        </>
+      ) : (
+        <>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Share
+        </>
+      )}
+    </button>
+  );
+}
+
+function SheetButton({ href, accent }: { href: string; accent?: string }) {
+  const color = accent ?? 'rgba(255,255,255,0.4)';
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={e => e.stopPropagation()}
+      style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+        padding: '7px 10px', borderRadius: 8,
+        background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
+        color: 'rgba(255,255,255,0.45)', fontSize: 11, fontWeight: 600,
+        letterSpacing: '0.04em', textDecoration: 'none', flex: 1,
+        transition: 'background 0.15s, color 0.15s, border-color 0.15s',
+      }}
+      onMouseEnter={e => {
+        const el = e.currentTarget;
+        el.style.background = `${color}18`;
+        el.style.borderColor = `${color}44`;
+        el.style.color = color;
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget;
+        el.style.background = 'rgba(255,255,255,0.04)';
+        el.style.borderColor = 'rgba(255,255,255,0.08)';
+        el.style.color = 'rgba(255,255,255,0.45)';
+      }}
+    >
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+      </svg>
+      Spreadsheet
+    </a>
+  );
+}
+
+// ─── Main page ────────────────────────────────────────────────────────────────
+
 export function LandingPage() {
   useSpotifyCallback();
   const [showSettings, setShowSettings] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const { settings } = useSettings();
   const showPhotos = settings.landingArtistPhotos;
   const { user, signInWithGoogle, signOut } = useVGAuth();
+
+  const featured = ARTIST_LIST[0];
+  // Carti, Tyler in top-right row 1; Drake in top-right row 2
+  const topRight = ARTIST_LIST.slice(1, 4);
+  const juiceCard = { href: 'https://docs.google.com/spreadsheets/d/1tD3ytt5wPx4zfcefXi5ATeYhIiDaugWjMS46nZrP568/edit?gid=0#gid=0', label: 'Juice WRLD', logoSrc: '/logos/juicegold.png', logoAlt: 'Juicegold', accent: '#e53e3e', photo: '/artists/juice.webp' };
+  const smallArtists = ARTIST_LIST.slice(4);
+  const allSmall = smallArtists.map(c => ({ type: 'artist' as const, config: c }));
+  const INITIAL_SMALL = 4;
+  const visibleSmall = showAll ? allSmall : allSmall.slice(0, INITIAL_SMALL);
+  const hiddenCount = allSmall.length - INITIAL_SMALL;
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -586,7 +631,8 @@ export function LandingPage() {
       alignItems: 'center',
     }}>
       {showSettings && <LandingSettingsPanel onClose={() => setShowSettings(false)} />}
-      <header style={{ textAlign: 'center', marginBottom: 64, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+
+      <header style={{ textAlign: 'center', marginBottom: 40, width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
         <button
           onClick={() => setShowSettings(true)}
           style={{
@@ -604,47 +650,102 @@ export function LandingPage() {
         <img
           src="/logo.png"
           alt="UNVAULTED"
-          style={{ height: 'auto', width: 'clamp(200px, 35vw, 360px)' }}
+          style={{ height: 'auto', width: 'clamp(160px, 28vw, 280px)' }}
           onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />
-        <p style={{ marginTop: 20, fontSize: 15, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 500 }}>
-          The Best Music Trackers In The World
-        </p>
       </header>
 
-      <main style={{
-        display: 'grid',
-        gridTemplateColumns: showPhotos ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
-        gap: showPhotos ? 12 : 16,
-        width: '100%',
-        maxWidth: showPhotos ? 960 : 720,
-        transition: 'max-width 0.3s',
-      }}>
-        {ARTIST_LIST.map(config => (
-          <ArtistCard key={config.slug} config={config} showPhoto={showPhotos} />
-        ))}
+      <main style={{ width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {/* Featured on the left, 2×2 grid of pinned cards on the right */}
+        <div className="grid-top">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <EditorialArtistCard config={featured} showPhoto={showPhotos} variant="featured" />
+            <div style={{ display: 'flex', gap: 6 }}>
+              {SHEET_URLS[featured.slug] && <SheetButton href={SHEET_URLS[featured.slug]} accent={featured.accentColor} />}
+              <ShareButton url={`${window.location.origin}/${featured.slug}`} accent={featured.accentColor} />
+            </div>
+          </div>
+          <div className="grid-pinned">
+            {topRight.map(config => (
+              <div key={config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <EditorialArtistCard config={config} showPhoto={showPhotos} variant="medium" />
+                <div style={{ display: 'flex', gap: 6 }}>
+                  {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
+                  <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
+                </div>
+              </div>
+            ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <ExternalSmallCard
+                href={juiceCard.href}
+                label={juiceCard.label}
+                logoSrc={juiceCard.logoSrc}
+                logoAlt={juiceCard.logoAlt}
+                accent={juiceCard.accent}
+                photoSrc={showPhotos ? juiceCard.photo : undefined}
+                variant="medium"
+              />
+              <div style={{ display: 'flex', gap: 6 }}>
+                <SheetButton href={juiceCard.href} accent={juiceCard.accent} />
+                <ShareButton url={juiceCard.href} accent={juiceCard.accent} />
+              </div>
+            </div>
+          </div>
+        </div>
 
-        {/* WOLFgold is now a full tracker — card rendered via ARTIST_LIST above */}
+        {/* Row 2+: remaining artists in a 4-col grid, collapsible */}
+        <div className="grid-small">
+          {visibleSmall.map(item =>
+            item.type === 'artist' ? (
+              <div key={item.config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <EditorialArtistCard config={item.config} showPhoto={showPhotos} variant="small" />
+                <div style={{ display: 'flex', gap: 6 }}>
+                  {SHEET_URLS[item.config.slug] && <SheetButton href={SHEET_URLS[item.config.slug]} accent={item.config.accentColor} />}
+                  <ShareButton url={`${window.location.origin}/${item.config.slug}`} accent={item.config.accentColor} />
+                </div>
+              </div>
+            ) : (
+              <div key={item.logoAlt} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <ExternalSmallCard
+                  href={item.href}
+                  label={item.label}
+                  logoSrc={item.logoSrc}
+                  logoAlt={item.logoAlt}
+                  accent={item.accent}
+                  photoSrc={showPhotos ? item.photo : undefined}
+                />
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <SheetButton href={item.href} accent={item.accent} />
+                  <ShareButton url={item.href} accent={item.accent} />
+                </div>
+              </div>
+            )
+          )}
+        </div>
 
-        {/* Juicegold — external Google Sheet */}
-        <ExternalCard
-          href="https://docs.google.com/spreadsheets/d/1tD3ytt5wPx4zfcefXi5ATeYhIiDaugWjMS46nZrP568/edit?gid=0#gid=0"
-          label="Juice WRLD"
-          logoSrc="/logos/juicegold.png"
-          logoAlt="Juicegold"
-          cardLetter="JCE"
-          accent="#e53e3e"
-          photoSrc={showPhotos ? '/artists/juice.webp' : undefined}
-        />
+        {hiddenCount > 0 && (
+          <button
+            onClick={() => setShowAll(v => !v)}
+            style={{
+              alignSelf: 'center', padding: '10px 24px', borderRadius: 10,
+              background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
+              color: 'rgba(255,255,255,0.5)', fontSize: 13, fontWeight: 600,
+              letterSpacing: '0.04em', cursor: 'pointer',
+              transition: 'background 0.15s, color 0.15s, border-color 0.15s',
+            }}
+            onMouseEnter={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.08)'; b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,0.2)'; }}
+            onMouseLeave={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.04)'; b.style.color = 'rgba(255,255,255,0.5)'; b.style.borderColor = 'rgba(255,255,255,0.1)'; }}
+          >
+            {showAll ? 'Show less' : `Show ${hiddenCount} more trackers`}
+          </button>
+        )}
       </main>
 
-      {/* My Tracker — full width */}
-      <div style={{ width: '100%', maxWidth: showPhotos ? 960 : 720, marginTop: 16 }}>
+      <div style={{ width: '100%', maxWidth: 900, marginTop: 8 }}>
         <MyTrackerCard />
       </div>
 
-      {/* Social + Account */}
-      <div style={{ width: '100%', maxWidth: showPhotos ? 960 : 720, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+      <div style={{ width: '100%', maxWidth: 900, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         <a href="https://discord.gg/xYhKgCDX8h" target="_blank" rel="noopener noreferrer"
           style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(88,101,242,0.12)', border: '1px solid rgba(88,101,242,0.25)', color: '#5865F2', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
           <SiDiscord style={{ width: 16, height: 16 }} /> Discord
@@ -690,8 +791,25 @@ export function LandingPage() {
       </footer>
 
       <style>{`
-        @media (max-width: 500px) {
-          main { grid-template-columns: 1fr !important; max-width: 360px !important; }
+        .grid-top {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+        .grid-pinned {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+        .grid-small {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 8px;
+        }
+        @media (max-width: 600px) {
+          .grid-top { grid-template-columns: 1fr 1fr; }
+          .grid-top > *:first-child { grid-column: 1 / -1; }
+          .grid-small { grid-template-columns: repeat(2, 1fr); }
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
       `}</style>

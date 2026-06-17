@@ -15,16 +15,16 @@ import { wolfgoldConfig } from './wolfgold';
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   yzygold: yzygoldConfig,
   vampgold: vampgoldConfig,
-  kdotgold: kdotgoldConfig,
+  wolfgold: wolfgoldConfig,
   drizzygold: drizzygoldConfig,
   xgold: xgoldConfig,
   cactigold: cactigoldConfig,
-  dregold: dregoldConfig,
+  kdotgold: kdotgoldConfig,
+  uzigold: uzigoldConfig,
   pushagold: pushagoldConfig,
   // shadygold: shadygoldConfig,
   twizzygold: twizzygoldConfig,
-  uzigold: uzigoldConfig,
-  wolfgold: wolfgoldConfig,
+  dregold: dregoldConfig,
 };
 
 export const ARTIST_LIST: ArtistConfig[] = Object.values(ARTIST_REGISTRY);
