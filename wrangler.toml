@@ -11,3 +11,4 @@ database_id = "75b65b4b-664e-4375-97d0-e7e7a611ea95"
 [[r2_buckets]]
 binding = "YEDITS_BUCKET"
 bucket_name = "yeditsgold-uploads"
+preview_bucket_name = "yeditsgold-uploads"
