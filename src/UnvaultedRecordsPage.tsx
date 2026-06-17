@@ -112,6 +112,15 @@ function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
   );
 }
 
+const SINGLES = [
+  {
+    title: 'ALL THE ALEXAIS',
+    artist: 'alexais',
+    year: '2026',
+    src: '/unvaulted-records/audio/all-the-alexais.mp3',
+  },
+];
+
 type Track = typeof ALBUMS[0]['tracks'][0];
 
 function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
@@ -320,8 +329,73 @@ function TrackRow({ track, isPlaying, isActive, onClick }: {
   );
 }
 
+function SinglesView() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState<string | null>(null);
+  const [progress, setProgress] = useState(0);
+
+  function togglePlay(src: string) {
+    if (playing === src) {
+      audioRef.current?.pause();
+      setPlaying(null);
+    } else {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      const a = new Audio(src);
+      audioRef.current = a;
+      a.play();
+      setPlaying(src);
+      a.ontimeupdate = () => setProgress(a.duration ? a.currentTime / a.duration : 0);
+      a.onended = () => { setPlaying(null); setProgress(0); };
+    }
+  }
+
+  return (
+    <section style={{ maxWidth: 700, margin: '0 auto', padding: '0 24px 80px' }}>
+      {SINGLES.map(single => {
+        const isPlaying = playing === single.src;
+        return (
+          <div key={single.title} style={{
+            display: 'flex', alignItems: 'center', gap: 20,
+            padding: '20px 24px', borderRadius: 16,
+            background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.07)',
+            marginBottom: 12,
+          }}>
+            <button
+              onClick={() => togglePlay(single.src)}
+              style={{
+                flexShrink: 0, width: 44, height: 44, borderRadius: '50%',
+                border: `1.5px solid ${ACCENT}`, background: isPlaying ? ACCENT : 'transparent',
+                color: isPlaying ? '#000' : ACCENT, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 16, transition: 'background 0.15s, color 0.15s',
+              }}
+            >
+              {isPlaying ? '⏸' : '▶'}
+            </button>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontWeight: 800, fontSize: 15, letterSpacing: '0.02em', color: '#fff', marginBottom: 3 }}>
+                {single.title}
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>
+                {single.artist} · {single.year} · Single
+              </div>
+              {isPlaying && (
+                <div style={{ marginTop: 8, height: 3, background: 'rgba(255,255,255,0.1)', borderRadius: 2 }}>
+                  <div style={{ width: `${progress * 100}%`, height: '100%', background: ACCENT, borderRadius: 2, transition: 'width 0.25s linear' }} />
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </section>
+  );
+}
+
 function TabBar({ active, onChange }: { active: string; onChange: (t: string) => void }) {
-  const tabs = ['Artists', 'Albums'];
+  const tabs = ['Artists', 'Albums', 'Singles'];
   return (
     <div style={{
       display: 'flex', gap: 4,
@@ -442,8 +516,10 @@ export function UnvaultedRecordsPage() {
             {ARTISTS.map(a => <ArtistCard key={a.name} artist={a} />)}
           </div>
         </section>
-      ) : (
+      ) : tab === 'Albums' ? (
         ALBUMS.map(album => <AlbumView key={album.title} album={album} />)
+      ) : (
+        <SinglesView />
       )}
 
       {/* About strip */}
