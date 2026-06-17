@@ -20,8 +20,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ error: 'Unauthorized — sign in to UNVAULTED first' }, 401);
   }
 
-  const me = await authRes.json() as { username?: string };
-  const username = me.username?.trim();
+  const { user: me } = await authRes.json() as { user?: { username?: string } };
+  const username = me?.username?.trim();
   if (!username) {
     return json({ error: 'Could not determine your username' }, 401);
   }
