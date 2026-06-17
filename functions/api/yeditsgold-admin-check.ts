@@ -13,7 +13,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     headers: { Authorization: `Bearer ${body.token}` },
   });
   if (!res.ok) return json({ admin: false });
-  const user = await res.json() as { id: string; email: string };
+  const { user } = await res.json() as { user?: { id: string; email: string } };
+  if (!user) return json({ admin: false });
 
   if (user.email === OWNER_EMAIL) return json({ admin: true, owner: true });
 

@@ -12,7 +12,8 @@ async function getAdminUser(token: string, db: D1Database) {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) return null;
-  const user = await res.json() as { id: string; username: string; email: string };
+  const { user } = await res.json() as { user?: { id: string; username: string; email: string } };
+  if (!user) return null;
   if (user.email === ADMIN_EMAIL) return user;
   const row = await db.prepare('SELECT user_id FROM yeditsgold_admins WHERE user_id = ?').bind(user.id).first();
   return row ? user : null;

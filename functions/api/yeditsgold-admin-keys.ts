@@ -12,7 +12,8 @@ async function getUser(token: string) {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) return null;
-  return res.json() as Promise<{ id: string; username: string; email: string }>;
+  const { user } = await res.json() as { user?: { id: string; username: string; email: string } };
+  return user ?? null;
 }
 
 async function isAdmin(db: D1Database, user: { id: string; email: string }) {
