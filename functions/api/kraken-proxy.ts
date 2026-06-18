@@ -1,13 +1,13 @@
 // Resolves a krakenfiles.com/view/<id>/file.html page to its direct CDN
-// download URL and streams the file back, mirroring the pattern used by
+// media URL and streams the file back, mirroring the pattern used by
 // audio-proxy.ts for other hosts that require server-side resolution.
 //
-// krakenfiles serves an inline <video>/<audio> preview with a direct CDN
-// src on the view page itself for media files, and only requires the
-// token/hash POST dance for the "Download" button on non-previewable
-// files. We try the direct-source path first since it's simpler and more
-// reliable for the audio/video files this proxy is used for, then fall
-// back to the token/hash flow.
+// The "Download now" button is gated behind a Cloudflare Turnstile
+// captcha, so that flow can't be driven server-side. The inline jPlayer
+// preview embedded on the page isn't gated though, and exposes the
+// direct CDN URL via a `jPlayer("setMedia", { <ext>: '<url>' })` call,
+// e.g. `m4a: 'https://pchs10.krakencloud.net/uploads/.../music.m4a'`.
+// That's what we extract and stream from here.
 //
 // Everything below is wrapped in try/catch: an uncaught exception (e.g.
 // the upstream fetch being blocked or timing out) otherwise surfaces as
@@ -47,48 +47,12 @@ export const onRequestGet: PagesFunction = async (context) => {
     }
 
     let fileUrl: string | null =
+      html.match(/["']setMedia["']\s*,\s*\{\s*[a-z0-9]+\s*:\s*['"]([^'"]+)['"]/i)?.[1] ??
       html.match(/<source[^>]+src=["']([^"']+)["']/i)?.[1] ??
       html.match(/<(?:video|audio)[^>]+src=["']([^"']+)["']/i)?.[1] ??
       null;
 
     if (fileUrl && fileUrl.startsWith('//')) fileUrl = `https:${fileUrl}`;
-
-    if (!fileUrl) {
-      const token = html.match(/data-token=["']([^"']+)["']/i)?.[1] ?? html.match(/token\s*[:=]\s*["']([^"']+)["']/i)?.[1];
-      const hash = html.match(/hash\s*[:=]\s*["']([^"']+)["']/i)?.[1];
-      const actionRaw = html.match(/<form[^>]+action=["']([^"']+)["']/i)?.[1] ?? html.match(/action\s*[:=]\s*["']([^"']+)["']/i)?.[1];
-
-      if (!token || !hash) {
-        return new Response('Could not parse download token', { status: 502 });
-      }
-
-      let postUrl: URL;
-      try {
-        postUrl = new URL(actionRaw || '/download/file-data', 'https://krakenfiles.com');
-      } catch {
-        return new Response('Invalid post url', { status: 502 });
-      }
-      if (postUrl.hostname !== 'krakenfiles.com') {
-        return new Response('Host not allowed', { status: 403 });
-      }
-
-      const dlRes = await fetch(postUrl.toString(), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'X-Requested-With': 'XMLHttpRequest',
-          'User-Agent': 'Mozilla/5.0',
-          'Referer': viewUrl.toString(),
-        },
-        body: new URLSearchParams({ hash, token }).toString(),
-        signal: AbortSignal.timeout(10000),
-      });
-      if (!dlRes.ok) {
-        return new Response(`Failed to resolve download link (status ${dlRes.status})`, { status: 502 });
-      }
-      const data = await dlRes.json().catch(() => null) as { url?: string } | null;
-      fileUrl = data?.url ?? null;
-    }
 
     if (!fileUrl) {
       return new Response('No download url found', { status: 502 });
