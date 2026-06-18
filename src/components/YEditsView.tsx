@@ -295,6 +295,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
 
   // edit project info modal
   const [showEditMeta, setShowEditMeta] = useState(false);
+  const [editMetaProjectName, setEditMetaProjectName] = useState('');
   const [editMetaSourceArtist, setEditMetaSourceArtist] = useState('');
   const [editMetaSourceEra, setEditMetaSourceEra] = useState('');
   const [editMetaDescription, setEditMetaDescription] = useState('');
@@ -523,6 +524,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
 
   const openEditMeta = (group: YEditsGroup) => {
     const meta = albumMeta[group.folderPath] ?? {};
+    setEditMetaProjectName(group.displayName);
     setEditMetaSourceArtist(meta.sourceArtist ?? '');
     setEditMetaSourceEra(meta.sourceEra ?? '');
     setEditMetaDescription(meta.description ?? '');
@@ -538,6 +540,32 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     if (!token) return;
     setSavingMeta(true);
     setSaveMetaResult(null);
+
+    let targetFolderPath = group.folderPath;
+
+    // Rename album folder in R2 if name changed
+    const trimmedName = editMetaProjectName.trim();
+    if (trimmedName && trimmedName !== group.displayName) {
+      try {
+        const renameRes = await fetch('/api/yedits-rename-album', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token, oldFolderPath: group.folderPath, newName: trimmedName }),
+        });
+        const renameData = await renameRes.json() as { ok?: boolean; folderPath?: string; error?: string };
+        if (!renameRes.ok) {
+          setSaveMetaResult({ ok: false, msg: renameData.error ?? 'Rename failed' });
+          setSavingMeta(false);
+          return;
+        }
+        targetFolderPath = renameData.folderPath ?? targetFolderPath;
+      } catch {
+        setSaveMetaResult({ ok: false, msg: 'Network error during rename' });
+        setSavingMeta(false);
+        return;
+      }
+    }
+
     const existingMeta = albumMeta[group.folderPath] ?? {};
     const meta: AlbumMeta = {
       ...existingMeta,
@@ -552,13 +580,19 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       const res = await fetch('/api/yedits-metadata', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token, folderPath: group.folderPath, meta }),
+        body: JSON.stringify({ token, folderPath: targetFolderPath, meta }),
       });
       const data = await res.json() as { ok?: boolean; error?: string };
       if (!res.ok) {
         setSaveMetaResult({ ok: false, msg: data.error ?? 'Save failed' });
       } else {
-        setAlbumMeta(prev => ({ ...prev, [group.folderPath]: meta }));
+        // Refresh keys and update selectedGroup to the new folder path
+        const fresh = await fetch('/api/yedits', { cache: 'no-store' }).then(r => r.json() as Promise<string[]>);
+        setKeys(fresh);
+        const updatedGroups = parseGroups(fresh);
+        const refreshed = updatedGroups.find(g => g.folderPath === targetFolderPath);
+        if (refreshed) setSelectedGroup(refreshed);
+        setAlbumMeta(prev => ({ ...prev, [targetFolderPath]: meta }));
         setSaveMetaResult({ ok: true, msg: 'Saved!' });
         setTimeout(() => { setShowEditMeta(false); setSaveMetaResult(null); }, 900);
       }
@@ -1387,6 +1421,16 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 </button>
               </div>
               <div className="space-y-4">
+                <div>
+                  <label className="text-xs text-white/40 mb-1 block">Project Name</label>
+                  <input
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                    placeholder="Project name…"
+                    value={editMetaProjectName}
+                    onChange={e => setEditMetaProjectName(e.target.value)}
+                    disabled={savingMeta}
+                  />
+                </div>
                 <div>
                   <label className="text-xs text-white/40 mb-1 block">Source Artist</label>
                   <ArtistSelect value={editMetaSourceArtist} onChange={setEditMetaSourceArtist} disabled={savingMeta} />
