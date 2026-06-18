@@ -17,8 +17,8 @@ const ARTISTS = [
 
 const ALBUMS = [
   {
-    title: 'In An Imperfect World',
-    label: 'Debut Album',
+    title: 'IN AN IMPERFECT WORLD',
+    label: 'Debut Mixtape',
     year: '2026',
     cover: '/unvaulted-records-debut-cover.jpg',
     streamUrl: 'https://untitled.stream/library/project/bSnHBgkbVlvZtjb1kPrs8',
