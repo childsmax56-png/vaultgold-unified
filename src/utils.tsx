@@ -1127,7 +1127,7 @@ export function parseDurationToSeconds(duration: string | undefined): number {
 export function matchesFilters(song: any, searchQuery: string, filters: any): boolean {
   const lowerQuery = searchQuery.toLowerCase();
   const searchMatch = !searchQuery ||
-    song.name.toLowerCase().includes(lowerQuery) ||
+    (song.name || '').toLowerCase().includes(lowerQuery) ||
     (song.extra && song.extra.toLowerCase().includes(lowerQuery)) ||
     (song.description && song.description.toLowerCase().includes(lowerQuery));
 

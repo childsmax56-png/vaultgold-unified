@@ -654,7 +654,7 @@ export default function App() {
       if (linkMatch?.[1]) rawUrl = linkMatch[1];
 
       const newSong: Song = {
-        name: item.Name,
+        name: item.Name || '',
         extra: item.extra || item.Extra || undefined,
         description: item.Notes || '',
         track_length: item['Track Length'] || '',
@@ -872,7 +872,7 @@ export default function App() {
               }
 
               const newSong: Song = {
-                name: mykItem.Name,
+                name: mykItem.Name || '',
                 extra: mykItem.extra || mykItem.Extra || undefined,
                 description: mykItem.Notes || '',
                 track_length: mykItem['Track Length'] || '',
@@ -2298,7 +2298,7 @@ export default function App() {
           for (const song of songs as Song[]) {
             const c = isRelated ? relatedCount : musicCount;
             if (c >= PER_TAB) break outer;
-            if (song.name.toLowerCase().includes(q)) {
+            if ((song.name || '').toLowerCase().includes(q)) {
               results.push({
                 name: song.name,
                 extra: song.extra,
@@ -2317,7 +2317,7 @@ export default function App() {
     let recentCount = 0;
     for (const song of recentData) {
       if (recentCount >= PER_TAB) break;
-      if (song.name.toLowerCase().includes(q)) {
+      if ((song.name || '').toLowerCase().includes(q)) {
         results.push({ name: song.name, extra: song.extra, eraName: song.extra2 || 'Recent', tab: 'recent', song });
         recentCount++;
       }
@@ -2326,7 +2326,7 @@ export default function App() {
     let stemsCount = 0;
     for (const entry of stemsData) {
       if (stemsCount >= PER_TAB) break;
-      if (entry.Name.toLowerCase().includes(q)) {
+      if ((entry.Name || '').toLowerCase().includes(q)) {
         results.push({ name: entry.Name, eraName: entry.Era, tab: 'stems' });
         stemsCount++;
       }
@@ -2335,7 +2335,7 @@ export default function App() {
     let miscCount = 0;
     for (const entry of miscData) {
       if (miscCount >= PER_TAB) break;
-      if (entry.Name.toLowerCase().includes(q)) {
+      if ((entry.Name || '').toLowerCase().includes(q)) {
         results.push({ name: entry.Name, eraName: entry.Era, tab: 'misc' });
         miscCount++;
       }
@@ -2344,7 +2344,7 @@ export default function App() {
     let fakesCount = 0;
     for (const entry of fakesData) {
       if (fakesCount >= PER_TAB) break;
-      if (entry.Name.toLowerCase().includes(q)) {
+      if ((entry.Name || '').toLowerCase().includes(q)) {
         results.push({ name: entry.Name, eraName: entry.Era, tab: 'fakes' });
         fakesCount++;
       }
@@ -2353,7 +2353,7 @@ export default function App() {
     let releasedCount = 0;
     for (const entry of releasedData) {
       if (releasedCount >= PER_TAB) break;
-      if (entry.Name.toLowerCase().includes(q)) {
+      if ((entry.Name || '').toLowerCase().includes(q)) {
         results.push({ name: entry.Name, eraName: entry.Era, tab: 'released' });
         releasedCount++;
       }
