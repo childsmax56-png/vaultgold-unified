@@ -254,11 +254,7 @@ function useVGAuth() {
   }, []);
 
   const signInWithGoogle = () => {
-    window.open(
-      `${VG_API}/api/auth/google/connect?return_to=${encodeURIComponent(window.location.origin)}`,
-      'vg-google',
-      'width=500,height=600'
-    );
+    window.location.href = `${VG_API}/api/auth/google/connect?return_to=${encodeURIComponent(window.location.origin)}`;
   };
 
   const signOut = () => {
