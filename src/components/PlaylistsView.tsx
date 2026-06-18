@@ -39,13 +39,7 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
   }
   if (url.includes('imgur.gg/f/')) {
     const id = url.split('/f/')[1];
-    if (id) {
-      const res = await fetch(`https://temp.imgur.gg/api/file/${id}`).catch(() => null);
-      if (res?.ok) {
-        const data = await res.json().catch(() => null);
-        if (data?.cdnUrl) return data.cdnUrl;
-      }
-    }
+    if (id) return `/api/imgur-proxy?id=${id}`;
   }
   return null;
 }

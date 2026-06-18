@@ -838,14 +838,7 @@ export function parseNoteDescription(description: string | undefined | null): {
 export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isImage: boolean; imageExt?: string; headers?: Record<string, string> }> {
   if (url.includes('imgur.gg/f/')) {
     const id = url.split('/f/')[1];
-    if (id) {
-      const res = await fetch(`https://temp.imgur.gg/api/file/${id}`).catch(() => null);
-      if (res && res.ok) {
-        const data = await res.json().catch(() => null);
-        if (data?.cdnUrl) return { fetchUrl: data.cdnUrl, isImage: false };
-      }
-    }
-    return { fetchUrl: url, isImage: false };
+    return { fetchUrl: id ? `/api/imgur-proxy?id=${id}` : url, isImage: false };
   }
   if (url.includes('pillows.su/f/')) {
     const pathPart = url.split('/f/')[1];
@@ -910,13 +903,7 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
 
     if (url.includes('imgur.gg/f/')) {
         const id = url.split('/f/')[1];
-        if (id) {
-            const res = await fetch(`https://temp.imgur.gg/api/file/${id}`).catch(() => null);
-            if (res && res.ok) {
-                const data = await res.json().catch(() => null);
-                if (data?.cdnUrl) finalUrl = data.cdnUrl;
-            }
-        }
+        if (id) finalUrl = `/api/imgur-proxy?id=${id}`;
     } else if (url.includes('pillows.su/f/')) {
         const pathPart = url.split('/f/')[1];
         if (pathPart) {

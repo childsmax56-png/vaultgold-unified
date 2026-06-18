@@ -1631,8 +1631,7 @@ export default function App() {
   const resolveStreamUrl = async (rawUrl: string): Promise<string> => {
     if (rawUrl.includes('imgur.gg/f/')) {
       const id = rawUrl.split('/f/')[1];
-      const res = await axios.get(`https://temp.imgur.gg/api/file/${id}`);
-      return res.data?.cdnUrl ?? rawUrl;
+      return `/api/imgur-proxy?id=${id}`;
     } else if (rawUrl.includes('pillows.su/f/')) {
       const id = rawUrl.split('/f/')[1];
       return `https://api.pillows.su/api/get/${id}`;
@@ -1681,13 +1680,14 @@ export default function App() {
           streamUrl = preloaded;
         } else if (rawUrl.includes('imgur.gg/f/')) {
           const id = rawUrl.split('/f/')[1];
-          const res = await axios.get(`https://temp.imgur.gg/api/file/${id}`);
+          const res = await axios.get(`/api/imgur-proxy?id=${id}&meta=1`);
 
           if (res.data && res.data.cdnUrl) {
-            streamUrl = res.data.cdnUrl;
+            streamUrl = `/api/imgur-proxy?id=${id}`;
             const type = res.data.type || '';
-            const isZip = type.includes('zip') || res.data.name.toLowerCase().endsWith('.zip');
-            const isImg = type.includes('image') || res.data.name.toLowerCase().endsWith('.jpg') || res.data.name.toLowerCase().endsWith('.jpeg') || res.data.name.toLowerCase().endsWith('.png');
+            const name = (res.data.name || '').toLowerCase();
+            const isZip = type.includes('zip') || name.endsWith('.zip');
+            const isImg = type.includes('image') || name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png');
             if (isZip || isImg) {
               isPlayable = false;
             }

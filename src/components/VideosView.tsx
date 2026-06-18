@@ -243,22 +243,13 @@ function EmbedPlayer({ embed, className = '' }: { embed: EmbedInfo; className?: 
   return null;
 }
 
-// temp.imgur.gg requires a JSON lookup to resolve the direct CDN url before
-// it can be dropped into a <video> tag, unlike the other hosts above.
+// temp.imgur.gg's API and CDN don't send CORS headers, so the lookup and
+// the file itself are both routed through our own /api/imgur-proxy.
 function ImgurEmbed({ id, className = '' }: { id: string; className?: string }) {
-  const [src, setSrc] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    setSrc(null);
     setFailed(false);
-    fetch(`https://temp.imgur.gg/api/file/${id}`)
-      .then(res => (res.ok ? res.json() : null))
-      .then(data => {
-        if (data?.cdnUrl) setSrc(data.cdnUrl);
-        else setFailed(true);
-      })
-      .catch(() => setFailed(true));
   }, [id]);
 
   if (failed) {
@@ -269,18 +260,11 @@ function ImgurEmbed({ id, className = '' }: { id: string; className?: string }) 
     );
   }
 
-  if (!src) {
-    return (
-      <div className="flex items-center justify-center h-full text-white/30 text-sm">
-        Loading…
-      </div>
-    );
-  }
-
   return (
     <video
-      src={src}
+      src={`/api/imgur-proxy?id=${id}`}
       controls
+      onError={() => setFailed(true)}
       className={`w-full h-full object-contain ${className}`}
       preload="metadata"
     />

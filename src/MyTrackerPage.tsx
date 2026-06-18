@@ -105,15 +105,16 @@ async function getStreamUrl(url: string): Promise<string | null> {
   }
   if (isTempImgur(url)) {
     const tid = url.split('/f/')[1];
+    if (!tid) return null;
     try {
-      const r = await fetch(`https://temp.imgur.gg/api/file/${tid}`);
+      const r = await fetch(`/api/imgur-proxy?id=${tid}&meta=1`);
       if (!r.ok) return null;
       const data = await r.json();
       if (!data?.cdnUrl) return null;
       const t = data.type || '', name = data.name || '';
       if (t.includes('zip') || name.toLowerCase().endsWith('.zip')) return null;
       if (t.includes('image') || /\.(jpg|jpeg|png|gif|webp)$/i.test(name)) return null;
-      return data.cdnUrl;
+      return `/api/imgur-proxy?id=${tid}`;
     } catch { return null; }
   }
   if (isGoogleDrive(url)) {
