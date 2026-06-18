@@ -173,6 +173,53 @@ function ArtistSelect({ value, onChange, disabled }: ArtistSelectProps) {
 }
 
 
+function EraSelect({ artistLabel, value, onChange, disabled }: { artistLabel: string; value: string; onChange: (v: string) => void; disabled?: boolean }) {
+  const artistConfig = ARTIST_LIST.find(a => a.artistLabel === artistLabel);
+  const eras = artistConfig ? Object.keys(artistConfig.ALBUM_RELEASE_DATES) : [];
+  const isOther = value !== '' && !eras.includes(value);
+  const [customVal, setCustomVal] = useState(isOther ? value : '');
+  const selectVal = isOther ? '__other__' : value;
+
+  if (eras.length === 0) {
+    return (
+      <input
+        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+        placeholder="Era / album name…"
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        disabled={disabled}
+      />
+    );
+  }
+
+  return (
+    <div className="space-y-2">
+      <select
+        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+        value={selectVal}
+        onChange={e => {
+          if (e.target.value === '__other__') { onChange(customVal || ''); }
+          else { onChange(e.target.value); }
+        }}
+        disabled={disabled}
+      >
+        <option value="">Select era…</option>
+        {eras.map(era => <option key={era} value={era}>{era}</option>)}
+        <option value="__other__">Other…</option>
+      </select>
+      {selectVal === '__other__' && (
+        <input
+          className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+          placeholder="Era / album name…"
+          value={customVal}
+          onChange={e => { setCustomVal(e.target.value); onChange(e.target.value); }}
+          disabled={disabled}
+        />
+      )}
+    </div>
+  );
+}
+
 export interface ClaimInfo { userId: string; username: string; }
 
 interface YEditsViewProps {
@@ -1187,13 +1234,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 {editMetaSourceArtist && (
                   <div>
                     <label className="text-xs text-white/40 mb-1 block">Source Era / Album</label>
-                    <input
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
-                      placeholder="e.g. folklore"
-                      value={editMetaSourceEra}
-                      onChange={e => setEditMetaSourceEra(e.target.value)}
-                      disabled={savingMeta}
-                    />
+                    <EraSelect artistLabel={editMetaSourceArtist} value={editMetaSourceEra} onChange={setEditMetaSourceEra} disabled={savingMeta} />
                   </div>
                 )}
                 <div>
@@ -1491,13 +1532,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
               {uploadSourceArtist && (
                 <div>
                   <label className="text-xs text-white/40 mb-1 block">Source Era / Album</label>
-                  <input
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
-                    placeholder="e.g. folklore"
-                    value={uploadSourceEra}
-                    onChange={e => setUploadSourceEra(e.target.value)}
-                    disabled={uploading}
-                  />
+                  <EraSelect artistLabel={uploadSourceArtist} value={uploadSourceEra} onChange={setUploadSourceEra} disabled={uploading} />
                 </div>
               )}
 
