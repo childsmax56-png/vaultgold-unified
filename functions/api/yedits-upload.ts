@@ -66,7 +66,31 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const results = await Promise.all(uploads);
   const uploaded = results.filter((k): k is string => k !== null);
 
-  return json({ uploaded });
+  // Write metadata sidecar if any metadata fields were provided
+  const sourceArtist = (formData.get('sourceArtist') as string | null) ?? '';
+  const sourceEra = (formData.get('sourceEra') as string | null) ?? '';
+  const description = (formData.get('description') as string | null) ?? '';
+  const samplyUrl = (formData.get('samplyUrl') as string | null) ?? '';
+  const untitledUrl = (formData.get('untitledUrl') as string | null) ?? '';
+  const allowDownloadStr = formData.get('allowDownload') as string | null;
+
+  const hasMetadata = sourceArtist || sourceEra || description || samplyUrl || untitledUrl || allowDownloadStr !== null;
+  if (hasMetadata) {
+    const meta: Record<string, unknown> = {};
+    if (sourceArtist) meta.sourceArtist = sourceArtist;
+    if (sourceEra) meta.sourceEra = sourceEra;
+    if (description) meta.description = description;
+    if (samplyUrl) meta.samplyUrl = samplyUrl;
+    if (untitledUrl) meta.untitledUrl = untitledUrl;
+    if (allowDownloadStr !== null) meta.allowDownload = allowDownloadStr === 'true';
+
+    const metaKey = `${creatorDir}/${albumDir}/_metadata.json`;
+    await YEDITS_BUCKET.put(metaKey, JSON.stringify(meta), {
+      httpMetadata: { contentType: 'application/json' },
+    });
+  }
+
+  return json({ uploaded, folderPath: `${creatorDir}/${albumDir}` });
 };
 
 function json(body: unknown, status = 200): Response {

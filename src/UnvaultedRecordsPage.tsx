@@ -6,12 +6,12 @@ const ARTISTS = [
   { name: 'Alexias',        letter: 'A', accent: '#7C6FCD', description: 'Hip-Hop' },
   { name: 'ciatanner',      letter: 'C', accent: '#4EA8C9', description: 'Hip-Hop' },
   { name: 'Don Juan',       letter: 'D', accent: '#C9A224', description: 'Hip-Hop' },
-  { name: 'YZY Sam',        letter: 'Y', accent: '#E05C5C', description: 'Hip-Hop' },
+  { name: 'Big Poppa Perc',        letter: 'P', accent: '#E05C5C', description: 'Hip-Hop' },
   { name: 'Lux',            letter: 'L', accent: '#F0A500', description: 'Hip-Hop' },
   { name: 'Max3:16420999',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'YZYGOLD',        letter: 'G', accent: '#FFD700', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
-  { name: 'Paw',            letter: 'P', accent: '#E8734A', description: 'Hip-Hop' },
+  { name: 'BIANCAGOLD',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
 ];
 
 const ALBUMS = [
@@ -22,20 +22,21 @@ const ALBUMS = [
     cover: '/unvaulted-records-debut-cover.jpg',
     streamUrl: 'https://untitled.stream/library/project/bSnHBgkbVlvZtjb1kPrs8',
     tracks: [
-      { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'YZY Sam',            src: '/unvaulted-records/audio/sisters-and-brothers.m4a' },
+      { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/sisters-and-brothers.m4a' },
       { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKER)',                 artist: 'ciatanner',           src: '/unvaulted-records/audio/king-of-soul.m4a' },
       { n: 3,  title: 'BABY I TRIED (feat. FROMDABUNKA & Sheffmade)',      artist: 'ciatanner',           src: '/unvaulted-records/audio/baby-i-tried.mp3' },
-      { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'YZY Sam, ciatanner',      src: '/unvaulted-records/audio/alive.mp3' },
-      { n: 5,  title: 'MAGAZINES',                                          artist: 'YZY Sam',            src: '/unvaulted-records/audio/magazines.m4a' },
+      { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'Big Poppa Perc, ciatanner',      src: '/unvaulted-records/audio/alive.mp3' },
+      { n: 5,  title: 'MAGAZINES',                                          artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/magazines.m4a' },
       { n: 6,  title: 'COUSINS',                                            artist: 'Alexais',            src: '/unvaulted-records/audio/cousins.mp3' },
-      { n: 7,  title: 'VIRGIL',                                             artist: 'YZY Sam, Alexais',            src: '/unvaulted-records/audio/virgil.m4a' },
+      { n: 7,  title: 'VIRGIL',                                             artist: 'Big Poppa Perc, Alexais',            src: '/unvaulted-records/audio/virgil.m4a' },
       { n: 8,  title: 'JESUS',                                              artist: 'Alexais',            src: '/unvaulted-records/audio/jesus.mp3' },
-      { n: 9,  title: 'SUNDAY',                                             artist: 'YZY Sam',            src: '/unvaulted-records/audio/sunday.m4a' },
-      { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'YZY Sam',            src: '/unvaulted-records/audio/mission-control.m4a' },
+      { n: 9,  title: 'SUNDAY',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/sunday.m4a' },
+      { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/mission-control.m4a' },
       { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
-      { n: 12, title: 'BIANCA',                                             artist: 'YZY Sam',            src: '/unvaulted-records/audio/bianca.m4a' },
-      { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
-      { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
+      { n: 12, title: 'BIANCA',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/New_Project.mp3' },
+      { n: 13, title: 'BIANCA (REMIX)',                                             artist: 'Don Juan',            src: '/unvaulted-records/audio/Bianca_3.0.mp3' },
+      { n: 14, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
+      { n: 15, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
     ],
   },
 ];
@@ -111,6 +112,16 @@ function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
     </div>
   );
 }
+
+const SINGLES = [
+  {
+    title: 'All The Alexais (The Chakra) ',
+    artist: 'Alexais',
+    year: '2026',
+    src: '/unvaulted-records/audio/all-the-alexais.mp3',
+    cover: '/unvaulted-records/all-the-alexais-cover.jpg',
+  },
+];
 
 type Track = typeof ALBUMS[0]['tracks'][0];
 
@@ -320,8 +331,77 @@ function TrackRow({ track, isPlaying, isActive, onClick }: {
   );
 }
 
+function SinglesView() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState<string | null>(null);
+  const [progress, setProgress] = useState(0);
+
+  function togglePlay(src: string) {
+    if (playing === src) {
+      audioRef.current?.pause();
+      setPlaying(null);
+    } else {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      const a = new Audio(src);
+      audioRef.current = a;
+      a.play();
+      setPlaying(src);
+      a.ontimeupdate = () => setProgress(a.duration ? a.currentTime / a.duration : 0);
+      a.onended = () => { setPlaying(null); setProgress(0); };
+    }
+  }
+
+  return (
+    <section style={{ maxWidth: 700, margin: '0 auto', padding: '0 24px 80px' }}>
+      {SINGLES.map(single => {
+        const isPlaying = playing === single.src;
+        return (
+          <div key={single.title} style={{
+            display: 'flex', alignItems: 'center', gap: 20,
+            padding: '20px 24px', borderRadius: 16,
+            background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.07)',
+            marginBottom: 12,
+          }}>
+            {single.cover && (
+              <img src={single.cover} alt={single.title}
+                style={{ flexShrink: 0, width: 60, height: 60, borderRadius: 8, objectFit: 'cover' }} />
+            )}
+            <button
+              onClick={() => togglePlay(single.src)}
+              style={{
+                flexShrink: 0, width: 44, height: 44, borderRadius: '50%',
+                border: `1.5px solid ${ACCENT}`, background: isPlaying ? ACCENT : 'transparent',
+                color: isPlaying ? '#000' : ACCENT, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 16, transition: 'background 0.15s, color 0.15s',
+              }}
+            >
+              {isPlaying ? '⏸' : '▶'}
+            </button>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontWeight: 800, fontSize: 15, letterSpacing: '0.02em', color: '#fff', marginBottom: 3 }}>
+                {single.title}
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>
+                {single.artist} · {single.year} · Single
+              </div>
+              {isPlaying && (
+                <div style={{ marginTop: 8, height: 3, background: 'rgba(255,255,255,0.1)', borderRadius: 2 }}>
+                  <div style={{ width: `${progress * 100}%`, height: '100%', background: ACCENT, borderRadius: 2, transition: 'width 0.25s linear' }} />
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </section>
+  );
+}
+
 function TabBar({ active, onChange }: { active: string; onChange: (t: string) => void }) {
-  const tabs = ['Artists', 'Albums'];
+  const tabs = ['Artists', 'Albums', 'Singles'];
   return (
     <div style={{
       display: 'flex', gap: 4,
@@ -442,8 +522,10 @@ export function UnvaultedRecordsPage() {
             {ARTISTS.map(a => <ArtistCard key={a.name} artist={a} />)}
           </div>
         </section>
-      ) : (
+      ) : tab === 'Albums' ? (
         ALBUMS.map(album => <AlbumView key={album.title} album={album} />)
+      ) : (
+        <SinglesView />
       )}
 
       {/* About strip */}
@@ -461,8 +543,8 @@ export function UnvaultedRecordsPage() {
           </div>
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)' }}>
             Unvaulted Records is an independent label dedicated to pushing the
-            boundaries of sound. Home to Alexias, CIATANNER, Don Juan, YZY Sam,
-            LUX, MAX 3:16, YZYGOLD, Nr7th, and PAW — we build music that lasts.
+            boundaries of sound. Home to Alexias, ciatanner, Don Juan, Big Poppa Perc,
+            Lux, Max3:16420999, YZYGOLD, Nr7th, and BIANCAGOLD — we build music that lasts.
           </p>
         </div>
       </section>
