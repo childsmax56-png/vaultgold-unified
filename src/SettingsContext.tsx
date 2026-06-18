@@ -55,7 +55,7 @@ export interface AppSettings {
   googleSheetsUrl: string;
   downloadAsOgFilename: boolean;
   embedMetadata: boolean;
-  yzyGoldMode: boolean;
+  YZYGOLDMode: boolean;
   dropdownNav: boolean;
   lastfmEraOverrides: Record<string, string>;
   videosMiniPlayer: boolean;
@@ -99,7 +99,7 @@ export const defaultSettings: AppSettings = {
   googleSheetsUrl: '',
   downloadAsOgFilename: false,
   embedMetadata: true,
-  yzyGoldMode: false,
+  YZYGOLDMode: false,
   dropdownNav: true,
   lastfmEraOverrides: {},
   videosMiniPlayer: true,
