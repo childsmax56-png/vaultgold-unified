@@ -254,11 +254,7 @@ function useVGAuth() {
   }, []);
 
   const signInWithGoogle = () => {
-    window.open(
-      `${VG_API}/api/auth/google/connect?return_to=${encodeURIComponent(window.location.origin)}`,
-      'vg-google',
-      'width=500,height=600'
-    );
+    window.location.href = `${VG_API}/api/auth/google/connect?return_to=${encodeURIComponent(window.location.origin)}`;
   };
 
   const signOut = () => {
@@ -601,10 +597,67 @@ function SheetButton({ href, accent }: { href: string; accent?: string }) {
 
 // ─── Main page ────────────────────────────────────────────────────────────────
 
+function ConsentModal({ onAccept, onClose }: { onAccept: () => void; onClose: () => void }) {
+  const [agreed, setAgreed] = useState(false);
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', zIndex: 1000,
+        display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24,
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          background: '#111', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14,
+          padding: '28px 28px 24px', maxWidth: 400, width: '100%',
+        }}
+      >
+        <h2 style={{ margin: '0 0 8px', fontSize: 18, fontWeight: 700, color: '#fff' }}>
+          Create your account
+        </h2>
+        <p style={{ margin: '0 0 20px', fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5 }}>
+          Sign in with Google to track your vault rankings and claim your profile.
+        </p>
+        <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer', marginBottom: 20 }}>
+          <input
+            type="checkbox"
+            checked={agreed}
+            onChange={e => setAgreed(e.target.checked)}
+            style={{ marginTop: 2, accentColor: '#C9A224', width: 15, height: 15, flexShrink: 0 }}
+          />
+          <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>
+            I agree to the{' '}
+            <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: '#C9A224', textDecoration: 'underline' }}>Terms of Service</a>
+            {' '}and{' '}
+            <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#C9A224', textDecoration: 'underline' }}>Privacy Policy</a>
+          </span>
+        </label>
+        <button
+          onClick={() => { if (agreed) { onClose(); onAccept(); } }}
+          disabled={!agreed}
+          style={{
+            width: '100%', padding: '11px 0', borderRadius: 10, border: 'none',
+            background: agreed ? 'rgba(201,162,36,0.15)' : 'rgba(255,255,255,0.05)',
+            color: agreed ? '#C9A224' : 'rgba(255,255,255,0.25)',
+            fontSize: 14, fontWeight: 600, letterSpacing: '0.04em',
+            cursor: agreed ? 'pointer' : 'not-allowed', transition: 'all 0.15s',
+            border: `1px solid ${agreed ? 'rgba(201,162,36,0.3)' : 'rgba(255,255,255,0.08)'}`,
+          }}
+        >
+          Continue with Google
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function LandingPage() {
   useSpotifyCallback();
   const [showSettings, setShowSettings] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [showConsent, setShowConsent] = useState(false);
   const { settings } = useSettings();
   const showPhotos = settings.landingArtistPhotos;
   const { user, signInWithGoogle, signOut } = useVGAuth();
@@ -632,6 +685,7 @@ export function LandingPage() {
       alignItems: 'center',
     }}>
       {showSettings && <LandingSettingsPanel onClose={() => setShowSettings(false)} />}
+      {showConsent && <ConsentModal onAccept={signInWithGoogle} onClose={() => setShowConsent(false)} />}
 
       <header style={{ textAlign: 'center', marginBottom: 40, width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
         <button
@@ -768,7 +822,7 @@ export function LandingPage() {
           </div>
         ) : (
           <button
-            onClick={signInWithGoogle}
+            onClick={() => setShowConsent(true)}
             style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em', cursor: 'pointer' }}
           >
             <GoogleIcon /> Sign in with Google
