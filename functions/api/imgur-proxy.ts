@@ -14,14 +14,21 @@ export const onRequestGet: PagesFunction = async (context) => {
     }
 
     const metaRes = await fetch(`https://temp.imgur.gg/api/file/${id}`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/json',
+        'Referer': 'https://temp.imgur.gg/',
+      },
       signal: AbortSignal.timeout(10000),
     });
     if (!metaRes.ok) {
-      return new Response(`Failed to resolve imgur.gg file (status ${metaRes.status})`, { status: 502 });
+      const body = await metaRes.text().catch(() => '');
+      return new Response(`Failed to resolve imgur.gg file (status ${metaRes.status}): ${body.slice(0, 500)}`, { status: 502 });
     }
-    const meta = await metaRes.json().catch(() => null) as { cdnUrl?: string; type?: string; name?: string } | null;
+    const rawBody = await metaRes.text();
+    const meta = (() => { try { return JSON.parse(rawBody); } catch { return null; } })() as { cdnUrl?: string; type?: string; name?: string } | null;
     if (!meta?.cdnUrl) {
-      return new Response('No cdnUrl found', { status: 502 });
+      return new Response(`No cdnUrl found in response: ${rawBody.slice(0, 500)}`, { status: 502 });
     }
 
     if (url.searchParams.get('meta') === '1') {
@@ -32,6 +39,7 @@ export const onRequestGet: PagesFunction = async (context) => {
 
     const upstream = await fetch(meta.cdnUrl, {
       headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         ...(context.request.headers.get('Range') ? { Range: context.request.headers.get('Range')! } : {}),
       },
       signal: AbortSignal.timeout(20000),
