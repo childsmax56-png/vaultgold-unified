@@ -117,7 +117,7 @@ function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
 
 const SINGLES = [
   {
-    title: 'All The Alexais (The Chakra) ',
+    title: 'All The Alexais (The Chakra) All The Alexais (The Chakra) (feat. André Troutman)',
     artist: 'Alexais',
     year: '2026',
     src: '/unvaulted-records/audio/all-the-alexais.mp3',
