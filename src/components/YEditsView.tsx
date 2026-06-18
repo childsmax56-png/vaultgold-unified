@@ -1325,8 +1325,9 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   </div>
                   <input ref={addTracksInputRef} type="file" accept="audio/*" multiple className="hidden"
                     onChange={e => {
-                      if (e.target.files) setAddTrackFiles(prev => [...prev, ...Array.from(e.target.files!)]);
+                      const files = Array.from(e.target.files ?? []);
                       e.target.value = '';
+                      if (files.length) setAddTrackFiles(prev => [...prev, ...files]);
                     }} />
                   {addTrackFiles.length > 0 && (
                     <ul className="mt-1 space-y-0.5 max-h-32 overflow-y-auto">
@@ -1822,8 +1823,9 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   multiple
                   className="hidden"
                   onChange={e => {
-                    if (e.target.files) setUploadTracks(prev => [...prev, ...Array.from(e.target.files!)]);
+                    const files = Array.from(e.target.files ?? []);
                     e.target.value = '';
+                    if (files.length) setUploadTracks(prev => [...prev, ...files]);
                   }}
                 />
                 {uploadTracks.length > 0 && (
