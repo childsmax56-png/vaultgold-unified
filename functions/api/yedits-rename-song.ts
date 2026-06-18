@@ -1,5 +1,7 @@
 import { json, options } from './_auth';
 
+const OWNER_EMAIL = 'childsmax56@gmail.com';
+
 async function checkOwnerOrClaim(token: string, creatorName: string, env: Env): Promise<boolean> {
   const authRes = await fetch('https://unvaulted.cc/api/auth/me', {
     headers: { Authorization: `Bearer ${token}` },
@@ -9,7 +11,12 @@ async function checkOwnerOrClaim(token: string, creatorName: string, env: Env): 
   const user = authData.user;
   if (!user) return false;
 
+  if (user.email === OWNER_EMAIL) return true;
+
   if (user.username.toLowerCase() === creatorName.toLowerCase()) return true;
+
+  const adminRow = await env.DB.prepare('SELECT user_id FROM yeditsgold_admins WHERE user_id = ?').bind(user.id).first();
+  if (adminRow) return true;
 
   const claim = await env.DB.prepare(
     `SELECT user_id FROM yeditsgold_claims WHERE profile_name = ? AND status = 'approved' AND user_id = ?`
