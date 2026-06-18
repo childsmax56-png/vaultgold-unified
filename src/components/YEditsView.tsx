@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
-import { ArrowLeft, Play, Volume2, Download, Loader2, FlipHorizontal2, Upload, X, Trash2, ImagePlus, Plus, Pencil, Share2, RefreshCw, FileEdit, Music2, Link } from 'lucide-react';
+import { ArrowLeft, Play, Volume2, Download, Loader2, FlipHorizontal2, Upload, X, Trash2, ImagePlus, Plus, Pencil, Share2, RefreshCw, FileEdit, Music2, Link, PackageOpen } from 'lucide-react';
 import { useState, useEffect, useMemo, useRef } from 'react';
+import JSZip from 'jszip';
 import { Song, Era } from '../types';
 import { ARTIST_LIST } from '../artists/registry';
 
@@ -278,6 +279,8 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   const [showAddTracks, setShowAddTracks] = useState(false);
   const [addTrackFiles, setAddTrackFiles] = useState<File[]>([]);
   const [addingTracks, setAddingTracks] = useState(false);
+  const [selectedSongs, setSelectedSongs] = useState<Set<string>>(new Set());
+  const [zipping, setZipping] = useState(false);
   const [addTracksResult, setAddTracksResult] = useState<{ ok: boolean; msg: string } | null>(null);
   const addTracksInputRef = useRef<HTMLInputElement>(null);
 
@@ -329,8 +332,9 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     return () => { window.removeEventListener('storage', sync); window.removeEventListener('vg-synced', sync); };
   }, []);
 
-  // Fetch metadata when opening an album
+  // Fetch metadata when opening an album, and clear song selection
   useEffect(() => {
+    setSelectedSongs(new Set());
     if (!selectedGroup) return;
     const fp = selectedGroup.folderPath;
     fetch(`/api/yedits-metadata?key=${encodeURIComponent(fp)}`)
@@ -707,6 +711,33 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     );
   }
 
+  const doZipDownload = async (songs: Song[], albumName: string, songsMeta: AlbumMeta['songs']) => {
+    setZipping(true);
+    try {
+      const zip = new JSZip();
+      await Promise.all(songs.map(async (song) => {
+        if (!song.url) return;
+        const res = await fetch(song.url);
+        if (!res.ok) return;
+        const blob = await res.blob();
+        const songKey = decodeURIComponent(song.url.replace('/api/yedits-file?key=', ''));
+        const filename = songKey.split('/').pop() ?? song.name;
+        const displayName = songsMeta?.[filename]?.displayName;
+        const finalName = displayName ? `${displayName}${filename.substring(filename.lastIndexOf('.'))}` : filename;
+        zip.file(finalName, blob);
+      }));
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${albumName}.zip`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } finally {
+      setZipping(false);
+    }
+  };
+
   // DETAIL VIEW
   if (selectedGroup) {
     const orderedSongs = tracklistOverrides.get(selectedGroup.folderPath) ?? selectedGroup.songs;
@@ -852,6 +883,32 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   </a>
                 )}
 
+                {meta.allowDownload !== false && (
+                  <>
+                    {selectedSongs.size > 0 && (
+                      <button
+                        onClick={() => {
+                          const songs = filteredSongs.filter(s => s.url && selectedSongs.has(s.url));
+                          doZipDownload(songs, selectedGroup.displayName, meta.songs);
+                        }}
+                        disabled={zipping}
+                        className="flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10 transition-colors cursor-pointer disabled:opacity-40"
+                      >
+                        {zipping ? <Loader2 className="w-3 h-3 animate-spin" /> : <Download className="w-3 h-3" />}
+                        Download Selected ({selectedSongs.size})
+                      </button>
+                    )}
+                    <button
+                      onClick={() => doZipDownload(filteredSongs, selectedGroup.displayName, meta.songs)}
+                      disabled={zipping}
+                      className="flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white border border-white/10 transition-colors cursor-pointer disabled:opacity-40"
+                    >
+                      {zipping ? <Loader2 className="w-3 h-3 animate-spin" /> : <PackageOpen className="w-3 h-3" />}
+                      Download All
+                    </button>
+                  </>
+                )}
+
                 {isOwner && (
                   <>
                     <button
@@ -894,12 +951,31 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 const isNotes = notesSongKey === songKey;
                 const isReplacing = replacingSongKey === songKey;
 
+                const isSelected = !!song.url && selectedSongs.has(song.url);
+
                 return (
                   <div key={song.url} className="flex flex-col">
                     <div
                       onClick={() => { if (!isRenaming && !isNotes) onPlaySong(song, era, filteredSongs); }}
-                      className={`group flex items-center px-4 py-2.5 rounded-md transition-colors cursor-pointer hover:bg-white/5 ${isCurrentSong ? 'bg-white/5' : ''}`}
+                      className={`group flex items-center px-4 py-2.5 rounded-md transition-colors cursor-pointer hover:bg-white/5 ${isCurrentSong ? 'bg-white/5' : ''} ${isSelected ? 'bg-white/3' : ''}`}
                     >
+                      {meta.allowDownload !== false && song.url && (
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={e => {
+                            e.stopPropagation();
+                            setSelectedSongs(prev => {
+                              const next = new Set(prev);
+                              if (e.target.checked) next.add(song.url!);
+                              else next.delete(song.url!);
+                              return next;
+                            });
+                          }}
+                          onClick={e => e.stopPropagation()}
+                          className="mr-2 w-3.5 h-3.5 accent-[var(--theme-color)] shrink-0 cursor-pointer"
+                        />
+                      )}
                       <div className={`w-8 text-sm font-mono flex items-center ${isCurrentSong ? 'text-[var(--theme-color)]' : 'text-white/40 group-hover:text-white'}`}>
                         <span className="group-hover:hidden">
                           {isCurrentSong
