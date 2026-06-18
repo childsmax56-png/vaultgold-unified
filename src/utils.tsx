@@ -851,6 +851,9 @@ export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isIma
     const pathPart = url.split('/f/')[1];
     return { fetchUrl: pathPart ? `https://api.pillows.su/api/download/${pathPart}` : url, isImage: false };
   }
+  if (url.includes('krakenfiles.com/view/')) {
+    return { fetchUrl: `/api/kraken-proxy?url=${encodeURIComponent(url)}`, isImage: false };
+  }
   if (url.includes('drive.google.com')) {
     const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
     if (m) return { fetchUrl: `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`, isImage: false };
@@ -922,6 +925,8 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
     } else if (url.includes('drive.google.com')) {
         const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
         if (m) finalUrl = `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`;
+    } else if (url.includes('krakenfiles.com/view/')) {
+        finalUrl = `/api/kraken-proxy?url=${encodeURIComponent(url)}`;
     } else if (url.includes('ibb.co')) {
        isImage = true;
        ext = '';
