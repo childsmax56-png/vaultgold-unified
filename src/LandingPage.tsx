@@ -241,6 +241,20 @@ function useVGAuth() {
   const [user, setUser] = useState<VGUser | null>(getVGUser);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('vg_token');
+    const userRaw = params.get('vg_user');
+    if (!token || !userRaw) return;
+    window.history.replaceState({}, '', window.location.pathname);
+    try {
+      const vgUser = JSON.parse(decodeURIComponent(userRaw));
+      localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem(USER_KEY, JSON.stringify(vgUser));
+      setUser(vgUser);
+    } catch {}
+  }, []);
+
+  useEffect(() => {
     const handler = (e: MessageEvent) => {
       if (!e.data?.vaultgold) return;
       if (e.data.vaultgold === 'signed_in' && e.data.token && e.data.user) {
