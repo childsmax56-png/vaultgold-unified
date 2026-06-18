@@ -1407,10 +1407,10 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
               )}
               {(() => {
                 const claimEntry = claims[group.parentName];
-                const isGroupOwner = !!vgUser && (
+                const isGroupOwner = isAdmin || (!!vgUser && (
                   group.parentName.toLowerCase() === vgUser.username.toLowerCase() ||
                   claimEntry?.userId === vgUser.id
-                );
+                ));
                 const isClaimed = !!claimEntry;
                 return (
                   <>
