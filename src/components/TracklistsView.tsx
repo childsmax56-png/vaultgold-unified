@@ -176,6 +176,9 @@ async function resolveAudioUrl(rawUrl: string): Promise<string> {
     const id = rawUrl.split('/f/')[1];
     return `https://api.pillows.su/api/get/${id}`;
   }
+  if (rawUrl.includes('krakenfiles.com/view/')) {
+    return `/api/kraken-proxy?url=${encodeURIComponent(rawUrl)}`;
+  }
   return rawUrl;
 }
 
