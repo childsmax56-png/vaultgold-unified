@@ -67,16 +67,10 @@ function extractPillowId(url: string): string | null {
   return m ? m[1] : null;
 }
 
-function extractImgurGgId(url: string): string | null {
-  const m = url.match(/imgur\.gg\/f\/([a-zA-Z0-9]+)/);
-  return m ? m[1] : null;
-}
-
 type EmbedInfo =
   | { type: 'youtube'; src: string }
   | { type: 'drive'; src: string }
   | { type: 'pillowcase'; src: string }
-  | { type: 'imgur'; src: string; id: string }
   | null;
 
 function extractDailymotionId(url: string): string | null {
@@ -104,17 +98,11 @@ function getEmbedInfo(links: string[]): EmbedInfo {
       if (id) return { type: 'drive', src: `https://drive.google.com/file/d/${id}/preview` };
     }
   }
-  // Pillowcase / imgur.gg last — only if no other embeddable source exists
+  // Pillowcase last — only if no other embeddable source exists
   for (const link of links) {
     if (link.includes('pillows.su/f/')) {
       const id = extractPillowId(link);
       if (id) return { type: 'pillowcase', src: `https://api.pillows.su/api/get/${id}` };
-    }
-  }
-  for (const link of links) {
-    if (link.includes('imgur.gg/f/')) {
-      const id = extractImgurGgId(link);
-      if (id) return { type: 'imgur', src: link, id };
     }
   }
   return null;
@@ -130,8 +118,6 @@ function getLinkLabel(url: string): string {
   if (url.includes('streamable.com')) return 'Streamable';
   if (url.includes('mega.nz')) return 'MEGA';
   if (url.includes('sharemania.us')) return 'Sharemania';
-  if (url.includes('temp.imgur.gg')) return 'Imgur';
-  if (url.includes('imgur')) return 'Imgur';
   return 'Link';
 }
 
@@ -236,39 +222,7 @@ function EmbedPlayer({ embed, className = '' }: { embed: EmbedInfo; className?: 
     );
   }
 
-  if (embed.type === 'imgur') {
-    return <ImgurEmbed id={embed.id} className={className} />;
-  }
-
   return null;
-}
-
-// temp.imgur.gg's API and CDN don't send CORS headers, so the lookup and
-// the file itself are both routed through our own /api/imgur-proxy.
-function ImgurEmbed({ id, className = '' }: { id: string; className?: string }) {
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    setFailed(false);
-  }, [id]);
-
-  if (failed) {
-    return (
-      <div className="flex items-center justify-center h-full text-white/30 text-sm">
-        Couldn't load this Imgur file.
-      </div>
-    );
-  }
-
-  return (
-    <video
-      src={`/api/imgur-proxy?id=${id}`}
-      controls
-      onError={() => setFailed(true)}
-      className={`w-full h-full object-contain ${className}`}
-      preload="metadata"
-    />
-  );
 }
 
 // ─── Mini / fullscreen player portal ───────────────────────────────────────
@@ -554,7 +508,7 @@ function VideoRow({ entry, miniPlayerMode, activeMiniEntry, onOpenMiniPlayer, on
 
               {activeEmbed ? (
                 <div className={`w-full rounded-md overflow-hidden bg-black ${
-                  activeEmbed.type === 'pillowcase' || activeEmbed.type === 'imgur' ? '' : 'aspect-video'
+                  activeEmbed.type === 'pillowcase' ? '' : 'aspect-video'
                 }`}>
                   <EmbedPlayer embed={activeEmbed} />
                 </div>

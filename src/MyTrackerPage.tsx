@@ -90,7 +90,6 @@ function sheetIdFromUrl(url: string): string {
 }
 
 function isPillowcase(url: string) { return url && url.includes('pillows.su/f/'); }
-function isTempImgur(url: string) { return url && url.includes('imgur.gg/f/'); }
 function isGoogleDrive(url: string) { return url && url.includes('drive.google.com'); }
 
 function driveFileId(url: string): string | null {
@@ -102,20 +101,6 @@ async function getStreamUrl(url: string): Promise<string | null> {
   if (isPillowcase(url)) {
     const id = url.split('/f/')[1];
     return id ? `https://api.pillows.su/api/get/${id}` : null;
-  }
-  if (isTempImgur(url)) {
-    const tid = url.split('/f/')[1];
-    if (!tid) return null;
-    try {
-      const r = await fetch(`/api/imgur-proxy?id=${tid}&meta=1`);
-      if (!r.ok) return null;
-      const data = await r.json();
-      if (!data?.cdnUrl) return null;
-      const t = data.type || '', name = data.name || '';
-      if (t.includes('zip') || name.toLowerCase().endsWith('.zip')) return null;
-      if (t.includes('image') || /\.(jpg|jpeg|png|gif|webp)$/i.test(name)) return null;
-      return `/api/imgur-proxy?id=${tid}`;
-    } catch { return null; }
   }
   if (isGoogleDrive(url)) {
     const id = driveFileId(url);
@@ -222,7 +207,7 @@ function EraDetail({
         {era.songs.length === 0 ? (
           <div style={{ padding: '40px 0', textAlign: 'center', color: 'rgba(255,255,255,0.45)', fontSize: 13 }}>No songs in this era</div>
         ) : era.songs.map((song, i) => {
-          const playable = isPillowcase(song.url) || isTempImgur(song.url) || isGoogleDrive(song.url);
+          const playable = isPillowcase(song.url) || isGoogleDrive(song.url);
           const hasUrl = song.url && !/^n\/?a$/i.test(song.url.trim());
           const hasNotes = !!(song.notes && song.notes.trim());
           const playKey = `${era.name}||${song.name}`;

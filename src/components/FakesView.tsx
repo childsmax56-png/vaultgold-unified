@@ -147,7 +147,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
         };
 
         if (filters.playableOnly) {
-           const isPlayable = rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/');
+           const isPlayable = rawUrl.includes('pillows.su/f/');
            if (!isPlayable || isSongNotAvailable(pseudoSong, rawUrl)) return false;
         }
 
@@ -180,7 +180,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
       };
 
       if (filters.playableOnly) {
-         const isPlayable = rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/');
+         const isPlayable = rawUrl.includes('pillows.su/f/');
          if (!isPlayable || isSongNotAvailable(pseudoSong, rawUrl)) return false;
       }
       
@@ -213,7 +213,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
   const allPlayableFakes = useMemo(() => {
     return fakesAsSongs.filter(s => {
       const isNotAvailable = isSongNotAvailable(s, s.url || '');
-      return s.url && (s.url.includes('pillows.su/f/') || s.url.includes('imgur.gg/f/')) && !isNotAvailable;
+      return s.url && (s.url.includes('pillows.su/f/')) && !isNotAvailable;
     });
   }, [fakesAsSongs]);
 
@@ -337,7 +337,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
                   const isNotAvailable = isSongNotAvailable(song, rawUrl);
                   const lowerUrl = (rawUrl || '').toLowerCase();
                   const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed');
-                  const isPlayable = rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/');
+                  const isPlayable = rawUrl.includes('pillows.su/f/');
                   const isEmpty = isTrulyEmptyLink || isNotAvailable || lowerUrl.includes('n/a');
                   const isCurrentlyPlaying = (currentSong?.url && song.url && currentSong.url === song.url);
                   const isStarred = favoriteKeys.some(k => k.songName === song.name && k.url === rawUrl);

@@ -1624,15 +1624,12 @@ export default function App() {
     return Object.values(era.data || {}).flat().filter(s => {
       const rawUrl = s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(s, rawUrl);
-      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
+      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
     });
   };
 
   const resolveStreamUrl = async (rawUrl: string): Promise<string> => {
-    if (rawUrl.includes('imgur.gg/f/')) {
-      const id = rawUrl.split('/f/')[1];
-      return `/api/imgur-proxy?id=${id}`;
-    } else if (rawUrl.includes('pillows.su/f/')) {
+    if (rawUrl.includes('pillows.su/f/')) {
       const id = rawUrl.split('/f/')[1];
       return `https://api.pillows.su/api/get/${id}`;
     } else if (rawUrl.includes('pixeldrain.com/u/')) {
@@ -1667,7 +1664,7 @@ export default function App() {
        return;
     }
 
-    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) {
+    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) {
       let streamUrl = '';
       let isPlayable = true;
 
@@ -1678,20 +1675,6 @@ export default function App() {
       try {
         if (preloaded) {
           streamUrl = preloaded;
-        } else if (rawUrl.includes('imgur.gg/f/')) {
-          const id = rawUrl.split('/f/')[1];
-          const res = await axios.get(`/api/imgur-proxy?id=${id}&meta=1`);
-
-          if (res.data && res.data.cdnUrl) {
-            streamUrl = `/api/imgur-proxy?id=${id}`;
-            const type = res.data.type || '';
-            const name = (res.data.name || '').toLowerCase();
-            const isZip = type.includes('zip') || name.endsWith('.zip');
-            const isImg = type.includes('image') || name.endsWith('.jpg') || name.endsWith('.jpeg') || name.endsWith('.png');
-            if (isZip || isImg) {
-              isPlayable = false;
-            }
-          }
         } else if (rawUrl.includes('pillows.su/f/')) {
           const id = rawUrl.split('/f/')[1];
           streamUrl = `https://api.pillows.su/api/get/${id}`;
@@ -2709,7 +2692,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         Object.values(era.data).flat().forEach(song => {
           const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
           const isNotAvailable = isSongNotAvailable(song, rawUrl);
-          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
+          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
           
           if (isPlayable) {
              allMusicSongs.push({ ...song, realEra: era });

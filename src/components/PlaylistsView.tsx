@@ -37,15 +37,11 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
     const hash = url.split('/f/')[1]?.split('/')[0]?.split('?')[0];
     if (hash) return `https://${host}/api/get/${hash}`;
   }
-  if (url.includes('imgur.gg/f/')) {
-    const id = url.split('/f/')[1];
-    if (id) return `/api/imgur-proxy?id=${id}`;
-  }
   return null;
 }
 
 function isDirectlyDownloadable(url: string): boolean {
-  return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/') || url.includes('imgur.gg/f/');
+  return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/');
 }
 
 export function PlaylistsView({ eras, artData = [], searchQuery = '', onPlaySong, onToast }: Props) {

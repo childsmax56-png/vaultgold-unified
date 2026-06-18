@@ -836,10 +836,6 @@ export function parseNoteDescription(description: string | undefined | null): {
 }
 
 export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isImage: boolean; imageExt?: string; headers?: Record<string, string> }> {
-  if (url.includes('imgur.gg/f/')) {
-    const id = url.split('/f/')[1];
-    return { fetchUrl: id ? `/api/imgur-proxy?id=${id}` : url, isImage: false };
-  }
   if (url.includes('pillows.su/f/')) {
     const pathPart = url.split('/f/')[1];
     return { fetchUrl: pathPart ? `https://api.pillows.su/api/download/${pathPart}` : url, isImage: false };
@@ -901,10 +897,7 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
     let isImage = false;
     let ext = '.mp3';
 
-    if (url.includes('imgur.gg/f/')) {
-        const id = url.split('/f/')[1];
-        if (id) finalUrl = `/api/imgur-proxy?id=${id}`;
-    } else if (url.includes('pillows.su/f/')) {
+    if (url.includes('pillows.su/f/')) {
         const pathPart = url.split('/f/')[1];
         if (pathPart) {
             finalUrl = `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/download/${pathPart}`)}`;

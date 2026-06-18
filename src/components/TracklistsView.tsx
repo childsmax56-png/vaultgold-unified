@@ -166,10 +166,6 @@ function sanitizeFilename(name: string): string {
 }
 
 async function resolveAudioUrl(rawUrl: string): Promise<string> {
-  if (rawUrl.includes('imgur.gg/f/')) {
-    const id = rawUrl.split('/f/')[1];
-    return `/api/imgur-proxy?id=${id}`;
-  }
   if (rawUrl.includes('pillows.su/f/')) {
     const id = rawUrl.split('/f/')[1];
     return `https://api.pillows.su/api/get/${id}`;
