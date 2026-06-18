@@ -1133,34 +1133,39 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
           })}
         </div>
         </div>
-        {isSelectMode && selectedKeys.size > 0 && (
-          <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4">
-            <div className="flex items-center gap-3 bg-[#1a1a1a] border border-white/10 rounded-2xl px-4 py-3 shadow-2xl">
-              <span className="text-sm font-semibold text-white/70 flex-1">
-                {selectedKeys.size} song{selectedKeys.size !== 1 ? 's' : ''} selected
-              </span>
-              <button
-                onClick={handleFavoriteSelected}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-colors cursor-pointer"
-              >
-                <Star className="w-3.5 h-3.5 text-[var(--theme-color)]" fill="currentColor" />
-                Favorite
-              </button>
-              <button
-                onClick={handleDownloadSelected}
-                disabled={isDownloadingSelected}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--theme-color)] text-black text-xs font-bold transition-opacity hover:opacity-90 disabled:opacity-50 cursor-pointer"
-              >
-                {isDownloadingSelected ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
-                Download
-              </button>
-            </div>
-          </div>
-        )}
       </motion.div>
 
       {typeof document !== 'undefined' && createPortal(
         <AnimatePresence>
+          {isSelectMode && selectedKeys.size > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[9990] px-4"
+            >
+              <div className="flex items-center gap-3 bg-[#1a1a1a] border border-white/10 rounded-2xl px-4 py-3 shadow-2xl">
+                <span className="text-sm font-semibold text-white/70 flex-1 whitespace-nowrap">
+                  {selectedKeys.size} song{selectedKeys.size !== 1 ? 's' : ''} selected
+                </span>
+                <button
+                  onClick={handleFavoriteSelected}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-colors cursor-pointer"
+                >
+                  <Star className="w-3.5 h-3.5 text-[var(--theme-color)]" fill="currentColor" />
+                  Favorite
+                </button>
+                <button
+                  onClick={handleDownloadSelected}
+                  disabled={isDownloadingSelected}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--theme-color)] text-black text-xs font-bold transition-opacity hover:opacity-90 disabled:opacity-50 cursor-pointer"
+                >
+                  {isDownloadingSelected ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
+                  Download
+                </button>
+              </div>
+            </motion.div>
+          )}
           {toastMessage && (
             <motion.div
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
