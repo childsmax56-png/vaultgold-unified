@@ -2797,6 +2797,9 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         onPlay={() => setIsPlaying(true)}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
+        onError={() => {
+          if (audioRef.current?.src) showToast("Failed to load audio - the source may be unreachable");
+        }}
         crossOrigin="anonymous"
         playsInline
       />
