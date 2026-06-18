@@ -1726,7 +1726,11 @@ export default function App() {
       }
 
       if (!streamUrl) {
-        showToast("Could not load audio — check that VITE_PIXELDRAIN_API_KEY is set and the Cloudflare build has been redeployed.");
+        showToast(
+          rawUrl.includes('pixeldrain.com/u/')
+            ? "Could not load audio — check that VITE_PIXELDRAIN_PROXY_URL is set and the Cloudflare build has been redeployed."
+            : "Could not load audio — the source may be unreachable"
+        );
         return;
       }
 
