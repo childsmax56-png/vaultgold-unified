@@ -10,7 +10,7 @@ export const luckigoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1zoRNpy7Lvr-JzPqtQLLWRVVDbgKygpBaDf4cC-Lt6k4/export?format=csv&gid=1422898255',
   accentColor: '#6f42c1',
   artistLabel: 'Lucki',
   cardLetter: 'LKI',
