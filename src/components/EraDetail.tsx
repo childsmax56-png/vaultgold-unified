@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
-import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Film, Disc3, Layers, Star, Pencil } from 'lucide-react';
+import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Film, Disc3, Layers, Star, Pencil, CheckSquare, Square } from 'lucide-react';
 import { SiYoutube } from 'react-icons/si';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
@@ -210,6 +210,9 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [editingLfmName, setEditingLfmName] = useState(false);
   const [lfmNameDraft, setLfmNameDraft] = useState('');
+  const [isSelectMode, setIsSelectMode] = useState(false);
+  const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
+  const [isDownloadingSelected, setIsDownloadingSelected] = useState(false);
 
   useEffect(() => {
     setVisibleCount(era.name === 'Recent Leaks' ? 15 : 9999);
@@ -345,6 +348,109 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
     }
   };
 
+  const getSongKey = (category: string, index: number) => `${category}__${index}`;
+
+  const handleDownloadSelected = async () => {
+    const selectedSongs = processedCategories.flatMap(({ category, songs }) =>
+      songs.map((song, i) => ({ song, category, key: getSongKey(category, i) }))
+    ).filter(({ key }) => selectedKeys.has(key)).map(({ song }) => song)
+      .filter(song => {
+        const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
+        return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('temp.imgur.gg/f/')) && !isSongNotAvailable(song, rawUrl);
+      });
+
+    if (!selectedSongs.length) {
+      setToastMessage("No playable songs selected.");
+      setTimeout(() => setToastMessage(null), 3000);
+      return;
+    }
+
+    setIsDownloadingSelected(true);
+    setToastMessage(`Preparing download for ${selectedSongs.length} songs...`);
+
+    const JSZip = (await import('jszip')).default;
+    const zip = new JSZip();
+
+    await Promise.all(selectedSongs.map(async (song) => {
+      const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
+      if (!rawUrl) return;
+      try {
+        const { fetchUrl, isImage, imageExt, headers } = await resolveUrl(rawUrl);
+        const res = await fetch(fetchUrl, { ...(headers ? { headers } : {}), signal: AbortSignal.timeout(30000) });
+        if (!res.ok && res.status !== 206) throw new Error('fetch failed');
+        const ct = res.headers.get('content-type') ?? '';
+        if (ct.startsWith('text/html') || ct.startsWith('application/json')) throw new Error('non-audio response');
+        let blob = await res.blob();
+        const songEraName = (song as any).realEra?.name || era.name;
+        const songTitle = song.name.includes(' - ') ? song.name.substring(song.name.indexOf(' - ') + 3) : song.name;
+        const fileName = settings.tagsAsEmojis ? song.name : formatTextForNotification(song.name, false);
+        let ext: string;
+        if (isImage) { ext = imageExt || await detectAudioExt(blob); }
+        else { ext = await detectAudioExt(blob); }
+        if (ext === '.mp3') {
+          if (ct.includes('flac')) ext = '.flac';
+          else if (ct.includes('wav') || ct.includes('wave')) ext = '.wav';
+          else if (ct.includes('aiff')) ext = '.aiff';
+          else if (ct.includes('ogg') || ct.includes('opus')) ext = '.ogg';
+          else if (ct.includes('m4a') || (ct.includes('mp4') && !ct.includes('video'))) ext = '.m4a';
+        }
+        const isLossless = song.quality?.toLowerCase().includes('lossless');
+        if (settings.embedMetadata && (ext === '.mp3' || ext === '.flac' || ext === '.wav')) {
+          const tagMeta = {
+            title: songTitle,
+            artist: buildArtistTag(song.name, songEraName),
+            album: songEraName,
+            year: ALBUM_RELEASE_DATES[songEraName]?.split('/').pop(),
+            artworkUrl: undefined,
+          };
+          try {
+            if (ext === '.mp3') blob = await embedID3Tags(blob, tagMeta, songTitle);
+            else if (ext === '.wav') blob = await embedWAVTags(blob, tagMeta, songTitle);
+            else if (ext === '.flac') {
+              try { blob = await flacToWav(blob); ext = '.wav'; blob = await embedWAVTags(blob, tagMeta, songTitle); }
+              catch { if (!isLossless) blob = await embedFLACTags(blob, tagMeta, songTitle); }
+            }
+          } catch { /* skip tagging */ }
+        } else if (isLossless && ext === '.flac') {
+          try { blob = await flacToWav(blob); ext = '.wav'; } catch { /* keep as FLAC */ }
+        }
+        zip.file(`${fileName}${ext}`, blob);
+      } catch (err) {
+        console.error(`Failed to download ${song.name}:`, err);
+      }
+    }));
+
+    setToastMessage('Zipping...');
+    try {
+      const content = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
+      saveAs(content, `Selected Songs.zip`);
+    } catch {
+      setToastMessage('Download failed.');
+      setTimeout(() => setToastMessage(null), 4000);
+    } finally {
+      setIsDownloadingSelected(false);
+      setToastMessage(null);
+    }
+  };
+
+  const handleFavoriteSelected = () => {
+    if (!toggleFavorite) return;
+    const toFavorite = processedCategories.flatMap(({ category, songs }) =>
+      songs.map((song, i) => ({ song, category, key: getSongKey(category, i) }))
+    ).filter(({ key }) => selectedKeys.has(key)).map(({ song }) => song);
+
+    toFavorite.forEach(song => {
+      const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
+      const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('temp.imgur.gg/f/')) && !isSongNotAvailable(song, rawUrl);
+      if (!isPlayable) return;
+      const isStarred = favoriteKeys.some(k => k.songName === song.name && k.url === rawUrl);
+      if (!isStarred) toggleFavorite(song, (song as any).realEra?.name || era.name);
+    });
+
+    setToastMessage(`Added ${toFavorite.length} song${toFavorite.length !== 1 ? 's' : ''} to Favorites`);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
   const processedCategories = useMemo(() => {
     return Object.entries(era.data || {}).map(([category, songs]) => {
       let processedSongs = songs.filter(song => {
@@ -472,6 +578,14 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
               </h1>
 
               <div className="flex items-center gap-2">
+                <button
+                  onClick={() => { setIsSelectMode(m => !m); setSelectedKeys(new Set()); }}
+                  className={`flex items-center gap-1.5 px-3 h-10 rounded-full text-xs font-bold transition-colors cursor-pointer ${isSelectMode ? 'bg-[var(--theme-color)] text-black' : 'bg-white/5 hover:bg-white/10 text-white/50 hover:text-white'}`}
+                  title="Select songs"
+                >
+                  <CheckSquare className="w-4 h-4" />
+                  <span className="hidden sm:inline">{isSelectMode ? 'Done' : 'Select'}</span>
+                </button>
                 {era.name !== 'Favorites' && (
                   <button
                     onClick={handleShareAlbum}
@@ -677,7 +791,26 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
                 <div className="flex flex-col">
                   <div className="flex items-center px-4 py-2 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/5 mb-2 hidden sm:flex">
-                    <div className="w-8">#</div>
+                    {isSelectMode && (
+                      <button
+                        onClick={() => {
+                          const allKeys = processedSongs.map((_, i) => getSongKey(category, i));
+                          const allSelected = allKeys.every(k => selectedKeys.has(k));
+                          setSelectedKeys(prev => {
+                            const next = new Set(prev);
+                            if (allSelected) allKeys.forEach(k => next.delete(k));
+                            else allKeys.forEach(k => next.add(k));
+                            return next;
+                          });
+                        }}
+                        className="w-8 shrink-0 flex items-center text-white/40 hover:text-white cursor-pointer"
+                      >
+                        {processedSongs.every((_, i) => selectedKeys.has(getSongKey(category, i)))
+                          ? <CheckSquare className="w-4 h-4 text-[var(--theme-color)]" />
+                          : <Square className="w-4 h-4" />}
+                      </button>
+                    )}
+                    {!isSelectMode && <div className="w-8">#</div>}
                     <div className="flex-1">Title</div>
                     <div className="w-32">Quality</div>
                     <div className="w-24 text-right">Length</div>
@@ -695,26 +828,48 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                       (currentSong?.url && song.url && currentSong.url === song.url) ||
                       (currentSong?.urls && song.urls && currentSong.urls.length > 0 && song.urls.length > 0 && currentSong.urls[0] === song.urls[0]);
 
+                    const songKey = getSongKey(category, i);
+                    const isSelected = selectedKeys.has(songKey);
+
                     return (
                       <div
                         key={i}
-                        onClick={() => !isEmpty && onPlaySong(song, era, allFilteredPlayableSongs)}
-                        className={`group flex items-center px-4 py-2.5 rounded-md transition-colors relative ${isEmpty ? 'opacity-50 hover:opacity-100 cursor-default' : 'hover:bg-white/5 cursor-pointer'} ${isCurrentlyPlaying ? 'bg-white/5' : ''}`}
+                        onClick={() => {
+                          if (isSelectMode) {
+                            setSelectedKeys(prev => {
+                              const next = new Set(prev);
+                              if (next.has(songKey)) next.delete(songKey);
+                              else next.add(songKey);
+                              return next;
+                            });
+                          } else if (!isEmpty) {
+                            onPlaySong(song, era, allFilteredPlayableSongs);
+                          }
+                        }}
+                        className={`group flex items-center px-4 py-2.5 rounded-md transition-colors relative ${isSelectMode ? 'cursor-pointer hover:bg-white/5' : isEmpty ? 'opacity-50 hover:opacity-100 cursor-default' : 'hover:bg-white/5 cursor-pointer'} ${isCurrentlyPlaying && !isSelectMode ? 'bg-white/5' : ''} ${isSelectMode && isSelected ? 'bg-[var(--theme-color)]/10' : ''}`}
                       >
-                        <div className={`w-8 text-sm font-mono flex items-center ${isCurrentlyPlaying ? 'text-[var(--theme-color)]' : 'text-white/40 group-hover:text-white'}`}>
-                          <span className={`group-hover:hidden`}>
-                            {isCurrentlyPlaying ? <Volume2 className={`w-4 h-4 ${isPlaying ? 'animate-pulse' : ''}`} /> : (i + 1)}
-                          </span>
-                          {isEmpty ? (
-                            <X className="w-4 h-4 hidden group-hover:block" />
-                          ) : isCurrentlyPlaying && isPlaying ? (
-                            <Volume2 className="w-4 h-4 hidden group-hover:block text-[var(--theme-color)]" />
-                          ) : isPlayable ? (
-                            <Play className="w-4 h-4 hidden group-hover:block" />
-                          ) : isYoutubeLink ? (
-                            <SiYoutube className="w-4 h-4 hidden group-hover:block text-[#FF0000]" />
+                        <div className={`w-8 text-sm font-mono flex items-center shrink-0 ${isCurrentlyPlaying ? 'text-[var(--theme-color)]' : 'text-white/40 group-hover:text-white'}`}>
+                          {isSelectMode ? (
+                            isSelected
+                              ? <CheckSquare className="w-4 h-4 text-[var(--theme-color)]" />
+                              : <Square className="w-4 h-4 text-white/30" />
                           ) : (
-                            <ExternalLink className="w-4 h-4 hidden group-hover:block" />
+                            <>
+                              <span className={`group-hover:hidden`}>
+                                {isCurrentlyPlaying ? <Volume2 className={`w-4 h-4 ${isPlaying ? 'animate-pulse' : ''}`} /> : (i + 1)}
+                              </span>
+                              {isEmpty ? (
+                                <X className="w-4 h-4 hidden group-hover:block" />
+                              ) : isCurrentlyPlaying && isPlaying ? (
+                                <Volume2 className="w-4 h-4 hidden group-hover:block text-[var(--theme-color)]" />
+                              ) : isPlayable ? (
+                                <Play className="w-4 h-4 hidden group-hover:block" />
+                              ) : isYoutubeLink ? (
+                                <SiYoutube className="w-4 h-4 hidden group-hover:block text-[#FF0000]" />
+                              ) : (
+                                <ExternalLink className="w-4 h-4 hidden group-hover:block" />
+                              )}
+                            </>
                           )}
                         </div>
 
@@ -978,6 +1133,30 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
           })}
         </div>
         </div>
+        {isSelectMode && selectedKeys.size > 0 && (
+          <div className="sticky bottom-0 z-20 px-6 md:px-8 py-4 bg-gradient-to-t from-black to-transparent">
+            <div className="max-w-6xl mx-auto flex items-center gap-3 bg-[#1a1a1a] border border-white/10 rounded-2xl px-4 py-3 shadow-2xl">
+              <span className="text-sm font-semibold text-white/70 flex-1">
+                {selectedKeys.size} song{selectedKeys.size !== 1 ? 's' : ''} selected
+              </span>
+              <button
+                onClick={handleFavoriteSelected}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-colors cursor-pointer"
+              >
+                <Star className="w-3.5 h-3.5 text-[var(--theme-color)]" fill="currentColor" />
+                Favorite
+              </button>
+              <button
+                onClick={handleDownloadSelected}
+                disabled={isDownloadingSelected}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--theme-color)] text-black text-xs font-bold transition-opacity hover:opacity-90 disabled:opacity-50 cursor-pointer"
+              >
+                {isDownloadingSelected ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
+                Download
+              </button>
+            </div>
+          </div>
+        )}
       </motion.div>
 
       {typeof document !== 'undefined' && createPortal(
