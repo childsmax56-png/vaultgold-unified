@@ -1423,7 +1423,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     )}
-                    {!isClaimed && onClaim && vgUser && !isGroupOwner && (
+                    {!isClaimed && onClaim && vgUser && !isGroupOwner && !isAdmin && (
                       <button
                         onClick={e => { e.stopPropagation(); onClaim(group.parentName); }}
                         className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 px-2 h-6 rounded-full bg-black/70 hover:bg-[var(--theme-color)]/80 text-white/60 hover:text-white backdrop-blur-sm cursor-pointer text-[10px] font-semibold"
