@@ -1134,8 +1134,8 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         </div>
         </div>
         {isSelectMode && selectedKeys.size > 0 && (
-          <div className="sticky bottom-0 z-20 px-6 md:px-8 py-4 bg-gradient-to-t from-black to-transparent">
-            <div className="max-w-6xl mx-auto flex items-center gap-3 bg-[#1a1a1a] border border-white/10 rounded-2xl px-4 py-3 shadow-2xl">
+          <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-4">
+            <div className="flex items-center gap-3 bg-[#1a1a1a] border border-white/10 rounded-2xl px-4 py-3 shadow-2xl">
               <span className="text-sm font-semibold text-white/70 flex-1">
                 {selectedKeys.size} song{selectedKeys.size !== 1 ? 's' : ''} selected
               </span>
