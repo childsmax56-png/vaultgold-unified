@@ -718,10 +718,10 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     const activeCoverUrl = showBackCover ? selectedGroup.backCoverUrl : selectedGroup.imageUrl;
     const hasBackCover = !!selectedGroup.backCoverUrl;
     const claimEntry = claims[selectedGroup.parentName];
-    const isOwner = !!vgUser && (
+    const isOwner = isAdmin || (!!vgUser && (
       selectedGroup.parentName.toLowerCase() === vgUser.username.toLowerCase() ||
       claimEntry?.userId === vgUser.id
-    );
+    ));
     const meta = albumMeta[selectedGroup.folderPath] ?? {};
 
     return (
