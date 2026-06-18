@@ -133,7 +133,7 @@ interface ArtistSelectProps {
 }
 
 function ArtistSelect({ value, onChange, disabled }: ArtistSelectProps) {
-  const isOther = value !== '' && !ARTIST_LIST.some(a => a.SITE_NAME === value);
+  const isOther = value !== '' && !ARTIST_LIST.some(a => a.artistLabel === value);
   const [customVal, setCustomVal] = useState(isOther ? value : '');
   const selectVal = isOther ? '__other__' : value;
 
@@ -155,7 +155,7 @@ function ArtistSelect({ value, onChange, disabled }: ArtistSelectProps) {
       >
         <option value="">None / Original</option>
         {ARTIST_LIST.map(a => (
-          <option key={a.slug} value={a.SITE_NAME}>{a.SITE_NAME}</option>
+          <option key={a.slug} value={a.artistLabel}>{a.artistLabel}</option>
         ))}
         <option value="__other__">Other…</option>
       </select>
