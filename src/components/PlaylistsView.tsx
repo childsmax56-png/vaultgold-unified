@@ -37,7 +37,7 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
     const hash = url.split('/f/')[1]?.split('/')[0]?.split('?')[0];
     if (hash) return `https://${host}/api/get/${hash}`;
   }
-  if (url.includes('temp.imgur.gg/f/')) {
+  if (url.includes('imgur.gg/f/')) {
     const id = url.split('/f/')[1];
     if (id) {
       const res = await fetch(`https://temp.imgur.gg/api/file/${id}`).catch(() => null);
@@ -51,7 +51,7 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
 }
 
 function isDirectlyDownloadable(url: string): boolean {
-  return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/') || url.includes('temp.imgur.gg/f/');
+  return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/') || url.includes('imgur.gg/f/');
 }
 
 export function PlaylistsView({ eras, artData = [], searchQuery = '', onPlaySong, onToast }: Props) {

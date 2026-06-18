@@ -68,7 +68,7 @@ function extractPillowId(url: string): string | null {
 }
 
 function extractImgurGgId(url: string): string | null {
-  const m = url.match(/temp\.imgur\.gg\/f\/([a-zA-Z0-9]+)/);
+  const m = url.match(/imgur\.gg\/f\/([a-zA-Z0-9]+)/);
   return m ? m[1] : null;
 }
 
@@ -112,7 +112,7 @@ function getEmbedInfo(links: string[]): EmbedInfo {
     }
   }
   for (const link of links) {
-    if (link.includes('temp.imgur.gg/f/')) {
+    if (link.includes('imgur.gg/f/')) {
       const id = extractImgurGgId(link);
       if (id) return { type: 'imgur', src: link, id };
     }

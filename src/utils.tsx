@@ -836,7 +836,7 @@ export function parseNoteDescription(description: string | undefined | null): {
 }
 
 export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isImage: boolean; imageExt?: string; headers?: Record<string, string> }> {
-  if (url.includes('temp.imgur.gg/f/')) {
+  if (url.includes('imgur.gg/f/')) {
     const id = url.split('/f/')[1];
     if (id) {
       const res = await fetch(`https://temp.imgur.gg/api/file/${id}`).catch(() => null);
@@ -908,7 +908,7 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
     let isImage = false;
     let ext = '.mp3';
 
-    if (url.includes('temp.imgur.gg/f/')) {
+    if (url.includes('imgur.gg/f/')) {
         const id = url.split('/f/')[1];
         if (id) {
             const res = await fetch(`https://temp.imgur.gg/api/file/${id}`).catch(() => null);

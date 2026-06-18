@@ -90,7 +90,7 @@ function sheetIdFromUrl(url: string): string {
 }
 
 function isPillowcase(url: string) { return url && url.includes('pillows.su/f/'); }
-function isTempImgur(url: string) { return url && url.includes('temp.imgur.gg/f/'); }
+function isTempImgur(url: string) { return url && url.includes('imgur.gg/f/'); }
 function isGoogleDrive(url: string) { return url && url.includes('drive.google.com'); }
 
 function driveFileId(url: string): string | null {
