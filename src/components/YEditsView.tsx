@@ -1294,6 +1294,13 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 >
                   {savingMeta ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Saving…</> : 'Save Changes'}
                 </button>
+                <button
+                  onClick={() => { setShowEditMeta(false); setDeleteResult(null); setDeleteTarget(selectedGroup); }}
+                  disabled={savingMeta}
+                  className="w-full py-2.5 rounded-lg bg-red-600/10 hover:bg-red-600/20 text-red-400 text-xs font-bold transition-colors cursor-pointer flex items-center justify-center gap-2 border border-red-600/20"
+                >
+                  <Trash2 className="w-3.5 h-3.5" /> Delete Project
+                </button>
               </div>
             </div>
           </div>,
@@ -1419,15 +1426,6 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 const isClaimed = !!claimEntry;
                 return (
                   <>
-                    {isGroupOwner && (
-                      <button
-                        onClick={e => { e.stopPropagation(); setDeleteResult(null); setDeleteTarget(group); }}
-                        className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center w-7 h-7 rounded-full bg-black/70 hover:bg-red-600/80 text-white/60 hover:text-white backdrop-blur-sm cursor-pointer"
-                        title="Delete project"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
-                    )}
                     {!isClaimed && onClaim && vgUser && !isGroupOwner && !isAdmin && (
                       <button
                         onClick={e => { e.stopPropagation(); onClaim(group.parentName); }}
