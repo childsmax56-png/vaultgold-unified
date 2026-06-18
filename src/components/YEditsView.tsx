@@ -476,6 +476,9 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         setAddTracksResult({ ok: true, msg: `Added ${data.uploaded?.length ?? 0} track(s)!` });
         const fresh = await fetch('/api/yedits', { cache: 'no-store' }).then(r => r.json() as Promise<string[]>);
         setKeys(fresh);
+        const updatedGroups = parseGroups(fresh);
+        const refreshed = updatedGroups.find(g => g.folderPath === group.folderPath);
+        if (refreshed) setSelectedGroup(refreshed);
         setAddTrackFiles([]);
         setTimeout(() => { setShowAddTracks(false); setAddTracksResult(null); }, 1200);
       }
@@ -1224,11 +1227,28 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                     onClick={() => !addingTracks && addTracksInputRef.current?.click()}
                   >
                     {addTrackFiles.length > 0
-                      ? <span className="text-white/80">{addTrackFiles.length} file{addTrackFiles.length !== 1 ? 's' : ''} selected</span>
+                      ? <span className="text-white/80">{addTrackFiles.length} file{addTrackFiles.length !== 1 ? 's' : ''} selected — click to add more</span>
                       : <span className="text-white/40">Choose audio files…</span>}
                   </div>
                   <input ref={addTracksInputRef} type="file" accept="audio/*" multiple className="hidden"
-                    onChange={e => setAddTrackFiles(e.target.files ? Array.from(e.target.files) : [])} />
+                    onChange={e => {
+                      if (e.target.files) setAddTrackFiles(prev => [...prev, ...Array.from(e.target.files!)]);
+                      e.target.value = '';
+                    }} />
+                  {addTrackFiles.length > 0 && (
+                    <ul className="mt-1 space-y-0.5 max-h-32 overflow-y-auto">
+                      {addTrackFiles.map((f, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-xs text-white/60 px-1">
+                          <span className="flex-1 truncate">{f.name}</span>
+                          <button
+                            type="button"
+                            onClick={() => setAddTrackFiles(prev => prev.filter((_, i) => i !== idx))}
+                            className="text-white/30 hover:text-white/70 shrink-0 cursor-pointer"
+                          ><X className="w-3 h-3" /></button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 {addTrackFiles.reduce((sum, f) => sum + f.size, 0) > 128 * 1024 * 1024 && (
                   <p className="text-xs text-amber-400 text-center leading-relaxed">
@@ -1689,7 +1709,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   onClick={() => !uploading && tracksInputRef.current?.click()}
                 >
                   {uploadTracks.length > 0
-                    ? <span className="text-white/80">{uploadTracks.length} file{uploadTracks.length !== 1 ? 's' : ''} selected</span>
+                    ? <span className="text-white/80">{uploadTracks.length} file{uploadTracks.length !== 1 ? 's' : ''} selected — click to add more</span>
                     : <span className="text-white/40">Choose audio files…</span>}
                 </div>
                 <input
@@ -1698,8 +1718,25 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   accept="audio/*"
                   multiple
                   className="hidden"
-                  onChange={e => setUploadTracks(e.target.files ? Array.from(e.target.files) : [])}
+                  onChange={e => {
+                    if (e.target.files) setUploadTracks(prev => [...prev, ...Array.from(e.target.files!)]);
+                    e.target.value = '';
+                  }}
                 />
+                {uploadTracks.length > 0 && (
+                  <ul className="mt-1 space-y-0.5 max-h-32 overflow-y-auto">
+                    {uploadTracks.map((f, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-xs text-white/60 px-1">
+                        <span className="flex-1 truncate">{f.name}</span>
+                        <button
+                          type="button"
+                          onClick={() => setUploadTracks(prev => prev.filter((_, i) => i !== idx))}
+                          className="text-white/30 hover:text-white/70 shrink-0 cursor-pointer"
+                        ><X className="w-3 h-3" /></button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               {(() => {
