@@ -1154,6 +1154,11 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   <input ref={addTracksInputRef} type="file" accept="audio/*" multiple className="hidden"
                     onChange={e => setAddTrackFiles(e.target.files ? Array.from(e.target.files) : [])} />
                 </div>
+                {addTrackFiles.reduce((sum, f) => sum + f.size, 0) > 128 * 1024 * 1024 && (
+                  <p className="text-xs text-amber-400 text-center leading-relaxed">
+                    The attached files exceed the 128 MB limit. Upload as many as you can here, then add the rest after.
+                  </p>
+                )}
                 {addTracksResult && (
                   <p className={`text-xs text-center ${addTracksResult.ok ? 'text-green-400' : 'text-red-400'}`}>{addTracksResult.msg}</p>
                 )}
