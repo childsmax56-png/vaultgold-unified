@@ -65,6 +65,14 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
 
   useEffect(() => { if (user) loadLinked(); }, [user, loadLinked]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('vg_spotify_linked') === '1') {
+      window.history.replaceState({}, '', window.location.pathname);
+      loadLinked();
+    }
+  }, []);
+
   // Listen for postMessage from Google popup
   useEffect(() => {
     const handler = (e: MessageEvent) => {
@@ -129,11 +137,14 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
   };
 
   const doGoogle = () => {
-    window.open(
-      `${API}/api/auth/google/connect?return_to=${encodeURIComponent(window.location.origin)}`,
-      'vg-google',
-      'width=500,height=600'
-    );
+    window.location.href = `${API}/api/auth/google/connect?return_to=${encodeURIComponent(window.location.origin)}`;
+  };
+
+  const doLinkSpotify = () => {
+    const token = getToken();
+    if (!token) return;
+    const returnTo = window.location.href.split('?')[0];
+    window.location.href = `${API}/api/auth/spotify/connect?token=${encodeURIComponent(token)}&return_to=${encodeURIComponent(returnTo)}`;
   };
 
   const doSync = async () => {
@@ -224,11 +235,14 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
                     <p className="text-xs text-[#1DB954]">{linked.spotify.username}</p>
                   )}
                   {linked && !linked.spotify && (
-                    <p className="text-xs text-white/40">Not linked — connect at unvaulted.cc/account</p>
+                    <p className="text-xs text-white/40">Not linked</p>
                   )}
                 </div>
               </div>
-              <div className={`w-2 h-2 rounded-full ${linked?.spotify ? 'bg-[#1DB954]' : 'bg-white/20'}`} />
+              {linked && !linked.spotify
+                ? <button onClick={doLinkSpotify} className="text-xs font-medium py-1 px-3 rounded-lg bg-[#1DB954]/10 hover:bg-[#1DB954]/20 text-[#1DB954] transition-colors cursor-pointer">Link</button>
+                : <div className="w-2 h-2 rounded-full bg-[#1DB954]" />
+              }
             </div>
 
             {/* Last.fm status */}
