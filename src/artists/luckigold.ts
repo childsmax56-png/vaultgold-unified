@@ -63,7 +63,7 @@ export const luckigoldConfig: ArtistConfig = {
     'Dr*gs R Bad [V2]': '05/15/2026',
   },
 
-  HIDDEN_ALBUMS: [],
+  HIDDEN_ALBUMS: ['Body High', 'X', 'Freewave'],
   ALBUM_DESCRIPTIONS: {
     'Body High': 'LUCKI\'s earliest era, featuring music videos released around 2014 before his "Lucki Eck$" tape era.',
     'X': 'An early era featuring the "Birdgang", "Lowlife", and "None Other" music videos, released between 2015 and 2017.',
