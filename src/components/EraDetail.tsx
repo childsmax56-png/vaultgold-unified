@@ -425,7 +425,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
     return processedCategories.flatMap(c => c.songs).filter(song => {
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(song, rawUrl);
-      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('krakenfiles.com/view/')) && !isNotAvailable;
+      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
     });
   }, [processedCategories]);
 
@@ -689,7 +689,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                     const lowerUrl = (rawUrl || '').toLowerCase();
                     const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed');
                     const isYoutubeLink = (rawUrl.includes('youtube.com/watch') || rawUrl.includes('youtu.be/')) && !isNotAvailable;
-                    const isPlayable = (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('krakenfiles.com/view/')) && !isNotAvailable;
+                    const isPlayable = (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
                     const isEmpty = isTrulyEmptyLink || isNotAvailable || lowerUrl.includes('n/a');
                     const isCurrentlyPlaying = (currentSong?.name === song.name && currentSong?.description === song.description) ||
                       (currentSong?.url && song.url && currentSong.url === song.url) ||
@@ -848,7 +848,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                                       </div>
                                       {remixes.map((remix, ri) => {
                                         const link = remix['Link(s)'].split('\n')[0].trim();
-                                        const isPillows = link.includes('pillows.su/f/') || link.includes('imgur.gg/f/') || link.includes('krakenfiles.com/view/');
+                                        const isPillows = link.includes('pillows.su/f/') || link.includes('imgur.gg/f/') || link.includes('krakenfiles.com/view/') || link.includes('pixeldrain.com/u/');
                                         return (
                                           <button
                                             key={ri}
@@ -912,7 +912,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                                       {samples.map((sample, ri) => {
                                         const link = (sample['Link(s)'] || '').split('\n')[0].trim();
                                         if (!link) return null;
-                                        const isPillows = link.includes('pillows.su/f/') || link.includes('imgur.gg/f/') || link.includes('krakenfiles.com/view/');
+                                        const isPillows = link.includes('pillows.su/f/') || link.includes('imgur.gg/f/') || link.includes('krakenfiles.com/view/') || link.includes('pixeldrain.com/u/');
                                         const sampleName = sample["Sample\n(Artist - Track)"] || 'Unknown Sample';
                                         return (
                                           <button

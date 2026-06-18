@@ -587,28 +587,9 @@ export default function App() {
 
   useEffect(() => {
     const initAudio = () => {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-      if (!audioContextRef.current && audioRef.current && !isIOS) {
-        const windowAny = window as any;
-        const AudioContext = window.AudioContext || windowAny.webkitAudioContext;
-        if (!AudioContext) return;
-
-        try {
-          const ctx = new AudioContext();
-          const analyser = ctx.createAnalyser();
-          analyser.fftSize = 256;
-
-          const source = ctx.createMediaElementSource(audioRef.current);
-          source.connect(analyser);
-          analyser.connect(ctx.destination);
-
-          audioContextRef.current = ctx;
-          analyserRef.current = analyser;
-        } catch (e) {
-          console.error("Failed to initialize AudioContext", e);
-        }
-      }
+      // AudioContext intentionally disabled: createMediaElementSource permanently
+      // captures the audio element requiring crossOrigin on all loads, which breaks
+      // Pixeldrain playback. The visualizer (analyserRef) stays null/dark.
     };
 
     document.addEventListener('click', initAudio, { once: true });
@@ -1643,7 +1624,7 @@ export default function App() {
     return Object.values(era.data || {}).flat().filter(s => {
       const rawUrl = s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(s, rawUrl);
-      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/')) && !isNotAvailable;
+      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
     });
   };
 
@@ -1655,6 +1636,10 @@ export default function App() {
     } else if (rawUrl.includes('pillows.su/f/')) {
       const id = rawUrl.split('/f/')[1];
       return `https://api.pillows.su/api/get/${id}`;
+    } else if (rawUrl.includes('pixeldrain.com/u/')) {
+      const id = rawUrl.split('/u/')[1]?.split('?')[0];
+      const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
+      return proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
     } else if (rawUrl.includes('drive.google.com')) {
       const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
@@ -1683,7 +1668,7 @@ export default function App() {
        return;
     }
 
-    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/')) {
+    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) {
       let streamUrl = '';
       let isPlayable = true;
 
@@ -1710,6 +1695,14 @@ export default function App() {
         } else if (rawUrl.includes('pillows.su/f/')) {
           const id = rawUrl.split('/f/')[1];
           streamUrl = `https://api.pillows.su/api/get/${id}`;
+        } else if (rawUrl.includes('pixeldrain.com/u/')) {
+          const id = rawUrl.split('/u/')[1]?.split('?')[0];
+          const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
+          if (proxyBase) {
+            streamUrl = `${proxyBase}/api/${id}`;
+          } else {
+            console.error('[pixeldrain] VITE_PIXELDRAIN_PROXY_URL not set');
+          }
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
           if (m) streamUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
@@ -1732,6 +1725,11 @@ export default function App() {
         return;
       }
 
+      if (!streamUrl) {
+        showToast("Could not load audio — check that VITE_PIXELDRAIN_API_KEY is set and the Cloudflare build has been redeployed.");
+        return;
+      }
+
       const playableSongs = contextTracks && contextTracks.length > 0 ? contextTracks : getPlayableSongs(era);
       setPlaylist(playableSongs);
       const newIndex = playableSongs.findIndex(s => s.name === song.name && (s.url || (s.urls && s.urls[0]) || '') === (song.url || (song.urls && song.urls[0]) || ''));
@@ -1751,10 +1749,13 @@ export default function App() {
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
+        audioRef.current.setAttribute('crossorigin', 'anonymous');
         audioRef.current.src = streamUrl;
+        audioRef.current.load();
         audioRef.current.volume = volume;
         if (autoPlay) {
-          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e) });
+          console.log('[audio] About to play:', audioRef.current.src, 'networkState:', audioRef.current.networkState, 'readyState:', audioRef.current.readyState, 'crossOrigin:', audioRef.current.crossOrigin);
+          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e, "src:", audioRef.current?.src, "networkState:", audioRef.current?.networkState); });
         }
       }
 
@@ -1994,9 +1995,11 @@ export default function App() {
         const rawSongUrl = currentSong.url || (currentSong.urls && currentSong.urls.length > 0 ? currentSong.urls[0] : '');
         const directLink = rawSongUrl.includes('pillows.su/f/')
           ? `https://api.pillows.su/api/download/${rawSongUrl.split('/f/')[1]}`
-          : rawSongUrl.includes('drive.google.com')
-            ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
-            : rawSongUrl;
+          : rawSongUrl.includes('pixeldrain.com/u/')
+            ? (() => { const id = rawSongUrl.split('/u/')[1]?.split('?')[0]; const pb = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, ''); return pb ? `${pb}/api/${id}` : `https://pixeldrain.com/api/file/${id}`; })()
+            : rawSongUrl.includes('drive.google.com')
+              ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
+              : rawSongUrl;
           
         let catForDiscord = 'Music';
         if (currentSong.name.endsWith('[Misc]') || actualEraName.includes('Misc')) {
@@ -2702,7 +2705,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         Object.values(era.data).flat().forEach(song => {
           const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
           const isNotAvailable = isSongNotAvailable(song, rawUrl);
-          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/')) && !isNotAvailable;
+          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
           
           if (isPlayable) {
              allMusicSongs.push({ ...song, realEra: era });
@@ -2797,7 +2800,10 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         onPlay={() => setIsPlaying(true)}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
-        onError={() => {
+        onError={(e) => {
+          const el = e.currentTarget;
+          const err = el.error;
+          console.error('Audio element error', err?.code, err?.message, 'src:', el.src, 'crossOrigin:', el.crossOrigin, 'networkState:', el.networkState, 'readyState:', el.readyState);
           if (audioRef.current?.src) showToast("Failed to load audio - the source may be unreachable");
         }}
         crossOrigin="anonymous"

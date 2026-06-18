@@ -1,5 +1,5 @@
 export const onRequestPost: PagesFunction<Env> = async (context) => {
-  const { YEDITS_BUCKET } = context.env;
+  const { YEDITS_BUCKET, DB } = context.env;
 
   let body: { token?: string; folderPath?: string };
   try {
@@ -20,15 +20,26 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ error: 'Unauthorized — sign in to UNVAULTED first' }, 401);
   }
 
-  const me = await authRes.json() as { username?: string };
-  const username = me.username?.trim();
-  if (!username) {
+  const { user: me } = await authRes.json() as { user?: { id?: string; username?: string } };
+  const username = me?.username?.trim();
+  const userId = me?.id;
+  if (!username || !userId) {
     return json({ error: 'Could not determine your username' }, 401);
   }
 
-  // folderPath is "CreatorName/AlbumName" — first segment must match the authenticated user
   const folderCreator = folderPath.split('/')[0].trim();
-  if (folderCreator.toLowerCase() !== username.toLowerCase()) {
+  const nameMatch = folderCreator.toLowerCase() === username.toLowerCase();
+
+  // Also allow if the user has an approved claim on this profile
+  let claimMatch = false;
+  if (!nameMatch && DB) {
+    const claim = await DB.prepare(
+      `SELECT user_id FROM yeditsgold_claims WHERE profile_name = ? AND status = 'approved' AND user_id = ?`
+    ).bind(folderCreator, userId).first();
+    claimMatch = !!claim;
+  }
+
+  if (!nameMatch && !claimMatch) {
     return json({ error: 'You can only delete your own projects' }, 403);
   }
 
