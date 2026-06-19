@@ -1661,7 +1661,7 @@ export default function App() {
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
     } else if (rawUrl.includes('pixeldrain.com/u/')) {
       const id = rawUrl.split('/u/')[1]?.split('?')[0];
-      return `/api/pixeldrain/${id}`;
+      return `https://pd-proxy.vercel.app/api/${id}`;
     }
     return rawUrl;
   };
@@ -1720,7 +1720,7 @@ export default function App() {
           streamUrl = rawUrl;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1]?.split('?')[0];
-          streamUrl = `/api/pixeldrain/${id}`;
+          streamUrl = `https://pd-proxy.vercel.app/api/${id}`;
         }
 
       } catch (err) {
@@ -2003,7 +2003,7 @@ export default function App() {
           : rawSongUrl.includes('drive.google.com')
             ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
             : rawSongUrl.includes('pixeldrain.com/u/')
-              ? `/api/pixeldrain/${rawSongUrl.split('/u/')[1]?.split('?')[0]}`
+              ? `https://pd-proxy.vercel.app/api/${rawSongUrl.split('/u/')[1]?.split('?')[0]}`
               : rawSongUrl;
           
         let catForDiscord = 'Music';
