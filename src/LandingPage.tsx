@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AnnouncementPopup } from './components/AnnouncementPopup';
 import { useNavigate } from 'react-router-dom';
 import { SiDiscord, SiReddit, SiTiktok } from 'react-icons/si';
 import { ARTIST_LIST } from './artists/registry';
@@ -687,6 +688,8 @@ export function LandingPage() {
   const hiddenCount = allSmall.length - INITIAL_SMALL;
 
   return (
+    <>
+    <AnnouncementPopup />
     <div style={{
       minHeight: '100vh',
       background: '#050505',
@@ -817,7 +820,7 @@ export function LandingPage() {
           style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,69,0,0.12)', border: '1px solid rgba(255,69,0,0.25)', color: '#FF4500', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
           <SiReddit style={{ width: 16, height: 16 }} /> Reddit
         </a>
-        <a href="https://www.tiktok.com/t/ZTBerQPF2/" target="_blank" rel="noopener noreferrer"
+        <a href="https://www.tiktok.com/@vault.gold" target="_blank" rel="noopener noreferrer"
           style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
           <SiTiktok style={{ width: 16, height: 16 }} /> TikTok
         </a>
@@ -877,5 +880,6 @@ export function LandingPage() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
       `}</style>
     </div>
+    </>
   );
 }
