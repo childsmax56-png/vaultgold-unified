@@ -20,6 +20,7 @@ const TRACKER_PREFIXES: Record<string, string> = {
   shadygold: 'shadygold_',
   cactigold: 'cactigold_',
   dregold: 'dregold_',
+  luckigold: 'luckigold_',
 };
 
 interface VGUser { id: string; username: string; email: string; }

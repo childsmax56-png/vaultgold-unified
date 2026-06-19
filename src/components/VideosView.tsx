@@ -118,7 +118,6 @@ function getLinkLabel(url: string): string {
   if (url.includes('streamable.com')) return 'Streamable';
   if (url.includes('mega.nz')) return 'MEGA';
   if (url.includes('sharemania.us')) return 'Sharemania';
-  if (url.includes('imgur')) return 'Imgur';
   return 'Link';
 }
 

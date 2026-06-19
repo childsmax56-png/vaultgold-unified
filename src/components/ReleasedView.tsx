@@ -95,7 +95,7 @@ function parseLinkInfo(raw: string): LinkInfo {
     return { platform: 'apple', url: u, embedUrl, label: 'Apple Music' };
   }
 
-  if (u.includes('pillows.su/f/') || u.includes('imgur.gg/f/') || u.includes('i.imgur.com')) {
+  if (u.includes('pillows.su/f/') || u.includes('imgur.gg/f/') || u.includes('i.imgur.com') || u.includes('krakenfiles.com/view/') || u.includes('pixeldrain.com/u/')) {
     return { platform: 'audio', url: u, label: 'Play' };
   }
 

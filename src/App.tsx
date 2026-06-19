@@ -587,28 +587,9 @@ export default function App() {
 
   useEffect(() => {
     const initAudio = () => {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-      if (!audioContextRef.current && audioRef.current && !isIOS) {
-        const windowAny = window as any;
-        const AudioContext = window.AudioContext || windowAny.webkitAudioContext;
-        if (!AudioContext) return;
-
-        try {
-          const ctx = new AudioContext();
-          const analyser = ctx.createAnalyser();
-          analyser.fftSize = 256;
-
-          const source = ctx.createMediaElementSource(audioRef.current);
-          source.connect(analyser);
-          analyser.connect(ctx.destination);
-
-          audioContextRef.current = ctx;
-          analyserRef.current = analyser;
-        } catch (e) {
-          console.error("Failed to initialize AudioContext", e);
-        }
-      }
+      // AudioContext intentionally disabled: createMediaElementSource permanently
+      // captures the audio element requiring crossOrigin on all loads, which breaks
+      // Pixeldrain playback. The visualizer (analyserRef) stays null/dark.
     };
 
     document.addEventListener('click', initAudio, { once: true });
@@ -654,7 +635,7 @@ export default function App() {
       if (linkMatch?.[1]) rawUrl = linkMatch[1];
 
       const newSong: Song = {
-        name: item.Name,
+        name: item.Name || '',
         extra: item.extra || item.Extra || undefined,
         description: item.Notes || '',
         track_length: item['Track Length'] || '',
@@ -872,7 +853,7 @@ export default function App() {
               }
 
               const newSong: Song = {
-                name: mykItem.Name,
+                name: mykItem.Name || '',
                 extra: mykItem.extra || mykItem.Extra || undefined,
                 description: mykItem.Notes || '',
                 track_length: mykItem['Track Length'] || '',
@@ -1643,7 +1624,7 @@ export default function App() {
     return Object.values(era.data || {}).flat().filter(s => {
       const rawUrl = s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(s, rawUrl);
-      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) && !isNotAvailable;
+      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
     });
   };
 
@@ -1656,9 +1637,15 @@ export default function App() {
     } else if (rawUrl.includes('pillows.su/f/')) {
       const id = rawUrl.split('/f/')[1];
       return `https://api.pillows.su/api/get/${id}`;
+    } else if (rawUrl.includes('pixeldrain.com/u/')) {
+      const id = rawUrl.split('/u/')[1]?.split('?')[0];
+      const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
+      return proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
     } else if (rawUrl.includes('drive.google.com')) {
       const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
+    } else if (rawUrl.includes('krakenfiles.com/view/')) {
+      return `/api/kraken-proxy?url=${encodeURIComponent(rawUrl)}`;
     }
     return rawUrl;
   };
@@ -1682,7 +1669,7 @@ export default function App() {
        return;
     }
 
-    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) {
+    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) {
       let streamUrl = '';
       let isPlayable = true;
 
@@ -1710,11 +1697,21 @@ export default function App() {
         } else if (rawUrl.includes('pillows.su/f/')) {
           const id = rawUrl.split('/f/')[1];
           streamUrl = `https://api.pillows.su/api/get/${id}`;
+        } else if (rawUrl.includes('pixeldrain.com/u/')) {
+          const id = rawUrl.split('/u/')[1]?.split('?')[0];
+          const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
+          if (proxyBase) {
+            streamUrl = `${proxyBase}/api/${id}`;
+          } else {
+            console.error('[pixeldrain] VITE_PIXELDRAIN_PROXY_URL not set');
+          }
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
           if (m) streamUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
         } else if (rawUrl.includes('i.imgur.com')) {
           streamUrl = rawUrl;
+        } else if (rawUrl.includes('krakenfiles.com/view/')) {
+          streamUrl = `/api/kraken-proxy?url=${encodeURIComponent(rawUrl)}`;
         }
 
       } catch (err) {
@@ -1729,6 +1726,15 @@ export default function App() {
           audioRef.current.src = '';
         }
         showToast("Song cannot be played because it's not an audio file");
+        return;
+      }
+
+      if (!streamUrl) {
+        showToast(
+          rawUrl.includes('pixeldrain.com/u/')
+            ? "Could not load audio — check that VITE_PIXELDRAIN_PROXY_URL is set and the Cloudflare build has been redeployed."
+            : "Could not load audio — the source may be unreachable"
+        );
         return;
       }
 
@@ -1751,10 +1757,13 @@ export default function App() {
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
+        audioRef.current.setAttribute('crossorigin', 'anonymous');
         audioRef.current.src = streamUrl;
+        audioRef.current.load();
         audioRef.current.volume = volume;
         if (autoPlay) {
-          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e) });
+          console.log('[audio] About to play:', audioRef.current.src, 'networkState:', audioRef.current.networkState, 'readyState:', audioRef.current.readyState, 'crossOrigin:', audioRef.current.crossOrigin);
+          audioRef.current.play().catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e, "src:", audioRef.current?.src, "networkState:", audioRef.current?.networkState); });
         }
       }
 
@@ -1994,9 +2003,11 @@ export default function App() {
         const rawSongUrl = currentSong.url || (currentSong.urls && currentSong.urls.length > 0 ? currentSong.urls[0] : '');
         const directLink = rawSongUrl.includes('pillows.su/f/')
           ? `https://api.pillows.su/api/download/${rawSongUrl.split('/f/')[1]}`
-          : rawSongUrl.includes('drive.google.com')
-            ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
-            : rawSongUrl;
+          : rawSongUrl.includes('pixeldrain.com/u/')
+            ? (() => { const id = rawSongUrl.split('/u/')[1]?.split('?')[0]; const pb = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, ''); return pb ? `${pb}/api/${id}` : `https://pixeldrain.com/api/file/${id}`; })()
+            : rawSongUrl.includes('drive.google.com')
+              ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
+              : rawSongUrl;
           
         let catForDiscord = 'Music';
         if (currentSong.name.endsWith('[Misc]') || actualEraName.includes('Misc')) {
@@ -2298,7 +2309,7 @@ export default function App() {
           for (const song of songs as Song[]) {
             const c = isRelated ? relatedCount : musicCount;
             if (c >= PER_TAB) break outer;
-            if (song.name.toLowerCase().includes(q)) {
+            if ((song.name || '').toLowerCase().includes(q)) {
               results.push({
                 name: song.name,
                 extra: song.extra,
@@ -2317,7 +2328,7 @@ export default function App() {
     let recentCount = 0;
     for (const song of recentData) {
       if (recentCount >= PER_TAB) break;
-      if (song.name.toLowerCase().includes(q)) {
+      if ((song.name || '').toLowerCase().includes(q)) {
         results.push({ name: song.name, extra: song.extra, eraName: song.extra2 || 'Recent', tab: 'recent', song });
         recentCount++;
       }
@@ -2326,7 +2337,7 @@ export default function App() {
     let stemsCount = 0;
     for (const entry of stemsData) {
       if (stemsCount >= PER_TAB) break;
-      if (entry.Name.toLowerCase().includes(q)) {
+      if ((entry.Name || '').toLowerCase().includes(q)) {
         results.push({ name: entry.Name, eraName: entry.Era, tab: 'stems' });
         stemsCount++;
       }
@@ -2335,7 +2346,7 @@ export default function App() {
     let miscCount = 0;
     for (const entry of miscData) {
       if (miscCount >= PER_TAB) break;
-      if (entry.Name.toLowerCase().includes(q)) {
+      if ((entry.Name || '').toLowerCase().includes(q)) {
         results.push({ name: entry.Name, eraName: entry.Era, tab: 'misc' });
         miscCount++;
       }
@@ -2344,7 +2355,7 @@ export default function App() {
     let fakesCount = 0;
     for (const entry of fakesData) {
       if (fakesCount >= PER_TAB) break;
-      if (entry.Name.toLowerCase().includes(q)) {
+      if ((entry.Name || '').toLowerCase().includes(q)) {
         results.push({ name: entry.Name, eraName: entry.Era, tab: 'fakes' });
         fakesCount++;
       }
@@ -2353,7 +2364,7 @@ export default function App() {
     let releasedCount = 0;
     for (const entry of releasedData) {
       if (releasedCount >= PER_TAB) break;
-      if (entry.Name.toLowerCase().includes(q)) {
+      if ((entry.Name || '').toLowerCase().includes(q)) {
         results.push({ name: entry.Name, eraName: entry.Era, tab: 'released' });
         releasedCount++;
       }
@@ -2702,7 +2713,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         Object.values(era.data).flat().forEach(song => {
           const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
           const isNotAvailable = isSongNotAvailable(song, rawUrl);
-          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) && !isNotAvailable;
+          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
           
           if (isPlayable) {
              allMusicSongs.push({ ...song, realEra: era });
@@ -2797,6 +2808,12 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         onPlay={() => setIsPlaying(true)}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
+        onError={(e) => {
+          const el = e.currentTarget;
+          const err = el.error;
+          console.error('Audio element error', err?.code, err?.message, 'src:', el.src, 'crossOrigin:', el.crossOrigin, 'networkState:', el.networkState, 'readyState:', el.readyState);
+          if (audioRef.current?.src) showToast("Failed to load audio - the source may be unreachable");
+        }}
         crossOrigin="anonymous"
         playsInline
       />

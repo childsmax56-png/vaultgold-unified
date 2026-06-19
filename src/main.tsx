@@ -11,6 +11,9 @@ import { setActiveConfig } from './artists/activeConfig.ts';
 import { getArtistConfig } from './artists/registry.ts';
 import { MyTrackerPage } from './MyTrackerPage.tsx';
 import { UnvaultedRecordsPage } from './UnvaultedRecordsPage.tsx';
+import { YEditsGoldPage } from './YEditsGoldPage.tsx';
+import { TermsPage } from './TermsPage.tsx';
+import { PrivacyPage } from './PrivacyPage.tsx';
 
 function CACTIgoldUnavailable() {
   return (
@@ -61,6 +64,9 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
         <Route path="/my-tracker" element={<SettingsProvider><MyTrackerPage /></SettingsProvider>} />
         <Route path="/label" element={<UnvaultedRecordsPage />} />
+        <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/:artist/*" element={<ArtistRoute />} />
       </Routes>
     </BrowserRouter>

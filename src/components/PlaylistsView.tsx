@@ -52,7 +52,7 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
 }
 
 function isDirectlyDownloadable(url: string): boolean {
-  return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/') || url.includes('imgur.gg/f/') || url.includes('i.imgur.com');
+  return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/') || url.includes('imgur.gg/f/') || url.includes('i.imgur.com') || url.includes('krakenfiles.com/view/') || url.includes('pixeldrain.com/u/');
 }
 
 export function PlaylistsView({ eras, artData = [], searchQuery = '', onPlaySong, onToast }: Props) {
