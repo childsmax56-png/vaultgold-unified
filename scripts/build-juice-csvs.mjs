@@ -197,6 +197,12 @@ async function main() {
       total++;
       if (urls.length) linked++;
 
+      // Put pixeldrain links first (alternate), froste.lol second (main)
+      const sortedUrls = [
+        ...urls.filter(u => u.includes('pixeldrain.com')),
+        ...urls.filter(u => !u.includes('pixeldrain.com')),
+      ];
+
       outRows.push({
         'Era':              era,
         'Name':             rawName,
@@ -206,7 +212,7 @@ async function main() {
         'Leak Date':        (leakDateKey ? row[leakDateKey] : '') || '',
         'Available Length': (availKey ? row[availKey] : '') || '',
         'Quality':          (qualKey  ? row[qualKey]  : '') || '',
-        'Link(s)':          urls.join('\n'),
+        'Link(s)':          sortedUrls.join('\n'),
       });
     }
 
