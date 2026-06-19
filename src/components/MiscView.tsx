@@ -287,7 +287,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
 
     await Promise.all(allPlayableSongs.map(async (song) => {
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
-      if (!rawUrl || !(rawUrl.includes('pillows.su/f/') || rawUrl.includes('temp.imgur.gg/f/') || rawUrl.includes('ibb.co') || rawUrl.match(/\.(png|jpg|jpeg)$/i) || rawUrl.startsWith('https://i.scdn.co/'))) return;
+      if (!rawUrl || !(rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('ibb.co') || rawUrl.match(/\.(png|jpg|jpeg)$/i) || rawUrl.startsWith('https://i.scdn.co/'))) return;
       try {
         const { fetchUrl, isImage, imageExt, headers } = await resolveUrl(rawUrl);
         const res = await fetch(fetchUrl, headers ? { headers } : undefined);

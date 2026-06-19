@@ -25,9 +25,10 @@ interface SettingsViewProps {
 }
 
 async function resolveAudioUrl(rawUrl: string): Promise<string> {
-  if (rawUrl.includes('temp.imgur.gg/f/')) {
+  if (rawUrl.includes('imgur.gg/f/')) {
     const id = rawUrl.split('/f/')[1];
-    const res = await fetch(`https://temp.imgur.gg/api/file/${id}`);
+    const host = new URL(rawUrl).host;
+    const res = await fetch(`https://${host}/api/file/${id}`);
     const data = await res.json();
     return data.cdnUrl as string;
   }

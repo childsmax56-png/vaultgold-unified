@@ -140,7 +140,7 @@ export function ContributorView({ contributorName, eras, onBack, onPlaySong, cur
   const allPlayable = useMemo(
     () => filtered.map(m => m.song).filter(s => {
       const url = s.url || (s.urls?.[0] ?? '');
-      return url && !isSongNotAvailable(s, url) && (url.includes('pillows.su/f/') || url.includes('temp.imgur.gg/f/') || url.includes('i.imgur.com'));
+      return url && !isSongNotAvailable(s, url) && (url.includes('pillows.su/f/') || url.includes('imgur.gg/f/') || url.includes('i.imgur.com'));
     }),
     [filtered]
   );
@@ -311,7 +311,7 @@ export function ContributorView({ contributorName, eras, onBack, onPlaySong, cur
                           const rawUrl = song.url || (song.urls?.[0] ?? '');
                           const isNotAvailable = isSongNotAvailable(song, rawUrl);
                           const isPlayable = !!rawUrl && !isNotAvailable && (
-                            rawUrl.includes('pillows.su/f/') || rawUrl.includes('temp.imgur.gg/f/') || rawUrl.includes('i.imgur.com')
+                            rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com')
                           );
                           const isCurrentlyPlaying =
                             currentSong?.name === song.name && currentSong?.description === song.description;
