@@ -2805,6 +2805,13 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         onPlay={() => setIsPlaying(true)}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
+        onError={(e) => {
+          const el = e.currentTarget as HTMLAudioElement;
+          const err = el.error;
+          const msg = err ? `Audio error ${err.code}: ${err.message} — src: ${el.src}` : `Audio error — src: ${el.src}`;
+          console.error(msg);
+          showToast(msg);
+        }}
         crossOrigin="anonymous"
         playsInline
       />
