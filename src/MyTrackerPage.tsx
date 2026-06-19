@@ -120,6 +120,9 @@ async function getStreamUrl(url: string): Promise<string | null> {
     const id = driveFileId(url);
     return id ? `https://drive.google.com/uc?export=download&id=${id}` : null;
   }
+  if (url.includes('i.imgur.com')) {
+    return url;
+  }
   return null;
 }
 
@@ -221,7 +224,7 @@ function EraDetail({
         {era.songs.length === 0 ? (
           <div style={{ padding: '40px 0', textAlign: 'center', color: 'rgba(255,255,255,0.45)', fontSize: 13 }}>No songs in this era</div>
         ) : era.songs.map((song, i) => {
-          const playable = isPillowcase(song.url) || isTempImgur(song.url) || isGoogleDrive(song.url);
+          const playable = isPillowcase(song.url) || isTempImgur(song.url) || isGoogleDrive(song.url) || (song.url && song.url.includes('i.imgur.com'));
           const hasUrl = song.url && !/^n\/?a$/i.test(song.url.trim());
           const hasNotes = !!(song.notes && song.notes.trim());
           const playKey = `${era.name}||${song.name}`;

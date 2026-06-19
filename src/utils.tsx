@@ -922,6 +922,10 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
     } else if (url.includes('drive.google.com')) {
         const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
         if (m) finalUrl = `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`;
+    } else if (url.includes('i.imgur.com')) {
+        finalUrl = url;
+        const extMatch = url.match(/\.(mp3|mp4|m4a|wav|ogg|flac|aac)(\?|$)/i);
+        if (extMatch) ext = extMatch[1].toLowerCase() === 'mp4' ? '.mp4' : `.${extMatch[1].toLowerCase()}`;
     } else if (url.includes('ibb.co')) {
        isImage = true;
        ext = '';
@@ -1213,7 +1217,7 @@ export function matchesFilters(song: any, searchQuery: string, filters: any): bo
   if (filters.playableOnly) {
     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
     const isNotAvailable = song.quality?.toLowerCase() === 'not available';
-    if (!rawUrl || (!rawUrl.includes('pillows.su/f/') && !rawUrl.includes('drive.google.com')) || isNotAvailable) {
+    if (!rawUrl || (!rawUrl.includes('pillows.su/f/') && !rawUrl.includes('drive.google.com') && !rawUrl.includes('temp.imgur.gg/f/') && !rawUrl.includes('i.imgur.com')) || isNotAvailable) {
       return false;
     }
   }
