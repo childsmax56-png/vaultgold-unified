@@ -51,7 +51,7 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
 }
 
 function isDirectlyDownloadable(url: string): boolean {
-  return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/') || url.includes('temp.imgur.gg/f/');
+  return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/') || url.includes('temp.imgur.gg/f/') || url.includes('i.imgur.com');
 }
 
 export function PlaylistsView({ eras, artData = [], searchQuery = '', onPlaySong, onToast }: Props) {
