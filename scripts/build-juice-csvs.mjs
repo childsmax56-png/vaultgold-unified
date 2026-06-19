@@ -197,11 +197,8 @@ async function main() {
       total++;
       if (urls.length) linked++;
 
-      // Put pixeldrain links first (alternate), froste.lol second (main)
-      const sortedUrls = [
-        ...urls.filter(u => u.includes('pixeldrain.com')),
-        ...urls.filter(u => !u.includes('pixeldrain.com')),
-      ];
+      // Drop defunct froste.lol links; keep pixeldrain only
+      const sortedUrls = urls.filter(u => !u.includes('froste.lol'));
 
       outRows.push({
         'Era':              era,

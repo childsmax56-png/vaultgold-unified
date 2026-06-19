@@ -1643,7 +1643,7 @@ export default function App() {
     return Object.values(era.data || {}).flat().filter(s => {
       const rawUrl = s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(s, rawUrl);
-      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) && !isNotAvailable;
+      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
     });
   };
 
@@ -1659,6 +1659,9 @@ export default function App() {
     } else if (rawUrl.includes('drive.google.com')) {
       const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
+    } else if (rawUrl.includes('pixeldrain.com/u/')) {
+      const id = rawUrl.split('/u/')[1]?.split('?')[0];
+      return `/api/pixeldrain/${id}`;
     }
     return rawUrl;
   };
@@ -1682,7 +1685,7 @@ export default function App() {
        return;
     }
 
-    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) {
+    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/')) {
       let streamUrl = '';
       let isPlayable = true;
 
@@ -1715,6 +1718,9 @@ export default function App() {
           if (m) streamUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
         } else if (rawUrl.includes('i.imgur.com')) {
           streamUrl = rawUrl;
+        } else if (rawUrl.includes('pixeldrain.com/u/')) {
+          const id = rawUrl.split('/u/')[1]?.split('?')[0];
+          streamUrl = `/api/pixeldrain/${id}`;
         }
 
       } catch (err) {
@@ -1996,7 +2002,9 @@ export default function App() {
           ? `https://api.pillows.su/api/download/${rawSongUrl.split('/f/')[1]}`
           : rawSongUrl.includes('drive.google.com')
             ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
-            : rawSongUrl;
+            : rawSongUrl.includes('pixeldrain.com/u/')
+              ? `/api/pixeldrain/${rawSongUrl.split('/u/')[1]?.split('?')[0]}`
+              : rawSongUrl;
           
         let catForDiscord = 'Music';
         if (currentSong.name.endsWith('[Misc]') || actualEraName.includes('Misc')) {
@@ -2702,7 +2710,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         Object.values(era.data).flat().forEach(song => {
           const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
           const isNotAvailable = isSongNotAvailable(song, rawUrl);
-          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) && !isNotAvailable;
+          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
           
           if (isPlayable) {
              allMusicSongs.push({ ...song, realEra: era });
