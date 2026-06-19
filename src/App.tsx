@@ -1643,14 +1643,15 @@ export default function App() {
     return Object.values(era.data || {}).flat().filter(s => {
       const rawUrl = s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(s, rawUrl);
-      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('temp.imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) && !isNotAvailable;
+      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) && !isNotAvailable;
     });
   };
 
   const resolveStreamUrl = async (rawUrl: string): Promise<string> => {
-    if (rawUrl.includes('temp.imgur.gg/f/')) {
+    if (rawUrl.includes('imgur.gg/f/')) {
       const id = rawUrl.split('/f/')[1];
-      const res = await axios.get(`https://temp.imgur.gg/api/file/${id}`);
+      const host = new URL(rawUrl).host;
+      const res = await axios.get(`https://${host}/api/file/${id}`);
       return res.data?.cdnUrl ?? rawUrl;
     } else if (rawUrl.includes('pillows.su/f/')) {
       const id = rawUrl.split('/f/')[1];
@@ -1681,7 +1682,7 @@ export default function App() {
        return;
     }
 
-    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('temp.imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) {
+    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) {
       let streamUrl = '';
       let isPlayable = true;
 
@@ -1692,9 +1693,10 @@ export default function App() {
       try {
         if (preloaded) {
           streamUrl = preloaded;
-        } else if (rawUrl.includes('temp.imgur.gg/f/')) {
+        } else if (rawUrl.includes('imgur.gg/f/')) {
           const id = rawUrl.split('/f/')[1];
-          const res = await axios.get(`https://temp.imgur.gg/api/file/${id}`);
+          const host = new URL(rawUrl).host;
+          const res = await axios.get(`https://${host}/api/file/${id}`);
 
           if (res.data && res.data.cdnUrl) {
             streamUrl = res.data.cdnUrl;
@@ -2700,7 +2702,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         Object.values(era.data).flat().forEach(song => {
           const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
           const isNotAvailable = isSongNotAvailable(song, rawUrl);
-          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('temp.imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) && !isNotAvailable;
+          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com')) && !isNotAvailable;
           
           if (isPlayable) {
              allMusicSongs.push({ ...song, realEra: era });

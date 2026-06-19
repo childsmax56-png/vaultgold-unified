@@ -836,10 +836,11 @@ export function parseNoteDescription(description: string | undefined | null): {
 }
 
 export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isImage: boolean; imageExt?: string; headers?: Record<string, string> }> {
-  if (url.includes('temp.imgur.gg/f/')) {
+  if (url.includes('imgur.gg/f/')) {
     const id = url.split('/f/')[1];
+    const host = new URL(url).host;
     if (id) {
-      const res = await fetch(`https://temp.imgur.gg/api/file/${id}`).catch(() => null);
+      const res = await fetch(`https://${host}/api/file/${id}`).catch(() => null);
       if (res && res.ok) {
         const data = await res.json().catch(() => null);
         if (data?.cdnUrl) return { fetchUrl: data.cdnUrl, isImage: false };
@@ -905,10 +906,11 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
     let isImage = false;
     let ext = '.mp3';
 
-    if (url.includes('temp.imgur.gg/f/')) {
+    if (url.includes('imgur.gg/f/')) {
         const id = url.split('/f/')[1];
+        const host = new URL(url).host;
         if (id) {
-            const res = await fetch(`https://temp.imgur.gg/api/file/${id}`).catch(() => null);
+            const res = await fetch(`https://${host}/api/file/${id}`).catch(() => null);
             if (res && res.ok) {
                 const data = await res.json().catch(() => null);
                 if (data?.cdnUrl) finalUrl = data.cdnUrl;
@@ -1217,7 +1219,7 @@ export function matchesFilters(song: any, searchQuery: string, filters: any): bo
   if (filters.playableOnly) {
     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
     const isNotAvailable = song.quality?.toLowerCase() === 'not available';
-    if (!rawUrl || (!rawUrl.includes('pillows.su/f/') && !rawUrl.includes('drive.google.com') && !rawUrl.includes('temp.imgur.gg/f/') && !rawUrl.includes('i.imgur.com')) || isNotAvailable) {
+    if (!rawUrl || (!rawUrl.includes('pillows.su/f/') && !rawUrl.includes('drive.google.com') && !rawUrl.includes('imgur.gg/f/') && !rawUrl.includes('i.imgur.com')) || isNotAvailable) {
       return false;
     }
   }

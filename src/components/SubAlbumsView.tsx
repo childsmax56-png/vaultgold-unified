@@ -99,7 +99,7 @@ function extractSongTitleFromReleased(name: string): string {
 function extractBestPlayableUrl(linksField: string): string {
   const urls = linksField.split('\n').map(l => l.trim()).filter(l => l && !l.toLowerCase().includes('link needed') && !l.toLowerCase().includes('source needed'));
   for (const u of urls) {
-    if (u.includes('pillows.su/f/') || u.includes('temp.imgur.gg/f/') || u.includes('i.imgur.com')) return u;
+    if (u.includes('pillows.su/f/') || u.includes('imgur.gg/f/') || u.includes('i.imgur.com')) return u;
   }
   for (const u of urls) {
     if (/\.(mp3|m4a|wav|ogg|flac|aac)(\?|$)/i.test(u)) return u;
