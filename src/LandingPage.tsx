@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { AnnouncementPopup } from './components/AnnouncementPopup';
 import { useNavigate } from 'react-router-dom';
 import { SiDiscord, SiReddit, SiTiktok, SiX } from 'react-icons/si';
 import { ARTIST_LIST } from './artists/registry';
@@ -633,8 +632,6 @@ export function LandingPage() {
   const hiddenCount = allSmall.length - INITIAL_SMALL;
 
   return (
-    <>
-    <AnnouncementPopup />
     <div style={{
       minHeight: '100vh',
       background: '#050505',
@@ -843,6 +840,5 @@ export function LandingPage() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
       `}</style>
     </div>
-    </>
   );
 }
