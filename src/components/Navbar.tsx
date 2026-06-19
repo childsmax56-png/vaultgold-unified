@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, DollarSign, LogIn, LogOut, Settings, Dice5, X, ChevronDown, GanttChart, LayoutGrid, UserPlus, Share2, Check } from 'lucide-react';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { SiDiscord, SiReddit, SiTiktok } from 'react-icons/si';
+import { SiDiscord, SiReddit, SiTiktok, SiX } from 'react-icons/si';
+import { Users } from 'lucide-react';
 import { FilterMenu } from './FilterMenu';
 import { SearchFilters } from '../types';
 import { useSettings } from '../SettingsContext';
@@ -57,6 +58,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
+  const [socialOpen, setSocialOpen] = useState(false);
 
   const handleShareTracker = useCallback(() => {
     const url = `${window.location.origin}/${activeConfig.slug}`;
@@ -297,36 +299,13 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
             <button onClick={() => handleCategoryClick('settings')} className={`flex items-center p-2.5 rounded-full transition-all bg-white/5 text-white/50 hover:bg-white/10 hover:text-white ${activeCategory === 'settings' ? 'text-white bg-white/10' : ''}`}>
                <Settings className="w-5 h-5" />
             </button>
-            <a
-              href="https://discord.gg/xYhKgCDX8h"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center p-2.5 rounded-full transition-all duration-300 cursor-pointer"
-              style={{ backgroundColor: 'rgba(88, 101, 242, 0.15)', color: '#5865F2' }}
-              title="Join Discord"
+            <button
+              onClick={() => setSocialOpen(true)}
+              className="flex items-center gap-1.5 p-2.5 rounded-full transition-all duration-300 bg-white/5 text-white/50 hover:bg-white/10 hover:text-white"
+              title="Community"
             >
-              <SiDiscord className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.reddit.com/r/2YZY2GOLD/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center p-2.5 rounded-full transition-all duration-300 cursor-pointer"
-              style={{ backgroundColor: 'rgba(255, 69, 0, 0.15)', color: '#FF4500' }}
-              title="Reddit"
-            >
-              <SiReddit className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.tiktok.com/t/ZTBerQPF2/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center p-2.5 rounded-full transition-all duration-300 cursor-pointer"
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', color: '#ffffff' }}
-              title="TikTok"
-            >
-              <SiTiktok className="w-5 h-5" />
-            </a>
+              <Users className="w-5 h-5" />
+            </button>
             <a
               href="https://unvaulted.cc/"
               target="_blank"
@@ -438,39 +417,14 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
       </div>
 
       <div className="flex-1 hidden md:flex justify-end items-center gap-2 md:gap-3">
-        <a
-          href="https://discord.gg/xYhKgCDX8h"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-105"
-          style={{ backgroundColor: 'rgba(88, 101, 242, 0.15)', color: '#5865F2' }}
-          title="Join Discord"
+        <button
+          onClick={() => setSocialOpen(true)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-105 bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
+          title="Community"
         >
-          <SiDiscord className="w-4 h-4" />
-          <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Discord</span>
-        </a>
-        <a
-          href="https://www.reddit.com/r/2YZY2GOLD/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-105"
-          style={{ backgroundColor: 'rgba(255, 69, 0, 0.15)', color: '#FF4500' }}
-          title="Reddit"
-        >
-          <SiReddit className="w-4 h-4" />
-          <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Reddit</span>
-        </a>
-        <a
-          href="https://www.tiktok.com/t/ZTBerQPF2/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-105"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', color: '#ffffff' }}
-          title="TikTok"
-        >
-          <SiTiktok className="w-4 h-4" />
-          <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">TikTok</span>
-        </a>
+          <Users className="w-4 h-4" />
+          <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Community</span>
+        </button>
         <a
           href="https://unvaulted.cc/"
           target="_blank"
@@ -523,6 +477,61 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
           <Settings className="w-5 h-5" />
         </button>
       </div>
+
+      <AnimatePresence>
+        {socialOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center"
+            style={{ backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(6px)' }}
+            onClick={() => setSocialOpen(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 12 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+              className="relative w-full max-w-xs mx-4 rounded-2xl p-6 flex flex-col gap-3"
+              style={{ background: 'rgba(18,18,20,0.95)', border: '1px solid rgba(255,255,255,0.1)' }}
+              onClick={e => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSocialOpen(false)}
+                className="absolute top-3 right-3 p-1.5 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-all"
+              >
+                <X className="w-4 h-4" />
+              </button>
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-1">Community</p>
+              <a href="https://discord.gg/xYhKgCDX8h" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:scale-[1.02]"
+                style={{ background: 'rgba(88,101,242,0.15)', color: '#5865F2', border: '1px solid rgba(88,101,242,0.25)' }}>
+                <SiDiscord className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm font-semibold">Discord</span>
+              </a>
+              <a href="https://www.reddit.com/r/2YZY2GOLD/" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:scale-[1.02]"
+                style={{ background: 'rgba(255,69,0,0.15)', color: '#FF4500', border: '1px solid rgba(255,69,0,0.25)' }}>
+                <SiReddit className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm font-semibold">Reddit</span>
+              </a>
+              <a href="https://www.tiktok.com/@vault.gold" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:scale-[1.02]"
+                style={{ background: 'rgba(255,255,255,0.08)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <SiTiktok className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm font-semibold">TikTok</span>
+              </a>
+              <a href="https://x.com/unvaultedcc" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:scale-[1.02]"
+                style={{ background: 'rgba(255,255,255,0.08)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <SiX className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm font-semibold">X (Twitter)</span>
+              </a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
