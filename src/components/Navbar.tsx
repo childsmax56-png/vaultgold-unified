@@ -423,7 +423,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
           title="Community"
         >
           <Users className="w-4 h-4" />
-          <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Community</span>
+          <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Community / Socials</span>
         </button>
         <a
           href="https://unvaulted.cc/"
