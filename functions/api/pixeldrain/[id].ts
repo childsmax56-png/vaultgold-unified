@@ -36,7 +36,11 @@ async function proxyPixeldrain(id: string, request: Request, apiKey: string): Pr
 
   const responseHeaders = new Headers(CORS);
   responseHeaders.set('Accept-Ranges', 'bytes');
-  responseHeaders.set('Content-Type', upstream.headers.get('Content-Type') ?? 'audio/mpeg');
+  const upstreamType = upstream.headers.get('Content-Type') ?? '';
+  // Force audio/mpeg when pixeldrain returns a generic binary type — browsers won't
+  // play application/octet-stream as audio even though the bytes are valid audio.
+  const contentType = (upstreamType && upstreamType !== 'application/octet-stream') ? upstreamType : 'audio/mpeg';
+  responseHeaders.set('Content-Type', contentType);
 
   for (const h of ['Content-Length', 'Content-Range', 'Content-Disposition']) {
     const v = upstream.headers.get(h);

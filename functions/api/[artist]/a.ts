@@ -244,10 +244,15 @@ export const onRequestGet: PagesFunction = async (context) => {
         ?? 'Name')
       : 'Name';
 
-    // Similarly detect the Notes column.
+    // Similarly detect the Notes column (wolfgold uses 'Info').
     const NOTES_KEY = rows.length > 0
-      ? (Object.keys(rows[0]).find(k => k === 'Notes') ?? Object.keys(rows[0]).find(k => k.startsWith('Notes')) ?? 'Notes')
+      ? (Object.keys(rows[0]).find(k => k === 'Notes') ?? Object.keys(rows[0]).find(k => k.startsWith('Notes')) ?? Object.keys(rows[0]).find(k => k === 'Info') ?? 'Notes')
       : 'Notes';
+
+    // Detect track length and available length columns (wolfgold uses 'Length' / 'Availability').
+    const firstRowKeys = rows.length > 0 ? Object.keys(rows[0]) : [];
+    const TRACK_LENGTH_KEY = firstRowKeys.find(k => k === 'Track Length') ?? firstRowKeys.find(k => k === 'Length') ?? 'Track Length';
+    const AVAIL_LENGTH_KEY = firstRowKeys.find(k => k === 'Available Length') ?? firstRowKeys.find(k => k === 'Availability') ?? firstRowKeys.find(k => k === 'Portion') ?? 'Available Length';
 
     const eras: Record<string, any> = {};
 
@@ -309,10 +314,10 @@ export const onRequestGet: PagesFunction = async (context) => {
           name,
           extra: extra ?? undefined,
           description: row[NOTES_KEY] ?? '',
-          track_length: row['Track Length'] ?? '',
+          track_length: row[TRACK_LENGTH_KEY] ?? '',
           file_date: row['File Date'] ?? row['Origin'] ?? '',
           leak_date: row['Leak Date'] ?? '',
-          available_length: row['Available Length'] ?? row['Portion'] ?? '',
+          available_length: row[AVAIL_LENGTH_KEY] ?? '',
           quality: row['Quality'] ?? '',
           url: links[0] ?? '',
           urls: links,
