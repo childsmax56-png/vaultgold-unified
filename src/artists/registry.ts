@@ -7,7 +7,7 @@ import { xgoldConfig } from './xgold';
 import { cactigoldConfig } from './cactigold';
 import { dregoldConfig } from './dregold';
 import { pushagoldConfig } from './pushagold';
-// import { shadygoldConfig } from './shadygold';
+import { shadygoldConfig } from './shadygold';
 import { twizzygoldConfig } from './twizzygold';
 import { uzigoldConfig } from './uzigold';
 import { wolfgoldConfig } from './wolfgold';
@@ -23,7 +23,7 @@ export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   kdotgold: kdotgoldConfig,
   uzigold: uzigoldConfig,
   pushagold: pushagoldConfig,
-  // shadygold: shadygoldConfig,
+  shadygold: shadygoldConfig,
   twizzygold: twizzygoldConfig,
   dregold: dregoldConfig,
   juicegold: juicegoldConfig,
