@@ -240,6 +240,7 @@ export const onRequestGet: PagesFunction = async (context) => {
     const NAME_KEY = rows.length > 0
       ? (Object.keys(rows[0]).find(k => k === 'Name\n(Join The Discord!)')
         ?? Object.keys(rows[0]).find(k => k.startsWith('Name'))
+        ?? Object.keys(rows[0]).find(k => k.startsWith('Title'))
         ?? 'Name')
       : 'Name';
 
