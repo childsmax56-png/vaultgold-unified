@@ -15,6 +15,26 @@ const ARTISTS = [
 
 const ALBUMS = [
   {
+    title: 'BULKY BY BUFFET WEST',
+    label: 'Album',
+    year: '2026',
+    cover: '/unvaulted-records/bulky-cover.jpg',
+    streamUrl: '',
+    tracks: [
+      { n: 1,  title: 'BULKY',                            artist: 'Buffet West', src: '/unvaulted-records/audio/bulky.m4a' },
+      { n: 2,  title: 'FEEDER MAN',                        artist: 'Buffet West', src: '/unvaulted-records/audio/feeder-man.m4a' },
+      { n: 3,  title: 'BEAUTY AND THE FEAST',               artist: 'Buffet West', src: '/unvaulted-records/audio/beauty-and-the-feast.m4a' },
+      { n: 4,  title: 'ALL THE FOOD (feat. BTS)',           artist: 'Buffet West', src: '/unvaulted-records/audio/all-the-food.m4a' },
+      { n: 5,  title: 'FATTER (feat. Travis Scott)',        artist: 'Buffet West', src: '/unvaulted-records/audio/fatter.m4a' },
+      { n: 6,  title: 'FRIES AND DOUGH',                    artist: 'Buffet West', src: '/unvaulted-records/audio/fries-and-dough.m4a' },
+      { n: 7,  title: 'GEMINI SEASON',                      artist: 'Buffet West', src: '/unvaulted-records/audio/gemini-season.m4a' },
+      { n: 8,  title: 'HAM (feat. MilesYe)',                artist: 'Buffet West', src: '/unvaulted-records/audio/ham.m4a' },
+      { n: 9,  title: 'I CAN EAT',                          artist: 'Buffet West', src: '/unvaulted-records/audio/i-can-eat.m4a' },
+      { n: 10, title: 'LAST SNACK',                         artist: 'Buffet West', src: '/unvaulted-records/audio/last-snack.m4a' },
+      { n: 11, title: 'WHITE CASTLE',                       artist: 'Buffet West', src: '/unvaulted-records/audio/white-castle.m4a' },
+    ],
+  },
+  {
     title: 'IN AN IMPERFECT WORLD',
     label: 'Debut Mixtape',
     year: '2026',
@@ -37,26 +57,6 @@ const ALBUMS = [
       { n: 14, title: 'ALL THE LOVE (feat. MxYT & Ye-I)',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
       { n: 15, title: 'BABY I TRIED (Remix) (feat. FROMDABUNKA & Sheffmade)',                                             artist: 'Lux',            src: '/unvaulted-records/audio/Cosby.mp3' },
       { n: 16, title: 'BIANCA (Remix)',                                             artist: 'Don Juan',            src: '/unvaulted-records/audio/Bianca_3.0.mp3' },
-    ],
-  },
-  {
-    title: 'BULKY BY BUFFET WEST',
-    label: 'Album',
-    year: '2026',
-    cover: '/unvaulted-records/bulky-cover.jpg',
-    streamUrl: '',
-    tracks: [
-      { n: 1,  title: 'BULKY',                            artist: 'Buffet West', src: '/unvaulted-records/audio/bulky.m4a' },
-      { n: 2,  title: 'FEEDER MAN',                        artist: 'Buffet West', src: '/unvaulted-records/audio/feeder-man.m4a' },
-      { n: 3,  title: 'BEAUTY AND THE FEAST',               artist: 'Buffet West', src: '/unvaulted-records/audio/beauty-and-the-feast.m4a' },
-      { n: 4,  title: 'ALL THE FOOD (feat. BTS)',           artist: 'Buffet West', src: '/unvaulted-records/audio/all-the-food.m4a' },
-      { n: 5,  title: 'FATTER (feat. Travis Scott)',        artist: 'Buffet West', src: '/unvaulted-records/audio/fatter.m4a' },
-      { n: 6,  title: 'FRIES AND DOUGH',                    artist: 'Buffet West', src: '/unvaulted-records/audio/fries-and-dough.m4a' },
-      { n: 7,  title: 'GEMINI SEASON',                      artist: 'Buffet West', src: '/unvaulted-records/audio/gemini-season.m4a' },
-      { n: 8,  title: 'HAM (feat. MilesYe)',                artist: 'Buffet West', src: '/unvaulted-records/audio/ham.m4a' },
-      { n: 9,  title: 'I CAN EAT',                          artist: 'Buffet West', src: '/unvaulted-records/audio/i-can-eat.m4a' },
-      { n: 10, title: 'LAST SNACK',                         artist: 'Buffet West', src: '/unvaulted-records/audio/last-snack.m4a' },
-      { n: 11, title: 'WHITE CASTLE',                       artist: 'Buffet West', src: '/unvaulted-records/audio/white-castle.m4a' },
     ],
   },
 ];
