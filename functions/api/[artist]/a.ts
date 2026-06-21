@@ -36,6 +36,15 @@ const ERA_NAME_MAP: Record<string, string> = {
   'Fear of God II: Let Us Pray': 'Fear of God II',
   'King Push – Darkest Before Dawn: The Prelude': 'Darkest Before Dawn',
   'King Push - Darkest Before Dawn: The Prelude': 'Darkest Before Dawn',
+  // wolfgold — song rows use a shorter/differently-spaced name than the section header
+  'PinkGold SquarePixals': 'PinkGoldSquarePixals',
+  'SuperDuper SteezMonster': 'SuperDuperSteezMonster',
+  'The OF Tape Vol. 1': 'The Odd Future Tape Vol. 1',
+  'The OF Tape Vol. 2': 'The Odd Future Tape Vol. 2',
+  'Grinch EP': "Music Inspired by Illumination & Dr. Seuss's The Grinch",
+  'Infinite Rhyhtms': 'Infinite Rhythms',
+  // wolfgold — header typo'd "WHEN" instead of "IF"; merge into the real CALL ME IF YOU GET LOST [V1] era
+  'CALL ME WHEN YOU GET LOST': 'CALL ME IF YOU GET LOST [V1]',
 };
 
 function mapEraName(name: string): string {
