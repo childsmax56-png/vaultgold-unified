@@ -249,7 +249,7 @@ export const onRequestGet: PagesFunction = async (context) => {
 
     // Some CSVs (e.g. wolfgold) have a disclaimer block before the real header row.
     // Find the first line that starts with "Era," and strip everything before it.
-    const eraHeaderIdx = text.split('\n').findIndex(l => l.trimStart().startsWith('Era,'));
+    const eraHeaderIdx = text.split('\n').findIndex(l => l.trimStart().startsWith('Era,') || l.trimStart().startsWith('"Era"'));
     const csvText = eraHeaderIdx > 0 ? text.split('\n').slice(eraHeaderIdx).join('\n') : text;
 
     const rows = parseCSV(csvText);

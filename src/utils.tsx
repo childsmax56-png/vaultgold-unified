@@ -852,6 +852,9 @@ export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isIma
     const pathPart = url.split('/f/')[1];
     return { fetchUrl: pathPart ? `https://api.pillows.su/api/download/${pathPart}` : url, isImage: false };
   }
+  if (url.includes('krakenfiles.com/view/')) {
+    return { fetchUrl: `/api/kraken-proxy?url=${encodeURIComponent(url)}`, isImage: false };
+  }
   if (url.includes('drive.google.com')) {
     const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
     if (m) return { fetchUrl: `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`, isImage: false };
@@ -928,6 +931,8 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
         finalUrl = url;
         const extMatch = url.match(/\.(mp3|mp4|m4a|wav|ogg|flac|aac)(\?|$)/i);
         if (extMatch) ext = extMatch[1].toLowerCase() === 'mp4' ? '.mp4' : `.${extMatch[1].toLowerCase()}`;
+    } else if (url.includes('krakenfiles.com/view/')) {
+        finalUrl = `/api/kraken-proxy?url=${encodeURIComponent(url)}`;
     } else if (url.includes('ibb.co')) {
        isImage = true;
        ext = '';
@@ -1128,7 +1133,7 @@ export function parseDurationToSeconds(duration: string | undefined): number {
 export function matchesFilters(song: any, searchQuery: string, filters: any): boolean {
   const lowerQuery = searchQuery.toLowerCase();
   const searchMatch = !searchQuery ||
-    song.name.toLowerCase().includes(lowerQuery) ||
+    (song.name || '').toLowerCase().includes(lowerQuery) ||
     (song.extra && song.extra.toLowerCase().includes(lowerQuery)) ||
     (song.description && song.description.toLowerCase().includes(lowerQuery));
 

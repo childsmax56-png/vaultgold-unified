@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AnnouncementPopup } from './components/AnnouncementPopup';
 import { useNavigate } from 'react-router-dom';
 import { SiDiscord, SiReddit, SiTiktok, SiX } from 'react-icons/si';
 import { ARTIST_LIST } from './artists/registry';
@@ -611,6 +612,62 @@ function SheetButton({ href, accent }: { href: string; accent?: string }) {
 
 // ─── Main page ────────────────────────────────────────────────────────────────
 
+function ConsentModal({ onAccept, onClose }: { onAccept: () => void; onClose: () => void }) {
+  const [agreed, setAgreed] = useState(false);
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', zIndex: 1000,
+        display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24,
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          background: '#111', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14,
+          padding: '28px 28px 24px', maxWidth: 400, width: '100%',
+        }}
+      >
+        <h2 style={{ margin: '0 0 8px', fontSize: 18, fontWeight: 700, color: '#fff' }}>
+          Create your account
+        </h2>
+        <p style={{ margin: '0 0 20px', fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5 }}>
+          Sign in with Google to track your vault rankings and claim your profile.
+        </p>
+        <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer', marginBottom: 20 }}>
+          <input
+            type="checkbox"
+            checked={agreed}
+            onChange={e => setAgreed(e.target.checked)}
+            style={{ marginTop: 2, accentColor: '#C9A224', width: 15, height: 15, flexShrink: 0 }}
+          />
+          <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>
+            I agree to the{' '}
+            <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: '#C9A224', textDecoration: 'underline' }}>Terms of Service</a>
+            {' '}and{' '}
+            <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#C9A224', textDecoration: 'underline' }}>Privacy Policy</a>
+          </span>
+        </label>
+        <button
+          onClick={() => { if (agreed) { onClose(); onAccept(); } }}
+          disabled={!agreed}
+          style={{
+            width: '100%', padding: '11px 0', borderRadius: 10,
+            background: agreed ? 'rgba(201,162,36,0.15)' : 'rgba(255,255,255,0.05)',
+            color: agreed ? '#C9A224' : 'rgba(255,255,255,0.25)',
+            fontSize: 14, fontWeight: 600, letterSpacing: '0.04em',
+            cursor: agreed ? 'pointer' : 'not-allowed', transition: 'all 0.15s',
+            border: `1px solid ${agreed ? 'rgba(201,162,36,0.3)' : 'rgba(255,255,255,0.08)'}`,
+          }}
+        >
+          Continue with Google
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function LandingPage() {
   useSpotifyCallback();
   const [showSettings, setShowSettings] = useState(false);
@@ -632,6 +689,8 @@ export function LandingPage() {
   const hiddenCount = allSmall.length - INITIAL_SMALL;
 
   return (
+    <>
+    <AnnouncementPopup />
     <div style={{
       minHeight: '100vh',
       background: '#050505',
@@ -644,6 +703,7 @@ export function LandingPage() {
       alignItems: 'center',
     }}>
       {showSettings && <LandingSettingsPanel onClose={() => setShowSettings(false)} />}
+      {showConsent && <ConsentModal onAccept={signInWithGoogle} onClose={() => setShowConsent(false)} />}
 
       <header style={{ textAlign: 'center', marginBottom: 40, width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
         <button
@@ -753,24 +813,42 @@ export function LandingPage() {
       </div>
 
       <div style={{ width: '100%', maxWidth: 900, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-        <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer"
-          style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(88,101,242,0.12)', border: '1px solid rgba(88,101,242,0.25)', color: '#5865F2', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          <SiDiscord style={{ width: 16, height: 16 }} /> Discord
-        </a>
-        <a href="https://www.reddit.com/r/2YZY2GOLD/" target="_blank" rel="noopener noreferrer"
-          style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,69,0,0.12)', border: '1px solid rgba(255,69,0,0.25)', color: '#FF4500', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          <SiReddit style={{ width: 16, height: 16 }} /> Reddit
-        </a>
-        <a href="https://www.tiktok.com/@vault.gold" target="_blank" rel="noopener noreferrer"
-          style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          <SiTiktok style={{ width: 16, height: 16 }} /> TikTok
-        </a>
-        <a href="https://x.com/unvaultedcc" target="_blank" rel="noopener noreferrer"
-          style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          <SiX style={{ width: 16, height: 16 }} /> X (Twitter)
-        </a>
+        <button onClick={() => setSocialOpen(true)}
+          style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em', cursor: 'pointer' }}>
+          Community
+        </button>
+        {socialOpen && (
+          <div onClick={() => setSocialOpen(false)}
+            style={{ position: 'fixed', inset: 0, zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(6px)' }}>
+            <div onClick={e => e.stopPropagation()}
+              style={{ position: 'relative', background: 'rgba(18,18,20,0.97)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24, display: 'flex', flexDirection: 'column', gap: 12, width: 280 }}>
+              <button onClick={() => setSocialOpen(false)}
+                style={{ position: 'absolute', top: 10, right: 10, background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', fontSize: 18, lineHeight: 1 }}>✕</button>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', margin: 0 }}>Community</p>
+              <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, background: 'rgba(88,101,242,0.15)', border: '1px solid rgba(88,101,242,0.25)', color: '#5865F2', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>
+                <SiDiscord style={{ width: 18, height: 18 }} /> Discord
+              </a>
+              <a href="https://www.reddit.com/r/2YZY2GOLD/" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, background: 'rgba(255,69,0,0.15)', border: '1px solid rgba(255,69,0,0.25)', color: '#FF4500', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>
+                <SiReddit style={{ width: 18, height: 18 }} /> Reddit
+              </a>
+              <a href="https://www.tiktok.com/@vault.gold" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>
+                <SiTiktok style={{ width: 18, height: 18 }} /> TikTok
+              </a>
+              <a href="https://x.com/unvaultedcc" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>
+                <SiX style={{ width: 18, height: 18 }} /> X (Twitter)
+              </a>
+            </div>
+          </div>
+        )}
         <a href="/label" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(201,162,36,0.08)', border: '1px solid rgba(201,162,36,0.2)', color: '#C9A224', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
           Unvaulted Records
+        </a>
+        <a href="/yeditsgold" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.2)', color: '#FFD700', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
+          yedits<span style={{ color: 'rgba(255,215,0,0.7)' }}>gold</span>
         </a>
         {user ? (
           <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -784,7 +862,7 @@ export function LandingPage() {
           </div>
         ) : (
           <button
-            onClick={signInWithGoogle}
+            onClick={() => setShowConsent(true)}
             style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em', cursor: 'pointer' }}
           >
             <GoogleIcon /> Sign in with Google
@@ -825,5 +903,6 @@ export function LandingPage() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
       `}</style>
     </div>
+    </>
   );
 }

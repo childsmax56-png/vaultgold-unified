@@ -271,7 +271,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
     await Promise.all(allFilteredPlayableSongs.map(async (song) => {
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
-      if (!rawUrl || !(rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/') || rawUrl.includes('ibb.co') || rawUrl.match(/\.(png|jpg|jpeg)$/i) || rawUrl.startsWith('https://i.scdn.co/'))) return;
+      if (!rawUrl || !(rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('ibb.co') || rawUrl.match(/\.(png|jpg|jpeg)$/i) || rawUrl.startsWith('https://i.scdn.co/'))) return;
       try {
         const { fetchUrl, isImage, imageExt, headers } = await resolveUrl(rawUrl);
         const res = await fetch(fetchUrl, { ...(headers ? { headers } : {}), signal: AbortSignal.timeout(30000) });
@@ -356,7 +356,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
     ).filter(({ key }) => selectedKeys.has(key)).map(({ song }) => song)
       .filter(song => {
         const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
-        return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/')) && !isSongNotAvailable(song, rawUrl);
+        return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isSongNotAvailable(song, rawUrl);
       });
 
     if (!selectedSongs.length) {
@@ -441,7 +441,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
     toFavorite.forEach(song => {
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
-      const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/')) && !isSongNotAvailable(song, rawUrl);
+      const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isSongNotAvailable(song, rawUrl);
       if (!isPlayable) return;
       const isStarred = favoriteKeys.some(k => k.songName === song.name && k.url === rawUrl);
       if (!isStarred) toggleFavorite(song, (song as any).realEra?.name || era.name);
@@ -531,7 +531,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
     return processedCategories.flatMap(c => c.songs).filter(song => {
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(song, rawUrl);
-      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
+      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
     });
   }, [processedCategories]);
 
@@ -822,7 +822,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                     const lowerUrl = (rawUrl || '').toLowerCase();
                     const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed');
                     const isYoutubeLink = (rawUrl.includes('youtube.com/watch') || rawUrl.includes('youtu.be/')) && !isNotAvailable;
-                    const isPlayable = (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
+                    const isPlayable = (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
                     const isEmpty = isTrulyEmptyLink || isNotAvailable || lowerUrl.includes('n/a');
                     const isCurrentlyPlaying = (currentSong?.name === song.name && currentSong?.description === song.description) ||
                       (currentSong?.url && song.url && currentSong.url === song.url) ||
@@ -1003,7 +1003,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                                       </div>
                                       {remixes.map((remix, ri) => {
                                         const link = remix['Link(s)'].split('\n')[0].trim();
-                                        const isPillows = link.includes('pillows.su/f/') || link.includes('imgur.gg/f/') || link.includes('i.imgur.com') || link.includes('pixeldrain.com/u/');
+                                        const isPillows = link.includes('pillows.su/f/') || link.includes('imgur.gg/f/') || link.includes('i.imgur.com') || link.includes('krakenfiles.com/view/') || link.includes('pixeldrain.com/u/');
                                         return (
                                           <button
                                             key={ri}
@@ -1067,7 +1067,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                                       {samples.map((sample, ri) => {
                                         const link = (sample['Link(s)'] || '').split('\n')[0].trim();
                                         if (!link) return null;
-                                        const isPillows = link.includes('pillows.su/f/') || link.includes('imgur.gg/f/') || link.includes('i.imgur.com') || link.includes('pixeldrain.com/u/');
+                                        const isPillows = link.includes('pillows.su/f/') || link.includes('imgur.gg/f/') || link.includes('i.imgur.com') || link.includes('krakenfiles.com/view/') || link.includes('pixeldrain.com/u/');
                                         const sampleName = sample["Sample\n(Artist - Track)"] || 'Unknown Sample';
                                         return (
                                           <button

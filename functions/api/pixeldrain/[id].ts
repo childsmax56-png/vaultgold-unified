@@ -10,6 +10,7 @@ const CORS = {
   'Access-Control-Max-Age': '86400',
 };
 
+// Handle CORS preflight — the browser sends this before range requests
 export const onRequestOptions: PagesFunction = async () => {
   return new Response(null, { status: 204, headers: CORS });
 };

@@ -1,6 +1,10 @@
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { YEDITS_BUCKET } = context.env;
 
+  if (!YEDITS_BUCKET) {
+    return json({ error: 'Storage not configured' }, 500);
+  }
+
   let formData: FormData;
   try {
     formData = await context.request.formData();
@@ -29,31 +33,64 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const creatorDir = sanitize(creator);
   const albumDir = sanitize(album);
 
-  const uploaded: string[] = [];
+  const uploads: Promise<string | null>[] = [];
 
   const cover = formData.get('cover');
   if (cover instanceof File && cover.size > 0) {
-    const key = `${creatorDir}/${albumDir}/${sanitize(cover.name)}`;
-    await YEDITS_BUCKET.put(key, cover.stream(), {
-      httpMetadata: { contentType: cover.type || 'image/jpeg' },
-    });
-    uploaded.push(key);
+    uploads.push(
+      cover.arrayBuffer().then(buf => {
+        const key = `${creatorDir}/${albumDir}/${sanitize(cover.name)}`;
+        return YEDITS_BUCKET.put(key, buf, {
+          httpMetadata: { contentType: cover.type || 'image/jpeg' },
+        }).then(() => key);
+      })
+    );
   }
 
   for (const track of formData.getAll('tracks')) {
     if (!(track instanceof File) || track.size === 0) continue;
-    const key = `${creatorDir}/${albumDir}/${sanitize(track.name)}`;
-    await YEDITS_BUCKET.put(key, track.stream(), {
-      httpMetadata: { contentType: track.type || 'audio/mpeg' },
-    });
-    uploaded.push(key);
+    uploads.push(
+      track.arrayBuffer().then(buf => {
+        const key = `${creatorDir}/${albumDir}/${sanitize(track.name)}`;
+        return YEDITS_BUCKET.put(key, buf, {
+          httpMetadata: { contentType: track.type || 'audio/mpeg' },
+        }).then(() => key);
+      })
+    );
   }
 
-  if (uploaded.length === 0) {
+  if (uploads.length === 0) {
     return json({ error: 'No files were uploaded' }, 400);
   }
 
-  return json({ uploaded });
+  const results = await Promise.all(uploads);
+  const uploaded = results.filter((k): k is string => k !== null);
+
+  // Write metadata sidecar if any metadata fields were provided
+  const sourceArtist = (formData.get('sourceArtist') as string | null) ?? '';
+  const sourceEra = (formData.get('sourceEra') as string | null) ?? '';
+  const description = (formData.get('description') as string | null) ?? '';
+  const samplyUrl = (formData.get('samplyUrl') as string | null) ?? '';
+  const untitledUrl = (formData.get('untitledUrl') as string | null) ?? '';
+  const allowDownloadStr = formData.get('allowDownload') as string | null;
+
+  const hasMetadata = sourceArtist || sourceEra || description || samplyUrl || untitledUrl || allowDownloadStr !== null;
+  if (hasMetadata) {
+    const meta: Record<string, unknown> = {};
+    if (sourceArtist) meta.sourceArtist = sourceArtist;
+    if (sourceEra) meta.sourceEra = sourceEra;
+    if (description) meta.description = description;
+    if (samplyUrl) meta.samplyUrl = samplyUrl;
+    if (untitledUrl) meta.untitledUrl = untitledUrl;
+    if (allowDownloadStr !== null) meta.allowDownload = allowDownloadStr === 'true';
+
+    const metaKey = `${creatorDir}/${albumDir}/_metadata.json`;
+    await YEDITS_BUCKET.put(metaKey, JSON.stringify(meta), {
+      httpMetadata: { contentType: 'application/json' },
+    });
+  }
+
+  return json({ uploaded, folderPath: `${creatorDir}/${albumDir}` });
 };
 
 function json(body: unknown, status = 200): Response {

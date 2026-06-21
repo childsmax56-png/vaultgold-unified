@@ -12,6 +12,7 @@ import { twizzygoldConfig } from './twizzygold';
 import { uzigoldConfig } from './uzigold';
 import { wolfgoldConfig } from './wolfgold';
 import { juicegoldConfig } from './juicegold';
+import { luckigoldConfig } from './luckigold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   yzygold: yzygoldConfig,
@@ -27,6 +28,7 @@ export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   twizzygold: twizzygoldConfig,
   dregold: dregoldConfig,
   juicegold: juicegoldConfig,
+  luckigold: luckigoldConfig,
 };
 
 export const ARTIST_LIST: ArtistConfig[] = Object.values(ARTIST_REGISTRY);
