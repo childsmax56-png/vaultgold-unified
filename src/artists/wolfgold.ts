@@ -133,7 +133,7 @@ export const wolfgoldConfig: ArtistConfig = {
     'Unknown': '??/??/????',
   },
 
-  HIDDEN_ALBUMS: ['Unknown'],
+  HIDDEN_ALBUMS: [],
 
   ALBUM_ORDER: [
     'Ace',
