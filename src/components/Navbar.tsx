@@ -504,7 +504,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
                 <X className="w-4 h-4" />
               </button>
               <p className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-1">Community</p>
-              <a href="https://discord.gg/xYhKgCDX8h" target="_blank" rel="noopener noreferrer"
+              <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:scale-[1.02]"
                 style={{ background: 'rgba(88,101,242,0.15)', color: '#5865F2', border: '1px solid rgba(88,101,242,0.25)' }}>
                 <SiDiscord className="w-5 h-5 flex-shrink-0" />

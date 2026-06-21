@@ -3148,7 +3148,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               Logo created by Nr7th on discord
             </p>
             <p className="text-[10px] text-white/30 leading-relaxed mt-1 space-x-3">
-              <a href="https://discord.gg/TYqdey3B" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
+              <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
               <span>·</span>
               <a href="https://docs.google.com/document/d/1b8aidNuSLLHfzgzrJ0uGdWHPuo-uNk6wI21Vscwzid4/edit?tab=t.0#heading=h.coxp3mvb86xr" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Changelog</a>
               <span>·</span>
@@ -3442,7 +3442,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                 <div className="border-t border-white/10 pt-4 space-y-2">
                   <p className="text-white font-semibold">TUNE IN TOMORROW FOR THE NEW VAULT GOLD TRACKERS</p>
                   <p className="text-xs space-x-3">
-                    <a href="https://discord.gg/TYqdey3B" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/70 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
+                    <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/70 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
                     <span>·</span>
                     <a href="https://www.reddit.com/r/2YZY2GOLD/" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/70 hover:text-[var(--theme-color)] transition-colors underline">Reddit</a>
                   </p>

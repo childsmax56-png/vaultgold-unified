@@ -753,7 +753,7 @@ export function LandingPage() {
       </div>
 
       <div style={{ width: '100%', maxWidth: 900, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-        <a href="https://discord.gg/xYhKgCDX8h" target="_blank" rel="noopener noreferrer"
+        <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer"
           style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(88,101,242,0.12)', border: '1px solid rgba(88,101,242,0.25)', color: '#5865F2', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
           <SiDiscord style={{ width: 16, height: 16 }} /> Discord
         </a>
