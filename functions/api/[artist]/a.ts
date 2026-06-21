@@ -43,8 +43,13 @@ const ERA_NAME_MAP: Record<string, string> = {
   'The OF Tape Vol. 2': 'The Odd Future Tape Vol. 2',
   'Grinch EP': "Music Inspired by Illumination & Dr. Seuss's The Grinch",
   'Infinite Rhyhtms': 'Infinite Rhythms',
-  // wolfgold — header typo'd "WHEN" instead of "IF"; merge into the real CALL ME IF YOU GET LOST [V1] era
-  'CALL ME WHEN YOU GET LOST': 'CALL ME IF YOU GET LOST [V1]',
+  // wolfgold — the section header is titled "CALL ME WHEN YOU GET LOST" (with
+  // "CALL ME IF YOU GET LOST [V1]" as a parenthetical); use that as the canonical
+  // name and merge the V1-tagged song rows into it.
+  'CALL ME IF YOU GET LOST [V1]': 'CALL ME WHEN YOU GET LOST',
+  // wolfgold — single mistagged song row inside the WOLF [V3] block uses the
+  // versionless "WOLF" era value; merge it into WOLF [V3].
+  'WOLF': 'WOLF [V3]',
 };
 
 function mapEraName(name: string): string {
