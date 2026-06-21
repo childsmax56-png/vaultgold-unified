@@ -8,10 +8,8 @@ const ARTISTS = [
   { name: 'Don Juan',       letter: 'D', accent: '#C9A224', description: 'Hip-Hop' },
   { name: 'Big Poppa Perc',        letter: 'P', accent: '#E05C5C', description: 'Hip-Hop' },
   { name: 'Lux',            letter: 'L', accent: '#F0A500', description: 'Hip-Hop' },
-  { name: 'Max3:16420999',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
-  { name: 'YZYGOLD',        letter: 'G', accent: '#FFD700', description: 'Hip-Hop' },
+  { name: 'unvaulted0760',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
-  { name: 'BIANCAGOLD',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
   { name: 'Buffet West',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
 ];
 
