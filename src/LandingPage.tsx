@@ -516,6 +516,7 @@ const SHEET_URLS: Record<string, string> = {
   dregold:    'https://docs.google.com/spreadsheets/d/10_QK8xP-WCdrfO6RaIkhdDtYUXaM966e6D1xWD__iIo/edit?gid=1520634709#gid=1520634709',
   pushagold:  'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/edit?gid=1932839414#gid=1932839414',
   juicegold:  'https://docs.google.com/spreadsheets/d/1tD3ytt5wPx4zfcefXi5ATeYhIiDaugWjMS46nZrP568/edit?gid=0#gid=0',
+  shadygold:  'https://docs.google.com/spreadsheets/d/1x9tTOOqH5WpKOoptdQzABSN_x8oZbMgzIGlGH9w1IKA/edit?gid=1792554832#gid=1792554832',
 };
 
 function ShareButton({ url, accent }: { url: string; accent?: string }) {
