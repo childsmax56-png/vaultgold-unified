@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { AnnouncementPopup } from './components/AnnouncementPopup';
 import { useNavigate } from 'react-router-dom';
 import { SiDiscord, SiReddit, SiTiktok, SiX } from 'react-icons/si';
 import { ARTIST_LIST } from './artists/registry';
@@ -691,7 +690,6 @@ export function LandingPage() {
 
   return (
     <>
-    <AnnouncementPopup />
     <div style={{
       minHeight: '100vh',
       background: '#050505',
