@@ -271,6 +271,8 @@ export const wolfgoldConfig: ArtistConfig = {
   hasCompsTab: false,
   hasConcertsTab: false,
   hasRecentTab: true,
+  hasArtTab: false,
+  hasVideosTab: false,
 
   TAG_MAP: {
     '⭐': 'Best Of',
