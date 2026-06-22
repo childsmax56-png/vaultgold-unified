@@ -33,7 +33,7 @@ const ALBUMS = [
       { n: 8,  title: 'WHITE CASTLE',                artist: 'Buffet West', src: 'unvaulted-records/audio/white-castle.m4a' },
       { n: 9,  title: 'FRIES AND DOUGH',                          artist: 'Buffet West', src: 'unvaulted-records/audio/fries-and-dough.m4a' },
       { n: 10, title: 'I CAN EAT',                         artist: 'Buffet West', src: 'unvaulted-records/audio/i-can-eat.m4a' },
-      { n: 11, title: 'GEMINI SEASONING',                       artist: 'Buffet West', src: 'gemini-season.m4a' },
+      { n: 11, title: 'GEMINI SEASONING',                       artist: 'Buffet West', src: 'unvaulted-records/audio/gemini-season.m4a' },
     ],
   },
        
