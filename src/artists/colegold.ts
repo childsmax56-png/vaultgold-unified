@@ -7,7 +7,7 @@ export const colegoldConfig: ArtistConfig = {
   SITE_URL: 'https://unvaulted.cc/colegold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'colegold_',
-  HARDCODED_SHEET_ID: '',
+  HARDCODED_SHEET_ID: '1hjMtB-acUEpXYkR6TWQVeVoUzSLrAVIdy1lMoM6aFFw',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',

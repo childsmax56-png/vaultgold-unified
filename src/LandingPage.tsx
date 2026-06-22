@@ -517,6 +517,14 @@ const SHEET_URLS: Record<string, string> = {
   pushagold:  'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/edit?gid=1932839414#gid=1932839414',
   juicegold:  'https://docs.google.com/spreadsheets/d/1tD3ytt5wPx4zfcefXi5ATeYhIiDaugWjMS46nZrP568/edit?gid=0#gid=0',
   shadygold:  'https://docs.google.com/spreadsheets/d/1x9tTOOqH5WpKOoptdQzABSN_x8oZbMgzIGlGH9w1IKA/edit?gid=1792554832#gid=1792554832',
+  aapgold:    'https://docs.google.com/spreadsheets/d/1rbt_VyQyHEfVRv_XmVBNrwMyF0uMx7FF-1T8-N0wf0E/edit?gid=1701548408#gid=1701548408',
+  sosagold:   'https://docs.google.com/spreadsheets/d/1oDE9gTnEG7ufPQIOMjLTegfI47qtgNCxngmxxHZL4qA/edit#gid=1792554832',
+  dongold:    'https://docs.google.com/spreadsheets/d/1qsO4SuzzB17d5orqbKWHsaQsRdk0lzTSF9rV2FwQf-Q/edit?gid=1535277716#gid=1535277716',
+  luckigold:  'https://docs.google.com/spreadsheets/d/1zoRNpy7Lvr-JzPqtQLLWRVVDbgKygpBaDf4cC-Lt6k4/edit#gid=306146520',
+  mfgold:     'https://docs.google.com/spreadsheets/u/1/d/1zEbzMVXFXzuY4wLdPvdQA23lb3RwCSOKqWtHsllXNk8/edit?usp=drivesdk',
+  mjgold:     'https://docs.google.com/spreadsheets/d/1i59TKrIZ1OvFFPJFuOMw1VXlvyzaVOH0Wb0vVJp9BTw/edit#gid=1792554832',
+  slimegold:  'https://docs.google.com/spreadsheets/d/12zc2reK5y8XP6SQhv1ujQtiG9VpJy7yDWwDuE-S-wpc/edit?gid=0#gid=0',
+  colegold:   'https://docs.google.com/spreadsheets/d/1hjMtB-acUEpXYkR6TWQVeVoUzSLrAVIdy1lMoM6aFFw/edit',
 };
 
 function ShareButton({ url, accent }: { url: string; accent?: string }) {

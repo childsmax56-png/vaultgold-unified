@@ -7,7 +7,7 @@ export const mfgoldConfig: ArtistConfig = {
   SITE_URL: 'https://unvaulted.cc/mfgold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'mfgold_',
-  HARDCODED_SHEET_ID: '',
+  HARDCODED_SHEET_ID: '1zEbzMVXFXzuY4wLdPvdQA23lb3RwCSOKqWtHsllXNk8',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
