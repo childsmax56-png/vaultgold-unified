@@ -6,6 +6,7 @@ import { Users } from 'lucide-react';
 import { FilterMenu } from './FilterMenu';
 import { SearchFilters } from '../types';
 import { useSettings } from '../SettingsContext';
+import { retryImageOnError } from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
@@ -123,7 +124,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
       <div className="flex flex-col w-full md:flex-1">
         <div className="flex-1 flex flex-row items-center justify-between md:justify-start w-full relative gap-3">
           <div className="md:hidden flex items-center shrink-0">
-            <img
+            <img onError={retryImageOnError}
               src={settings.landingArtistPhotos ? '/logo.png' : (activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png')}
               alt={activeConfig.SITE_NAME}
               onClick={onHomeClick}
@@ -167,7 +168,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
                 </AnimatePresence>
               </div>
               <div className={`hidden md:block shrink-0 overflow-hidden ${!settings.landingArtistPhotos && activeConfig.navLogoUrl ? 'w-[220px] h-[80px]' : 'w-[170px] h-[60px]'}`}>
-                <img
+                <img onError={retryImageOnError}
                   src={settings.landingArtistPhotos ? '/logo.png' : (activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png')}
                   alt={activeConfig.SITE_NAME}
                   onClick={onHomeClick}

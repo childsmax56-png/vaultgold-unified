@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { History, Trash2, X, Search } from 'lucide-react';
 import { getListeningHistory, clearListeningHistory, removeHistoryEntry, HistoryEntry } from '../history';
-import { formatTextForNotification, formatTextWithTags, matchesFilters, CUSTOM_IMAGES } from '../utils';
+import { formatTextForNotification, formatTextWithTags, matchesFilters, CUSTOM_IMAGES , retryImageOnError} from '../utils';
 import { useSettings } from '../SettingsContext';
 import { SearchFilters, Era, Song } from '../types';
 
@@ -22,7 +22,7 @@ function HistoryItem({ entry, onRemove }: { entry: HistoryEntry, onRemove: (song
     <div className="flex items-center gap-4 p-4 hover:bg-white/5 transition-colors group">
       <div className="w-16 h-16 rounded-md overflow-hidden bg-white/10 shrink-0">
         {CUSTOM_IMAGES[entry.eraName || ''] || entry.albumArt ? (
-          <img src={CUSTOM_IMAGES[entry.eraName || ''] || entry.albumArt} alt={entry.eraName} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+          <img onError={retryImageOnError} src={CUSTOM_IMAGES[entry.eraName || ''] || entry.albumArt} alt={entry.eraName} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-xs text-white/30">No Art</div>
         )}

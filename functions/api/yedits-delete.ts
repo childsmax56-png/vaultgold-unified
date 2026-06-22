@@ -1,3 +1,5 @@
+const OWNER_EMAIL = 'childsmax56@gmail.com';
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { YEDITS_BUCKET, DB } = context.env;
 
@@ -20,7 +22,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ error: 'Unauthorized — sign in to UNVAULTED first' }, 401);
   }
 
-  const { user: me } = await authRes.json() as { user?: { id?: string; username?: string } };
+  const { user: me } = await authRes.json() as { user?: { id?: string; username?: string; email?: string } };
   const username = me?.username?.trim();
   const userId = me?.id;
   if (!username || !userId) {
@@ -39,7 +41,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     claimMatch = !!claim;
   }
 
+  // Also allow yeditsgold admins/owner to delete any project
+  let isAdmin = false;
   if (!nameMatch && !claimMatch) {
+    isAdmin = me?.email === OWNER_EMAIL;
+    if (!isAdmin && DB) {
+      const admin = await DB.prepare('SELECT user_id FROM yeditsgold_admins WHERE user_id = ?').bind(userId).first();
+      isAdmin = !!admin;
+    }
+  }
+
+  if (!nameMatch && !claimMatch && !isAdmin) {
     return json({ error: 'You can only delete your own projects' }, 403);
   }
 

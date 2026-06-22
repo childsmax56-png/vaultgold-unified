@@ -1,7 +1,7 @@
 import { X, Play } from 'lucide-react';
 import { Song, Era } from '../types';
 import { useState } from 'react';
-import { formatTextWithTags, CUSTOM_IMAGES } from '../utils';
+import { formatTextWithTags, CUSTOM_IMAGES , retryImageOnError} from '../utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 
@@ -95,7 +95,7 @@ export function QueueModal({ onClose, playlist, currentSongIndex, shuffledQueue,
                   >
                     <div className="w-10 h-10 rounded overflow-hidden bg-white/5 shrink-0 relative group-hover:block border border-white/5 shadow-md">
                       {imgUrl && (
-                        <img src={imgUrl} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                        <img onError={retryImageOnError} src={imgUrl} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       )}
                       <button
                         onClick={() => {

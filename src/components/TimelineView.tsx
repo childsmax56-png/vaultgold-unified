@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { motion } from 'motion/react';
-import { ALBUM_RELEASE_DATES, CUSTOM_IMAGES } from '../utils';
+import { ALBUM_RELEASE_DATES, CUSTOM_IMAGES , retryImageOnError} from '../utils';
 import { Era } from '../types';
 
 function parseYear(date: string): string {
@@ -195,7 +195,7 @@ export function TimelineView({ eras, searchQuery, onSelectEra }: TimelineViewPro
                 {/* Cover */}
                 <div className="w-10 h-10 rounded shrink-0 overflow-hidden bg-white/5">
                   {image ? (
-                    <img
+                    <img onError={retryImageOnError}
                       src={image}
                       alt={item.eraName}
                       className="w-full h-full object-cover"

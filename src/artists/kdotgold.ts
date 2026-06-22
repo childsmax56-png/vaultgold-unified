@@ -75,6 +75,7 @@ export const kdotgoldConfig: ArtistConfig = {
   },
 
   HIDDEN_ALBUMS: [],
+  ART_ONLY_ALBUMS: ['Y.H.N.I.C.', 'Mr. Morale & The Big Steppers'],
   ALBUM_DESCRIPTIONS: {},
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},

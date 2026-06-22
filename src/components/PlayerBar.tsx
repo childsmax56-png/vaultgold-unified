@@ -3,7 +3,7 @@ import { Play, Pause, Volume2, Maximize2, MoreHorizontal, Download, X, SkipBack,
 import { parseArtistFromSong } from '../lastfm';
 import { Song, Era } from '../types';
 import { useState, useRef, useEffect } from 'react';
-import { formatTextWithTags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag, handleDownloadFile, ERA_THEMES } from '../utils';
+import { formatTextWithTags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag, handleDownloadFile, ERA_THEMES , retryImageOnError} from '../utils';
 import { handleShareSilent } from './EraDetail';
 import { LyricsModal } from './LyricsModal';
 import { useSettings } from '../SettingsContext';
@@ -181,7 +181,7 @@ export function PlayerBar({
             const imgUrl = currentSong.image || CUSTOM_IMAGES[actualEraName] || (currentSong as any).realEra?.image || era?.image;
             return (
               <div className="w-14 h-14 rounded-md overflow-hidden shrink-0 bg-white/10 relative group shadow-lg">
-                {imgUrl && <img src={imgUrl} alt="Cover" className={`w-full h-full object-cover ${allowFullScreen ? 'cursor-pointer' : ''}`} referrerPolicy="no-referrer" onClick={allowFullScreen ? onFullScreen : undefined} />}
+                {imgUrl && <img onError={retryImageOnError} src={imgUrl} alt="Cover" className={`w-full h-full object-cover ${allowFullScreen ? 'cursor-pointer' : ''}`} referrerPolicy="no-referrer" onClick={allowFullScreen ? onFullScreen : undefined} />}
                 {toggleFavorite && 
                currentSong.name !== "Alright but the beat is Father Stretch My Hands Pt. 1" && 
                !currentSong.name.endsWith('[Fake Leak]') && 

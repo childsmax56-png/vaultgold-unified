@@ -49,6 +49,9 @@ export interface ArtistConfig {
   // Albums to exclude from all views (neither Music nor Related)
   EXCLUDED_ALBUMS?: string[];
 
+  // Albums that appear only in the Art tab (not in Music/Related listings)
+  ART_ONLY_ALBUMS?: string[];
+
   // Landing page card
   accentColor: string;
   artistLabel: string;

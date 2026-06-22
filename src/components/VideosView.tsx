@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, ChevronDown, ChevronUp, Film, Maximize2, Minimize2, X } from 'lucide-react';
 import { Era } from '../types';
-import { createSlug, CUSTOM_IMAGES } from '../utils';
+import { createSlug, CUSTOM_IMAGES , retryImageOnError} from '../utils';
 import { useSettings } from '../SettingsContext';
 
 export interface VideoRawEntry {
@@ -590,7 +590,7 @@ function EraDetailView({ eraGroup, onBack, searchQuery, miniPlayerMode, activeMi
 
         <div className="w-32 h-32 md:w-48 md:h-48 rounded-md overflow-hidden bg-white/5 shrink-0 shadow-xl">
           {eraGroup.image ? (
-            <img
+            <img onError={retryImageOnError}
               src={eraGroup.image}
               alt={eraGroup.name}
               className="w-full h-full object-cover"
@@ -789,7 +789,7 @@ export function VideosView({ eras, videosData, searchQuery, onVideoPlay }: Video
             >
               <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
                 {group.image ? (
-                  <img
+                  <img onError={retryImageOnError}
                     src={group.image}
                     alt={group.name}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"

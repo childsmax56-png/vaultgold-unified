@@ -4,7 +4,7 @@ import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loa
 import { SiYoutube } from 'react-icons/si';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES } from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , retryImageOnError} from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
@@ -564,7 +564,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
             title="Click to zoom"
           >
             {era.image ? (
-              <img src={era.image} alt={era.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <img onError={retryImageOnError} src={era.image} alt={era.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">{era.name}</div>
             )}
@@ -875,7 +875,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
                         {(era.name === 'Recent Leaks' || era.name === 'Favorites') && song.image && (
                           <div className="w-10 h-10 rounded shrink-0 mr-3 overflow-hidden bg-white/5 shadow-md">
-                            <img src={song.image} alt={song.extra || ''} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                            <img onError={retryImageOnError} src={song.image} alt={song.extra || ''} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                           </div>
                         )}
 
@@ -1186,7 +1186,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
               onClick={() => setZoomedImage(false)}
               className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
             >
-              <img src={era.image} alt={era.name} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" referrerPolicy="no-referrer" />
+              <img onError={retryImageOnError} src={era.image} alt={era.name} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" referrerPolicy="no-referrer" />
             </motion.div>
           )}
         </AnimatePresence>,

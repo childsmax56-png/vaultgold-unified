@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { retryImageOnError } from './utils';
 
 const ACCENT = '#C9A224';
 
@@ -182,7 +183,7 @@ function AlbumView({ album }: { album: typeof ALBUMS[0] }) {
     <div style={{ maxWidth: 800, margin: '0 auto', padding: '0 24px 80px' }}>
       {/* Album hero */}
       <div style={{ display: 'flex', gap: 36, alignItems: 'flex-start', marginBottom: 48, flexWrap: 'wrap' }}>
-        <img
+        <img onError={retryImageOnError}
           src={album.cover}
           alt={album.title}
           style={{
@@ -386,7 +387,7 @@ function SinglesView() {
             marginBottom: 12,
           }}>
             {single.cover && (
-              <img src={single.cover} alt={single.title}
+              <img onError={retryImageOnError} src={single.cover} alt={single.title}
                 style={{ flexShrink: 0, width: 60, height: 60, borderRadius: 8, objectFit: 'cover' }} />
             )}
             <button

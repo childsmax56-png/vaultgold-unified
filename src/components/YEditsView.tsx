@@ -5,6 +5,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import JSZip from 'jszip';
 import { Song, Era } from '../types';
 import { ARTIST_LIST } from '../artists/registry';
+import { retryImageOnError } from '../utils';
 
 interface VGUser { id: string; username: string; email: string; }
 
@@ -833,7 +834,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 onClick={() => setZoomedImage(false)}
                 className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
               >
-                <img src={activeCoverUrl} alt={selectedGroup.displayName}
+                <img onError={retryImageOnError} src={activeCoverUrl} alt={selectedGroup.displayName}
                   className="max-w-full max-h-full object-contain shadow-2xl rounded-md" />
               </motion.div>
             )}
@@ -864,7 +865,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 title={activeCoverUrl ? 'Click to zoom' : undefined}
               >
                 {activeCoverUrl ? (
-                  <img src={activeCoverUrl} alt={selectedGroup.displayName} className="w-full h-full object-cover" />
+                  <img onError={retryImageOnError} src={activeCoverUrl} alt={selectedGroup.displayName} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">
                     {selectedGroup.displayName}
@@ -1556,7 +1557,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 >
                   <div className="w-8 h-8 rounded-full overflow-hidden bg-white/10 shrink-0">
                     {creator.previewImage ? (
-                      <img src={creator.previewImage} alt={creator.name} className="w-full h-full object-cover" />
+                      <img onError={retryImageOnError} src={creator.previewImage} alt={creator.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-[10px] font-bold text-white/30">
                         {creator.name[0]}
@@ -1607,7 +1608,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
           >
             <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
               {group.imageUrl ? (
-                <img
+                <img onError={retryImageOnError}
                   src={group.imageUrl}
                   alt={group.displayName}
                   className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"

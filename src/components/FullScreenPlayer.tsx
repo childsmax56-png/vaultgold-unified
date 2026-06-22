@@ -3,7 +3,7 @@ import { Play, Pause, X, SkipBack, SkipForward, Shuffle, Repeat, Repeat1, Mic2, 
 import { parseArtistFromSong, cleanTrackName } from '../lastfm';
 import { Song, Era } from '../types';
 import { useEffect, useRef, useState } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, CUSTOM_IMAGES, parseNoteDescription, ERA_THEMES } from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, CUSTOM_IMAGES, parseNoteDescription, ERA_THEMES , retryImageOnError} from '../utils';
 import { useLyrics } from '../useLyrics';
 
 function formatTime(seconds: number) {
@@ -280,7 +280,7 @@ export function FullScreenPlayer({
       } : undefined}
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {currentImgUrl && <img src={currentImgUrl} alt="" className="w-full h-full object-cover opacity-10 blur-3xl scale-110" referrerPolicy="no-referrer" />}
+        {currentImgUrl && <img onError={retryImageOnError} src={currentImgUrl} alt="" className="w-full h-full object-cover opacity-10 blur-3xl scale-110" referrerPolicy="no-referrer" />}
       </div>
 
       <div className="relative z-10 p-6 flex justify-between items-center">
@@ -294,7 +294,7 @@ export function FullScreenPlayer({
                 className="absolute top-0 left-0 hidden md:flex items-center gap-5 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 shadow-2xl w-96 z-50"
               >
                 <div className="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-white/10 shadow-lg">
-                  {nextImgUrl && <img src={nextImgUrl} alt="Next Cover" className="w-full h-full object-cover" referrerPolicy="no-referrer" />}
+                  {nextImgUrl && <img onError={retryImageOnError} src={nextImgUrl} alt="Next Cover" className="w-full h-full object-cover" referrerPolicy="no-referrer" />}
                 </div>
                 <div className="flex flex-col min-w-0 text-left">
                   <span className="text-xs font-bold uppercase tracking-widest text-[var(--theme-color)] mb-1.5">Next Song</span>
@@ -403,7 +403,7 @@ export function FullScreenPlayer({
                         >
                         <div className="w-12 h-12 rounded overflow-hidden bg-white/5 shrink-0 relative group-hover:block transition-all shadow-lg border border-white/5">
                           {itemImgUrl && (
-                            <img src={itemImgUrl} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                            <img onError={retryImageOnError} src={itemImgUrl} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                           )}
                           <button
                             onClick={() => {
@@ -532,7 +532,7 @@ export function FullScreenPlayer({
                 initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.1 }}
                 className="w-64 h-64 md:w-96 md:h-96 rounded-md overflow-hidden mb-10 shadow-2xl bg-white/5 relative"
               >
-                {currentImgUrl && <img src={currentImgUrl} alt="Cover" className="w-full h-full object-cover" referrerPolicy="no-referrer" />}
+                {currentImgUrl && <img onError={retryImageOnError} src={currentImgUrl} alt="Cover" className="w-full h-full object-cover" referrerPolicy="no-referrer" />}
 
                 <canvas
                   ref={canvasRef}

@@ -10,7 +10,7 @@ import {
   SiBandcamp,
 } from 'react-icons/si';
 import { Era, Song } from '../types';
-import { CUSTOM_IMAGES, ALBUM_DESCRIPTIONS } from '../utils';
+import { CUSTOM_IMAGES, ALBUM_DESCRIPTIONS , retryImageOnError} from '../utils';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 
 export interface ReleasedEntry {
@@ -272,7 +272,7 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
 
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-md overflow-hidden bg-white/5 shrink-0 shadow-xl">
             {selectedGroup.image ? (
-              <img src={selectedGroup.image} alt={selectedGroup.eraName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <img onError={retryImageOnError} src={selectedGroup.image} alt={selectedGroup.eraName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">
                 {selectedGroup.eraName}
@@ -499,7 +499,7 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
         >
           <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
             {group.image ? (
-              <img
+              <img onError={retryImageOnError}
                 src={group.image}
                 alt={group.eraName}
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"

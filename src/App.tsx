@@ -2458,9 +2458,10 @@ export default function App() {
   }
 
 const EXCLUDED_ALBUMS: string[] = activeConfig.EXCLUDED_ALBUMS || [];
+const ART_ONLY_ALBUMS: string[] = activeConfig.ART_ONLY_ALBUMS || [];
 const _releaseOrder = activeConfig.ALBUM_ORDER || Object.keys(ALBUM_RELEASE_DATES);
 let erasArray = (Object.values(data.eras || {}) as Era[])
-  .filter(era => !HIDDEN_ALBUMS.includes(era.name) && !EXCLUDED_ALBUMS.includes(era.name) && (era.name in ALBUM_RELEASE_DATES))
+  .filter(era => !HIDDEN_ALBUMS.includes(era.name) && !EXCLUDED_ALBUMS.includes(era.name) && !ART_ONLY_ALBUMS.includes(era.name) && (era.name in ALBUM_RELEASE_DATES))
   .map(era => ({
     ...era,
     fileInfo: CUSTOM_ALBUM_INFO[era.name] || era.fileInfo
@@ -2574,6 +2575,10 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
       }).filter(s => s !== null) as Song[]
     }
   } : null;
+
+  const artOnlyErasArray = (Object.values(data.eras || {}) as Era[])
+    .filter(era => ART_ONLY_ALBUMS.includes(era.name))
+    .map(era => ({ ...era, fileInfo: CUSTOM_ALBUM_INFO[era.name] || era.fileInfo }));
 
   const finalErasArray = [...erasArray];
   if (favoritesEra) {
@@ -2891,7 +2896,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               ) : activeCategory === 'history' ? (
                 <HistoryView key="history" searchQuery={searchQuery} filters={filters} eras={erasArray} historyData={recentData} />
               ) : activeCategory === 'art' ? (
-                <ArtGallery key="art" eras={erasArray} artData={artData} searchQuery={searchQuery} filters={filters} />
+                <ArtGallery key="art" eras={[...erasArray, ...artOnlyErasArray]} artData={artData} searchQuery={searchQuery} filters={filters} />
               ) : activeCategory === 'stems' ? (
                 <StemsView
                   key="stems"

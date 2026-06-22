@@ -5,6 +5,19 @@ import { saveAs } from 'file-saver';
 import { useSettings } from './SettingsContext';
 import { activeConfig } from './artists/activeConfig';
 
+// Browsers occasionally cache a broken/incomplete response for an image
+// (e.g. a request interrupted by navigation) and keep serving it from disk
+// cache, leaving the <img> blank until the user hard-refreshes. Retrying
+// once with a cache-busting query param re-fetches past that bad cache entry.
+export function retryImageOnError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
+  const img = e.currentTarget;
+  if (img.dataset.retried) return;
+  img.dataset.retried = '1';
+  const url = new URL(img.src, window.location.href);
+  url.searchParams.set('_r', Date.now().toString());
+  img.src = url.toString();
+}
+
 // Delegate all artist-specific constants to the mutable active config.
 // Components remount on artist change (key={slug}), so reads always reflect
 // the config that was set before the remount.

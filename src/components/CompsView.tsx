@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowLeft, ExternalLink, Star } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
-import { CUSTOM_IMAGES } from '../utils';
+import { CUSTOM_IMAGES , retryImageOnError} from '../utils';
 import { Era } from '../types';
 import { useSettings } from '../SettingsContext';
 
@@ -141,7 +141,7 @@ export function CompsView({ eras, searchQuery, onNavigateToYedits }: CompsViewPr
 
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-md overflow-hidden bg-white/5 shrink-0 shadow-xl">
             {selectedGroup.image ? (
-              <img
+              <img onError={retryImageOnError}
                 src={selectedGroup.image}
                 alt={selectedGroup.eraName}
                 className="w-full h-full object-cover"
@@ -282,7 +282,7 @@ export function CompsView({ eras, searchQuery, onNavigateToYedits }: CompsViewPr
         >
           <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
             {group.image ? (
-              <img
+              <img onError={retryImageOnError}
                 src={group.image}
                 alt={group.eraName}
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"

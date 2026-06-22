@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, ChevronDown, ChevronRight, X } from 'lucide-react';
 import { Era, Song } from '../types';
-import { parseContributors, formatTextWithTags, isSongNotAvailable, CUSTOM_IMAGES } from '../utils';
+import { parseContributors, formatTextWithTags, isSongNotAvailable, CUSTOM_IMAGES , retryImageOnError} from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 
 interface ContributorSong {
@@ -280,7 +280,7 @@ export function ContributorView({ contributorName, eras, onBack, onPlaySong, cur
                   className="w-full flex items-center gap-3 px-4 py-3 bg-white/[0.03] hover:bg-white/[0.06] transition-colors cursor-pointer text-left"
                 >
                   {coverImage && (
-                    <img
+                    <img onError={retryImageOnError}
                       src={coverImage}
                       alt={eraName}
                       className="w-9 h-9 rounded object-cover shrink-0"
