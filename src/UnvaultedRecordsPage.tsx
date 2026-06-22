@@ -11,6 +11,7 @@ const ARTISTS = [
   { name: 'unvaulted0760',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
   { name: 'Buffet West',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
+   { name: 'MilesYe',        letter: 'M', accent: '#7C6FCD', description: 'Hip-Hop' },
 ];
 
 const ALBUMS = [
