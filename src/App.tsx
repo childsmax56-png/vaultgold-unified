@@ -695,10 +695,24 @@ export default function App() {
       return keys[0];
     };
 
+    let lastEraName: string | null = null;
+    let currentSubera: string | undefined;
+
     sheetData.forEach((item: any) => {
       const rawEra = (item.Era || '').trim();
-      // Skip era header rows (file count summaries) — their Era cell is multiline
-      if (!rawEra || rawEra.includes('\n')) return;
+      if (!rawEra) return;
+      // Era header rows (file count summaries, subera banners) have a multiline Era cell.
+      if (rawEra.includes('\n')) {
+        // File-count summary rows look like "12 OG File(s)\n5 Full\n...\n3 Unavailable" —
+        // a subera banner instead has no song name and isn't a count row, e.g.
+        // "BULLY - DELUXE\n(03/28/2026) (BULLY officialy releases)".
+        const isFileCountRow = /File\(s\)|Stem Bounce|Total Links/i.test(rawEra);
+        const nameVal = (item[nameKey] || '').trim();
+        if (!isFileCountRow && !nameVal) {
+          currentSubera = rawEra.split('\n')[0].trim();
+        }
+        return;
+      }
 
       const rawName = (item[nameKey] || '').trim();
       const nameLines = rawName.split('\n');
@@ -709,6 +723,10 @@ export default function App() {
 
       const matchedMapKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === rawEra.toLowerCase());
       const eraName = matchedMapKey ? ERA_MAPPINGS[matchedMapKey] : rawEra;
+      if (eraName !== lastEraName) {
+        currentSubera = undefined;
+        lastEraName = eraName;
+      }
       if (!targetJson.eras) targetJson.eras = {};
       if (!targetJson.eras[eraName]) {
         // Only create eras that are in the known era list — prevents changelog/garbage
@@ -732,6 +750,7 @@ export default function App() {
         quality: item.Quality || '',
         url: rawUrl,
         urls: rawUrl ? [rawUrl] : [],
+        subera: currentSubera,
       };
 
       const categories = targetJson.eras[eraName].data || {};

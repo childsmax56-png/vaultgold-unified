@@ -15,6 +15,7 @@ export interface Song {
   bpm?: string;
   fakesType?: string;
   fakesLength?: string;
+  subera?: string;
 }
 
 export interface EraData {
