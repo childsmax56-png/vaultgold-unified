@@ -67,7 +67,7 @@ export const yzygoldConfig: ArtistConfig = {
     "DONDA 2 (2025)": "https://i.ibb.co/b5ZNpDXk/cover.jpg",
     "Be": "https://i.ibb.co/RGmHbWZk/Common-Be.png",
     "IN A PERFECT WORLD": "https://i.ibb.co/Fqd2crvz/iapwcover.png",
-    "BULLY [V2]": "https://a5.mzstatic.com/us/r1000/0/Music221/v4/4b/38/d1/4b38d146-381d-ace2-73df-24074576e62b/656465138828_cover.jpg",
+    "BULLY [V2]": "https://i.ibb.co/pBfL20KJ/HLNl-Xx-Ubs-AAaz-S8.jpg",
     "The Life Of Pablo": "https://i.ibb.co/n8DkztcP/image-2026-03-22-142914834.png",
     "Wolves": "https://i.ibb.co/ydSS4sG/Wolves.png",
     "Turbo Grafx 16": "https://i.ibb.co/q3fggHMz/image-2026-03-22-143044324.png",
