@@ -30,7 +30,7 @@ const ALBUMS = [
       { n: 5,  title: 'NUMBER ONE',        artist: 'MYBOIARTHUR & Buffet West'
       { n: 6,  title: 'FAITH',                    artist: 'MYBOIARTHUR & Buffet West'
       { n: 7,  title: 'WORRIED (feat. Enzo Arsy)',                      artist: 'MYBOIARTHUR & Buffet West'
-      { n: 8,  title: 'CASH COW',                artist: 'MYBOIARTHUR & Buffet West', src:
+      { n: 8,  title: 'CASH COW',                artist: 'MYBOIARTHUR & Buffet West'
       { n: 9,  title: 'STOP',                          artist: 'MYBOIARTHUR & Buffet West'
       { n: 10, title: 'TOGETHER FOREVER',                         artist: 'MYBOIARTHUR & Buffet West'
         ],
