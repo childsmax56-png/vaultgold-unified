@@ -15,7 +15,7 @@ const ARTISTS = [
 
 const ALBUMS = [
   {
-    title: 'BULKY BY BUFFET WEST',
+    title: 'Buffet West - BULKY',
     label: 'Album',
     year: '2026',
     cover: '/unvaulted-records/bulky-cover.jpg',
