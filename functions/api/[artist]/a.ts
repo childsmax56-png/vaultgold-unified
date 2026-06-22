@@ -21,6 +21,17 @@ const ERA_NAME_MAP: Record<string, string> = {
   'Donda [V1]': 'DONDA [V1]',
   'Bully': 'BULLY [V1]',
   'BULLY': 'BULLY [V1]',
+  // dongold — song rows use the short name, section header uses the trilogy name
+  'Space Age Pimping': 'Space Age Pimping Trilogy',
+  // colegold
+  'Cole World': 'Cole World: The Sideline Story',
+  'J. Cole x Kendrick Project': 'Collaboration with Kendrick Lamar',
+  'J. Cole x JID Project': 'Collaboration with JID',
+  'Revenge of the Dreamers 2': 'Revenge of the Dreamers 2 [V1]',
+  'Revenge of the Dreamers II': 'Revenge of the Dreamers 2 [V1]',
+  '4 Your Eyez Only [V1]': '4 Your Eyez Only',
+  '4 Your Eyez Only [V2]': '4 Your Eyez Only',
+  'Born Sinner Deluxe': 'Born Sinner',
   // dregold
   "The Chronic II: A New World Odor (Poppa's Got A Brand New Funk)": 'The Chronic II',
   'The Chronic II: A New World Odor': 'The Chronic II',
@@ -57,10 +68,92 @@ function mapEraName(name: string): string {
 }
 
 // Artists whose ERA_ORDER is exhaustive — unlisted rows (e.g. changelog footer) are dropped.
-const EXHAUSTIVE_ERA_ORDER_ARTISTS = new Set(['yzygold', 'kdotgold']);
+const EXHAUSTIVE_ERA_ORDER_ARTISTS = new Set(['yzygold', 'kdotgold', 'dongold', 'colegold', 'aapgold', 'mfgold', 'mjgold', 'slimegold', 'sosagold']);
 
 // Per-artist ERA_ORDER for artists whose CSVs have eras in the wrong order.
 const ARTIST_ERA_ORDERS: Record<string, string[]> = {
+  sosagold: [
+    'Wiiic City', 'Drill', 'Finally Rich', 'Lean', 'Rehab', 'Xanax', 'Cappin', 'Turbo',
+    'Glory University', 'Underwater', 'Almighty So 2 [V1]', '4EB',
+  ],
+  slimegold: [
+    'I Came From Nothing', '1017 Thug', 'Black Portland', 'HiTunes [V1]', 'Metro Thuggin',
+    'Rich Gang: Tha Tour Pt. 1', 'Rich Gang: Tha Tour Pt. 2', 'Barter 6', 'Hy!£UN35 [V2]',
+    'Slime Season', 'Slime Season 2', 'MigoThuggin', 'ThuggaWapp', "I'm Up", 'Slime Season 3',
+    'HiTunes [V3]', 'JEFFERY', 'BEAUTIFUL THUGGER GIRLS', 'Young Martha', 'SUPER SLIMEY',
+    'Collaboration with 808 Mafia', 'Hy!£UN35 [V4]', 'Slime Language', 'Barter 7', 'Static',
+    'Slime WRLD', 'So Much Fun', 'So Much Fun (Deluxe)', 'SUPER SLIMEY: SURFER EDITION',
+    'Punk [V1]', 'Slime Language 2', 'Punk [V2]', 'Unknown (2022)', 'BUSINESS IS BUSINESS',
+    'LOVE YOU LATER', 'Slime Sea4on', 'Edd, Ed n Eddy', 'UY SCUTI', 'Day Before Coachella',
+  ],
+  mjgold: [
+    'Got To Be There', 'Off The Wall', 'Thriller', 'Bad', 'Dangerous',
+    'HIStory: Past, Present, And Future: Book I', 'Blood On The Dance Floor: HIStory In The Mix',
+    'Invincible', 'Post-Invincible', 'Final sessions', 'Michael', 'XSCAPE', 'Ongoing', 'Unclassified',
+  ],
+  mfgold: [
+    'By All Means Necessary', 'Mr. Hood', 'BL_CK B_ST_RDS', 'Mental Illness',
+    'Operation: Doomsday', 'Take Me To Your Leader', 'Madvillainy', 'MM..FOOD',
+    'The Mouse And The Mask', 'Dilla-DOOM', 'Madvillainy 2', 'Special Herbs, Vols. 9 & 0',
+    'BORN LIKE THIS', 'Swift & Changeable', 'Key to the Kuffs', 'DOOMYORKES', 'NehruvianDOOM',
+    'Special Herbs 10', 'The Missing Notebook Rhymes', 'WestSide Doom', 'Czarface Meets Metal Face',
+    'Flylo-DOOM', 'Super What?', 'Post Super What?', 'Unknown',
+  ],
+  aapgold: [
+    'Pre-MDB', 'MDB', 'A$AP (2007-2009)', 'A$AP (Mob Collab)', 'A$AP (2010)', 'Untitled',
+    'Rug Of War 1994', 'Purple Swag', 'Me, Myself & A$AP', 'Mouth Fulla Gold',
+    'LIVE.LOVE.A$AP [V1]', 'LIVE.LOVE.A$AP [V2]', 'B.M.W', 'LIVE.LOVE.A$AP [Deluxe]',
+    'Pre-LONG.LIVE.A$AP', 'Last Cab 2 Harlem [V2]', "Lord$ Never Worry", 'LONG.LIVE.A$AP',
+    'Pre-AT.LONG.LAST.A$AP', 'BEAUTY AND THE BEAST: SLOWED DOWN SESSIONS, CHAPTER 1', 'L.O.R.D.',
+    'AT.LONG.LAST.A$AP', 'Cozy Tapes Vol. 1: Friends -', 'Pre-TESTING', 'Wavy Wednesdays',
+    'TESTING [V1]', 'Rocky Montana', 'DUMMY [V1]', 'Cozy Tapes Vol. 2: Too Cozy', 'DUMMIE [V2]',
+    'TESTING [V2]', 'TESTING [Deluxe]', 'Cozy Tapes Vol. 3 [V1]', 'WANG$AP', 'TESTING',
+    'ALL $MILE$ [V1]', 'ALL $MILE$ [V2]', 'Cozy Tapes Vol. 3 [V2]', 'THE GR1M [V1]',
+    'Cozy Tapes Vol. 3 [V3]', 'GR1M [V2]', 'GR1M [V3]', "DON'T BE DUMB [V1]", 'A$AP JEAN',
+    "DON'T BE DUMB [V2]", "DON'T BE DUMB [V3]", "DON'T BE DUMB [V4]", "DON'T BE DUMB",
+  ],
+  colegold: [
+    'Before The Come Up',
+    'The Come Up',
+    'The Warm Up',
+    'Friday Night Lights',
+    'Cole World: The Sideline Story',
+    'Truly Yours',
+    'Truly Yours 2',
+    'Born Sinner',
+    'Truly Yours 4',
+    'Collaboration with Kendrick Lamar',
+    'J. Cole x Chance Project',
+    'Revenge of the Dreamers 2 [V1]',
+    '2014 Forest Hills Drive',
+    '4 Your Eyez Only',
+    'The Fall-Off [V1]',
+    'KOD',
+    'The Off-Season',
+    'Collaboration with JID',
+    'Might Delete Later',
+    'The Fall-Off [V2]',
+    "It's A Boy",
+    'Ongoing',
+  ],
+  dongold: [
+    'Before Space Age Pimping',
+    'Space Age Pimping Trilogy',
+    'Pimp Olympics',
+    'Life Before Death',
+    'Playa Familia',
+    'Playa Familia 2',
+    'Donny Womack',
+    'JACKBOYS',
+    'Heaven Or Hell',
+    'Escapism',
+    'Life of a DON',
+    'Love Sick',
+    'Hardstone Psycho',
+    'JACKBOYS 2',
+    'OCTANE',
+    'DT6',
+  ],
   kdotgold: [
     'Y.H.N.I.C.',
     'Training Day',
@@ -294,7 +387,7 @@ export const onRequestGet: PagesFunction = async (context) => {
     // but no header row (e.g. TrapMoneyBenny Collab, 004PF in vampgold) are not dropped.
     for (const row of rows) {
       const eraField = (row['Era'] ?? '').trim();
-      if (eraField && !eraField.includes('\n') && !/^\d+/.test(eraField)) {
+      if (eraField && !eraField.includes('\n') && !/^\d+\s+(OG|Full|Tagged|Partial|Snippet|Unavailable)\b/i.test(eraField)) {
         validEraNames.add(eraField);
         validEraNames.add(mapEraName(eraField));
       }

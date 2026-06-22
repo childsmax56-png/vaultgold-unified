@@ -13,8 +13,22 @@ import { uzigoldConfig } from './uzigold';
 import { wolfgoldConfig } from './wolfgold';
 import { juicegoldConfig } from './juicegold';
 import { luckigoldConfig } from './luckigold';
+import { dongoldConfig } from './dongold';
+import { colegoldConfig } from './colegold';
+import { aapgoldConfig } from './aapgold';
+import { mfgoldConfig } from './mfgold';
+import { mjgoldConfig } from './mjgold';
+import { slimegoldConfig } from './slimegold';
+import { sosagoldConfig } from './sosagold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
+  dongold: dongoldConfig,
+  colegold: colegoldConfig,
+  aapgold: aapgoldConfig,
+  mfgold: mfgoldConfig,
+  mjgold: mjgoldConfig,
+  slimegold: slimegoldConfig,
+  sosagold: sosagoldConfig,
   yzygold: yzygoldConfig,
   vampgold: vampgoldConfig,
   wolfgold: wolfgoldConfig,
