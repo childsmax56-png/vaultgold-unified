@@ -16,29 +16,50 @@ const ARTISTS = [
 ];
 
 const ALBUMS = [
-  {
-    title: 'Buffet West - BULKY',
+   {
+    title: 'MYBOIARTHUR & Buffet West - HENRY',
     label: 'Album',
     year: '2026',
-    cover: '/unvaulted-records/bulky-cover.jpg',
-    streamUrl: '',
+    cover: 'https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ca/f4/c1/caf4c19d-4de8-2449-6681-aa5812790ff9/artwork.jpg/316x316bb.webp',
+    streamUrl: 'https://open.spotify.com/artist/1rVK3Wnpmn0KJqdU2osasN',
     tracks: [
-      { n: 1,  title: 'FEEDER MAN',                            artist: 'Buffet West', src: '/unvaulted-records/audio/bulky.m4a' },
-      { n: 2,  title: 'BEAUTY AND THE FEAST',                        artist: 'Buffet West', src: '/unvaulted-records/audio/feeder-man.m4a' },
-      { n: 3,  title: 'FATTER (feat. Travis Scott)',               artist: 'Buffet West', src: '/unvaulted-records/audio/beauty-and-the-feast.m4a' },
-      { n: 4,  title: 'ALL THE FOOD (feat. BTS)',           artist: 'Buffet West', src: '/unvaulted-records/audio/all-the-food.m4a' },
-      { n: 5,  title: 'LAST SNACK',        artist: 'Buffet West', src: '/unvaulted-records/audio/fatter.m4a' },
-      { n: 6,  title: 'BULKY',                    artist: 'Buffet West', src: '/unvaulted-records/audio/fries-and-dough.m4a' },
-      { n: 7,  title: 'HAM (feat. MilesYe)',                      artist: 'Buffet West', src: '/unvaulted-records/audio/gemini-season.m4a' },
-      { n: 8,  title: 'WHITE CASTLE',                artist: 'Buffet West', src: '/unvaulted-records/audio/ham.m4a' },
-      { n: 9,  title: 'FRIES AND DOUGH',                          artist: 'Buffet West', src: '/unvaulted-records/audio/i-can-eat.m4a' },
-      { n: 10, title: 'I CAN EAT',                         artist: 'Buffet West', src: '/unvaulted-records/audio/last-snack.m4a' },
-      { n: 11, title: 'GEMINI SEASONING',                       artist: 'Buffet West', src: '/unvaulted-records/audio/white-castle.m4a' },
-    ],
+      { n: 1,  title: 'NEVER ENDS',                            artist: 'MYBOIARTHUR & Buffet Westt'
+      { n: 2,  title: 'HENRY (feat. michaelem)',                        artist: 'MYBOIARTHUR & Buffet West'
+      { n: 3,  title: 'MYSTERY VAN',               artist: 'MYBOIARTHUR & Buffet West'
+      { n: 4,  title: 'STARS',           artist: 'MYBOIARTHUR & Buffet West'
+      { n: 5,  title: 'NUMBER ONE',        artist: 'MYBOIARTHUR & Buffet West'
+      { n: 6,  title: 'FAITH',                    artist: 'MYBOIARTHUR & Buffet West'
+      { n: 7,  title: 'WORRIED (feat. Enzo Arsy)',                      artist: 'MYBOIARTHUR & Buffet West'
+      { n: 8,  title: 'CASH COW',                artist: 'MYBOIARTHUR & Buffet West', src:
+      { n: 9,  title: 'STOP',                          artist: 'MYBOIARTHUR & Buffet West'
+      { n: 10, title: 'TOGETHER FOREVER',                         artist: 'MYBOIARTHUR & Buffet West'
+        ],
   },
+  
   {
-    title: 'IN AN IMPERFECT WORLD',
-    label: 'Debut Mixtape',
+      title: 'Buffet West - BULKY',
+    label: 'Mixtape',
+    year: '2026',
+    cover: '/unvaulted-records/bulky-cover.jpg',
+    streamUrl: 'https://untitled.stream/library/project/Fuhtj8VCN9V9pNfMNljQJ',
+    tracks: [
+      { n: 1,  title: 'FEEDER MAN',                            artist: 'Buffet West'
+      { n: 2,  title: 'BEAUTY AND THE FEAST',                        artist: 'Buffet West'
+      { n: 3,  title: 'FATTER (feat. Travis Scott)',               artist: 'Buffet West'
+      { n: 4,  title: 'ALL THE FOOD (feat. BTS)',           artist: 'Buffet West'
+      { n: 5,  title: 'LAST SNACK',        artist: 'Buffet West'
+      { n: 6,  title: 'BULKY',                    artist: 'Buffet West'
+      { n: 7,  title: 'HAM (feat. MilesYe)',                      artist: 'Buffet West'
+      { n: 8,  title: 'WHITE CASTLE',                artist: 'Buffet West', src:
+      { n: 9,  title: 'FRIES AND DOUGH',                          artist: 'Buffet West'
+      { n: 10, title: 'I CAN EAT',                         artist: 'Buffet West'
+      { n: 11, title: 'GEMINI SEASONING',                       artist: 'Buffet West'
+        ],
+  },
+       
+  {
+    title: 'UNVAULTED Records - IN AN IMPERFECT WORLD',
+    label: 'Mixtape',
     year: '2026',
     cover: '/unvaulted-records-debut-cover.jpg',
     streamUrl: 'https://untitled.stream/library/project/bSnHBgkbVlvZtjb1kPrs8',
