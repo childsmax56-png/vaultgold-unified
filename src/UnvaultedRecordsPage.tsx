@@ -23,10 +23,10 @@ const ALBUMS = [
     cover: 'unvaulted-records/audio/Copilot_20260622_215713.png',
     streamUrl: 'https://untitled.stream/library/project/Fuhtj8VCN9V9pNfMNljQJ',
     tracks: [
-      { n: 1,  title: 'EAR GRAPE',                            artist: 'Buffet West', src: 'unvaulted-records/audio/ear grape.mp3' },
-      { n: 2,  title: 'EAR GRAPE (PT. 2)',                        artist: 'Buffet West', src: 'unvaulted-records/audio/ear grape pt2.mp3' },
-      { n: 3,  title: 'EAR GRAPE; THE THIRD',               artist: 'Buffet West', src: 'unvaulted-records/audio/ear grape the third.mp3' },
-      { n: 4,  title: 'EAR GRAPE; ITS THE END',           artist: 'Buffet West', src: 'unvaulted-records/audio/ear grape%2C its the end.mp3' },
+      { n: 1,  title: 'EAR GRAPE',                            artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape.mp3' },
+      { n: 2,  title: 'EAR GRAPE (PT. 2)',                        artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape pt2.mp3' },
+      { n: 3,  title: 'EAR GRAPE; THE THIRD',               artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape the third.mp3' },
+      { n: 4,  title: 'EAR GRAPE; ITS THE END',           artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape%2C its the end.mp3' },
   ],
   },
        
@@ -152,7 +152,15 @@ function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
 
 const SINGLES = [
   {
-    title: 'All The Alexais (The Chakra) All The Alexais (The Chakra) (feat. André Troutman)',
+    title: 'SEE ME AGAIN (feat. Ye, Buffet West, Dave Blunts, Brandon & Bon Iver)',
+    artist: 'MilesYe',
+    year: '2026',
+    src: '/unvaulted-records/audio/SEE ME AGAIN (Feat. Ye, Buffet West, Dave Blunts, Brandon, & Bon Ivor).m4a',
+    cover: '/unvaulted-records/all-the-alexais-cover.jpgpublic/unvaulted-records/audio/IMG_9699.png',
+  },
+  
+  {
+    title: 'All The Alexais (The Chakra) (feat. André Troutman)',
     artist: 'Alexais',
     year: '2026',
     src: '/unvaulted-records/audio/all-the-alexais.mp3',
