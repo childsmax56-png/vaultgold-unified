@@ -20,8 +20,8 @@ export const cactigoldConfig: ArtistConfig = {
   getArtistName(_eraName) { return 'Travis Scott'; },
 
   CUSTOM_IMAGES: {
-    "The Graduates": "",
-    "The Classmates": "",
+    "The Graduates": "https://i.ibb.co/bh2Pc9n/093a7274a7bc0f3201f0cb54dc8f952c-480x480x1.jpg",
+    "The Classmates": "https://i.ibb.co/7tZDJtSh/images.png",
     "Owl Pharaoh": "https://i.ibb.co/3yHnBdZ/owl-pharaoh.jpg",
     "Days Before Rodeo": "https://i.ibb.co/k8Q6vhV/days-before-rodeo.jpg",
     "Days Before Rodeo (Re-Release)": "https://i.ibb.co/k8Q6vhV/days-before-rodeo.jpg",
@@ -34,9 +34,9 @@ export const cactigoldConfig: ArtistConfig = {
     "Utopia [P1]": "https://i.ibb.co/Kz3mVnF/utopia.jpg",
     "Utopia [P2]": "https://i.ibb.co/Kz3mVnF/utopia.jpg",
     "Utopia": "https://i.ibb.co/Kz3mVnF/utopia.jpg",
-    "JackBoys 2": "",
-    "Post-Utopia": "",
-    "Unknown": "",
+    "JackBoys 2": "https://i.ibb.co/YBvxz43k/ab67616d00001e025d0f8a4c3623e02a79928288.jpg",
+    "Post-Utopia": "https://i.ibb.co/s9wDW6wg/ab6761610000517419c2790744c792d05570bb71.jpg",
+    "Unknown": "https://i.ibb.co/NndT3vts/2406.webp",
   },
 
   ALBUM_RELEASE_DATES: {
