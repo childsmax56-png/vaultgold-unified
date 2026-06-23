@@ -1881,7 +1881,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       {/* Delete confirm modal */}
       {deleteTarget && typeof document !== 'undefined' && createPortal(
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
           onClick={() => { if (!deleting) { setDeleteTarget(null); setDeleteResult(null); } }}
         >
           <div
