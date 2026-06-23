@@ -22,7 +22,7 @@ export const cactigoldConfig: ArtistConfig = {
   CUSTOM_IMAGES: {
     "The Graduates": "https://i.ibb.co/bh2Pc9n/093a7274a7bc0f3201f0cb54dc8f952c-480x480x1.jpg",
     "The Classmates": "https://i.ibb.co/7tZDJtSh/images.png",
-    "Owl Pharaoh": "",
+    "Owl Pharaoh": "https://i.ibb.co/RGyGsxfy/Travis-Scott-Owl-Pharaoh.jpg",
     "Days Before Rodeo": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/30/98/ed/3098ed0e-537d-4230-d893-2e7218a3bdf1/196871381420.jpg/1200x1200bb.jpg",
     "Days Before Rodeo (Re-Release)": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/30/98/ed/3098ed0e-537d-4230-d893-2e7218a3bdf1/196871381420.jpg/1200x1200bb.jpg",
     "Rodeo": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/71/87/78/7187786f-70af-fd36-fc7f-a4ba61b65d98/886445454987.jpg/1200x1200bb.jpg",
