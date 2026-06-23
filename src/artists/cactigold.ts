@@ -31,7 +31,7 @@ export const cactigoldConfig: ArtistConfig = {
     "Astroworld": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/30/66/90/306690d4-2a29-402e-e406-6b319ce7731a/886447227169.jpg/1200x1200bb.jpg",
     "JackBoys": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d8/59/d5/d859d57b-d3a3-04bf-5011-f4e30a8e84a5/886448209393.jpg/1200x1200bb.jpg",
     "The Scotts": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/e0/a9/f6/e0a9f68b-c5fe-faa4-6ad2-0c12e22bc66c/886448429944.jpg/1200x1200bb.jpg",
-    "Utopia [P1]": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/09/7d/b0/097db06f-8403-3cf7-7510-139e570ca66b/196871341882.jpg/1200x1200bb.jpg",
+    "Utopia [P1]": "https://i.ibb.co/xtZYkj8W/attachment-travis-scott-utopia-cover-1.jpg",
     "Utopia [P2]": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/09/7d/b0/097db06f-8403-3cf7-7510-139e570ca66b/196871341882.jpg/1200x1200bb.jpg",
     "Utopia": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/09/7d/b0/097db06f-8403-3cf7-7510-139e570ca66b/196871341882.jpg/1200x1200bb.jpg",
     "JackBoys 2": "https://i.ibb.co/YBvxz43k/ab67616d00001e025d0f8a4c3623e02a79928288.jpg",
