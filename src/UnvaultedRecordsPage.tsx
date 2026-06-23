@@ -17,7 +17,7 @@ const ARTISTS = [
 
 const ALBUMS = [
   {
-  title: 'Don Juan - THE EAR GRAPE COLLECTIVE',
+  title: 'Don Juan - THE EAR GRAPE COLLECTION',
     label: 'EP',
     year: '2026',
     cover: 'unvaulted-records/audio/Copilot_20260622_215713.png',
