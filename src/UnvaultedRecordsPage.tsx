@@ -24,9 +24,9 @@ const ALBUMS = [
     streamUrl: 'https://untitled.stream/library/project/Fuhtj8VCN9V9pNfMNljQJ',
     tracks: [
       { n: 1,  title: 'EAR GRAPE',                            artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape.mp3' },
-      { n: 2,  title: 'EAR GRAPE (PT. 2)',                        artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape pt2.mp3' },
-      { n: 3,  title: 'EAR GRAPE; THE THIRD',               artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape the third.mp3' },
-      { n: 4,  title: 'EAR GRAPE; ITS THE END',           artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape%2C its the end.mp3' },
+      { n: 2,  title: 'EAR GRAPE (Pt. 2)',                        artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape pt2.mp3' },
+      { n: 3,  title: 'EAR GRAPE (Pt. 3)',               artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape the third.mp3' },
+      { n: 4,  title: 'EAR GRAPE (Pt. 4)',           artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape%2C its the end.mp3' },
   ],
   },
        
