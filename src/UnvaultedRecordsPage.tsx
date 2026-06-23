@@ -156,7 +156,7 @@ const SINGLES = [
     artist: 'MilesYe',
     year: '2026',
     src: '/unvaulted-records/audio/SEE ME AGAIN (Feat. Ye, Buffet West, Dave Blunts, Brandon, & Bon Ivor).m4a',
-    cover: '/unvaulted-records/all-the-alexais-cover.jpgpublic/unvaulted-records/audio/IMG_9699.png',
+    cover: '/unvaulted-records/audio/IMG_9699.png',
   },
   
   {
