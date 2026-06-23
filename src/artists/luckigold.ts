@@ -23,7 +23,7 @@ export const luckigoldConfig: ArtistConfig = {
     'Body High': '',
     'X': '',
     'Freewave': '',
-    'Lucki Eck$': '',
+    'Lucki Eck$': '/luckigold/eras/lucki-ecks-old.jpg',
     'Freewave 2': '/luckigold/eras/freewave-2.jpg',
     'Watch My Back': '/luckigold/eras/watch-my-back.jpg',
     'DAYS B4 II EP': '/luckigold/eras/days-b4-ii-ep.jpg',
