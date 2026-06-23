@@ -21,7 +21,7 @@ const ALBUMS = [
     label: 'EP',
     year: '2026',
     cover: 'unvaulted-records/audio/Copilot_20260622_215713.png',
-    streamUrl: 'https://untitled.stream/library/project/Fuhtj8VCN9V9pNfMNljQJ',
+    streamUrl: 'https://untitled.stream/library/project/NbUcMMvMIm7G4GzEpVj4j',
     tracks: [
       { n: 1,  title: 'EAR GRAPE',                            artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape.mp3' },
       { n: 2,  title: 'EAR GRAPE (Pt. 2)',                        artist: 'Don Juan', src: 'unvaulted-records/audio/ear grape pt2.mp3' },
