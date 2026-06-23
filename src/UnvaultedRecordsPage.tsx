@@ -17,6 +17,20 @@ const ARTISTS = [
 
 const ALBUMS = [
   {
+  title: 'Don Juan - THE EAR GRAPE COLLECTIVE',
+    label: 'EP',
+    year: '2026',
+    cover: 'unvaulted-records/audio/Copilot_20260622_215713.png',
+    streamUrl: 'https://untitled.stream/library/project/Fuhtj8VCN9V9pNfMNljQJ',
+    tracks: [
+      { n: 1,  title: 'EAR GRAPE',                            artist: 'Buffet West', src: 'unvaulted-records/audio/ear grape.mp3' },
+      { n: 2,  title: 'EAR GRAPE (PT. 2)',                        artist: 'Buffet West', src: 'unvaulted-records/audio/ear grape pt2.mp3' },
+      { n: 3,  title: 'EAR GRAPE; THE THIRD',               artist: 'Buffet West', src: 'unvaulted-records/audio/ear grape the third.mp3' },
+      { n: 4,  title: 'EAR GRAPE; ITS THE END',           artist: 'Buffet West', src: 'unvaulted-records/audio/ear grape%2C its the end.mp3' },
+  ],
+  },
+       
+  {
     title: 'Buffet West - BULKY',
     label: 'Mixtape',
     year: '2026',
