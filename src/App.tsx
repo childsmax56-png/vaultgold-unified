@@ -810,12 +810,22 @@ export default function App() {
                 rebuilt[mappedKey] = rebuilt[mappedKey].concat(value);
               } else {
                 const existing = rebuilt[mappedKey];
+                const mergedData: Record<string, any> = { ...existing.data };
+                Object.keys(value.data || {}).forEach(dataKey => {
+                  const existingEntries = mergedData[dataKey];
+                  const newEntries = value.data[dataKey];
+                  if (Array.isArray(existingEntries) && Array.isArray(newEntries)) {
+                    mergedData[dataKey] = existingEntries.concat(newEntries);
+                  } else {
+                    mergedData[dataKey] = newEntries;
+                  }
+                });
                 rebuilt[mappedKey] = {
                   ...existing,
                   ...value,
                   image: existing.image || value.image,
                   extra: existing.extra || value.extra,
-                  data: { ...existing.data, ...value.data }
+                  data: mergedData
                 };
                 if (isRename && category === 'eras') {
                   rebuilt[mappedKey].name = mappedKey;

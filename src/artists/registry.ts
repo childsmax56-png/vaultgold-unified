@@ -20,6 +20,8 @@ import { mfgoldConfig } from './mfgold';
 import { mjgoldConfig } from './mjgold';
 import { slimegoldConfig } from './slimegold';
 import { sosagoldConfig } from './sosagold';
+import { gorillazgoldConfig } from './gorillazgold';
+import { rihannagoldConfig } from './rihannagold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   dongold: dongoldConfig,
@@ -43,6 +45,8 @@ export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   dregold: dregoldConfig,
   juicegold: juicegoldConfig,
   luckigold: luckigoldConfig,
+  gorillazgold: gorillazgoldConfig,
+  rihannagold: rihannagoldConfig,
 };
 
 export const ARTIST_LIST: ArtistConfig[] = Object.values(ARTIST_REGISTRY);

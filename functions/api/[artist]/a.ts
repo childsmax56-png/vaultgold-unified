@@ -61,6 +61,10 @@ const ERA_NAME_MAP: Record<string, string> = {
   // wolfgold — single mistagged song row inside the WOLF [V3] block uses the
   // versionless "WOLF" era value; merge it into WOLF [V3].
   'WOLF': 'WOLF [V3]',
+  // gorillazgold — song rows use short/typo'd names, section headers use the full names.
+  'G-SIdes': 'G-Sides',
+  'Journey To The West': 'Monkey - Journey To The West',
+  'Song Machine, Season One': 'Song Machine, Season One: Strange Timez',
 };
 
 function mapEraName(name: string): string {
@@ -312,6 +316,35 @@ const ARTIST_ERA_ORDERS: Record<string, string[]> = {
     'LOOK AT ME: XXXTENTACION',
     'Ongoing',
     'Unknown',
+  ],
+  gorillazgold: [
+    'Gorillaz',
+    'G-Sides',
+    'Laika Come Home',
+    'Demon Days',
+    'D-Sides',
+    'Carousel',
+    'Monkey - Journey To The West',
+    'Plastic Beach',
+    'The Fall',
+    'HUMANZ',
+    'The Now Now',
+    'Song Machine, Season One: Strange Timez',
+    'Meanwhile',
+    'Cracker Island',
+    'The Mountain',
+  ],
+  rihannagold: [
+    'Music Of The Sun',
+    'A Girl Like Me',
+    'Good Girl Gone Bad',
+    'Rated R',
+    'Loud',
+    'Talk That Talk',
+    'Unapologetic',
+    'ANTI',
+    'R9*',
+    'Ongoing',
   ],
 };
 
