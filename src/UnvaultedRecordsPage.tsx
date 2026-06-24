@@ -156,7 +156,7 @@ const SINGLES = [
   },
   
   {
-    title: 'All The Alexais (The Chakra) (feat. André Troutman)',
+    title: 'The Chakra (feat. André Troutman)',
     artist: 'Alexais',
     year: '2026',
     src: '/unvaulted-records/audio/all-the-alexais.mp3',
