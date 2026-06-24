@@ -152,7 +152,7 @@ function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
 
 const SINGLES = [
   {
-    title: 'SEE ME AGAIN (feat. Ye, Buffet West, Dave Blunts, Brandon & Bon Iver)',
+    title: 'SEE ME AGAIN (feat. Buffet West, Dave Blunts, Brandon & Bon Iver)',
     artist: 'MilesYe',
     year: '2026',
     src: '/unvaulted-records/audio/SEE ME AGAIN (Feat. Ye, Buffet West, Dave Blunts, Brandon, & Bon Ivor).m4a',
