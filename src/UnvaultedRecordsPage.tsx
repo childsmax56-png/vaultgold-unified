@@ -13,8 +13,8 @@ const ARTISTS = [
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
   { name: 'Buffet West',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
   { name: 'MilesYe',        letter: 'M', accent: '#7C6FCD', description: 'Hip-Hop' },
-  { name: 'BIANCAGOLD',        letter: 'B', accent: '#7C6FCD', description: 'Hip-Hop' },
-  { name: 'YZYGOLD',        letter: 'Y', accent: '#7C6FCD', description: 'Hip-Hop' },
+  { name: 'biancagold',        letter: 'B', accent: '#7C6FCD', description: 'Hip-Hop' },
+  { name: 'YZYgold',        letter: 'Y', accent: '#7C6FCD', description: 'Hip-Hop' },
 ];
 
 const ALBUMS = [
@@ -70,10 +70,10 @@ const ALBUMS = [
       { n: 8,  title: 'JESUS',                                              artist: 'Alexais',            src: '/unvaulted-records/audio/jesus.mp3' },
       { n: 9,  title: 'SUNDAY',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/sunday.m4a' },
       { n: 10, title: 'MISSION CONTROL',             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/mission-control.m4a' },
-      { n: 11, title: 'INTERLUDE',                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
+      { n: 11, title: 'INTERLUDE',                             artist: 'biancagold, YZYgold', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
       { n: 12, title: 'BIANCA',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/New_Project.mp3' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
-      { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
+      { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYgold',  src: '/unvaulted-records/audio/all-the-love.mp3' },
     ],
   },
 ];
@@ -589,7 +589,7 @@ export function UnvaultedRecordsPage() {
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)' }}>
             UNVAULTED Records is an independent label dedicated to pushing the
             boundaries of sound. Home to Alexias, ciatanner, Don Juan, Big Poppa Perc,
-            Lux, unvaulted0760, Nr7th, Buffet West MilesYe, BIANCAGOLD and YZYGOLD — we build music that lasts.
+            Lux, unvaulted0760, Nr7th, Buffet West MilesYe, biancagold and YZYgold — we build music that lasts.
           </p>
         </div>
       </section>
