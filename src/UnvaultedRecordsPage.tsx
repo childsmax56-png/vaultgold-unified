@@ -72,10 +72,6 @@ const ALBUMS = [
       { n: 12, title: 'BIANCA (feat. Ye-I)',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/New_Project.mp3' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
       { n: 14, title: 'ALL THE LOVE (feat. MxYT & Ye-I)',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
-      { n: 15, title: 'BABY I TRIED (Remix) (feat. FROMDABUNKA & Sheffmade)',                                             artist: 'Lux',            src: '/unvaulted-records/audio/Cosby.mp3' },
-      { n: 16, title: 'BIANCA (Remix)',                                             artist: 'Don Juan',            src: '/unvaulted-records/audio/Bianca_3.0.mp3' },
-    ],
-  },
 ];
 
 function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
