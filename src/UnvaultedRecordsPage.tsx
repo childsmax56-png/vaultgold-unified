@@ -68,8 +68,8 @@ const ALBUMS = [
       { n: 8,  title: 'JESUS',                                              artist: 'Alexais',            src: '/unvaulted-records/audio/jesus.mp3' },
       { n: 9,  title: 'SUNDAY',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/sunday.m4a' },
       { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/mission-control.m4a' },
-      { n: 11, title: "BIANCAGOLD'S INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
-      { n: 12, title: 'BIANCA (feat. Ye-I)',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/New_Project.mp3' },
+      { n: 11, title: "INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
+      { n: 12, title: 'BIANCA',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/New_Project.mp3' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
       { n: 14, title: 'ALL THE LOVE (feat. MxYT & Ye-I)',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
 ];
