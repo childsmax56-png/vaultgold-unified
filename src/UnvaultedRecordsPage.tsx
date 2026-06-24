@@ -12,7 +12,9 @@ const ARTISTS = [
   { name: 'unvaulted0760',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
   { name: 'Buffet West',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
-   { name: 'MilesYe',        letter: 'M', accent: '#7C6FCD', description: 'Hip-Hop' },
+  { name: 'MilesYe',        letter: 'M', accent: '#7C6FCD', description: 'Hip-Hop' },
+  { name: 'BIANCAGOLD',        letter: 'B', accent: '#7C6FCD', description: 'Hip-Hop' },
+  { name: 'YZYGOLD',        letter: 'Y', accent: '#7C6FCD', description: 'Hip-Hop' },
 ];
 
 const ALBUMS = [
@@ -587,7 +589,7 @@ export function UnvaultedRecordsPage() {
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)' }}>
             UNVAULTED Records is an independent label dedicated to pushing the
             boundaries of sound. Home to Alexias, ciatanner, Don Juan, Big Poppa Perc,
-            Lux, unvaulted0760, Nr7th, Buffet West and MilesYe — we build music that lasts.
+            Lux, unvaulted0760, Nr7th, Buffet West MilesYe, BIANCAGOLD and YZYGOLD — we build music that lasts.
           </p>
         </div>
       </section>
