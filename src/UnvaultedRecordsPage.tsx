@@ -64,7 +64,7 @@ const ALBUMS = [
       { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again, Playboi Carti & DJ Swamp Izzo)', artist: 'Big Poppa Perc, ciatanner',      src: '/unvaulted-records/audio/alive.mp3' },
       { n: 5,  title: 'MAGAZINES',                                          artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/magazines.m4a' },
       { n: 6,  title: 'COUSINS',                                            artist: 'Alexais',            src: '/unvaulted-records/audio/cousins.mp3' },
-      { n: 7,  title: 'VIRGIL',                                             artist: 'Big Poppa Perc, Alexais',            src: '/unvaulted-records/audio/virgil.m4a' },
+      { n: 7,  title: 'VIRGIL',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/virgil.m4a' },
       { n: 8,  title: 'JESUS',                                              artist: 'Alexais',            src: '/unvaulted-records/audio/jesus.mp3' },
       { n: 9,  title: 'SUNDAY',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/sunday.m4a' },
       { n: 10, title: 'MISSION CONTROL',             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/mission-control.m4a' },
