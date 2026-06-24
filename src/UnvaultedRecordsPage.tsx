@@ -61,17 +61,17 @@ const ALBUMS = [
       { n: 1,  title: 'SISTERS AND BROTHERS',                               artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/sisters-and-brothers.m4a' },
       { n: 2,  title: 'KING OF SOUL (feat. FROMDABUNKA)',                 artist: 'ciatanner',           src: '/unvaulted-records/audio/king-of-soul.m4a' },
       { n: 3,  title: 'BABY I TRIED (feat. FROMDABUNKA & Sheffmade)',      artist: 'ciatanner',           src: '/unvaulted-records/audio/baby-i-tried.mp3' },
-      { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again & Playboi Carti)', artist: 'Big Poppa Perc, ciatanner',      src: '/unvaulted-records/audio/alive.mp3' },
+      { n: 4,  title: 'ALIVE (feat. Youngboy Never Broke Again, Playboi Carti & DJ Swamp Izzo)', artist: 'Big Poppa Perc, ciatanner',      src: '/unvaulted-records/audio/alive.mp3' },
       { n: 5,  title: 'MAGAZINES',                                          artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/magazines.m4a' },
       { n: 6,  title: 'COUSINS',                                            artist: 'Alexais',            src: '/unvaulted-records/audio/cousins.mp3' },
       { n: 7,  title: 'VIRGIL',                                             artist: 'Big Poppa Perc, Alexais',            src: '/unvaulted-records/audio/virgil.m4a' },
       { n: 8,  title: 'JESUS',                                              artist: 'Alexais',            src: '/unvaulted-records/audio/jesus.mp3' },
       { n: 9,  title: 'SUNDAY',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/sunday.m4a' },
-      { n: 10, title: 'MISSION CONTROL (feat. Text To Speech)',             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/mission-control.m4a' },
-      { n: 11, title: "INTERLUDE",                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
+      { n: 10, title: 'MISSION CONTROL',             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/mission-control.m4a' },
+      { n: 11, title: 'INTERLUDE',                             artist: 'BIANCAGOLD, YZYGOLD', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
       { n: 12, title: 'BIANCA',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/New_Project.mp3' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
-      { n: 14, title: 'ALL THE LOVE (feat. MxYT)',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
+      { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYGOLD',  src: '/unvaulted-records/audio/all-the-love.mp3' },
 ];
 
 function ArtistCard({ artist }: { artist: typeof ARTISTS[0] }) {
