@@ -9,7 +9,7 @@ const ARTISTS = [
   { name: 'Don Juan',       letter: 'D', accent: '#C9A224', description: 'Hip-Hop' },
   { name: 'Big Poppa Perc',        letter: 'P', accent: '#E05C5C', description: 'Hip-Hop' },
   { name: 'Lux',            letter: 'L', accent: '#F0A500', description: 'Hip-Hop' },
-  { name: 'unvaulted0760',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
+  { name: 'unvaulted',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
   { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
   { name: 'Buffet West',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
   { name: 'MilesYe',        letter: 'M', accent: '#7C6FCD', description: 'Hip-Hop' },
@@ -73,7 +73,7 @@ const ALBUMS = [
       { n: 11, title: 'INTERLUDE',                             artist: 'biancagoldd', src: '/unvaulted-records/audio/biancagold-interlude.mp3' },
       { n: 12, title: 'BIANCA',                                             artist: 'Big Poppa Perc',            src: '/unvaulted-records/audio/New_Project.mp3' },
       { n: 13, title: 'WISH',                                               artist: 'Don Juan',           src: '/unvaulted-records/audio/wish.mp3' },
-      { n: 14, title: 'ALL THE LOVE',                                       artist: 'Max3:16420999, YZYgold',  src: '/unvaulted-records/audio/all-the-love.mp3' },
+      { n: 14, title: 'ALL THE LOVE',                                       artist: 'unvaulted, YZYgold',  src: '/unvaulted-records/audio/all-the-love.mp3' },
     ],
   },
 ];
@@ -589,7 +589,7 @@ export function UnvaultedRecordsPage() {
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'rgba(255,255,255,0.5)' }}>
             UNVAULTED Records is an independent label dedicated to pushing the
             boundaries of sound. Home to Alexias, ciatanner, Don Juan, Big Poppa Perc,
-            Lux, unvaulted0760, Nr7th, Buffet West MilesYe, biancagold and YZYgold — we build music that lasts.
+            Lux, unvaulted, Nr7th, Buffet West MilesYe, biancagold and YZYgold — we build music that lasts.
           </p>
         </div>
       </section>
