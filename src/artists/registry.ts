@@ -22,6 +22,17 @@ import { slimegoldConfig } from './slimegold';
 import { sosagoldConfig } from './sosagold';
 import { gorillazgoldConfig } from './gorillazgold';
 import { rihannagoldConfig } from './rihannagold';
+import { fiftygoldConfig } from './fiftygold';
+import { teccagoldConfig } from './teccagold';
+import { keemgoldConfig } from './keemgold';
+import { lonelygoldConfig } from './lonelygold';
+import { futuregoldConfig } from './futuregold';
+import { denzelgoldConfig } from './denzelgold';
+import { cudigoldConfig } from './cudigold';
+import { smokegoldConfig } from './smokegold';
+import { jojigoldConfig } from './jojigold';
+import { jayzgoldConfig } from './jayzgold';
+import { macgoldConfig } from './macgold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   dongold: dongoldConfig,
@@ -47,6 +58,17 @@ export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   luckigold: luckigoldConfig,
   gorillazgold: gorillazgoldConfig,
   rihannagold: rihannagoldConfig,
+  fiftygold: fiftygoldConfig,
+  teccagold: teccagoldConfig,
+  keemgold: keemgoldConfig,
+  lonelygold: lonelygoldConfig,
+  futuregold: futuregoldConfig,
+  denzelgold: denzelgoldConfig,
+  cudigold: cudigoldConfig,
+  smokegold: smokegoldConfig,
+  jojigold: jojigoldConfig,
+  jayzgold: jayzgoldConfig,
+  macgold: macgoldConfig,
 };
 
 export const ARTIST_LIST: ArtistConfig[] = Object.values(ARTIST_REGISTRY);
