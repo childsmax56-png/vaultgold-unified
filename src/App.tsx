@@ -2622,9 +2622,10 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
   const filteredEras = finalErasArray.filter(era => {
     const hasActiveFilters = filters.tags.length > 0 || filters.qualities.length > 0 || filters.availableLengths?.length > 0 || filters.durationValue !== '' || filters.playableOnly || filters.hasClips !== null || filters.hasRemixes !== null || filters.hasSamples !== null;
 
-    if (!searchQuery && !hasActiveFilters) return true;
-
     const allSongs = Object.values(era.data || {}).flat();
+    if (era.name !== "Favorites" && allSongs.length === 0) return false;
+
+    if (!searchQuery && !hasActiveFilters) return true;
 
     const matchingSongs = allSongs.filter(song => {
       if (!matchesFilters(song, searchQuery, filters)) return false;
