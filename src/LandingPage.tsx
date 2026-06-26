@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SiDiscord, SiReddit, SiTiktok, SiX } from 'react-icons/si';
+import { RefreshCw } from 'lucide-react';
 import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
 import { useSettings, LOADING_SCREENS } from './SettingsContext';
@@ -85,6 +86,8 @@ function Toggle({ on, onToggle }: { on: boolean; onToggle: () => void }) {
 function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
   const { settings, updateSettings, resetSettings } = useSettings();
   const [confirmReset, setConfirmReset] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [syncMsg, setSyncMsg] = useState('');
   const row: React.CSSProperties = {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     padding: '14px 16px', background: '#111', border: '1px solid rgba(255,255,255,0.06)',
@@ -96,6 +99,63 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
   const handleReset = () => {
     if (confirmReset) { resetSettings(); setConfirmReset(false); }
     else { setConfirmReset(true); setTimeout(() => setConfirmReset(false), 3000); }
+  };
+
+  const doSync = async () => {
+    setSyncing(true);
+    setSyncMsg('');
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (!token) { setSyncing(false); setSyncMsg('Sign in to sync'); return; }
+
+    const meRes = await fetch(`${VG_API}/api/auth/me`, { headers: { Authorization: `Bearer ${token}` } });
+    if (!meRes.ok) { setSyncing(false); setSyncMsg('Sync failed'); return; }
+    const me = await meRes.json();
+    const linked = me.linked ?? {};
+
+    const synced: string[] = [];
+    const spotifyExpired = linked.spotify?.expires_at && Date.now() > linked.spotify.expires_at - 30 * 1000;
+    if (linked.spotify?.access_token && !spotifyExpired) {
+      localStorage.setItem('spotify_access_token', linked.spotify.access_token);
+      localStorage.setItem('spotify_refresh_token', linked.spotify.refresh_token);
+      localStorage.setItem('spotify_expires_at', String(linked.spotify.expires_at));
+      synced.push('Spotify');
+    } else if (linked.spotify && spotifyExpired) {
+      setSyncing(false);
+      setSyncMsg('Spotify session expired — re-link Spotify at unvaulted.cc/account');
+      setTimeout(() => setSyncMsg(''), 6000);
+      return;
+    }
+    if (linked.lastfm?.session_key) {
+      localStorage.setItem('lastfm_session_key', linked.lastfm.session_key);
+      if (linked.lastfm.username) localStorage.setItem('lastfm_username', linked.lastfm.username);
+      synced.push('Last.fm');
+    }
+
+    const dataRes = await fetch(`${VG_API}/api/sync`, { headers: { Authorization: `Bearer ${token}` } });
+    if (dataRes.ok) {
+      const allData = await dataRes.json() as Record<string, {
+        favorites: { songName: string; eraName: string; url: string }[];
+        playlists: { id: string; name: string; cover?: string; songs: { songName: string; eraName: string; url: string }[] }[];
+      }>;
+      let totalFavs = 0;
+      let totalPls = 0;
+      for (const [trackerId, data] of Object.entries(allData)) {
+        const prefix = TRACKER_PREFIXES[trackerId];
+        if (!prefix) continue;
+        localStorage.setItem(`${prefix}favorite_keys`, JSON.stringify(data.favorites ?? []));
+        localStorage.setItem(`${prefix}playlists`, JSON.stringify(data.playlists ?? []));
+        totalFavs += data.favorites?.length ?? 0;
+        totalPls += data.playlists?.length ?? 0;
+      }
+      if (totalFavs > 0 || totalPls > 0) {
+        synced.push(`${totalFavs} favorite${totalFavs !== 1 ? 's' : ''} & ${totalPls} playlist${totalPls !== 1 ? 's' : ''}`);
+        window.dispatchEvent(new CustomEvent('vg-data-synced'));
+      }
+    }
+
+    setSyncing(false);
+    setSyncMsg(synced.length ? `Synced ${synced.join(' & ')}` : 'No services linked yet');
+    setTimeout(() => setSyncMsg(''), 3000);
   };
 
   return (
@@ -192,6 +252,29 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           <Toggle on={settings.syncedLyricsOnly} onToggle={() => updateSettings({ syncedLyricsOnly: !settings.syncedLyricsOnly })} />
         </div>
 
+        {getVGUser() && (
+          <>
+            <button
+              onClick={doSync}
+              disabled={syncing}
+              style={{
+                marginTop: 8, padding: '12px 16px', borderRadius: 12, border: 'none',
+                background: '#FFD700', color: '#000', fontSize: 14, fontWeight: 700,
+                cursor: 'pointer', opacity: syncing ? 0.5 : 1, transition: 'opacity 0.2s',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              }}
+            >
+              <RefreshCw size={14} className={syncing ? 'animate-spin' : ''} />
+              {syncing ? 'Syncing...' : 'Sync Services'}
+            </button>
+            {syncMsg && (
+              <p style={{ fontSize: 12, textAlign: 'center', color: syncMsg.includes('failed') ? '#ef4444' : '#4ade80', margin: 0 }}>
+                {syncMsg}
+              </p>
+            )}
+          </>
+        )}
+
         <button
           onClick={handleReset}
           style={{
@@ -220,6 +303,22 @@ function GearIcon() {
 const VG_API = 'https://unvaulted.cc';
 const TOKEN_KEY = 'vg_token';
 const USER_KEY = 'vg_user';
+
+// slug → localStorage prefix for every tracker
+const TRACKER_PREFIXES: Record<string, string> = {
+  yzygold: 'yzygold_',
+  vampgold: 'vampgold_',
+  kdotgold: 'kdotgold_',
+  drizzygold: 'drizzygold_',
+  xgold: 'xgold_',
+  twizzygold: 'twizzygold_',
+  uzigold: 'uzigold_',
+  pushagold: 'pushagold_',
+  shadygold: 'shadygold_',
+  cactigold: 'cactigold_',
+  dregold: 'dregold_',
+  luckigold: 'luckigold_',
+};
 
 interface VGUser { id: string; username: string; email: string; }
 
