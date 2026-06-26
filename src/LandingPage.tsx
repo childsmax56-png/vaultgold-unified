@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SiDiscord, SiReddit, SiTiktok, SiX } from 'react-icons/si';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, LogIn, LogOut, User, X } from 'lucide-react';
 import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
 import { useSettings, LOADING_SCREENS } from './SettingsContext';
@@ -88,6 +88,14 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
   const [confirmReset, setConfirmReset] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [syncMsg, setSyncMsg] = useState('');
+  const [vgUser, setVgUser] = useState<VGUser | null>(getVGUser);
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [authTab, setAuthTab] = useState<'login' | 'register'>('login');
+  const [loginVal, setLoginVal] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [authError, setAuthError] = useState('');
   const row: React.CSSProperties = {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     padding: '14px 16px', background: '#111', border: '1px solid rgba(255,255,255,0.06)',
@@ -156,6 +164,48 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
     setSyncing(false);
     setSyncMsg(synced.length ? `Synced ${synced.join(' & ')}` : 'No services linked yet');
     setTimeout(() => setSyncMsg(''), 3000);
+  };
+
+  const doLogin = async () => {
+    setAuthError('');
+    const res = await fetch(`${VG_API}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ login: loginVal, password }),
+    });
+    const data = await res.json();
+    if (!res.ok) return setAuthError(data.error || 'Sign in failed');
+    localStorage.setItem(TOKEN_KEY, data.token);
+    localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+    setVgUser(data.user);
+    setShowSignIn(false);
+  };
+
+  const doRegister = async () => {
+    setAuthError('');
+    const res = await fetch(`${VG_API}/api/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, password }),
+    });
+    const data = await res.json();
+    if (!res.ok) return setAuthError(data.error || 'Registration failed');
+    localStorage.setItem(TOKEN_KEY, data.token);
+    localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+    setVgUser(data.user);
+    setShowSignIn(false);
+  };
+
+  const doVGGoogle = () => {
+    window.location.href = `${VG_API}/api/auth/google/connect?return_to=${encodeURIComponent(window.location.origin)}`;
+  };
+
+  const doVGSignOut = async () => {
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (token) await fetch(`${VG_API}/api/auth/logout`, { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => {});
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
+    setVgUser(null);
   };
 
   return (
@@ -252,8 +302,12 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           <Toggle on={settings.syncedLyricsOnly} onToggle={() => updateSettings({ syncedLyricsOnly: !settings.syncedLyricsOnly })} />
         </div>
 
-        {getVGUser() && (
+        {vgUser ? (
           <>
+            <div style={{ ...row, justifyContent: 'flex-start', gap: 10 }}>
+              <User size={16} color="rgba(255,255,255,0.5)" />
+              <div style={label}>Signed in as {vgUser.username}</div>
+            </div>
             <button
               onClick={doSync}
               disabled={syncing}
@@ -272,7 +326,34 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
                 {syncMsg}
               </p>
             )}
+            <button
+              onClick={doVGSignOut}
+              style={{
+                padding: '10px 16px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.1)',
+                background: 'transparent', color: 'rgba(255,255,255,0.4)', fontSize: 13, fontWeight: 500,
+                cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              }}
+            >
+              <LogOut size={13} /> Sign Out
+            </button>
           </>
+        ) : (
+          <div style={{ ...row, flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
+            <div>
+              <div style={label}>Sync Spotify & Last.fm</div>
+              <div style={sublabel}>In order to gain access to Spotify and Last.fm, sign into your VaultGold account here.</div>
+            </div>
+            <button
+              onClick={() => setShowSignIn(true)}
+              style={{
+                width: '100%', padding: '10px 16px', borderRadius: 10, border: 'none',
+                background: '#FFD700', color: '#000', fontSize: 13, fontWeight: 700,
+                cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              }}
+            >
+              <LogIn size={14} /> Sign in to VaultGold
+            </button>
+          </div>
         )}
 
         <button
@@ -287,6 +368,124 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           {confirmReset ? 'Click again to confirm reset' : 'Reset All Settings'}
         </button>
       </div>
+
+      {showSignIn && (
+        <div
+          onClick={() => setShowSignIn(false)}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 200, display: 'flex', alignItems: 'center',
+            justifyContent: 'center', padding: 16, background: 'rgba(0,0,0,0.8)',
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: '#111', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14,
+              width: '100%', maxWidth: 380, padding: 24,
+              fontFamily: "'Inter', system-ui, sans-serif",
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+              <span style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>VaultGold Account</span>
+              <button
+                onClick={() => setShowSignIn(false)}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)' }}
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+              {(['login', 'register'] as const).map(t => (
+                <button
+                  key={t}
+                  onClick={() => { setAuthTab(t); setAuthError(''); }}
+                  style={{
+                    padding: '0 8px 10px', background: 'none', border: 'none', cursor: 'pointer',
+                    fontSize: 13, fontWeight: 700, marginBottom: -1,
+                    borderBottom: `2px solid ${authTab === t ? '#FFD700' : 'transparent'}`,
+                    color: authTab === t ? '#FFD700' : 'rgba(255,255,255,0.4)',
+                  }}
+                >
+                  {t === 'login' ? 'Sign In' : 'Create Account'}
+                </button>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {authTab === 'register' && (
+                <input
+                  placeholder="Username"
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  autoComplete="username"
+                  style={{ width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '10px 12px', color: '#fff', fontSize: 13, outline: 'none' }}
+                />
+              )}
+              {authTab === 'register' && (
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  autoComplete="email"
+                  style={{ width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '10px 12px', color: '#fff', fontSize: 13, outline: 'none' }}
+                />
+              )}
+              {authTab === 'login' && (
+                <input
+                  placeholder="Username or email"
+                  value={loginVal}
+                  onChange={e => setLoginVal(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && doLogin()}
+                  autoComplete="username"
+                  style={{ width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '10px 12px', color: '#fff', fontSize: 13, outline: 'none' }}
+                />
+              )}
+              <input
+                type="password"
+                placeholder={authTab === 'register' ? 'Password (min. 8 characters)' : 'Password'}
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && (authTab === 'login' ? doLogin() : doRegister())}
+                autoComplete={authTab === 'login' ? 'current-password' : 'new-password'}
+                style={{ width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '10px 12px', color: '#fff', fontSize: 13, outline: 'none' }}
+              />
+
+              <button
+                onClick={authTab === 'login' ? doLogin : doRegister}
+                style={{
+                  width: '100%', padding: '11px 0', borderRadius: 8, border: 'none',
+                  background: '#FFD700', color: '#000', fontSize: 13, fontWeight: 700,
+                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                }}
+              >
+                {authTab === 'login' ? <LogIn size={14} /> : <User size={14} />}
+                {authTab === 'login' ? 'Sign In' : 'Create Account'}
+              </button>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '4px 0' }}>
+                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.1)' }} />
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>or</span>
+                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.1)' }} />
+              </div>
+
+              <button
+                onClick={doVGGoogle}
+                style={{
+                  width: '100%', padding: '11px 0', borderRadius: 8, border: 'none',
+                  background: '#fff', color: '#000', fontSize: 13, fontWeight: 700,
+                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                }}
+              >
+                <GoogleIcon /> Continue with Google
+              </button>
+
+              {authError && <p style={{ fontSize: 12, color: '#ef4444', textAlign: 'center', margin: 0 }}>{authError}</p>}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
