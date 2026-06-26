@@ -13,7 +13,6 @@ import { embedID3Tags, detectAudioExt, ALBUM_RELEASE_DATES, CUSTOM_IMAGES, build
 import { ArtEntry } from './ArtGallery';
 import { StemEntry } from './StemsView';
 import { MiscEntry } from './MiscView';
-import { VaultGoldSection } from './VaultGoldSection';
 
 interface SettingsViewProps {
   onCategoryChange: (cat: Category) => void;
@@ -1054,8 +1053,6 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
             </div>
           </div>
         )}
-
-        <VaultGoldSection matchesSearch={matchesSearch} />
 
       </div>
 
