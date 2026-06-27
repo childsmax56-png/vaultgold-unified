@@ -42,6 +42,8 @@ export interface ArtistConfig {
   hasSubAlbumsTab?: boolean;
   hasArtTab?: boolean; // set false to force-hide the Art tab regardless of data
   hasVideosTab?: boolean; // set false to force-hide the Videos tab regardless of data
+  hasMiscTab?: boolean; // set false to force-hide the Misc tab regardless of data
+  hasTracklistsTab?: boolean; // set false to force-hide the Tracklists tab regardless of data
   SHEET_URL_RECENT_PRODUCTION?: string; // CSV export URL for a second recent tab (production projects)
   productionFirst?: boolean; // show Production Projects before Music in navbar
   productionSecond?: boolean; // show Production Projects second (right after Music) in navbar

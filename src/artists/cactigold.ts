@@ -97,6 +97,11 @@ export const cactigoldConfig: ArtistConfig = {
 
   hasCompsTab: false,
   hasConcertsTab: false,
+  hasArtTab: false,
+  hasVideosTab: false,
+  hasMiscTab: false,
+  hasTracklistsTab: false,
+  hasSubAlbumsTab: false,
 
   TAG_MAP: {
     "⭐": "Best Of", "🏆": "Grails", "🥇": "Wanted", "🏅": "Wanted",
