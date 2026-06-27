@@ -796,11 +796,12 @@ function ExternalSmallCard({ href, label, logoSrc, logoAlt, accent, photoSrc, va
   );
 }
 
-function MyTrackerCard() {
-  const accent = '#C9A224';
+function BigLinkCard({ href, accent, badge, titleMain, titleAccent, subtitle, watermark }: {
+  href: string; accent: string; badge: string; titleMain: string; titleAccent: string; subtitle: string; watermark: string;
+}) {
   return (
     <a
-      href="/my-tracker"
+      href={href}
       style={{
         position: 'relative',
         display: 'flex',
@@ -830,16 +831,16 @@ function MyTrackerCard() {
       }}
     >
       <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>Custom</div>
-        <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1 }}>MY <span style={{ color: accent }}>TRACKER</span></div>
+        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>{badge}</div>
+        <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1 }}>{titleMain} <span style={{ color: accent }}>{titleAccent}</span></div>
       </div>
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Link your own Google Sheet</span>
+        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{subtitle}</span>
         <div style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)' }}><path d="M2 10L10 2M10 2H4M10 2v6" /></svg>
         </div>
       </div>
-      <div style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>MTR</div>
+      <div style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>{watermark}</div>
     </a>
   );
 }
@@ -1221,8 +1222,34 @@ export function LandingPage() {
         )}
       </main>
 
-      <div style={{ width: '100%', maxWidth: 900, marginTop: 8 }}>
-        <MyTrackerCard />
+      <div style={{ width: '100%', maxWidth: 900, marginTop: 8, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 8 }}>
+        <BigLinkCard
+          href="/my-tracker"
+          accent="#C9A224"
+          badge="Custom"
+          titleMain="MY"
+          titleAccent="TRACKER"
+          subtitle="Link your own Google Sheet"
+          watermark="MTR"
+        />
+        <BigLinkCard
+          href="/yeditsgold"
+          accent="#FFD700"
+          badge="Edits"
+          titleMain="YEDITS"
+          titleAccent="GOLD"
+          subtitle="Browse fan edits"
+          watermark="YE"
+        />
+        <BigLinkCard
+          href="/label"
+          accent="#C9A224"
+          badge="Label"
+          titleMain="UNVAULTED"
+          titleAccent="RECORDS"
+          subtitle="Explore the label"
+          watermark="UR"
+        />
       </div>
 
       <div style={{ width: '100%', maxWidth: 900, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
@@ -1257,12 +1284,6 @@ export function LandingPage() {
             </div>
           </div>
         )}
-        <a href="/label" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(201,162,36,0.08)', border: '1px solid rgba(201,162,36,0.2)', color: '#C9A224', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          Unvaulted Records
-        </a>
-        <a href="/yeditsgold" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.2)', color: '#FFD700', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          yedits<span style={{ color: 'rgba(255,215,0,0.7)' }}>gold</span>
-        </a>
         {user ? (
           <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>{user.username}</span>
