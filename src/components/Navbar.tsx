@@ -107,6 +107,8 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     if (key === 'related' && activeConfig.HIDDEN_ALBUMS.length === 0) return false;
     if (key === 'art' && activeConfig.hasArtTab === false) return false;
     if (key === 'videos' && activeConfig.hasVideosTab === false) return false;
+    if (key === 'misc' && activeConfig.hasMiscTab === false) return false;
+    if (key === 'tracklists' && activeConfig.hasTracklistsTab === false) return false;
     if (DATA_DRIVEN_TABS.has(key) && fetchedTabs?.has(key) && !tabsWithData?.has(key)) return false;
     return true;
   });
