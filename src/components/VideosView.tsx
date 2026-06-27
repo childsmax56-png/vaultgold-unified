@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, ChevronDown, ChevronUp, Film, Maximize2, Minimize2, X } from 'lucide-react';
 import { Era } from '../types';
-import { createSlug, CUSTOM_IMAGES , retryImageOnError} from '../utils';
+import { createSlug, CUSTOM_IMAGES , retryImageOnError, relPath, absPath} from '../utils';
 import { useSettings } from '../SettingsContext';
 
 export interface VideoRawEntry {
@@ -698,7 +698,7 @@ export function VideosView({ eras, videosData, searchQuery, onVideoPlay }: Video
   }, []);
 
   useEffect(() => {
-    const path = window.location.pathname;
+    const path = relPath(window.location.pathname);
     if (path.startsWith('/videos/')) {
       const slug = path.split('/videos/')[1];
       if (slug) {
@@ -709,21 +709,22 @@ export function VideosView({ eras, videosData, searchQuery, onVideoPlay }: Video
   }, [eraGroups]);
 
   useEffect(() => {
+    const currentPath = relPath(window.location.pathname);
     if (selectedEra) {
       const newPath = `/videos/${createSlug(selectedEra)}`;
-      if (window.location.pathname !== newPath) {
-        window.history.pushState({ videosEra: selectedEra }, '', newPath);
+      if (currentPath !== newPath) {
+        window.history.pushState({ videosEra: selectedEra }, '', absPath(newPath));
       }
     } else {
-      if (window.location.pathname.startsWith('/videos/')) {
-        window.history.pushState({ videosEra: null }, '', '/videos');
+      if (currentPath.startsWith('/videos/')) {
+        window.history.pushState({ videosEra: null }, '', absPath('/videos'));
       }
     }
   }, [selectedEra]);
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname;
+      const path = relPath(window.location.pathname);
       if (path.startsWith('/videos/')) {
         const slug = path.split('/videos/')[1];
         const match = eraGroups.find(g => createSlug(g.name) === slug);

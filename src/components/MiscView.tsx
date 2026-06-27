@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Star } from 'lucide-react';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, createSlug, getSongSlug, ALBUM_RELEASE_DATES, matchesFilters, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, createSlug, getSongSlug, ALBUM_RELEASE_DATES, matchesFilters, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError, relPath, absPath} from '../utils';
 import { SongTitle } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
@@ -134,7 +134,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
   }, [miscData, eras]);
 
   useEffect(() => {
-    const path = window.location.pathname;
+    const path = relPath(window.location.pathname);
     if (path.startsWith('/misc/')) {
       const slug = path.split('/misc/')[1];
       if (slug) {
@@ -145,21 +145,22 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
   }, [parsedEras]);
 
   useEffect(() => {
+    const currentPath = relPath(window.location.pathname);
     if (selectedEra) {
       const newPath = `/misc/${createSlug(selectedEra)}`;
-      if (window.location.pathname !== newPath) {
-        window.history.pushState({ miscEra: selectedEra }, '', newPath);
+      if (currentPath !== newPath) {
+        window.history.pushState({ miscEra: selectedEra }, '', absPath(newPath));
       }
     } else {
-      if (window.location.pathname.startsWith('/misc/')) {
-        window.history.pushState({ miscEra: null }, '', '/misc');
+      if (currentPath.startsWith('/misc/')) {
+        window.history.pushState({ miscEra: null }, '', absPath('/misc'));
       }
     }
   }, [selectedEra]);
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname;
+      const path = relPath(window.location.pathname);
       if (path.startsWith('/misc/')) {
         const slug = path.split('/misc/')[1];
         const match = parsedEras.find(e => createSlug(e.eraName) === slug);
