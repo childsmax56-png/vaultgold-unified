@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Star } from 'lucide-react';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError, relPath, absPath} from '../utils';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
@@ -215,7 +215,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
   }, [stemsData, eras]);
 
   useEffect(() => {
-    const path = window.location.pathname;
+    const path = relPath(window.location.pathname);
     if (path.startsWith('/stems/')) {
       const slug = path.split('/stems/')[1];
       if (slug) {
@@ -226,21 +226,22 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
   }, [parsedEras]);
 
   useEffect(() => {
+    const currentPath = relPath(window.location.pathname);
     if (selectedEra) {
       const newPath = `/stems/${createSlug(selectedEra)}`;
-      if (window.location.pathname !== newPath) {
-        window.history.pushState({ stemsEra: selectedEra }, '', newPath);
+      if (currentPath !== newPath) {
+        window.history.pushState({ stemsEra: selectedEra }, '', absPath(newPath));
       }
     } else {
-      if (window.location.pathname.startsWith('/stems/')) {
-        window.history.pushState({ stemsEra: null }, '', '/stems');
+      if (currentPath.startsWith('/stems/')) {
+        window.history.pushState({ stemsEra: null }, '', absPath('/stems'));
       }
     }
   }, [selectedEra]);
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname;
+      const path = relPath(window.location.pathname);
       if (path.startsWith('/stems/')) {
         const slug = path.split('/stems/')[1];
         const match = parsedEras.find(e => createSlug(e.eraName) === slug);

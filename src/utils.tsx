@@ -18,6 +18,26 @@ export function retryImageOnError(e: React.SyntheticEvent<HTMLImageElement, Even
   img.src = url.toString();
 }
 
+// When running under /:artist/ prefix on a unified host (e.g. unvaulted.cc/cactigold/),
+// window.location.pathname includes the artist segment. Components that read/write
+// window.location.pathname directly (e.g. for sub-route deep-linking) must strip/restore
+// this prefix themselves, or a pushState with a bare path like "/stems/foo" will be
+// mis-parsed by the top-level "/:artist/*" route as artist="stems" on the next navigation,
+// bouncing the user to the homepage.
+function getArtistUrlPrefix(): string {
+  const p = `/${activeConfig.slug}`;
+  const loc = window.location.pathname;
+  return (loc === p || loc.startsWith(p + '/')) ? p : '';
+}
+export const relPath = (abs: string) => {
+  const prefix = getArtistUrlPrefix();
+  return prefix && abs.startsWith(prefix) ? (abs.slice(prefix.length) || '/') : abs;
+};
+export const absPath = (rel: string) => {
+  const prefix = getArtistUrlPrefix();
+  return rel === '/' ? (prefix || '/') : prefix + rel;
+};
+
 // Delegate all artist-specific constants to the mutable active config.
 // Components remount on artist change (key={slug}), so reads always reflect
 // the config that was set before the remount.
