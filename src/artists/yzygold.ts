@@ -304,6 +304,18 @@ export const yzygoldConfig: ArtistConfig = {
       miniPlayer: "/yzygold/MiniPlayerYandhi.png",
       fullPicturePlayer: "/yzygold/FullPicturePlayerYandhi.png",
     },
+    "My Beautiful Dark Twisted Fantasy": {
+      topBanner: "/yzygold/TopBannerMBDTF.png",
+      bottomBanner: "/yzygold/BottomBannerMBDTF.png",
+      miniPlayer: "/yzygold/MiniPlayerMBDTF.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerMBDTF.png",
+    },
+    "Thank God For Drugs": {
+      topBanner: "/yzygold/TopBannerTGFD.png",
+      bottomBanner: "/yzygold/BottomBannerTGFD.png",
+      miniPlayer: "/yzygold/MiniPlayerTGFD.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerTGFD.png",
+    },
   },
 
   TAG_TOOLTIP_MAP: {
