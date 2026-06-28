@@ -4,7 +4,7 @@ import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loa
 import { SiYoutube } from 'react-icons/si';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , retryImageOnError} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , retryImageOnError, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
@@ -269,7 +269,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
 
-    await Promise.all(allFilteredPlayableSongs.map(async (song) => {
+    await runWithConcurrencyLimit(allFilteredPlayableSongs, async (song) => {
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
       if (!rawUrl || !(rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('pixeldrain.com/u/') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('ibb.co') || rawUrl.match(/\.(png|jpg|jpeg)$/i) || rawUrl.startsWith('https://i.scdn.co/'))) return;
       try {
@@ -323,11 +323,12 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         } else if (isLossless && ext === '.flac') {
           try { blob = await flacToWav(blob); ext = '.wav'; } catch { /* keep as FLAC */ }
         }
-        zip.file(`${fileName}${ext}`, blob);
+        zip.file(`${sanitizeFilename(fileName)}${ext}`, blob);
       } catch (err) {
         console.error(`Failed to download ${song.name}:`, err);
+        throw err;
       }
-    }));
+    }, 4);
 
     setToastMessage('Zipping...');
     try {
@@ -371,7 +372,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
 
-    await Promise.all(selectedSongs.map(async (song) => {
+    await runWithConcurrencyLimit(selectedSongs, async (song) => {
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
       if (!rawUrl) return;
       try {
@@ -414,11 +415,12 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         } else if (isLossless && ext === '.flac') {
           try { blob = await flacToWav(blob); ext = '.wav'; } catch { /* keep as FLAC */ }
         }
-        zip.file(`${fileName}${ext}`, blob);
+        zip.file(`${sanitizeFilename(fileName)}${ext}`, blob);
       } catch (err) {
         console.error(`Failed to download ${song.name}:`, err);
+        throw err;
       }
-    }));
+    }, 4);
 
     setToastMessage('Zipping...');
     try {

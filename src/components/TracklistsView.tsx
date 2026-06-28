@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, ChevronDown, ChevronUp, Download, ExternalLink, Play, Pause } from 'lucide-react';
 import { saveAs } from 'file-saver';
 import { Era, Song } from '../types';
-import { isSongNotAvailable, embedID3Tags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag } from '../utils';
+import { isSongNotAvailable, embedID3Tags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 import { useSettings } from '../SettingsContext';
 
 export interface TracklistAlbum {
@@ -161,10 +161,6 @@ interface AlbumCardProps {
   isPlaying?: boolean;
 }
 
-function sanitizeFilename(name: string): string {
-  return name.replace(/[/\\:*?"<>|]/g, '_').trim();
-}
-
 async function resolveAudioUrl(rawUrl: string): Promise<string> {
   if (rawUrl.includes('imgur.gg/f/')) {
     const id = rawUrl.split('/f/')[1];
@@ -212,7 +208,7 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
     const zip = new JSZip();
     let done = 0;
 
-    await Promise.all(playable.map(async ({ track, match }) => {
+    await runWithConcurrencyLimit(playable, async ({ track, match }) => {
       try {
         const rawUrl = match.song.url || match.song.urls?.[0] || '';
         const fetchUrl = await resolveAudioUrl(rawUrl);
@@ -243,7 +239,7 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
         done++;
         setDlProgress(`${done} / ${playable.length}`);
       }
-    }));
+    }, 4);
 
     const content = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
     saveAs(content, `${sanitizeFilename(album.name)}.zip`);

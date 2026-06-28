@@ -9,7 +9,7 @@ import { SiLastdotfm } from 'react-icons/si';
 import { isLastfmLoggedIn } from '../lastfm';
 import { saveAs } from 'file-saver';
 import { Era } from '../types';
-import { embedID3Tags, detectAudioExt, ALBUM_RELEASE_DATES, CUSTOM_IMAGES, buildArtistTag } from '../utils';
+import { embedID3Tags, detectAudioExt, ALBUM_RELEASE_DATES, CUSTOM_IMAGES, buildArtistTag, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 import { ArtEntry } from './ArtGallery';
 import { StemEntry } from './StemsView';
 import { MiscEntry } from './MiscView';
@@ -36,10 +36,6 @@ async function resolveAudioUrl(rawUrl: string): Promise<string> {
     return `https://api.pillows.su/api/get/${id}`;
   }
   return rawUrl;
-}
-
-function sanitizeFilename(name: string): string {
-  return name.replace(/[/\\?%*:|"<>]/g, '-').trim();
 }
 
 export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData = [], stemsData = [], miscData = [] }: SettingsViewProps) {
@@ -70,7 +66,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
-    await Promise.all(songs.map(async ({ name, era, eraImage, songImage, url }) => {
+    await runWithConcurrencyLimit(songs, async ({ name, era, eraImage, songImage, url }) => {
       try {
         const fetchUrl = await resolveAudioUrl(url);
         const res = await fetch(fetchUrl);
@@ -95,7 +91,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('unreleased', `${done} / ${songs.length}`);
       }
-    }));
+    }, 4);
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-unreleased.zip');
     setProgress('unreleased', null);
@@ -109,7 +105,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
-    await Promise.all(items.map(async (item) => {
+    await runWithConcurrencyLimit(items, async (item) => {
       try {
         const url = item['Link(s)'].split('\n')[0].trim();
         const res = await fetch(url);
@@ -121,7 +117,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('art', `${done} / ${items.length}`);
       }
-    }));
+    }, 4);
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-art.zip');
     setProgress('art', null);
@@ -135,7 +131,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
-    await Promise.all(items.map(async (item) => {
+    await runWithConcurrencyLimit(items, async (item) => {
       try {
         const url = item['Link(s)']!.split('\n')[0].trim();
         const fetchUrl = await resolveAudioUrl(url);
@@ -148,7 +144,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('stems', `${done} / ${items.length}`);
       }
-    }));
+    }, 4);
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-stems.zip');
     setProgress('stems', null);
@@ -162,7 +158,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
-    await Promise.all(items.map(async (item) => {
+    await runWithConcurrencyLimit(items, async (item) => {
       try {
         const url = item['Link(s)']!.split('\n')[0].trim();
         const fetchUrl = await resolveAudioUrl(url);
@@ -176,7 +172,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('misc', `${done} / ${items.length}`);
       }
-    }));
+    }, 4);
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-misc.zip');
     setProgress('misc', null);
@@ -207,9 +203,18 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
 
     setProgress('everything', `0 / ${total}`);
 
-    await Promise.all([
-      ...songs.map(async ({ name, era, eraImage, songImage, url }) => {
-        try {
+    type DownloadTask = { kind: 'song' | 'art' | 'stem' | 'misc'; data: any };
+    const tasks: DownloadTask[] = [
+      ...songs.map(data => ({ kind: 'song' as const, data })),
+      ...artItems.map(data => ({ kind: 'art' as const, data })),
+      ...stemItems.map(data => ({ kind: 'stem' as const, data })),
+      ...miscItems.map(data => ({ kind: 'misc' as const, data })),
+    ];
+
+    await runWithConcurrencyLimit(tasks, async ({ kind, data }) => {
+      try {
+        if (kind === 'song') {
+          const { name, era, eraImage, songImage, url } = data;
           const fetchUrl = await resolveAudioUrl(url);
           const res = await fetch(fetchUrl);
           if (!res.ok) throw new Error('fetch failed');
@@ -229,20 +234,16 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
             } catch { /* skip tagging, save raw */ }
           }
           zip.file(`unreleased/${sanitizeFilename(era)}/${sanitizeFilename(name)}${ext}`, blob);
-        } catch { /* skip */ } finally { tick(); }
-      }),
-      ...artItems.map(async (item) => {
-        try {
+        } else if (kind === 'art') {
+          const item = data;
           const url = item['Link(s)'].split('\n')[0].trim();
           const res = await fetch(url);
           if (!res.ok) throw new Error('fetch failed');
           const blob = await res.blob();
           const ext = blob.type.includes('png') ? '.png' : blob.type.includes('gif') ? '.gif' : blob.type.includes('webp') ? '.webp' : '.jpg';
           zip.file(`art/${sanitizeFilename(item.Era || 'misc')}/${sanitizeFilename(item.Name)}${ext}`, blob);
-        } catch { /* skip */ } finally { tick(); }
-      }),
-      ...stemItems.map(async (item) => {
-        try {
+        } else if (kind === 'stem') {
+          const item = data;
           const url = item['Link(s)']!.split('\n')[0].trim();
           const fetchUrl = await resolveAudioUrl(url);
           const res = await fetch(fetchUrl);
@@ -250,10 +251,8 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
           const blob = await res.blob();
           const ext = await detectAudioExt(blob);
           zip.file(`stems/${sanitizeFilename(item.Era || 'misc')}/${sanitizeFilename(item.Name)}${ext}`, blob);
-        } catch { /* skip */ } finally { tick(); }
-      }),
-      ...miscItems.map(async (item) => {
-        try {
+        } else {
+          const item = data;
           const url = item['Link(s)']!.split('\n')[0].trim();
           const fetchUrl = await resolveAudioUrl(url);
           const res = await fetch(fetchUrl);
@@ -262,9 +261,9 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
           const isImg = blob.type.includes('png') || blob.type.includes('jpg') || blob.type.includes('jpeg') || blob.type.includes('gif') || blob.type.includes('webp');
           const ext = isImg ? (blob.type.includes('png') ? '.png' : blob.type.includes('gif') ? '.gif' : blob.type.includes('webp') ? '.webp' : '.jpg') : await detectAudioExt(blob);
           zip.file(`misc/${sanitizeFilename(item.Era || 'misc')}/${sanitizeFilename(item.Name)}${ext}`, blob);
-        } catch { /* skip */ } finally { tick(); }
-      }),
-    ]);
+        }
+      } catch { /* skip */ } finally { tick(); }
+    }, 4);
 
     setProgress('everything', 'Zipping...');
     const content = await zip.generateAsync({ type: 'blob' });

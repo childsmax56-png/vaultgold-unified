@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import JSZip from 'jszip';
 import { Song, Era } from '../types';
 import { ARTIST_LIST } from '../artists/registry';
-import { retryImageOnError } from '../utils';
+import { retryImageOnError, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 
 interface VGUser { id: string; username: string; email: string; }
 
@@ -756,17 +756,17 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     setZipping(true);
     try {
       const zip = new JSZip();
-      await Promise.all(songs.map(async (song) => {
+      await runWithConcurrencyLimit(songs, async (song) => {
         if (!song.url) return;
-        const res = await fetch(song.url);
+        const res = await fetch(song.url, { signal: AbortSignal.timeout(30000) });
         if (!res.ok) return;
         const blob = await res.blob();
         const songKey = decodeURIComponent(song.url.replace('/api/yedits-file?key=', ''));
         const filename = songKey.split('/').pop() ?? song.name;
         const displayName = songsMeta?.[filename]?.displayName;
         const finalName = displayName ? `${displayName}${filename.substring(filename.lastIndexOf('.'))}` : filename;
-        zip.file(finalName, blob);
-      }));
+        zip.file(sanitizeFilename(finalName), blob);
+      }, 4);
       const blob = await zip.generateAsync({ type: 'blob' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
