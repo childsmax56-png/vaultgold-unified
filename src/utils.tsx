@@ -5,6 +5,43 @@ import { saveAs } from 'file-saver';
 import { useSettings } from './SettingsContext';
 import { activeConfig } from './artists/activeConfig';
 
+export function sanitizeFilename(name: string): string {
+  return name.replace(/[/\\?%*:|"<>]/g, '-').trim();
+}
+
+// Firing dozens of fetches at once via Promise.all hits per-host connection
+// limits and upstream rate limiting, causing many requests to time out.
+// Running a bounded number at a time (with a couple of retries on failure)
+// lets large batches finish instead of dropping most of them.
+export async function runWithConcurrencyLimit<T>(
+  items: T[],
+  worker: (item: T, index: number) => Promise<void>,
+  concurrency = 4,
+  retries = 2,
+): Promise<void> {
+  let cursor = 0;
+  async function runNext(): Promise<void> {
+    while (cursor < items.length) {
+      const index = cursor++;
+      const item = items[index];
+      let attempt = 0;
+      while (true) {
+        try {
+          await worker(item, index);
+          break;
+        } catch (err) {
+          attempt++;
+          if (attempt > retries) {
+            console.error('Failed after retries:', err);
+            break;
+          }
+        }
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, () => runNext()));
+}
+
 // Browsers occasionally cache a broken/incomplete response for an image
 // (e.g. a request interrupted by navigation) and keep serving it from disk
 // cache, leaving the <img> blank until the user hard-refreshes. Retrying
@@ -1132,7 +1169,7 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
       return;
     }
 
-    saveAs(blob, fileName);
+    saveAs(blob, sanitizeFilename(fileName));
   } catch (e) {
     console.error('Download failed:', e);
     openFallback(finalUrl, formatTextForNotification(suggestedName, false));

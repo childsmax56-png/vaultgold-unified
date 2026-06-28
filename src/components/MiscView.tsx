@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Star } from 'lucide-react';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, createSlug, getSongSlug, ALBUM_RELEASE_DATES, matchesFilters, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError, relPath, absPath} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, createSlug, getSongSlug, ALBUM_RELEASE_DATES, matchesFilters, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError, relPath, absPath, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { SongTitle } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
@@ -286,7 +286,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
 
-    await Promise.all(allPlayableSongs.map(async (song) => {
+    await runWithConcurrencyLimit(allPlayableSongs, async (song) => {
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
       if (!rawUrl || !(rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('ibb.co') || rawUrl.match(/\.(png|jpg|jpeg)$/i) || rawUrl.startsWith('https://i.scdn.co/'))) return;
       try {
@@ -333,11 +333,12 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
             } catch { /* skip tagging, save raw */ }
           }
         }
-        zip.file(`${fileName}${ext}`, blob);
+        zip.file(`${sanitizeFilename(fileName)}${ext}`, blob);
       } catch (err) {
         console.error(`Failed to download ${song.name}:`, err);
+        throw err;
       }
-    }));
+    }, 4);
 
     setToastMessage('Zipping...');
     try {
