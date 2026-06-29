@@ -4,6 +4,7 @@ import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loa
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
 import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError, relPath, absPath, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
+import { useDownloadManager } from '../DownloadManagerContext';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
@@ -202,6 +203,7 @@ function parseStemsToEras(stemsData: StemEntry[], allEras: Era[]): { eraName: st
 
 export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, currentSong, isPlaying, mvData = [], remixData = [], samplesData = [], toggleFavorite, favoriteKeys = [] }: StemsViewProps) {
   const { settings } = useSettings();
+  const { startJob, updateJob, finishJob } = useDownloadManager();
   const [selectedEra, setSelectedEra] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -373,6 +375,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
     setToastMessage(`Preparing download for ${allPlayableSongs.length} items...`);
 
     const stemsEraName = selectedEraData!.eraName.replace(' [Stems Album]', '');
+    const jobId = startJob(stemsEraName, allPlayableSongs.length);
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
 
@@ -428,7 +431,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
         console.error(`Failed to download ${song.name}:`, err);
         throw err;
       }
-    }, 4);
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
 
     setToastMessage('Zipping...');
     try {
@@ -439,10 +442,12 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
         }
       );
       saveAs(content, `${stemsEraName}.zip`);
+      finishJob(jobId, 'done');
     } catch (err) {
       console.error('Zip generation failed:', err);
       setToastMessage('Download failed. Try downloading songs individually.');
       setTimeout(() => setToastMessage(null), 4000);
+      finishJob(jobId, 'error');
     } finally {
       setIsDownloading(false);
       setToastMessage(null);

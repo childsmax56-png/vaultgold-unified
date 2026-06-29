@@ -10,6 +10,7 @@ import { activeConfig } from '../artists/activeConfig';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
+import { useDownloadManager } from '../DownloadManagerContext';
 import { isLastfmLoggedIn } from '../lastfm';
 import { SiLastdotfm } from 'react-icons/si';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
@@ -200,6 +201,7 @@ export const handleShareSilent = (song: Song, era: Era): string => {
 
 export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, currentSong, isPlaying, mvData = [], remixData = [], samplesData = [], favoriteKeys = [], toggleFavorite, onNavigateToEra }: { key?: string, era: Era, onBack?: () => void, onPlaySong: (song: Song, era: Era, contextTracks?: Song[]) => void, searchQuery?: string, filters: SearchFilters, currentSong?: Song | null, isPlaying?: boolean, mvData?: MvEntry[], remixData?: RemixEntry[], samplesData?: SampleEntry[], favoriteKeys?: { songName: string, eraName: string, url: string }[], toggleFavorite?: (song: Song, eraName: string) => void, onNavigateToEra?: (era: Era) => void }) {
   const { settings, updateSettings } = useSettings();
+  const { startJob, updateJob, finishJob } = useDownloadManager();
   const [zoomedImage, setZoomedImage] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [showLatestOnly, setShowLatestOnly] = useState(false);
@@ -266,6 +268,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
     setIsDownloading(true);
     setToastMessage(`Preparing download for ${allFilteredPlayableSongs.length} songs...`);
+    const jobId = startJob(era.name, allFilteredPlayableSongs.length);
 
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
@@ -329,7 +332,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         console.error(`Failed to download ${song.name}:`, err);
         throw err;
       }
-    }, 4);
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
 
     setToastMessage('Zipping...');
     try {
@@ -340,10 +343,12 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         }
       );
       saveAs(content, `${era.name}.zip`);
+      finishJob(jobId, 'done');
     } catch (err) {
       console.error('Zip generation failed:', err);
       setToastMessage('Download failed. Try downloading songs individually.');
       setTimeout(() => setToastMessage(null), 4000);
+      finishJob(jobId, 'error');
     } finally {
       setIsDownloading(false);
       setToastMessage(null);
@@ -369,6 +374,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
     setIsDownloadingSelected(true);
     setToastMessage(`Preparing download for ${selectedSongs.length} songs...`);
+    const jobId = startJob('Selected Songs', selectedSongs.length);
 
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
@@ -421,15 +427,17 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         console.error(`Failed to download ${song.name}:`, err);
         throw err;
       }
-    }, 4);
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
 
     setToastMessage('Zipping...');
     try {
       const content = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
       saveAs(content, `Selected Songs.zip`);
+      finishJob(jobId, 'done');
     } catch {
       setToastMessage('Download failed.');
       setTimeout(() => setToastMessage(null), 4000);
+      finishJob(jobId, 'error');
     } finally {
       setIsDownloadingSelected(false);
       setToastMessage(null);

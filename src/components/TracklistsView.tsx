@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronDown, ChevronUp, Download, ExternalLink, Play, Pause 
 import { saveAs } from 'file-saver';
 import { Era, Song } from '../types';
 import { isSongNotAvailable, embedID3Tags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
+import { useDownloadManager } from '../DownloadManagerContext';
 import { useSettings } from '../SettingsContext';
 
 export interface TracklistAlbum {
@@ -183,6 +184,7 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
   const [open, setOpen] = useState(defaultOpen);
   const [dlProgress, setDlProgress] = useState<string | null>(null);
   const { settings } = useSettings();
+  const { startJob, updateJob, finishJob } = useDownloadManager();
 
   const playableSongs = useMemo(
     () => matches.filter((m): m is SongMatch => m !== null).map(m => m.song),
@@ -204,6 +206,7 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
     if (!playable.length) return;
 
     setDlProgress(`0 / ${playable.length}`);
+    const jobId = startJob(album.name, playable.length);
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
@@ -239,10 +242,11 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
         done++;
         setDlProgress(`${done} / ${playable.length}`);
       }
-    }, 4);
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
 
     const content = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
     saveAs(content, `${sanitizeFilename(album.name)}.zip`);
+    finishJob(jobId, 'done');
     setDlProgress(null);
   }, [album, matches, dlProgress]);
 

@@ -5,6 +5,8 @@ import App from './App.tsx';
 import { LandingPage } from './LandingPage.tsx';
 import './index.css';
 import { SettingsProvider } from './SettingsContext.tsx';
+import { DownloadManagerProvider } from './DownloadManagerContext.tsx';
+import { DownloadProgressWidget } from './components/DownloadProgressWidget.tsx';
 
 import { ErrorBoundary } from './ErrorBoundary.tsx';
 import { setActiveConfig } from './artists/activeConfig.ts';
@@ -39,16 +41,19 @@ function ArtistRoute() {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
-        <Route path="/my-tracker" element={<SettingsProvider><MyTrackerPage /></SettingsProvider>} />
-        <Route path="/label" element={<UnvaultedRecordsPage />} />
-        <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/:artist/*" element={<ArtistRoute />} />
-      </Routes>
-    </BrowserRouter>
+    <DownloadManagerProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
+          <Route path="/my-tracker" element={<SettingsProvider><MyTrackerPage /></SettingsProvider>} />
+          <Route path="/label" element={<UnvaultedRecordsPage />} />
+          <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/:artist/*" element={<ArtistRoute />} />
+        </Routes>
+      </BrowserRouter>
+      <DownloadProgressWidget />
+    </DownloadManagerProvider>
   </StrictMode>,
 );
