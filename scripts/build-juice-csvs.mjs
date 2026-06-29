@@ -141,6 +141,17 @@ async function main() {
     console.log(`  ${tab}: ${m.size} songs with links (${[...m.values()].reduce((a,b)=>a+b.length,0)} URLs)`);
   }
 
+  // Normalize the sheet's free-text Type column into the categories released.ts expects
+  const VALID_TYPES = new Set(['Feature', 'Production', 'Single', 'Album Track', 'Mixtape Track', 'EP Track', 'Other']);
+  function normalizeType(raw) {
+    const t = (raw || '').trim();
+    if (VALID_TYPES.has(t)) return t;
+    for (const candidate of ['Feature', 'Production', 'Album Track', 'Mixtape Track', 'EP Track', 'Single']) {
+      if (t.includes(candidate)) return candidate;
+    }
+    return 'Other';
+  }
+
   for (const tabDef of TABS) {
     const url = gviz(tabDef.gid);
     console.log(`\nFetching ${tabDef.name} (gid=${tabDef.gid})...`);
@@ -150,6 +161,58 @@ async function main() {
 
     const rows = parseCSV(rawText);
     if (!rows.length) { console.log(`  Empty, skipping`); continue; }
+
+    if (tabDef.name === 'released') {
+      const sample = rows[0];
+      const eraKey = findKey(sample, 'era');
+      const nameKey = findKey(sample, 'name');
+      const notesKey = findKey(sample, 'notes');
+      const dateKey = findKey(sample, 'date');
+      const typeKey = findKey(sample, 'type');
+      const streamKey = findKey(sample, 'streaming ');
+      console.log(`  Detected columns (released): era=${eraKey} name=${nameKey} notes=${notesKey} date=${dateKey} type=${typeKey} stream=${streamKey}`);
+
+      if (!eraKey || !nameKey) { console.error(`  Missing era/name columns, skipping`); continue; }
+
+      const tabLinks = linksIndex.get('released') || new Map();
+      const outHeaders = ['Era', 'Name', 'Notes', 'Length', 'Release Date', 'Type', 'Streaming', 'Link(s)'];
+      const outRows = [];
+      let linked = 0, total = 0;
+
+      for (const row of rows) {
+        const era = (row[eraKey] || '').trim();
+        const rawName = (row[nameKey] || '').trim();
+        const songName = rawName.split('\n')[0].trim();
+        if (era.includes('\n') || !era || !songName) continue;
+
+        const key = normEra(era) + '\x00' + normName(rawName);
+        let urls = tabLinks.get(key) || [];
+        if (!urls.length) {
+          for (const [k, v] of tabLinks) {
+            if (k.endsWith('\x00' + normName(rawName))) { urls = v; break; }
+          }
+        }
+        total++;
+        if (urls.length) linked++;
+        const sortedUrls = urls.filter(u => !u.includes('froste.lol'));
+
+        outRows.push({
+          'Era': era,
+          'Name': rawName,
+          'Notes': row[notesKey] || '',
+          'Length': '',
+          'Release Date': (row[dateKey] || '').trim(),
+          'Type': normalizeType(row[typeKey]),
+          'Streaming': (row[streamKey] || '').trim(),
+          'Link(s)': sortedUrls.join('\n'),
+        });
+      }
+
+      const outPath = join(OUT_DIR, tabDef.outFile);
+      writeFileSync(outPath, toCSV(outHeaders, outRows), 'utf8');
+      console.log(`  ✓ Wrote ${outRows.length} rows to ${outPath} (${linked}/${total} with links)`);
+      continue;
+    }
 
     // Detect key columns from first non-empty row
     const sample = rows[0];

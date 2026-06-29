@@ -594,13 +594,54 @@ const ARTIST_SIZE: Record<CardVariant, number> = { featured: 12, medium: 11, sma
 const CARD_PADDING: Record<CardVariant, string> = { featured: '24px 16px 14px', medium: '20px 12px 10px', small: '14px 10px 8px' };
 const LOGO_PADDING: Record<CardVariant, string> = { featured: '18px', medium: '14px', small: '10px' };
 
-function EditorialArtistCard({ config, showPhoto, variant }: {
+const FAVORITES_KEY = 'vg_favorite_artists';
+function useFavoriteArtists() {
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    try { return JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'); } catch { return []; }
+  });
+  const toggleFavorite = (slug: string) => {
+    setFavorites(prev => {
+      const next = prev.includes(slug) ? prev.filter(s => s !== slug) : [...prev, slug];
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
+      return next;
+    });
+  };
+  return { favorites, toggleFavorite };
+}
+
+function FavoriteButton({ active, onToggle }: { active: boolean; onToggle: (e: React.MouseEvent) => void }) {
+  return (
+    <button
+      onClick={onToggle}
+      aria-label={active ? 'Unfavorite artist' : 'Favorite artist'}
+      style={{
+        position: 'absolute', top: 6, left: 6, zIndex: 2,
+        width: 22, height: 22, borderRadius: 6, border: 'none', cursor: 'pointer',
+        background: active ? 'rgba(201,162,36,0.25)' : 'rgba(0,0,0,0.4)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        transition: 'background 0.15s',
+      }}
+    >
+      <svg width="11" height="11" viewBox="0 0 24 24" fill={active ? '#C9A224' : 'none'} stroke={active ? '#C9A224' : 'rgba(255,255,255,0.6)'} strokeWidth="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      </svg>
+    </button>
+  );
+}
+
+function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleFavorite }: {
   config: ArtistConfig;
   showPhoto: boolean;
   variant: CardVariant;
+  isFavorite?: boolean;
+  onToggleFavorite?: (slug: string) => void;
 }) {
   const navigate = useNavigate();
   const accent = config.accentColor;
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onToggleFavorite?.(config.slug);
+  };
   const photoUrl = showPhoto && config.artistPhotoUrl ? config.artistPhotoUrl : null;
   const aspectRatio = VARIANT_ASPECT[variant];
   const borderRadius = VARIANT_RADIUS[variant];
@@ -633,6 +674,7 @@ function EditorialArtistCard({ config, showPhoto, variant }: {
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
         <div style={{ position: 'absolute', top: 10, right: 10, width: 7, height: 7, borderRadius: '50%', background: accent }} />
+        {onToggleFavorite && <FavoriteButton active={!!isFavorite} onToggle={handleToggleFavorite} />}
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: CARD_PADDING[variant] }}>
           {variant === 'featured' && (
             <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', background: 'rgba(201,162,36,0.25)', color: '#C9A224', padding: '2px 7px', borderRadius: 4, marginBottom: 6 }}>Featured</div>
@@ -660,6 +702,7 @@ function EditorialArtistCard({ config, showPhoto, variant }: {
         transition: 'border-color 0.2s, transform 0.15s',
       }}
     >
+      {onToggleFavorite && <FavoriteButton active={!!isFavorite} onToggle={handleToggleFavorite} />}
       <div>
         {variant === 'featured' && (
           <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', background: `${accent}20`, color: accent, padding: '2px 7px', borderRadius: 4, marginBottom: 10 }}>Featured</div>
@@ -753,11 +796,12 @@ function ExternalSmallCard({ href, label, logoSrc, logoAlt, accent, photoSrc, va
   );
 }
 
-function MyTrackerCard() {
-  const accent = '#C9A224';
+function BigLinkCard({ href, accent, badge, titleMain, titleAccent, subtitle, watermark }: {
+  href: string; accent: string; badge: string; titleMain: string; titleAccent: string; subtitle: string; watermark: string;
+}) {
   return (
     <a
-      href="/my-tracker"
+      href={href}
       style={{
         position: 'relative',
         display: 'flex',
@@ -787,16 +831,16 @@ function MyTrackerCard() {
       }}
     >
       <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>Custom</div>
-        <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1 }}>MY <span style={{ color: accent }}>TRACKER</span></div>
+        <div style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, background: `${accent}1a`, border: `1px solid ${accent}33`, borderRadius: 4, padding: '3px 8px', marginBottom: 14 }}>{badge}</div>
+        <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.1 }}>{titleMain} <span style={{ color: accent }}>{titleAccent}</span></div>
       </div>
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24 }}>
-        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Link your own Google Sheet</span>
+        <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{subtitle}</span>
         <div style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <svg viewBox="0 0 12 12" fill="none" strokeWidth="1.5" style={{ width: 12, height: 12, stroke: 'rgba(255,255,255,0.45)' }}><path d="M2 10L10 2M10 2H4M10 2v6" /></svg>
         </div>
       </div>
-      <div style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>MTR</div>
+      <div style={{ position: 'absolute', right: -8, bottom: -16, fontSize: 120, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>{watermark}</div>
     </a>
   );
 }
@@ -981,9 +1025,25 @@ export function LandingPage() {
   const [showAll, setShowAll] = useState(false);
   const [showConsent, setShowConsent] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const { settings } = useSettings();
   const showPhotos = settings.landingArtistPhotos;
   const { user, signInWithGoogle, signOut } = useVGAuth();
+  const { favorites, toggleFavorite } = useFavoriteArtists();
+  const isFavorite = (slug: string) => favorites.includes(slug);
+
+  const query = searchQuery.trim().toLowerCase();
+  const matchesQuery = (c: ArtistConfig) =>
+    !query ||
+    c.artistLabel.toLowerCase().includes(query) ||
+    c.SITE_NAME.toLowerCase().includes(query) ||
+    c.slug.toLowerCase().includes(query);
+
+  const searchResults = query
+    ? ARTIST_LIST.filter(matchesQuery).sort((a, b) => Number(isFavorite(b.slug)) - Number(isFavorite(a.slug)))
+    : null;
+
+  const favoriteConfigs = ARTIST_LIST.filter(c => isFavorite(c.slug));
 
   const featured = ARTIST_LIST[0];
   // Carti, Tyler in top-right row 1; Drake in top-right row 2
@@ -1035,87 +1095,168 @@ export function LandingPage() {
       </header>
 
       <main style={{ width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {/* Featured on the left, 2×2 grid of pinned cards on the right */}
-        <div className="grid-top">
+        <div style={{ position: 'relative', width: '100%' }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+            style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
+            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            placeholder="Search artists..."
+            style={{
+              width: '100%', padding: '11px 14px 11px 38px', borderRadius: 10,
+              background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
+              color: '#fff', fontSize: 14, fontFamily: 'inherit', outline: 'none',
+            }}
+          />
+        </div>
+
+        {!query && favoriteConfigs.length > 0 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <EditorialArtistCard config={featured} showPhoto={showPhotos} variant="featured" />
-            <div style={{ display: 'flex', gap: 6 }}>
-              {SHEET_URLS[featured.slug] && <SheetButton href={SHEET_URLS[featured.slug]} accent={featured.accentColor} />}
-              <ShareButton url={`${window.location.origin}/${featured.slug}`} accent={featured.accentColor} />
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase' }}>Favorites</span>
+            <div className="grid-small">
+              {favoriteConfigs.map(config => (
+                <div key={config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <EditorialArtistCard config={config} showPhoto={showPhotos} variant="small" isFavorite={isFavorite(config.slug)} onToggleFavorite={toggleFavorite} />
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
+                    <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="grid-pinned">
-            {topRight.map(config => (
-              <div key={config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <EditorialArtistCard config={config} showPhoto={showPhotos} variant="medium" />
-                <div style={{ display: 'flex', gap: 6 }}>
-                  {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
-                  <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
+        )}
+
+        {query ? (
+          <div className="grid-small">
+            {searchResults!.length === 0 ? (
+              <span style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '24px 0', fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>No artists found</span>
+            ) : (
+              searchResults!.map(config => (
+                <div key={config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <EditorialArtistCard config={config} showPhoto={showPhotos} variant="small" isFavorite={isFavorite(config.slug)} onToggleFavorite={toggleFavorite} />
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
+                    <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
+                  </div>
                 </div>
-              </div>
-            ))}
-            {juiceConfig && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <EditorialArtistCard config={juiceConfig} showPhoto={showPhotos} variant="medium" />
-                <div style={{ display: 'flex', gap: 6 }}>
-                  {SHEET_URLS[juiceConfig.slug] && <SheetButton href={SHEET_URLS[juiceConfig.slug]} accent={juiceConfig.accentColor} />}
-                  <ShareButton url={`${window.location.origin}/${juiceConfig.slug}`} accent={juiceConfig.accentColor} />
-                </div>
-              </div>
+              ))
             )}
           </div>
-        </div>
-
-        {/* Row 2+: remaining artists in a 4-col grid, collapsible */}
-        <div className="grid-small">
-          {visibleSmall.map(item =>
-            item.type === 'artist' ? (
-              <div key={item.config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <EditorialArtistCard config={item.config} showPhoto={showPhotos} variant="small" />
+        ) : (
+          <>
+            {/* Featured on the left, 2×2 grid of pinned cards on the right */}
+            <div className="grid-top">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <EditorialArtistCard config={featured} showPhoto={showPhotos} variant="featured" isFavorite={isFavorite(featured.slug)} onToggleFavorite={toggleFavorite} />
                 <div style={{ display: 'flex', gap: 6 }}>
-                  {SHEET_URLS[item.config.slug] && <SheetButton href={SHEET_URLS[item.config.slug]} accent={item.config.accentColor} />}
-                  <ShareButton url={`${window.location.origin}/${item.config.slug}`} accent={item.config.accentColor} />
+                  {SHEET_URLS[featured.slug] && <SheetButton href={SHEET_URLS[featured.slug]} accent={featured.accentColor} />}
+                  <ShareButton url={`${window.location.origin}/${featured.slug}`} accent={featured.accentColor} />
                 </div>
               </div>
-            ) : (
-              <div key={item.logoAlt} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <ExternalSmallCard
-                  href={item.href}
-                  label={item.label}
-                  logoSrc={item.logoSrc}
-                  logoAlt={item.logoAlt}
-                  accent={item.accent}
-                  photoSrc={showPhotos ? item.photo : undefined}
-                />
-                <div style={{ display: 'flex', gap: 6 }}>
-                  <SheetButton href={item.href} accent={item.accent} />
-                  <ShareButton url={item.href} accent={item.accent} />
-                </div>
+              <div className="grid-pinned">
+                {topRight.map(config => (
+                  <div key={config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <EditorialArtistCard config={config} showPhoto={showPhotos} variant="medium" isFavorite={isFavorite(config.slug)} onToggleFavorite={toggleFavorite} />
+                    <div style={{ display: 'flex', gap: 6 }}>
+                      {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
+                      <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
+                    </div>
+                  </div>
+                ))}
+                {juiceConfig && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <EditorialArtistCard config={juiceConfig} showPhoto={showPhotos} variant="medium" isFavorite={isFavorite(juiceConfig.slug)} onToggleFavorite={toggleFavorite} />
+                    <div style={{ display: 'flex', gap: 6 }}>
+                      {SHEET_URLS[juiceConfig.slug] && <SheetButton href={SHEET_URLS[juiceConfig.slug]} accent={juiceConfig.accentColor} />}
+                      <ShareButton url={`${window.location.origin}/${juiceConfig.slug}`} accent={juiceConfig.accentColor} />
+                    </div>
+                  </div>
+                )}
               </div>
-            )
-          )}
-        </div>
+            </div>
 
-        {hiddenCount > 0 && (
-          <button
-            onClick={() => setShowAll(v => !v)}
-            style={{
-              alignSelf: 'center', padding: '10px 24px', borderRadius: 10,
-              background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
-              color: 'rgba(255,255,255,0.5)', fontSize: 13, fontWeight: 600,
-              letterSpacing: '0.04em', cursor: 'pointer',
-              transition: 'background 0.15s, color 0.15s, border-color 0.15s',
-            }}
-            onMouseEnter={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.08)'; b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,0.2)'; }}
-            onMouseLeave={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.04)'; b.style.color = 'rgba(255,255,255,0.5)'; b.style.borderColor = 'rgba(255,255,255,0.1)'; }}
-          >
-            {showAll ? 'Show less' : `Show ${hiddenCount} more trackers`}
-          </button>
+            {/* Row 2+: remaining artists in a 4-col grid, collapsible */}
+            <div className="grid-small">
+              {visibleSmall.map(item =>
+                item.type === 'artist' ? (
+                  <div key={item.config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <EditorialArtistCard config={item.config} showPhoto={showPhotos} variant="small" isFavorite={isFavorite(item.config.slug)} onToggleFavorite={toggleFavorite} />
+                    <div style={{ display: 'flex', gap: 6 }}>
+                      {SHEET_URLS[item.config.slug] && <SheetButton href={SHEET_URLS[item.config.slug]} accent={item.config.accentColor} />}
+                      <ShareButton url={`${window.location.origin}/${item.config.slug}`} accent={item.config.accentColor} />
+                    </div>
+                  </div>
+                ) : (
+                  <div key={item.logoAlt} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <ExternalSmallCard
+                      href={item.href}
+                      label={item.label}
+                      logoSrc={item.logoSrc}
+                      logoAlt={item.logoAlt}
+                      accent={item.accent}
+                      photoSrc={showPhotos ? item.photo : undefined}
+                    />
+                    <div style={{ display: 'flex', gap: 6 }}>
+                      <SheetButton href={item.href} accent={item.accent} />
+                      <ShareButton url={item.href} accent={item.accent} />
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+
+            {hiddenCount > 0 && (
+              <button
+                onClick={() => setShowAll(v => !v)}
+                style={{
+                  alignSelf: 'center', padding: '10px 24px', borderRadius: 10,
+                  background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'rgba(255,255,255,0.5)', fontSize: 13, fontWeight: 600,
+                  letterSpacing: '0.04em', cursor: 'pointer',
+                  transition: 'background 0.15s, color 0.15s, border-color 0.15s',
+                }}
+                onMouseEnter={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.08)'; b.style.color = '#fff'; b.style.borderColor = 'rgba(255,255,255,0.2)'; }}
+                onMouseLeave={e => { const b = e.currentTarget; b.style.background = 'rgba(255,255,255,0.04)'; b.style.color = 'rgba(255,255,255,0.5)'; b.style.borderColor = 'rgba(255,255,255,0.1)'; }}
+              >
+                {showAll ? 'Show less' : `Show ${hiddenCount} more trackers`}
+              </button>
+            )}
+          </>
         )}
       </main>
 
-      <div style={{ width: '100%', maxWidth: 900, marginTop: 8 }}>
-        <MyTrackerCard />
+      <div style={{ width: '100%', maxWidth: 900, marginTop: 8, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 8 }}>
+        <BigLinkCard
+          href="/my-tracker"
+          accent="#C9A224"
+          badge="Custom"
+          titleMain="MY"
+          titleAccent="TRACKER"
+          subtitle="Link your own Google Sheet"
+          watermark="MTR"
+        />
+        <BigLinkCard
+          href="/yeditsgold"
+          accent="#FFD700"
+          badge="Edits"
+          titleMain="YEDITS"
+          titleAccent="GOLD"
+          subtitle="Browse fan edits"
+          watermark="YE"
+        />
+        <BigLinkCard
+          href="/label"
+          accent="#C9A224"
+          badge="Label"
+          titleMain="UNVAULTED"
+          titleAccent="RECORDS"
+          subtitle="Explore the label"
+          watermark="UR"
+        />
       </div>
 
       <div style={{ width: '100%', maxWidth: 900, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
@@ -1131,7 +1272,7 @@ export function LandingPage() {
               <button onClick={() => setSocialOpen(false)}
                 style={{ position: 'absolute', top: 10, right: 10, background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', fontSize: 18, lineHeight: 1 }}>✕</button>
               <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', margin: 0 }}>Community</p>
-              <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer"
+              <a href="https://discord.gg/ZE5gHFYYGy" target="_blank" rel="noopener noreferrer"
                 style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, background: 'rgba(88,101,242,0.15)', border: '1px solid rgba(88,101,242,0.25)', color: '#5865F2', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>
                 <SiDiscord style={{ width: 18, height: 18 }} /> Discord
               </a>
@@ -1150,12 +1291,6 @@ export function LandingPage() {
             </div>
           </div>
         )}
-        <a href="/label" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(201,162,36,0.08)', border: '1px solid rgba(201,162,36,0.2)', color: '#C9A224', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          Unvaulted Records
-        </a>
-        <a href="/yeditsgold" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.2)', color: '#FFD700', textDecoration: 'none', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em' }}>
-          yedits<span style={{ color: 'rgba(255,215,0,0.7)' }}>gold</span>
-        </a>
         {user ? (
           <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>{user.username}</span>

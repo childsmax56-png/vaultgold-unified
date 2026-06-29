@@ -695,10 +695,24 @@ export default function App() {
       return keys[0];
     };
 
+    let lastEraName: string | null = null;
+    let currentSubera: string | undefined;
+
     sheetData.forEach((item: any) => {
       const rawEra = (item.Era || '').trim();
-      // Skip era header rows (file count summaries) — their Era cell is multiline
-      if (!rawEra || rawEra.includes('\n')) return;
+      if (!rawEra) return;
+      // Era header rows (file count summaries, subera banners) have a multiline Era cell.
+      if (rawEra.includes('\n')) {
+        // File-count summary rows look like "12 OG File(s)\n5 Full\n...\n3 Unavailable" —
+        // a subera banner instead has no song name and isn't a count row, e.g.
+        // "BULLY - DELUXE\n(03/28/2026) (BULLY officialy releases)".
+        const isFileCountRow = /File\(s\)|Stem Bounce|Total Links/i.test(rawEra);
+        const nameVal = (item[nameKey] || '').trim();
+        if (!isFileCountRow && !nameVal) {
+          currentSubera = rawEra.split('\n')[0].trim();
+        }
+        return;
+      }
 
       const rawName = (item[nameKey] || '').trim();
       const nameLines = rawName.split('\n');
@@ -709,6 +723,10 @@ export default function App() {
 
       const matchedMapKey = Object.keys(ERA_MAPPINGS).find(k => k.toLowerCase() === rawEra.toLowerCase());
       const eraName = matchedMapKey ? ERA_MAPPINGS[matchedMapKey] : rawEra;
+      if (eraName !== lastEraName) {
+        currentSubera = undefined;
+        lastEraName = eraName;
+      }
       if (!targetJson.eras) targetJson.eras = {};
       if (!targetJson.eras[eraName]) {
         // Only create eras that are in the known era list — prevents changelog/garbage
@@ -732,6 +750,7 @@ export default function App() {
         quality: item.Quality || '',
         url: rawUrl,
         urls: rawUrl ? [rawUrl] : [],
+        subera: currentSubera,
       };
 
       const categories = targetJson.eras[eraName].data || {};
@@ -2603,9 +2622,10 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
   const filteredEras = finalErasArray.filter(era => {
     const hasActiveFilters = filters.tags.length > 0 || filters.qualities.length > 0 || filters.availableLengths?.length > 0 || filters.durationValue !== '' || filters.playableOnly || filters.hasClips !== null || filters.hasRemixes !== null || filters.hasSamples !== null;
 
-    if (!searchQuery && !hasActiveFilters) return true;
-
     const allSongs = Object.values(era.data || {}).flat();
+    if (era.name !== "Favorites" && allSongs.length === 0) return false;
+
+    if (!searchQuery && !hasActiveFilters) return true;
 
     const matchingSongs = allSongs.filter(song => {
       if (!matchesFilters(song, searchQuery, filters)) return false;
@@ -3165,7 +3185,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               Logo created by Nr7th on discord
             </p>
             <p className="text-[10px] text-white/30 leading-relaxed mt-1 space-x-3">
-              <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
+              <a href="https://discord.gg/ZE5gHFYYGy" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
               <span>·</span>
               <a href="https://docs.google.com/document/d/1b8aidNuSLLHfzgzrJ0uGdWHPuo-uNk6wI21Vscwzid4/edit?tab=t.0#heading=h.coxp3mvb86xr" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Changelog</a>
               <span>·</span>
@@ -3459,7 +3479,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                 <div className="border-t border-white/10 pt-4 space-y-2">
                   <p className="text-white font-semibold">TUNE IN TOMORROW FOR THE NEW VAULT GOLD TRACKERS</p>
                   <p className="text-xs space-x-3">
-                    <a href="https://discord.gg/yz4cdYZfwp" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/70 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
+                    <a href="https://discord.gg/ZE5gHFYYGy" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/70 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
                     <span>·</span>
                     <a href="https://www.reddit.com/r/2YZY2GOLD/" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/70 hover:text-[var(--theme-color)] transition-colors underline">Reddit</a>
                   </p>

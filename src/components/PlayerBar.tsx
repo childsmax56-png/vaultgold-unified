@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, Pause, Volume2, Maximize2, MoreHorizontal, Download, X, SkipBack, SkipForward, Shuffle, Repeat, Repeat1, Star, Mic2, ListMusic, Square, ExternalLink, Share2 } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { Play, Pause, Volume2, Maximize2, MoreHorizontal, Download, X, SkipBack, SkipForward, Shuffle, Repeat, Repeat1, Star, Mic2, ListMusic, Square, ExternalLink, Share2, Plus, Check } from 'lucide-react';
 import { parseArtistFromSong } from '../lastfm';
 import { Song, Era } from '../types';
 import { useState, useRef, useEffect } from 'react';
@@ -7,6 +8,7 @@ import { formatTextWithTags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag,
 import { handleShareSilent } from './EraDetail';
 import { LyricsModal } from './LyricsModal';
 import { useSettings } from '../SettingsContext';
+import { usePlaylists } from '../PlaylistContext';
 
 function formatTime(seconds: number) {
   if (isNaN(seconds)) return '0:00';
@@ -28,14 +30,20 @@ export function PlayerBar({
   allowFullScreen?: boolean
 }) {
   const { settings } = useSettings();
+  const { playlists, addToPlaylist, createPlaylist } = usePlaylists();
   const [showMenu, setShowMenu] = useState(false);
   const [showLyrics, setShowLyrics] = useState(false);
+  const [showPlaylistMenu, setShowPlaylistMenu] = useState(false);
+  const [creatingPlaylist, setCreatingPlaylist] = useState(false);
+  const [newPlaylistName, setNewPlaylistName] = useState('');
   const [isDraggingVolume, setIsDraggingVolume] = useState(false);
   const [isDraggingProgress, setIsDraggingProgress] = useState(false);
   const [shareToast, setShareToast] = useState<string | null>(null);
   const volumeRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const playlistMenuRef = useRef<HTMLDivElement>(null);
+  const newPlaylistInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleToggleLyrics = () => {
@@ -63,6 +71,27 @@ export function PlayerBar({
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [showMenu]);
+
+  useEffect(() => {
+    const handleClickOutsidePlaylistMenu = (event: MouseEvent) => {
+      if (playlistMenuRef.current && !playlistMenuRef.current.contains(event.target as Node)) {
+        setShowPlaylistMenu(false);
+        setCreatingPlaylist(false);
+        setNewPlaylistName('');
+      }
+    };
+
+    if (showPlaylistMenu) {
+      document.addEventListener('mousedown', handleClickOutsidePlaylistMenu);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsidePlaylistMenu);
+    };
+  }, [showPlaylistMenu]);
+
+  useEffect(() => {
+    if (creatingPlaylist && newPlaylistInputRef.current) newPlaylistInputRef.current.focus();
+  }, [creatingPlaylist]);
 
   useEffect(() => {
     const handleMouseUp = () => setIsDraggingVolume(false);
@@ -146,6 +175,26 @@ export function PlayerBar({
   const downloadUrl = rawUrl.includes('pillows.su/f/')
     ? `https://api.pillows.su/api/download/${rawUrl.split('/f/')[1]}`
     : rawUrl;
+
+  const playlistEraName = (currentSong as any).realEra?.name || era?.name || '';
+
+  const handleAddToPlaylist = (playlistId: string) => {
+    const cleanSong = { ...currentSong };
+    delete (cleanSong as any).realEra;
+    addToPlaylist(playlistId, { songName: currentSong.name, eraName: playlistEraName, url: rawUrl, song: cleanSong });
+    setShowPlaylistMenu(false);
+  };
+
+  const handleCreatePlaylist = () => {
+    if (!newPlaylistName.trim()) return;
+    const cleanSong = { ...currentSong };
+    delete (cleanSong as any).realEra;
+    const id = createPlaylist(newPlaylistName.trim());
+    addToPlaylist(id, { songName: currentSong.name, eraName: playlistEraName, url: rawUrl, song: cleanSong });
+    setNewPlaylistName('');
+    setCreatingPlaylist(false);
+    setShowPlaylistMenu(false);
+  };
 
   const handleShare = () => {
     if (!era) return;
@@ -401,6 +450,15 @@ export function PlayerBar({
                     );
                   })()}
                 <button
+                  onClick={() => {
+                    setShowMenu(false);
+                    setShowPlaylistMenu(true);
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                >
+                  <ListMusic className="w-4 h-4" /> Add to Playlist
+                </button>
+                <button
                   onClick={handleShare}
                   className="w-full flex items-center gap-3 px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
                 >
@@ -476,6 +534,75 @@ export function PlayerBar({
           </motion.div>
         )}
       </AnimatePresence>
+
+      {showPlaylistMenu && createPortal(
+        <>
+          <div className="fixed inset-0 z-[99]" onClick={() => { setShowPlaylistMenu(false); setCreatingPlaylist(false); setNewPlaylistName(''); }} />
+          <motion.div
+            ref={playlistMenuRef}
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: [0.2, 0, 0, 1] }}
+            className="fixed bottom-24 md:bottom-28 right-4 md:right-8 z-[100] w-56 bg-[#1a1a1a] border border-white/10 rounded-md shadow-2xl overflow-hidden py-1"
+          >
+            {playlists.length === 0 && !creatingPlaylist && (
+              <div className="px-4 py-2 text-xs text-white/40">No playlists yet</div>
+            )}
+            {playlists.map(p => {
+              const inPlaylist = p.songs.some(s => s.songName === currentSong.name && s.url === rawUrl);
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => handleAddToPlaylist(p.id)}
+                  className="w-full flex items-center gap-2 px-4 py-2 text-sm text-left text-white/80 hover:bg-white/5 transition-colors"
+                >
+                  <Check className={`w-3.5 h-3.5 shrink-0 ${inPlaylist ? 'text-[var(--theme-color)]' : 'opacity-0'}`} />
+                  <span className="truncate">{p.name}</span>
+                </button>
+              );
+            })}
+            {creatingPlaylist ? (
+              <div className="p-2 border-t border-white/10">
+                <input
+                  ref={newPlaylistInputRef}
+                  value={newPlaylistName}
+                  onChange={e => setNewPlaylistName(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter') handleCreatePlaylist();
+                    if (e.key === 'Escape') { setCreatingPlaylist(false); setNewPlaylistName(''); }
+                  }}
+                  placeholder="Playlist name..."
+                  className="w-full bg-white/10 border border-white/20 rounded px-3 py-1.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-white/40"
+                />
+                <div className="flex gap-2 mt-1.5">
+                  <button
+                    onClick={handleCreatePlaylist}
+                    className="flex-1 text-xs py-1 rounded bg-[var(--theme-color)]/20 text-[var(--theme-color)] hover:bg-[var(--theme-color)]/30 transition-colors"
+                  >
+                    Create
+                  </button>
+                  <button
+                    onClick={() => { setCreatingPlaylist(false); setNewPlaylistName(''); }}
+                    className="flex-1 text-xs py-1 rounded bg-white/5 text-white/50 hover:bg-white/10 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => setCreatingPlaylist(true)}
+                className={`w-full flex items-center gap-2 px-4 py-2 text-sm text-left text-white/50 hover:text-white hover:bg-white/5 transition-colors ${playlists.length > 0 ? 'border-t border-white/10' : ''}`}
+              >
+                <Plus className="w-3.5 h-3.5" />
+                New playlist...
+              </button>
+            )}
+          </motion.div>
+        </>,
+        document.body
+      )}
     </>
   );
 }

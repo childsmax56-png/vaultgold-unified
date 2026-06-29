@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Film, Disc3, Layers, Star, Pencil, CheckSquare, Square } from 'lucide-react';
@@ -832,10 +833,17 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
                     const songKey = getSongKey(category, i);
                     const isSelected = selectedKeys.has(songKey);
+                    const prevSubera = i > 0 ? processedSongs[i - 1].subera : undefined;
+                    const showSuberaBanner = !!song.subera && song.subera !== prevSubera;
 
                     return (
+                      <Fragment key={i}>
+                      {showSuberaBanner && (
+                        <div className="bg-white/10 text-center text-xs font-bold uppercase tracking-wider text-white/80 py-2 mb-2 rounded">
+                          {song.subera}
+                        </div>
+                      )}
                       <div
-                        key={i}
                         onClick={() => {
                           if (isSelectMode) {
                             setSelectedKeys(prev => {
@@ -1116,6 +1124,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                           </button>
                         </div>
                       </div>
+                      </Fragment>
                     );
                   })}
 
