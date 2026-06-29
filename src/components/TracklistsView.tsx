@@ -184,7 +184,7 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
   const [open, setOpen] = useState(defaultOpen);
   const [dlProgress, setDlProgress] = useState<string | null>(null);
   const { settings } = useSettings();
-  const { startJob, updateJob, finishJob } = useDownloadManager();
+  const { startJob, updateJob, startItem, finishItem, finishJob } = useDownloadManager();
 
   const playableSongs = useMemo(
     () => matches.filter((m): m is SongMatch => m !== null).map(m => m.song),
@@ -242,7 +242,7 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
         done++;
         setDlProgress(`${done} / ${playable.length}`);
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), ({ track }) => startItem(jobId, track.name), ({ track }) => finishItem(jobId, track.name));
 
     const content = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
     saveAs(content, `${sanitizeFilename(album.name)}.zip`);

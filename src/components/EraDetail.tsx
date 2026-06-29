@@ -201,7 +201,7 @@ export const handleShareSilent = (song: Song, era: Era): string => {
 
 export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, currentSong, isPlaying, mvData = [], remixData = [], samplesData = [], favoriteKeys = [], toggleFavorite, onNavigateToEra }: { key?: string, era: Era, onBack?: () => void, onPlaySong: (song: Song, era: Era, contextTracks?: Song[]) => void, searchQuery?: string, filters: SearchFilters, currentSong?: Song | null, isPlaying?: boolean, mvData?: MvEntry[], remixData?: RemixEntry[], samplesData?: SampleEntry[], favoriteKeys?: { songName: string, eraName: string, url: string }[], toggleFavorite?: (song: Song, eraName: string) => void, onNavigateToEra?: (era: Era) => void }) {
   const { settings, updateSettings } = useSettings();
-  const { startJob, updateJob, finishJob } = useDownloadManager();
+  const { startJob, updateJob, startItem, finishItem, finishJob } = useDownloadManager();
   const [zoomedImage, setZoomedImage] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [showLatestOnly, setShowLatestOnly] = useState(false);
@@ -332,7 +332,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         console.error(`Failed to download ${song.name}:`, err);
         throw err;
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), (song) => startItem(jobId, song.name), (song) => finishItem(jobId, song.name));
 
     setToastMessage('Zipping...');
     try {
@@ -427,7 +427,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         console.error(`Failed to download ${song.name}:`, err);
         throw err;
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), (song) => startItem(jobId, song.name), (song) => finishItem(jobId, song.name));
 
     setToastMessage('Zipping...');
     try {

@@ -127,7 +127,7 @@ function parseMiscToEras(miscData: MiscEntry[], allEras: Era[]): { eraName: stri
 
 export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, currentSong, isPlaying, mvData = [], remixData = [], samplesData = [], toggleFavorite, favoriteKeys = [] }: MiscViewProps) {
   const { settings } = useSettings();
-  const { startJob, updateJob, finishJob } = useDownloadManager();
+  const { startJob, updateJob, startItem, finishItem, finishJob } = useDownloadManager();
   const [selectedEra, setSelectedEra] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -341,7 +341,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
         console.error(`Failed to download ${song.name}:`, err);
         throw err;
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), (song) => startItem(jobId, song.name), (song) => finishItem(jobId, song.name));
 
     setToastMessage('Zipping...');
     try {
