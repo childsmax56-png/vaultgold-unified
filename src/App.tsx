@@ -2402,6 +2402,56 @@ export default function App() {
     return results;
   }, [searchQuery, data, recentData, stemsData, miscData, fakesData, releasedData]);
 
+  // Favorites can pull songs from any era, so building this list means a linear
+  // scan + flatten over that era's full song catalog per favorite. Without this
+  // memo it reran on every audio timeupdate tick (4x/sec while playing), which
+  // starved the main thread badly enough to visibly slow bulk downloads from
+  // the Favorites tab specifically (other era tabs have no such per-tick cost).
+  const favoritesEra: Era | null = useMemo(() => {
+    if (favoriteKeys.length === 0 || !data) return null;
+    const EXCLUDED_ALBUMS: string[] = activeConfig.EXCLUDED_ALBUMS || [];
+    const ART_ONLY_ALBUMS: string[] = activeConfig.ART_ONLY_ALBUMS || [];
+    const eligibleEras = Object.values(data.eras || {}) as Era[];
+    return {
+      fileInfo: [],
+      name: "Favorites",
+      image: "https://i.ibb.co/JFnmJ8rX/image.png",
+      data: {
+        "Favorite Tracks": favoriteKeys.map(k => {
+          let realEra = eligibleEras.find(e =>
+            e.name === k.eraName &&
+            !EXCLUDED_ALBUMS.includes(e.name) &&
+            (HIDDEN_ALBUMS.includes(e.name) || (!ART_ONLY_ALBUMS.includes(e.name) && e.name in ALBUM_RELEASE_DATES))
+          );
+          if (!realEra && k.eraName === 'Recent Leaks') {
+            realEra = { fileInfo: [], name: "Recent Leaks", image: "https://i.ibb.co/7xRv4H2r/sdffsdsdf.png", data: { "Latest Additions": recentData } };
+          }
+
+          let foundSong: Song | null = null;
+          if (realEra && realEra.data) {
+            const allSongs = Object.values(realEra.data).flat();
+            foundSong = allSongs.find(s => s.name === k.songName && (s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '')) === k.url) as Song;
+          }
+          if (!foundSong && k.eraName === 'Recent Leaks') {
+            foundSong = recentData.find(s => s.name === k.songName && (s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '')) === k.url) as Song;
+          }
+          if (!foundSong && k.song) {
+            foundSong = k.song;
+          }
+
+          if (foundSong) {
+            const actualRealEra = (realEra?.name === 'Recent Leaks' ? eligibleEras.find((e: any) => e.name === foundSong!.extra) : realEra) as Era;
+            const rawEraName = foundSong.extra2 || foundSong.extra;
+            const cleanEraName = rawEraName ? getCleanSongNameWithTags(rawEraName) : '';
+            const actualRealEraNameSearch = actualRealEra?.name || '';
+            return { ...foundSong, realEra: actualRealEra, image: CUSTOM_IMAGES[rawEraName || ''] || CUSTOM_IMAGES[cleanEraName || ''] || CUSTOM_IMAGES[actualRealEraNameSearch || ''] || actualRealEra?.image || foundSong.image || "https://i.ibb.co/JFnmJ8rX/image.png" };
+          }
+          return null;
+        }).filter(s => s !== null) as Song[]
+      }
+    };
+  }, [favoriteKeys, data, recentData]);
+
   const handleSelectGlobalResult = (result: GlobalSearchResult) => {
     if (result.tab === 'music' && result.era) {
       setActiveCategory('music');
@@ -2569,41 +2619,6 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
 }
 
 
-
-  const favoritesEra: Era | null = favoriteKeys.length > 0 ? {
-    fileInfo: [],
-    name: "Favorites",
-    image: "https://i.ibb.co/JFnmJ8rX/image.png",
-    data: {
-      "Favorite Tracks": favoriteKeys.map(k => {
-        let realEra = erasArray.find(e => e.name === k.eraName) || relatedErasArray.find(e => e.name === k.eraName);
-        if (!realEra && k.eraName === 'Recent Leaks') {
-            realEra = { fileInfo: [], name: "Recent Leaks", image: "https://i.ibb.co/7xRv4H2r/sdffsdsdf.png", data: { "Latest Additions": recentData } };
-        }
-        
-        let foundSong: Song | null = null;
-        if (realEra && realEra.data) {
-           const allSongs = Object.values(realEra.data).flat();
-           foundSong = allSongs.find(s => s.name === k.songName && (s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '')) === k.url) as Song;
-        }
-        if (!foundSong && k.eraName === 'Recent Leaks') {
-           foundSong = recentData.find(s => s.name === k.songName && (s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '')) === k.url) as Song;
-        }
-        if (!foundSong && k.song) {
-           foundSong = k.song;
-        }
-
-        if (foundSong) {
-           const actualRealEra = (realEra?.name === 'Recent Leaks' ? Object.values(data?.eras || {}).find((e: any) => e.name === foundSong!.extra) : realEra) as Era;
-           const rawEraName = foundSong.extra2 || foundSong.extra;
-           const cleanEraName = rawEraName ? getCleanSongNameWithTags(rawEraName) : '';
-           const actualRealEraNameSearch = actualRealEra?.name || '';
-           return { ...foundSong, realEra: actualRealEra, image: CUSTOM_IMAGES[rawEraName || ''] || CUSTOM_IMAGES[cleanEraName || ''] || CUSTOM_IMAGES[actualRealEraNameSearch || ''] || actualRealEra?.image || foundSong.image || "https://i.ibb.co/JFnmJ8rX/image.png" };
-        }
-        return null;
-      }).filter(s => s !== null) as Song[]
-    }
-  } : null;
 
   const artOnlyErasArray = (Object.values(data.eras || {}) as Era[])
     .filter(era => ART_ONLY_ALBUMS.includes(era.name))
