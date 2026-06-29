@@ -18,8 +18,10 @@ export async function runWithConcurrencyLimit<T>(
   worker: (item: T, index: number) => Promise<void>,
   concurrency = 4,
   retries = 2,
+  onProgress?: (completed: number, total: number) => void,
 ): Promise<void> {
   let cursor = 0;
+  let completed = 0;
   async function runNext(): Promise<void> {
     while (cursor < items.length) {
       const index = cursor++;
@@ -37,6 +39,8 @@ export async function runWithConcurrencyLimit<T>(
           }
         }
       }
+      completed++;
+      onProgress?.(completed, items.length);
     }
   }
   await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, () => runNext()));

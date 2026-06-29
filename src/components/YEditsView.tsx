@@ -6,6 +6,7 @@ import JSZip from 'jszip';
 import { Song, Era } from '../types';
 import { ARTIST_LIST } from '../artists/registry';
 import { retryImageOnError, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
+import { useDownloadManager } from '../DownloadManagerContext';
 
 interface VGUser { id: string; username: string; email: string; }
 
@@ -235,6 +236,7 @@ interface YEditsViewProps {
 }
 
 export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, claims = {}, onClaim, isAdmin = false }: YEditsViewProps) {
+  const { startJob, updateJob, finishJob } = useDownloadManager();
   const [keys, setKeys] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -754,6 +756,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
 
   const doZipDownload = async (songs: Song[], albumName: string, songsMeta: AlbumMeta['songs']) => {
     setZipping(true);
+    const jobId = startJob(albumName, songs.length);
     try {
       const zip = new JSZip();
       await runWithConcurrencyLimit(songs, async (song) => {
@@ -766,7 +769,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         const displayName = songsMeta?.[filename]?.displayName;
         const finalName = displayName ? `${displayName}${filename.substring(filename.lastIndexOf('.'))}` : filename;
         zip.file(sanitizeFilename(finalName), blob);
-      }, 4);
+      }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
       const blob = await zip.generateAsync({ type: 'blob' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -774,6 +777,10 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       a.download = `${albumName}.zip`;
       a.click();
       URL.revokeObjectURL(url);
+      finishJob(jobId, 'done');
+    } catch (err) {
+      finishJob(jobId, 'error');
+      throw err;
     } finally {
       setZipping(false);
     }

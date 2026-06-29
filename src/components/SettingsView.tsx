@@ -10,6 +10,7 @@ import { isLastfmLoggedIn } from '../lastfm';
 import { saveAs } from 'file-saver';
 import { Era } from '../types';
 import { embedID3Tags, detectAudioExt, ALBUM_RELEASE_DATES, CUSTOM_IMAGES, buildArtistTag, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
+import { useDownloadManager } from '../DownloadManagerContext';
 import { ArtEntry } from './ArtGallery';
 import { StemEntry } from './StemsView';
 import { MiscEntry } from './MiscView';
@@ -40,6 +41,7 @@ async function resolveAudioUrl(rawUrl: string): Promise<string> {
 
 export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData = [], stemsData = [], miscData = [] }: SettingsViewProps) {
   const { settings, updateSettings, resetSettings } = useSettings();
+  const { startJob, updateJob, finishJob } = useDownloadManager();
   const [isConfirmingReset, setIsConfirmingReset] = useState(false);
   const [isConfirmingClear, setIsConfirmingClear] = useState(false);
   const [showShortcutsModal, setShowShortcutsModal] = useState(false);
@@ -63,6 +65,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     }
     if (!songs.length) return;
     setProgress('unreleased', `0 / ${songs.length}`);
+    const jobId = startJob('All Unreleased', songs.length);
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
@@ -91,9 +94,10 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('unreleased', `${done} / ${songs.length}`);
       }
-    }, 4);
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-unreleased.zip');
+    finishJob(jobId, 'done');
     setProgress('unreleased', null);
   };
 
@@ -102,6 +106,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     const items = artData.filter(a => a['Link(s)']?.trim());
     if (!items.length) return;
     setProgress('art', `0 / ${items.length}`);
+    const jobId = startJob('All Art', items.length);
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
@@ -117,9 +122,10 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('art', `${done} / ${items.length}`);
       }
-    }, 4);
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-art.zip');
+    finishJob(jobId, 'done');
     setProgress('art', null);
   };
 
@@ -128,6 +134,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     const items = stemsData.filter(s => s['Link(s)']?.trim());
     if (!items.length) return;
     setProgress('stems', `0 / ${items.length}`);
+    const jobId = startJob('All Stems', items.length);
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
@@ -144,9 +151,10 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('stems', `${done} / ${items.length}`);
       }
-    }, 4);
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-stems.zip');
+    finishJob(jobId, 'done');
     setProgress('stems', null);
   };
 
@@ -155,6 +163,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     const items = miscData.filter(m => m['Link(s)']?.trim());
     if (!items.length) return;
     setProgress('misc', `0 / ${items.length}`);
+    const jobId = startJob('All Misc', items.length);
     const JSZip = (await import('jszip')).default;
     const zip = new JSZip();
     let done = 0;
@@ -172,9 +181,10 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('misc', `${done} / ${items.length}`);
       }
-    }, 4);
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-misc.zip');
+    finishJob(jobId, 'done');
     setProgress('misc', null);
   };
 
@@ -199,7 +209,8 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     const total = songs.length + artItems.length + stemItems.length + miscItems.length;
     if (!total) return;
     let done = 0;
-    const tick = () => { done++; setProgress('everything', `${done} / ${total}`); };
+    const jobId = startJob('Everything', total);
+    const tick = () => { done++; setProgress('everything', `${done} / ${total}`); updateJob(jobId, done, total); };
 
     setProgress('everything', `0 / ${total}`);
 
@@ -268,6 +279,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
     setProgress('everything', 'Zipping...');
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'everything.zip');
+    finishJob(jobId, 'done');
     setProgress('everything', null);
   };
 
