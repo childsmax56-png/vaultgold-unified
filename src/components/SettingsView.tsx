@@ -41,7 +41,7 @@ async function resolveAudioUrl(rawUrl: string): Promise<string> {
 
 export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData = [], stemsData = [], miscData = [] }: SettingsViewProps) {
   const { settings, updateSettings, resetSettings } = useSettings();
-  const { startJob, updateJob, finishJob } = useDownloadManager();
+  const { startJob, updateJob, startItem, finishItem, finishJob } = useDownloadManager();
   const [isConfirmingReset, setIsConfirmingReset] = useState(false);
   const [isConfirmingClear, setIsConfirmingClear] = useState(false);
   const [showShortcutsModal, setShowShortcutsModal] = useState(false);
@@ -94,7 +94,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('unreleased', `${done} / ${songs.length}`);
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), ({ name }) => startItem(jobId, name), ({ name }) => finishItem(jobId, name));
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-unreleased.zip');
     finishJob(jobId, 'done');
@@ -122,7 +122,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('art', `${done} / ${items.length}`);
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), (item) => startItem(jobId, item.Name), (item) => finishItem(jobId, item.Name));
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-art.zip');
     finishJob(jobId, 'done');
@@ -151,7 +151,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('stems', `${done} / ${items.length}`);
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), (item) => startItem(jobId, item.Name), (item) => finishItem(jobId, item.Name));
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-stems.zip');
     finishJob(jobId, 'done');
@@ -181,7 +181,7 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
         done++;
         setProgress('misc', `${done} / ${items.length}`);
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), (item) => startItem(jobId, item.Name), (item) => finishItem(jobId, item.Name));
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'all-misc.zip');
     finishJob(jobId, 'done');
@@ -274,7 +274,9 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
           zip.file(`misc/${sanitizeFilename(item.Era || 'misc')}/${sanitizeFilename(item.Name)}${ext}`, blob);
         }
       } catch { /* skip */ } finally { tick(); }
-    }, 4);
+    }, 4, 2, undefined,
+      ({ kind, data }) => startItem(jobId, kind === 'song' ? data.name : data.Name),
+      ({ kind, data }) => finishItem(jobId, kind === 'song' ? data.name : data.Name));
 
     setProgress('everything', 'Zipping...');
     const content = await zip.generateAsync({ type: 'blob' });

@@ -203,7 +203,7 @@ function parseStemsToEras(stemsData: StemEntry[], allEras: Era[]): { eraName: st
 
 export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, currentSong, isPlaying, mvData = [], remixData = [], samplesData = [], toggleFavorite, favoriteKeys = [] }: StemsViewProps) {
   const { settings } = useSettings();
-  const { startJob, updateJob, finishJob } = useDownloadManager();
+  const { startJob, updateJob, startItem, finishItem, finishJob } = useDownloadManager();
   const [selectedEra, setSelectedEra] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -431,7 +431,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
         console.error(`Failed to download ${song.name}:`, err);
         throw err;
       }
-    }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+    }, 4, 2, (completed, total) => updateJob(jobId, completed, total), (song) => startItem(jobId, song.name), (song) => finishItem(jobId, song.name));
 
     setToastMessage('Zipping...');
     try {

@@ -72,6 +72,26 @@ export function DownloadProgressWidget() {
                           style={{ width: `${percent}%` }}
                         />
                       </div>
+                      {job.status === 'running' && job.activeItems.length > 0 && (
+                        <div className="flex flex-col gap-0.5 mt-0.5">
+                          {job.activeItems.slice(0, 4).map((name, i) => (
+                            <div key={`${name}-${i}`} className="flex items-center gap-1.5 text-[10.5px] text-white/40 truncate">
+                              <span className="w-1 h-1 rounded-full bg-[var(--theme-color,#fff)] shrink-0 animate-pulse" />
+                              <span className="truncate">{name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {job.status === 'running' && job.recentItems.length > 0 && (
+                        <div className="flex flex-col gap-0.5">
+                          {job.recentItems.slice(0, 2).map((name, i) => (
+                            <div key={`${name}-${i}`} className="flex items-center gap-1.5 text-[10.5px] text-white/25 truncate">
+                              <Check size={9} className="shrink-0" />
+                              <span className="truncate">{name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   );
                 })}

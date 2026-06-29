@@ -236,7 +236,7 @@ interface YEditsViewProps {
 }
 
 export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, claims = {}, onClaim, isAdmin = false }: YEditsViewProps) {
-  const { startJob, updateJob, finishJob } = useDownloadManager();
+  const { startJob, updateJob, startItem, finishItem, finishJob } = useDownloadManager();
   const [keys, setKeys] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -769,7 +769,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         const displayName = songsMeta?.[filename]?.displayName;
         const finalName = displayName ? `${displayName}${filename.substring(filename.lastIndexOf('.'))}` : filename;
         zip.file(sanitizeFilename(finalName), blob);
-      }, 4, 2, (completed, total) => updateJob(jobId, completed, total));
+      }, 4, 2, (completed, total) => updateJob(jobId, completed, total), (song) => startItem(jobId, song.name), (song) => finishItem(jobId, song.name));
       const blob = await zip.generateAsync({ type: 'blob' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');

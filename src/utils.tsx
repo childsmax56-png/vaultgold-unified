@@ -19,6 +19,8 @@ export async function runWithConcurrencyLimit<T>(
   concurrency = 4,
   retries = 2,
   onProgress?: (completed: number, total: number) => void,
+  onItemStart?: (item: T) => void,
+  onItemDone?: (item: T) => void,
 ): Promise<void> {
   let cursor = 0;
   let completed = 0;
@@ -26,6 +28,7 @@ export async function runWithConcurrencyLimit<T>(
     while (cursor < items.length) {
       const index = cursor++;
       const item = items[index];
+      onItemStart?.(item);
       let attempt = 0;
       while (true) {
         try {
@@ -39,6 +42,7 @@ export async function runWithConcurrencyLimit<T>(
           }
         }
       }
+      onItemDone?.(item);
       completed++;
       onProgress?.(completed, items.length);
     }
