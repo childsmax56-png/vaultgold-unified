@@ -1,3 +1,19 @@
+function decodeText(buf: ArrayBuffer): string {
+  const bytes = new Uint8Array(buf);
+  if (bytes[0] === 0xff && bytes[1] === 0xfe) {
+    return new TextDecoder('utf-16le').decode(bytes.slice(2));
+  }
+  if (bytes[0] === 0xfe && bytes[1] === 0xff) {
+    return new TextDecoder('utf-16be').decode(bytes.slice(2));
+  }
+  const utf8 = new TextDecoder('utf-8', { fatal: true });
+  try {
+    return utf8.decode(bytes);
+  } catch {
+    return new TextDecoder('windows-1252').decode(bytes);
+  }
+}
+
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { YEDITS_BUCKET } = context.env;
 
@@ -20,7 +36,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       const folderPath = key.substring(0, key.lastIndexOf('/'));
       const obj = await YEDITS_BUCKET.get(key);
       if (!obj) return null;
-      const text = await obj.text();
+      const text = decodeText(await obj.arrayBuffer());
       return [folderPath, text] as [string, string];
     })
   );
