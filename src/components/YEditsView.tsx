@@ -257,6 +257,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   const [uploadCover, setUploadCover] = useState<File | null>(null);
   const [uploadTracks, setUploadTracks] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<Record<string, { pct: number; status: 'pending' | 'uploading' | 'done' | 'error' }>>({});
   const [uploadResult, setUploadResult] = useState<{ ok: boolean; msg: string } | null>(null);
   const coverInputRef = useRef<HTMLInputElement>(null);
   const tracksInputRef = useRef<HTMLInputElement>(null);
@@ -282,6 +283,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   const [showAddTracks, setShowAddTracks] = useState(false);
   const [addTrackFiles, setAddTrackFiles] = useState<File[]>([]);
   const [addingTracks, setAddingTracks] = useState(false);
+  const [addTracksProgress, setAddTracksProgress] = useState<Record<string, { pct: number; status: 'pending' | 'uploading' | 'done' | 'error' }>>({});
   const [selectedSongs, setSelectedSongs] = useState<Set<string>>(new Set());
   const [selectMode, setSelectMode] = useState(false);
   const [zipping, setZipping] = useState(false);
@@ -365,14 +367,35 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     setShowUpload(true);
   };
 
+  // PUTs a single file to a presigned URL via XHR (fetch() doesn't expose
+  // upload progress events), reporting percent complete as it goes.
+  const putWithProgress = (url: string, file: File, onPct: (pct: number) => void): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', url);
+      xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+      xhr.upload.onprogress = e => {
+        if (e.lengthComputable) onPct(Math.round((e.loaded / e.total) * 100));
+      };
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) resolve();
+        else reject(new Error(`Failed to upload ${file.name} (HTTP ${xhr.status})`));
+      };
+      xhr.onerror = () => reject(new Error(`Network error uploading ${file.name}`));
+      xhr.send(file);
+    });
+  };
+
   // Presigns direct-to-R2 PUT URLs for the given files, then uploads each
   // one straight to R2 (bypassing the Worker's request-body size limit).
+  // Files upload with limited concurrency, reporting per-file progress.
   const uploadFilesDirect = async (
     token: string,
     creator: string,
     album: string,
     cover: File | null,
-    tracks: File[]
+    tracks: File[],
+    onProgress?: (fileName: string, pct: number, status: 'uploading' | 'done' | 'error') => void
   ): Promise<{ uploaded: string[]; folderPath: string }> => {
     const presignRes = await fetch('/api/yedits-presign', {
       method: 'POST',
@@ -399,17 +422,31 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     for (const t of tracks) fileByName.set(`track:${t.name}`, t);
 
     const uploaded: string[] = [];
-    for (const u of presignData.uploads) {
-      const file = fileByName.get(`${u.field}:${u.name}`);
-      if (!file) continue;
-      const putRes = await fetch(u.url, {
-        method: 'PUT',
-        headers: { 'Content-Type': file.type || 'application/octet-stream' },
-        body: file,
-      });
-      if (!putRes.ok) throw new Error(`Failed to upload ${file.name}`);
-      uploaded.push(u.key);
-    }
+    const errors: string[] = [];
+    const CONCURRENCY = 3;
+    const queue = [...presignData.uploads];
+
+    const worker = async () => {
+      while (queue.length > 0) {
+        const u = queue.shift();
+        if (!u) break;
+        const file = fileByName.get(`${u.field}:${u.name}`);
+        if (!file) continue;
+        try {
+          onProgress?.(file.name, 0, 'uploading');
+          await putWithProgress(u.url, file, pct => onProgress?.(file.name, pct, 'uploading'));
+          onProgress?.(file.name, 100, 'done');
+          uploaded.push(u.key);
+        } catch (err) {
+          onProgress?.(file.name, 0, 'error');
+          errors.push(err instanceof Error ? err.message : `Failed to upload ${file.name}`);
+        }
+      }
+    };
+
+    await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+
+    if (errors.length > 0) throw new Error(errors.join('; '));
 
     return { uploaded, folderPath: presignData.folderPath ?? '' };
   };
@@ -419,10 +456,16 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     if (!token || !uploadCreator.trim() || !uploadAlbum.trim() || uploadTracks.length === 0) return;
     setUploading(true);
     setUploadResult(null);
+    setUploadProgress(Object.fromEntries(
+      [...(uploadCover ? [uploadCover] : []), ...uploadTracks].map(f => [f.name, { pct: 0, status: 'pending' as const }])
+    ));
     try {
       const creator = uploadCreator.trim();
       const album = uploadAlbum.trim();
-      const { uploaded, folderPath } = await uploadFilesDirect(token, creator, album, uploadCover, uploadTracks);
+      const { uploaded, folderPath } = await uploadFilesDirect(
+        token, creator, album, uploadCover, uploadTracks,
+        (fileName, pct, status) => setUploadProgress(prev => ({ ...prev, [fileName]: { pct, status } }))
+      );
 
       const finalizeRes = await fetch('/api/yedits-upload', {
         method: 'POST',
@@ -525,8 +568,12 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     if (!token || addTrackFiles.length === 0) return;
     setAddingTracks(true);
     setAddTracksResult(null);
+    setAddTracksProgress(Object.fromEntries(addTrackFiles.map(f => [f.name, { pct: 0, status: 'pending' as const }])));
     try {
-      const { uploaded } = await uploadFilesDirect(token, group.parentName, group.displayName, null, addTrackFiles);
+      const { uploaded } = await uploadFilesDirect(
+        token, group.parentName, group.displayName, null, addTrackFiles,
+        (fileName, pct, status) => setAddTracksProgress(prev => ({ ...prev, [fileName]: { pct, status } }))
+      );
       setAddTracksResult({ ok: true, msg: `Added ${uploaded.length} track(s)!` });
       const fresh = await fetch('/api/yedits', { cache: 'no-store' }).then(r => r.json() as Promise<string[]>);
       setKeys(fresh);
@@ -1382,17 +1429,35 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                       if (files.length) setAddTrackFiles(prev => [...prev, ...files]);
                     }} />
                   {addTrackFiles.length > 0 && (
-                    <ul className="mt-1 space-y-0.5 max-h-32 overflow-y-auto">
-                      {addTrackFiles.map((f, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-xs text-white/60 px-1">
-                          <span className="flex-1 truncate">{f.name}</span>
-                          <button
-                            type="button"
-                            onClick={() => setAddTrackFiles(prev => prev.filter((_, i) => i !== idx))}
-                            className="text-white/30 hover:text-white/70 shrink-0 cursor-pointer"
-                          ><X className="w-3 h-3" /></button>
-                        </li>
-                      ))}
+                    <ul className="mt-1 space-y-1 max-h-40 overflow-y-auto">
+                      {addTrackFiles.map((f, idx) => {
+                        const prog = addTracksProgress[f.name];
+                        return (
+                          <li key={idx} className="px-1">
+                            <div className="flex items-center gap-2 text-xs text-white/60">
+                              <span className="flex-1 truncate">{f.name}</span>
+                              {prog?.status === 'done' && <span className="text-green-400 text-[10px] shrink-0">Done</span>}
+                              {prog?.status === 'error' && <span className="text-red-400 text-[10px] shrink-0">Failed</span>}
+                              {prog?.status === 'uploading' && <span className="text-white/40 text-[10px] shrink-0">{prog.pct}%</span>}
+                              {!addingTracks && (
+                                <button
+                                  type="button"
+                                  onClick={() => setAddTrackFiles(prev => prev.filter((_, i) => i !== idx))}
+                                  className="text-white/30 hover:text-white/70 shrink-0 cursor-pointer"
+                                ><X className="w-3 h-3" /></button>
+                              )}
+                            </div>
+                            {addingTracks && prog && (
+                              <div className="h-1 w-full bg-white/10 rounded-full mt-1 overflow-hidden">
+                                <div
+                                  className={`h-full rounded-full transition-all ${prog.status === 'error' ? 'bg-red-400' : 'bg-[var(--theme-color)]'}`}
+                                  style={{ width: `${prog.status === 'done' ? 100 : prog.pct}%` }}
+                                />
+                              </div>
+                            )}
+                          </li>
+                        );
+                      })}
                     </ul>
                   )}
                 </div>
@@ -1876,17 +1941,35 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   }}
                 />
                 {uploadTracks.length > 0 && (
-                  <ul className="mt-1 space-y-0.5 max-h-32 overflow-y-auto">
-                    {uploadTracks.map((f, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-xs text-white/60 px-1">
-                        <span className="flex-1 truncate">{f.name}</span>
-                        <button
-                          type="button"
-                          onClick={() => setUploadTracks(prev => prev.filter((_, i) => i !== idx))}
-                          className="text-white/30 hover:text-white/70 shrink-0 cursor-pointer"
-                        ><X className="w-3 h-3" /></button>
-                      </li>
-                    ))}
+                  <ul className="mt-1 space-y-1 max-h-40 overflow-y-auto">
+                    {uploadTracks.map((f, idx) => {
+                      const prog = uploadProgress[f.name];
+                      return (
+                        <li key={idx} className="px-1">
+                          <div className="flex items-center gap-2 text-xs text-white/60">
+                            <span className="flex-1 truncate">{f.name}</span>
+                            {prog?.status === 'done' && <span className="text-green-400 text-[10px] shrink-0">Done</span>}
+                            {prog?.status === 'error' && <span className="text-red-400 text-[10px] shrink-0">Failed</span>}
+                            {prog?.status === 'uploading' && <span className="text-white/40 text-[10px] shrink-0">{prog.pct}%</span>}
+                            {!uploading && (
+                              <button
+                                type="button"
+                                onClick={() => setUploadTracks(prev => prev.filter((_, i) => i !== idx))}
+                                className="text-white/30 hover:text-white/70 shrink-0 cursor-pointer"
+                              ><X className="w-3 h-3" /></button>
+                            )}
+                          </div>
+                          {uploading && prog && (
+                            <div className="h-1 w-full bg-white/10 rounded-full mt-1 overflow-hidden">
+                              <div
+                                className={`h-full rounded-full transition-all ${prog.status === 'error' ? 'bg-red-400' : 'bg-[var(--theme-color)]'}`}
+                                style={{ width: `${prog.status === 'done' ? 100 : prog.pct}%` }}
+                              />
+                            </div>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
               </div>
