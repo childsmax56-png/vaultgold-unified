@@ -24,7 +24,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     const listing = await YEDITS_BUCKET.list({ cursor });
     for (const obj of listing.objects) {
       const filename = obj.key.split('/').pop() ?? '';
-      if (/YZY[\s_-]*gold/i.test(filename)) {
+      if (/YZY[\s_-]*gold/i.test(filename) && /\.txt$/i.test(filename)) {
         tracklistKeys.push(obj.key);
       }
     }
