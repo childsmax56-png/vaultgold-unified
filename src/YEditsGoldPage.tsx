@@ -4,6 +4,7 @@ import { ArrowLeft, X, Check, ShieldCheck, Copy, KeyRound } from 'lucide-react';
 import { YEditsView, type ClaimInfo } from './components/YEditsView';
 import { PlayerBar } from './components/PlayerBar';
 import { FullScreenPlayer } from './components/FullScreenPlayer';
+import { PlaylistProvider } from './PlaylistContext';
 import type { Song, Era } from './types';
 
 const ACCENT = '#FFD700';
@@ -536,6 +537,7 @@ export function YEditsGoldPage() {
   };
 
   return (
+    <PlaylistProvider>
     <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased', paddingBottom: currentSong ? 90 : 0 }}>
       <audio ref={audioRef} />
 
@@ -647,5 +649,6 @@ export function YEditsGoldPage() {
         <RedeemKeyModal onClose={() => setShowRedeem(false)} onSuccess={() => { setShowRedeem(false); window.location.reload(); }} />
       )}
     </div>
+    </PlaylistProvider>
   );
 }
