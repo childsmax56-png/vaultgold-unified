@@ -1,3 +1,4 @@
+import { AwsClient } from 'aws4fetch';
 import { json, options } from './_auth';
 
 const OWNER_EMAIL = 'childsmax56@gmail.com';
@@ -26,19 +27,23 @@ async function checkOwnerOrClaim(token: string, creatorName: string, env: Env): 
 
 export const onRequestOptions: PagesFunction<Env> = async () => options();
 
+// Returns a presigned PUT URL so the browser can replace the track's bytes
+// directly in R2, instead of routing the file through this Worker.
 export const onRequestPost: PagesFunction<Env> = async (context) => {
-  let formData: FormData;
-  try {
-    formData = await context.request.formData();
-  } catch {
-    return json({ error: 'Invalid form data' }, 400);
+  const { R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY } = context.env;
+  if (!R2_ACCOUNT_ID || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY) {
+    return json({ error: 'Storage not configured' }, 500);
   }
 
-  const token = formData.get('token') as string | null;
-  const key = formData.get('key') as string | null;
-  const file = formData.get('file');
+  let body: { token?: string; key?: string; contentType?: string };
+  try {
+    body = await context.request.json();
+  } catch {
+    return json({ error: 'Invalid request body' }, 400);
+  }
 
-  if (!token || !key || !(file instanceof File) || file.size === 0) {
+  const { token, key, contentType } = body;
+  if (!token || !key) {
     return json({ error: 'Missing fields' }, 400);
   }
 
@@ -46,9 +51,21 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const allowed = await checkOwnerOrClaim(token, creatorName, context.env);
   if (!allowed) return json({ error: 'Unauthorized' }, 401);
 
-  await context.env.YEDITS_BUCKET.put(key, file.stream(), {
-    httpMetadata: { contentType: file.type || 'audio/mpeg' },
+  const client = new AwsClient({
+    accessKeyId: R2_ACCESS_KEY_ID,
+    secretAccessKey: R2_SECRET_ACCESS_KEY,
+    service: 's3',
+    region: 'auto',
   });
 
-  return json({ ok: true, key });
+  const bucketHost = `${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`;
+  const bucketName = 'yeditsgold-uploads';
+  const url = `https://${bucketHost}/${bucketName}/${key.split('/').map(encodeURIComponent).join('/')}`;
+  const signed = await client.sign(url, {
+    method: 'PUT',
+    headers: { 'Content-Type': contentType || 'audio/mpeg' },
+    aws: { signQuery: true },
+  });
+
+  return json({ url: signed.url, key });
 };

@@ -365,45 +365,101 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     setShowUpload(true);
   };
 
+  // Presigns direct-to-R2 PUT URLs for the given files, then uploads each
+  // one straight to R2 (bypassing the Worker's request-body size limit).
+  const uploadFilesDirect = async (
+    token: string,
+    creator: string,
+    album: string,
+    cover: File | null,
+    tracks: File[]
+  ): Promise<{ uploaded: string[]; folderPath: string }> => {
+    const presignRes = await fetch('/api/yedits-presign', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        token,
+        creator,
+        album,
+        cover: cover ? { name: cover.name, type: cover.type, size: cover.size } : undefined,
+        tracks: tracks.map(t => ({ name: t.name, type: t.type, size: t.size })),
+      }),
+    });
+    const presignData = await presignRes.json() as {
+      uploads?: { field: 'cover' | 'track'; name: string; key: string; url: string }[];
+      folderPath?: string;
+      error?: string;
+    };
+    if (!presignRes.ok || !presignData.uploads) {
+      throw new Error(presignData.error ?? 'Failed to prepare upload');
+    }
+
+    const fileByName = new Map<string, File>();
+    if (cover) fileByName.set(`cover:${cover.name}`, cover);
+    for (const t of tracks) fileByName.set(`track:${t.name}`, t);
+
+    const uploaded: string[] = [];
+    for (const u of presignData.uploads) {
+      const file = fileByName.get(`${u.field}:${u.name}`);
+      if (!file) continue;
+      const putRes = await fetch(u.url, {
+        method: 'PUT',
+        headers: { 'Content-Type': file.type || 'application/octet-stream' },
+        body: file,
+      });
+      if (!putRes.ok) throw new Error(`Failed to upload ${file.name}`);
+      uploaded.push(u.key);
+    }
+
+    return { uploaded, folderPath: presignData.folderPath ?? '' };
+  };
+
   const doUpload = async () => {
     const token = getVGToken();
     if (!token || !uploadCreator.trim() || !uploadAlbum.trim() || uploadTracks.length === 0) return;
     setUploading(true);
     setUploadResult(null);
-    const fd = new FormData();
-    fd.append('token', token);
-    fd.append('creator', uploadCreator.trim());
-    fd.append('album', uploadAlbum.trim());
-    if (uploadCover) fd.append('cover', uploadCover);
-    for (const t of uploadTracks) fd.append('tracks', t);
-    if (uploadSourceArtist) fd.append('sourceArtist', uploadSourceArtist);
-    if (uploadSourceEra) fd.append('sourceEra', uploadSourceEra);
-    if (uploadDescription) fd.append('description', uploadDescription);
-    if (uploadSamplyUrl) fd.append('samplyUrl', uploadSamplyUrl);
-    if (uploadUntitledUrl) fd.append('untitledUrl', uploadUntitledUrl);
-    fd.append('allowDownload', uploadAllowDownload ? 'true' : 'false');
     try {
-      const res = await fetch('/api/yedits-upload', { method: 'POST', body: fd });
-      const data = await res.json() as { uploaded?: string[]; folderPath?: string; error?: string };
-      if (!res.ok) {
-        setUploadResult({ ok: false, msg: data.error ?? 'Upload failed' });
-      } else {
-        setUploadResult({ ok: true, msg: `Uploaded ${data.uploaded?.length ?? 0} file(s)!` });
-        const freshKeys = await fetch('/api/yedits', { cache: 'no-store' })
-          .then(r => r.json() as Promise<string[]>)
-          .catch(() => null);
-        if (freshKeys) setKeys(freshKeys);
-        // Fetch metadata for the new album
-        if (data.folderPath) {
-          const fp = data.folderPath;
-          fetch(`/api/yedits-metadata?key=${encodeURIComponent(fp)}`)
-            .then(r => r.ok ? r.json() as Promise<AlbumMeta> : Promise.resolve({} as AlbumMeta))
-            .then(meta => setAlbumMeta(prev => ({ ...prev, [fp]: meta })))
-            .catch(() => {});
-        }
+      const creator = uploadCreator.trim();
+      const album = uploadAlbum.trim();
+      const { uploaded, folderPath } = await uploadFilesDirect(token, creator, album, uploadCover, uploadTracks);
+
+      const finalizeRes = await fetch('/api/yedits-upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token,
+          creator,
+          album,
+          sourceArtist: uploadSourceArtist || undefined,
+          sourceEra: uploadSourceEra || undefined,
+          description: uploadDescription || undefined,
+          samplyUrl: uploadSamplyUrl || undefined,
+          untitledUrl: uploadUntitledUrl || undefined,
+          allowDownload: uploadAllowDownload,
+        }),
+      });
+      const finalizeData = await finalizeRes.json() as { folderPath?: string; error?: string };
+      if (!finalizeRes.ok) {
+        setUploadResult({ ok: false, msg: finalizeData.error ?? 'Upload failed' });
+        return;
       }
-    } catch {
-      setUploadResult({ ok: false, msg: 'Network error' });
+
+      setUploadResult({ ok: true, msg: `Uploaded ${uploaded.length} file(s)!` });
+      const freshKeys = await fetch('/api/yedits', { cache: 'no-store' })
+        .then(r => r.json() as Promise<string[]>)
+        .catch(() => null);
+      if (freshKeys) setKeys(freshKeys);
+      // Fetch metadata for the new album
+      const fp = finalizeData.folderPath || folderPath;
+      if (fp) {
+        fetch(`/api/yedits-metadata?key=${encodeURIComponent(fp)}`)
+          .then(r => r.ok ? r.json() as Promise<AlbumMeta> : Promise.resolve({} as AlbumMeta))
+          .then(meta => setAlbumMeta(prev => ({ ...prev, [fp]: meta })))
+          .catch(() => {});
+      }
+    } catch (err) {
+      setUploadResult({ ok: false, msg: err instanceof Error ? err.message : 'Network error' });
     } finally {
       setUploading(false);
     }
@@ -469,28 +525,18 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     if (!token || addTrackFiles.length === 0) return;
     setAddingTracks(true);
     setAddTracksResult(null);
-    const fd = new FormData();
-    fd.append('token', token);
-    fd.append('creator', group.parentName);
-    fd.append('album', group.displayName);
-    for (const f of addTrackFiles) fd.append('tracks', f);
     try {
-      const res = await fetch('/api/yedits-upload', { method: 'POST', body: fd });
-      const data = await res.json() as { uploaded?: string[]; error?: string };
-      if (!res.ok) {
-        setAddTracksResult({ ok: false, msg: data.error ?? 'Upload failed' });
-      } else {
-        setAddTracksResult({ ok: true, msg: `Added ${data.uploaded?.length ?? 0} track(s)!` });
-        const fresh = await fetch('/api/yedits', { cache: 'no-store' }).then(r => r.json() as Promise<string[]>);
-        setKeys(fresh);
-        const updatedGroups = parseGroups(fresh);
-        const refreshed = updatedGroups.find(g => g.folderPath === group.folderPath);
-        if (refreshed) setSelectedGroup(refreshed);
-        setAddTrackFiles([]);
-        setTimeout(() => { setShowAddTracks(false); setAddTracksResult(null); }, 1200);
-      }
-    } catch {
-      setAddTracksResult({ ok: false, msg: 'Network error' });
+      const { uploaded } = await uploadFilesDirect(token, group.parentName, group.displayName, null, addTrackFiles);
+      setAddTracksResult({ ok: true, msg: `Added ${uploaded.length} track(s)!` });
+      const fresh = await fetch('/api/yedits', { cache: 'no-store' }).then(r => r.json() as Promise<string[]>);
+      setKeys(fresh);
+      const updatedGroups = parseGroups(fresh);
+      const refreshed = updatedGroups.find(g => g.folderPath === group.folderPath);
+      if (refreshed) setSelectedGroup(refreshed);
+      setAddTrackFiles([]);
+      setTimeout(() => { setShowAddTracks(false); setAddTracksResult(null); }, 1200);
+    } catch (err) {
+      setAddTracksResult({ ok: false, msg: err instanceof Error ? err.message : 'Network error' });
     } finally {
       setAddingTracks(false);
     }
@@ -501,25 +547,15 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     if (!token || !newCoverFile) return;
     setChangingCover(true);
     setChangeCoverResult(null);
-    const fd = new FormData();
-    fd.append('token', token);
-    fd.append('creator', group.parentName);
-    fd.append('album', group.displayName);
-    fd.append('cover', newCoverFile);
     try {
-      const res = await fetch('/api/yedits-upload', { method: 'POST', body: fd });
-      const data = await res.json() as { uploaded?: string[]; error?: string };
-      if (!res.ok) {
-        setChangeCoverResult({ ok: false, msg: data.error ?? 'Upload failed' });
-      } else {
-        setChangeCoverResult({ ok: true, msg: 'Cover updated!' });
-        const fresh = await fetch('/api/yedits', { cache: 'no-store' }).then(r => r.json() as Promise<string[]>);
-        setKeys(fresh);
-        setNewCoverFile(null);
-        setTimeout(() => { setShowChangeCover(false); setChangeCoverResult(null); }, 1200);
-      }
-    } catch {
-      setChangeCoverResult({ ok: false, msg: 'Network error' });
+      await uploadFilesDirect(token, group.parentName, group.displayName, newCoverFile, []);
+      setChangeCoverResult({ ok: true, msg: 'Cover updated!' });
+      const fresh = await fetch('/api/yedits', { cache: 'no-store' }).then(r => r.json() as Promise<string[]>);
+      setKeys(fresh);
+      setNewCoverFile(null);
+      setTimeout(() => { setShowChangeCover(false); setChangeCoverResult(null); }, 1200);
+    } catch (err) {
+      setChangeCoverResult({ ok: false, msg: err instanceof Error ? err.message : 'Network error' });
     } finally {
       setChangingCover(false);
     }
@@ -637,12 +673,20 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     const token = getVGToken();
     if (!token) return;
     setReplacingInProgress(true);
-    const fd = new FormData();
-    fd.append('token', token);
-    fd.append('key', key);
-    fd.append('file', file);
     try {
-      await fetch('/api/yedits-replace-song', { method: 'POST', body: fd });
+      const res = await fetch('/api/yedits-replace-song', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, key, contentType: file.type }),
+      });
+      const data = await res.json() as { url?: string; error?: string };
+      if (res.ok && data.url) {
+        await fetch(data.url, {
+          method: 'PUT',
+          headers: { 'Content-Type': file.type || 'audio/mpeg' },
+          body: file,
+        });
+      }
     } catch {
       // silent
     } finally {
@@ -1352,11 +1396,6 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                     </ul>
                   )}
                 </div>
-                {addTrackFiles.reduce((sum, f) => sum + f.size, 0) > 128 * 1024 * 1024 && (
-                  <p className="text-xs text-amber-400 text-center leading-relaxed">
-                    The attached files exceed the 128 MB limit. Upload as many as you can here, then add the rest after.
-                  </p>
-                )}
                 {addTracksResult && (
                   <p className={`text-xs text-center ${addTracksResult.ok ? 'text-green-400' : 'text-red-400'}`}>{addTracksResult.msg}</p>
                 )}
@@ -1851,15 +1890,6 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   </ul>
                 )}
               </div>
-
-              {(() => {
-                const totalBytes = (uploadCover?.size ?? 0) + uploadTracks.reduce((sum, f) => sum + f.size, 0);
-                return totalBytes > 128 * 1024 * 1024 ? (
-                  <p className="text-xs text-amber-400 text-center leading-relaxed">
-                    The attached files exceed the 128 MB limit. Upload as many as you can here, then add the rest after.
-                  </p>
-                ) : null;
-              })()}
 
               {uploadResult && (
                 <p className={`text-xs text-center ${uploadResult.ok ? 'text-green-400' : 'text-red-400'}`}>
