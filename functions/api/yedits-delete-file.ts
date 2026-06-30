@@ -1,7 +1,7 @@
-const OWNER_EMAIL = 'childsmax56@gmail.com';
+import { checkOwnerOrClaim } from './_yedits-auth';
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
-  const { YEDITS_BUCKET, DB } = context.env;
+  const { YEDITS_BUCKET } = context.env;
 
   let body: { token?: string; key?: string };
   try {
@@ -15,42 +15,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ error: 'Missing required fields' }, 400);
   }
 
-  const authRes = await fetch('https://unvaulted.cc/api/auth/me', {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!authRes.ok) {
-    return json({ error: 'Unauthorized — sign in to UNVAULTED first' }, 401);
-  }
-
-  const { user: me } = await authRes.json() as { user?: { id?: string; username?: string; email?: string } };
-  const username = me?.username?.trim();
-  const userId = me?.id;
-  if (!username || !userId) {
-    return json({ error: 'Could not determine your username' }, 401);
-  }
-
   const keyCreator = key.split('/')[0].trim();
-  const nameMatch = keyCreator.toLowerCase() === username.toLowerCase();
-
-  let claimMatch = false;
-  if (!nameMatch && DB) {
-    const claim = await DB.prepare(
-      `SELECT user_id FROM yeditsgold_claims WHERE profile_name = ? AND status = 'approved' AND user_id = ?`
-    ).bind(keyCreator, userId).first();
-    claimMatch = !!claim;
-  }
-
-  // Also allow yeditsgold admins/owner to delete any file
-  let isAdmin = false;
-  if (!nameMatch && !claimMatch) {
-    isAdmin = me?.email === OWNER_EMAIL;
-    if (!isAdmin && DB) {
-      const admin = await DB.prepare('SELECT user_id FROM yeditsgold_admins WHERE user_id = ?').bind(userId).first();
-      isAdmin = !!admin;
-    }
-  }
-
-  if (!nameMatch && !claimMatch && !isAdmin) {
+  const allowed = await checkOwnerOrClaim(token, keyCreator, context.env);
+  if (!allowed) {
     return json({ error: 'You can only delete your own files' }, 403);
   }
 

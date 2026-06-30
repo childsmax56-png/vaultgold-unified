@@ -324,6 +324,13 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   const [notesValue, setNotesValue] = useState('');
   const [savingNotes, setSavingNotes] = useState(false);
 
+  // collaborators
+  const [collaborators, setCollaborators] = useState<Record<string, string[]>>({});
+  const [showCollaborators, setShowCollaborators] = useState(false);
+  const [newCollaborator, setNewCollaborator] = useState('');
+  const [collaboratorsBusy, setCollaboratorsBusy] = useState(false);
+  const [collaboratorsResult, setCollaboratorsResult] = useState<{ ok: boolean; msg: string } | null>(null);
+
   useEffect(() => {
     fetch('/api/yedits')
       .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() as Promise<string[]>; })
@@ -352,6 +359,79 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       .catch(() => {});
   }, [selectedGroup]);
 
+  // Fetch collaborators for the selected album's profile
+  useEffect(() => {
+    setCollaboratorsResult(null);
+    setNewCollaborator('');
+    if (!selectedGroup?.parentName) return;
+    const profile = selectedGroup.parentName;
+    fetch(`/api/yedits-collaborators?profile=${encodeURIComponent(profile)}`)
+      .then(r => r.ok ? r.json() as Promise<{ collaborators?: string[] }> : Promise.resolve({} as { collaborators?: string[] }))
+      .then(data => setCollaborators(prev => ({ ...prev, [profile]: data.collaborators ?? [] })))
+      .catch(() => {});
+  }, [selectedGroup?.parentName]);
+
+  const refreshCollaborators = async (profile: string) => {
+    try {
+      const res = await fetch(`/api/yedits-collaborators?profile=${encodeURIComponent(profile)}`);
+      if (res.ok) {
+        const data = await res.json() as { collaborators?: string[] };
+        setCollaborators(prev => ({ ...prev, [profile]: data.collaborators ?? [] }));
+      }
+    } catch {}
+  };
+
+  const addCollaborator = async (profile: string) => {
+    const token = getVGToken();
+    const username = newCollaborator.trim();
+    if (!token || !username) return;
+    setCollaboratorsBusy(true);
+    setCollaboratorsResult(null);
+    try {
+      const res = await fetch('/api/yedits-collaborators', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, profileName: profile, username }),
+      });
+      const data = await res.json() as { ok?: boolean; error?: string };
+      if (res.ok && data.ok) {
+        setNewCollaborator('');
+        setCollaboratorsResult({ ok: true, msg: `Added ${username}` });
+        await refreshCollaborators(profile);
+      } else {
+        setCollaboratorsResult({ ok: false, msg: data.error ?? 'Failed to add collaborator' });
+      }
+    } catch {
+      setCollaboratorsResult({ ok: false, msg: 'Network error' });
+    } finally {
+      setCollaboratorsBusy(false);
+    }
+  };
+
+  const removeCollaborator = async (profile: string, username: string) => {
+    const token = getVGToken();
+    if (!token) return;
+    setCollaboratorsBusy(true);
+    setCollaboratorsResult(null);
+    try {
+      const res = await fetch('/api/yedits-collaborators', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, profileName: profile, username }),
+      });
+      const data = await res.json() as { ok?: boolean; error?: string };
+      if (res.ok && data.ok) {
+        await refreshCollaborators(profile);
+      } else {
+        setCollaboratorsResult({ ok: false, msg: data.error ?? 'Failed to remove collaborator' });
+      }
+    } catch {
+      setCollaboratorsResult({ ok: false, msg: 'Network error' });
+    } finally {
+      setCollaboratorsBusy(false);
+    }
+  };
+
   const openUpload = () => {
     setUploadCreator(vgUser?.username ?? '');
     setUploadAlbum('');
@@ -369,11 +449,11 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
 
   // PUTs a single file to a presigned URL via XHR (fetch() doesn't expose
   // upload progress events), reporting percent complete as it goes.
-  const putWithProgress = (url: string, file: File, onPct: (pct: number) => void): Promise<void> => {
+  const putWithProgress = (url: string, file: File, contentType: string, onPct: (pct: number) => void): Promise<void> => {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open('PUT', url);
-      xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+      xhr.setRequestHeader('Content-Type', contentType);
       xhr.upload.onprogress = e => {
         if (e.lengthComputable) onPct(Math.round((e.loaded / e.total) * 100));
       };
@@ -409,7 +489,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       }),
     });
     const presignData = await presignRes.json() as {
-      uploads?: { field: 'cover' | 'track'; name: string; key: string; url: string }[];
+      uploads?: { field: 'cover' | 'track'; name: string; key: string; url: string; contentType: string }[];
       folderPath?: string;
       error?: string;
     };
@@ -434,7 +514,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         if (!file) continue;
         try {
           onProgress?.(file.name, 0, 'uploading');
-          await putWithProgress(u.url, file, pct => onProgress?.(file.name, pct, 'uploading'));
+          await putWithProgress(u.url, file, u.contentType, pct => onProgress?.(file.name, pct, 'uploading'));
           onProgress?.(file.name, 100, 'done');
           uploaded.push(u.key);
         } catch (err) {
@@ -726,11 +806,11 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, key, contentType: file.type }),
       });
-      const data = await res.json() as { url?: string; error?: string };
+      const data = await res.json() as { url?: string; contentType?: string; error?: string };
       if (res.ok && data.url) {
         await fetch(data.url, {
           method: 'PUT',
-          headers: { 'Content-Type': file.type || 'audio/mpeg' },
+          headers: { 'Content-Type': data.contentType ?? (file.type || 'audio/mpeg') },
           body: file,
         });
       }
@@ -916,10 +996,10 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     const activeCoverUrl = showBackCover ? selectedGroup.backCoverUrl : selectedGroup.imageUrl;
     const hasBackCover = !!selectedGroup.backCoverUrl;
     const claimEntry = claims[selectedGroup.parentName];
-    const isOwner = isAdmin || (!!vgUser && (
-      selectedGroup.parentName.toLowerCase() === vgUser.username.toLowerCase() ||
-      claimEntry?.userId === vgUser.id
-    ));
+    const isRootOwner = !!vgUser && selectedGroup.parentName.toLowerCase() === vgUser.username.toLowerCase();
+    const profileCollaborators = collaborators[selectedGroup.parentName] ?? [];
+    const isCollaborator = !!vgUser && profileCollaborators.some(u => u.toLowerCase() === vgUser.username.toLowerCase());
+    const isOwner = isAdmin || isRootOwner || (!!vgUser && claimEntry?.userId === vgUser.id) || isCollaborator;
     const meta = albumMeta[selectedGroup.folderPath] ?? {};
 
     return (
@@ -1116,6 +1196,13 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                     >
                       <Pencil className="w-3 h-3" />
                       Edit Info
+                    </button>
+                    <button
+                      onClick={() => { setCollaboratorsResult(null); setNewCollaborator(''); setShowCollaborators(true); }}
+                      className="flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white border border-white/10 transition-colors cursor-pointer"
+                    >
+                      <Share2 className="w-3 h-3" />
+                      Collaborators
                     </button>
                   </>
                 )}
@@ -1514,6 +1601,68 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 >
                   {changingCover ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Uploading…</> : <><ImagePlus className="w-3.5 h-3.5" /> Update Cover</>}
                 </button>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+
+        {/* Manage Collaborators modal */}
+        {showCollaborators && typeof document !== 'undefined' && createPortal(
+          <div
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => { if (!collaboratorsBusy) setShowCollaborators(false); }}
+          >
+            <div className="bg-[#111] border border-white/10 rounded-xl w-full max-w-md p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
+              <div className="flex items-center justify-between mb-5">
+                <h3 className="text-base font-bold text-white">Collaborators</h3>
+                <button onClick={() => { if (!collaboratorsBusy) setShowCollaborators(false); }} className="text-white/40 hover:text-white cursor-pointer">
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="space-y-3">
+                <p className="text-xs text-white/40">
+                  Collaborators can edit, rename, and delete tracks on {selectedGroup.parentName}'s projects.
+                </p>
+                <div className="space-y-1.5 max-h-40 overflow-y-auto">
+                  {(collaborators[selectedGroup.parentName] ?? []).length === 0 ? (
+                    <p className="text-xs text-white/30">No collaborators yet.</p>
+                  ) : (
+                    (collaborators[selectedGroup.parentName] ?? []).map(name => (
+                      <div key={name} className="flex items-center justify-between bg-white/5 rounded-lg px-3 py-2">
+                        <span className="text-sm text-white/80">{name}</span>
+                        <button
+                          onClick={() => removeCollaborator(selectedGroup.parentName, name)}
+                          disabled={collaboratorsBusy}
+                          className="text-white/30 hover:text-red-400 transition-colors cursor-pointer disabled:opacity-40"
+                          title="Remove collaborator"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    ))
+                  )}
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                    placeholder="Username"
+                    value={newCollaborator}
+                    onChange={e => setNewCollaborator(e.target.value)}
+                    disabled={collaboratorsBusy}
+                    onKeyDown={e => { if (e.key === 'Enter') addCollaborator(selectedGroup.parentName); }}
+                  />
+                  <button
+                    onClick={() => addCollaborator(selectedGroup.parentName)}
+                    disabled={collaboratorsBusy || !newCollaborator.trim()}
+                    className="px-4 rounded-lg bg-[var(--theme-color)] text-black text-xs font-bold hover:opacity-90 disabled:opacity-40 transition-opacity cursor-pointer flex items-center justify-center"
+                  >
+                    {collaboratorsBusy ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Plus className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
+                {collaboratorsResult && (
+                  <p className={`text-xs text-center ${collaboratorsResult.ok ? 'text-green-400' : 'text-red-400'}`}>{collaboratorsResult.msg}</p>
+                )}
               </div>
             </div>
           </div>,

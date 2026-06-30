@@ -1,4 +1,5 @@
 import { AwsClient } from 'aws4fetch';
+import { getAuthUser, isYeditsAdmin } from './_yedits-auth';
 
 interface FileSpec {
   name: string;
@@ -40,13 +41,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ error: 'Missing required fields' }, 400);
   }
 
-  const authRes = await fetch('https://unvaulted.cc/api/auth/me', {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!authRes.ok) {
-    return json({ error: 'Unauthorized — sign in to UNVAULTED first' }, 401);
-  }
-  const { user } = await authRes.json() as { user?: { id: string; username: string; email: string } };
+  const user = await getAuthUser(token);
   if (!user) {
     return json({ error: 'Unauthorized — sign in to UNVAULTED first' }, 401);
   }
@@ -60,7 +55,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   // If the typed creator name differs from the uploader's account username,
   // grant them an approved claim on it so they can edit what they just
   // uploaded without needing a separate admin-approved claim.
-  if (DB && creatorDir.toLowerCase() !== user.username.toLowerCase()) {
+  if (DB && creatorDir.toLowerCase() !== user.username.toLowerCase() && !(await isYeditsAdmin(DB, user.id, user.email ?? ''))) {
     await ensureClaimsTable(DB);
     const existing = await DB.prepare(
       'SELECT user_id FROM yeditsgold_claims WHERE profile_name = ?'
@@ -93,19 +88,21 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return signed.url;
   };
 
-  const uploads: { field: 'cover' | 'track'; name: string; key: string; url: string }[] = [];
+  const uploads: { field: 'cover' | 'track'; name: string; key: string; url: string; contentType: string }[] = [];
 
   if (cover && cover.size > 0) {
     const key = `${creatorDir}/${albumDir}/${sanitize(cover.name)}`;
-    const url = await presign(key, cover.type || 'image/jpeg');
-    uploads.push({ field: 'cover', name: cover.name, key, url });
+    const contentType = cover.type || 'image/jpeg';
+    const url = await presign(key, contentType);
+    uploads.push({ field: 'cover', name: cover.name, key, url, contentType });
   }
 
   for (const track of tracks ?? []) {
     if (!track || track.size === 0) continue;
     const key = `${creatorDir}/${albumDir}/${sanitize(track.name)}`;
-    const url = await presign(key, track.type || 'audio/mpeg');
-    uploads.push({ field: 'track', name: track.name, key, url });
+    const contentType = track.type || 'audio/mpeg';
+    const url = await presign(key, contentType);
+    uploads.push({ field: 'track', name: track.name, key, url, contentType });
   }
 
   if (uploads.length === 0) {
