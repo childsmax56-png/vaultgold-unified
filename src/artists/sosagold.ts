@@ -67,4 +67,8 @@ export const sosagoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: true,
+  hasStemsTab: false,
+  hasMiscTab: true,
+  miscLabel: 'MISC + STEMS',
+  hasSubAlbumsTab: false,
 };

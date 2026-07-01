@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
-import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Film, Disc3, Layers, Star, Pencil, CheckSquare, Square } from 'lucide-react';
+import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Film, Disc3, Layers, Star, Pencil, CheckSquare, Square, ListMusic, Plus } from 'lucide-react';
 import { SiYoutube } from 'react-icons/si';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
@@ -15,6 +15,7 @@ import { isLastfmLoggedIn } from '../lastfm';
 import { SiLastdotfm } from 'react-icons/si';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { usePlaylists } from '../PlaylistContext';
 
 function normalizeName(name: string): string {
   return name
@@ -216,6 +217,10 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
   const [isSelectMode, setIsSelectMode] = useState(false);
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
   const [isDownloadingSelected, setIsDownloadingSelected] = useState(false);
+  const [isPlaylistMenuOpen, setIsPlaylistMenuOpen] = useState(false);
+  const [playlistCreating, setPlaylistCreating] = useState(false);
+  const [newPlaylistName, setNewPlaylistName] = useState('');
+  const { playlists, addToPlaylist, createPlaylist } = usePlaylists();
 
   useEffect(() => {
     setVisibleCount(era.name === 'Recent Leaks' ? 15 : 9999);
@@ -460,6 +465,37 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
     setToastMessage(`Added ${toFavorite.length} song${toFavorite.length !== 1 ? 's' : ''} to Favorites`);
     setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const getSelectedPlayableSongs = () => {
+    return processedCategories.flatMap(({ category, songs }) =>
+      songs.map((song, i) => ({ song, category, key: getSongKey(category, i) }))
+    ).filter(({ key }) => selectedKeys.has(key)).map(({ song }) => song)
+      .filter(song => {
+        const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
+        return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isSongNotAvailable(song, rawUrl);
+      });
+  };
+
+  const handleAddSelectedToPlaylist = (playlistId: string) => {
+    const toAdd = getSelectedPlayableSongs();
+    toAdd.forEach(song => {
+      const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
+      const cleanSong = { ...song };
+      delete (cleanSong as any).realEra;
+      addToPlaylist(playlistId, { songName: song.name, eraName: (song as any).realEra?.name || era.name, url: rawUrl, song: cleanSong });
+    });
+    setToastMessage(`Added ${toAdd.length} song${toAdd.length !== 1 ? 's' : ''} to playlist`);
+    setTimeout(() => setToastMessage(null), 3000);
+    setIsPlaylistMenuOpen(false);
+  };
+
+  const handleCreatePlaylistFromSelected = () => {
+    if (!newPlaylistName.trim()) return;
+    const id = createPlaylist(newPlaylistName.trim());
+    setNewPlaylistName('');
+    setPlaylistCreating(false);
+    handleAddSelectedToPlaylist(id);
   };
 
   const processedCategories = useMemo(() => {
@@ -1174,6 +1210,71 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                   <Star className="w-3.5 h-3.5 text-[var(--theme-color)]" fill="currentColor" />
                   Favorite
                 </button>
+                <div className="relative">
+                  <button
+                    onClick={() => setIsPlaylistMenuOpen(o => !o)}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    <ListMusic className="w-3.5 h-3.5 text-[var(--theme-color)]" />
+                    Playlist
+                  </button>
+                  {isPlaylistMenuOpen && (
+                    <>
+                      <div className="fixed inset-0 z-40" onClick={() => { setIsPlaylistMenuOpen(false); setPlaylistCreating(false); setNewPlaylistName(''); }} />
+                      <div className="absolute bottom-full mb-2 right-0 z-50 bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl min-w-[200px] overflow-hidden">
+                        {playlists.length === 0 && !playlistCreating && (
+                          <div className="px-4 py-2 text-xs text-white/40">No playlists yet</div>
+                        )}
+                        {playlists.map(p => (
+                          <button
+                            key={p.id}
+                            onClick={() => handleAddSelectedToPlaylist(p.id)}
+                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-left text-white/80 hover:bg-white/5 transition-colors cursor-pointer"
+                          >
+                            <span className="truncate">{p.name}</span>
+                          </button>
+                        ))}
+                        {playlistCreating ? (
+                          <div className="p-2 border-t border-white/10" onClick={e => e.stopPropagation()}>
+                            <input
+                              autoFocus
+                              value={newPlaylistName}
+                              onChange={e => setNewPlaylistName(e.target.value)}
+                              onKeyDown={e => {
+                                if (e.key === 'Enter') handleCreatePlaylistFromSelected();
+                                if (e.key === 'Escape') { setPlaylistCreating(false); setNewPlaylistName(''); }
+                              }}
+                              placeholder="Playlist name..."
+                              className="w-full bg-white/10 border border-white/20 rounded px-3 py-1.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-white/40"
+                            />
+                            <div className="flex gap-2 mt-1.5">
+                              <button
+                                onClick={handleCreatePlaylistFromSelected}
+                                className="flex-1 text-xs py-1 rounded bg-[var(--theme-color)]/20 text-[var(--theme-color)] hover:bg-[var(--theme-color)]/30 transition-colors cursor-pointer"
+                              >
+                                Create
+                              </button>
+                              <button
+                                onClick={() => { setPlaylistCreating(false); setNewPlaylistName(''); }}
+                                className="flex-1 text-xs py-1 rounded bg-white/5 text-white/50 hover:bg-white/10 transition-colors cursor-pointer"
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => setPlaylistCreating(true)}
+                            className={`w-full flex items-center gap-2 px-4 py-2 text-sm text-left text-white/50 hover:text-white hover:bg-white/5 transition-colors cursor-pointer ${playlists.length > 0 ? 'border-t border-white/10' : ''}`}
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                            New playlist...
+                          </button>
+                        )}
+                      </div>
+                    </>
+                  )}
+                </div>
                 <button
                   onClick={handleDownloadSelected}
                   disabled={isDownloadingSelected}

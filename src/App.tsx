@@ -1200,7 +1200,10 @@ export default function App() {
       });
 
     fetch(`/${ARTIST_SLUG}/data/stems.csv`)
-      .then(res => res.text())
+      .then(res => {
+        if (!res.ok || !(res.headers.get('content-type') || '').includes('csv')) return '';
+        return res.text();
+      })
       .then(text => {
         try {
           const rows = normalizeParsedRows(parseCSVText(text));
@@ -1249,7 +1252,10 @@ export default function App() {
       });
 
     fetch(`/${ARTIST_SLUG}/data/fakes.csv`)
-      .then(res => res.text())
+      .then(res => {
+        if (!res.ok || !(res.headers.get('content-type') || '').includes('csv')) return '';
+        return res.text();
+      })
       .then(text => {
         try {
         const rawFakes = normalizeEraField(normalizeParsedRows(parseCSVText(text))) as any[];

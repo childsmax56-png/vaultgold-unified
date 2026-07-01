@@ -97,6 +97,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     : NAV_CATEGORIES;
 
   const visibleCategories = baseCategories.filter(({ key }) => {
+    if (key === 'stems' && activeConfig.hasStemsTab === false) return false;
     if (key === 'yedits' && !activeConfig.hasYeditsTab) return false;
     if (key === 'production' && !activeConfig.hasProductionTab) return false;
     if (key === 'concerts' && !activeConfig.hasConcertsTab) return false;
@@ -111,7 +112,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     if (key === 'tracklists' && activeConfig.hasTracklistsTab === false) return false;
     if (DATA_DRIVEN_TABS.has(key) && fetchedTabs?.has(key) && !tabsWithData?.has(key)) return false;
     return true;
-  });
+  }).map(cat => cat.key === 'misc' && activeConfig.miscLabel ? { ...cat, label: activeConfig.miscLabel } : cat);
   const activeLabel = visibleCategories.find(c => c.key === activeCategory)?.label ?? 'Navigate';
 
   const handleCategoryClick = (cat: Category) => {
