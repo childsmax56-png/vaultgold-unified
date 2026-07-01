@@ -127,9 +127,8 @@ export const slimegoldConfig: ArtistConfig = {
   TAG_TOOLTIP_MAP: {},
   ERA_THEMES: {},
 
-  hasArtTab: false,
+  hasArtTab: true,
   hasVideosTab: false,
   hasMiscTab: false,
-  hasTracklistsTab: false,
   hasSubAlbumsTab: false,
 };
