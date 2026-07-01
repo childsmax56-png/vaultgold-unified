@@ -596,7 +596,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
           style={!settings.disableEraThemes && ERA_THEMES[era.name]?.topBanner ? {
             backgroundImage: `url(${ERA_THEMES[era.name].topBanner})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: 'right center',
           } : { backgroundColor: 'rgba(255,255,255,0.05)' }}
         >
           {onBack && (
