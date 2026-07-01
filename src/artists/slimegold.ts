@@ -10,7 +10,7 @@ export const slimegoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '12zc2reK5y8XP6SQhv1ujQtiG9VpJy7yDWwDuE-S-wpc',
   HARDCODED_SHEET_GID: '0',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/12zc2reK5y8XP6SQhv1ujQtiG9VpJy7yDWwDuE-S-wpc/export?format=csv&gid=1507357362',
   accentColor: '#ec4899',
   artistLabel: 'Young Thug',
   cardLetter: 'THUG',
@@ -57,8 +57,8 @@ export const slimegoldConfig: ArtistConfig = {
     'Unknown (2022)': '/slimegold/eras/unknown-2022.jpg',
     'BUSINESS IS BUSINESS': '/slimegold/eras/business-is-business.jpg',
     'LOVE YOU LATER': '/slimegold/eras/love-you-later.jpg',
-    'Slime Sea4on': '/slimegold/eras/slime-sea4on.jpg',
-    'Edd, Ed n Eddy': '/slimegold/eras/edd-ed-n-eddy.jpg',
+    'Edd, Ed n Eddy': '/slimegold/eras/slime-sea4on.jpg',
+    'UY SCUTI': '/slimegold/eras/edd-ed-n-eddy.jpg',
   },
 
   ALBUM_RELEASE_DATES: {
@@ -101,13 +101,17 @@ export const slimegoldConfig: ArtistConfig = {
     'Edd, Ed n Eddy': '??/??/????',
     'UY SCUTI': '01/02/2025',
     'Day Before Coachella': '10/17/2025',
+    'GØŁDMØÜFDÖG': '??/??/????',
   },
 
   HIDDEN_ALBUMS: [],
   ALBUM_DESCRIPTIONS: {},
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
-  ERA_MAPPINGS: {},
+  ERA_MAPPINGS: {
+    'Hy!£UN35 [V3]': 'HiTunes [V3]',
+    'Collaboration with Juice WRLD': 'Slime WRLD',
+  },
   ALBUM_ORDER: [
     'I Came From Nothing', '1017 Thug', 'Black Portland', 'HiTunes [V1]', 'Metro Thuggin',
     'Rich Gang: Tha Tour Pt. 1', 'Rich Gang: Tha Tour Pt. 2', 'Barter 6', 'Hy!£UN35 [V2]',
@@ -116,7 +120,7 @@ export const slimegoldConfig: ArtistConfig = {
     'Collaboration with 808 Mafia', 'Hy!£UN35 [V4]', 'Slime Language', 'Barter 7', 'Static',
     'Slime WRLD', 'So Much Fun', 'So Much Fun (Deluxe)', 'SUPER SLIMEY: SURFER EDITION',
     'Punk [V1]', 'Slime Language 2', 'Punk [V2]', 'Unknown (2022)', 'BUSINESS IS BUSINESS',
-    'LOVE YOU LATER', 'Slime Sea4on', 'Edd, Ed n Eddy', 'UY SCUTI', 'Day Before Coachella',
+    'LOVE YOU LATER', 'Slime Sea4on', 'Edd, Ed n Eddy', 'UY SCUTI', 'Day Before Coachella', 'GØŁDMØÜFDÖG',
   ],
 
   TAG_MAP: {},
@@ -125,4 +129,7 @@ export const slimegoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasMiscTab: false,
+  hasTracklistsTab: false,
+  hasSubAlbumsTab: false,
 };

@@ -72,6 +72,9 @@ const ERA_NAME_MAP: Record<string, string> = {
   'G-SIdes': 'G-Sides',
   'Journey To The West': 'Monkey - Journey To The West',
   'Song Machine, Season One': 'Song Machine, Season One: Strange Timez',
+  // slimegold — CSV uses special characters / different era names
+  'Hy!£UN35 [V3]': 'HiTunes [V3]',
+  'Collaboration with Juice WRLD': 'Slime WRLD',
 };
 
 function mapEraName(name: string): string {
@@ -95,7 +98,7 @@ const ARTIST_ERA_ORDERS: Record<string, string[]> = {
     'Collaboration with 808 Mafia', 'Hy!£UN35 [V4]', 'Slime Language', 'Barter 7', 'Static',
     'Slime WRLD', 'So Much Fun', 'So Much Fun (Deluxe)', 'SUPER SLIMEY: SURFER EDITION',
     'Punk [V1]', 'Slime Language 2', 'Punk [V2]', 'Unknown (2022)', 'BUSINESS IS BUSINESS',
-    'LOVE YOU LATER', 'Slime Sea4on', 'Edd, Ed n Eddy', 'UY SCUTI', 'Day Before Coachella',
+    'LOVE YOU LATER', 'Slime Sea4on', 'Edd, Ed n Eddy', 'UY SCUTI', 'Day Before Coachella', 'GØŁDMØÜFDÖG',
   ],
   mjgold: [
     'Got To Be There', 'Ben', 'Music & Me', 'Forever, Michael',
@@ -409,6 +412,7 @@ export const onRequestGet: PagesFunction = async (context) => {
     const firstRowKeys = rows.length > 0 ? Object.keys(rows[0]) : [];
     const TRACK_LENGTH_KEY = firstRowKeys.find(k => k === 'Track Length') ?? firstRowKeys.find(k => k === 'Length') ?? 'Track Length';
     const AVAIL_LENGTH_KEY = firstRowKeys.find(k => k === 'Available Length') ?? firstRowKeys.find(k => k === 'Availability') ?? firstRowKeys.find(k => k === 'Portion') ?? 'Available Length';
+    const LINKS_KEY = firstRowKeys.find(k => k === 'Link(s)') ?? firstRowKeys.find(k => k === 'Source') ?? 'Link(s)';
 
     const eras: Record<string, any> = {};
 
@@ -464,7 +468,7 @@ export const onRequestGet: PagesFunction = async (context) => {
         }
 
         const { name, extra } = parseSongName(nameField);
-        const links = (row['Link(s)'] ?? '').split('\n').map((l: string) => l.trim()).filter(Boolean);
+        const links = (row[LINKS_KEY] ?? '').split('\n').map((l: string) => l.trim()).filter(Boolean);
 
         eras[eraName].data['Unreleased Tracks'].push({
           name,
