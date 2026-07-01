@@ -10,7 +10,7 @@ export const dongoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '1qsO4SuzzB17d5orqbKWHsaQsRdk0lzTSF9rV2FwQf-Q',
   HARDCODED_SHEET_GID: '1535277716',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1qsO4SuzzB17d5orqbKWHsaQsRdk0lzTSF9rV2FwQf-Q/export?format=csv&gid=1891166449',
   accentColor: '#9333ea',
   artistLabel: 'Don Toliver',
   cardLetter: 'DON',
