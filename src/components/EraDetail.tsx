@@ -594,7 +594,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         <div
           className="p-6 md:p-8 flex flex-col md:flex-row items-start gap-6 md:gap-8 border-b border-white/5"
           style={!settings.disableEraThemes && ERA_THEMES[era.name]?.topBanner ? {
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${ERA_THEMES[era.name].topBanner})`,
+            backgroundImage: `url(${ERA_THEMES[era.name].topBanner})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           } : { backgroundColor: 'rgba(255,255,255,0.05)' }}
