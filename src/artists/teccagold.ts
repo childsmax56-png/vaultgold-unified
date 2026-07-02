@@ -36,7 +36,17 @@ export const teccagoldConfig: ArtistConfig = {
   },
 
   HIDDEN_ALBUMS: [],
-  ALBUM_DESCRIPTIONS: {},
+  ALBUM_DESCRIPTIONS: {
+    'Tecca & Friends': "Early collaborative mixtape from Tecca's teenage years, before he signed a record deal.",
+    'We Love You Tecca': "Tecca's debut mixtape, released August 30, 2019, led by the breakout single \"Ransom.\"",
+    'Virgo World': "Tecca's debut studio album, released September 18, 2020.",
+    'Two Lil Black Boys': 'Scrapped collaborative project title used by the tracker community; exact details are unclear.',
+    'We Love You Tecca 2': "Tecca's second mixtape, released August 27, 2021, following up on We Love You Tecca.",
+    'TEC': "Tecca's third full-length project, released September 22, 2023.",
+    'PLAN A': "Tecca's project released September 20, 2024.",
+    'DOPAMINE': "Tecca's project released June 13, 2025.",
+    'Ongoing': 'Songs without a confirmed era or currently being worked on.',
+  },
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
   ERA_MAPPINGS: {},
