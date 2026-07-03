@@ -118,13 +118,54 @@ const W = 460;
 const H = 640;
 const START_LIVES = 3;
 
+// True when a mission's win condition is met by the given run stats.
+// `lifetimeScore` = banked total + the current run's score (so "legend" can fire mid-run).
+function missionMet(id: string, stats: RunStats, lifetimeScore: number): boolean {
+  switch (id) {
+    case 'dig': return stats.vinyls >= 10;
+    case 'survive': return stats.seconds >= 30;
+    case 'score': return stats.score >= 500;
+    case 'flawless': return stats.vinyls >= 12 && stats.hits === 0;
+    case 'legend': return lifetimeScore >= 1500;
+    default: return false;
+  }
+}
+
+// Unlock every mission newly satisfied by `stats`, drawing a random unowned reward
+// for each. Pure w.r.t. `prev`; returns the next save plus the rewards drawn.
+function applyUnlocks(prev: SaveData, stats: RunStats): { next: SaveData; newly: Reward[] } {
+  const next: SaveData = { ...prev, completed: { ...prev.completed }, assignments: { ...prev.assignments } };
+  const lifetimeScore = prev.totalScore + stats.score;
+  const used = new Set(Object.values(next.assignments));
+  const bag = REWARD_POOL.filter(r => !used.has(r.id)).sort(() => Math.random() - 0.5);
+  const newly: Reward[] = [];
+  for (const m of MISSIONS) {
+    if (!next.completed[m.id] && missionMet(m.id, stats, lifetimeScore)) {
+      next.completed[m.id] = true;
+      const drawn = bag.pop();
+      if (drawn) { next.assignments[m.id] = drawn.id; newly.push(drawn); }
+    }
+  }
+  return { next, newly };
+}
+
 export function GamePage() {
   const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [phase, setPhase] = useState<Phase>('menu');
   const [save, setSave] = useState<SaveData>(loadSave);
   const [hud, setHud] = useState({ score: 0, vinyls: 0, lives: START_LIVES, time: 0 });
-  const [lastRun, setLastRun] = useState<{ stats: RunStats; newlyUnlocked: Reward[] } | null>(null);
+  const [lastRun, setLastRun] = useState<{ stats: RunStats; newlyUnlocked: Reward[]; busted: boolean } | null>(null);
+  const [toast, setToast] = useState<Reward | null>(null);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  // Live mirrors of save so the RAF loop can read the latest without re-subscribing.
+  const saveRef = useRef(save);
+  useEffect(() => { saveRef.current = save; }, [save]);
+  const completedRef = useRef<Set<string>>(new Set(Object.keys(save.completed)));
+  useEffect(() => { completedRef.current = new Set(Object.keys(save.completed)); }, [save.completed]);
+  // Rewards unlocked during the current run, shown on the game-over card.
+  const runUnlocksRef = useRef<Reward[]>([]);
 
   // Mutable game world kept in a ref so the RAF loop doesn't trigger re-renders.
   const world = useRef({
@@ -148,39 +189,48 @@ export function GamePage() {
       stats: { score: 0, vinyls: 0, seconds: 0, hits: 0 },
       spawnTimer: 0, elapsed: 0, running: true, flash: 0, combo: 0,
     };
+    runUnlocksRef.current = [];
   };
 
-  const finishRun = useCallback((stats: RunStats) => {
+  // Unlock any missions the current run now satisfies, live. Cheap-gated by
+  // completedRef so it's safe to call every frame. Shows a toast per unlock.
+  const liveUnlockCheck = (stats: RunStats) => {
+    const sv = saveRef.current;
+    const lifetimeScore = sv.totalScore + stats.score;
+    const anyPending = MISSIONS.some(m => !completedRef.current.has(m.id) && missionMet(m.id, stats, lifetimeScore));
+    if (!anyPending) return;
     setSave(prev => {
-      const next: SaveData = {
-        highScore: Math.max(prev.highScore, stats.score),
-        totalScore: prev.totalScore + stats.score,
-        completed: { ...prev.completed },
-        assignments: { ...prev.assignments },
-      };
-      // Shuffle the rewards you don't already have; each new mission draws from it.
-      const used = new Set(Object.values(next.assignments));
-      const bag = REWARD_POOL.filter(r => !used.has(r.id)).sort(() => Math.random() - 0.5);
-      const newlyUnlocked: Reward[] = [];
-      const check = (m: Mission, done: boolean) => {
-        if (done && !next.completed[m.id]) {
-          next.completed[m.id] = true;
-          const drawn = bag.pop();
-          if (drawn) {
-            next.assignments[m.id] = drawn.id;
-            newlyUnlocked.push(drawn);
-          }
-        }
-      };
-      check(MISSIONS[0], stats.vinyls >= 10);
-      check(MISSIONS[1], stats.seconds >= 30);
-      check(MISSIONS[2], stats.score >= 500);
-      check(MISSIONS[3], stats.vinyls >= 12 && stats.hits === 0);
-      check(MISSIONS[4], next.totalScore >= 1500);
+      const { next, newly } = applyUnlocks(prev, stats);
+      if (!newly.length) return prev;
+      completedRef.current = new Set(Object.keys(next.completed));
+      runUnlocksRef.current.push(...newly);
       saveSave(next);
-      setLastRun({ stats, newlyUnlocked });
+      showToast(newly[newly.length - 1]);
       return next;
     });
+  };
+
+  const showToast = (r: Reward) => {
+    setToast(r);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 3200);
+  };
+
+  const finishRun = useCallback((stats: RunStats, busted: boolean) => {
+    setSave(prev => {
+      // Catch any last-moment unlocks (e.g. hit the score threshold on the run that ended),
+      // then bank the run's score. Flawless can't apply here since ending on death took hits.
+      const { next: unlocked, newly } = applyUnlocks(prev, stats);
+      if (newly.length) runUnlocksRef.current.push(...newly);
+      const next: SaveData = {
+        ...unlocked,
+        highScore: Math.max(prev.highScore, stats.score),
+        totalScore: prev.totalScore + stats.score,
+      };
+      saveSave(next);
+      return next;
+    });
+    setLastRun({ stats, newlyUnlocked: [...runUnlocksRef.current], busted });
     setPhase('over');
   }, []);
 
@@ -245,7 +295,7 @@ export function GamePage() {
             g.flash = 1;
             if (g.lives <= 0) {
               g.running = false;
-              finishRun({ ...g.stats });
+              finishRun({ ...g.stats }, true);
               return;
             }
           } else {
@@ -261,6 +311,10 @@ export function GamePage() {
       }
       g.fallers = nextFallers;
       if (g.flash > 0) g.flash = Math.max(0, g.flash - dt * 3);
+
+      // Unlock missions the moment their condition is met — including "no hit"
+      // achievements that could never survive to the death screen.
+      liveUnlockCheck(g.stats);
 
       // ---- draw ----
       ctx.clearRect(0, 0, W, H);
@@ -383,8 +437,17 @@ export function GamePage() {
 
   const startGame = () => {
     resetWorld();
+    setToast(null);
     setHud({ score: 0, vinyls: 0, lives: START_LIVES, time: 0 });
     setPhase('playing');
+  };
+
+  const cashOut = () => {
+    const g = world.current;
+    if (!g.running) return;
+    g.running = false;
+    cancelAnimationFrame(rafRef.current);
+    finishRun({ ...g.stats }, false);
   };
 
   const unlockedRewards = MISSIONS
@@ -434,13 +497,31 @@ export function GamePage() {
 
             {/* HUD */}
             {phase === 'playing' && (
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', pointerEvents: 'none', textShadow: '0 1px 4px #000' }}>
-                <div>
-                  <div style={{ fontSize: 22, fontWeight: 900, color: GOLD }}>{hud.score.toLocaleString()}</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{hud.vinyls} vinyls · {hud.time.toFixed(0)}s</div>
+              <>
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', pointerEvents: 'none', textShadow: '0 1px 4px #000' }}>
+                  <div>
+                    <div style={{ fontSize: 22, fontWeight: 900, color: GOLD }}>{hud.score.toLocaleString()}</div>
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>{hud.vinyls} vinyls · {hud.time.toFixed(0)}s</div>
+                  </div>
+                  <div style={{ fontSize: 18 }}>{'♦'.repeat(hud.lives)}<span style={{ opacity: 0.25 }}>{'♦'.repeat(Math.max(0, START_LIVES - hud.lives))}</span></div>
                 </div>
-                <div style={{ fontSize: 18 }}>{'♦'.repeat(hud.lives)}<span style={{ opacity: 0.25 }}>{'♦'.repeat(Math.max(0, START_LIVES - hud.lives))}</span></div>
-              </div>
+                <button
+                  onClick={cashOut}
+                  style={{ position: 'absolute', bottom: 12, left: '50%', transform: 'translateX(-50%)', background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,215,0,0.4)', color: GOLD, borderRadius: 20, padding: '6px 16px', fontSize: 12, fontWeight: 700, cursor: 'pointer', backdropFilter: 'blur(2px)' }}
+                >
+                  Cash out &amp; keep loot
+                </button>
+                {/* live unlock toast */}
+                {toast && (
+                  <div style={{ position: 'absolute', top: 52, left: '50%', transform: 'translateX(-50%)', background: 'rgba(255,215,0,0.14)', border: `1px solid ${GOLD}`, borderRadius: 10, padding: '8px 14px', display: 'flex', alignItems: 'center', gap: 10, backdropFilter: 'blur(3px)', boxShadow: '0 6px 20px rgba(0,0,0,0.5)', whiteSpace: 'nowrap' }}>
+                    <div style={{ width: 30, height: 30, borderRadius: 6, background: toast.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 10 }}>{toast.letter}</div>
+                    <div style={{ textAlign: 'left' }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: GOLD }}>🔓 VAULT UNLOCKED</div>
+                      <div style={{ fontSize: 12, color: '#fff' }}>{toast.era} — {toast.label}</div>
+                    </div>
+                  </div>
+                )}
+              </>
             )}
 
             {/* Menu overlay */}
@@ -458,7 +539,7 @@ export function GamePage() {
             {/* Game over overlay */}
             {phase === 'over' && lastRun && (
               <div style={{ ...overlay, overflowY: 'auto' }}>
-                <div style={{ fontSize: 13, letterSpacing: 2, color: 'rgba(255,255,255,0.5)' }}>BUSTED</div>
+                <div style={{ fontSize: 13, letterSpacing: 2, color: 'rgba(255,255,255,0.5)' }}>{lastRun.busted ? 'BUSTED' : 'CASHED OUT'}</div>
                 <div style={{ fontSize: 40, fontWeight: 900, color: GOLD, margin: '2px 0 4px' }}>{lastRun.stats.score.toLocaleString()}</div>
                 <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', marginBottom: 14 }}>
                   {lastRun.stats.vinyls} vinyls · {lastRun.stats.seconds.toFixed(0)}s survived · {lastRun.stats.hits} takedowns
