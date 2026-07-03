@@ -27,47 +27,43 @@ interface Mission {
   id: string;
   title: string;
   desc: string;
-  reward: Reward;
 }
 
 const MISSIONS: Mission[] = [
-  {
-    id: 'dig',
-    title: 'First Dig',
-    desc: 'Catch 10 leaked vinyls in a single run.',
-    reward: { id: 'gaj', artist: 'yzygold', label: 'Ye', era: 'Good Ass Job', letter: 'YZY', accent: '#C9A224', blurb: 'The legendary scrapped 4th Kanye album.' },
-  },
-  {
-    id: 'survive',
-    title: 'Beat the Takedown',
-    desc: 'Survive 30 seconds without going broke.',
-    reward: { id: 'ine', artist: 'drizzygold', label: 'Drake', era: "It's Never Enough", letter: 'OVO', accent: '#b8860b', blurb: 'Drake\'s shelved pre-Take Care mixtape.' },
-  },
-  {
-    id: 'score',
-    title: 'Gold Rush',
-    desc: 'Bank a score of 500 in one run.',
-    reward: { id: 'c4', artist: 'kdotgold', label: 'Kendrick Lamar', era: 'C4', letter: 'KDT', accent: '#1e3a5f', blurb: 'Kendrick\'s early Lil Wayne-inspired tape.' },
-  },
-  {
-    id: 'flawless',
-    title: 'Untouchable',
-    desc: 'Grab 12+ vinyls and never take a hit.',
-    reward: { id: 'lir2', artist: 'uzigold', label: 'Lil Uzi Vert', era: 'Luv Is Rage 2 [V1]', letter: 'UZI', accent: '#e8621a', blurb: 'The famously scrapped first cut of LIR2.' },
-  },
-  {
-    id: 'legend',
-    title: 'Vault Master',
-    desc: 'Reach 1,500 lifetime score across all runs.',
-    reward: { id: 'evil', artist: 'juicegold', label: 'Juice WRLD', era: 'Evil Twins', letter: 'JCE', accent: '#e53e3e', blurb: 'Juice WRLD\'s unreleased Cordae project.' },
-  },
+  { id: 'dig', title: 'First Dig', desc: 'Catch 10 leaked vinyls in a single run.' },
+  { id: 'survive', title: 'Beat the Takedown', desc: 'Survive 30 seconds without going broke.' },
+  { id: 'score', title: 'Gold Rush', desc: 'Bank a score of 500 in one run.' },
+  { id: 'flawless', title: 'Untouchable', desc: 'Grab 12+ vinyls and never take a hit.' },
+  { id: 'legend', title: 'Vault Master', desc: 'Reach 1,500 lifetime score across all runs.' },
 ];
+
+// The shuffle pool. Every reward is a REAL vaulted era — clearing a mission draws
+// a random one you don't already have, so no two runs of the vault look alike.
+const REWARD_POOL: Reward[] = [
+  { id: 'gaj', artist: 'yzygold', label: 'Ye', era: 'Good Ass Job', letter: 'YZY', accent: '#C9A224', blurb: 'The legendary scrapped 4th Kanye album.' },
+  { id: 'yandhi', artist: 'yzygold', label: 'Ye', era: 'Yandhi [V2]', letter: 'YZY', accent: '#C9A224', blurb: 'The shelved album that became Jesus Is King.' },
+  { id: 'ine', artist: 'drizzygold', label: 'Drake', era: "It's Never Enough", letter: 'OVO', accent: '#b8860b', blurb: 'Drake\'s early pre-fame mixtape era.' },
+  { id: 'scorpion1', artist: 'drizzygold', label: 'Drake', era: 'Scorpion [V1]', letter: 'OVO', accent: '#b8860b', blurb: 'The original cut before the final album.' },
+  { id: 'c4', artist: 'kdotgold', label: 'Kendrick Lamar', era: 'C4', letter: 'KDT', accent: '#1e3a5f', blurb: 'Kendrick\'s early Lil Wayne-inspired tape.' },
+  { id: 'tpac1', artist: 'kdotgold', label: 'Kendrick Lamar', era: 'Tu Pimp A Caterpillar [V1]', letter: 'KDT', accent: '#1e3a5f', blurb: 'The early build of To Pimp A Butterfly.' },
+  { id: 'lir2', artist: 'uzigold', label: 'Lil Uzi Vert', era: 'Luv Is Rage 2 [V1]', letter: 'UZI', accent: '#e8621a', blurb: 'The famously scrapped first cut of LIR2.' },
+  { id: 'ea1', artist: 'uzigold', label: 'Lil Uzi Vert', era: 'Eternal Atake [V1]', letter: 'UZI', accent: '#e8621a', blurb: 'The long-delayed original Eternal Atake.' },
+  { id: 'evil', artist: 'juicegold', label: 'Juice WRLD', era: 'Evil Twins', letter: 'JCE', accent: '#e53e3e', blurb: 'Juice WRLD\'s unreleased Cordae project.' },
+  { id: 'outsiders', artist: 'juicegold', label: 'Juice WRLD', era: 'The Outsiders', letter: 'JCE', accent: '#e53e3e', blurb: 'A vaulted, never-released Juice project.' },
+  { id: 'bvf', artist: 'xgold', label: 'XXXTENTACION', era: 'Bad Vibes Forever', letter: 'XXX', accent: '#4a0e8f', blurb: 'The heavily-vaulted posthumous era.' },
+  { id: 'migothug', artist: 'slimegold', label: 'Young Thug', era: 'MigoThuggin', letter: 'THUG', accent: '#ec4899', blurb: 'The unreleased Migos x Thug tape.' },
+  { id: 'stolen', artist: 'macgold', label: 'Mac Miller', era: 'Stolen Youth', letter: 'M', accent: '#ca8a04', blurb: 'A cult-favorite vaulted Mac Miller tape.' },
+  { id: 'akncudi', artist: 'cudigold', label: 'Kid Cudi', era: 'A Kid Named Cudi', letter: 'CUDI', accent: '#6366f1', blurb: 'The mixtape that started it all.' },
+];
+
+const REWARD_BY_ID: Record<string, Reward> = Object.fromEntries(REWARD_POOL.map(r => [r.id, r]));
 
 interface SaveData {
   highScore: number;
   totalScore: number;
   completed: Record<string, boolean>;
-  unlocked: Record<string, boolean>;
+  // which random reward each cleared mission drew: { missionId: rewardId }
+  assignments: Record<string, string>;
 }
 
 function loadSave(): SaveData {
@@ -75,15 +71,23 @@ function loadSave(): SaveData {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const p = JSON.parse(raw);
+      const assignments: Record<string, string> = p.assignments || {};
+      // Migrate old fixed-reward saves: pair each completed mission with an old unlock.
+      if (!p.assignments && p.unlocked) {
+        const oldUnlocked = Object.keys(p.unlocked).filter(id => REWARD_BY_ID[id]);
+        Object.keys(p.completed || {}).forEach((mid, i) => {
+          if (oldUnlocked[i]) assignments[mid] = oldUnlocked[i];
+        });
+      }
       return {
         highScore: p.highScore || 0,
         totalScore: p.totalScore || 0,
         completed: p.completed || {},
-        unlocked: p.unlocked || {},
+        assignments,
       };
     }
   } catch { /* ignore */ }
-  return { highScore: 0, totalScore: 0, completed: {}, unlocked: {} };
+  return { highScore: 0, totalScore: 0, completed: {}, assignments: {} };
 }
 
 function saveSave(d: SaveData) {
@@ -152,15 +156,19 @@ export function GamePage() {
         highScore: Math.max(prev.highScore, stats.score),
         totalScore: prev.totalScore + stats.score,
         completed: { ...prev.completed },
-        unlocked: { ...prev.unlocked },
+        assignments: { ...prev.assignments },
       };
+      // Shuffle the rewards you don't already have; each new mission draws from it.
+      const used = new Set(Object.values(next.assignments));
+      const bag = REWARD_POOL.filter(r => !used.has(r.id)).sort(() => Math.random() - 0.5);
       const newlyUnlocked: Reward[] = [];
       const check = (m: Mission, done: boolean) => {
         if (done && !next.completed[m.id]) {
           next.completed[m.id] = true;
-          if (!next.unlocked[m.reward.id]) {
-            next.unlocked[m.reward.id] = true;
-            newlyUnlocked.push(m.reward);
+          const drawn = bag.pop();
+          if (drawn) {
+            next.assignments[m.id] = drawn.id;
+            newlyUnlocked.push(drawn);
           }
         }
       };
@@ -379,10 +387,19 @@ export function GamePage() {
     setPhase('playing');
   };
 
-  const unlockedRewards = MISSIONS.map(m => m.reward).filter(r => save.unlocked[r.id]);
+  const unlockedRewards = MISSIONS
+    .map(m => REWARD_BY_ID[save.assignments[m.id]])
+    .filter((r): r is Reward => !!r);
 
   const playReward = (r: Reward) => {
     navigate(`/${r.artist}/album/${createSlug(r.era)}`);
+  };
+
+  const rerollVault = () => {
+    if (!window.confirm('Re-roll the vault? This wipes your mission progress and unlocked albums so you can draw a fresh set.')) return;
+    const fresh: SaveData = { highScore: save.highScore, totalScore: 0, completed: {}, assignments: {} };
+    saveSave(fresh);
+    setSave(fresh);
   };
 
   // ---- render ----
@@ -475,23 +492,33 @@ export function GamePage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {MISSIONS.map(m => {
               const done = save.completed[m.id];
+              const won = done ? REWARD_BY_ID[save.assignments[m.id]] : undefined;
               return (
                 <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', borderRadius: 10, background: done ? 'rgba(255,215,0,0.07)' : 'rgba(255,255,255,0.03)', border: `1px solid ${done ? 'rgba(255,215,0,0.35)' : 'rgba(255,255,255,0.07)'}` }}>
                   <div style={{ width: 26, height: 26, borderRadius: '50%', border: `2px solid ${done ? GOLD : 'rgba(255,255,255,0.25)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: GOLD, fontSize: 14, flexShrink: 0 }}>{done ? '✓' : ''}</div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: 14, fontWeight: 700, color: done ? GOLD : '#fff' }}>{m.title}</div>
                     <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>{m.desc}</div>
-                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>Reward: <b style={{ color: 'rgba(255,255,255,0.65)' }}>{m.reward.era}</b> — {m.reward.label}</div>
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>
+                      {won
+                        ? <>Won: <b style={{ color: 'rgba(255,255,255,0.65)' }}>{won.era}</b> — {won.label}</>
+                        : <>Reward: <b style={{ color: 'rgba(255,255,255,0.55)' }}>🎁 Mystery vault record</b></>}
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          <h2 style={{ ...sectionH, marginTop: 22 }}>Your Vault <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 400, fontSize: 13 }}>({unlockedRewards.length}/{MISSIONS.length})</span></h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 22, marginBottom: 10 }}>
+            <h2 style={{ ...sectionH, margin: 0 }}>Your Vault <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 400, fontSize: 13 }}>({unlockedRewards.length}/{MISSIONS.length})</span></h2>
+            {unlockedRewards.length > 0 && (
+              <button onClick={rerollVault} title="Wipe progress and draw a fresh shuffle" style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.6)', borderRadius: 8, padding: '5px 10px', cursor: 'pointer', fontSize: 12 }}>🎲 Re-roll</button>
+            )}
+          </div>
           {unlockedRewards.length === 0 ? (
             <div style={{ padding: '18px 14px', border: '1px dashed rgba(255,255,255,0.12)', borderRadius: 10, textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
-              Empty. Clear a mission to earn an unreleased album — then play it right here.
+              Empty. Clear a mission to draw a random unreleased album from the vault — then play it right here.
             </div>
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
