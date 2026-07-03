@@ -1086,6 +1086,21 @@ export function LandingPage() {
         >
           <GearIcon />
         </button>
+        <a
+          href="/game"
+          title="Play The Heist"
+          style={{
+            position: 'absolute', top: 0, left: 0,
+            background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
+            borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
+            display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700,
+            textDecoration: 'none', transition: 'background 0.15s',
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
+        >
+          🎮 <span className="game-btn-label">The Heist</span>
+        </a>
         <img
           src="/logo.png"
           alt="UNVAULTED"
