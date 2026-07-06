@@ -913,6 +913,15 @@ export function parseNoteDescription(description: string | undefined | null): {
   return { ogFilename, note };
 }
 
+// Pixeldrain blocks direct browser access (cross-site hotlink detection + the
+// Cloudflare cf-worker header), so file IDs must go through the configured
+// non-Cloudflare proxy — same as audio playback. Returns null if no proxy is set.
+export function pixeldrainProxyUrl(url: string): string | null {
+  const id = url.split('/u/')[1]?.split('?')[0];
+  const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
+  return id && proxyBase ? `${proxyBase}/api/${id}` : null;
+}
+
 export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isImage: boolean; imageExt?: string; headers?: Record<string, string> }> {
   if (url.includes('imgur.gg/f/')) {
     const id = url.split('/f/')[1];
@@ -932,6 +941,9 @@ export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isIma
   }
   if (url.includes('krakenfiles.com/view/')) {
     return { fetchUrl: `/api/kraken-proxy?url=${encodeURIComponent(url)}`, isImage: false };
+  }
+  if (url.includes('pixeldrain.com/u/')) {
+    return { fetchUrl: pixeldrainProxyUrl(url) ?? url, isImage: false };
   }
   if (url.includes('drive.google.com')) {
     const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
@@ -1011,6 +1023,8 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
         if (extMatch) ext = extMatch[1].toLowerCase() === 'mp4' ? '.mp4' : `.${extMatch[1].toLowerCase()}`;
     } else if (url.includes('krakenfiles.com/view/')) {
         finalUrl = `/api/kraken-proxy?url=${encodeURIComponent(url)}`;
+    } else if (url.includes('pixeldrain.com/u/')) {
+        finalUrl = pixeldrainProxyUrl(url) ?? url;
     } else if (url.includes('ibb.co')) {
        isImage = true;
        ext = '';
