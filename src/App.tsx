@@ -132,6 +132,7 @@ export interface FakesEntry {
 import { SettingsView } from './components/SettingsView';
 import { HistoryView } from './components/HistoryView';
 import { FakesView } from './components/FakesView';
+import { AlbumCopiesView, AlbumCopyEra } from './components/AlbumCopiesView';
 import { CompsView } from './components/CompsView';
 import { ConcertsView } from './components/ConcertsView';
 import { YEditsView } from './components/YEditsView';
@@ -186,6 +187,7 @@ export default function App() {
   const [stemsData, setStemsData] = useState<StemEntry[]>([]);
   const [miscData, setMiscData] = useState<MiscEntry[]>([]);
   const [fakesData, setFakesData] = useState<FakesEntry[]>([]);
+  const [albumCopiesData, setAlbumCopiesData] = useState<AlbumCopyEra[]>([]);
   const [productionData, setProductionData] = useState<TrackerData | null>(null);
   const [tracklistsData, setTracklistsData] = useState<TracklistAlbum[]>([]);
   const [releasedData, setReleasedData] = useState<ReleasedEntry[]>([]);
@@ -220,6 +222,7 @@ export default function App() {
     if (path.startsWith('/stems')) return 'stems';
     if (path.startsWith('/misc')) return 'misc';
     if (path.startsWith('/fakes')) return 'fakes';
+    if (path.startsWith('/albumcopies')) return 'albumcopies';
     if (path.startsWith('/released')) return 'released';
     if (path.startsWith('/related')) return 'related';
     if (path.startsWith('/recent-production')) return 'recent-production';
@@ -1083,6 +1086,8 @@ export default function App() {
           setActiveCategory('misc');
         } else if (path.startsWith('/fakes')) {
           setActiveCategory('fakes');
+        } else if (path.startsWith('/albumcopies')) {
+          setActiveCategory('albumcopies');
         } else if (path.startsWith('/released')) {
           setActiveCategory('released');
         } else if (path.startsWith('/recent-production')) {
@@ -1299,6 +1304,20 @@ export default function App() {
         setFetchedTabs(prev => new Set([...prev, 'fakes']));
       });
 
+    if (activeConfig.hasAlbumCopiesTab) {
+      axios.get(`/api/${ARTIST_SLUG}/album-copies`)
+        .then(res => {
+          const eras = (res.data?.eras ?? []) as AlbumCopyEra[];
+          setAlbumCopiesData(eras);
+          setFetchedTabs(prev => new Set([...prev, 'albumcopies']));
+          if (eras.length > 0) setTabsWithData(prev => new Set([...prev, 'albumcopies']));
+        })
+        .catch(err => {
+          console.error("Failed to fetch Album Copies data:", err);
+          setFetchedTabs(prev => new Set([...prev, 'albumcopies']));
+        });
+    }
+
     Promise.resolve({ data: [] })
       .then(res => {
         setSamplesData(res.data as SampleEntry[]);
@@ -1474,6 +1493,10 @@ export default function App() {
       if (!currentPath.startsWith('/fakes')) {
         window.history.pushState({ category: 'fakes' }, '', absPath('/fakes'));
       }
+    } else if (activeCategory === 'albumcopies') {
+      if (!currentPath.startsWith('/albumcopies')) {
+        window.history.pushState({ category: 'albumcopies' }, '', absPath('/albumcopies'));
+      }
     } else if (activeCategory === 'released') {
       if (!currentPath.startsWith('/released')) {
         window.history.pushState({ category: 'released' }, '', absPath('/released'));
@@ -1610,6 +1633,8 @@ export default function App() {
         setActiveCategory('stems');
       } else if (path.startsWith('/misc')) {
         setActiveCategory('misc');
+      } else if (path.startsWith('/albumcopies')) {
+        setActiveCategory('albumcopies');
       } else if (path.startsWith('/released')) {
         setActiveCategory('released');
       } else if (path.startsWith('/recent-production')) {
@@ -3009,6 +3034,13 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   isPlaying={isPlaying}
                   toggleFavorite={toggleFavorite}
                   favoriteKeys={favoriteKeys}
+                />
+              ) : activeCategory === 'albumcopies' ? (
+                <AlbumCopiesView
+                  key="albumcopies"
+                  eras={erasArray}
+                  albumCopiesData={albumCopiesData}
+                  searchQuery={searchQuery}
                 />
               ) : activeCategory === 'videos' ? (
                 <VideosView

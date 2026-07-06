@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const twizzygoldConfig: ArtistConfig = {
   slug: 'twizzygold',
+  hasAlbumCopiesTab: true,
   SITE_NAME: 'TWIZZYgold',
   SITE_DESCRIPTION: 'The Best YEAT Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/twizzygold/',

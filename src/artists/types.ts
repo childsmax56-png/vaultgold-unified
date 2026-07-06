@@ -49,6 +49,7 @@ export interface ArtistConfig {
   hasStemsTab?: boolean; // set false to force-hide the Stems tab regardless of data
   miscLabel?: string; // override the "Misc" tab label
   hasTracklistsTab?: boolean; // set false to force-hide the Tracklists tab regardless of data
+  hasAlbumCopiesTab?: boolean; // set true to enable the Album Copies tab (data from data/album-copies.csv)
   SHEET_URL_RECENT_PRODUCTION?: string; // CSV export URL for a second recent tab (production projects)
   productionFirst?: boolean; // show Production Projects before Music in navbar
   productionSecond?: boolean; // show Production Projects second (right after Music) in navbar

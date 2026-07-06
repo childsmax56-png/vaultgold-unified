@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const yzygoldConfig: ArtistConfig = {
   slug: 'yzygold',
+  hasAlbumCopiesTab: true,
   SITE_NAME: 'YƵYGOLD',
   SITE_DESCRIPTION: 'The Best YeTracker In The World!',
   SITE_URL: 'https://unvaulted.cc/yzygold/',

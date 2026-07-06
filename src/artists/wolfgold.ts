@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const wolfgoldConfig: ArtistConfig = {
   slug: 'wolfgold',
+  hasAlbumCopiesTab: true,
   SITE_NAME: 'WOLFgold',
   SITE_DESCRIPTION: 'The Best Tyler, The Creator Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/wolfgold/',
