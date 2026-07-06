@@ -8,11 +8,14 @@ function md5(str: string): string {
   function gg(a: number, b: number, c: number, d: number, x: number, s: number, t: number) { return cmn((b & d) | (c & ~d), a, b, x, s, t); }
   function hh(a: number, b: number, c: number, d: number, x: number, s: number, t: number) { return cmn(b ^ c ^ d, a, b, x, s, t); }
   function ii(a: number, b: number, c: number, d: number, x: number, s: number, t: number) { return cmn(c ^ (b | ~d), a, b, x, s, t); }
-  const nblk = ((str.length + 8) >> 6) + 1;
+  // Hash the UTF-8 bytes (not UTF-16 code units) so non-ASCII input signs correctly.
+  const bytes = new TextEncoder().encode(str);
+  const len = bytes.length;
+  const nblk = ((len + 8) >> 6) + 1;
   const x = new Array(nblk * 16).fill(0);
-  for (let i = 0; i < str.length; i++) x[i >> 2] |= str.charCodeAt(i) << ((i % 4) * 8);
-  x[str.length >> 2] |= 0x80 << ((str.length % 4) * 8);
-  x[nblk * 16 - 2] = str.length * 8;
+  for (let i = 0; i < len; i++) x[i >> 2] |= bytes[i] << ((i % 4) * 8);
+  x[len >> 2] |= 0x80 << ((len % 4) * 8);
+  x[nblk * 16 - 2] = len * 8;
   let a = 0x67452301, b = 0xefcdab89, c = 0x98badcfe, d = 0x10325476;
   for (let i = 0; i < x.length; i += 16) {
     const [aa, bb, cc, dd] = [a, b, c, d];

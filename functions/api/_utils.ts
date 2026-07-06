@@ -9,11 +9,17 @@ export function md5(str: string): string {
   function hh(a: number, b: number, c: number, d: number, x: number, s: number, t: number) { return cmn(b ^ c ^ d, a, b, x, s, t); }
   function ii(a: number, b: number, c: number, d: number, x: number, s: number, t: number) { return cmn(c ^ (b | ~d), a, b, x, s, t); }
 
-  const nblk = ((str.length + 8) >> 6) + 1;
+  // Last.fm computes the signature over the UTF-8 bytes of the string, so we
+  // must hash bytes — not UTF-16 code units. Using charCodeAt here produced a
+  // mismatched api_sig for any artist/track/album containing a non-ASCII
+  // character (accents, †, stylized unicode, …), silently breaking scrobbles.
+  const bytes = new TextEncoder().encode(str);
+  const len = bytes.length;
+  const nblk = ((len + 8) >> 6) + 1;
   const x: number[] = new Array(nblk * 16).fill(0);
-  for (let i = 0; i < str.length; i++) x[i >> 2] |= str.charCodeAt(i) << ((i % 4) * 8);
-  x[str.length >> 2] |= 0x80 << ((str.length % 4) * 8);
-  x[nblk * 16 - 2] = str.length * 8;
+  for (let i = 0; i < len; i++) x[i >> 2] |= bytes[i] << ((i % 4) * 8);
+  x[len >> 2] |= 0x80 << ((len % 4) * 8);
+  x[nblk * 16 - 2] = len * 8;
 
   let a = 0x67452301, b = 0xefcdab89, c = 0x98badcfe, d = 0x10325476;
 
