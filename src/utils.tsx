@@ -108,6 +108,12 @@ export const ALBUM_DESCRIPTIONS: Record<string, string> = new Proxy({} as Record
   ownKeys: () => Object.keys(activeConfig.ALBUM_DESCRIPTIONS),
   getOwnPropertyDescriptor: (_, k: string) => ({ configurable: true, enumerable: true, value: activeConfig.ALBUM_DESCRIPTIONS[k] }),
 });
+export const ERA_DISCLAIMERS: Record<string, { text: string; linkText?: string; linkUrl?: string }> = new Proxy({} as any, {
+  get: (_, k: string) => (activeConfig.ERA_DISCLAIMERS ?? {})[k],
+  has: (_, k: string) => k in (activeConfig.ERA_DISCLAIMERS ?? {}),
+  ownKeys: () => Object.keys(activeConfig.ERA_DISCLAIMERS ?? {}),
+  getOwnPropertyDescriptor: (_, k: string) => ({ configurable: true, enumerable: true, value: (activeConfig.ERA_DISCLAIMERS ?? {})[k] }),
+});
 export const TAG_MAP: Record<string, string> = new Proxy({} as Record<string, string>, {
   get: (_, k: string) => activeConfig.TAG_MAP[k],
   has: (_, k: string) => k in activeConfig.TAG_MAP,

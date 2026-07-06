@@ -26,6 +26,9 @@ export interface ArtistConfig {
   ERA_MAPPINGS: Record<string, string>;
   ALBUM_ORDER?: string[]; // explicit era order, overrides Object.keys(ALBUM_RELEASE_DATES) which hoists integer-named keys
 
+  // Optional per-era disclaimer banner (e.g. copyright notice redirecting to another tracker)
+  ERA_DISCLAIMERS?: Record<string, { text: string; linkText?: string; linkUrl?: string }>;
+
   // Tags
   TAG_MAP: Record<string, string>;
   TAG_TOOLTIP_MAP: Record<string, string>;

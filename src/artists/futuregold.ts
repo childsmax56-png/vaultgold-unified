@@ -163,6 +163,13 @@ export const futuregoldConfig: ArtistConfig = {
   },
   ALBUM_SONG_COUNTS: {},
   CUSTOM_ALBUM_INFO: {},
+  ERA_DISCLAIMERS: {
+    'Donda 2': {
+      text: 'Due to copyright issues, the Future tracker cannot provide songs from this era. If you want to hear songs from this era, check out the Kanye tracker',
+      linkText: 'here',
+      linkUrl: 'https://unvaulted.cc/yzygold/album/donda-2',
+    },
+  },
   ERA_MAPPINGS: {},
   ALBUM_ORDER: [
     'Dirty Sprite',
