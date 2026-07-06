@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, ExternalLink, ChevronDown, ChevronUp, Play } from 'lucide-react';
 import {
@@ -11,6 +11,7 @@ import {
 } from 'react-icons/si';
 import { Era, Song } from '../types';
 import { CUSTOM_IMAGES, ALBUM_DESCRIPTIONS , retryImageOnError} from '../utils';
+import { useIsClamped } from '../hooks/useIsClamped';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 
 export interface ReleasedEntry {
@@ -215,6 +216,8 @@ function groupByEra(data: ReleasedEntry[], allEras: Era[]): ReleasedEraGroup[] {
 export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn, spotifyReady, onPlaySpotify, youtubeReady, onPlayYoutube, onPlayAudio, soundcloudReady, onPlaySoundCloud, onPlayArchive, onEmbed }: ReleasedViewProps) {
   const [selectedEra, setSelectedEra] = useState<string | null>(null);
   const [isDescExpanded, setIsDescExpanded] = useState(false);
+  const [descRef, isDescClamped] = useIsClamped<HTMLParagraphElement>(selectedEra, isDescExpanded);
+  useEffect(() => { setIsDescExpanded(false); }, [selectedEra]);
   // key: `${trackIdx}-${linkIdx}`
   const [openEmbed, setOpenEmbed] = useState<string | null>(null);
 
@@ -294,15 +297,17 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
             </p>
             {ALBUM_DESCRIPTIONS[selectedGroup.eraName] && (
               <div className="mt-3 max-w-3xl">
-                <p className={`text-white/80 text-sm leading-relaxed ${isDescExpanded ? '' : 'line-clamp-3'}`}>
+                <p ref={descRef} className={`text-white/80 text-sm leading-relaxed ${isDescExpanded ? '' : 'line-clamp-3'}`}>
                   {ALBUM_DESCRIPTIONS[selectedGroup.eraName]}
                 </p>
-                <button
-                  onClick={() => setIsDescExpanded(!isDescExpanded)}
-                  className="text-[var(--theme-color)] text-xs font-bold mt-1 hover:underline cursor-pointer"
-                >
-                  {isDescExpanded ? 'Show Less' : 'Show More...'}
-                </button>
+                {(isDescClamped || isDescExpanded) && (
+                  <button
+                    onClick={() => setIsDescExpanded(!isDescExpanded)}
+                    className="text-[var(--theme-color)] text-xs font-bold mt-1 hover:underline cursor-pointer"
+                  >
+                    {isDescExpanded ? 'Show Less' : 'Show More...'}
+                  </button>
+                )}
               </div>
             )}
           </div>
