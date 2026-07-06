@@ -39,6 +39,29 @@ function isRealLink(url: string): boolean {
   return u.startsWith('http');
 }
 
+function sanitizeFilename(name: string): string {
+  const base = (name || 'album-copy').replace(/[\r\n"\\/:*?<>|]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120) || 'album-copy';
+  return /\.zip$/i.test(base) ? base : `${base}.zip`;
+}
+
+// Resolve a copy link to a one-click download when the host allows it.
+//   - Pillowcase: streamed through our /api/download proxy with a proper filename.
+//     (pillows.su serves cross-site and Cloudflare-worker fetches fine.)
+//   - Pixeldrain: 403s every cross-site request AND every Cloudflare-worker fetch
+//     (hotlink + cf-worker blocks), so it can't be proxied or hot-linked — we open
+//     its /u/ page, which has its own download button.
+//   - Anything else (krakenfiles/mega/drive/soundcloud): open the host page.
+function getDownloadTarget(rawUrl: string, filename: string): { href: string; direct: boolean } | null {
+  const u = (rawUrl || '').trim();
+  if (!isRealLink(u)) return null;
+  const low = u.toLowerCase();
+  if (low.includes('pillows.su/f/')) {
+    const id = u.split('/f/')[1]?.split(/[?#]/)[0];
+    if (id) return { href: `/api/download?id=${id}&name=${encodeURIComponent(sanitizeFilename(filename))}`, direct: true };
+  }
+  return { href: u, direct: false };
+}
+
 export function AlbumCopiesView({ eras, albumCopiesData, searchQuery }: AlbumCopiesViewProps) {
   const [selectedEra, setSelectedEra] = useState<string | null>(null);
   const [zoomedImage, setZoomedImage] = useState(false);
@@ -220,8 +243,8 @@ export function AlbumCopiesView({ eras, albumCopiesData, searchQuery }: AlbumCop
           <div className="px-6 md:px-8 mt-8 max-w-5xl mx-auto flex flex-col gap-4">
             {visibleCopies.map((copy, i) => {
               const url = copy.url || (copy.urls && copy.urls[0]) || '';
-              const playable = isRealLink(url);
-              const isPixeldrain = url.toLowerCase().includes('pixeldrain.com');
+              const dl = getDownloadTarget(url, `${copy.name}`);
+              const playable = dl !== null;
               return (
                 <motion.div
                   key={`${copy.name}-${i}`}
@@ -241,16 +264,17 @@ export function AlbumCopiesView({ eras, albumCopiesData, searchQuery }: AlbumCop
                           <div className="text-white/40 text-xs mt-1 pl-6">{formatTextWithTags(copy.extra)}</div>
                         )}
                       </div>
-                      {playable ? (
+                      {dl ? (
                         <a
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={dl.href}
+                          {...(dl.direct
+                            ? { download: sanitizeFilename(copy.name) }
+                            : { target: '_blank', rel: 'noopener noreferrer' })}
                           className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--theme-color)]/15 hover:bg-[var(--theme-color)]/25 text-[var(--theme-color)] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
-                          title={isPixeldrain ? 'Download from Pixeldrain' : 'Open download'}
+                          title={dl.direct ? 'Download zip' : 'Open download page'}
                         >
-                          {isPixeldrain ? <Download className="w-3.5 h-3.5" /> : <ExternalLink className="w-3.5 h-3.5" />}
-                          Download
+                          {dl.direct ? <Download className="w-3.5 h-3.5" /> : <ExternalLink className="w-3.5 h-3.5" />}
+                          {dl.direct ? 'Download' : 'Open Page'}
                         </a>
                       ) : (
                         <span className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 text-white/30 text-xs font-bold uppercase tracking-wider">
