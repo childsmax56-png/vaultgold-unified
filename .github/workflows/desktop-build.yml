@@ -32,10 +32,10 @@ jobs:
         run: npm ci
 
       - name: Build installers
-        run: npm run ${{ matrix.script }}
-        env:
-          # electron-builder auto-publishes if a token is present; we only build.
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # `--publish never` stops electron-builder from trying to upload to a
+        # GitHub Release itself (it would 403). The separate `release` job below
+        # collects the artifacts and publishes them.
+        run: npm run ${{ matrix.script }} -- --publish never
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
