@@ -326,16 +326,34 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
                 {syncMsg}
               </p>
             )}
-            <button
-              onClick={doVGSignOut}
-              style={{
-                padding: '10px 16px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.1)',
-                background: 'transparent', color: 'rgba(255,255,255,0.4)', fontSize: 13, fontWeight: 500,
-                cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-              }}
-            >
-              <LogOut size={13} /> Sign Out
-            </button>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button
+                onClick={() => {
+                  const token = localStorage.getItem(TOKEN_KEY);
+                  const params = token && vgUser
+                    ? `?vg_token=${encodeURIComponent(token)}&vg_user=${encodeURIComponent(JSON.stringify(vgUser))}`
+                    : '';
+                  window.open(`${VG_API}/account${params}`, '_blank');
+                }}
+                style={{
+                  flex: 1, padding: '10px 16px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'transparent', color: 'rgba(255,255,255,0.6)', fontSize: 13, fontWeight: 500,
+                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                }}
+              >
+                Manage Account
+              </button>
+              <button
+                onClick={doVGSignOut}
+                style={{
+                  padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'transparent', color: 'rgba(255,255,255,0.4)', fontSize: 13, fontWeight: 500,
+                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                }}
+              >
+                <LogOut size={13} />
+              </button>
+            </div>
           </>
         ) : (
           <div style={{ ...row, flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
