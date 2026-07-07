@@ -21,6 +21,11 @@
     "appId": "cc.unvaulted.desktop",
     "productName": "UNVAULTED",
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "afterPack": "electron/vmp-sign.cjs",
+    "electronDownload": {
+      "mirror": "https://github.com/castlabs/electron-releases/releases/download/",
+      "customDir": "v42.5.2+wvcus"
+    },
     "directories": {
       "buildResources": "build",
       "output": "release"
@@ -77,7 +82,7 @@
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
-    "electron": "^33.2.0",
+    "electron": "https://github.com/castlabs/electron-releases#v42.5.2+wvcus",
     "electron-builder": "^25.1.8",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",

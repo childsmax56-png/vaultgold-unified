@@ -38,11 +38,37 @@ npm run app:build       # current platform
 > The macOS build must run on macOS. Code-signing/notarization is not configured
 > yet — installers will be unsigned until certs are added.
 
+## Widevine / Spotify
+
+Spotify's Web Playback SDK needs Widevine DRM (EME), which stock Electron doesn't
+ship. This app uses the **castlabs Electron fork** (`electron` pinned to a
+`+wvcus` release) which bundles Widevine; `main.cjs` calls `components.whenReady()`
+before opening a window so the CDM is loaded.
+
+- **Dev (`npm run app:dev`)**: Spotify playback works immediately — no signing.
+- **Packaged builds (.dmg/.exe)**: Widevine requires the app to be **VMP-signed**
+  (castlabs "Verified Media Path" — free, and separate from Apple/Windows code
+  signing). Without it, protected playback fails on end-user machines.
+
+One-time EVS setup (for whoever builds releases):
+
+```bash
+pip install castlabs-evs
+python3 -m castlabs_evs.account signup   # free; needs an email to confirm
+```
+
+After that, `npm run app:build:*` VMP-signs automatically via the `afterPack`
+hook (`electron/vmp-sign.cjs`). For CI, add the account as repo secrets
+**`EVS_ACCOUNT_NAME`** and **`EVS_PASSWORD`** (the build workflow already installs
+`castlabs-evs` and passes them through). If EVS isn't set up the build still
+succeeds — it just skips VMP signing and prints a warning.
+
 ## Files
 
 - `main.cjs` — main process: window, menu, single-instance lock, window-state
-  persistence, and navigation rules (site + OAuth hosts stay in-app; everything
-  else opens in the system browser).
+  persistence, a clean Chrome user-agent, and navigation rules (site + OAuth
+  hosts navigate in place; external links open in a new in-app window so you
+  never lose your place).
 - `pixeldrain-proxy.cjs` — a loopback server that streams pixeldrain audio and
   downloads directly from Node (which isn't subject to pixeldrain's hotlink
   block). Requests to the site's `pd-proxy.vercel.app` (and direct
@@ -50,5 +76,7 @@ npm run app:build       # current platform
   works in the app even when the external Vercel proxy is disabled/down.
 - `preload.cjs` — exposes a read-only `window.unvaultedDesktop` flag so the web
   app can detect the desktop shell.
+- `vmp-sign.cjs` — electron-builder `afterPack` hook that VMP-signs packaged
+  builds for Widevine (best-effort; see "Widevine / Spotify" above).
 - `../build/icon.png` — 1024×1024 app icon (electron-builder derives `.ico` /
   `.icns` at build time).

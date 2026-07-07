@@ -4,7 +4,7 @@
 // origin, so loading the real origin keeps everything working with zero refactor
 // and means the app auto-updates whenever the site ships.
 
-const { app, BrowserWindow, shell, Menu, session } = require('electron');
+const { app, BrowserWindow, Menu, session, components } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const { installPixeldrainProxy } = require('./pixeldrain-proxy.cjs');
@@ -60,6 +60,50 @@ function saveState(win) {
 
 let mainWindow = null;
 
+const WEB_PREFERENCES = {
+  preload: path.join(__dirname, 'preload.cjs'),
+  contextIsolation: true,
+  nodeIntegration: false,
+  backgroundThrottling: false, // keep audio/animation smooth when not focused
+  spellcheck: true,
+};
+
+// Open a URL in a separate in-app window (used for external links and popups),
+// so the user never loses their place in the tracker they were viewing.
+function openChildWindow(url) {
+  const child = new BrowserWindow({
+    width: 1100,
+    height: 800,
+    backgroundColor: '#1a1a1a',
+    autoHideMenuBar: true,
+    icon: path.join(__dirname, '..', 'build', 'icon.png'),
+    webPreferences: WEB_PREFERENCES,
+  });
+  attachNavigationHandlers(child, false);
+  child.loadURL(url);
+  return child;
+}
+
+// Navigation policy shared by every window.
+// - New-window/popup intents always open a fresh window.
+// - Top-level navigations to the site + OAuth providers stay in the same window
+//   (SPA routing + the login round-trip need this); anything external opens in a
+//   new window instead of replacing the current view.
+function attachNavigationHandlers(win, isMain) {
+  win.webContents.setWindowOpenHandler(({ url }) => {
+    if (/^https?:\/\//i.test(url)) openChildWindow(url);
+    return { action: 'deny' };
+  });
+
+  win.webContents.on('will-navigate', (event, url) => {
+    if (isInAppHost(url)) return; // let the site / OAuth navigate in place
+    if (/^https?:\/\//i.test(url)) {
+      event.preventDefault();
+      openChildWindow(url);
+    }
+  });
+}
+
 function createWindow() {
   const state = loadState();
 
@@ -74,37 +118,13 @@ function createWindow() {
     title: 'UNVAULTED',
     autoHideMenuBar: process.platform !== 'darwin',
     icon: path.join(__dirname, '..', 'build', 'icon.png'),
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.cjs'),
-      contextIsolation: true,
-      nodeIntegration: false,
-      spellcheck: true,
-    },
+    webPreferences: WEB_PREFERENCES,
   });
 
   if (state.maximized) mainWindow.maximize();
 
   mainWindow.loadURL(APP_URL);
-
-  // Links that try to open a new window/tab: keep auth/site hosts in-app,
-  // send everything else (share links, external references) to the OS browser.
-  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    if (isInAppHost(url)) {
-      mainWindow.loadURL(url);
-    } else if (/^https?:\/\//i.test(url)) {
-      shell.openExternal(url);
-    }
-    return { action: 'deny' };
-  });
-
-  // Top-level navigations: allow site + OAuth hosts (needed for the login
-  // round-trip), bounce anything else to the OS browser.
-  mainWindow.webContents.on('will-navigate', (event, url) => {
-    if (!isInAppHost(url) && /^https?:\/\//i.test(url)) {
-      event.preventDefault();
-      shell.openExternal(url);
-    }
-  });
+  attachNavigationHandlers(mainWindow, true);
 
   mainWindow.on('close', () => saveState(mainWindow));
   mainWindow.on('closed', () => {
@@ -166,6 +186,19 @@ if (!gotLock) {
   });
 
   app.whenReady().then(async () => {
+    // Load the Widevine CDM (castlabs Electron fork) before opening any window,
+    // so Spotify's Web Playback SDK — which needs EME/DRM — can register a device.
+    try {
+      await components.whenReady();
+      console.log('Widevine ready:', components.status && components.status());
+    } catch (e) {
+      console.error('Widevine component failed to load:', e);
+    }
+
+    // Present as plain Chrome (drop the "Electron/x.y.z" token) so third-party
+    // services that sniff the user-agent behave the same as in a browser.
+    app.userAgentFallback = app.userAgentFallback.replace(/ Electron\/[\d.]+/, '');
+
     // Allow media playback (audio) without prompting; deny the rest by default.
     session.defaultSession.setPermissionRequestHandler((_wc, permission, cb) => {
       cb(['media', 'clipboard-read', 'clipboard-sanitized-write', 'fullscreen', 'notifications'].includes(permission));
