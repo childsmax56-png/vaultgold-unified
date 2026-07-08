@@ -8,25 +8,21 @@
 // still succeed (Spotify just won't play in that packaged build — `npm run
 // app:dev` is unaffected and always has working Widevine).
 
-const path = require('path');
 const { execFileSync } = require('child_process');
 
 module.exports = async function vmpSign(context) {
-  const { appOutDir, electronPlatformName, packager } = context;
-  const productName = packager.appInfo.productFilename;
+  const { appOutDir } = context;
 
-  // The packaged app: the .app bundle on macOS, the output dir on Windows.
-  const target =
-    electronPlatformName === 'darwin'
-      ? path.join(appOutDir, `${productName}.app`)
-      : appOutDir;
+  // castlabs sign-pkg takes the DIRECTORY that contains the packaged app; it
+  // globs for the .app (macOS) / .exe (Windows) inside it.
+  const target = appOutDir;
 
   const python = process.env.PYTHON || 'python3';
   try {
     execFileSync(python, ['-m', 'castlabs_evs.vmp', 'sign-pkg', target], {
       stdio: 'inherit',
     });
-    console.log('[vmp-sign] Widevine VMP signature applied:', target);
+    console.log('[vmp-sign] Widevine VMP signature applied in:', target);
   } catch (e) {
     console.warn(
       '\n[vmp-sign] Skipped Widevine VMP signing (' +
