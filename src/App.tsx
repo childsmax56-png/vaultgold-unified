@@ -2176,7 +2176,7 @@ export default function App() {
           album: kbEraName,
           year: ALBUM_RELEASE_DATES[kbEraName]?.split('/').pop(),
           artworkUrl: kbArtUrl,
-        } : undefined, settings.downloadAsOgFilename ? currentSong.description : undefined);
+        } : undefined, settings.downloadAsOgFilename ? currentSong.description : undefined, settings.convertToMp3);
       }
     };
 

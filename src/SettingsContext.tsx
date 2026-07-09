@@ -55,6 +55,7 @@ export interface AppSettings {
   googleSheetsUrl: string;
   downloadAsOgFilename: boolean;
   embedMetadata: boolean;
+  convertToMp3: boolean;
   YZYGOLDMode: boolean;
   dropdownNav: boolean;
   lastfmEraOverrides: Record<string, string>;
@@ -99,6 +100,7 @@ export const defaultSettings: AppSettings = {
   googleSheetsUrl: '',
   downloadAsOgFilename: false,
   embedMetadata: true,
+  convertToMp3: false,
   YZYGOLDMode: false,
   dropdownNav: true,
   lastfmEraOverrides: {},
