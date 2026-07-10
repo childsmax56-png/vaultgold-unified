@@ -1,5 +1,5 @@
 import React from 'react';
-import { SiApple, SiGithub } from 'react-icons/si';
+import { SiApple } from 'react-icons/si';
 
 // Bump VERSION when a new desktop release is tagged. Asset names follow
 // electron-builder's `UNVAULTED-<version>-<os>-<arch>.<ext>` pattern.
@@ -109,19 +109,6 @@ export function DownloadPage() {
             <Step style={{ marginBottom: 0 }}>Choose <b>Install app</b> (or "Add to Home screen").</Step>
           </GuideCard>
         </div>
-      </div>
-
-      {/* GITHUB / SOURCE */}
-      <div style={{ marginTop: 44 }}>
-        <SectionTitle>Source &amp; Releases</SectionTitle>
-        <a href={DOWNLOADS.releases} target="_blank" rel="noopener noreferrer"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '12px 18px', borderRadius: 12, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>
-          <SiGithub style={{ width: 18, height: 18 }} /> View on GitHub
-        </a>
-        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 14, lineHeight: 1.6 }}>
-          Current version: <b style={{ color: 'rgba(255,255,255,0.55)' }}>{VERSION}</b>. Builds are open —
-          every release ships signed Mac &amp; Windows installers.
-        </p>
       </div>
     </div>
   );
