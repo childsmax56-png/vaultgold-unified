@@ -108,6 +108,12 @@ export const ALBUM_DESCRIPTIONS: Record<string, string> = new Proxy({} as Record
   ownKeys: () => Object.keys(activeConfig.ALBUM_DESCRIPTIONS),
   getOwnPropertyDescriptor: (_, k: string) => ({ configurable: true, enumerable: true, value: activeConfig.ALBUM_DESCRIPTIONS[k] }),
 });
+export const ERA_DISCLAIMERS: Record<string, { text: string; linkText?: string; linkUrl?: string }> = new Proxy({} as any, {
+  get: (_, k: string) => (activeConfig.ERA_DISCLAIMERS ?? {})[k],
+  has: (_, k: string) => k in (activeConfig.ERA_DISCLAIMERS ?? {}),
+  ownKeys: () => Object.keys(activeConfig.ERA_DISCLAIMERS ?? {}),
+  getOwnPropertyDescriptor: (_, k: string) => ({ configurable: true, enumerable: true, value: (activeConfig.ERA_DISCLAIMERS ?? {})[k] }),
+});
 export const TAG_MAP: Record<string, string> = new Proxy({} as Record<string, string>, {
   get: (_, k: string) => activeConfig.TAG_MAP[k],
   has: (_, k: string) => k in activeConfig.TAG_MAP,
@@ -622,6 +628,67 @@ export async function flacToWav(blob: Blob): Promise<Blob> {
   return new Blob([buf], { type: 'audio/wav' });
 }
 
+// ─── Any audio → MP3 transcode ────────────────────────────────────────────────
+// Decodes any browser-playable audio (WAV/FLAC/M4A/OGG/AIFF/…) via WebAudio and
+// re-encodes it to a 320kbps MP3 with lamejs. Used by the "Download as MP3"
+// setting so files are accepted by Spotify's Local Files, which ignores anything
+// that isn't a genuine MP3/M4A. Throws if the browser can't decode the source.
+function floatToInt16(input: Float32Array): Int16Array {
+  const out = new Int16Array(input.length);
+  for (let i = 0; i < input.length; i++) {
+    const s = Math.max(-1, Math.min(1, input[i]));
+    out[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+  }
+  return out;
+}
+
+const MP3_SAMPLE_RATES = [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000];
+
+export async function blobToMp3(blob: Blob): Promise<Blob> {
+  const { Mp3Encoder } = await import('@breezystack/lamejs');
+
+  const ctx = new AudioContext();
+  let rawBuf = await blob.arrayBuffer();
+  // Strip a prepended ID3v2 header — browsers' decoders don't tolerate it.
+  const hdr = new Uint8Array(rawBuf, 0, Math.min(10, rawBuf.byteLength));
+  if (hdr[0] === 0x49 && hdr[1] === 0x44 && hdr[2] === 0x33 && hdr[3] >= 2 && hdr[3] <= 4) {
+    const tagSize = ((hdr[6] & 0x7F) << 21) | ((hdr[7] & 0x7F) << 14) | ((hdr[8] & 0x7F) << 7) | (hdr[9] & 0x7F);
+    rawBuf = rawBuf.slice(10 + tagSize);
+  }
+  let decoded = await ctx.decodeAudioData(rawBuf);
+  ctx.close();
+
+  // lamejs only handles the MPEG sample rates; resample anything else to 44.1kHz.
+  if (!MP3_SAMPLE_RATES.includes(decoded.sampleRate)) {
+    const target = 44100;
+    const offline = new OfflineAudioContext(decoded.numberOfChannels, Math.ceil(decoded.duration * target), target);
+    const src = offline.createBufferSource();
+    src.buffer = decoded;
+    src.connect(offline.destination);
+    src.start();
+    decoded = await offline.startRendering();
+  }
+
+  const channels = Math.min(decoded.numberOfChannels, 2);
+  const encoder = new Mp3Encoder(channels, decoded.sampleRate, 320);
+  const left = floatToInt16(decoded.getChannelData(0));
+  const right = channels > 1 ? floatToInt16(decoded.getChannelData(1)) : null;
+
+  const BLOCK = 1152;
+  const mp3Chunks: Uint8Array[] = [];
+  for (let i = 0; i < left.length; i += BLOCK) {
+    const l = left.subarray(i, i + BLOCK);
+    const chunk = right
+      ? encoder.encodeBuffer(l, right.subarray(i, i + BLOCK))
+      : encoder.encodeBuffer(l);
+    if (chunk.length > 0) mp3Chunks.push(new Uint8Array(chunk));
+  }
+  const tail = encoder.flush();
+  if (tail.length > 0) mp3Chunks.push(new Uint8Array(tail));
+
+  return new Blob(mp3Chunks as BlobPart[], { type: 'audio/mpeg' });
+}
+
 // Embeds ID3v2 tags into a WAV file as an 'id3 ' RIFF chunk.
 // This keeps the file starting with "RIFF" (valid WAV) while carrying full
 // ID3 metadata (title, artist, album, year, artwork) readable by macOS Music,
@@ -986,7 +1053,7 @@ async function compressImageBlob(blob: Blob, maxDim = 2048, quality = 0.85): Pro
   });
 }
 
-export async function handleDownloadFile(url: string, suggestedName: string, tagsAsEmojis: boolean, meta?: SongMeta, description?: string) {
+export async function handleDownloadFile(url: string, suggestedName: string, tagsAsEmojis: boolean, meta?: SongMeta, description?: string, convertToMp3 = false) {
   if (!url) return;
   let finalUrl = url;
   try {
@@ -1148,6 +1215,17 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
         const dispExt = disposition.match(/filename[^;=\n]*=(['"]?)([^'"\n;]+)\1/i)?.[2]
           ?.trim().match(/\.(flac|wav|aiff?|ogg|opus|m4a|zip)$/i)?.[0].toLowerCase();
         if (dispExt) actualExt = dispExt as typeof actualExt;
+
+        // "Download as MP3": transcode any non-MP3 audio to a real MP3 so it's
+        // accepted by Spotify Local Files. On failure we keep the original format.
+        if (convertToMp3 && actualExt !== '.mp3') {
+          try {
+            blob = await blobToMp3(blob);
+            actualExt = '.mp3';
+          } catch (e) {
+            console.warn('MP3 conversion failed, keeping original format:', e);
+          }
+        }
 
         if (actualExt !== '.mp3' && fileName.endsWith('.mp3')) {
           fileName = fileName.slice(0, -4) + actualExt;

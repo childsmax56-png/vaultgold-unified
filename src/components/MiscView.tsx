@@ -68,7 +68,7 @@ function parseMiscToEras(miscData: MiscEntry[], allEras: Era[]): { eraName: stri
   };
 
   for (const item of miscData) {
-    const isBrokenEra = typeof item.Era === 'string' && (item.Era.includes('OG File') || item.Era.includes('Unavailable'));
+    const isBrokenEra = typeof item.Era === 'string' && (item.Era.includes('OG File') || item.Era.includes('Unavailable') || /^\d+ tracks$/.test(item.Era.trim()));
     const isEraHeader = (!item.Era || isBrokenEra) && item.Name && (typeof item["File Date"] === 'object' || typeof item["Date Made"] === 'object');
 
     if (isEraHeader) {

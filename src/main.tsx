@@ -12,6 +12,7 @@ import { ErrorBoundary } from './ErrorBoundary.tsx';
 import { setActiveConfig } from './artists/activeConfig.ts';
 import { getArtistConfig } from './artists/registry.ts';
 import { MyTrackerPage } from './MyTrackerPage.tsx';
+import { GamePage } from './GamePage.tsx';
 import { UnvaultedRecordsPage } from './UnvaultedRecordsPage.tsx';
 import { YEditsGoldPage } from './YEditsGoldPage.tsx';
 import { TermsPage } from './TermsPage.tsx';
@@ -47,6 +48,7 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
           <Route path="/my-tracker" element={<SettingsProvider><MyTrackerPage /></SettingsProvider>} />
+          <Route path="/game" element={<GamePage />} />
           <Route path="/label" element={<UnvaultedRecordsPage />} />
           <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
           <Route path="/terms" element={<TermsPage />} />

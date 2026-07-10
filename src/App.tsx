@@ -19,7 +19,7 @@ import { handleShareSilent } from './components/EraDetail';
 import { TrackerData, Era, Song, SearchFilters } from './types';
 import { ContributorContext } from './ContributorContext';
 import { ContributorView } from './components/ContributorView';
-import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, getArtistName, buildArtistTag, handleDownloadFile } from './utils';
+import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, ERA_DISCLAIMERS, getArtistName, buildArtistTag, handleDownloadFile } from './utils';
 import { isLastfmLoggedIn, saveLastfmSession, clearLastfmSession, scrobbleTrack, updateNowPlaying, cleanTrackName, parseArtistFromSong, cleanAlbumName } from './lastfm';
 import { isSpotifyLoggedIn, clearSpotifySession, startSpotifyAuth, handleSpotifyCallback } from './spotify';
 import { useSpotify, SpotifyTrack } from './useSpotify';
@@ -132,6 +132,7 @@ export interface FakesEntry {
 import { SettingsView } from './components/SettingsView';
 import { HistoryView } from './components/HistoryView';
 import { FakesView } from './components/FakesView';
+import { AlbumCopiesView, AlbumCopyEra } from './components/AlbumCopiesView';
 import { CompsView } from './components/CompsView';
 import { ConcertsView } from './components/ConcertsView';
 import { YEditsView } from './components/YEditsView';
@@ -186,6 +187,7 @@ export default function App() {
   const [stemsData, setStemsData] = useState<StemEntry[]>([]);
   const [miscData, setMiscData] = useState<MiscEntry[]>([]);
   const [fakesData, setFakesData] = useState<FakesEntry[]>([]);
+  const [albumCopiesData, setAlbumCopiesData] = useState<AlbumCopyEra[]>([]);
   const [productionData, setProductionData] = useState<TrackerData | null>(null);
   const [tracklistsData, setTracklistsData] = useState<TracklistAlbum[]>([]);
   const [releasedData, setReleasedData] = useState<ReleasedEntry[]>([]);
@@ -220,6 +222,7 @@ export default function App() {
     if (path.startsWith('/stems')) return 'stems';
     if (path.startsWith('/misc')) return 'misc';
     if (path.startsWith('/fakes')) return 'fakes';
+    if (path.startsWith('/albumcopies')) return 'albumcopies';
     if (path.startsWith('/released')) return 'released';
     if (path.startsWith('/related')) return 'related';
     if (path.startsWith('/recent-production')) return 'recent-production';
@@ -1083,6 +1086,8 @@ export default function App() {
           setActiveCategory('misc');
         } else if (path.startsWith('/fakes')) {
           setActiveCategory('fakes');
+        } else if (path.startsWith('/albumcopies')) {
+          setActiveCategory('albumcopies');
         } else if (path.startsWith('/released')) {
           setActiveCategory('released');
         } else if (path.startsWith('/recent-production')) {
@@ -1200,7 +1205,10 @@ export default function App() {
       });
 
     fetch(`/${ARTIST_SLUG}/data/stems.csv`)
-      .then(res => res.text())
+      .then(res => {
+        if (!res.ok || !(res.headers.get('content-type') || '').includes('csv')) return '';
+        return res.text();
+      })
       .then(text => {
         try {
           const rows = normalizeParsedRows(parseCSVText(text));
@@ -1249,7 +1257,10 @@ export default function App() {
       });
 
     fetch(`/${ARTIST_SLUG}/data/fakes.csv`)
-      .then(res => res.text())
+      .then(res => {
+        if (!res.ok || !(res.headers.get('content-type') || '').includes('csv')) return '';
+        return res.text();
+      })
       .then(text => {
         try {
         const rawFakes = normalizeEraField(normalizeParsedRows(parseCSVText(text))) as any[];
@@ -1292,6 +1303,20 @@ export default function App() {
         console.error("Failed to fetch Fakes data:", err);
         setFetchedTabs(prev => new Set([...prev, 'fakes']));
       });
+
+    if (activeConfig.hasAlbumCopiesTab) {
+      axios.get(`/api/${ARTIST_SLUG}/album-copies`)
+        .then(res => {
+          const eras = (res.data?.eras ?? []) as AlbumCopyEra[];
+          setAlbumCopiesData(eras);
+          setFetchedTabs(prev => new Set([...prev, 'albumcopies']));
+          if (eras.length > 0) setTabsWithData(prev => new Set([...prev, 'albumcopies']));
+        })
+        .catch(err => {
+          console.error("Failed to fetch Album Copies data:", err);
+          setFetchedTabs(prev => new Set([...prev, 'albumcopies']));
+        });
+    }
 
     Promise.resolve({ data: [] })
       .then(res => {
@@ -1468,6 +1493,10 @@ export default function App() {
       if (!currentPath.startsWith('/fakes')) {
         window.history.pushState({ category: 'fakes' }, '', absPath('/fakes'));
       }
+    } else if (activeCategory === 'albumcopies') {
+      if (!currentPath.startsWith('/albumcopies')) {
+        window.history.pushState({ category: 'albumcopies' }, '', absPath('/albumcopies'));
+      }
     } else if (activeCategory === 'released') {
       if (!currentPath.startsWith('/released')) {
         window.history.pushState({ category: 'released' }, '', absPath('/released'));
@@ -1604,6 +1633,8 @@ export default function App() {
         setActiveCategory('stems');
       } else if (path.startsWith('/misc')) {
         setActiveCategory('misc');
+      } else if (path.startsWith('/albumcopies')) {
+        setActiveCategory('albumcopies');
       } else if (path.startsWith('/released')) {
         setActiveCategory('released');
       } else if (path.startsWith('/recent-production')) {
@@ -2145,7 +2176,7 @@ export default function App() {
           album: kbEraName,
           year: ALBUM_RELEASE_DATES[kbEraName]?.split('/').pop(),
           artworkUrl: kbArtUrl,
-        } : undefined, settings.downloadAsOgFilename ? currentSong.description : undefined);
+        } : undefined, settings.downloadAsOgFilename ? currentSong.description : undefined, settings.convertToMp3);
       }
     };
 
@@ -2639,7 +2670,8 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
     const hasActiveFilters = filters.tags.length > 0 || filters.qualities.length > 0 || filters.availableLengths?.length > 0 || filters.durationValue !== '' || filters.playableOnly || filters.hasClips !== null || filters.hasRemixes !== null || filters.hasSamples !== null;
 
     const allSongs = Object.values(era.data || {}).flat();
-    if (era.name !== "Favorites" && allSongs.length === 0) return false;
+    // Keep empty eras that carry a disclaimer (e.g. copyright notice) so the notice still shows.
+    if (era.name !== "Favorites" && allSongs.length === 0 && !ERA_DISCLAIMERS[era.name]) return false;
 
     if (!searchQuery && !hasActiveFilters) return true;
 
@@ -3002,6 +3034,13 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   isPlaying={isPlaying}
                   toggleFavorite={toggleFavorite}
                   favoriteKeys={favoriteKeys}
+                />
+              ) : activeCategory === 'albumcopies' ? (
+                <AlbumCopiesView
+                  key="albumcopies"
+                  eras={erasArray}
+                  albumCopiesData={albumCopiesData}
+                  searchQuery={searchQuery}
                 />
               ) : activeCategory === 'videos' ? (
                 <VideosView

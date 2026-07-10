@@ -19,6 +19,7 @@ const defaultTagTooltips = {
 
 export const vampgoldConfig: ArtistConfig = {
   slug: 'vampgold',
+  hasAlbumCopiesTab: true,
   SITE_NAME: 'VAMPgold',
   SITE_DESCRIPTION: 'The Best Playboi Carti Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/vampgold/',

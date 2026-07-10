@@ -26,6 +26,9 @@ export interface ArtistConfig {
   ERA_MAPPINGS: Record<string, string>;
   ALBUM_ORDER?: string[]; // explicit era order, overrides Object.keys(ALBUM_RELEASE_DATES) which hoists integer-named keys
 
+  // Optional per-era disclaimer banner (e.g. copyright notice redirecting to another tracker)
+  ERA_DISCLAIMERS?: Record<string, { text: string; linkText?: string; linkUrl?: string }>;
+
   // Tags
   TAG_MAP: Record<string, string>;
   TAG_TOOLTIP_MAP: Record<string, string>;
@@ -43,7 +46,10 @@ export interface ArtistConfig {
   hasArtTab?: boolean; // set false to force-hide the Art tab regardless of data
   hasVideosTab?: boolean; // set false to force-hide the Videos tab regardless of data
   hasMiscTab?: boolean; // set false to force-hide the Misc tab regardless of data
+  hasStemsTab?: boolean; // set false to force-hide the Stems tab regardless of data
+  miscLabel?: string; // override the "Misc" tab label
   hasTracklistsTab?: boolean; // set false to force-hide the Tracklists tab regardless of data
+  hasAlbumCopiesTab?: boolean; // set true to enable the Album Copies tab (data from data/album-copies.csv)
   SHEET_URL_RECENT_PRODUCTION?: string; // CSV export URL for a second recent tab (production projects)
   productionFirst?: boolean; // show Production Projects before Music in navbar
   productionSecond?: boolean; // show Production Projects second (right after Music) in navbar

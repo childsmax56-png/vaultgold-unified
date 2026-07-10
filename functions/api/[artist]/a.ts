@@ -1,5 +1,11 @@
 import { parseCSV, csvResponse } from './_csvParser';
 
+// Extract the URL from a Google Sheets HYPERLINK formula: =HYPERLINK("url","text") → url
+function extractHyperlinkUrl(cell: string): string {
+  const m = cell.match(/^=HYPERLINK\("([^"]+)"/i);
+  return m ? m[1] : cell;
+}
+
 function parseSongName(raw: string): { name: string; extra: string | undefined } {
   const newline = raw.indexOf('\n');
   if (newline === -1) return { name: raw.trim(), extra: undefined };
@@ -21,6 +27,24 @@ const ERA_NAME_MAP: Record<string, string> = {
   'Donda [V1]': 'DONDA [V1]',
   'Bully': 'BULLY [V1]',
   'BULLY': 'BULLY [V1]',
+  // dongold — song rows use the short name, section header uses the trilogy name
+  'Space Age Pimping': 'Space Age Pimping Trilogy',
+  // colegold
+  'Cole World': 'Cole World: The Sideline Story',
+  'J. Cole x Kendrick Project': 'Collaboration with Kendrick Lamar',
+  'J. Cole x JID Project': 'Collaboration with JID',
+  'Revenge of the Dreamers 2': 'Revenge of the Dreamers 2 [V1]',
+  'Revenge of the Dreamers II': 'Revenge of the Dreamers 2 [V1]',
+  '4 Your Eyez Only [V1]': '4 Your Eyez Only',
+  '4 Your Eyez Only [V2]': '4 Your Eyez Only',
+  'Born Sinner Deluxe': 'Born Sinner',
+  // aapgold
+  'Pre-A.L.L.A.': 'Pre-AT.LONG.LAST.A$AP',
+  'A$AP               (with A$AP Mob)': 'A$AP (Mob Collab)',
+  'THE GRIM [V1]': 'THE GR1M [V1]',
+  'Rug Of War 1984': 'Rug Of War 1994',
+  'LIVE.LOVE.A$AP (Re-Release)': 'LIVE.LOVE.A$AP [Re-Release]',
+  'GRIM': 'GR1M [V3]',
   // dregold
   "The Chronic II: A New World Odor (Poppa's Got A Brand New Funk)": 'The Chronic II',
   'The Chronic II: A New World Odor': 'The Chronic II',
@@ -50,6 +74,13 @@ const ERA_NAME_MAP: Record<string, string> = {
   // wolfgold — single mistagged song row inside the WOLF [V3] block uses the
   // versionless "WOLF" era value; merge it into WOLF [V3].
   'WOLF': 'WOLF [V3]',
+  // gorillazgold — song rows use short/typo'd names, section headers use the full names.
+  'G-SIdes': 'G-Sides',
+  'Journey To The West': 'Monkey - Journey To The West',
+  'Song Machine, Season One': 'Song Machine, Season One: Strange Timez',
+  // slimegold — CSV uses special characters / different era names
+  'Hy!£UN35 [V3]': 'HiTunes [V3]',
+  'Collaboration with Juice WRLD': 'Slime WRLD',
 };
 
 function mapEraName(name: string): string {
@@ -57,10 +88,96 @@ function mapEraName(name: string): string {
 }
 
 // Artists whose ERA_ORDER is exhaustive — unlisted rows (e.g. changelog footer) are dropped.
-const EXHAUSTIVE_ERA_ORDER_ARTISTS = new Set(['yzygold', 'kdotgold']);
+const EXHAUSTIVE_ERA_ORDER_ARTISTS = new Set(['yzygold', 'kdotgold', 'dongold', 'colegold', 'aapgold', 'mfgold', 'mjgold', 'slimegold', 'sosagold']);
 
 // Per-artist ERA_ORDER for artists whose CSVs have eras in the wrong order.
 const ARTIST_ERA_ORDERS: Record<string, string[]> = {
+  sosagold: [
+    'Wiiic City', 'Drill', 'Finally Rich', 'Lean', 'Rehab', 'Xanax', 'Cappin', 'Turbo',
+    'Glory University', 'Underwater', 'Almighty So 2 [V1]', '4EB',
+  ],
+  slimegold: [
+    'I Came From Nothing', '1017 Thug', 'Black Portland', 'HiTunes [V1]', 'Metro Thuggin',
+    'Rich Gang: Tha Tour Pt. 1', 'Rich Gang: Tha Tour Pt. 2', 'Barter 6', 'Hy!£UN35 [V2]',
+    'Slime Season', 'Slime Season 2', 'MigoThuggin', 'ThuggaWapp', "I'm Up", 'Slime Season 3',
+    'HiTunes [V3]', 'JEFFERY', 'BEAUTIFUL THUGGER GIRLS', 'Young Martha', 'SUPER SLIMEY',
+    'Collaboration with 808 Mafia', 'Hy!£UN35 [V4]', 'Slime Language', 'Barter 7', 'Static',
+    'Slime WRLD', 'So Much Fun', 'So Much Fun (Deluxe)', 'SUPER SLIMEY: SURFER EDITION',
+    'Punk [V1]', 'Slime Language 2', 'Punk [V2]', 'Unknown (2022)', 'BUSINESS IS BUSINESS',
+    'LOVE YOU LATER', 'Slime Sea4on', 'Edd, Ed n Eddy', 'UY SCUTI', 'Day Before Coachella', 'GØŁDMØÜFDÖG',
+  ],
+  mjgold: [
+    'Got To Be There', 'Ben', 'Music & Me', 'Forever, Michael',
+    'Off The Wall', 'Thriller', 'Bad', 'Dangerous',
+    'HIStory: Past, Present, And Future: Book I', 'Blood On The Dance Floor: HIStory In The Mix',
+    'Invincible', 'The Ultimate Collection', 'Post-Invincible', 'Thriller 25', 'This Is It',
+    'Final sessions', 'Michael', 'Bad 25', 'XSCAPE', 'Thriller 40', 'Ongoing', 'Unclassified',
+  ],
+  mfgold: [
+    'By All Means Necessary', 'Mr. Hood', 'BL_CK B_ST_RDS', 'Mental Illness',
+    'Operation: Doomsday', '1999 - 2003', 'Vaudeville Villain', 'Take Me To Your Leader', 'Venomous Villain', 'Madvillainy', 'MM..FOOD',
+    'The Mouse And The Mask', '2006 - 2008', 'Dilla-DOOM', 'Madvillainy 2', 'Special Herbs, Vols. 9 & 0',
+    'BORN LIKE THIS', 'Swift & Changeable', 'Key to the Kuffs', 'DOOMYORKES', 'NehruvianDOOM',
+    '2015 - 2017', 'Special Herbs 10', 'The Missing Notebook Rhymes', 'WestSide Doom', 'Czarface Meets Metal Face',
+    'Flylo-DOOM', 'Super What?', 'Post Super What?', 'Unknown', 'Ongoing',
+  ],
+  aapgold: [
+    'Pre-MDB', 'MDB', 'A$AP (2007-2009)', 'A$AP (Mob Collab)', 'A$AP (2010)', 'Untitled',
+    'Untitled Mixtape with Seth Narley',
+    'Rug Of War 1994', 'Purple Swag', 'Me, Myself & A$AP', 'Mouth Fulla Gold',
+    'LIVE.LOVE.A$AP [V1]', 'LIVE.LOVE.A$AP [Promo CD]', 'LIVE.LOVE.A$AP [V2]', 'B.M.W', 'LIVE.LOVE.A$AP [Deluxe]',
+    'Pre-LONG.LIVE.A$AP', 'LONG.LIVE.A$AP (with A$AP Mob) [V1]', 'Last Cab 2 Harlem [V2]', "Lord$ Never Worry", 'LONG.LIVE.A$AP',
+    'Pre-AT.LONG.LAST.A$AP', 'BEAUTY AND THE BEAST: SLOWED DOWN SESSIONS, CHAPTER 1', 'L.O.R.D.',
+    'AT.LONG.LAST.A$AP', 'Cozy Tapes Vol. 1: Friends -', 'Pre-TESTING', 'Wavy Wednesdays',
+    'TESTING [V1]', 'Rocky Montana', 'DUMMY [V1]', 'Cozy Tapes Vol. 2: Too Cozy', 'DUMMIE [V2]', 'DUMMIE',
+    'TESTING [V2]', 'TESTING [Deluxe]', 'TESTING [Chopped & Screwed]', 'Cozy Tapes Vol. 3 [V1]', 'WANG$AP', 'TESTING',
+    'ALL $MILE$ [V1]', 'ALL $MILE$ [V2]', 'ALL $MILE$', 'Cozy Tapes Vol. 3 [V2]', 'THE GR1M [V1]',
+    'Cozy Tapes Vol. 3 [V3]', 'GR1M [V2]', 'LIVE.LOVE.A$AP [Re-Release]', 'GR1M [V3]', "DON'T BE DUMB [V1]", 'A$AP JEAN',
+    "DON'T BE DUMB [V2]", "DON'T BE DUMB [V3]", "DON'T BE DUMB [V4]", "DON'T BE DUMB",
+    "DON'T BE DUMB [DISC 2]",
+  ],
+  colegold: [
+    'Before The Come Up',
+    'The Come Up',
+    'The Warm Up',
+    'Friday Night Lights',
+    'Cole World: The Sideline Story',
+    'Truly Yours',
+    'Truly Yours 2',
+    'Born Sinner',
+    'Truly Yours 4',
+    'Collaboration with Kendrick Lamar',
+    'J. Cole x Chance Project',
+    'Revenge of the Dreamers 2 [V1]',
+    '2014 Forest Hills Drive',
+    '4 Your Eyez Only',
+    'The Fall-Off [V1]',
+    'KOD',
+    'The Off-Season',
+    'Collaboration with JID',
+    'Might Delete Later',
+    'The Fall-Off [V2]',
+    "It's A Boy",
+    'Ongoing',
+  ],
+  dongold: [
+    'Before Space Age Pimping',
+    'Space Age Pimping Trilogy',
+    'Pimp Olympics',
+    'Life Before Death',
+    'Playa Familia',
+    'Playa Familia 2',
+    'Donny Womack',
+    'JACKBOYS',
+    'Heaven Or Hell',
+    'Escapism',
+    'Life of a DON',
+    'Love Sick',
+    'Hardstone Psycho',
+    'JACKBOYS 2',
+    'OCTANE',
+    'DT6',
+  ],
   kdotgold: [
     'Y.H.N.I.C.',
     'Training Day',
@@ -220,6 +337,35 @@ const ARTIST_ERA_ORDERS: Record<string, string[]> = {
     'Ongoing',
     'Unknown',
   ],
+  gorillazgold: [
+    'Gorillaz',
+    'G-Sides',
+    'Laika Come Home',
+    'Demon Days',
+    'D-Sides',
+    'Carousel',
+    'Monkey - Journey To The West',
+    'Plastic Beach',
+    'The Fall',
+    'HUMANZ',
+    'The Now Now',
+    'Song Machine, Season One: Strange Timez',
+    'Meanwhile',
+    'Cracker Island',
+    'The Mountain',
+  ],
+  rihannagold: [
+    'Music Of The Sun',
+    'A Girl Like Me',
+    'Good Girl Gone Bad',
+    'Rated R',
+    'Loud',
+    'Talk That Talk',
+    'Unapologetic',
+    'ANTI',
+    'R9*',
+    'Ongoing',
+  ],
 };
 
 export const onRequestGet: PagesFunction = async (context) => {
@@ -272,6 +418,7 @@ export const onRequestGet: PagesFunction = async (context) => {
     const firstRowKeys = rows.length > 0 ? Object.keys(rows[0]) : [];
     const TRACK_LENGTH_KEY = firstRowKeys.find(k => k === 'Track Length') ?? firstRowKeys.find(k => k === 'Length') ?? 'Track Length';
     const AVAIL_LENGTH_KEY = firstRowKeys.find(k => k === 'Available Length') ?? firstRowKeys.find(k => k === 'Availability') ?? firstRowKeys.find(k => k === 'Portion') ?? 'Available Length';
+    const LINKS_KEY = firstRowKeys.find(k => k === 'Link(s)') ?? firstRowKeys.find(k => k === 'Source') ?? 'Link(s)';
 
     const eras: Record<string, any> = {};
 
@@ -294,7 +441,7 @@ export const onRequestGet: PagesFunction = async (context) => {
     // but no header row (e.g. TrapMoneyBenny Collab, 004PF in vampgold) are not dropped.
     for (const row of rows) {
       const eraField = (row['Era'] ?? '').trim();
-      if (eraField && !eraField.includes('\n') && !/^\d+/.test(eraField)) {
+      if (eraField && !eraField.includes('\n') && !/^\d+\s+(OG|Full|Tagged|Partial|Snippet|Unavailable)\b/i.test(eraField)) {
         validEraNames.add(eraField);
         validEraNames.add(mapEraName(eraField));
       }
@@ -327,7 +474,7 @@ export const onRequestGet: PagesFunction = async (context) => {
         }
 
         const { name, extra } = parseSongName(nameField);
-        const links = (row['Link(s)'] ?? '').split('\n').map((l: string) => l.trim()).filter(Boolean);
+        const links = (row[LINKS_KEY] ?? '').split('\n').map((l: string) => extractHyperlinkUrl(l.trim())).filter(Boolean);
 
         eras[eraName].data['Unreleased Tracks'].push({
           name,

@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const pushagoldConfig: ArtistConfig = {
   slug: 'pushagold',
+  hasAlbumCopiesTab: true,
   SITE_NAME: 'PUSHAGOLD',
   SITE_DESCRIPTION: 'The Best Clipse / Pusha T Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/pushagold/',

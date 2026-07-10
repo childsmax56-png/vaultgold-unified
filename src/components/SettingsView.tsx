@@ -387,6 +387,21 @@ export function SettingsView({ onCategoryChange, searchQuery, eras = [], artData
           </div>
         )}
 
+        {matchesSearch('convert mp3 spotify local files transcode format flac wav download') && (
+          <div className="flex items-center justify-between p-4 bg-[#111] border border-white/5 rounded-xl">
+            <div className="flex flex-col">
+              <span className="text-sm font-medium text-white/90">Download as MP3</span>
+              <span className="text-xs text-white/40">Convert downloads to MP3 so they show up in Spotify's Local Files (WAV/FLAC/M4A are re-encoded; slower per song)</span>
+            </div>
+            <button
+              onClick={() => updateSettings({ convertToMp3: !settings.convertToMp3 })}
+              className={`w-11 h-6 rounded-full transition-colors relative shrink-0 ${settings.convertToMp3 ? 'bg-[var(--theme-color)]' : 'bg-white/10'}`}
+            >
+              <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-transform ${settings.convertToMp3 ? 'translate-x-5.5' : 'translate-x-0.5'}`} />
+            </button>
+          </div>
+        )}
+
         {matchesSearch('share link pillowcase site song link copy') && (
           <div className="flex items-center justify-between p-4 bg-[#111] border border-white/5 rounded-xl">
             <div className="flex flex-col">

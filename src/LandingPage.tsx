@@ -877,7 +877,27 @@ const SHEET_URLS: Record<string, string> = {
   pushagold:  'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/edit?gid=1932839414#gid=1932839414',
   juicegold:  'https://docs.google.com/spreadsheets/d/1tD3ytt5wPx4zfcefXi5ATeYhIiDaugWjMS46nZrP568/edit?gid=0#gid=0',
   shadygold:  'https://docs.google.com/spreadsheets/d/1x9tTOOqH5WpKOoptdQzABSN_x8oZbMgzIGlGH9w1IKA/edit?gid=1792554832#gid=1792554832',
+  aapgold:    'https://docs.google.com/spreadsheets/d/1rbt_VyQyHEfVRv_XmVBNrwMyF0uMx7FF-1T8-N0wf0E/edit?gid=1701548408#gid=1701548408',
+  sosagold:   'https://docs.google.com/spreadsheets/d/1oDE9gTnEG7ufPQIOMjLTegfI47qtgNCxngmxxHZL4qA/edit#gid=1792554832',
+  dongold:    'https://docs.google.com/spreadsheets/d/1qsO4SuzzB17d5orqbKWHsaQsRdk0lzTSF9rV2FwQf-Q/edit?gid=1535277716#gid=1535277716',
   luckigold:  'https://docs.google.com/spreadsheets/d/1zoRNpy7Lvr-JzPqtQLLWRVVDbgKygpBaDf4cC-Lt6k4/edit#gid=306146520',
+  mfgold:     'https://docs.google.com/spreadsheets/u/1/d/1zEbzMVXFXzuY4wLdPvdQA23lb3RwCSOKqWtHsllXNk8/edit?usp=drivesdk',
+  mjgold:     'https://docs.google.com/spreadsheets/d/1i59TKrIZ1OvFFPJFuOMw1VXlvyzaVOH0Wb0vVJp9BTw/edit#gid=1792554832',
+  slimegold:  'https://docs.google.com/spreadsheets/d/12zc2reK5y8XP6SQhv1ujQtiG9VpJy7yDWwDuE-S-wpc/edit?gid=0#gid=0',
+  colegold:   'https://docs.google.com/spreadsheets/d/1hjMtB-acUEpXYkR6TWQVeVoUzSLrAVIdy1lMoM6aFFw/edit',
+  fiftygold:  'https://docs.google.com/spreadsheets/d/1UBHQ067bIEDH3TapHIt3MCdwDNRe30Qv0VdBP9JLgFM/edit?gid=1520634709#gid=1520634709',
+  keemgold:   'https://docs.google.com/spreadsheets/d/1_SNZQS-AAXVleukgKlraegaozkLOu8WMHbUwmPm61hc/edit',
+  denzelgold: 'https://docs.google.com/spreadsheets/d/1Pyi72FNT6KWuQE3g4BmIDCV26HMfKFcE650Duyia43o/edit?gid=788157788#gid=788157788',
+  lonelygold: 'https://docs.google.com/spreadsheets/d/1J16EyxHqZD4m0VZ6g6SoY_1GC21TU7P2kk9FeteSKvE/edit?gid=2018221909#gid=2018221909',
+  jojigold:   'https://docs.google.com/spreadsheets/d/1FPlWbXnx94y5FODJ2qniLf0BzViNSAmj6Xdfw1ZNwQ4/edit#gid=766670282',
+  teccagold:  'https://docs.google.com/spreadsheets/d/15UwihAVwPeS6eIE1FE1J6v7xiBYFkculVrzhMSIcEew/edit?gid=0#gid=0',
+  macgold:    'https://docs.google.com/spreadsheets/d/17TycQCSpIm-6DyWId4ve8fVaM7Ewg3lgV1DDNRwauh0/edit?gid=1466156873#gid=1466156873',
+  smokegold:  'https://docs.google.com/spreadsheets/d/1-Kd8molYeR1WpmWR81DqmSCGng3g-AVmZfgd752kh3M/edit#gid=0',
+  futuregold: 'https://docs.google.com/spreadsheets/d/1OGAthACjwPcq3vHIVTAoaT8blFXjyBLtVcP0m5u80-U/edit',
+  gorillazgold: 'https://docs.google.com/spreadsheets/d/1jauTeMKDULPud0hGD-gPeD-HM70HiBSedrLyOyAqUh0/edit?gid=339324838#gid=339324838',
+  cudigold:   'https://docs.google.com/spreadsheets/d/1fj9HcbyLbu5NGwJzbl1lExQud3FNKv-JUU6NY4OKM9Y/edit',
+  rihannagold: 'https://docs.google.com/spreadsheets/d/1DKf6MBZ6KcKoKFH5Vnl1qc3CrPIiHey-EgOrpKpLZQo/edit',
+  jayzgold:   'https://docs.google.com/spreadsheets/d/18GwItf2M92QimNMAbUCfFsxCkiHlkf8DPJPLWHAcoxQ/edit?gid=1202580443#gid=1202580443',
 };
 
 function ShareButton({ url, accent }: { url: string; accent?: string }) {
@@ -1097,6 +1117,21 @@ export function LandingPage() {
         >
           <GearIcon />
         </button>
+        <a
+          href="/game"
+          title="Play The Heist"
+          style={{
+            position: 'absolute', top: 0, left: 0,
+            background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
+            borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
+            display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700,
+            textDecoration: 'none', transition: 'background 0.15s',
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
+        >
+          🎮 <span className="game-btn-label">The Heist</span>
+        </a>
         <img
           src="/logo.png"
           alt="UNVAULTED"

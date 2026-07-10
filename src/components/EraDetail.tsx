@@ -5,7 +5,7 @@ import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loa
 import { SiYoutube } from 'react-icons/si';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , retryImageOnError, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, ERA_DISCLAIMERS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , retryImageOnError, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
@@ -16,6 +16,7 @@ import { SiLastdotfm } from 'react-icons/si';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 import { usePlaylists } from '../PlaylistContext';
+import { useIsClamped } from '../hooks/useIsClamped';
 
 function normalizeName(name: string): string {
   return name
@@ -212,6 +213,10 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
   const [openRemixKey, setOpenRemixKey] = useState<string | null>(null);
   const [openSampleKey, setOpenSampleKey] = useState<string | null>(null);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [descriptionRef, isDescriptionClamped] = useIsClamped<HTMLParagraphElement>(
+    ALBUM_DESCRIPTIONS[era.name],
+    isDescriptionExpanded,
+  );
   const [editingLfmName, setEditingLfmName] = useState(false);
   const [lfmNameDraft, setLfmNameDraft] = useState('');
   const [isSelectMode, setIsSelectMode] = useState(false);
@@ -224,6 +229,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
   useEffect(() => {
     setVisibleCount(era.name === 'Recent Leaks' ? 15 : 9999);
+    setIsDescriptionExpanded(false);
   }, [era.name]);
 
   const handleShare = (e: React.MouseEvent, song: Song) => {
@@ -760,15 +766,37 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
             {ALBUM_DESCRIPTIONS[era.name] && (
               <div className="mb-2 max-w-3xl">
-                <p className={`text-white/80 text-sm leading-relaxed ${isDescriptionExpanded ? '' : 'line-clamp-3'}`}>
+                <p ref={descriptionRef} className={`text-white/80 text-sm leading-relaxed ${isDescriptionExpanded ? '' : 'line-clamp-3'}`}>
                   {ALBUM_DESCRIPTIONS[era.name]}
                 </p>
-                <button 
-                  onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-                  className="text-[var(--theme-color)] text-xs font-bold mt-1 hover:underline cursor-pointer"
-                >
-                  {isDescriptionExpanded ? 'Show Less' : 'Show More...'}
-                </button>
+                {(isDescriptionClamped || isDescriptionExpanded) && (
+                  <button
+                    onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                    className="text-[var(--theme-color)] text-xs font-bold mt-1 hover:underline cursor-pointer"
+                  >
+                    {isDescriptionExpanded ? 'Show Less' : 'Show More...'}
+                  </button>
+                )}
+              </div>
+            )}
+            {ERA_DISCLAIMERS[era.name] && (
+              <div className="mb-2 max-w-3xl rounded-lg border border-[var(--theme-color)]/40 bg-[var(--theme-color)]/10 px-4 py-3">
+                <p className="text-white/90 text-sm leading-relaxed">
+                  {ERA_DISCLAIMERS[era.name].text}
+                  {ERA_DISCLAIMERS[era.name].linkUrl && (
+                    <>
+                      {' '}
+                      <a
+                        href={ERA_DISCLAIMERS[era.name].linkUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[var(--theme-color)] font-bold underline hover:opacity-80"
+                      >
+                        {ERA_DISCLAIMERS[era.name].linkText || 'here'}
+                      </a>
+                    </>
+                  )}
+                </p>
               </div>
             )}
             {era.extra && <p className="text-white/60 text-sm max-w-2xl">{formatTextWithTags(era.extra)}</p>}

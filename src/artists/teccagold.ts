@@ -1,0 +1,86 @@
+import type { ArtistConfig } from './types';
+
+export const teccagoldConfig: ArtistConfig = {
+  slug: 'teccagold',
+  SITE_NAME: 'TECCAGOLD',
+  SITE_DESCRIPTION: 'The Best Lil Tecca Tracker In The World!',
+  SITE_URL: 'https://unvaulted.cc/teccagold/',
+  OG_IMAGE_URL: '',
+  STORAGE_PREFIX: 'teccagold_',
+  HARDCODED_SHEET_ID: '',
+  HARDCODED_SHEET_GID: '',
+  SHEET_URL_UNRELEASED: '',
+  SHEET_URL_RECENT: '',
+  accentColor: '#22d3ee',
+  artistLabel: 'Lil Tecca',
+  cardLetter: 'LT',
+  logoUrl: '/logos/teccagold.webp',
+  artistPhotoUrl: '/artists/liltecca.webp',
+
+  getArtistName() {
+    return 'Lil Tecca';
+  },
+
+  CUSTOM_IMAGES: {
+    'Tecca & Friends': '/teccagold/eras/tecca-friends.png',
+    'We Love You Tecca': '/teccagold/eras/we-love-you-tecca.png',
+    'Virgo World': '/teccagold/eras/virgo-world.png',
+    'Two Lil Black Boys': '/teccagold/eras/two-lil-black-boys.jpg',
+    'We Love You Tecca 2': '/teccagold/eras/we-love-you-tecca-2.png',
+    'TEC': '/teccagold/eras/tec.png',
+    'PLAN A': '/teccagold/eras/plan-a.png',
+    'DOPAMINE': '/teccagold/eras/dopamine.jpg',
+    'Ongoing': '/teccagold/eras/ongoing.jpg',
+  },
+
+  ALBUM_RELEASE_DATES: {
+    'Tecca & Friends': '??/??/2018',
+    'We Love You Tecca': '08/30/2019',
+    'Virgo World': '09/18/2020',
+    'Two Lil Black Boys': '??/??/????',
+    'We Love You Tecca 2': '08/27/2021',
+    'TEC': '09/22/2023',
+    'PLAN A': '09/20/2024',
+    'DOPAMINE': '06/13/2025',
+    'Ongoing': '??/??/????',
+  },
+
+  HIDDEN_ALBUMS: [],
+  ALBUM_DESCRIPTIONS: {
+    'Tecca & Friends': 'Made in 2018 whilst Tecca was still in Highschool. Not much is known about the project other than the name and cover art. The tape was made in collaboration with Pasto Flocco a highschool friend of Tec\'s.',
+    'We Love You Tecca': 'Whilst building buzz through SoundCloud and snippets shared online in late 2018 and early 2019, Lil Tecca began working on his debut mixtape, We Love You Tecca. The project was officially released on August 30th, 2019, following the massive success of his breakout single “Ransom,” which propelled him into mainstream recognition. The tape captured Tecca’s youthful energy and melodic sound, blending upbeat trap instrumentals with catchy hooks and playful lyrics that resonated with a wide audience. Many of the songs were recorded while Tecca was still a teenager, giving the project an authentic and carefree feel. We Love You Tecca debuted at number 4 on the Billboard 200 and solidified his position as one of the leading voices of the new generation of melodic rappers.',
+    'Virgo World': 'Whilst riding the success of his debut mixtape We Love You Tecca in 2019, Lil Tecca began working on his first studio album, Virgo World. The project was officially released on September 18th, 2020, marking a more polished and experimental sound compared to his earlier work. During this era, Tecca explored a wider range of production styles, blending melodic trap with softer, moodier instrumentals while maintaining his signature catchy flow. The album featured collaborations with artists like Polo G, Lil Durk, Nav, and Internet Money, showcasing his versatility and growing presence in the scene. Despite mixed critical reception, Virgo World demonstrated Tecca’s transition from a viral newcomer to a more established artist.',
+    'Two Lil Black Boys': 'Whilst working on Virgo World in 2020 and We Love You Tecca in 2021, Lil Tecca was working on a collab album with Lil Yachty. These songs looked like they never had a chance of surfacing until a mass leaking on June 24th, 2024. It\'s entirely possible that this album was due to release in the middle of both Yachty\'s & Tecca\'s albums respectively however didn\'t release for an unknown reason. One of the songs titled "For The Soul" was likely due to release in 2021 with a music video alongside however never did as they likely wanted to focus on their solo albums instead. Later on in 2022 Yachty said he would be releasing this album later in the year however nothing came to fruition. The album name was confirmed in Internet Money Vlog Episode 1 at 4:44 saying it would be dropping in 2 weeks, but of course never did. Lost source states that Yachty teased a December 2021 release but is not confirmed, with no info on the album coming out during 2022 meaning it was likely scrapped. Nothing much is known about this album other than this.',
+    'We Love You Tecca 2': 'Whilst coming off the success of We Love You Tecca in 2019 and working on Virgo World in 2020, Lil Tecca began crafting the sequel, We Love You Tecca 2. The album was officially released on August 27th, 2021, serving as a continuation of his breakout debut and showcasing his growth both lyrically and sonically. Throughout the recording process, Tecca experimented with a mix of melodic trap and upbeat production, further refining the sound that made him stand out early in his career. Several singles, including “Never Left,” “Money On Me,” and “Repeat It” featuring Gunna, were released prior to the album, building strong anticipation among fans. While not as commercially impactful as his debut, We Love You Tecca 2 reflected Tecca’s evolution as an artist and hinted at the more mature, introspective direction he would take in later projects.',
+    'TEC': 'Whilst taking a brief break after We Love You Tecca 2 in 2021, Lil Tecca quietly began work on his third studio album, TEC. The album was officially released on September 22nd, 2023, marking a confident return to form and showcasing Tecca’s growth as both a rapper and producer. Throughout TEC, Tecca experiments with darker, more polished production and sharper lyricism, blending his signature melodic sound with a more mature and focused tone. The project includes standout tracks like “500lbs,” “HVN ON EARTH” featuring Kodak Black, and “Yawa,” which highlight his evolution while maintaining the catchy energy that first made him popular. Unlike his earlier work, TEC feels more cohesive and self-assured, reflecting Tecca’s progression from a teenage sensation to an established artist in full control of his sound.',
+    'PLAN A': 'PLAN A is a focused, melodic project from Lil Tecca that continues his signature approach of clean, catchy production and effortless flows, blending themes of relationships, confidence, and lifestyle into a smooth, replayable listening experience. Leading into the release, Tecca built anticipation through social media rollout and early drops like “BAD TIME,” which helped set the tone for the project’s more polished and intentional sound. Across PLAN A, he leans into bright, upbeat instrumentals and laid-back delivery, keeping the focus on melody and consistency, resulting in a cohesive album that reinforces his strength in creating accessible, high-energy music.',
+    'DOPAMINE': 'Following a wave of anticipation, Lil Tecca teased Dopamine on June 1st by posting “ITS TIME” over his studio setup, hinting at a potential June 6th drop and a runtime of around 41:32. Leading up to the release, singles like “Dark Thoughts” and “Owa Owa” helped build momentum, with “Dark Thoughts” gaining notable popularity online, before the album ultimately arrived on June 13, 2025. The project delivers a concise set of melodic, high-energy tracks with polished production and Tecca’s signature effortless flow, focusing on themes of lifestyle, success, and relationships while maintaining a cohesive, replayable feel.',
+    'Ongoing': 'Songs without a confirmed era or currently being worked on.',
+  },
+  ALBUM_SONG_COUNTS: {},
+  CUSTOM_ALBUM_INFO: {},
+  ERA_MAPPINGS: {},
+  ALBUM_ORDER: [
+    'Tecca & Friends',
+    'We Love You Tecca',
+    'Virgo World',
+    'Two Lil Black Boys',
+    'We Love You Tecca 2',
+    'TEC',
+    'PLAN A',
+    'DOPAMINE',
+    'Ongoing',
+  ],
+
+  TAG_MAP: {},
+  TAG_TOOLTIP_MAP: {},
+  ERA_THEMES: {},
+
+  hasArtTab: false,
+  hasVideosTab: false,
+  hasMiscTab: false,
+  hasStemsTab: false,
+  hasTracklistsTab: false,
+  hasSubAlbumsTab: false,
+  hasRecentTab: false,
+};

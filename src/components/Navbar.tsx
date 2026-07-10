@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, DollarSign, LogIn, LogOut, Settings, Dice5, X, ChevronDown, GanttChart, LayoutGrid, UserPlus, Share2, Check } from 'lucide-react';
+import { Search, LogIn, LogOut, Settings, Dice5, X, ChevronDown, GanttChart, LayoutGrid, UserPlus, Share2, Check, Home } from 'lucide-react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { SiDiscord, SiReddit, SiTiktok, SiX } from 'react-icons/si';
 import { Users } from 'lucide-react';
@@ -10,9 +10,9 @@ import { retryImageOnError } from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
-export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
+export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'albumcopies' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
 
-const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'videos', 'tracklists', 'subalbums']);
+const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'albumcopies', 'videos', 'tracklists', 'subalbums']);
 
 interface NavbarProps {
   searchQuery: string;
@@ -40,6 +40,7 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'stems', label: 'Stems' },
   { key: 'misc', label: 'Misc' },
   { key: 'fakes', label: 'Fakes' },
+  { key: 'albumcopies', label: 'Album Copies' },
   { key: 'released', label: 'Released' },
   { key: 'related', label: 'Related' },
   { key: 'recent', label: 'Recent' },
@@ -97,6 +98,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     : NAV_CATEGORIES;
 
   const visibleCategories = baseCategories.filter(({ key }) => {
+    if (key === 'stems' && activeConfig.hasStemsTab === false) return false;
     if (key === 'yedits' && !activeConfig.hasYeditsTab) return false;
     if (key === 'production' && !activeConfig.hasProductionTab) return false;
     if (key === 'concerts' && !activeConfig.hasConcertsTab) return false;
@@ -109,9 +111,10 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     if (key === 'videos' && activeConfig.hasVideosTab === false) return false;
     if (key === 'misc' && activeConfig.hasMiscTab === false) return false;
     if (key === 'tracklists' && activeConfig.hasTracklistsTab === false) return false;
+    if (key === 'albumcopies' && !activeConfig.hasAlbumCopiesTab) return false;
     if (DATA_DRIVEN_TABS.has(key) && fetchedTabs?.has(key) && !tabsWithData?.has(key)) return false;
     return true;
-  });
+  }).map(cat => cat.key === 'misc' && activeConfig.miscLabel ? { ...cat, label: activeConfig.miscLabel } : cat);
   const activeLabel = visibleCategories.find(c => c.key === activeCategory)?.label ?? 'Navigate';
 
   const handleCategoryClick = (cat: Category) => {
@@ -312,14 +315,12 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
               <Users className="w-5 h-5" />
             </button>
             <a
-              href="https://unvaulted.cc/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/"
               className="flex items-center justify-center p-2.5 rounded-full transition-all duration-300 cursor-pointer"
               style={{ backgroundColor: 'rgba(212, 175, 55, 0.15)', color: '#D4AF37' }}
-              title="UNVAULTED"
+              title="Back to Homepage"
             >
-              <DollarSign className="w-5 h-5" />
+              <Home className="w-5 h-5" />
             </a>
             <a
               href="https://unvaulted.cc/account"
@@ -431,15 +432,13 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
           <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Community / Socials</span>
         </button>
         <a
-          href="https://unvaulted.cc/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-105"
           style={{ backgroundColor: 'rgba(212, 175, 55, 0.15)', color: '#D4AF37' }}
-          title="UNVAULTED"
+          title="Back to Homepage"
         >
-          <DollarSign className="w-4 h-4" />
-          <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Other Artist Trackers</span>
+          <Home className="w-4 h-4" />
+          <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Back to Homepage</span>
         </a>
         <a
           href="https://unvaulted.cc/account"
