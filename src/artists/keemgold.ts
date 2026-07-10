@@ -22,8 +22,15 @@ export const keemgoldConfig: ArtistConfig = {
   },
 
   CUSTOM_IMAGES: {
-    'The Sound of Bad Habit': '/keemgold/eras/sound-of-bad-habit.jpg',
     'Before Baby Keem': '/keemgold/eras/before-baby-keem.jpg',
+    'Regin': '/keemgold/eras/regin.jpg',
+    'Oct': '/keemgold/eras/oct.jpg',
+    'Black Nights': '/keemgold/eras/black-nights.jpg',
+    'PTNTL': '/keemgold/eras/ptntl.jpg',
+    'Midnight': '/keemgold/eras/midnight.jpg',
+    'No Name': '/keemgold/eras/no-name.png',
+    'Hearts & Darts': '/keemgold/eras/hearts-darts.jpg',
+    'The Sound of Bad Habit': '/keemgold/eras/the-sound-of-bad-habit.jpg',
     'DIE FOR MY BITCH': '/keemgold/eras/die-for-my-bitch.jpg',
     'Ca$ino': '/keemgold/eras/casino.jpg',
     'The Melodic Blue': '/keemgold/eras/the-melodic-blue.jpg',
