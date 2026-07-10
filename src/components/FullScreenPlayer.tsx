@@ -283,8 +283,11 @@ export function FullScreenPlayer({
         {currentImgUrl && <img onError={retryImageOnError} src={currentImgUrl} alt="" className="w-full h-full object-cover opacity-10 blur-3xl scale-110" referrerPolicy="no-referrer" />}
       </div>
 
-      <div className="relative z-10 p-6 flex justify-between items-center">
-        <div className="w-24 relative">
+      <div
+        className="relative z-10 px-4 md:px-6 pb-4 md:pb-6 flex justify-between items-center gap-2"
+        style={{ paddingTop: 'max(1.5rem, calc(env(safe-area-inset-top) + 0.75rem))' }}
+      >
+        <div className="w-10 md:w-24 shrink-0 relative">
           <AnimatePresence>
             {showNextNotification && nextSong && (
               <motion.div
@@ -305,14 +308,14 @@ export function FullScreenPlayer({
             )}
           </AnimatePresence>
         </div>
-        <div className="text-center flex-1">
-          <h3 className="text-white/60 text-sm font-medium uppercase tracking-widest">{(currentSong as any).realEra?.name || era?.name}</h3>
-          <p className="text-white/40 text-xs mt-1">
+        <div className="text-center flex-1 min-w-0 px-1">
+          <h3 className="text-white/60 text-sm font-medium uppercase tracking-widest truncate">{(currentSong as any).realEra?.name || era?.name}</h3>
+          <p className="text-white/40 text-xs mt-1 truncate">
             {currentSong.quality || 'Unknown Quality'}
             {currentSong.available_length && ` • ${currentSong.available_length}`}
           </p>
         </div>
-        <div className="flex items-center gap-4 w-24 justify-end">
+        <div className="flex items-center gap-2 md:gap-4 shrink-0 justify-end">
           {showLyrics && hasSynced && plainLyrics && !isLyricsDisabled && !settings.syncedLyricsOnly && (
             <div className="flex items-center bg-white/10 rounded-full p-0.5 mr-2">
               <button
