@@ -10,12 +10,12 @@ export const smokegoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1-Kd8molYeR1WpmWR81DqmSCGng3g-AVmZfgd752kh3M/export?format=csv&gid=1507357362',
   accentColor: '#1a1a2e',
   artistLabel: 'Pop Smoke',
   cardLetter: 'P',
   logoUrl: '/logos/smokegold.webp',
-  artistPhotoUrl: '/artists/popsmoke.jpg',
+  artistPhotoUrl: '/artists/popsmoke.webp',
 
   getArtistName() {
     return 'Pop Smoke';
@@ -24,6 +24,8 @@ export const smokegoldConfig: ArtistConfig = {
   CUSTOM_IMAGES: {
     'Meet The Woo 1': '/smokegold/eras/meet-the-woo-1.jpg',
     'Meet The Woo 2': '/smokegold/eras/meet-the-woo-2.jpg',
+    'SFTSAFTM': '/smokegold/eras/sftsaftm.jpg',
+    'SFTSAFTM (Deluxe)': '/smokegold/eras/sftsaftm.jpg',
     'Boogie': '/smokegold/eras/boogie.jpg',
     'Faith': '/smokegold/eras/faith.jpg',
   },
@@ -79,4 +81,5 @@ export const smokegoldConfig: ArtistConfig = {
 
   hasArtTab: true,
   hasVideosTab: false,
+  hasSubAlbumsTab: false,
 };

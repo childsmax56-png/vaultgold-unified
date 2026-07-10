@@ -22,11 +22,11 @@ export const jayzgoldConfig: ArtistConfig = {
   },
 
   CUSTOM_IMAGES: {
-    'Streets Is Watching': '/jayzgold/eras/4-44.jpg',
+    'Streets Is Watching': '/jayzgold/eras/streets-is-watching.jpg',
     'The Best Of Both Worlds': '/jayzgold/eras/the-best-of-both-worlds.jpg',
     'Unfinished Business': '/jayzgold/eras/unfinished-business.jpg',
     'The Black Album': '/jayzgold/eras/the-black-album.jpg',
-    'Preasonable Doubt': '/jayzgold/eras/reasonable-doubt.jpg',
+    'Preasonable Doubt': '/jayzgold/eras/preasonable-doubt.jpg',
     'Reasonable Doubt': '/jayzgold/eras/reasonable-doubt.jpg',
     'In My Lifetime, Vol 1': '/jayzgold/eras/in-my-lifetime-vol-1.jpg',
     'Vol 1': '/jayzgold/eras/in-my-lifetime-vol-1.jpg',
@@ -150,4 +150,6 @@ export const jayzgoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasRecentTab: false,
+  hasSubAlbumsTab: false,
 };

@@ -10,12 +10,12 @@ export const denzelgoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1Pyi72FNT6KWuQE3g4BmIDCV26HMfKFcE650Duyia43o/export?format=csv&gid=70327685',
   accentColor: '#c026d3',
   artistLabel: 'Denzel Curry',
   cardLetter: 'DC',
   logoUrl: '/logos/denzelgold.webp',
-  artistPhotoUrl: '/artists/denzelcurry.jpg',
+  artistPhotoUrl: '/artists/denzelcurry.webp',
 
   getArtistName() {
     return 'Denzel Curry';
@@ -30,6 +30,7 @@ export const denzelgoldConfig: ArtistConfig = {
     'ZUU': '/denzelgold/eras/zuu.jpg',
     'UNLOCKED': '/denzelgold/eras/unlocked.jpg',
     'Melt My Eyez, See Your Future': '/denzelgold/eras/melt-my-eyez-see-your-future.jpg',
+    'Designed By Angels': '/denzelgold/eras/designed-by-angels.jpg',
     'KING OF THE MISCHIEVOUS SOUTH VOL 2': '/denzelgold/eras/king-of-the-mischievous-south-vol-2.jpg',
     'Strictly 4 The Scythe': '/denzelgold/eras/strictly-4-the-scythe.jpg',
   },
@@ -112,4 +113,6 @@ export const denzelgoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasMiscTab: false,
+  hasSubAlbumsTab: false,
 };

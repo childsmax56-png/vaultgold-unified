@@ -10,12 +10,12 @@ export const macgoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/17TycQCSpIm-6DyWId4ve8fVaM7Ewg3lgV1DDNRwauh0/export?format=csv&gid=336463588',
   accentColor: '#ca8a04',
   artistLabel: 'Mac Miller',
   cardLetter: 'M',
   logoUrl: '',
-  artistPhotoUrl: '/artists/macmiller.jpg',
+  artistPhotoUrl: '/artists/macmiller.jpeg',
 
   getArtistName() {
     return 'Mac Miller';
@@ -38,12 +38,12 @@ export const macgoldConfig: ArtistConfig = {
     'Pink Slime': '/macgold/eras/pink-slime.jpg',
     'You': '/macgold/eras/macadelic.jpg',
     'Run-On Sentences, Vol. 1': '/macgold/eras/macadelic.jpg',
-    'Watching Movies With The Sound Off': '/artists/macmiller.jpg',
-    'Stolen Youth': '/artists/macmiller.jpg',
-    'Delusional Thomas': '/artists/macmiller.jpg',
-    'Live From Space': '/artists/macmiller.jpg',
+    'Watching Movies With The Sound Off': '/macgold/eras/watching-movies.jpg',
+    'Stolen Youth': '/macgold/eras/stolen-youth.jpg',
+    'Delusional Thomas': '/macgold/eras/delusional-thomas.jpg',
+    'Live From Space': '/macgold/eras/live-from-space.jpg',
     'Balloonerism': '/macgold/eras/balloonerism.jpg',
-    'Children Of Forever': '/macgold/eras/balloonerism.jpg',
+    'Children Of Forever': '/macgold/eras/children-of-forever.jpg',
     'Faces': '/macgold/eras/faces.jpg',
     'Maclib': '/macgold/eras/faces.jpg',
     'Attorneys EP': '/macgold/eras/faces.jpg',
@@ -194,4 +194,6 @@ export const macgoldConfig: ArtistConfig = {
 
   hasArtTab: true,
   hasVideosTab: false,
+  hasMiscTab: false,
+  hasSubAlbumsTab: false,
 };

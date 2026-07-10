@@ -10,7 +10,7 @@ export const keemgoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1_SNZQS-AAXVleukgKlraegaozkLOu8WMHbUwmPm61hc/export?format=csv&gid=464931598',
   accentColor: '#84cc16',
   artistLabel: 'Baby Keem',
   cardLetter: 'BK',
@@ -22,6 +22,8 @@ export const keemgoldConfig: ArtistConfig = {
   },
 
   CUSTOM_IMAGES: {
+    'The Sound of Bad Habit': '/keemgold/eras/sound-of-bad-habit.jpg',
+    'Before Baby Keem': '/keemgold/eras/before-baby-keem.jpg',
     'DIE FOR MY BITCH': '/keemgold/eras/die-for-my-bitch.jpg',
     'Ca$ino': '/keemgold/eras/casino.jpg',
     'The Melodic Blue': '/keemgold/eras/the-melodic-blue.jpg',
@@ -95,4 +97,5 @@ export const keemgoldConfig: ArtistConfig = {
 
   hasArtTab: true,
   hasVideosTab: false,
+  hasSubAlbumsTab: false,
 };

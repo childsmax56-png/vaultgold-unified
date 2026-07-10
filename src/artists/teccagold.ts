@@ -68,4 +68,9 @@ export const teccagoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasMiscTab: false,
+  hasStemsTab: false,
+  hasTracklistsTab: false,
+  hasSubAlbumsTab: false,
+  hasRecentTab: false,
 };

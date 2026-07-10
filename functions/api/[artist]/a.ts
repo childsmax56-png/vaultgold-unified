@@ -1,5 +1,11 @@
 import { parseCSV, csvResponse } from './_csvParser';
 
+// Extract the URL from a Google Sheets HYPERLINK formula: =HYPERLINK("url","text") → url
+function extractHyperlinkUrl(cell: string): string {
+  const m = cell.match(/^=HYPERLINK\("([^"]+)"/i);
+  return m ? m[1] : cell;
+}
+
 function parseSongName(raw: string): { name: string; extra: string | undefined } {
   const newline = raw.indexOf('\n');
   if (newline === -1) return { name: raw.trim(), extra: undefined };
@@ -468,7 +474,7 @@ export const onRequestGet: PagesFunction = async (context) => {
         }
 
         const { name, extra } = parseSongName(nameField);
-        const links = (row[LINKS_KEY] ?? '').split('\n').map((l: string) => l.trim()).filter(Boolean);
+        const links = (row[LINKS_KEY] ?? '').split('\n').map((l: string) => extractHyperlinkUrl(l.trim())).filter(Boolean);
 
         eras[eraName].data['Unreleased Tracks'].push({
           name,

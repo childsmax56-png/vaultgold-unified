@@ -121,4 +121,7 @@ export const cudigoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasRecentTab: false,
+  hasTracklistsTab: false,
+  hasSubAlbumsTab: false,
 };

@@ -15,14 +15,14 @@ export const rihannagoldConfig: ArtistConfig = {
   artistLabel: 'Rihanna',
   cardLetter: 'RIH',
   logoUrl: '/logos/rihannagold.webp',
-  artistPhotoUrl: '/artists/rihanna.webp',
+  artistPhotoUrl: '/artists/rihanna.jpeg',
 
   getArtistName() {
     return 'Rihanna';
   },
 
   CUSTOM_IMAGES: {
-    'Music Of The Sun': '/artists/rihanna.webp',
+    'Music Of The Sun': '/rihannagold/eras/music-of-the-sun.jpg',
     'A Girl Like Me': '/rihannagold/eras/a-girl-like-me.jpg',
     'Good Girl Gone Bad': '/rihannagold/eras/good-girl-gone-bad.jpg',
     'Rated R': '/rihannagold/eras/rated-r.jpg',
@@ -82,4 +82,8 @@ export const rihannagoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasMiscTab: false,
+  hasRecentTab: false,
+  hasTracklistsTab: false,
+  hasSubAlbumsTab: false,
 };

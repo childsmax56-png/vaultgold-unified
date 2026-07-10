@@ -10,18 +10,19 @@ export const jojigoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1FPlWbXnx94y5FODJ2qniLf0BzViNSAmj6Xdfw1ZNwQ4/export?format=csv&gid=583378522',
   accentColor: '#9f1239',
   artistLabel: 'Joji',
   cardLetter: 'J',
   logoUrl: '/logos/jojigold.webp',
-  artistPhotoUrl: '/artists/joji.jpg',
+  artistPhotoUrl: '/artists/joji.jpeg',
 
   getArtistName() {
     return 'Joji';
   },
 
   CUSTOM_IMAGES: {
+    'George Miller': '/jojigold/eras/george-miller.jpg',
     'Chloe Burbank Volume 1 [V2]': '/jojigold/eras/chloe-burbank-volume-1.jpg',
     'Lost Instruments': '/jojigold/eras/lost-instruments.jpg',
     'In Tongues': '/jojigold/eras/in-tongues.jpg',
@@ -32,6 +33,8 @@ export const jojigoldConfig: ArtistConfig = {
     'Head In The Clouds II': '/jojigold/eras/head-in-the-clouds-ii.jpg',
     'Nectar': '/jojigold/eras/nectar.jpg',
     'SMITHEREENS': '/jojigold/eras/smithereens.jpg',
+    'Piss In The Wind': '/jojigold/eras/piss-in-the-wind.jpg',
+    'Piss In The Wind (Deluxe)': '/jojigold/eras/piss-in-the-wind.jpg',
   },
 
   ALBUM_RELEASE_DATES: {
@@ -109,4 +112,5 @@ export const jojigoldConfig: ArtistConfig = {
 
   hasArtTab: true,
   hasVideosTab: true,
+  hasSubAlbumsTab: false,
 };

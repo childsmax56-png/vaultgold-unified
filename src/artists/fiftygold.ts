@@ -37,7 +37,7 @@ export const fiftygoldConfig: ArtistConfig = {
     'Street King: Immortal [V1]': '/fiftygold/eras/street-king-immortal-v1.jpg',
     'Street King: Immortal [V2]': '/fiftygold/eras/street-king-immortal-v2.jpg',
     'Animal Ambition': '/fiftygold/eras/animal-ambition.jpg',
-    'LP6': '/artists/50cent.webp',
+    'LP6': '/fiftygold/eras/lp6.jpg',
   },
 
   ALBUM_RELEASE_DATES: {
@@ -106,4 +106,5 @@ export const fiftygoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasSubAlbumsTab: false,
 };

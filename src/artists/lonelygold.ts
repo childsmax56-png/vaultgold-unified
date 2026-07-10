@@ -10,12 +10,12 @@ export const lonelygoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1J16EyxHqZD4m0VZ6g6SoY_1GC21TU7P2kk9FeteSKvE/export?format=csv&gid=1413127973',
   accentColor: '#7209b7',
   artistLabel: 'Destroy Lonely',
   cardLetter: 'DL',
   logoUrl: '/logos/lonelygold.webp',
-  artistPhotoUrl: '/artists/destroylonely.jpg',
+  artistPhotoUrl: '/artists/destroylonely.webp',
 
   getArtistName() {
     return 'Destroy Lonely';
@@ -23,6 +23,7 @@ export const lonelygoldConfig: ArtistConfig = {
 
   CUSTOM_IMAGES: {
     'If Looks Could Kill': '/lonelygold/eras/if-looks-could-kill.jpg',
+    'Drop Dead Gorgeous': '/lonelygold/eras/drop-dead-gorgeous.jpg',
     'NO STYLIST [V3]': '/lonelygold/eras/no-stylist-v3.jpg',
     'Underworld.': '/lonelygold/eras/underworld.jpg',
     '00CACTUS': '/lonelygold/eras/00cactus.jpg',
@@ -130,4 +131,6 @@ export const lonelygoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasMiscTab: false,
+  hasSubAlbumsTab: false,
 };

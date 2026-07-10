@@ -27,7 +27,7 @@ export const gorillazgoldConfig: ArtistConfig = {
     'Laika Come Home': '/gorillazgold/eras/g-sides.jpg',
     'Demon Days': '/gorillazgold/eras/demon-days.jpg',
     'D-Sides': '/gorillazgold/eras/d-sides.jpg',
-    'Carousel': '/gorillazgold/eras/demon-days.jpg',
+    'Carousel': '/gorillazgold/eras/carousel.jpg',
     'Monkey - Journey To The West': '/gorillazgold/eras/monkey-journey-to-the-west.jpg',
     'Plastic Beach': '/gorillazgold/eras/plastic-beach.jpg',
     'The Fall': '/gorillazgold/eras/the-fall.jpg',
@@ -102,4 +102,7 @@ export const gorillazgoldConfig: ArtistConfig = {
 
   hasArtTab: true,
   hasVideosTab: false,
+  hasMiscTab: false,
+  hasSubAlbumsTab: false,
+  hasRecentTab: false,
 };

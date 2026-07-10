@@ -10,12 +10,12 @@ export const futuregoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: '',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1OGAthACjwPcq3vHIVTAoaT8blFXjyBLtVcP0m5u80-U/export?format=csv&gid=1932564138',
   accentColor: '#f97316',
   artistLabel: 'Future',
   cardLetter: 'F',
   logoUrl: '/logos/futuregold.webp',
-  artistPhotoUrl: '/artists/future.webp',
+  artistPhotoUrl: '/artists/future.jpeg',
 
   getArtistName() {
     return 'Future';
@@ -60,8 +60,8 @@ export const futuregoldConfig: ArtistConfig = {
     'Donda 2': '/futuregold/eras/donda-2.jpg',
     'I NEVER LIKED YOU': '/futuregold/eras/i-never-liked-you.jpg',
     'Lil Durk Collab': '/futuregold/eras/lil-durk-collab.jpg',
-    'WE DON\'T TRUST YOU': '/futuregold/eras/wdty-wsdty.jpg',
-    'WE STILL DON\'T TRUST YOU': '/futuregold/eras/wdty-wsdty.jpg',
+    'WE DON\'T TRUST YOU': '/futuregold/eras/we-dont-trust-you.jpg',
+    'WE STILL DON\'T TRUST YOU': '/futuregold/eras/we-still-dont-trust-you.jpg',
     'MIXTAPE PLUTO': '/futuregold/eras/mixtape-pluto.jpg',
     'Edd, Ed n Eddy': '/futuregold/eras/edd-ed-n-eddy.jpg',
     'The Real Me': '/futuregold/eras/the-real-me.jpg',
@@ -224,4 +224,6 @@ export const futuregoldConfig: ArtistConfig = {
 
   hasArtTab: false,
   hasVideosTab: false,
+  hasMiscTab: false,
+  hasSubAlbumsTab: false,
 };
