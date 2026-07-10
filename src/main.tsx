@@ -16,6 +16,7 @@ import { UnvaultedRecordsPage } from './UnvaultedRecordsPage.tsx';
 import { YEditsGoldPage } from './YEditsGoldPage.tsx';
 import { TermsPage } from './TermsPage.tsx';
 import { PrivacyPage } from './PrivacyPage.tsx';
+import { DownloadPage } from './DownloadPage.tsx';
 
 function ArtistRoute() {
   const { artist } = useParams<{ artist: string }>();
@@ -50,6 +51,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/download" element={<DownloadPage />} />
           <Route path="/:artist/*" element={<ArtistRoute />} />
         </Routes>
       </BrowserRouter>

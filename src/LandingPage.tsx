@@ -1268,6 +1268,15 @@ export function LandingPage() {
           subtitle="Explore the label"
           watermark="UR"
         />
+        <BigLinkCard
+          href="/download"
+          accent="#4F9DFF"
+          badge="App"
+          titleMain="DOWNLOAD"
+          titleAccent="APP"
+          subtitle="Desktop & mobile apps"
+          watermark="APP"
+        />
       </div>
 
       <div style={{ width: '100%', maxWidth: 900, marginTop: 24, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
