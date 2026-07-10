@@ -18,10 +18,20 @@ module.exports = async function vmpSign(context) {
   const target = appOutDir;
 
   const python = process.env.PYTHON || 'python3';
+
+  // On CI there's no interactive login, so pass the EVS credentials explicitly
+  // (with -n for non-interactive). Locally, if the env vars aren't set, fall back
+  // to the cached login from `castlabs_evs.account signup`.
+  const { EVS_ACCOUNT_NAME, EVS_PASSWORD } = process.env;
+  const args = ['-m', 'castlabs_evs.vmp'];
+  const signArgs = ['sign-pkg', target];
+  if (EVS_ACCOUNT_NAME && EVS_PASSWORD) {
+    args.push('-n');
+    signArgs.push('-A', EVS_ACCOUNT_NAME, '-P', EVS_PASSWORD);
+  }
+
   try {
-    execFileSync(python, ['-m', 'castlabs_evs.vmp', 'sign-pkg', target], {
-      stdio: 'inherit',
-    });
+    execFileSync(python, [...args, ...signArgs], { stdio: 'inherit' });
     console.log('[vmp-sign] Widevine VMP signature applied in:', target);
   } catch (e) {
     console.warn(
