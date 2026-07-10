@@ -5,6 +5,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import JSZip from 'jszip';
 import { Song, Era } from '../types';
 import { ARTIST_LIST } from '../artists/registry';
+import { LABEL_GROUPS } from '../labelContent';
 import { retryImageOnError, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 
@@ -24,13 +25,17 @@ interface AlbumMeta {
   songs?: Record<string, { displayName?: string; notes?: string }>;
 }
 
-interface YEditsGroup {
+export interface YEditsGroup {
   folderPath: string;
   displayName: string;
   parentName: string;
   imageUrl?: string;
   backCoverUrl?: string;
   songs: Song[];
+  // Set for curated label content injected client-side (not backed by R2).
+  // These render like any group but expose no owner/upload/delete controls.
+  readOnly?: boolean;
+  untitledUrl?: string;
 }
 
 function parseGroups(keys: string[]): YEditsGroup[] {
@@ -351,7 +356,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   useEffect(() => {
     setSelectedSongs(new Set());
     setSelectMode(false);
-    if (!selectedGroup) return;
+    if (!selectedGroup || selectedGroup.readOnly) return;
     const fp = selectedGroup.folderPath;
     fetch(`/api/yedits-metadata?key=${encodeURIComponent(fp)}`)
       .then(r => r.ok ? r.json() as Promise<AlbumMeta> : Promise.resolve({} as AlbumMeta))
@@ -363,7 +368,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   useEffect(() => {
     setCollaboratorsResult(null);
     setNewCollaborator('');
-    if (!selectedGroup?.parentName) return;
+    if (!selectedGroup?.parentName || selectedGroup.readOnly) return;
     const profile = selectedGroup.parentName;
     fetch(`/api/yedits-collaborators?profile=${encodeURIComponent(profile)}`)
       .then(r => r.ok ? r.json() as Promise<{ collaborators?: string[] }> : Promise.resolve({} as { collaborators?: string[] }))
@@ -854,7 +859,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     }
   };
 
-  const groups = useMemo(() => parseGroups(keys), [keys]);
+  const groups = useMemo(() => [...LABEL_GROUPS, ...parseGroups(keys)], [keys]);
   const existingCreators = useMemo(() =>
     [...new Set(groups.map(g => g.parentName).filter(Boolean))].sort((a, b) => a.localeCompare(b))
   , [groups]);
@@ -999,8 +1004,10 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     const isRootOwner = !!vgUser && selectedGroup.parentName.toLowerCase() === vgUser.username.toLowerCase();
     const profileCollaborators = collaborators[selectedGroup.parentName] ?? [];
     const isCollaborator = !!vgUser && profileCollaborators.some(u => u.toLowerCase() === vgUser.username.toLowerCase());
-    const isOwner = isAdmin || isRootOwner || (!!vgUser && claimEntry?.userId === vgUser.id) || isCollaborator;
-    const meta = albumMeta[selectedGroup.folderPath] ?? {};
+    const isOwner = !selectedGroup.readOnly && (isAdmin || isRootOwner || (!!vgUser && claimEntry?.userId === vgUser.id) || isCollaborator);
+    const meta: AlbumMeta = selectedGroup.readOnly
+      ? { untitledUrl: selectedGroup.untitledUrl, allowDownload: true }
+      : albumMeta[selectedGroup.folderPath] ?? {};
 
     return (
       <>
@@ -1887,7 +1894,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 const isClaimed = !!claimEntry;
                 return (
                   <>
-                    {!isClaimed && onClaim && vgUser && !isGroupOwner && !isAdmin && (
+                    {!isClaimed && !group.readOnly && onClaim && vgUser && !isGroupOwner && !isAdmin && (
                       <button
                         onClick={e => { e.stopPropagation(); onClaim(group.parentName); }}
                         className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 px-2 h-6 rounded-full bg-black/70 hover:bg-[var(--theme-color)]/80 text-white/60 hover:text-white backdrop-blur-sm cursor-pointer text-[10px] font-semibold"
