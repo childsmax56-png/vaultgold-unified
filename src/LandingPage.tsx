@@ -1094,6 +1094,10 @@ export function LandingPage() {
       fontFamily: "'Inter', system-ui, sans-serif",
       WebkitFontSmoothing: 'antialiased',
       padding: '16px 24px 48px',
+      // iOS PWA (standalone) renders behind the status bar / Dynamic Island because of
+      // viewport-fit=cover + apple-mobile-web-app-status-bar-style=black-translucent.
+      // Offset the top so the header (logo, gear, "The Heist") stays reachable.
+      paddingTop: 'max(16px, calc(env(safe-area-inset-top) + 8px))',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',

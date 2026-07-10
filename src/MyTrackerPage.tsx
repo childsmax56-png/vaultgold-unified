@@ -518,7 +518,7 @@ export function MyTrackerPage() {
   const hasUrl = !!localStorage.getItem(STORAGE_KEY);
 
   return (
-    <div style={{ minHeight: '100vh', background: '#050505', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", display: 'flex', flexDirection: 'column', paddingBottom: playerSong ? 80 : 0 }}>
+    <div style={{ minHeight: '100vh', background: '#050505', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", display: 'flex', flexDirection: 'column', paddingBottom: playerSong ? 80 : 0, paddingTop: 'env(safe-area-inset-top)' }}>
       {/* Nav */}
       <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <a href="/" onClick={e => { e.preventDefault(); navigate('/'); }} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>

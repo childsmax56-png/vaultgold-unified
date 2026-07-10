@@ -568,7 +568,7 @@ export function GamePage() {
 
   // ---- render --------------------------------------------------------------
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0b', color: '#fff', fontFamily: 'system-ui, sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 14px 60px' }}>
+    <div style={{ minHeight: '100vh', background: '#0a0a0b', color: '#fff', fontFamily: 'system-ui, sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 14px 60px', paddingTop: 'max(20px, calc(env(safe-area-inset-top) + 8px))' }}>
       <div style={{ width: '100%', maxWidth: 900, display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
         <button onClick={() => (phase === 'playing' ? setPhase('select') : navigate('/'))} style={backBtn}>← {phase === 'playing' ? 'Quit level' : 'Back to trackers'}</button>
         <div style={{ textAlign: 'right' }}>

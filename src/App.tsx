@@ -2883,7 +2883,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
   return (
     <ContributorContext.Provider value={{ navigateToContributor }}>
     <PlaylistProvider>
-    <div className="h-dvh w-full flex overflow-hidden relative bg-yzy-black">
+    <div className="h-dvh w-full flex overflow-hidden relative bg-yzy-black" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       <audio
         ref={audioRef}
         onEnded={handleEnded}

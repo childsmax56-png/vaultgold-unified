@@ -34,7 +34,7 @@ export function DownloadPage() {
     <div style={{
       minHeight: '100vh', background: '#050505', color: '#fff',
       fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased',
-      padding: '48px 24px', maxWidth: 720, margin: '0 auto',
+      padding: '48px 24px', paddingTop: 'max(48px, env(safe-area-inset-top))', maxWidth: 720, margin: '0 auto',
     }}>
       <a href="/" style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, textDecoration: 'none', display: 'inline-block', marginBottom: 32 }}>
         ← Back

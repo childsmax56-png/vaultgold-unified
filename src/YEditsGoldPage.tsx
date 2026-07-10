@@ -538,7 +538,7 @@ export function YEditsGoldPage() {
 
   return (
     <PlaylistProvider>
-    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased', paddingBottom: currentSong ? 90 : 0 }}>
+    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#fff', fontFamily: "'Inter', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased', paddingBottom: currentSong ? 90 : 0, paddingTop: 'env(safe-area-inset-top)' }}>
       <audio ref={audioRef} />
 
       {/* Header */}

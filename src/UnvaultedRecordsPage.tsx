@@ -485,6 +485,7 @@ export function UnvaultedRecordsPage() {
       fontFamily: "'Inter', system-ui, sans-serif",
       WebkitFontSmoothing: 'antialiased',
       overflowX: 'hidden',
+      paddingTop: 'env(safe-area-inset-top)',
     }}>
       {/* Nav */}
       <nav style={{
