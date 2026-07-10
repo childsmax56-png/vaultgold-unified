@@ -1077,10 +1077,9 @@ export function LandingPage() {
   const favoriteConfigs = ARTIST_LIST.filter(c => isFavorite(c.slug));
 
   const featured = ARTIST_LIST[0];
-  // Carti, Tyler in top-right row 1; Drake in top-right row 2
-  const topRight = ARTIST_LIST.slice(1, 4);
-  const juiceConfig = ARTIST_LIST.find(c => c.slug === 'juicegold')!;
-  const smallArtists = ARTIST_LIST.slice(4).filter(c => c.slug !== 'juicegold');
+  // Pinned 2×2 next to the featured card: Carti, Tyler, A$AP Rocky, Drake
+  const topRight = ARTIST_LIST.slice(1, 5);
+  const smallArtists = ARTIST_LIST.slice(5);
   const allSmall = smallArtists.map(c => ({ type: 'artist' as const, config: c }));
   const INITIAL_SMALL = 4;
   const visibleSmall = showAll ? allSmall : allSmall.slice(0, INITIAL_SMALL);
@@ -1213,15 +1212,6 @@ export function LandingPage() {
                     </div>
                   </div>
                 ))}
-                {juiceConfig && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    <EditorialArtistCard config={juiceConfig} showPhoto={showPhotos} variant="medium" isFavorite={isFavorite(juiceConfig.slug)} onToggleFavorite={toggleFavorite} />
-                    <div style={{ display: 'flex', gap: 6 }}>
-                      {SHEET_URLS[juiceConfig.slug] && <SheetButton href={SHEET_URLS[juiceConfig.slug]} accent={juiceConfig.accentColor} />}
-                      <ShareButton url={`${window.location.origin}/${juiceConfig.slug}`} accent={juiceConfig.accentColor} />
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
 

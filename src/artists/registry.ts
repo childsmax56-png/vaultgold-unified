@@ -35,20 +35,21 @@ import { jayzgoldConfig } from './jayzgold';
 import { macgoldConfig } from './macgold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
-  dongold: dongoldConfig,
+  // Featured + pinned lineup drives the landing page order (see LandingPage.tsx)
+  yzygold: yzygoldConfig,        // Featured (Ye)
+  vampgold: vampgoldConfig,      // Pinned: Playboi Carti
+  wolfgold: wolfgoldConfig,      // Pinned: Tyler, The Creator
+  aapgold: aapgoldConfig,        // Pinned: A$AP Rocky
+  drizzygold: drizzygoldConfig,  // Pinned: Drake
+  mjgold: mjgoldConfig,          // Row 2: Michael Jackson
+  dongold: dongoldConfig,        // Row 2: Don Toliver
+  kdotgold: kdotgoldConfig,      // Row 2: Kendrick Lamar
+  cactigold: cactigoldConfig,    // Row 2: Travis Scott
+  slimegold: slimegoldConfig,    // Young Thug
   colegold: colegoldConfig,
-  aapgold: aapgoldConfig,
   mfgold: mfgoldConfig,
-  mjgold: mjgoldConfig,
-  slimegold: slimegoldConfig,
   sosagold: sosagoldConfig,
-  yzygold: yzygoldConfig,
-  vampgold: vampgoldConfig,
-  wolfgold: wolfgoldConfig,
-  drizzygold: drizzygoldConfig,
   xgold: xgoldConfig,
-  cactigold: cactigoldConfig,
-  kdotgold: kdotgoldConfig,
   uzigold: uzigoldConfig,
   pushagold: pushagoldConfig,
   shadygold: shadygoldConfig,
