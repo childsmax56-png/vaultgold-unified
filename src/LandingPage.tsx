@@ -1105,36 +1105,36 @@ export function LandingPage() {
       {showSettings && <LandingSettingsPanel onClose={() => setShowSettings(false)} />}
       {showConsent && <ConsentModal onAccept={signInWithGoogle} onClose={() => setShowConsent(false)} />}
 
-      <header style={{ textAlign: 'center', marginBottom: 40, width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-        <button
-          onClick={() => setShowSettings(true)}
-          style={{
-            position: 'absolute', top: 0, right: 0,
-            background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-            borderRadius: 8, padding: '8px', cursor: 'pointer', color: 'rgba(255,255,255,0.5)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            transition: 'background 0.15s, color 0.15s',
-          }}
-          onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.1)'; (e.currentTarget as HTMLButtonElement).style.color = '#fff'; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.05)'; (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.5)'; }}
-        >
-          <GearIcon />
-        </button>
-        <a
-          href="/game"
-          title="Play The Heist"
-          style={{
-            position: 'absolute', top: 0, left: 0,
-            background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
-            borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
-            display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700,
-            textDecoration: 'none', transition: 'background 0.15s',
-          }}
-          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
-        >
-          🎮 <span className="game-btn-label">The Heist</span>
-        </a>
+      <header style={{ textAlign: 'center', marginBottom: 40, width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', gap: 8 }}>
+          <a
+            href="/game"
+            title="Play The Heist"
+            style={{
+              background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
+              borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
+              display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700,
+              textDecoration: 'none', transition: 'background 0.15s', flexShrink: 0,
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
+          >
+            🎮 <span className="game-btn-label">The Heist</span>
+          </a>
+          <button
+            onClick={() => setShowSettings(true)}
+            style={{
+              background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: 8, padding: '8px', cursor: 'pointer', color: 'rgba(255,255,255,0.5)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              transition: 'background 0.15s, color 0.15s', flexShrink: 0,
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.1)'; (e.currentTarget as HTMLButtonElement).style.color = '#fff'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.05)'; (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.5)'; }}
+          >
+            <GearIcon />
+          </button>
+        </div>
         <img
           src="/logo.png"
           alt="UNVAULTED"
