@@ -22,12 +22,17 @@ export const smokegoldConfig: ArtistConfig = {
   },
 
   CUSTOM_IMAGES: {
+    'GQ': '/smokegold/eras/gq.jpg',
     'Meet The Woo 1': '/smokegold/eras/meet-the-woo-1.jpg',
     'Meet The Woo 2': '/smokegold/eras/meet-the-woo-2.jpg',
+    'PS3': '/smokegold/eras/ps3.png',
+    'Collaboration with French Montana': '/smokegold/eras/collaboration-with-french-montana.jpg',
+    'Huncho Woo': '/smokegold/eras/huncho-woo.jpg',
     'SFTSAFTM': '/smokegold/eras/sftsaftm.jpg',
-    'SFTSAFTM (Deluxe)': '/smokegold/eras/sftsaftm.jpg',
+    'SFTSAFTM (Deluxe)': '/smokegold/eras/sftsaftm-deluxe.jpg',
     'Boogie': '/smokegold/eras/boogie.jpg',
     'Faith': '/smokegold/eras/faith.jpg',
+    'Ongoing': '/smokegold/eras/ongoing.jpg',
   },
 
   ALBUM_RELEASE_DATES: {

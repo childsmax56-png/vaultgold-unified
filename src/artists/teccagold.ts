@@ -21,7 +21,17 @@ export const teccagoldConfig: ArtistConfig = {
     return 'Lil Tecca';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Tecca & Friends': '/teccagold/eras/tecca-friends.png',
+    'We Love You Tecca': '/teccagold/eras/we-love-you-tecca.png',
+    'Virgo World': '/teccagold/eras/virgo-world.png',
+    'Two Lil Black Boys': '/teccagold/eras/two-lil-black-boys.jpg',
+    'We Love You Tecca 2': '/teccagold/eras/we-love-you-tecca-2.png',
+    'TEC': '/teccagold/eras/tec.png',
+    'PLAN A': '/teccagold/eras/plan-a.png',
+    'DOPAMINE': '/teccagold/eras/dopamine.jpg',
+    'Ongoing': '/teccagold/eras/ongoing.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Tecca & Friends': '??/??/2018',
