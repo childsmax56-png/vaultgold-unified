@@ -320,6 +320,18 @@ export const yzygoldConfig: ArtistConfig = {
       miniPlayer: "/yzygold/MiniPlayerTGFD.png",
       fullPicturePlayer: "/yzygold/FullPicturePlayerTGFD.png",
     },
+    "Yeezus": {
+      topBanner: "/yzygold/TopBannerYeezus.png",
+      bottomBanner: "/yzygold/BottomBannerYeezus.png",
+      miniPlayer: "/yzygold/MiniPlayerYeezus.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerYeezus.png",
+    },
+    "Yeezus 2": {
+      topBanner: "/yzygold/TopBannerYeezus2.png",
+      bottomBanner: "/yzygold/BottomBannerYeezus2.png",
+      miniPlayer: "/yzygold/MiniPlayerYeezus2.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerYeezus2.png",
+    },
   },
 
   TAG_TOOLTIP_MAP: {
