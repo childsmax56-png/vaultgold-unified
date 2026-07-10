@@ -1,18 +1,12 @@
 import React from 'react';
 import { SiApple } from 'react-icons/si';
 
-// Bump VERSION when a new desktop release is tagged. Asset names follow
-// electron-builder's `UNVAULTED-<version>-<os>-<arch>.<ext>` pattern.
-const REPO = 'https://github.com/childsmax56-png/vaultgold-unified';
-const VERSION = 'v1.0.2';
-const v = VERSION.slice(1); // "1.0.2"
-const asset = (name: string) => `${REPO}/releases/download/${VERSION}/${name}`;
-
+// Installers are streamed through our own origin (see
+// functions/api/app-download.ts) so the download links stay on unvaulted.cc.
 const DOWNLOADS = {
-  macArm: asset(`UNVAULTED-${v}-mac-arm64.dmg`),
-  macIntel: asset(`UNVAULTED-${v}-mac-x64.dmg`),
-  win: asset(`UNVAULTED-${v}-win-x64.exe`),
-  releases: `${REPO}/releases/latest`,
+  macArm: '/api/app-download?os=mac-arm',
+  macIntel: '/api/app-download?os=mac-intel',
+  win: '/api/app-download?os=win',
 };
 
 const GOLD = '#C9A224';
@@ -73,10 +67,6 @@ export function DownloadPage() {
           recommended={os === 'win'}
         />
       </div>
-      <a href={DOWNLOADS.releases} target="_blank" rel="noopener noreferrer"
-        style={{ fontSize: 13, color: GOLD, textDecoration: 'none' }}>
-        Browse all versions & release notes →
-      </a>
 
       {/* Install guide (desktop) */}
       <div style={{ marginTop: 28, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '18px 20px' }}>
