@@ -999,7 +999,10 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         previewImage: existing?.previewImage ?? g.imageUrl,
       });
     }
-    return Array.from(map.entries()).map(([name, info]) => ({ name, ...info }));
+    return Array.from(map.entries())
+      .map(([name, info]) => ({ name, ...info }))
+      // Always surface the UNVAULTED Records label first.
+      .sort((a, b) => (a.name === LABEL_NAME ? -1 : 0) - (b.name === LABEL_NAME ? -1 : 0));
   }, [groups]);
 
   const filteredGroups = useMemo(() => {
@@ -1955,6 +1958,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
           <div className="flex flex-wrap gap-3">
             {creators.map((creator, i) => {
               const isActive = selectedCreator === creator.name;
+              const isLabel = creator.name === LABEL_NAME;
               return (
                 <motion.button
                   key={creator.name}
@@ -1962,8 +1966,11 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                   onClick={() => setSelectedCreator(isActive ? null : creator.name)}
+                  style={isLabel ? { boxShadow: '0 0 0 1px rgba(255,215,0,0.5), 0 0 12px 2px rgba(255,215,0,0.45)' } : undefined}
                   className={`flex items-center gap-3 pl-1 pr-4 py-1 rounded-full border transition-all cursor-pointer ${
-                    isActive
+                    isLabel
+                      ? 'bg-[#FFD700]/10 border-[#FFD700]/50 text-white'
+                      : isActive
                       ? 'bg-[var(--theme-color)]/15 border-[var(--theme-color)]/40 text-white'
                       : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:text-white hover:border-white/20'
                   }`}
