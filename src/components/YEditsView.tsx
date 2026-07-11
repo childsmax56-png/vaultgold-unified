@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import JSZip from 'jszip';
 import { Song, Era } from '../types';
 import { ARTIST_LIST } from '../artists/registry';
-import { LABEL_GROUPS } from '../labelContent';
+import { LABEL_GROUPS, LABEL_NAME, ALBUMS as LABEL_ALBUMS, SINGLES as LABEL_SINGLES } from '../labelContent';
 import { retryImageOnError, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 
@@ -279,6 +279,11 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   const [deleting, setDeleting] = useState(false);
   const [deleteResult, setDeleteResult] = useState<{ ok: boolean; msg: string } | null>(null);
 
+  // one-time migration of the built-in UNVAULTED Records catalog into R2
+  const [migrating, setMigrating] = useState(false);
+  const [migrateStatus, setMigrateStatus] = useState('');
+  const [migrateResult, setMigrateResult] = useState<{ ok: boolean; msg: string } | null>(null);
+
   // per-song delete
   const [deleteSongKey, setDeleteSongKey] = useState<string | null>(null);
   const [deletingSong, setDeletingSong] = useState(false);
@@ -306,6 +311,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   // edit project info modal
   const [showEditMeta, setShowEditMeta] = useState(false);
   const [editMetaProjectName, setEditMetaProjectName] = useState('');
+  const [editMetaCreditedArtist, setEditMetaCreditedArtist] = useState('');
   const [editMetaSourceArtist, setEditMetaSourceArtist] = useState('');
   const [editMetaSourceEra, setEditMetaSourceEra] = useState('');
   const [editMetaDescription, setEditMetaDescription] = useState('');
@@ -621,6 +627,106 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     }
   };
 
+  // Copies the built-in UNVAULTED Records catalog (static files under /public)
+  // into the R2 uploads bucket so the albums become normal, fully editable
+  // yeditsgold projects. Reuses the standard presign → direct-upload flow, then
+  // writes per-track titles/credits via the metadata sidecar. Idempotent:
+  // albums already present in the bucket are skipped.
+  const doMigrateLabel = async () => {
+    const token = getVGToken();
+    if (!token) return;
+    setMigrating(true);
+    setMigrateResult(null);
+
+    const sanitizeSeg = (s: string) =>
+      s.replace(/[/\\<>:"|?*\x00-\x1f]/g, '').replace(/\s+/g, ' ').trim() || 'untitled';
+    const extOf = (path: string) => {
+      const base = path.split('/').pop() ?? '';
+      const dot = base.lastIndexOf('.');
+      return dot > -1 ? base.slice(dot + 1).toLowerCase() : '';
+    };
+    const typeFor = (ext: string) =>
+      ({ mp3: 'audio/mpeg', m4a: 'audio/mp4', wav: 'audio/wav', ogg: 'audio/ogg', flac: 'audio/flac',
+         png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp' } as Record<string, string>)[ext] || 'application/octet-stream';
+
+    // Shape the raw catalog (albums + singles) into a uniform import list.
+    const importAlbums = [
+      ...LABEL_ALBUMS.map(a => ({
+        title: a.title,
+        cover: a.cover as string | undefined,
+        streamUrl: a.streamUrl as string | undefined,
+        tracks: a.tracks.map(t => ({ n: t.n, title: t.title, artist: t.artist, src: t.src })),
+      })),
+      {
+        title: 'Singles',
+        cover: LABEL_SINGLES[0]?.cover as string | undefined,
+        streamUrl: undefined as string | undefined,
+        tracks: LABEL_SINGLES.map((s, i) => ({ n: i + 1, title: s.title, artist: s.artist, src: s.src })),
+      },
+    ].filter(a => a.tracks.length > 0);
+
+    const labelDir = sanitizeSeg(LABEL_NAME);
+    let done = 0, skipped = 0, failed = 0;
+
+    for (const album of importAlbums) {
+      const albumDir = sanitizeSeg(album.title);
+      if (keys.some(k => k.startsWith(`${labelDir}/${albumDir}/`))) { skipped++; continue; }
+
+      setMigrateStatus(`Importing “${album.title}”…`);
+      try {
+        const trackFiles: File[] = [];
+        const songsMeta: Record<string, { displayName?: string; notes?: string }> = {};
+        for (const t of album.tracks) {
+          const res = await fetch(t.src);
+          if (!res.ok) throw new Error(`Missing file for “${t.title}”`);
+          const ext = extOf(t.src) || 'mp3';
+          const blob = await res.blob();
+          const filename = `${String(t.n).padStart(2, '0')} ${sanitizeSeg(t.src.split('/').pop()!.replace(/\.[^.]+$/, ''))}.${ext}`;
+          trackFiles.push(new File([blob], filename, { type: blob.type || typeFor(ext) }));
+          songsMeta[filename] = { displayName: t.title, notes: t.artist || undefined };
+        }
+
+        let coverFile: File | null = null;
+        if (album.cover) {
+          const cRes = await fetch(album.cover);
+          if (cRes.ok) {
+            const ext = extOf(album.cover) || 'jpg';
+            const cBlob = await cRes.blob();
+            coverFile = new File([cBlob], `cover.${ext}`, { type: cBlob.type || typeFor(ext) });
+          }
+        }
+
+        const { folderPath } = await uploadFilesDirect(token, LABEL_NAME, album.title, coverFile, trackFiles);
+
+        await fetch('/api/yedits-metadata', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            token,
+            folderPath: folderPath || `${labelDir}/${albumDir}`,
+            meta: { untitledUrl: album.streamUrl || undefined, allowDownload: true, songs: songsMeta },
+          }),
+        });
+        done++;
+      } catch {
+        failed++;
+      }
+    }
+
+    setMigrateStatus('');
+    const fresh = await fetch('/api/yedits', { cache: 'no-store' })
+      .then(r => r.json() as Promise<string[]>)
+      .catch(() => null);
+    if (fresh) setKeys(fresh);
+    setMigrating(false);
+    setMigrateResult({
+      ok: failed === 0,
+      msg: failed === 0
+        ? `Imported ${done} album${done !== 1 ? 's' : ''}${skipped ? `, ${skipped} already in bucket` : ''}. They're now editable.`
+        : `Imported ${done}, ${failed} failed${skipped ? `, ${skipped} skipped` : ''}.`,
+    });
+  };
+
   const doDeleteSong = async (key: string) => {
     const token = getVGToken();
     if (!token) return;
@@ -696,6 +802,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   const openEditMeta = (group: YEditsGroup) => {
     const meta = albumMeta[group.folderPath] ?? {};
     setEditMetaProjectName(group.displayName);
+    setEditMetaCreditedArtist(group.parentName);
     setEditMetaSourceArtist(meta.sourceArtist ?? '');
     setEditMetaSourceEra(meta.sourceEra ?? '');
     setEditMetaDescription(meta.description ?? '');
@@ -714,24 +821,27 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
 
     let targetFolderPath = group.folderPath;
 
-    // Rename album folder in R2 if name changed
-    const trimmedName = editMetaProjectName.trim();
-    if (trimmedName && trimmedName !== group.displayName) {
+    // Move the album folder in R2 if the project name or credited artist
+    // changed. A single re-credit call handles both (creator = folder segment 0,
+    // name = segment 1).
+    const trimmedName = editMetaProjectName.trim() || group.displayName;
+    const trimmedCreditedArtist = editMetaCreditedArtist.trim() || group.parentName;
+    if (trimmedName !== group.displayName || trimmedCreditedArtist !== group.parentName) {
       try {
-        const renameRes = await fetch('/api/yedits-rename-album', {
+        const moveRes = await fetch('/api/yedits-recredit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token, oldFolderPath: group.folderPath, newName: trimmedName }),
+          body: JSON.stringify({ token, oldFolderPath: group.folderPath, newCreator: trimmedCreditedArtist, newName: trimmedName }),
         });
-        const renameData = await renameRes.json() as { ok?: boolean; folderPath?: string; error?: string };
-        if (!renameRes.ok) {
-          setSaveMetaResult({ ok: false, msg: renameData.error ?? 'Rename failed' });
+        const moveData = await moveRes.json() as { ok?: boolean; folderPath?: string; error?: string };
+        if (!moveRes.ok) {
+          setSaveMetaResult({ ok: false, msg: moveData.error ?? 'Update failed' });
           setSavingMeta(false);
           return;
         }
-        targetFolderPath = renameData.folderPath ?? targetFolderPath;
+        targetFolderPath = moveData.folderPath ?? targetFolderPath;
       } catch {
-        setSaveMetaResult({ ok: false, msg: 'Network error during rename' });
+        setSaveMetaResult({ ok: false, msg: 'Network error during update' });
         setSavingMeta(false);
         return;
       }
@@ -859,7 +969,14 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     }
   };
 
-  const groups = useMemo(() => [...LABEL_GROUPS, ...parseGroups(keys)], [keys]);
+  const groups = useMemo(() => {
+    const r2Groups = parseGroups(keys);
+    // Once a label album has been migrated into the bucket, hide the built-in
+    // read-only copy so it doesn't show twice (matched by artist + album name).
+    const migrated = new Set(r2Groups.map(g => `${g.parentName.toLowerCase()}|||${g.displayName.toLowerCase()}`));
+    const labels = LABEL_GROUPS.filter(g => !migrated.has(`${g.parentName.toLowerCase()}|||${g.displayName.toLowerCase()}`));
+    return [...labels, ...r2Groups];
+  }, [keys]);
   const existingCreators = useMemo(() =>
     [...new Set(groups.map(g => g.parentName).filter(Boolean))].sort((a, b) => a.localeCompare(b))
   , [groups]);
@@ -1701,6 +1818,25 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   />
                 </div>
                 <div>
+                  <label className="text-xs text-white/40 mb-1 block">Credited Artist</label>
+                  <input
+                    list="yedits-creator-list"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                    placeholder="Artist this album is credited to…"
+                    value={editMetaCreditedArtist}
+                    onChange={e => setEditMetaCreditedArtist(e.target.value)}
+                    disabled={savingMeta}
+                  />
+                  <datalist id="yedits-creator-list">
+                    {existingCreators.map(name => <option key={name} value={name} />)}
+                  </datalist>
+                  {editMetaCreditedArtist.trim() && editMetaCreditedArtist.trim() !== selectedGroup.parentName && (
+                    <p className="text-[10px] text-white/30 mt-1">
+                      Moves this album from <span className="text-white/50">{selectedGroup.parentName}</span> to <span className="text-[var(--theme-color)]">{editMetaCreditedArtist.trim()}</span>.
+                    </p>
+                  )}
+                </div>
+                <div>
                   <label className="text-xs text-white/40 mb-1 block">Source Artist</label>
                   <ArtistSelect value={editMetaSourceArtist} onChange={setEditMetaSourceArtist} disabled={savingMeta} />
                 </div>
@@ -1789,18 +1925,34 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       className="p-6 md:p-8 pb-32 space-y-8"
     >
       {/* Header row */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
         <h2 className="text-xs uppercase tracking-widest text-white/40 font-bold">Yedit Affiliates</h2>
-        {vgUser && (
-          <button
-            onClick={openUpload}
-            className="flex items-center gap-1.5 text-xs font-bold py-1.5 px-3 rounded-lg bg-[var(--theme-color)]/10 hover:bg-[var(--theme-color)]/20 text-[var(--theme-color)] border border-[var(--theme-color)]/20 transition-colors cursor-pointer"
-          >
-            <Upload className="w-3 h-3" />
-            Upload
-          </button>
-        )}
+        <div className="flex items-center gap-2">
+          {isAdmin && groups.some(g => g.readOnly) && (
+            <button
+              onClick={doMigrateLabel}
+              disabled={migrating}
+              className="flex items-center gap-1.5 text-xs font-bold py-1.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white border border-white/10 transition-colors cursor-pointer disabled:opacity-50"
+              title="Copy the built-in UNVAULTED Records catalog into the uploads bucket so it becomes editable"
+            >
+              {migrating ? <Loader2 className="w-3 h-3 animate-spin" /> : <PackageOpen className="w-3 h-3" />}
+              {migrating ? (migrateStatus || 'Importing…') : `Import ${LABEL_NAME}`}
+            </button>
+          )}
+          {vgUser && (
+            <button
+              onClick={openUpload}
+              className="flex items-center gap-1.5 text-xs font-bold py-1.5 px-3 rounded-lg bg-[var(--theme-color)]/10 hover:bg-[var(--theme-color)]/20 text-[var(--theme-color)] border border-[var(--theme-color)]/20 transition-colors cursor-pointer"
+            >
+              <Upload className="w-3 h-3" />
+              Upload
+            </button>
+          )}
+        </div>
       </div>
+      {migrateResult && (
+        <p className={`text-xs ${migrateResult.ok ? 'text-green-400' : 'text-red-400'}`}>{migrateResult.msg}</p>
+      )}
 
       {/* Creators section */}
       {creators.length > 0 && (
