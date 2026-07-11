@@ -832,15 +832,19 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ token, oldFolderPath: group.folderPath, newCreator: trimmedCreditedArtist, newName: trimmedName }),
         });
-        const moveData = await moveRes.json() as { ok?: boolean; folderPath?: string; error?: string };
+        // Parse defensively — an HTML error page would otherwise throw here and
+        // get reported as a misleading "network error".
+        const raw = await moveRes.text();
+        let moveData: { ok?: boolean; folderPath?: string; error?: string } = {};
+        try { moveData = raw ? JSON.parse(raw) : {}; } catch { /* non-JSON body */ }
         if (!moveRes.ok) {
-          setSaveMetaResult({ ok: false, msg: moveData.error ?? 'Update failed' });
+          setSaveMetaResult({ ok: false, msg: moveData.error ?? `Update failed (HTTP ${moveRes.status})` });
           setSavingMeta(false);
           return;
         }
         targetFolderPath = moveData.folderPath ?? targetFolderPath;
-      } catch {
-        setSaveMetaResult({ ok: false, msg: 'Network error during update' });
+      } catch (err) {
+        setSaveMetaResult({ ok: false, msg: err instanceof Error ? `Update failed: ${err.message}` : 'Update failed' });
         setSavingMeta(false);
         return;
       }
