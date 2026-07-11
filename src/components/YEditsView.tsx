@@ -15,6 +15,12 @@ const AUDIO_EXTS = /\.(mp3|m4a|wav|ogg|flac|aac)$/i;
 const IMAGE_EXTS = /\.(png|jpe?g|gif|webp)$/i;
 const BACK_COVER_FILE = /back\s*cover/i;
 
+// Creator profile that is always pinned first in the Creators row and given a
+// persistent gold glow. Matched exactly (case-sensitive) so the "Unvaulted
+// Records" profile is pinned and the all-caps "UNVAULTED Records" label is not.
+const PINNED_CREATOR = 'Unvaulted Records';
+const isPinnedCreator = (name: string) => name === PINNED_CREATOR;
+
 interface AlbumMeta {
   sourceArtist?: string;
   sourceEra?: string;
@@ -1001,8 +1007,8 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     }
     return Array.from(map.entries())
       .map(([name, info]) => ({ name, ...info }))
-      // Always surface the UNVAULTED Records label first.
-      .sort((a, b) => (a.name === LABEL_NAME ? -1 : 0) - (b.name === LABEL_NAME ? -1 : 0));
+      // Always surface the Unvaulted Records profile first.
+      .sort((a, b) => (isPinnedCreator(a.name) ? -1 : 0) - (isPinnedCreator(b.name) ? -1 : 0));
   }, [groups]);
 
   const filteredGroups = useMemo(() => {
@@ -1958,7 +1964,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
           <div className="flex flex-wrap gap-3">
             {creators.map((creator, i) => {
               const isActive = selectedCreator === creator.name;
-              const isLabel = creator.name === LABEL_NAME;
+              const isLabel = isPinnedCreator(creator.name);
               return (
                 <motion.button
                   key={creator.name}
