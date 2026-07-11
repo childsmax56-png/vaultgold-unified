@@ -1186,10 +1186,11 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
               {isOwner && (
                 <button
                   onClick={() => { setNewCoverFile(null); setChangeCoverResult(null); setShowChangeCover(true); }}
-                  className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center w-7 h-7 rounded-full bg-black/70 hover:bg-[var(--theme-color)]/80 text-white/60 hover:text-white backdrop-blur-sm cursor-pointer"
+                  className="absolute top-2 left-2 flex items-center gap-1 px-2 h-7 rounded-full bg-black/70 hover:bg-[var(--theme-color)]/80 text-white/80 hover:text-white backdrop-blur-sm cursor-pointer transition-colors text-[10px] font-semibold shadow-lg"
                   title="Change cover art"
                 >
                   <ImagePlus className="w-3.5 h-3.5" />
+                  {activeCoverUrl ? 'Edit' : 'Add'} cover
                 </button>
               )}
             </div>
