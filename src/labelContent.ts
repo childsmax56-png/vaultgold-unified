@@ -95,7 +95,9 @@ export const SINGLES = [
 const abs = (p: string): string =>
   /^https?:\/\//.test(p) || p.startsWith('/') ? p : `/${p}`;
 
-// The label's curated albums + singles, shaped as read-only yeditsgold groups.
+// The label's curated albums, shaped as read-only yeditsgold groups. The
+// "Singles" grouping is intentionally omitted here — it's managed directly in
+// the uploads bucket rather than surfaced as built-in read-only content.
 export const LABEL_GROUPS: YEditsGroup[] = [
   ...ALBUMS.map(album => ({
     folderPath: `__label__/${LABEL_NAME}/${album.title}`,
@@ -110,17 +112,4 @@ export const LABEL_GROUPS: YEditsGroup[] = [
       extra: t.artist,
     })),
   })),
-  {
-    folderPath: `__label__/${LABEL_NAME}/Singles`,
-    displayName: 'Singles',
-    parentName: LABEL_NAME,
-    imageUrl: SINGLES[0]?.cover ? abs(SINGLES[0].cover) : undefined,
-    readOnly: true,
-    songs: SINGLES.map(s => ({
-      name: s.title,
-      url: abs(s.src),
-      extra: s.artist,
-      image: s.cover ? abs(s.cover) : undefined,
-    })),
-  },
 ];

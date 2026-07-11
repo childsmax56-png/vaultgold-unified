@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import JSZip from 'jszip';
 import { Song, Era } from '../types';
 import { ARTIST_LIST } from '../artists/registry';
-import { LABEL_GROUPS, LABEL_NAME, ALBUMS as LABEL_ALBUMS, SINGLES as LABEL_SINGLES } from '../labelContent';
+import { LABEL_GROUPS, LABEL_NAME, ALBUMS as LABEL_ALBUMS } from '../labelContent';
 import { retryImageOnError, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 
@@ -649,21 +649,14 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       ({ mp3: 'audio/mpeg', m4a: 'audio/mp4', wav: 'audio/wav', ogg: 'audio/ogg', flac: 'audio/flac',
          png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp' } as Record<string, string>)[ext] || 'application/octet-stream';
 
-    // Shape the raw catalog (albums + singles) into a uniform import list.
-    const importAlbums = [
-      ...LABEL_ALBUMS.map(a => ({
-        title: a.title,
-        cover: a.cover as string | undefined,
-        streamUrl: a.streamUrl as string | undefined,
-        tracks: a.tracks.map(t => ({ n: t.n, title: t.title, artist: t.artist, src: t.src })),
-      })),
-      {
-        title: 'Singles',
-        cover: LABEL_SINGLES[0]?.cover as string | undefined,
-        streamUrl: undefined as string | undefined,
-        tracks: LABEL_SINGLES.map((s, i) => ({ n: i + 1, title: s.title, artist: s.artist, src: s.src })),
-      },
-    ].filter(a => a.tracks.length > 0);
+    // Shape the raw catalog into a uniform import list. Singles are managed
+    // directly in the bucket, so they're intentionally excluded here.
+    const importAlbums = LABEL_ALBUMS.map(a => ({
+      title: a.title,
+      cover: a.cover as string | undefined,
+      streamUrl: a.streamUrl as string | undefined,
+      tracks: a.tracks.map(t => ({ n: t.n, title: t.title, artist: t.artist, src: t.src })),
+    })).filter(a => a.tracks.length > 0);
 
     const labelDir = sanitizeSeg(LABEL_NAME);
     let done = 0, skipped = 0, failed = 0;
