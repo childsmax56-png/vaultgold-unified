@@ -1,4 +1,4 @@
-export const OWNER_EMAIL = 'childsmax56@gmail.com';
+export const OWNER_EMAIL = 'vaultgold671@gmail.com';
 
 export interface VGAuthUser {
   id: string;
