@@ -1,6 +1,6 @@
 import { json, options } from './_auth';
 
-const OWNER_EMAIL = 'childsmax56@gmail.com';
+const OWNER_EMAIL = 'vaultgold671@gmail.com';
 
 async function ensureTables(db: D1Database) {
   await db.prepare(`CREATE TABLE IF NOT EXISTS yeditsgold_admin_keys (key TEXT PRIMARY KEY, label TEXT, created_at TEXT NOT NULL, used_by_user_id TEXT, used_by_username TEXT, used_at TEXT)`).run();
