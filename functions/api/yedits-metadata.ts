@@ -9,6 +9,7 @@ interface AlbumMeta {
   untitledUrl?: string;
   allowDownload?: boolean;
   songs?: Record<string, { displayName?: string; notes?: string }>;
+  trackOrder?: string[];
 }
 
 export const onRequestOptions: PagesFunction<Env> = async () => options();

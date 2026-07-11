@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
-import { ArrowLeft, Play, Volume2, Download, Loader2, FlipHorizontal2, Upload, X, Trash2, ImagePlus, Plus, Pencil, Share2, RefreshCw, FileEdit, Music2, Link, PackageOpen } from 'lucide-react';
+import { ArrowLeft, Play, Volume2, Download, Loader2, FlipHorizontal2, Upload, X, Trash2, ImagePlus, Plus, Pencil, Share2, RefreshCw, FileEdit, Music2, Link, PackageOpen, ListOrdered, ArrowUp, ArrowDown, GripVertical } from 'lucide-react';
 import { useState, useEffect, useMemo, useRef } from 'react';
 import JSZip from 'jszip';
 import { Song, Era } from '../types';
@@ -29,6 +29,27 @@ interface AlbumMeta {
   untitledUrl?: string;
   allowDownload?: boolean;
   songs?: Record<string, { displayName?: string; notes?: string }>;
+  // Explicit track order, as a list of R2 filenames. Tracks not listed here
+  // (e.g. newly added ones) fall to the end in their natural order.
+  trackOrder?: string[];
+}
+
+// Derives the R2 filename for a song from its /api/yedits-file URL.
+function songFilename(song: Song): string {
+  if (!song.url) return '';
+  const key = decodeURIComponent(song.url.replace('/api/yedits-file?key=', ''));
+  return key.split('/').pop() ?? '';
+}
+
+// Reorders songs to match an explicit list of filenames; unlisted tracks keep
+// their natural order after the listed ones (Array.sort is stable).
+function applyTrackOrder(songs: Song[], order: string[]): Song[] {
+  const idx = new Map(order.map((f, i) => [f, i]));
+  return [...songs].sort((a, b) => {
+    const ia = idx.get(songFilename(a)) ?? Number.MAX_SAFE_INTEGER;
+    const ib = idx.get(songFilename(b)) ?? Number.MAX_SAFE_INTEGER;
+    return ia - ib;
+  });
 }
 
 export interface YEditsGroup {
@@ -341,6 +362,13 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   const [notesValue, setNotesValue] = useState('');
   const [savingNotes, setSavingNotes] = useState(false);
 
+  // reorder tracks
+  const [reorderMode, setReorderMode] = useState(false);
+  const [orderDraft, setOrderDraft] = useState<Song[]>([]);
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const [savingOrder, setSavingOrder] = useState(false);
+  const [orderResult, setOrderResult] = useState<{ ok: boolean; msg: string } | null>(null);
+
   // collaborators
   const [collaborators, setCollaborators] = useState<Record<string, string[]>>({});
   const [showCollaborators, setShowCollaborators] = useState(false);
@@ -368,6 +396,8 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   useEffect(() => {
     setSelectedSongs(new Set());
     setSelectMode(false);
+    setReorderMode(false);
+    setOrderResult(null);
     if (!selectedGroup || selectedGroup.readOnly) return;
     const fp = selectedGroup.folderPath;
     fetch(`/api/yedits-metadata?key=${encodeURIComponent(fp)}`)
@@ -972,6 +1002,37 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
     }
   };
 
+  const doSaveOrder = async (group: YEditsGroup) => {
+    const token = getVGToken();
+    if (!token) return;
+    setSavingOrder(true);
+    setOrderResult(null);
+    const trackOrder = orderDraft.map(songFilename).filter(Boolean);
+    const existingMeta = albumMeta[group.folderPath] ?? {};
+    const meta: AlbumMeta = { ...existingMeta, trackOrder };
+    try {
+      const res = await fetch('/api/yedits-metadata', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, folderPath: group.folderPath, meta }),
+      });
+      if (res.ok) {
+        setAlbumMeta(prev => ({ ...prev, [group.folderPath]: meta }));
+        setOrderResult({ ok: true, msg: 'Order saved' });
+        setTimeout(() => { setReorderMode(false); setOrderResult(null); }, 800);
+      } else {
+        const raw = await res.text();
+        let data: { error?: string } = {};
+        try { data = raw ? JSON.parse(raw) : {}; } catch { /* non-JSON */ }
+        setOrderResult({ ok: false, msg: data.error ?? `Save failed (HTTP ${res.status})` });
+      }
+    } catch (err) {
+      setOrderResult({ ok: false, msg: err instanceof Error ? `Save failed: ${err.message}` : 'Save failed' });
+    } finally {
+      setSavingOrder(false);
+    }
+  };
+
   const groups = useMemo(() => {
     const r2Groups = parseGroups(keys);
     // Once a label album has been migrated into the bucket, hide the built-in
@@ -1028,11 +1089,16 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
 
   const filteredSongs = useMemo(() => {
     if (!selectedGroup) return [];
-    const songs = tracklistOverrides.get(selectedGroup.folderPath) ?? selectedGroup.songs;
+    // An explicit saved track order (admin-set) wins over the legacy tracklist
+    // text override and the natural R2 order.
+    const order = albumMeta[selectedGroup.folderPath]?.trackOrder;
+    let songs = order && order.length
+      ? applyTrackOrder(selectedGroup.songs, order)
+      : tracklistOverrides.get(selectedGroup.folderPath) ?? selectedGroup.songs;
     if (!searchQuery.trim()) return songs;
     const q = searchQuery.toLowerCase();
     return songs.filter(s => s.name.toLowerCase().includes(q));
-  }, [selectedGroup, searchQuery, tracklistOverrides]);
+  }, [selectedGroup, searchQuery, tracklistOverrides, albumMeta]);
 
   if (loading) {
     return (
@@ -1115,7 +1181,10 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
 
   // DETAIL VIEW
   if (selectedGroup) {
-    const orderedSongs = tracklistOverrides.get(selectedGroup.folderPath) ?? selectedGroup.songs;
+    const savedOrder = albumMeta[selectedGroup.folderPath]?.trackOrder;
+    const orderedSongs = savedOrder && savedOrder.length
+      ? applyTrackOrder(selectedGroup.songs, savedOrder)
+      : tracklistOverrides.get(selectedGroup.folderPath) ?? selectedGroup.songs;
     const era: Era = {
       name: selectedGroup.displayName,
       image: selectedGroup.imageUrl,
@@ -1329,6 +1398,18 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                       Edit Info
                     </button>
                     <button
+                      onClick={() => {
+                        setOrderResult(null);
+                        setOrderDraft(orderedSongs);
+                        setSelectMode(false);
+                        setReorderMode(m => !m);
+                      }}
+                      className={`flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg border transition-colors cursor-pointer ${reorderMode ? 'bg-[var(--theme-color)]/20 text-[var(--theme-color)] border-[var(--theme-color)]/30' : 'bg-white/5 hover:bg-white/10 text-white/50 hover:text-white border-white/10'}`}
+                    >
+                      <ListOrdered className="w-3 h-3" />
+                      {reorderMode ? 'Cancel' : 'Reorder'}
+                    </button>
+                    <button
                       onClick={() => { setCollaboratorsResult(null); setNewCollaborator(''); setShowCollaborators(true); }}
                       className="flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/50 hover:text-white border border-white/10 transition-colors cursor-pointer"
                     >
@@ -1349,7 +1430,68 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 <div className={isOwner ? 'w-20' : 'w-10'}></div>
               </div>
 
-              {filteredSongs.map((song, i) => {
+              {reorderMode ? (
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-2 mb-3 flex-wrap">
+                    <span className="text-xs text-white/40">Drag rows or use the arrows to reorder, then save.</span>
+                    <div className="flex-1" />
+                    {orderResult && <span className={`text-xs ${orderResult.ok ? 'text-green-400' : 'text-red-400'}`}>{orderResult.msg}</span>}
+                    <button
+                      onClick={() => { setReorderMode(false); setOrderResult(null); }}
+                      disabled={savingOrder}
+                      className="text-xs font-bold py-1 px-3 rounded-lg border border-white/10 text-white/60 hover:bg-white/5 disabled:opacity-40 cursor-pointer"
+                    >Cancel</button>
+                    <button
+                      onClick={() => doSaveOrder(selectedGroup)}
+                      disabled={savingOrder}
+                      className="flex items-center gap-1.5 text-xs font-bold py-1 px-3 rounded-lg bg-[var(--theme-color)] text-black hover:opacity-90 disabled:opacity-40 cursor-pointer"
+                    >
+                      {savingOrder ? <Loader2 className="w-3 h-3 animate-spin" /> : <ListOrdered className="w-3 h-3" />}
+                      Save order
+                    </button>
+                  </div>
+                  {orderDraft.map((song, i) => {
+                    const fn = songFilename(song);
+                    const dName = meta.songs?.[fn]?.displayName || song.name;
+                    return (
+                      <div
+                        key={song.url || i}
+                        draggable={!savingOrder}
+                        onDragStart={() => setDragIndex(i)}
+                        onDragEnd={() => setDragIndex(null)}
+                        onDragOver={e => {
+                          e.preventDefault();
+                          if (dragIndex === null || dragIndex === i) return;
+                          setOrderDraft(prev => {
+                            const n = [...prev];
+                            const [it] = n.splice(dragIndex, 1);
+                            n.splice(i, 0, it);
+                            return n;
+                          });
+                          setDragIndex(i);
+                        }}
+                        className={`flex items-center gap-2 px-3 py-2 rounded-md border transition-colors cursor-grab active:cursor-grabbing ${dragIndex === i ? 'border-[var(--theme-color)]/40 bg-[var(--theme-color)]/10' : 'border-white/5 bg-white/5 hover:bg-white/10'}`}
+                      >
+                        <GripVertical className="w-4 h-4 text-white/30 shrink-0" />
+                        <span className="w-6 text-xs font-mono text-white/40 shrink-0">{i + 1}</span>
+                        <span className="flex-1 text-sm text-white truncate">{dName}</span>
+                        <button
+                          onClick={() => setOrderDraft(prev => { if (i <= 0) return prev; const n = [...prev]; [n[i - 1], n[i]] = [n[i], n[i - 1]]; return n; })}
+                          disabled={i === 0}
+                          className="w-7 h-7 flex items-center justify-center rounded hover:bg-white/10 text-white/50 hover:text-white disabled:opacity-20 disabled:cursor-default cursor-pointer"
+                          title="Move up"
+                        ><ArrowUp className="w-3.5 h-3.5" /></button>
+                        <button
+                          onClick={() => setOrderDraft(prev => { if (i >= prev.length - 1) return prev; const n = [...prev]; [n[i + 1], n[i]] = [n[i], n[i + 1]]; return n; })}
+                          disabled={i === orderDraft.length - 1}
+                          className="w-7 h-7 flex items-center justify-center rounded hover:bg-white/10 text-white/50 hover:text-white disabled:opacity-20 disabled:cursor-default cursor-pointer"
+                          title="Move down"
+                        ><ArrowDown className="w-3.5 h-3.5" /></button>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : filteredSongs.map((song, i) => {
                 const isCurrentSong = currentSong?.url === song.url;
                 const isCurrentPlaying = isCurrentSong && isPlaying;
                 // Get the R2 key from the URL
