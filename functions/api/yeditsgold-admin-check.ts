@@ -1,6 +1,6 @@
 import { json } from './_auth';
 
-const OWNER_EMAIL = 'childsmax56@gmail.com';
+const OWNER_EMAIL = 'vaultgold671@gmail.com';
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { DB } = context.env;
