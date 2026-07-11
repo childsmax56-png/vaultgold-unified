@@ -1289,15 +1289,6 @@ export function LandingPage() {
           watermark="YE"
         />
         <BigLinkCard
-          href="/label"
-          accent="#C9A224"
-          badge="Label"
-          titleMain="UNVAULTED"
-          titleAccent="RECORDS"
-          subtitle="Explore the label"
-          watermark="UR"
-        />
-        <BigLinkCard
           href="/download"
           accent="#4F9DFF"
           badge="App"
