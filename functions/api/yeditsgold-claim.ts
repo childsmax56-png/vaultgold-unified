@@ -1,6 +1,6 @@
 import { json, options } from './_auth';
 
-const ADMIN_EMAIL = 'childsmax56@gmail.com';
+const ADMIN_EMAIL = 'vaultgold671@gmail.com';
 
 async function ensureTable(db: D1Database) {
   await db.prepare(
