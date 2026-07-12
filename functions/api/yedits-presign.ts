@@ -49,6 +49,23 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const sanitize = (s: string) =>
     s.replace(/[/\\<>:"|?*\x00-\x1f]/g, '').replace(/\s+/g, ' ').trim() || 'untitled';
 
+  // Mobile browsers frequently report an empty `file.type` for audio/images
+  // picked from the Files app, so fall back to the extension. Getting this right
+  // matters for playback: iOS <audio> refuses tracks served with a mismatched
+  // Content-Type, so an .m4a/.wav must not be stored as audio/mpeg.
+  const MIME_BY_EXT: Record<string, string> = {
+    mp3: 'audio/mpeg', m4a: 'audio/mp4', mp4: 'audio/mp4', wav: 'audio/wav',
+    ogg: 'audio/ogg', oga: 'audio/ogg', opus: 'audio/opus', flac: 'audio/flac',
+    aac: 'audio/aac', aiff: 'audio/aiff', aif: 'audio/aiff', wma: 'audio/x-ms-wma',
+    png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', gif: 'image/gif', webp: 'image/webp',
+  };
+  const contentTypeFor = (name: string, provided: string, fallback: string) => {
+    if (provided) return provided;
+    const dot = name.lastIndexOf('.');
+    const ext = dot > -1 ? name.slice(dot + 1).toLowerCase() : '';
+    return MIME_BY_EXT[ext] ?? fallback;
+  };
+
   const creatorDir = sanitize(creator);
   const albumDir = sanitize(album);
 
@@ -92,7 +109,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
   if (cover && cover.size > 0) {
     const key = `${creatorDir}/${albumDir}/${sanitize(cover.name)}`;
-    const contentType = cover.type || 'image/jpeg';
+    const contentType = contentTypeFor(cover.name, cover.type, 'image/jpeg');
     const url = await presign(key, contentType);
     uploads.push({ field: 'cover', name: cover.name, key, url, contentType });
   }
@@ -100,7 +117,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   for (const track of tracks ?? []) {
     if (!track || track.size === 0) continue;
     const key = `${creatorDir}/${albumDir}/${sanitize(track.name)}`;
-    const contentType = track.type || 'audio/mpeg';
+    const contentType = contentTypeFor(track.name, track.type, 'audio/mpeg');
     const url = await presign(key, contentType);
     uploads.push({ field: 'track', name: track.name, key, url, contentType });
   }

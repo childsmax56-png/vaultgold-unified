@@ -12,6 +12,15 @@ import { useDownloadManager } from '../DownloadManagerContext';
 interface VGUser { id: string; username: string; email: string; }
 
 const AUDIO_EXTS = /\.(mp3|m4a|wav|ogg|flac|aac)$/i;
+
+// File-picker `accept` for audio inputs. A bare `accept="audio/*"` breaks song
+// selection on mobile: Android's system audio picker only surfaces
+// MediaStore-indexed music (Downloads/Files are unreachable), and iOS greys out
+// audio files whose MIME type isn't recognised — which is common for .mp3/.wav/
+// .flac saved in Files. Listing explicit extensions forces the general document
+// picker, so users can actually pick their tracks. Keep `audio/*` first so
+// desktop still filters sensibly.
+const AUDIO_ACCEPT = 'audio/*,.mp3,.m4a,.wav,.ogg,.flac,.aac,.opus,.aiff,.aif,.wma,.alac';
 const IMAGE_EXTS = /\.(png|jpe?g|gif|webp)$/i;
 const BACK_COVER_FILE = /back\s*cover/i;
 
@@ -1709,7 +1718,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
         <input
           ref={replaceFileRef}
           type="file"
-          accept="audio/*"
+          accept={AUDIO_ACCEPT}
           className="hidden"
           onChange={e => {
             const f = e.target.files?.[0];
@@ -1782,7 +1791,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                       ? <span className="text-white/80">{addTrackFiles.length} file{addTrackFiles.length !== 1 ? 's' : ''} selected — click to add more</span>
                       : <span className="text-white/40">Choose audio files…</span>}
                   </div>
-                  <input ref={addTracksInputRef} type="file" accept="audio/*" multiple className="hidden"
+                  <input ref={addTracksInputRef} type="file" accept={AUDIO_ACCEPT} multiple className="hidden"
                     onChange={e => {
                       const files = Array.from(e.target.files ?? []);
                       e.target.value = '';
@@ -2392,7 +2401,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 <input
                   ref={tracksInputRef}
                   type="file"
-                  accept="audio/*"
+                  accept={AUDIO_ACCEPT}
                   multiple
                   className="hidden"
                   onChange={e => {
