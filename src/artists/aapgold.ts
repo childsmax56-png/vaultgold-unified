@@ -16,7 +16,7 @@ export const aapgoldConfig: ArtistConfig = {
   artistLabel: 'A$AP Rocky',
   cardLetter: 'ASAP',
   logoUrl: '/logos/aapgold.png',
-  artistPhotoUrl: '/artists/asaprocky.jpg',
+  artistPhotoUrl: '/artists/asaprocky-v2.jpg',
 
   getArtistName() {
     return 'A$AP Rocky';
@@ -72,8 +72,8 @@ export const aapgoldConfig: ArtistConfig = {
     "DON'T BE DUMB [V2]": "/aapgold/eras/don-t-be-dumb-v3.jpg",
     "DON'T BE DUMB [V3]": "/aapgold/eras/don-t-be-dumb-v4.jpg",
     "DON'T BE DUMB [V4]": "/aapgold/eras/don-t-be-dumb.jpg",
-    "DON'T BE DUMB": '/artists/asaprocky.jpg',
-    "DON'T BE DUMB [DISC 2]": '/artists/asaprocky.jpg',
+    "DON'T BE DUMB": '/artists/asaprocky-v2.jpg',
+    "DON'T BE DUMB [DISC 2]": '/artists/asaprocky-v2.jpg',
   },
 
   ALBUM_RELEASE_DATES: {

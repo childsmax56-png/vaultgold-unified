@@ -15,7 +15,7 @@ export const mjgoldConfig: ArtistConfig = {
   artistLabel: 'Michael Jackson',
   cardLetter: 'MJ',
   logoUrl: '/logos/mjgold.jpg',
-  artistPhotoUrl: '/artists/michaeljackson.jpg',
+  artistPhotoUrl: '/artists/michaeljackson-v2.jpg',
 
   getArtistName() {
     return 'Michael Jackson';

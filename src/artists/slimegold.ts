@@ -15,7 +15,7 @@ export const slimegoldConfig: ArtistConfig = {
   artistLabel: 'Young Thug',
   cardLetter: 'THUG',
   logoUrl: '/logos/slimegold.png',
-  artistPhotoUrl: '/artists/youngthug.jpg',
+  artistPhotoUrl: '/artists/youngthug-v2.jpg',
 
   getArtistName() {
     return 'Young Thug';

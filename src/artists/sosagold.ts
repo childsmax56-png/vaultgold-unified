@@ -15,7 +15,7 @@ export const sosagoldConfig: ArtistConfig = {
   artistLabel: 'Chief Keef',
   cardLetter: 'SOSA',
   logoUrl: '/logos/sosagold.png',
-  artistPhotoUrl: '/artists/chiefkeef.jpg',
+  artistPhotoUrl: '/artists/chiefkeef-v2.jpg',
 
   getArtistName() {
     return 'Chief Keef';

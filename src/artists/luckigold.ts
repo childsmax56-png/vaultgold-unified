@@ -15,7 +15,7 @@ export const luckigoldConfig: ArtistConfig = {
   artistLabel: 'Lucki',
   cardLetter: 'LKI',
   logoUrl: '/logos/luckigold.png',
-  artistPhotoUrl: '/artists/lucki.jpg',
+  artistPhotoUrl: '/artists/lucki-v2.jpg',
 
   getArtistName(_eraName) { return 'Lucki'; },
 

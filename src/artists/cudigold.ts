@@ -15,7 +15,7 @@ export const cudigoldConfig: ArtistConfig = {
   artistLabel: 'Kid Cudi',
   cardLetter: 'CUDI',
   logoUrl: '/logos/cudigold.webp',
-  artistPhotoUrl: '/artists/kidcudi.jpg',
+  artistPhotoUrl: '/artists/kidcudi-v2.jpg',
 
   getArtistName() {
     return 'Kid Cudi';
@@ -27,7 +27,7 @@ export const cudigoldConfig: ArtistConfig = {
     'Man On The Moon': '/cudigold/eras/man-on-the-moon.jpg',
     'Cudder: The Revolution Of Evolution': '/cudigold/eras/cudder.jpg',
     'Man On The Moon II': '/cudigold/eras/man-on-the-moon-ii.jpg',
-    'A Man Named Scott': '/artists/kidcudi.jpg',
+    'A Man Named Scott': '/artists/kidcudi-v2.jpg',
     'WZRD': '/cudigold/eras/wzrd.jpg',
     'INDICUD': '/cudigold/eras/indicud.jpg',
     'Satellite Flight': '/cudigold/eras/satellite-flight.jpg',
