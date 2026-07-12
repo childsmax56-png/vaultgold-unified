@@ -16,7 +16,7 @@ export const wolfgoldConfig: ArtistConfig = {
   artistLabel: 'Tyler, The Creator',
   cardLetter: 'WLF',
   logoUrl: '/logos/wolfgold.png',
-  artistPhotoUrl: '/artists/tyler.webp',
+  artistPhotoUrl: '/artists/tyler.jpg',
 
   getArtistName(eraName) {
     if (!eraName) return 'Tyler, The Creator';
