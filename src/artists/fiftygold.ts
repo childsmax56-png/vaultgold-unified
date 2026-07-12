@@ -15,7 +15,7 @@ export const fiftygoldConfig: ArtistConfig = {
   artistLabel: '50 Cent',
   cardLetter: '50',
   logoUrl: '/logos/fiftygold.webp',
-  artistPhotoUrl: '/artists/50cent.webp',
+  artistPhotoUrl: '/artists/50cent.jpg',
 
   getArtistName() {
     return '50 Cent';
