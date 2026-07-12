@@ -15,7 +15,7 @@ export const dongoldConfig: ArtistConfig = {
   artistLabel: 'Don Toliver',
   cardLetter: 'DON',
   logoUrl: '/logos/dongold.png',
-  artistPhotoUrl: '/artists/dontoliver.jpg',
+  artistPhotoUrl: '/artists/dontoliver.webp',
 
   getArtistName() {
     return 'Don Toliver';

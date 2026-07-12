@@ -15,7 +15,7 @@ export const lonelygoldConfig: ArtistConfig = {
   artistLabel: 'Destroy Lonely',
   cardLetter: 'DL',
   logoUrl: '/logos/lonelygold.webp',
-  artistPhotoUrl: '/artists/destroylonely.webp',
+  artistPhotoUrl: '/artists/destroylonely.jpg',
 
   getArtistName() {
     return 'Destroy Lonely';

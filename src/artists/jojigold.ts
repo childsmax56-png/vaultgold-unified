@@ -15,7 +15,7 @@ export const jojigoldConfig: ArtistConfig = {
   artistLabel: 'Joji',
   cardLetter: 'J',
   logoUrl: '/logos/jojigold.webp',
-  artistPhotoUrl: '/artists/joji.jpeg',
+  artistPhotoUrl: '/artists/joji.jpg',
 
   getArtistName() {
     return 'Joji';

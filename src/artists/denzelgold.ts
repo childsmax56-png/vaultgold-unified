@@ -15,7 +15,7 @@ export const denzelgoldConfig: ArtistConfig = {
   artistLabel: 'Denzel Curry',
   cardLetter: 'DC',
   logoUrl: '/logos/denzelgold.webp',
-  artistPhotoUrl: '/artists/denzelcurry.webp',
+  artistPhotoUrl: '/artists/denzelcurry.jpg',
 
   getArtistName() {
     return 'Denzel Curry';

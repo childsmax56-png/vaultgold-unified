@@ -33,7 +33,7 @@ export const vampgoldConfig: ArtistConfig = {
   artistLabel: 'Playboi Carti',
   cardLetter: 'VMP',
   logoUrl: '/logos/vampgold.png',
-  artistPhotoUrl: '/artists/carti.webp',
+  artistPhotoUrl: '/artists/carti.jpg',
 
   getArtistName(_eraName) { return 'Playboi Carti'; },
 

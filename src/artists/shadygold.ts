@@ -15,7 +15,7 @@ export const shadygoldConfig: ArtistConfig = {
   artistLabel: 'Eminem',
   cardLetter: 'SHY',
   logoUrl: '/logos/shadygold.png',
-  artistPhotoUrl: '/artists/eminem.webp',
+  artistPhotoUrl: '/artists/eminem.jpg',
 
   getArtistName(eraName) {
     if (!eraName) return 'Eminem';

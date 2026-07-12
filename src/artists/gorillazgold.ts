@@ -15,7 +15,7 @@ export const gorillazgoldConfig: ArtistConfig = {
   artistLabel: 'Gorillaz',
   cardLetter: 'GZ',
   logoUrl: '/logos/gorillazgold.webp',
-  artistPhotoUrl: '/artists/gorillaz.webp',
+  artistPhotoUrl: '/artists/gorillaz.jpg',
 
   getArtistName() {
     return 'Gorillaz';

@@ -16,7 +16,7 @@ export const kdotgoldConfig: ArtistConfig = {
   artistLabel: 'Kendrick Lamar',
   cardLetter: 'KDT',
   logoUrl: '/logos/kdotgold.png',
-  artistPhotoUrl: '/artists/kendrick.webp',
+  artistPhotoUrl: '/artists/kendrick.jpg',
 
   getArtistName(_eraName) { return 'Kendrick Lamar'; },
 
