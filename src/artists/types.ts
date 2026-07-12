@@ -67,6 +67,7 @@ export interface ArtistConfig {
   logoUrl: string; // path to logo image, e.g. /logos/yzygold.png
   navLogoUrl?: string; // optional override logo for the navbar
   artistPhotoUrl?: string; // optional artist photo for landing page cards
+  photoObjectPosition?: string; // optional CSS object-position for the card photo (default 'top center')
 
   // Artist-specific loading screens (overrides the default set)
   loadingScreens?: { id: string; label: string; type: 'none' | 'gif' | 'video'; url?: string }[];
