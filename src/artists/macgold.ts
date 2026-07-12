@@ -15,7 +15,7 @@ export const macgoldConfig: ArtistConfig = {
   artistLabel: 'Mac Miller',
   cardLetter: 'M',
   logoUrl: '',
-  artistPhotoUrl: '/artists/macmiller.jpeg',
+  artistPhotoUrl: '/artists/macmiller-v2.jpg',
 
   getArtistName() {
     return 'Mac Miller';

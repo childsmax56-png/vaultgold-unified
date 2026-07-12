@@ -15,7 +15,7 @@ export const jayzgoldConfig: ArtistConfig = {
   artistLabel: 'Jay-Z',
   cardLetter: 'J',
   logoUrl: '/logos/jayzgold.webp',
-  artistPhotoUrl: '/artists/jayz.webp',
+  artistPhotoUrl: '/artists/jayz.jpg',
 
   getArtistName() {
     return 'Jay-Z';
@@ -48,7 +48,7 @@ export const jayzgoldConfig: ArtistConfig = {
     '4:44': '/jayzgold/eras/4-44.jpg',
     'EVERYTHING IS LOVE': '/jayzgold/eras/everything-is-love.jpg',
     'Everything Is Love': '/jayzgold/eras/everything-is-love.jpg',
-    'LP14': '/artists/jayz.webp',
+    'LP14': '/artists/jayz.jpg',
   },
 
   ALBUM_RELEASE_DATES: {
