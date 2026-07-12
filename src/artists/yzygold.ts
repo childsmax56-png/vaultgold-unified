@@ -41,7 +41,7 @@ export const yzygoldConfig: ArtistConfig = {
     "Watch The Throne": "https://i.ibb.co/Gvh0rdt/ea89bace-a565-4fd7-aec2-de7f2a0341a2.jpg",
     "Thank God For Drugs": "https://i.ibb.co/G32JPb2w/image-2026-05-04-074528355.png",
     "Yeezus": "https://i.ibb.co/54tTPvy/YEEZUS-COVER-1-scaled.jpg",
-    "Cruel Winter [V1]": "https://i.ibb.co/tPDQhJ3V/image-2026-05-04-074608802.png",
+    "Cruel Winter [V1]": "https://i.imgur.com/Phj3kJJ.png",
     "Yeezus 2": "https://i.ibb.co/gL2VPWGD/image-2026-05-04-074633664.png",
     "SWISH": "https://i.ibb.co/vvdd31rM/image-2026-05-04-074736182.png",
     "808s & Heartbreak: Live At The Hollywood Bowl": "https://i.ibb.co/gMW718Hb/i-made-the-808s-heartbreak-live-at-the-hollywood-bowl-on-v0-mz7y867oig3g1.webp",
