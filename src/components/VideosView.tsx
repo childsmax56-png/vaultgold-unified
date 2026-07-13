@@ -67,10 +67,17 @@ function extractPillowId(url: string): string | null {
   return m ? m[1] : null;
 }
 
+function extractPixeldrainId(url: string): string | null {
+  // Single-file views only (/u/ and /d/); /l/ list URLs contain multiple files
+  const m = url.match(/pixeldrain\.com\/(?:u|d)\/([a-zA-Z0-9]+)/);
+  return m ? m[1] : null;
+}
+
 type EmbedInfo =
   | { type: 'youtube'; src: string }
   | { type: 'drive'; src: string }
   | { type: 'pillowcase'; src: string }
+  | { type: 'pixeldrain'; src: string }
   | null;
 
 function extractDailymotionId(url: string): string | null {
@@ -96,6 +103,12 @@ function getEmbedInfo(links: string[]): EmbedInfo {
     if (link.includes('drive.google.com')) {
       const id = extractDriveId(link);
       if (id) return { type: 'drive', src: `https://drive.google.com/file/d/${id}/preview` };
+    }
+  }
+  for (const link of links) {
+    if (link.includes('pixeldrain.com')) {
+      const id = extractPixeldrainId(link);
+      if (id) return { type: 'pixeldrain', src: `https://pixeldrain.com/api/file/${id}` };
     }
   }
   // Pillowcase last — only if no other embeddable source exists
@@ -211,7 +224,7 @@ function EmbedPlayer({ embed, className = '' }: { embed: EmbedInfo; className?: 
     );
   }
 
-  if (embed.type === 'pillowcase') {
+  if (embed.type === 'pillowcase' || embed.type === 'pixeldrain') {
     return (
       <video
         src={embed.src}
