@@ -287,6 +287,17 @@ function MiniPlayer({ state, onClose, onLinkChange }: MiniPlayerProps) {
                 <p className="text-xs text-white/40">{state.entry.era}</p>
               </div>
               <div className="flex items-center gap-2">
+                {activeLink && (
+                  <a
+                    href={activeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Open original link"
+                    className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
                 <button
                   onClick={() => setIsFullScreen(false)}
                   title="Exit fullscreen"
@@ -353,6 +364,17 @@ function MiniPlayer({ state, onClose, onLinkChange }: MiniPlayerProps) {
               <p className="text-xs font-semibold text-white truncate leading-tight">{state.entry.name}</p>
               <p className="text-[10px] text-white/40 truncate">{state.entry.era}</p>
             </div>
+            {activeLink && (
+              <a
+                href={activeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Open original link"
+                className="flex items-center justify-center w-6 h-6 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-colors cursor-pointer shrink-0"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
             <button
               onClick={() => setIsFullScreen(true)}
               title="Fullscreen"
