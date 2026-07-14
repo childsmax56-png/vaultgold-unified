@@ -980,13 +980,21 @@ export function parseNoteDescription(description: string | undefined | null): {
   return { ogFilename, note };
 }
 
-// Pixeldrain blocks direct browser access (cross-site hotlink detection + the
-// Cloudflare cf-worker header), so file IDs must go through the configured
-// non-Cloudflare proxy — same as audio playback. Returns null if no proxy is set.
+// Pixeldrain blocks direct cross-site browser requests (Sec-Fetch-Site hotlink
+// detection), so file IDs must be fetched through a proxy. Prefer the configured
+// external non-Cloudflare proxy (VITE_PIXELDRAIN_PROXY_URL, e.g. a Deno Deploy
+// instance); when that isn't set, fall back to our free same-origin Cloudflare
+// Pages Function at /api/pixeldrain/<id>. Given a bare file id.
+export function pixeldrainStreamUrl(id: string): string {
+  const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
+  return proxyBase ? `${proxyBase}/api/${id}` : `/api/pixeldrain/${id}`;
+}
+
+// Same as pixeldrainStreamUrl but takes a pixeldrain /u/ page URL. Returns null
+// if no file id can be parsed out of it.
 export function pixeldrainProxyUrl(url: string): string | null {
   const id = url.split('/u/')[1]?.split('?')[0];
-  const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
-  return id && proxyBase ? `${proxyBase}/api/${id}` : null;
+  return id ? pixeldrainStreamUrl(id) : null;
 }
 
 export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isImage: boolean; imageExt?: string; headers?: Record<string, string> }> {
