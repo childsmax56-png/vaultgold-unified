@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, useParams, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams, Navigate, useLocation } from 'react-router-dom';
 import App from './App.tsx';
 import { LandingPage } from './LandingPage.tsx';
 import './index.css';
@@ -17,6 +17,18 @@ import { YEditsGoldPage } from './YEditsGoldPage.tsx';
 import { TermsPage } from './TermsPage.tsx';
 import { PrivacyPage } from './PrivacyPage.tsx';
 import { DownloadPage } from './DownloadPage.tsx';
+import { GlobalMiniPlayer } from './player/GlobalMiniPlayer.tsx';
+
+// Renders the persistent mini player on any route where the per-artist <App>
+// is NOT mounted (landing page, /my-tracker, etc.). On artist routes App shows
+// its own full PlayerBar, so this hides itself to avoid a duplicate bar.
+function GlobalPlayerMount() {
+  const location = useLocation();
+  const firstSegment = location.pathname.split('/').filter(Boolean)[0];
+  const onArtistRoute = !!(firstSegment && getArtistConfig(firstSegment));
+  if (onArtistRoute) return null;
+  return <GlobalMiniPlayer />;
+}
 
 function ArtistRoute() {
   const { artist } = useParams<{ artist: string }>();
@@ -54,6 +66,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/download" element={<DownloadPage />} />
           <Route path="/:artist/*" element={<ArtistRoute />} />
         </Routes>
+        <GlobalPlayerMount />
       </BrowserRouter>
       <DownloadProgressWidget />
     </DownloadManagerProvider>
