@@ -24,6 +24,7 @@ function formatTime(seconds: number) {
 export function GlobalMiniPlayer() {
   const state = audioStore.useAudioState();
   const [closed, setClosed] = useState(false);
+  const [seeking, setSeeking] = useState(false);
 
   const { currentSong, currentEra, activePlayer, isPlaying, currentTime, duration, volume, isShuffle, loopMode, currentArtwork, currentArtistLabel } = state;
 
@@ -41,9 +42,9 @@ export function GlobalMiniPlayer() {
   const artistName = currentArtistLabel || parseArtistFromSong(currentSong.name, currentSong.extra, actualEraName);
   const progress = duration ? (currentTime / duration) * 100 : 0;
 
-  const seekFromEvent = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+  const seekFromClientX = (clientX: number, el: HTMLDivElement) => {
+    const rect = el.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
     if (duration) audioStore.seek(ratio * duration);
   };
 
@@ -108,8 +109,24 @@ export function GlobalMiniPlayer() {
             </div>
             <div className="w-full flex items-center gap-3 px-2 md:px-0 text-[10px] font-mono text-white/50">
               <span className="w-8 text-right">{formatTime(currentTime)}</span>
-              <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden cursor-pointer relative" onMouseDown={seekFromEvent}>
-                <div className="absolute top-0 left-0 h-full bg-white transition-all duration-100 ease-linear" style={{ width: `${progress}%` }} />
+              {/* Tall, transparent hit area for easy tapping/scrubbing on touch;
+                  pointer events cover both mouse and touch (fixes "can't fast
+                  forward on the homepage"). */}
+              <div
+                className="flex-1 py-2 -my-2 cursor-pointer relative flex items-center"
+                style={{ touchAction: 'none' }}
+                onPointerDown={(e) => {
+                  e.currentTarget.setPointerCapture?.(e.pointerId);
+                  setSeeking(true);
+                  seekFromClientX(e.clientX, e.currentTarget);
+                }}
+                onPointerMove={(e) => { if (seeking) seekFromClientX(e.clientX, e.currentTarget); }}
+                onPointerUp={(e) => { setSeeking(false); e.currentTarget.releasePointerCapture?.(e.pointerId); }}
+                onPointerCancel={() => setSeeking(false)}
+              >
+                <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden relative">
+                  <div className="absolute top-0 left-0 h-full bg-white transition-all duration-100 ease-linear" style={{ width: `${progress}%` }} />
+                </div>
               </div>
               <span className="w-8">{duration ? formatTime(duration) : (currentSong.track_length || '0:00')}</span>
             </div>
