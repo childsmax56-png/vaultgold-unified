@@ -82,7 +82,7 @@ export function GlobalMiniPlayer() {
             </div>
             <div className="min-w-0">
               <div className="text-white font-bold break-words whitespace-normal leading-tight text-sm md:text-base pr-2">{formatTextWithTags(titleDisplay)}</div>
-              <div className="text-white/50 text-xs truncate mt-0.5">{artistName}{actualEraName ? ` • ${formatTextWithTags(actualEraName)}` : ''}</div>
+              <div className="text-white/50 text-xs truncate mt-0.5">{artistName} • {formatTextWithTags(currentSong.extra || (currentSong as any).realEra?.name || currentEra?.name)}</div>
             </div>
           </div>
 
