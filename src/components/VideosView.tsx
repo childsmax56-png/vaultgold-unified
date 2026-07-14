@@ -108,7 +108,14 @@ function getEmbedInfo(links: string[]): EmbedInfo {
   for (const link of links) {
     if (link.includes('pixeldrain.com')) {
       const id = extractPixeldrainId(link);
-      if (id) return { type: 'pixeldrain', src: `https://pixeldrain.com/api/file/${id}` };
+      // Pixeldrain blocks cross-site hotlinking (Sec-Fetch-Site), so the raw
+      // api/file URL 403s in the browser. Route through the configured proxy —
+      // same as audio playback (VITE_PIXELDRAIN_PROXY_URL).
+      if (id) {
+        const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
+        const src = proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
+        return { type: 'pixeldrain', src };
+      }
     }
   }
   // Pillowcase last — only if no other embeddable source exists
