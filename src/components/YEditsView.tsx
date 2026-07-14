@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
-import { ArrowLeft, Play, Volume2, Download, Loader2, FlipHorizontal2, Upload, X, Trash2, ImagePlus, Plus, Pencil, Share2, RefreshCw, FileEdit, Music2, Link, PackageOpen, ListOrdered, ArrowUp, ArrowDown, GripVertical } from 'lucide-react';
+import { ArrowLeft, Play, Volume2, Download, Loader2, FlipHorizontal2, Upload, X, Trash2, ImagePlus, Plus, Pencil, Share2, RefreshCw, FileEdit, Music2, Link, PackageOpen, ListOrdered, ArrowUp, ArrowDown, GripVertical, RotateCcw } from 'lucide-react';
 import { useState, useEffect, useMemo, useRef } from 'react';
 import JSZip from 'jszip';
 import { Song, Era } from '../types';
@@ -72,6 +72,17 @@ export interface YEditsGroup {
   // These render like any group but expose no owner/upload/delete controls.
   readOnly?: boolean;
   untitledUrl?: string;
+}
+
+// A soft-deleted album returned by /api/yedits-archive, restorable by its owner.
+export interface ArchivedAlbum {
+  archiveId: string;
+  folderPath: string;
+  displayName: string;
+  creator: string;
+  deletedAt: string;
+  deletedBy?: string;
+  fileCount: number;
 }
 
 function parseGroups(keys: string[]): YEditsGroup[] {
@@ -314,6 +325,13 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
   const [deleteTarget, setDeleteTarget] = useState<YEditsGroup | null>(null);
   const [deleting, setDeleting] = useState(false);
   const [deleteResult, setDeleteResult] = useState<{ ok: boolean; msg: string } | null>(null);
+
+  // recently-deleted (archive) restore
+  const [showArchive, setShowArchive] = useState(false);
+  const [archiveList, setArchiveList] = useState<ArchivedAlbum[]>([]);
+  const [loadingArchive, setLoadingArchive] = useState(false);
+  const [restoringId, setRestoringId] = useState<string | null>(null);
+  const [archiveError, setArchiveError] = useState<string | null>(null);
 
   // one-time migration of the built-in UNVAULTED Records catalog into R2
   const [migrating, setMigrating] = useState(false);
@@ -659,7 +677,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       if (!res.ok) {
         setDeleteResult({ ok: false, msg: data.error ?? 'Delete failed' });
       } else {
-        setDeleteResult({ ok: true, msg: `Deleted ${data.deleted?.length ?? 0} file(s)` });
+        setDeleteResult({ ok: true, msg: `Moved ${data.deleted?.length ?? 0} file(s) to Recently Deleted` });
         fetch('/api/yedits', { cache: 'no-store' })
           .then(r => r.json() as Promise<string[]>)
           .then(d => { setKeys(d); setDeleteTarget(null); setSelectedGroup(null); })
@@ -669,6 +687,58 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
       setDeleteResult({ ok: false, msg: 'Network error' });
     } finally {
       setDeleting(false);
+    }
+  };
+
+  const openArchive = async () => {
+    const token = getVGToken();
+    if (!token) return;
+    setShowArchive(true);
+    setLoadingArchive(true);
+    setArchiveError(null);
+    try {
+      const res = await fetch(`/api/yedits-archive?token=${encodeURIComponent(token)}`, { cache: 'no-store' });
+      const data = await res.json() as ArchivedAlbum[] | { error?: string };
+      if (!res.ok || !Array.isArray(data)) {
+        setArchiveError((data as { error?: string }).error ?? 'Could not load Recently Deleted');
+        setArchiveList([]);
+      } else {
+        setArchiveList(data);
+      }
+    } catch {
+      setArchiveError('Network error');
+      setArchiveList([]);
+    } finally {
+      setLoadingArchive(false);
+    }
+  };
+
+  const doRestore = async (entry: ArchivedAlbum) => {
+    const token = getVGToken();
+    if (!token) return;
+    setRestoringId(entry.archiveId);
+    setArchiveError(null);
+    try {
+      const res = await fetch('/api/yedits-restore', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, archiveId: entry.archiveId }),
+      });
+      const data = await res.json() as { restored?: string[]; error?: string };
+      if (!res.ok) {
+        setArchiveError(data.error ?? 'Restore failed');
+      } else {
+        setArchiveList(prev => prev.filter(a => a.archiveId !== entry.archiveId));
+        // Refresh the live grid so the restored album reappears.
+        fetch('/api/yedits', { cache: 'no-store' })
+          .then(r => r.json() as Promise<string[]>)
+          .then(setKeys)
+          .catch(() => {});
+      }
+    } catch {
+      setArchiveError('Network error');
+    } finally {
+      setRestoringId(null);
     }
   };
 
@@ -2099,6 +2169,16 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
           )}
           {vgUser && (
             <button
+              onClick={openArchive}
+              className="flex items-center gap-1.5 text-xs font-bold py-1.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white border border-white/10 transition-colors cursor-pointer"
+              title="Restore an album you recently deleted"
+            >
+              <RotateCcw className="w-3 h-3" />
+              Recently Deleted
+            </button>
+          )}
+          {vgUser && (
+            <button
               onClick={openUpload}
               className="flex items-center gap-1.5 text-xs font-bold py-1.5 px-3 rounded-lg bg-[var(--theme-color)]/10 hover:bg-[var(--theme-color)]/20 text-[var(--theme-color)] border border-[var(--theme-color)]/20 transition-colors cursor-pointer"
             >
@@ -2491,7 +2571,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
               Delete <span className="text-white font-semibold">{deleteTarget.displayName}</span>?
             </p>
             <p className="text-xs text-white/30 mb-5">
-              This will permanently remove all {deleteTarget.songs.length} track{deleteTarget.songs.length !== 1 ? 's' : ''} and cover art. This cannot be undone.
+              This removes all {deleteTarget.songs.length} track{deleteTarget.songs.length !== 1 ? 's' : ''} and cover art from public view. It's moved to Recently Deleted, where you can restore it.
             </p>
 
             {deleteResult && (
@@ -2518,6 +2598,70 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   : <><Trash2 className="w-3.5 h-3.5" /> Delete</>}
               </button>
             </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {showArchive && typeof document !== 'undefined' && createPortal(
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={() => { if (!restoringId) { setShowArchive(false); setArchiveError(null); } }}
+        >
+          <div
+            className="bg-[#111] border border-white/10 rounded-xl w-full max-w-md p-6 shadow-2xl max-h-[80vh] flex flex-col"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <RotateCcw className="w-4 h-4" /> Recently Deleted
+              </h3>
+              <button
+                onClick={() => { if (!restoringId) { setShowArchive(false); setArchiveError(null); } }}
+                className="text-white/40 hover:text-white cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {archiveError && (
+              <p className="text-xs text-red-400 mb-3">{archiveError}</p>
+            )}
+
+            {loadingArchive ? (
+              <div className="flex items-center justify-center py-12 text-white/40 text-sm gap-2">
+                <Loader2 className="w-4 h-4 animate-spin" /> Loading…
+              </div>
+            ) : archiveList.length === 0 ? (
+              <p className="text-sm text-white/40 text-center py-12">
+                Nothing here. Deleted albums you can restore will show up in this list.
+              </p>
+            ) : (
+              <div className="flex flex-col gap-2 overflow-y-auto -mr-2 pr-2">
+                {archiveList.map(entry => (
+                  <div
+                    key={entry.archiveId}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div className="text-sm font-semibold text-white truncate">{entry.displayName}</div>
+                      <div className="text-[11px] text-white/40 truncate">
+                        {entry.creator} · {entry.fileCount} file{entry.fileCount !== 1 ? 's' : ''} · deleted {new Date(entry.deletedAt).toLocaleDateString()}
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => doRestore(entry)}
+                      disabled={!!restoringId}
+                      className="shrink-0 flex items-center gap-1.5 py-1.5 px-3 rounded-lg bg-[var(--theme-color)]/10 hover:bg-[var(--theme-color)]/20 text-[var(--theme-color)] border border-[var(--theme-color)]/20 text-xs font-bold disabled:opacity-40 transition-colors cursor-pointer"
+                    >
+                      {restoringId === entry.archiveId
+                        ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Restoring…</>
+                        : <><RotateCcw className="w-3.5 h-3.5" /> Restore</>}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>,
         document.body

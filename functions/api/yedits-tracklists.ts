@@ -1,3 +1,5 @@
+import { isArchivedKey } from './_yedits-archive';
+
 function decodeText(buf: ArrayBuffer): string {
   const bytes = new Uint8Array(buf);
   if (bytes[0] === 0xff && bytes[1] === 0xfe) {
@@ -23,6 +25,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   do {
     const listing = await YEDITS_BUCKET.list({ cursor });
     for (const obj of listing.objects) {
+      if (isArchivedKey(obj.key)) continue;
       const filename = obj.key.split('/').pop() ?? '';
       if (/YZY[\s_-]*gold/i.test(filename) && /\.txt$/i.test(filename)) {
         tracklistKeys.push(obj.key);

@@ -1,3 +1,5 @@
+import { isArchivedKey } from './_yedits-archive';
+
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { YEDITS_BUCKET } = context.env;
 
@@ -13,6 +15,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   do {
     const listing = await YEDITS_BUCKET.list({ cursor });
     for (const obj of listing.objects) {
+      // Soft-deleted albums live under the archive prefix and stay hidden here.
+      if (isArchivedKey(obj.key)) continue;
       keys.push(obj.key);
     }
     cursor = listing.truncated ? listing.cursor : undefined;
