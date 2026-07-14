@@ -18,12 +18,15 @@ import { useSettings } from '../SettingsContext';
 export function FullScreenPlayer({
   currentSong, nextSong, isPlaying, togglePlay, onClose, era, currentTime = 0, duration = 0, onSeek, audioRef, analyserRef,
   onNext, onPrev, isShuffle, toggleShuffle, loopMode, toggleLoop, onShowQueue, playlist, currentSongIndex, shuffledQueue, onPlaySong,
-  volume = 1, onVolumeChange
+  volume = 1, onVolumeChange, artworkOverride, artistOverride
 }: {
   currentSong: Song, nextSong?: Song | null, isPlaying: boolean, togglePlay: () => void, onClose: () => void, era: Era | null, currentTime?: number, duration?: number, onSeek?: (time: number) => void, audioRef?: React.RefObject<HTMLAudioElement | null>, analyserRef?: React.RefObject<AnalyserNode | null>,
   onNext?: () => void, onPrev?: () => void, isShuffle?: boolean, toggleShuffle?: () => void, loopMode?: number, toggleLoop?: () => void,
   onShowQueue?: () => void, playlist?: Song[], currentSongIndex?: number, shuffledQueue?: number[], onPlaySong?: (idx: number) => void,
-  volume?: number, onVolumeChange?: (vol: number) => void
+  volume?: number, onVolumeChange?: (vol: number) => void,
+  // Resolved under the song's own artist config; win over live lookups so a
+  // persisted song keeps its cover/artist while viewing another artist.
+  artworkOverride?: string, artistOverride?: string
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
@@ -243,7 +246,7 @@ export function FullScreenPlayer({
     };
   }, [isPlaying, audioRef, analyserRef]);
 
-  const artistName = parseArtistFromSong(currentSong.name, currentSong.extra, (currentSong as any).realEra?.name || era?.name);
+  const artistName = artistOverride || parseArtistFromSong(currentSong.name, currentSong.extra, (currentSong as any).realEra?.name || era?.name);
   const titleDisplay = currentSong.name.includes(' - ') ? currentSong.name.substring(currentSong.name.indexOf(' - ') + 3) : currentSong.name;
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
@@ -261,7 +264,7 @@ export function FullScreenPlayer({
   const pillowcaseUrl = rawUrl && rawUrl.includes('pillows.su/f/') ? rawUrl : null;
 
   const actualEraName = (currentSong as any).realEra?.name || era?.name || '';
-  const currentImgUrl = currentSong.image || CUSTOM_IMAGES[actualEraName] || (currentSong as any).realEra?.image || era?.image;
+  const currentImgUrl = artworkOverride || currentSong.image || CUSTOM_IMAGES[actualEraName] || (currentSong as any).realEra?.image || era?.image;
   
   const nextActualEraName = nextSong ? ((nextSong as any).realEra?.name || era?.name || '') : '';
   const nextImgUrl = nextSong ? (nextSong.image || CUSTOM_IMAGES[nextActualEraName] || (nextSong as any).realEra?.image || era?.image) : null;

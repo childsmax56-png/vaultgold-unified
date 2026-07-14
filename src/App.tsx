@@ -369,6 +369,8 @@ export default function App() {
   const [currentTime, setCurrentTime] = audioStore.usePlayerField('currentTime');
   const [duration, setDuration] = audioStore.usePlayerField('duration');
   const [volume, setVolume] = audioStore.usePlayerField('volume');
+  const [currentArtwork] = audioStore.usePlayerField('currentArtwork');
+  const [currentArtistLabel] = audioStore.usePlayerField('currentArtistLabel');
 
   // Initialise the shared volume/shuffle/loop once per session from this
   // artist's saved settings. Guarded inside the store so later artist mounts
@@ -1730,6 +1732,16 @@ export default function App() {
     return rawUrl;
   };
 
+  // Resolve artwork + artist under THIS artist's config at play time and store
+  // them, so the player keeps showing the right values after the user navigates
+  // into a different artist's tracker (whose active config would resolve wrongly).
+  const captureNowPlayingMeta = (song: Song, era: Era) => {
+    const actualEraName = (song as any).realEra?.name || era.name;
+    const artwork = song.image || CUSTOM_IMAGES[actualEraName] || (song as any).realEra?.image || era.image || 'https://i.ibb.co/mrK8W4rL/image-2026-03-22-142639537.png';
+    const artistLabel = parseArtistFromSong(song.name, song.extra, actualEraName);
+    audioStore.setState({ currentArtwork: artwork, currentArtistLabel: artistLabel });
+  };
+
   const handlePlaySong = async (song: Song, era: Era, contextTracks?: Song[], resetShuffleHistory = true, autoPlay = true, isRandomSelection = false) => {
     if (activePlayer === 'spotify') spotifyControls.pause();
     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
@@ -1831,6 +1843,7 @@ export default function App() {
       setActivePlayer('audio');
       setCurrentSong(song);
       setCurrentEra(era);
+      captureNowPlayingMeta(song, era);
       setIsPlaying(autoPlay);
       setIsPlayerClosed(false);
       scrobbledRef.current = false;
@@ -1882,6 +1895,7 @@ export default function App() {
       setActivePlayer('audio');
       setCurrentSong(song);
       setCurrentEra(era);
+      captureNowPlayingMeta(song, era);
       setIsPlaying(autoPlay);
       setIsPlayerClosed(false);
       scrobbledRef.current = false;
@@ -2042,11 +2056,11 @@ export default function App() {
       const actualEraName = (currentSong as any).realEra?.name || currentEra.name;
       const cleanActualEraName = cleanAlbumName(actualEraName);
       const lfmTrack = cleanTrackName(currentSong.name, currentSong.extra);
-      const coverImage = currentSong.image || CUSTOM_IMAGES[actualEraName] || currentEra.image || 'https://i.ibb.co/mrK8W4rL/image-2026-03-22-142639537.png';
+      const coverImage = currentArtwork || currentSong.image || CUSTOM_IMAGES[actualEraName] || currentEra.image || 'https://i.ibb.co/mrK8W4rL/image-2026-03-22-142639537.png';
 
       navigator.mediaSession.metadata = new MediaMetadata({
         title: lfmTrack,
-        artist: parseArtistFromSong(currentSong.name, currentSong.extra, actualEraName),
+        artist: currentArtistLabel || parseArtistFromSong(currentSong.name, currentSong.extra, actualEraName),
         album: cleanActualEraName,
         artwork: [
           { src: coverImage, sizes: '512x512', type: 'image/png' },
@@ -3287,6 +3301,8 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               setShowQueue={setShowQueue}
               allowDownload={activeCategory !== 'released'}
               allowFullScreen={!isSpotifyActive && !isSoundCloudActive}
+              artworkOverride={activePlayer === 'audio' ? (currentArtwork || undefined) : undefined}
+              artistOverride={activePlayer === 'audio' ? (currentArtistLabel || undefined) : undefined}
             />
           )}
         </AnimatePresence>,
@@ -3364,6 +3380,8 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
             shuffledQueue={shuffledQueue}
             volume={volume}
             onVolumeChange={setVolume}
+            artworkOverride={currentArtwork || undefined}
+            artistOverride={currentArtistLabel || undefined}
             onPlaySong={(idx) => {
               setCurrentSongIndex(idx);
               const targetSong = playlist[idx];

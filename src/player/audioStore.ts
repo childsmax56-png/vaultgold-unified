@@ -34,6 +34,11 @@ export interface AudioState {
   hasLoopedOnce: boolean;
   isRandomMode: boolean;
   activePlayer: ActivePlayer;
+  // Artwork/artist resolved at play time under the song's own artist config.
+  // Kept so the player shows the right values even after navigating into a
+  // different artist's tracker (where the active config would resolve wrongly).
+  currentArtwork: string;
+  currentArtistLabel: string;
 }
 
 const initialState: AudioState = {
@@ -51,6 +56,8 @@ const initialState: AudioState = {
   hasLoopedOnce: false,
   isRandomMode: false,
   activePlayer: 'audio',
+  currentArtwork: '',
+  currentArtistLabel: '',
 };
 
 let state: AudioState = { ...initialState };

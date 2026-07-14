@@ -19,7 +19,7 @@ function formatTime(seconds: number) {
 
 export function PlayerBar({
   currentSong, isPlaying, togglePlay, onFullScreen, onClose, era, currentTime = 0, duration = 0, onSeek, volume = 1, onVolumeChange,
-  onNext, onPrev, isShuffle, toggleShuffle, loopMode, toggleLoop, isFavorite, toggleFavorite, onShowQueue, showQueue, setShowQueue, allowDownload = true, allowFullScreen = true
+  onNext, onPrev, isShuffle, toggleShuffle, loopMode, toggleLoop, isFavorite, toggleFavorite, onShowQueue, showQueue, setShowQueue, allowDownload = true, allowFullScreen = true, artworkOverride, artistOverride
 }: {
   currentSong: Song | null, isPlaying: boolean, togglePlay: () => void, onFullScreen: () => void, onClose: () => void, era: Era | null, currentTime?: number, duration?: number, onSeek?: (time: number) => void, volume?: number, onVolumeChange?: (vol: number) => void,
   onNext?: () => void, onPrev?: () => void, isShuffle?: boolean, toggleShuffle?: () => void, loopMode?: number, toggleLoop?: () => void,
@@ -27,7 +27,12 @@ export function PlayerBar({
   showQueue?: boolean,
   setShowQueue?: (v: boolean) => void,
   allowDownload?: boolean,
-  allowFullScreen?: boolean
+  allowFullScreen?: boolean,
+  // Artwork/artist resolved under the song's own artist config. When set, they
+  // win over config-derived lookups so a persisted song keeps its correct cover
+  // and artist even while viewing a different artist's tracker.
+  artworkOverride?: string,
+  artistOverride?: string
 }) {
   const { settings } = useSettings();
   const { playlists, addToPlaylist, createPlaylist } = usePlaylists();
@@ -168,7 +173,7 @@ export function PlayerBar({
     onVolumeChange(Math.max(0, Math.min(1, volume + delta)));
   };
 
-  const artistName = parseArtistFromSong(currentSong.name, currentSong.extra, (currentSong as any).realEra?.name || era?.name);
+  const artistName = artistOverride || parseArtistFromSong(currentSong.name, currentSong.extra, (currentSong as any).realEra?.name || era?.name);
   const titleDisplay = currentSong.name.includes(' - ') ? currentSong.name.substring(currentSong.name.indexOf(' - ') + 3) : currentSong.name;
 
   const rawUrl = currentSong.url || (currentSong.urls && currentSong.urls.length > 0 ? currentSong.urls[0] : '');
@@ -227,7 +232,7 @@ export function PlayerBar({
         <div className="flex items-center gap-4 min-w-0 md:flex-1 col-start-1 col-end-2 row-start-1 pr-4 md:pr-0">
           {settings.showMiniPlayerArt && (() => {
             const actualEraName = (currentSong as any).realEra?.name || era?.name || '';
-            const imgUrl = currentSong.image || CUSTOM_IMAGES[actualEraName] || (currentSong as any).realEra?.image || era?.image;
+            const imgUrl = artworkOverride || currentSong.image || CUSTOM_IMAGES[actualEraName] || (currentSong as any).realEra?.image || era?.image;
             return (
               <div className="w-14 h-14 rounded-md overflow-hidden shrink-0 bg-white/10 relative group shadow-lg">
                 {imgUrl && <img onError={retryImageOnError} src={imgUrl} alt="Cover" className={`w-full h-full object-cover ${allowFullScreen ? 'cursor-pointer' : ''}`} referrerPolicy="no-referrer" onClick={allowFullScreen ? onFullScreen : undefined} />}

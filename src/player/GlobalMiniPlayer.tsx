@@ -25,18 +25,20 @@ export function GlobalMiniPlayer() {
   const state = audioStore.useAudioState();
   const [closed, setClosed] = useState(false);
 
-  const { currentSong, currentEra, activePlayer, isPlaying, currentTime, duration, volume, isShuffle, loopMode } = state;
+  const { currentSong, currentEra, activePlayer, isPlaying, currentTime, duration, volume, isShuffle, loopMode, currentArtwork, currentArtistLabel } = state;
 
   // Only responsible for the persistent HTML5-audio playback. Embedded players
   // (Spotify/YouTube/SoundCloud) are tied to App and stop on navigation.
   if (activePlayer !== 'audio' || !currentSong) return null;
 
   const actualEraName = (currentSong as any).realEra?.name || currentEra?.name || '';
-  const imgUrl = currentSong.image || CUSTOM_IMAGES[actualEraName] || (currentSong as any).realEra?.image || currentEra?.image;
+  // Prefer the artwork/artist resolved at play time (under the song's own
+  // artist config); fall back to live resolution only if unset.
+  const imgUrl = currentArtwork || currentSong.image || CUSTOM_IMAGES[actualEraName] || (currentSong as any).realEra?.image || currentEra?.image;
   const titleDisplay = currentSong.name.includes(' - ')
     ? currentSong.name.substring(currentSong.name.indexOf(' - ') + 3)
     : currentSong.name;
-  const artistName = parseArtistFromSong(currentSong.name, currentSong.extra, actualEraName);
+  const artistName = currentArtistLabel || parseArtistFromSong(currentSong.name, currentSong.extra, actualEraName);
   const progress = duration ? (currentTime / duration) * 100 : 0;
 
   const seekFromEvent = (e: React.MouseEvent<HTMLDivElement>) => {
