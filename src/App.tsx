@@ -1706,7 +1706,9 @@ export default function App() {
       return proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
     } else if (rawUrl.includes('drive.google.com')) {
       const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-      if (m) return `https://drive.google.com/uc?export=download&id=${m[1]}`;
+      // Route through the proxy so large files clear Google's virus-scan
+      // interstitial and range requests (seeking) are forwarded.
+      if (m) return `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`;
     } else if (rawUrl.includes('krakenfiles.com/view/')) {
       return `/api/kraken-proxy?url=${encodeURIComponent(rawUrl)}`;
     }
@@ -1770,7 +1772,9 @@ export default function App() {
           }
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-          if (m) streamUrl = `https://drive.google.com/uc?export=download&id=${m[1]}`;
+          // Route through the proxy so large files clear Google's virus-scan
+          // interstitial and range requests (seeking) are forwarded.
+          if (m) streamUrl = `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`;
         } else if (rawUrl.includes('i.imgur.com')) {
           streamUrl = rawUrl;
         } else if (rawUrl.includes('krakenfiles.com/view/')) {
