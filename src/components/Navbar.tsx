@@ -5,6 +5,7 @@ import { SiDiscord, SiReddit, SiTiktok, SiX } from 'react-icons/si';
 import { Users } from 'lucide-react';
 import { FilterMenu } from './FilterMenu';
 import { SearchFilters } from '../types';
+import { useNavigate } from 'react-router-dom';
 import { useSettings } from '../SettingsContext';
 import { retryImageOnError } from '../utils';
 import { activeConfig } from '../artists/activeConfig';
@@ -57,6 +58,7 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
 
 export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHomeClick, activeCategory, onCategoryChange, onRandomSongClick, isRandomMode, isTimelineMode, onTimelineToggle, yeiOpen, onYEIClick, globalSearchResults, onSelectGlobalResult, fetchedTabs, tabsWithData }: NavbarProps) {
   const { settings } = useSettings();
+  const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
@@ -316,6 +318,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
             </button>
             <a
               href="/"
+              onClick={(e) => { if (!e.metaKey && !e.ctrlKey && e.button === 0) { e.preventDefault(); navigate('/'); } }}
               className="flex items-center justify-center p-2.5 rounded-full transition-all duration-300 cursor-pointer"
               style={{ backgroundColor: 'rgba(212, 175, 55, 0.15)', color: '#D4AF37' }}
               title="Back to Homepage"
@@ -433,6 +436,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
         </button>
         <a
           href="/"
+          onClick={(e) => { if (!e.metaKey && !e.ctrlKey && e.button === 0) { e.preventDefault(); navigate('/'); } }}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-300 cursor-pointer hover:scale-105"
           style={{ backgroundColor: 'rgba(212, 175, 55, 0.15)', color: '#D4AF37' }}
           title="Back to Homepage"
