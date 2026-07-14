@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, ChevronDown, ChevronUp, Film, Maximize2, Minimize2, X } from 'lucide-react';
 import { Era } from '../types';
-import { createSlug, CUSTOM_IMAGES , retryImageOnError, relPath, absPath, pixeldrainStreamUrl} from '../utils';
+import { createSlug, CUSTOM_IMAGES , retryImageOnError, relPath, absPath} from '../utils';
 import { useSettings } from '../SettingsContext';
 
 export interface VideoRawEntry {
@@ -109,9 +109,13 @@ function getEmbedInfo(links: string[]): EmbedInfo {
     if (link.includes('pixeldrain.com')) {
       const id = extractPixeldrainId(link);
       // Pixeldrain blocks cross-site hotlinking (Sec-Fetch-Site), so the raw
-      // api/file URL 403s in the browser. Route through the proxy — same as
-      // audio playback (external proxy if configured, else same-origin fallback).
-      if (id) return { type: 'pixeldrain', src: pixeldrainStreamUrl(id) };
+      // api/file URL 403s in the browser. Route through the configured proxy —
+      // same as audio playback (VITE_PIXELDRAIN_PROXY_URL).
+      if (id) {
+        const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
+        const src = proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
+        return { type: 'pixeldrain', src };
+      }
     }
   }
   // Pillowcase last — only if no other embeddable source exists
