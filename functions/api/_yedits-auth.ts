@@ -1,4 +1,12 @@
-export const OWNER_EMAIL = 'vaultgold671@gmail.com';
+// Site owner accounts — always admins, never removable via the DB revoke flow.
+export const OWNER_EMAILS = ['vaultgold671@gmail.com', 'childsmax56@gmail.com'];
+
+// Kept for backwards compatibility; prefer isOwnerEmail() for owner checks.
+export const OWNER_EMAIL = OWNER_EMAILS[0];
+
+export function isOwnerEmail(email: string | undefined | null): boolean {
+  return !!email && OWNER_EMAILS.includes(email.toLowerCase());
+}
 
 export interface VGAuthUser {
   id: string;
@@ -22,7 +30,7 @@ export async function ensureCollaboratorsTable(db: D1Database) {
 }
 
 export async function isYeditsAdmin(db: D1Database, userId: string, email: string): Promise<boolean> {
-  if (email === OWNER_EMAIL) return true;
+  if (isOwnerEmail(email)) return true;
   await db.prepare(
     `CREATE TABLE IF NOT EXISTS yeditsgold_admins (user_id TEXT PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL, granted_at TEXT NOT NULL)`
   ).run();
@@ -45,7 +53,7 @@ export async function checkOwnerOrClaim(token: string, creatorName: string, env:
   const user = await getAuthUser(token);
   if (!user) return false;
 
-  if (user.email === OWNER_EMAIL) return true;
+  if (isOwnerEmail(user.email)) return true;
   if (user.username.toLowerCase() === creatorName.toLowerCase()) return true;
 
   if (await isYeditsAdmin(env.DB, user.id, user.email)) return true;

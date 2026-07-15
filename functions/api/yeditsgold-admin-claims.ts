@@ -1,6 +1,5 @@
 import { json, options } from './_auth';
-
-const ADMIN_EMAIL = 'vaultgold671@gmail.com';
+import { isOwnerEmail } from './_yedits-auth';
 
 async function ensureTable(db: D1Database) {
   await db.prepare(`CREATE TABLE IF NOT EXISTS yeditsgold_claims (id TEXT PRIMARY KEY, profile_name TEXT NOT NULL, user_id TEXT NOT NULL, username TEXT NOT NULL, email TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', claimed_at TEXT NOT NULL, reviewed_at TEXT, UNIQUE(profile_name))`).run();
@@ -14,7 +13,7 @@ async function getAdminUser(token: string, db: D1Database) {
   if (!res.ok) return null;
   const { user } = await res.json() as { user?: { id: string; username: string; email: string } };
   if (!user) return null;
-  if (user.email === ADMIN_EMAIL) return user;
+  if (isOwnerEmail(user.email)) return user;
   const row = await db.prepare('SELECT user_id FROM yeditsgold_admins WHERE user_id = ?').bind(user.id).first();
   return row ? user : null;
 }

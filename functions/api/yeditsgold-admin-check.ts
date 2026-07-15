@@ -1,6 +1,5 @@
 import { json } from './_auth';
-
-const OWNER_EMAIL = 'vaultgold671@gmail.com';
+import { isOwnerEmail } from './_yedits-auth';
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { DB } = context.env;
@@ -16,7 +15,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { user } = await res.json() as { user?: { id: string; email: string } };
   if (!user) return json({ admin: false });
 
-  if (user.email === OWNER_EMAIL) return json({ admin: true, owner: true });
+  if (isOwnerEmail(user.email)) return json({ admin: true, owner: true });
 
   if (!DB) return json({ admin: false });
 

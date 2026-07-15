@@ -1,6 +1,5 @@
 import { json, options } from './_auth';
-
-const OWNER_EMAIL = 'vaultgold671@gmail.com';
+import { isOwnerEmail } from './_yedits-auth';
 
 async function ensureTables(db: D1Database) {
   await db.prepare(`CREATE TABLE IF NOT EXISTS yeditsgold_admin_keys (key TEXT PRIMARY KEY, label TEXT, created_at TEXT NOT NULL, used_by_user_id TEXT, used_by_username TEXT, used_at TEXT)`).run();
@@ -17,7 +16,7 @@ async function getUser(token: string) {
 }
 
 async function isAdmin(db: D1Database, user: { id: string; email: string }) {
-  if (user.email === OWNER_EMAIL) return true;
+  if (isOwnerEmail(user.email)) return true;
   const row = await db.prepare('SELECT user_id FROM yeditsgold_admins WHERE user_id = ?').bind(user.id).first();
   return !!row;
 }
@@ -32,7 +31,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   const token = context.request.headers.get('Authorization')?.replace('Bearer ', '');
   if (!token) return json({ error: 'Unauthorized' }, 401);
   const user = await getUser(token);
-  if (!user || user.email !== OWNER_EMAIL) return json({ error: 'Forbidden' }, 403);
+  if (!user || !isOwnerEmail(user.email)) return json({ error: 'Forbidden' }, 403);
 
   await ensureTables(DB);
 
@@ -53,7 +52,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const token = context.request.headers.get('Authorization')?.replace('Bearer ', '');
   if (!token) return json({ error: 'Unauthorized' }, 401);
   const user = await getUser(token);
-  if (!user || user.email !== OWNER_EMAIL) return json({ error: 'Forbidden' }, 403);
+  if (!user || !isOwnerEmail(user.email)) return json({ error: 'Forbidden' }, 403);
 
   let body: { action?: string; label?: string; userId?: string };
   try { body = await context.request.json(); } catch { return json({ error: 'Invalid JSON' }, 400); }

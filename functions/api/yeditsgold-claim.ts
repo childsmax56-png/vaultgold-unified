@@ -1,7 +1,5 @@
 import { json, options } from './_auth';
 
-const ADMIN_EMAIL = 'vaultgold671@gmail.com';
-
 async function ensureTable(db: D1Database) {
   await db.prepare(
     `CREATE TABLE IF NOT EXISTS yeditsgold_claims (id TEXT PRIMARY KEY, profile_name TEXT NOT NULL, user_id TEXT NOT NULL, username TEXT NOT NULL, email TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', claimed_at TEXT NOT NULL, reviewed_at TEXT, UNIQUE(profile_name))`
