@@ -25,6 +25,7 @@ import { isSpotifyLoggedIn, clearSpotifySession, startSpotifyAuth, handleSpotify
 import { useSpotify, SpotifyTrack } from './useSpotify';
 import { useYoutube } from './useYoutube';
 import { useSoundCloud } from './useSoundCloud';
+import * as audioStore from './player/audioStore';
 
 // Normalize multiline column headers (e.g. "Name\n(Check out the Tracker website!)") to
 // plain column names so views can access item.Name, item.Notes, etc.
@@ -195,7 +196,7 @@ export default function App() {
   const [subAlbumsData, setSubAlbumsData] = useState<SubAlbumEntry[]>([]);
   const [fetchedTabs, setFetchedTabs] = useState<Set<string>>(new Set());
   const [tabsWithData, setTabsWithData] = useState<Set<string>>(new Set());
-  const [isRandomMode, setIsRandomMode] = useState(false);
+  const [isRandomMode, setIsRandomMode] = audioStore.usePlayerField('isRandomMode');
   const [isTimelineMode, setIsTimelineMode] = useState(false);
   const [popupUrl, setPopupUrl] = useState<string | null>(null);
 
@@ -304,20 +305,23 @@ export default function App() {
     setActiveCategory('contributor');
   }, [activeCategory]);
 
-  const [currentEra, setCurrentEra] = useState<Era | null>(null);
-  const [currentSong, setCurrentSong] = useState<Song | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  // Player state lives in the global audio store so playback survives the
+  // per-artist <App> remount and continues across navigation (incl. the
+  // landing page). usePlayerField is a drop-in replacement for useState.
+  const [currentEra, setCurrentEra] = audioStore.usePlayerField('currentEra');
+  const [currentSong, setCurrentSong] = audioStore.usePlayerField('currentSong');
+  const [isPlaying, setIsPlaying] = audioStore.usePlayerField('isPlaying');
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isPlayerClosed, setIsPlayerClosed] = useState(false);
   const [showQueue, setShowQueue] = useState(false);
   const [showLastfmErrorModal, setShowLastfmErrorModal] = useState(false);
 
-  const [playlist, setPlaylist] = useState<Song[]>([]);
-  const [currentSongIndex, setCurrentSongIndex] = useState(-1);
-  const [isShuffle, setIsShuffle] = useState(settings.startupShuffle);
-  const [shuffledQueue, setShuffledQueue] = useState<number[]>([]);
-  const [loopMode, setLoopMode] = useState(settings.startupLoop || 0);
-  const [hasLoopedOnce, setHasLoopedOnce] = useState(false);
+  const [playlist, setPlaylist] = audioStore.usePlayerField('playlist');
+  const [currentSongIndex, setCurrentSongIndex] = audioStore.usePlayerField('currentSongIndex');
+  const [isShuffle, setIsShuffle] = audioStore.usePlayerField('isShuffle');
+  const [shuffledQueue, setShuffledQueue] = audioStore.usePlayerField('shuffledQueue');
+  const [loopMode, setLoopMode] = audioStore.usePlayerField('loopMode');
+  const [hasLoopedOnce, setHasLoopedOnce] = audioStore.usePlayerField('hasLoopedOnce');
 
   const [favoriteKeys, setFavoriteKeys] = useState<{ songName: string, eraName: string, url: string, song?: Song }[]>(() => {
     if (typeof localStorage !== 'undefined') {
@@ -362,27 +366,34 @@ export default function App() {
     });
   };
 
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(() => {
+  const [currentTime, setCurrentTime] = audioStore.usePlayerField('currentTime');
+  const [duration, setDuration] = audioStore.usePlayerField('duration');
+  const [volume, setVolume] = audioStore.usePlayerField('volume');
+  const [currentArtwork] = audioStore.usePlayerField('currentArtwork');
+  const [currentArtistLabel] = audioStore.usePlayerField('currentArtistLabel');
+
+  // Initialise the shared volume/shuffle/loop once per session from this
+  // artist's saved settings. Guarded inside the store so later artist mounts
+  // don't clobber a volume the user has since changed mid-playback.
+  useEffect(() => {
+    let initialVolume = 1;
     if (settings.startVolume !== null && settings.startVolume !== undefined) {
-      return settings.startVolume / 100;
-    }
-    if (typeof localStorage !== 'undefined') {
+      initialVolume = settings.startVolume / 100;
+    } else if (typeof localStorage !== 'undefined') {
       try {
         const saved = localStorage.getItem(`${STORAGE_PREFIX}playback_state`);
         if (saved) {
           const parsed = JSON.parse(saved);
           if (typeof parsed.volume === 'number' && parsed.volume >= 0 && parsed.volume <= 1) {
-            return parsed.volume;
+            initialVolume = parsed.volume;
           }
         }
       } catch (e) {}
     }
-    return 1;
-  });
+    audioStore.initVolume(initialVolume);
+    audioStore.initPlaybackDefaults(settings.startupShuffle, settings.startupLoop || 0);
+  }, []);
 
-  const timeToRestoreRef = useRef<number | null>(null);
   const initialLoadRef = useRef(false);
 
   useEffect(() => {
@@ -414,6 +425,10 @@ export default function App() {
   useEffect(() => {
     if (data && recentData.length > 0 && !initialLoadRef.current) {
       initialLoadRef.current = true;
+      // The user is already listening to something (started on a previous
+      // artist/route) — don't let this artist's saved playback clobber it.
+      // Persistent playback takes priority once the user has actually played.
+      if (audioStore.hasEverPlayed()) return;
       if (typeof localStorage !== 'undefined') {
         const saved = localStorage.getItem(`${STORAGE_PREFIX}playback_state`);
         if (saved) {
@@ -448,7 +463,7 @@ export default function App() {
                 const allSongs = Object.values(eraToRestore.data || {}).flat();
                 const songToRestore = allSongs.find((s: any) => s.name === savedSong.name && (s.url || (s.urls && s.urls[0]) || '') === savedSong.url);
                 if (songToRestore) {
-                  timeToRestoreRef.current = parsed.currentTime || 0;
+                  audioStore.setTimeToRestore(parsed.currentTime || 0);
                   handlePlaySong(songToRestore as Song, eraToRestore as Era, undefined, false, false);
                 }
               } else if (savedEraName === 'Favorites') {
@@ -485,7 +500,7 @@ export default function App() {
                    };
                    const s = Object.values(favEra.data)[0].find((s: any) => s.name === savedSong.name && (s.url || (s.urls && s.urls[0]) || '') === savedSong.url);
                    if (s) {
-                     timeToRestoreRef.current = parsed.currentTime || 0;
+                     audioStore.setTimeToRestore(parsed.currentTime || 0);
                      handlePlaySong(s as Song, favEra as Era, undefined, false, false);
                    }
                 }
@@ -500,14 +515,16 @@ export default function App() {
   const [lastfmLoggedIn, setLastfmLoggedIn] = useState(isLastfmLoggedIn());
   const [yeiOpen, setYeiOpen] = useState(false);
   const [spotifyLoggedIn, setSpotifyLoggedIn] = useState(isSpotifyLoggedIn());
-  const [activePlayer, setActivePlayer] = useState<'audio' | 'spotify' | 'youtube' | 'soundcloud'>('audio');
+  const [activePlayer, setActivePlayer] = audioStore.usePlayerField('activePlayer');
   const { state: spotifyState, controls: spotifyControls } = useSpotify(spotifyLoggedIn);
   const { state: youtubeState, controls: youtubeControls } = useYoutube();
   const { state: soundcloudState, controls: soundcloudControls } = useSoundCloud();
   const scrobbledRef = useRef(false);
   const songStartTimeRef = useRef<number>(0);
 
-  const audioRef = useRef<HTMLAudioElement>(null);
+  // Points at the persistent, session-scoped <audio> element in the store so
+  // existing audioRef.current.* code keeps working while surviving remounts.
+  const audioRef = audioStore.audioRef;
   const analyserRef = useRef<AnalyserNode | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const preloadedNextRef = useRef<{ rawUrl: string; streamUrl: string } | null>(null);
@@ -1715,6 +1732,16 @@ export default function App() {
     return rawUrl;
   };
 
+  // Resolve artwork + artist under THIS artist's config at play time and store
+  // them, so the player keeps showing the right values after the user navigates
+  // into a different artist's tracker (whose active config would resolve wrongly).
+  const captureNowPlayingMeta = (song: Song, era: Era) => {
+    const actualEraName = (song as any).realEra?.name || era.name;
+    const artwork = song.image || CUSTOM_IMAGES[actualEraName] || (song as any).realEra?.image || era.image || 'https://i.ibb.co/mrK8W4rL/image-2026-03-22-142639537.png';
+    const artistLabel = parseArtistFromSong(song.name, song.extra, actualEraName);
+    audioStore.setState({ currentArtwork: artwork, currentArtistLabel: artistLabel });
+  };
+
   const handlePlaySong = async (song: Song, era: Era, contextTracks?: Song[], resetShuffleHistory = true, autoPlay = true, isRandomSelection = false) => {
     if (activePlayer === 'spotify') spotifyControls.pause();
     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
@@ -1816,6 +1843,7 @@ export default function App() {
       setActivePlayer('audio');
       setCurrentSong(song);
       setCurrentEra(era);
+      captureNowPlayingMeta(song, era);
       setIsPlaying(autoPlay);
       setIsPlayerClosed(false);
       scrobbledRef.current = false;
@@ -1867,6 +1895,7 @@ export default function App() {
       setActivePlayer('audio');
       setCurrentSong(song);
       setCurrentEra(era);
+      captureNowPlayingMeta(song, era);
       setIsPlaying(autoPlay);
       setIsPlayerClosed(false);
       scrobbledRef.current = false;
@@ -1978,34 +2007,9 @@ export default function App() {
     }
   };
 
-  const handleEnded = () => {
-
-    if (loopMode === 2) {
-      if (audioRef.current) {
-        audioRef.current.currentTime = 0;
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e); });
-        }
-      }
-    } else if (loopMode === 1) {
-      if (!hasLoopedOnce) {
-        setHasLoopedOnce(true);
-        if (audioRef.current) {
-          audioRef.current.currentTime = 0;
-          const playPromise = audioRef.current.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(e => { if (e.name !== 'AbortError') console.error("Audio play failed", e); });
-          }
-        }
-      } else {
-        setHasLoopedOnce(false);
-        playNext();
-      }
-    } else {
-      playNext();
-    }
-  };
+  // Note: the audio "ended" event (with loop-mode handling) is owned by the
+  // store so auto-advance works even on routes where App isn't mounted. The
+  // store calls back into App's playNext (registered as the host handler).
 
   const togglePlay = () => {
     if (!audioRef.current) return;
@@ -2052,11 +2056,11 @@ export default function App() {
       const actualEraName = (currentSong as any).realEra?.name || currentEra.name;
       const cleanActualEraName = cleanAlbumName(actualEraName);
       const lfmTrack = cleanTrackName(currentSong.name, currentSong.extra);
-      const coverImage = currentSong.image || CUSTOM_IMAGES[actualEraName] || currentEra.image || 'https://i.ibb.co/mrK8W4rL/image-2026-03-22-142639537.png';
+      const coverImage = currentArtwork || currentSong.image || CUSTOM_IMAGES[actualEraName] || currentEra.image || 'https://i.ibb.co/mrK8W4rL/image-2026-03-22-142639537.png';
 
       navigator.mediaSession.metadata = new MediaMetadata({
         title: lfmTrack,
-        artist: parseArtistFromSong(currentSong.name, currentSong.extra, actualEraName),
+        artist: currentArtistLabel || parseArtistFromSong(currentSong.name, currentSong.extra, actualEraName),
         album: cleanActualEraName,
         artwork: [
           { src: coverImage, sizes: '512x512', type: 'image/png' },
@@ -2232,10 +2236,12 @@ export default function App() {
     }
   }, [currentSong, settings.notificationWhenPlaying]);
 
+  // Time/duration updates and metadata restore are handled by the store's own
+  // listeners on the persistent element. This handler only carries App-specific
+  // scrobbling, and is attached alongside the store listeners while App is
+  // mounted (see the effect that calls audioStore.registerHost below).
   const handleTimeUpdate = () => {
     if (audioRef.current) {
-      setCurrentTime(audioRef.current.currentTime);
-
       if (lastfmLoggedIn && currentSong && currentEra && !scrobbledRef.current) {
         const dur = audioRef.current.duration;
         const cur = audioRef.current.currentTime;
@@ -2258,24 +2264,48 @@ export default function App() {
     }
   };
 
-  const handleLoadedMetadata = () => {
-    if (audioRef.current) {
-      setDuration(audioRef.current.duration);
-      audioRef.current.volume = volume;
-      if (timeToRestoreRef.current !== null) {
-        audioRef.current.currentTime = timeToRestoreRef.current;
-        setCurrentTime(timeToRestoreRef.current);
-        timeToRestoreRef.current = null;
-      }
-    }
+  const handleAudioError = (e: Event) => {
+    const el = e.currentTarget as HTMLAudioElement;
+    const err = el.error;
+    console.error('Audio element error', err?.code, err?.message, 'src:', el.src, 'crossOrigin:', el.crossOrigin, 'networkState:', el.networkState, 'readyState:', el.readyState);
+    if (el.src) showToast("Failed to load audio - the source may be unreachable");
   };
 
   const handleSeek = (time: number) => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = time;
-      setCurrentTime(time);
-    }
+    audioStore.seek(time);
   };
+
+  // Keep refs to the latest handlers so we can attach stable listeners once.
+  const handleTimeUpdateRef = useRef(handleTimeUpdate);
+  const handleAudioErrorRef = useRef(handleAudioError);
+  const handlePlaySongRef = useRef<typeof handlePlaySong>();
+  handleTimeUpdateRef.current = handleTimeUpdate;
+  handleAudioErrorRef.current = handleAudioError;
+  handlePlaySongRef.current = handlePlaySong;
+
+  // Attach App-specific listeners to the persistent element and register App's
+  // full playback handlers with the store, so queue advancement (including the
+  // audio "ended" auto-advance driven by the store) reuses App's logic while
+  // mounted. On routes without App the store falls back to an audio-only path.
+  useEffect(() => {
+    const el = audioStore.getAudioEl();
+    if (!el) return;
+    const onTimeUpdate = () => handleTimeUpdateRef.current();
+    const onError = (e: Event) => handleAudioErrorRef.current(e);
+    el.addEventListener('timeupdate', onTimeUpdate);
+    el.addEventListener('error', onError);
+    const unregister = audioStore.registerHost({
+      next: () => handlersRef.current.playNext(),
+      prev: () => handlersRef.current.playPrev(),
+      playSong: (song, era, ctx, reset, autoPlay, rand) =>
+        handlePlaySongRef.current?.(song, era, ctx, reset, autoPlay, rand),
+    });
+    return () => {
+      el.removeEventListener('timeupdate', onTimeUpdate);
+      el.removeEventListener('error', onError);
+      unregister();
+    };
+  }, []);
 
   const handlePlaySpotifyTrack = async (uri: string) => {
     if (!spotifyState.isReady) { showToast('Spotify player is still connecting — try again in a moment'); return; }
@@ -2888,22 +2918,8 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
     <ContributorContext.Provider value={{ navigateToContributor }}>
     <PlaylistProvider>
     <div className="h-dvh w-full flex overflow-hidden relative bg-yzy-black" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
-      <audio
-        ref={audioRef}
-        onEnded={handleEnded}
-        onPause={() => setIsPlaying(false)}
-        onPlay={() => setIsPlaying(true)}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedMetadata={handleLoadedMetadata}
-        onError={(e) => {
-          const el = e.currentTarget as HTMLAudioElement;
-          const err = el.error;
-          console.error('Audio element error', err?.code, err?.message, 'src:', el.src, 'crossOrigin:', el.crossOrigin, 'networkState:', el.networkState, 'readyState:', el.readyState);
-          if (audioRef.current?.src) showToast("Failed to load audio - the source may be unreachable");
-        }}
-        crossOrigin="anonymous"
-        playsInline
-      />
+      {/* The <audio> element lives in the global audioStore so playback persists
+          across route changes; App attaches its scrobble/error listeners to it. */}
 
       <AnimatePresence>
         {popupUrl && (
@@ -3285,6 +3301,8 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               setShowQueue={setShowQueue}
               allowDownload={activeCategory !== 'released'}
               allowFullScreen={!isSpotifyActive && !isSoundCloudActive}
+              artworkOverride={activePlayer === 'audio' ? (currentArtwork || undefined) : undefined}
+              artistOverride={activePlayer === 'audio' ? (currentArtistLabel || undefined) : undefined}
             />
           )}
         </AnimatePresence>,
@@ -3362,6 +3380,8 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
             shuffledQueue={shuffledQueue}
             volume={volume}
             onVolumeChange={setVolume}
+            artworkOverride={currentArtwork || undefined}
+            artistOverride={currentArtistLabel || undefined}
             onPlaySong={(idx) => {
               setCurrentSongIndex(idx);
               const targetSong = playlist[idx];
