@@ -3,8 +3,9 @@
 // Pixeldrain blocks any request carrying `Sec-Fetch-Site: cross-site` (hotlink
 // protection) or a `cf-worker` header, so the browser can't play its audio
 // directly and a Cloudflare Function can't proxy it. The live site works around
-// this with an external Vercel proxy (pd-proxy.vercel.app), but that project is
-// bandwidth-capped and periodically goes dark (HTTP 402 DEPLOYMENT_DISABLED).
+// this with an external Deno Deploy proxy (see pd-proxy/ and the intercept list
+// below), but any single external proxy can go dark (bandwidth cap, deleted
+// project), which silently breaks every Pixeldrain link.
 //
 // In the desktop app we don't need any of that: the Electron main process is a
 // Node environment, and a plain Node fetch sends neither blocked header. So we
@@ -77,10 +78,16 @@ function installPixeldrainProxy(ses) {
       const port = server.address().port;
       const base = `http://127.0.0.1:${port}`;
 
+      // Intercept whatever proxy host the site is configured to use, plus the
+      // raw pixeldrain API, and serve them all from the local loopback instead —
+      // so the desktop app keeps working even if the external proxy is down.
+      // Keep the *.deno.net entry in sync with DEFAULT_PIXELDRAIN_PROXY_URL in
+      // src/utils.tsx.
       ses.webRequest.onBeforeRequest(
         {
           urls: [
-            'https://pd-proxy.vercel.app/*', // the site's configured proxy host
+            'https://*.deno.net/*', // the site's current Deno Deploy proxy host
+            'https://pd-proxy.vercel.app/*', // legacy Vercel proxy host
             'https://pixeldrain.com/api/file/*', // the "play directly" fallback path
           ],
         },

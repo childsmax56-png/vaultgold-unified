@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, ChevronDown, ChevronUp, Film, Maximize2, Minimize2, X } from 'lucide-react';
 import { Era } from '../types';
-import { createSlug, CUSTOM_IMAGES , retryImageOnError, relPath, absPath} from '../utils';
+import { createSlug, CUSTOM_IMAGES , retryImageOnError, relPath, absPath, pixeldrainProxyBase} from '../utils';
 import { useSettings } from '../SettingsContext';
 
 export interface VideoRawEntry {
@@ -112,9 +112,7 @@ function getEmbedInfo(links: string[]): EmbedInfo {
       // api/file URL 403s in the browser. Route through the configured proxy —
       // same as audio playback (VITE_PIXELDRAIN_PROXY_URL).
       if (id) {
-        const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
-        const src = proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
-        return { type: 'pixeldrain', src };
+        return { type: 'pixeldrain', src: `${pixeldrainProxyBase()}/api/${id}` };
       }
     }
   }

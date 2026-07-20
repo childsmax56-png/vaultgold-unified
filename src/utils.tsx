@@ -981,12 +981,25 @@ export function parseNoteDescription(description: string | undefined | null): {
 }
 
 // Pixeldrain blocks direct browser access (cross-site hotlink detection + the
-// Cloudflare cf-worker header), so file IDs must go through the configured
-// non-Cloudflare proxy — same as audio playback. Returns null if no proxy is set.
+// Cloudflare cf-worker header), so file IDs must go through a non-Cloudflare
+// proxy (see pd-proxy/). The proxy host is normally supplied at build time via
+// VITE_PIXELDRAIN_PROXY_URL, but we also ship a hard-coded default so Pixeldrain
+// keeps working if that env var is ever missing (a lost/misconfigured env var
+// is exactly what silently breaks every Pixeldrain link).
+export const DEFAULT_PIXELDRAIN_PROXY_URL = 'https://pdproxy-7p26sd4ehfvg.childsmax56-png.deno.net';
+
+// The proxy base URL with any trailing slash stripped. Prefers the build-time
+// env var, falling back to the built-in default. Uses `||` (not `??`) so an
+// empty-string env var also falls back instead of yielding a broken base.
+export function pixeldrainProxyBase(): string {
+  return (import.meta.env.VITE_PIXELDRAIN_PROXY_URL || DEFAULT_PIXELDRAIN_PROXY_URL).replace(/\/$/, '');
+}
+
+// Turn a pixeldrain.com/u/<id> page URL into a proxied direct URL. Returns null
+// only when no file id can be parsed out.
 export function pixeldrainProxyUrl(url: string): string | null {
   const id = url.split('/u/')[1]?.split('?')[0];
-  const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
-  return id && proxyBase ? `${proxyBase}/api/${id}` : null;
+  return id ? `${pixeldrainProxyBase()}/api/${id}` : null;
 }
 
 export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isImage: boolean; imageExt?: string; headers?: Record<string, string> }> {

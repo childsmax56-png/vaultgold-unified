@@ -19,7 +19,7 @@ import { handleShareSilent } from './components/EraDetail';
 import { TrackerData, Era, Song, SearchFilters } from './types';
 import { ContributorContext } from './ContributorContext';
 import { ContributorView } from './components/ContributorView';
-import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, ERA_DISCLAIMERS, getArtistName, buildArtistTag, handleDownloadFile } from './utils';
+import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, ERA_DISCLAIMERS, getArtistName, buildArtistTag, handleDownloadFile, pixeldrainProxyBase } from './utils';
 import { isLastfmLoggedIn, saveLastfmSession, clearLastfmSession, scrobbleTrack, updateNowPlaying, cleanTrackName, parseArtistFromSong, cleanAlbumName } from './lastfm';
 import { isSpotifyLoggedIn, clearSpotifySession, startSpotifyAuth, handleSpotifyCallback } from './spotify';
 import { useSpotify, SpotifyTrack } from './useSpotify';
@@ -1718,9 +1718,9 @@ export default function App() {
       const id = rawUrl.split('/u/')[1]?.split('?')[0];
       // Pixeldrain blocks cross-site hotlinking (Sec-Fetch-Site) and Cloudflare
       // Workers (cf-worker header), so audio must go through a non-Cloudflare
-      // proxy that strips those. Configured via VITE_PIXELDRAIN_PROXY_URL.
-      const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
-      return proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
+      // proxy that strips those. Host from VITE_PIXELDRAIN_PROXY_URL, with a
+      // built-in default fallback (see pixeldrainProxyBase).
+      return `${pixeldrainProxyBase()}/api/${id}`;
     } else if (rawUrl.includes('drive.google.com')) {
       const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
       // Route through the proxy so large files clear Google's virus-scan
@@ -1791,12 +1791,7 @@ export default function App() {
           streamUrl = `https://api.pillows.su/api/get/${id}`;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1]?.split('?')[0];
-          const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
-          if (proxyBase) {
-            streamUrl = `${proxyBase}/api/${id}`;
-          } else {
-            console.error('[pixeldrain] VITE_PIXELDRAIN_PROXY_URL not set');
-          }
+          streamUrl = `${pixeldrainProxyBase()}/api/${id}`;
         } else if (rawUrl.includes('drive.google.com')) {
           const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
           // Route through the proxy so large files clear Google's virus-scan
@@ -2073,7 +2068,7 @@ export default function App() {
         const directLink = rawSongUrl.includes('pillows.su/f/')
           ? `https://api.pillows.su/api/download/${rawSongUrl.split('/f/')[1]}`
           : rawSongUrl.includes('pixeldrain.com/u/')
-            ? (() => { const id = rawSongUrl.split('/u/')[1]?.split('?')[0]; const pb = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, ''); return pb ? `${pb}/api/${id}` : `https://pixeldrain.com/api/file/${id}`; })()
+            ? (() => { const id = rawSongUrl.split('/u/')[1]?.split('?')[0]; return `${pixeldrainProxyBase()}/api/${id}`; })()
             : rawSongUrl.includes('drive.google.com')
               ? (() => { const m = rawSongUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawSongUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/); return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : rawSongUrl; })()
               : rawSongUrl;
