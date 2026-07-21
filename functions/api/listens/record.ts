@@ -41,9 +41,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       : Date.now();
 
   await env.DB.prepare(
-    `INSERT INTO listening_history
-      (id, user_id, artist_slug, era_name, track, artist, album, song_url, duration_sec, played_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    `INSERT OR IGNORE INTO listening_history
+      (id, user_id, artist_slug, era_name, track, artist, album, song_url, duration_sec, played_at, source)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'play')`
   )
     .bind(
       generateId(),

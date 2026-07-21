@@ -5,7 +5,11 @@ import {
   fetchListeningPref,
   setListeningPref,
   isListeningLoggedIn,
+  importFromLastfm,
+  type ImportProgress,
+  type ImportResult,
 } from './listening';
+import { getLastfmUsername } from './lastfm';
 
 const ACCENT = '#C9A224';
 
@@ -61,6 +65,11 @@ export function ListeningStatsPage() {
   const [error, setError] = useState<string | null>(null);
   const [enabled, setEnabled] = useState(true);
   const [copied, setCopied] = useState(false);
+  const lastfmUsername = getLastfmUsername();
+  const [importing, setImporting] = useState(false);
+  const [importProgress, setImportProgress] = useState<ImportProgress | null>(null);
+  const [importResult, setImportResult] = useState<ImportResult | null>(null);
+  const [importError, setImportError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isListeningLoggedIn()) return;
@@ -96,6 +105,24 @@ export function ListeningStatsPage() {
     const next = !enabled;
     setEnabled(next);
     try { await setListeningPref(next); } catch { setEnabled(!next); }
+  }
+
+  async function runImport() {
+    setImporting(true);
+    setImportError(null);
+    setImportResult(null);
+    setImportProgress(null);
+    try {
+      const result = await importFromLastfm(lastfmUsername, setImportProgress);
+      setImportResult(result);
+      // Refresh stats so the newly imported plays show up immediately.
+      const s = await fetchListeningStats(range);
+      setStats(s);
+    } catch (e) {
+      setImportError(e instanceof Error ? e.message : 'Import failed');
+    } finally {
+      setImporting(false);
+    }
   }
 
   function copySummary() {
@@ -244,6 +271,41 @@ export function ListeningStatsPage() {
             <button onClick={copySummary} style={btnPrimary}>{copied ? 'Copied!' : 'Copy summary'}</button>
           </Section>
         </>
+      )}
+
+      {/* Last.fm backfill — only when a Last.fm account is connected */}
+      {lastfmUsername && (
+        <Section title="Import from Last.fm">
+          <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, lineHeight: 1.5, marginBottom: 14 }}>
+            Scan your Last.fm history (<span style={{ color: ACCENT }}>{lastfmUsername}</span>) and add any
+            scrobbles that match songs on the trackers to your listening stats. Safe to run more than once —
+            already-imported plays are skipped.
+          </div>
+
+          {importProgress && importing && (
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', marginBottom: 12 }}>
+              Scanning page {importProgress.page} of {importProgress.totalPages} · {importProgress.scanned} scrobbles checked · {importProgress.matched + importProgress.imported} matched
+              <div style={{ height: 6, borderRadius: 999, background: 'rgba(255,255,255,0.1)', marginTop: 8, overflow: 'hidden' }}>
+                <div style={{ height: '100%', width: `${Math.round((importProgress.page / Math.max(1, importProgress.totalPages)) * 100)}%`, background: ACCENT, transition: 'width 0.3s' }} />
+              </div>
+            </div>
+          )}
+
+          {importResult && !importing && (
+            <div style={{ fontSize: 14, color: '#fff', marginBottom: 12 }}>
+              Done — checked {importResult.scanned.toLocaleString()} scrobbles, matched {importResult.matched.toLocaleString()},
+              added <span style={{ color: ACCENT, fontWeight: 700 }}>{importResult.imported.toLocaleString()}</span> new plays.
+            </div>
+          )}
+
+          {importError && !importing && (
+            <div style={{ fontSize: 14, color: '#ff8080', marginBottom: 12 }}>{importError}</div>
+          )}
+
+          <button onClick={runImport} disabled={importing} style={{ ...btnPrimary, opacity: importing ? 0.6 : 1, cursor: importing ? 'default' : 'pointer' }}>
+            {importing ? 'Importing…' : importResult ? 'Run again' : 'Import my Last.fm history'}
+          </button>
+        </Section>
       )}
 
       {/* Opt-in toggle — always available when signed in */}
