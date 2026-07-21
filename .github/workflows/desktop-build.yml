@@ -59,7 +59,6 @@ jobs:
             release/*.zip
             release/*.exe
             release/*.AppImage
-            release/*.deb
           if-no-files-found: ignore
 
   # Attach the built installers to the GitHub Release when triggered by a tag.

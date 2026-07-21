@@ -29,16 +29,18 @@ Output goes to `release/` (gitignored).
 ```bash
 npm run app:build:mac   # .dmg + .zip (arm64 + x64) — run on macOS
 npm run app:build:win   # .exe NSIS installer (x64) — run on Windows
-npm run app:build:linux # .AppImage + .deb (x64 + arm64) — run on Linux
+npm run app:build:linux # .AppImage (x64) — run on Linux
 npm run app:build       # current platform
 ```
 
 > **Cross-building note:** a Windows `.exe` is best produced **on Windows or in
 > CI** (e.g. GitHub Actions `windows-latest`). electron-builder can sometimes
 > cross-build Windows from macOS via Wine, but it's unreliable and unsigned.
-> The macOS build must run on macOS. The Linux `.AppImage`/`.deb` must be built
-> **on Linux** (use `ubuntu-latest` in CI). Code-signing/notarization is not
-> configured yet — installers will be unsigned until certs are added.
+> The macOS build must run on macOS. The Linux `.AppImage` must be built **on
+> Linux** (use `ubuntu-latest` in CI). Only `x64` is produced — the castlabs
+> Widevine Electron fork this app pins has no `linux-arm64` release. Code-signing
+> /notarization is not configured yet — installers will be unsigned until certs
+> are added.
 
 ## Widevine / Spotify
 
