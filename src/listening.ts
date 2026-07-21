@@ -1,10 +1,13 @@
 // Personal listening history — records plays for signed-in UNVAULTED users so
 // they can see their own stats ("Wrapped"-style) at /listening.
 //
-// Auth'd endpoints must reach the same backend that issued the token, so these
-// calls target the live site (mirrors MyTrackerPage's VG_API convention).
-
-const VG_API = 'https://unvaulted.cc';
+// Listens endpoints are called same-origin so whatever deployment is serving
+// the app (production unvaulted.cc, a Cloudflare Pages preview branch, or any
+// tracker origin) handles them with its own functions. Every deployment binds
+// the SAME D1 database (see wrangler.toml database_id), so a session token
+// issued by prod login validates on a preview deployment too — which is what
+// makes the feature testable on a branch before it ships to prod.
+const VG_API = '';
 const TOKEN_KEY = 'vg_token';
 // Local mirror of the server-side opt-in preference. Default ON.
 const ENABLED_KEY = 'vg_listening_enabled';
