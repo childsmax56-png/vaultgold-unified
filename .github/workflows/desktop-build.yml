@@ -1,6 +1,6 @@
 name: Build Desktop App
 
-# Builds the UNVAULTED Electron desktop app for macOS + Windows.
+# Builds the UNVAULTED Electron desktop app for macOS + Windows + Linux.
 # Runs on version tags (v*) and can be triggered manually.
 
 on:
@@ -19,6 +19,8 @@ jobs:
             script: app:build:mac
           - os: windows-latest
             script: app:build:win
+          - os: ubuntu-latest
+            script: app:build:linux
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -56,6 +58,8 @@ jobs:
             release/*.dmg
             release/*.zip
             release/*.exe
+            release/*.AppImage
+            release/*.deb
           if-no-files-found: ignore
 
   # Attach the built installers to the GitHub Release when triggered by a tag.

@@ -1,7 +1,7 @@
 # UNVAULTED Desktop (Electron)
 
-A thin native desktop shell for **Windows + macOS** that loads the live site at
-`https://unvaulted.cc` in a real app window.
+A thin native desktop shell for **Windows, macOS + Linux** that loads the live
+site at `https://unvaulted.cc` in a real app window.
 
 ## Why a shell (not a bundled frontend)
 
@@ -29,14 +29,16 @@ Output goes to `release/` (gitignored).
 ```bash
 npm run app:build:mac   # .dmg + .zip (arm64 + x64) — run on macOS
 npm run app:build:win   # .exe NSIS installer (x64) — run on Windows
+npm run app:build:linux # .AppImage + .deb (x64 + arm64) — run on Linux
 npm run app:build       # current platform
 ```
 
 > **Cross-building note:** a Windows `.exe` is best produced **on Windows or in
 > CI** (e.g. GitHub Actions `windows-latest`). electron-builder can sometimes
 > cross-build Windows from macOS via Wine, but it's unreliable and unsigned.
-> The macOS build must run on macOS. Code-signing/notarization is not configured
-> yet — installers will be unsigned until certs are added.
+> The macOS build must run on macOS. The Linux `.AppImage`/`.deb` must be built
+> **on Linux** (use `ubuntu-latest` in CI). Code-signing/notarization is not
+> configured yet — installers will be unsigned until certs are added.
 
 ## Widevine / Spotify
 

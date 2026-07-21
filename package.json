@@ -15,7 +15,8 @@
     "app:dev": "electron .",
     "app:build": "electron-builder",
     "app:build:mac": "electron-builder --mac",
-    "app:build:win": "electron-builder --win"
+    "app:build:win": "electron-builder --win",
+    "app:build:linux": "electron-builder --linux"
   },
   "build": {
     "appId": "cc.unvaulted.desktop",
@@ -52,8 +53,14 @@
       "allowToChangeInstallationDirectory": true
     },
     "linux": {
-      "target": ["AppImage"],
-      "category": "AudioVideo"
+      "target": [
+        { "target": "AppImage", "arch": ["x64", "arm64"] },
+        { "target": "deb", "arch": ["x64", "arm64"] }
+      ],
+      "category": "AudioVideo",
+      "synopsis": "The Best Music Trackers In The World",
+      "maintainer": "UNVAULTED <childsmax56@gmail.com>",
+      "icon": "build/icon.png"
     }
   },
   "dependencies": {
