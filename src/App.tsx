@@ -21,6 +21,7 @@ import { ContributorContext } from './ContributorContext';
 import { ContributorView } from './components/ContributorView';
 import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, ERA_DISCLAIMERS, getArtistName, buildArtistTag, handleDownloadFile, pixeldrainProxyBase } from './utils';
 import { isLastfmLoggedIn, saveLastfmSession, clearLastfmSession, scrobbleTrack, updateNowPlaying, cleanTrackName, parseArtistFromSong, cleanAlbumName } from './lastfm';
+import { logListen, isListeningLoggedIn } from './listening';
 import { isSpotifyLoggedIn, clearSpotifySession, startSpotifyAuth, handleSpotifyCallback } from './spotify';
 import { useSpotify, SpotifyTrack } from './useSpotify';
 import { useYoutube } from './useYoutube';
@@ -520,6 +521,9 @@ export default function App() {
   const { state: youtubeState, controls: youtubeControls } = useYoutube();
   const { state: soundcloudState, controls: soundcloudControls } = useSoundCloud();
   const scrobbledRef = useRef(false);
+  // Independent of scrobbledRef so personal listening capture fires for every
+  // signed-in user, not only those who linked Last.fm.
+  const listenLoggedRef = useRef(false);
   const songStartTimeRef = useRef<number>(0);
 
   // Points at the persistent, session-scoped <audio> element in the store so
@@ -1842,6 +1846,7 @@ export default function App() {
       setIsPlaying(autoPlay);
       setIsPlayerClosed(false);
       scrobbledRef.current = false;
+      listenLoggedRef.current = false;
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
@@ -1894,6 +1899,7 @@ export default function App() {
       setIsPlaying(autoPlay);
       setIsPlayerClosed(false);
       scrobbledRef.current = false;
+      listenLoggedRef.current = false;
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
       if (audioRef.current) {
         audioRef.current.src = rawUrl;
@@ -2237,6 +2243,30 @@ export default function App() {
   // mounted (see the effect that calls audioStore.registerHost below).
   const handleTimeUpdate = () => {
     if (audioRef.current) {
+      // Personal listening capture — records the play for any signed-in
+      // UNVAULTED user, independent of Last.fm, at the same "counts as a listen"
+      // threshold (past halfway, or 4 minutes in).
+      if (isListeningLoggedIn() && currentSong && currentEra && !listenLoggedRef.current) {
+        const dur = audioRef.current.duration;
+        const cur = audioRef.current.currentTime;
+        if (dur > 30 && (cur > dur / 2 || cur > 240)) {
+          listenLoggedRef.current = true;
+          const actualEraName = (currentSong as any).realEra?.name || currentEra.name;
+          const cleanRealTrackName = currentSong.name.replace(/ \[Fake\]$/i, '');
+          const logTrack = cleanTrackName(cleanRealTrackName, currentSong.extra, settings.lastfmShowVersion, settings.lastfmShowTags, settings.lastfmShowFeats);
+          const logArtist = parseArtistFromSong(cleanRealTrackName, currentSong.extra, actualEraName);
+          logListen({
+            track: logTrack,
+            artist: logArtist,
+            album: cleanAlbumName(actualEraName).replace(/ \[Fake\]$/i, ''),
+            eraName: actualEraName,
+            artistSlug: ARTIST_SLUG,
+            songUrl: currentSong.url || (currentSong.urls && currentSong.urls[0]) || '',
+            durationSec: Math.floor(dur),
+            playedAt: songStartTimeRef.current,
+          });
+        }
+      }
       if (lastfmLoggedIn && currentSong && currentEra && !scrobbledRef.current) {
         const dur = audioRef.current.duration;
         const cur = audioRef.current.currentTime;

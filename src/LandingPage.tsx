@@ -1289,6 +1289,15 @@ export function LandingPage() {
           watermark="YE"
         />
         <BigLinkCard
+          href="/listening"
+          accent="#7C5CFF"
+          badge="Stats"
+          titleMain="YOUR"
+          titleAccent="LISTENING"
+          subtitle="See your play stats"
+          watermark="ST"
+        />
+        <BigLinkCard
           href="/download"
           accent="#4F9DFF"
           badge="App"
