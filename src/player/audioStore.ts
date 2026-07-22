@@ -217,7 +217,8 @@ export async function resolveStreamUrl(rawUrl: string): Promise<string> {
     return res.data?.cdnUrl ?? rawUrl;
   } else if (rawUrl.includes('pillows.su/f/')) {
     const id = rawUrl.split('/f/')[1];
-    return `https://api.pillows.su/api/get/${id}`;
+    // Pillowcase blocks direct cross-site hotlinks; proxy server-side.
+    return `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/get/${id}`)}`;
   } else if (rawUrl.includes('pixeldrain.com/u/')) {
     const id = rawUrl.split('/u/')[1]?.split('?')[0];
     const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');

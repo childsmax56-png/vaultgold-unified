@@ -101,7 +101,8 @@ function driveFileId(url: string): string | null {
 async function getStreamUrl(url: string): Promise<string | null> {
   if (isPillowcase(url)) {
     const id = url.split('/f/')[1];
-    return id ? `https://api.pillows.su/api/get/${id}` : null;
+    // Pillowcase blocks direct cross-site hotlinks; proxy server-side.
+    return id ? `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/get/${id}`)}` : null;
   }
   if (isTempImgur(url)) {
     const tid = url.split('/f/')[1];
