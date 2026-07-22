@@ -172,7 +172,8 @@ async function resolveAudioUrl(rawUrl: string): Promise<string> {
   }
   if (rawUrl.includes('pillows.su/f/')) {
     const id = rawUrl.split('/f/')[1];
-    return `https://api.pillows.su/api/get/${id}`;
+    // Pillowcase blocks direct cross-site hotlinks; proxy server-side.
+    return `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/get/${id}`)}`;
   }
   if (rawUrl.includes('krakenfiles.com/view/')) {
     return `/api/kraken-proxy?url=${encodeURIComponent(rawUrl)}`;

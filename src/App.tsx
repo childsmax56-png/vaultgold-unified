@@ -1713,7 +1713,11 @@ export default function App() {
       return res.data?.cdnUrl ?? rawUrl;
     } else if (rawUrl.includes('pillows.su/f/')) {
       const id = rawUrl.split('/f/')[1];
-      return `https://api.pillows.su/api/get/${id}`;
+      // Pillowcase now blocks cross-site hotlinking of api.pillows.su, so a
+      // direct browser request fails even though the file is still up. Route
+      // through the same-origin proxy (server-side fetch strips the hotlink
+      // headers), matching the Google Drive path below.
+      return `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/get/${id}`)}`;
     } else if (rawUrl.includes('pixeldrain.com/u/')) {
       const id = rawUrl.split('/u/')[1]?.split('?')[0];
       // Pixeldrain blocks cross-site hotlinking (Sec-Fetch-Site) and Cloudflare
@@ -1788,7 +1792,8 @@ export default function App() {
           }
         } else if (rawUrl.includes('pillows.su/f/')) {
           const id = rawUrl.split('/f/')[1];
-          streamUrl = `https://api.pillows.su/api/get/${id}`;
+          // Proxy server-side: Pillowcase blocks direct cross-site hotlinks.
+          streamUrl = `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/get/${id}`)}`;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1]?.split('?')[0];
           streamUrl = `${pixeldrainProxyBase()}/api/${id}`;
