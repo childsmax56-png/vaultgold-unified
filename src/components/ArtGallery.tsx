@@ -72,6 +72,24 @@ async function resolveImbbUrl(url: string): Promise<string | null> {
 
 export { resolveImbbUrl };
 
+const RENDERABLE_DOMAINS = [
+  'i.scdn.co', 'mzstatic.com', 't2.genius.com', 'images.genius.com',
+  'i.postimg.cc', 'i.discogs.com', 'pbs.twimg.com', 'lh3.googleusercontent.com',
+  'lh4.googleusercontent.com', 'lh5.googleusercontent.com', 'lh6.googleusercontent.com',
+  'm.media-amazon.com', 'payload.cargocollective.com', 'media.giphy.com',
+];
+
+export function isLinkRenderable(link: string | undefined | null): boolean {
+  if (!link) return false;
+  const lc = link.toLowerCase();
+  if (link.includes('ibb.co') || link.includes('pillows.su/f/')) return true;
+  if (lc.endsWith('.png') || lc.endsWith('.jpg') || lc.endsWith('.jpeg') || lc.endsWith('.gif') || lc.endsWith('.webp')) return true;
+  try {
+    const { hostname } = new URL(link);
+    return RENDERABLE_DOMAINS.some(d => hostname === d || hostname.endsWith('.' + d));
+  } catch { return false; }
+}
+
 export function ArtImage({ url, alt, contain = false }: { url: string; alt: string; contain?: boolean }) {
   const [imgSrc, setImgSrc] = useState<string | null>(() => {
     // Synchronously return cached value if available
@@ -256,8 +274,7 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
     for (let i = 0; i < eraItems.length; i++) {
         const item = eraItems[i];
         const link = item['Link(s)']?.split('\n')[0]?.trim();
-        const lcLink = link?.toLowerCase();
-        const isRenderable = link && (link.includes('ibb.co') || link.includes('pillows.su/f/') || lcLink?.endsWith('.png') || lcLink?.endsWith('.jpg') || lcLink?.endsWith('.jpeg') || link.startsWith('https://i.scdn.co/'));
+        const isRenderable = isLinkRenderable(link);
         if (link && isRenderable) {
            await handleDownloadFile(link, `${item.Name.split('\n')[0]}`, settings.tagsAsEmojis);
            await new Promise(res => setTimeout(res, 800));
@@ -346,8 +363,7 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
             <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {eraItems.map((item, i) => {
                 const link = item['Link(s)']?.split('\n')[0]?.trim();
-                const lcLink = link?.toLowerCase();
-                const isRenderable = link?.includes('ibb.co') || link?.includes('pillows.su/f/') || lcLink?.endsWith('.png') || lcLink?.endsWith('.jpg') || lcLink?.endsWith('.jpeg') || link?.startsWith('https://i.scdn.co/');
+                const isRenderable = isLinkRenderable(link);
 
                 return (
                   <motion.div
