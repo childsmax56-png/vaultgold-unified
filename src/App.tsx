@@ -147,6 +147,7 @@ import { TimelineView } from './components/TimelineView';
 import { ImportPlaylistModal } from './components/ImportPlaylistModal';
 import { useSettings, LOADING_SCREENS, LoadingScreenId } from './SettingsContext';
 import { PlaylistProvider } from './PlaylistContext';
+import { initDataSync, scheduleDataPush } from './dataSync';
 import { recordListeningHistory } from './history';
 import { activeConfig } from './artists/activeConfig';
 
@@ -338,11 +339,23 @@ export default function App() {
     return [];
   });
 
+  const favMountedRef = useRef(false);
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(`${STORAGE_PREFIX}favorite_keys`, JSON.stringify(favoriteKeys));
     }
+    // Mirror the change to the user's account. Skip the mount write so we don't
+    // push before the initial cloud pull has populated local state.
+    if (favMountedRef.current) scheduleDataPush();
+    else favMountedRef.current = true;
   }, [favoriteKeys]);
+
+  // Pull this tracker's cloud favorites/playlists once on load (and on artist
+  // change) so a signed-in user sees them on any device. Guarded per-tracker
+  // inside initDataSync so navigation doesn't re-pull.
+  useEffect(() => {
+    void initDataSync();
+  }, [ARTIST_SLUG]);
 
   const [showDiscordModal, setShowDiscordModal] = useState(false);
 
