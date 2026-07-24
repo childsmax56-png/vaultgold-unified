@@ -584,24 +584,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const vgToken = params.get('vg_token');
-    const vgUserRaw = params.get('vg_user');
-    if (!vgToken || !vgUserRaw) return;
-    window.history.replaceState({}, '', window.location.pathname);
-    try {
-      const vgUser = JSON.parse(decodeURIComponent(vgUserRaw));
-      if (window.opener) {
-        window.opener.postMessage({ vaultgold: 'signed_in', token: vgToken, user: vgUser }, '*');
-        window.close();
-      } else {
-        localStorage.setItem('vg_token', vgToken);
-        localStorage.setItem('vg_user', JSON.stringify(vgUser));
-      }
-    } catch {}
-  }, []);
-
-  useEffect(() => {
     if (spotifyState.error) showToast(spotifyState.error);
   }, [spotifyState.error]);
 
