@@ -18,8 +18,8 @@ interface Env {
 
 const OWNER = 'childsmax56-png';
 const REPO = 'vaultgold-unified';
-const VERSION = 'v1.0.2';
-const v = VERSION.slice(1); // "1.0.2"
+const VERSION = 'v1.0.3';
+const v = VERSION.slice(1); // "1.0.3"
 
 // Map the public `os` param to an installer asset. Keep this the single
 // source of truth for which builds exist.
@@ -27,6 +27,7 @@ const ASSETS: Record<string, string> = {
   'mac-arm': `UNVAULTED-${v}-mac-arm64.dmg`,
   'mac-intel': `UNVAULTED-${v}-mac-x64.dmg`,
   'win': `UNVAULTED-${v}-win-x64.exe`,
+  'linux': `UNVAULTED-${v}-linux-x86_64.AppImage`,
 };
 
 const CORS = {
@@ -39,6 +40,7 @@ const CORS = {
 function contentType(filename: string): string {
   if (filename.endsWith('.dmg')) return 'application/x-apple-diskimage';
   if (filename.endsWith('.exe')) return 'application/vnd.microsoft.portable-executable';
+  if (filename.endsWith('.AppImage')) return 'application/x-executable';
   return 'application/octet-stream';
 }
 
