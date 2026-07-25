@@ -8,6 +8,7 @@ const gviz = (gid: string) =>
 
 export const juicegoldConfig: ArtistConfig = {
   slug: 'juicegold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'JUICEgold',
   SITE_DESCRIPTION: 'The Best Juice WRLD Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/juicegold/',

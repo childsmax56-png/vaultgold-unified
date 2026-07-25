@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const uzigoldConfig: ArtistConfig = {
   slug: 'uzigold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'UZIGOLD',
   SITE_DESCRIPTION: 'The Best Lil Uzi Vert Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/uzigold/',

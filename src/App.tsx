@@ -135,6 +135,7 @@ import { SettingsView } from './components/SettingsView';
 import { HistoryView } from './components/HistoryView';
 import { FakesView } from './components/FakesView';
 import { AlbumCopiesView, AlbumCopyEra } from './components/AlbumCopiesView';
+import { GroupbuysView, GroupbuysData } from './components/GroupbuysView';
 import { CompsView } from './components/CompsView';
 import { ConcertsView } from './components/ConcertsView';
 import { YEditsView } from './components/YEditsView';
@@ -191,6 +192,7 @@ export default function App() {
   const [miscData, setMiscData] = useState<MiscEntry[]>([]);
   const [fakesData, setFakesData] = useState<FakesEntry[]>([]);
   const [albumCopiesData, setAlbumCopiesData] = useState<AlbumCopyEra[]>([]);
+  const [groupbuysData, setGroupbuysData] = useState<GroupbuysData>({ years: [], grandTotal: '' });
   const [productionData, setProductionData] = useState<TrackerData | null>(null);
   const [tracklistsData, setTracklistsData] = useState<TracklistAlbum[]>([]);
   const [releasedData, setReleasedData] = useState<ReleasedEntry[]>([]);
@@ -226,6 +228,7 @@ export default function App() {
     if (path.startsWith('/misc')) return 'misc';
     if (path.startsWith('/fakes')) return 'fakes';
     if (path.startsWith('/albumcopies')) return 'albumcopies';
+    if (path.startsWith('/groupbuys')) return 'groupbuys';
     if (path.startsWith('/released')) return 'released';
     if (path.startsWith('/related')) return 'related';
     if (path.startsWith('/recent-production')) return 'recent-production';
@@ -1104,6 +1107,8 @@ export default function App() {
           setActiveCategory('fakes');
         } else if (path.startsWith('/albumcopies')) {
           setActiveCategory('albumcopies');
+        } else if (path.startsWith('/groupbuys')) {
+          setActiveCategory('groupbuys');
         } else if (path.startsWith('/released')) {
           setActiveCategory('released');
         } else if (path.startsWith('/recent-production')) {
@@ -1334,6 +1339,20 @@ export default function App() {
         });
     }
 
+    if (activeConfig.hasGroupbuysTab) {
+      axios.get(`/api/${ARTIST_SLUG}/groupbuys`)
+        .then(res => {
+          const gb = (res.data ?? { years: [], grandTotal: '' }) as GroupbuysData;
+          setGroupbuysData(gb);
+          setFetchedTabs(prev => new Set([...prev, 'groupbuys']));
+          if ((gb.years?.length ?? 0) > 0) setTabsWithData(prev => new Set([...prev, 'groupbuys']));
+        })
+        .catch(err => {
+          console.error("Failed to fetch Groupbuys data:", err);
+          setFetchedTabs(prev => new Set([...prev, 'groupbuys']));
+        });
+    }
+
     Promise.resolve({ data: [] })
       .then(res => {
         setSamplesData(res.data as SampleEntry[]);
@@ -1513,6 +1532,10 @@ export default function App() {
       if (!currentPath.startsWith('/albumcopies')) {
         window.history.pushState({ category: 'albumcopies' }, '', absPath('/albumcopies'));
       }
+    } else if (activeCategory === 'groupbuys') {
+      if (!currentPath.startsWith('/groupbuys')) {
+        window.history.pushState({ category: 'groupbuys' }, '', absPath('/groupbuys'));
+      }
     } else if (activeCategory === 'released') {
       if (!currentPath.startsWith('/released')) {
         window.history.pushState({ category: 'released' }, '', absPath('/released'));
@@ -1651,6 +1674,8 @@ export default function App() {
         setActiveCategory('misc');
       } else if (path.startsWith('/albumcopies')) {
         setActiveCategory('albumcopies');
+      } else if (path.startsWith('/groupbuys')) {
+        setActiveCategory('groupbuys');
       } else if (path.startsWith('/released')) {
         setActiveCategory('released');
       } else if (path.startsWith('/recent-production')) {
@@ -3080,6 +3105,12 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   key="albumcopies"
                   eras={erasArray}
                   albumCopiesData={albumCopiesData}
+                  searchQuery={searchQuery}
+                />
+              ) : activeCategory === 'groupbuys' ? (
+                <GroupbuysView
+                  key="groupbuys"
+                  data={groupbuysData}
                   searchQuery={searchQuery}
                 />
               ) : activeCategory === 'videos' ? (

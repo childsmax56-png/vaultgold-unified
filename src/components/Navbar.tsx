@@ -11,9 +11,9 @@ import { retryImageOnError } from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
-export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'albumcopies' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
+export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'albumcopies' | 'groupbuys' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
 
-const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'albumcopies', 'videos', 'tracklists', 'subalbums']);
+const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'albumcopies', 'groupbuys', 'videos', 'tracklists', 'subalbums']);
 
 interface NavbarProps {
   searchQuery: string;
@@ -42,6 +42,7 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'misc', label: 'Misc' },
   { key: 'fakes', label: 'Fakes' },
   { key: 'albumcopies', label: 'Album Copies' },
+  { key: 'groupbuys', label: 'Groupbuys' },
   { key: 'released', label: 'Released' },
   { key: 'related', label: 'Related' },
   { key: 'recent', label: 'Recent' },
@@ -114,6 +115,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     if (key === 'misc' && activeConfig.hasMiscTab === false) return false;
     if (key === 'tracklists' && activeConfig.hasTracklistsTab === false) return false;
     if (key === 'albumcopies' && !activeConfig.hasAlbumCopiesTab) return false;
+    if (key === 'groupbuys' && !activeConfig.hasGroupbuysTab) return false;
     if (DATA_DRIVEN_TABS.has(key) && fetchedTabs?.has(key) && !tabsWithData?.has(key)) return false;
     return true;
   }).map(cat => cat.key === 'misc' && activeConfig.miscLabel ? { ...cat, label: activeConfig.miscLabel } : cat);

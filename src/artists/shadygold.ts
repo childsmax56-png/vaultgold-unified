@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const shadygoldConfig: ArtistConfig = {
   slug: 'shadygold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'SHADYGOLD',
   SITE_DESCRIPTION: 'The Best Eminem Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/shadygold/',
