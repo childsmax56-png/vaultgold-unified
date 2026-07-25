@@ -26,6 +26,7 @@ FILES = {
     "Creator Tracker - 💲 Fundraisers.csv": "wolfgold",
     "Juice WRLD Tracker - Fundraisers.csv": "juicegold",
     "Yeat Trackër - Fundraisers.csv": "twizzygold",
+    "Kanye Tracker - Groupbuys.csv": "yzygold",
 }
 
 YEAR_RE = re.compile(r"\b(20[0-3]\d)\b")

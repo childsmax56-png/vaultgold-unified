@@ -103,7 +103,7 @@ export function GroupbuysView({ data, searchQuery }: GroupbuysViewProps) {
       animate={{ opacity: 1, filter: 'blur(0px)' }}
       exit={{ opacity: 0, filter: 'blur(10px)' }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="absolute inset-0 z-10 overflow-y-auto custom-scrollbar pb-64"
+      className="pb-12"
     >
       {/* Summary header */}
       <div className="px-6 md:px-8 pt-6 md:pt-8 pb-6 border-b border-white/5">
