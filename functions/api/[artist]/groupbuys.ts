@@ -85,6 +85,22 @@ export const onRequestGet: PagesFunction = async (context) => {
 
     groups.sort((a, b) => yearRank(b.year) - yearRank(a.year));
 
+    // No explicit all-time total in the sheet — sum the per-year totals instead.
+    if (!grandTotal) {
+      let sum = 0;
+      let found = false;
+      for (const g of groups) {
+        const m = g.total.match(/\$\s*([\d,]+(?:\.\d+)?)/);
+        if (m) {
+          sum += parseFloat(m[1].replace(/,/g, ''));
+          found = true;
+        }
+      }
+      if (found && sum > 0) {
+        grandTotal = '$' + sum.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+    }
+
     return csvResponse({ years: groups, grandTotal });
   } catch {
     return csvResponse({ years: [], grandTotal: '' });
