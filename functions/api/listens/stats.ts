@@ -34,8 +34,8 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
          COUNT(*) AS plays,
          COALESCE(SUM(duration_sec), 0) AS totalSec,
          COUNT(DISTINCT track || '||' || COALESCE(artist, '')) AS uniqueTracks,
-         COUNT(DISTINCT COALESCE(artist, '')) AS uniqueArtists,
-         COUNT(DISTINCT COALESCE(era_name, '')) AS uniqueEras,
+         COUNT(DISTINCT NULLIF(artist, '')) AS uniqueArtists,
+         COUNT(DISTINCT NULLIF(era_name, '')) AS uniqueEras,
          COUNT(DISTINCT date(played_at / 1000, 'unixepoch')) AS activeDays,
          MIN(played_at) AS firstPlay,
          MAX(played_at) AS lastPlay

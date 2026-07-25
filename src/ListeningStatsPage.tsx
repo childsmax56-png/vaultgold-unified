@@ -78,12 +78,14 @@ export function ListeningStatsPage() {
 
   useEffect(() => {
     if (!isListeningLoggedIn()) { setLoading(false); return; }
+    let cancelled = false;
     setLoading(true);
     setError(null);
     fetchListeningStats(range)
-      .then((s: Stats) => setStats(s))
-      .catch(() => setError('Could not load your stats. Try again in a moment.'))
-      .finally(() => setLoading(false));
+      .then((s: Stats) => { if (!cancelled) setStats(s); })
+      .catch(() => { if (!cancelled) setError('Could not load your stats. Try again in a moment.'); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [range]);
 
   const summaryText = useMemo(() => {
