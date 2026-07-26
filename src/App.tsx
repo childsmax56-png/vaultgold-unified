@@ -1225,14 +1225,12 @@ export default function App() {
         setFetchedTabs(prev => new Set([...prev, 'art']));
       });
 
-    fetch(`/${ARTIST_SLUG}/data/stems.csv`)
+    // Stems come through the API endpoint (committed CSV or live sheet fallback),
+    // matching the art/videos/released tabs.
+    axios.get(`/api/${ARTIST_SLUG}/stems`)
       .then(res => {
-        if (!res.ok || !(res.headers.get('content-type') || '').includes('csv')) return '';
-        return res.text();
-      })
-      .then(text => {
         try {
-          const rows = normalizeParsedRows(parseCSVText(text));
+          const rows = normalizeParsedRows(res.data as Record<string, string>[]);
           const stems = normalizeEraField(rows) as StemEntry[];
           setStemsData(stems);
           setFetchedTabs(prev => new Set([...prev, 'stems']));
@@ -1277,14 +1275,11 @@ export default function App() {
         console.error("Failed to fetch Released data:", err);
       });
 
-    fetch(`/${ARTIST_SLUG}/data/fakes.csv`)
+    // Fakes come through the API endpoint (committed CSV or live sheet fallback).
+    axios.get(`/api/${ARTIST_SLUG}/fakes`)
       .then(res => {
-        if (!res.ok || !(res.headers.get('content-type') || '').includes('csv')) return '';
-        return res.text();
-      })
-      .then(text => {
         try {
-        const rawFakes = normalizeEraField(normalizeParsedRows(parseCSVText(text))) as any[];
+        const rawFakes = normalizeEraField(normalizeParsedRows(res.data as Record<string, string>[])) as any[];
         const mappedFakes = rawFakes.map(item => {
           let name = item.Name || '';
           let featureExtra = undefined;

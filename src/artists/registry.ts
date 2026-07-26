@@ -33,6 +33,7 @@ import { smokegoldConfig } from './smokegold';
 import { jojigoldConfig } from './jojigold';
 import { jayzgoldConfig } from './jayzgold';
 import { macgoldConfig } from './macgold';
+import { frankgoldConfig } from './frankgold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   // Featured + pinned lineup drives the landing page order (see LandingPage.tsx)
@@ -70,6 +71,7 @@ export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   jojigold: jojigoldConfig,
   jayzgold: jayzgoldConfig,
   macgold: macgoldConfig,
+  frankgold: frankgoldConfig,
 };
 
 export const ARTIST_LIST: ArtistConfig[] = Object.values(ARTIST_REGISTRY);
