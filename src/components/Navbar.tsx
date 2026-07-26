@@ -11,7 +11,7 @@ import { retryImageOnError } from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
-export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'albumcopies' | 'groupbuys' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'tierlist' | 'subalbums' | 'concerts' | 'production' | 'contributor';
+export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'albumcopies' | 'groupbuys' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
 
 const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'albumcopies', 'groupbuys', 'videos', 'tracklists', 'subalbums']);
 
@@ -52,7 +52,6 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'comps', label: 'Comps' },
   { key: 'videos', label: 'Videos' },
   { key: 'playlists', label: 'Playlists' },
-  { key: 'tierlist', label: 'Tier Lists' },
   { key: 'subalbums', label: 'Sub Albums' },
   { key: 'concerts', label: 'Concerts' },
   { key: 'production', label: 'Production Projects' },
