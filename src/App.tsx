@@ -144,10 +144,12 @@ import { VideosView, VideoRawEntry } from './components/VideosView';
 import { SubAlbumsView, SubAlbumEntry } from './components/SubAlbumsView';
 import { ChatBubble } from './components/ChatBubble';
 import { PlaylistsView } from './components/PlaylistsView';
+import { TierListView } from './components/TierListView';
 import { TimelineView } from './components/TimelineView';
 import { ImportPlaylistModal } from './components/ImportPlaylistModal';
 import { useSettings, LOADING_SCREENS, LoadingScreenId } from './SettingsContext';
 import { PlaylistProvider } from './PlaylistContext';
+import { TierListProvider } from './TierListContext';
 import { initDataSync, scheduleDataPush } from './dataSync';
 import { recordListeningHistory } from './history';
 import { activeConfig } from './artists/activeConfig';
@@ -240,6 +242,7 @@ export default function App() {
     if (path.startsWith('/comps')) return 'comps';
     if (path.startsWith('/yedits')) return 'yedits';
     if (path.startsWith('/subalbums')) return 'subalbums';
+    if (path.startsWith('/tierlist')) return 'tierlist';
     if (path.startsWith('/concerts')) return 'concerts';
     if (path.startsWith('/production')) return 'production';
     return 'music';
@@ -1135,6 +1138,8 @@ export default function App() {
           setActiveCategory('yedits');
         } else if (path.startsWith('/subalbums')) {
           setActiveCategory('subalbums');
+        } else if (path.startsWith('/tierlist')) {
+          setActiveCategory('tierlist');
         } else if (path.startsWith('/related/')) {
           setActiveCategory('related');
           const slug = path.split('/related/')[1];
@@ -1594,6 +1599,10 @@ export default function App() {
       if (!currentPath.startsWith('/subalbums')) {
         window.history.pushState({ category: 'subalbums' }, '', absPath('/subalbums'));
       }
+    } else if (activeCategory === 'tierlist') {
+      if (!currentPath.startsWith('/tierlist')) {
+        window.history.pushState({ category: 'tierlist' }, '', absPath('/tierlist'));
+      }
     } else if (activeCategory === 'concerts') {
       if (!currentPath.startsWith('/concerts')) {
         window.history.pushState({ category: 'concerts' }, '', absPath('/concerts'));
@@ -1690,6 +1699,8 @@ export default function App() {
         setActiveCategory('yedits');
       } else if (path.startsWith('/subalbums')) {
         setActiveCategory('subalbums');
+      } else if (path.startsWith('/tierlist')) {
+        setActiveCategory('tierlist');
       } else if (path.startsWith('/concerts')) {
         setActiveCategory('concerts');
       } else if (path.startsWith('/production')) {
@@ -2962,6 +2973,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
   return (
     <ContributorContext.Provider value={{ navigateToContributor }}>
     <PlaylistProvider>
+    <TierListProvider>
     <div className="h-dvh w-full flex overflow-hidden relative bg-yzy-black" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       {/* The <audio> element lives in the global audioStore so playback persists
           across route changes; App attaches its scrobble/error listeners to it. */}
@@ -3230,6 +3242,14 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   key="playlists"
                   eras={[...erasArray, ...relatedErasArray]}
                   artData={artData}
+                  searchQuery={searchQuery}
+                  onPlaySong={handlePlaySong}
+                  onToast={showToast}
+                />
+              ) : activeCategory === 'tierlist' ? (
+                <TierListView
+                  key="tierlist"
+                  eras={[...erasArray, ...relatedErasArray]}
                   searchQuery={searchQuery}
                   onPlaySong={handlePlaySong}
                   onToast={showToast}
@@ -3754,6 +3774,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         onNavigatePlaylists={() => setActiveCategory('playlists')}
       />
     )}
+    </TierListProvider>
     </PlaylistProvider>
     </ContributorContext.Provider>
   );
