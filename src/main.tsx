@@ -15,6 +15,7 @@ import { MyTrackerPage } from './MyTrackerPage.tsx';
 import { GamePage } from './GamePage.tsx';
 import { YEditsGoldPage } from './YEditsGoldPage.tsx';
 import { ListeningStatsPage } from './ListeningStatsPage.tsx';
+import { TierListPage } from './TierListPage.tsx';
 import { TermsPage } from './TermsPage.tsx';
 import { PrivacyPage } from './PrivacyPage.tsx';
 import { DownloadPage } from './DownloadPage.tsx';
@@ -63,6 +64,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/game" element={<GamePage />} />
           <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
           <Route path="/listening" element={<SettingsProvider><ListeningStatsPage /></SettingsProvider>} />
+          <Route path="/tierlist" element={<SettingsProvider><TierListPage /></SettingsProvider>} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/download" element={<DownloadPage />} />

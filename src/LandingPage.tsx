@@ -1431,6 +1431,15 @@ export function LandingPage() {
           watermark="YE"
         />
         <BigLinkCard
+          href="/tierlist"
+          accent="#FF5C8A"
+          badge="Rank"
+          titleMain="TIER"
+          titleAccent="LIST"
+          subtitle="Rank songs from any artist"
+          watermark="TL"
+        />
+        <BigLinkCard
           href="/listening"
           accent="#7C5CFF"
           badge="Stats"

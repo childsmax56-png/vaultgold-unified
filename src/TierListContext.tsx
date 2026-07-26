@@ -12,6 +12,8 @@ export interface TierItem {
   version?: string;      // song.extra (e.g. "(V2)")
   url?: string;          // primary playable url, when known
   image?: string;        // resolved era cover, cached for export
+  artist?: string;       // artist slug (cross-artist / global page)
+  artistName?: string;   // artist display label
 }
 
 export interface TierRow {
@@ -60,9 +62,11 @@ interface TierListContextValue {
 
 const TierListContext = createContext<TierListContextValue | null>(null);
 
-export function TierListProvider({ children }: { children: ReactNode }) {
-  // Per-artist key: provider remounts on artist change (key={slug}).
-  const storageKey = `${activeConfig.STORAGE_PREFIX}tierlists`;
+export function TierListProvider({ children, storageKey: storageKeyProp }: { children: ReactNode; storageKey?: string }) {
+  // Per-artist key by default (provider remounts on artist change, key={slug}).
+  // The standalone cross-artist page passes an explicit key so its lists live in
+  // their own namespace instead of colliding with a tracker's per-artist lists.
+  const storageKey = storageKeyProp ?? `${activeConfig.STORAGE_PREFIX}tierlists`;
 
   const [tierLists, setTierLists] = useState<TierList[]>(() => {
     try {

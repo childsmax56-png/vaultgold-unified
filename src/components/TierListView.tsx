@@ -6,11 +6,22 @@ import { Era, Song } from '../types';
 import { CUSTOM_IMAGES, getCleanSongNameWithTags, retryImageOnError } from '../utils';
 import { useTierLists, TierItem, TierRow, UNRANKED, makeId } from '../TierListContext';
 
+interface ArtistCatalog {
+  artists: { slug: string; name: string }[];
+  loaded: string[];
+  loading: string | null;
+  onLoad: (slug: string) => void;
+  error?: string | null;
+}
+
 interface Props {
   eras: Era[];
   searchQuery?: string;
   onPlaySong: (song: Song, era: Era, contextTracks?: Song[]) => void;
   onToast?: (msg: string) => void;
+  // When provided, the picker gains an artist selector that lazy-loads each
+  // artist's catalog (used by the standalone cross-artist /tierlist page).
+  artistCatalog?: ArtistCatalog;
 }
 
 const PALETTE = [
@@ -18,10 +29,10 @@ const PALETTE = [
   '#7fffff', '#7fbfff', '#9f7fff', '#df7fff', '#ff7fdf', '#b0b0b0',
 ];
 
-function coverFor(eraName: string, eras: Era[]): string {
-  const custom = CUSTOM_IMAGES[eraName];
-  if (custom) return custom;
-  return eras.find(e => e.name === eraName)?.image || '';
+function coverFor(era: Era): string {
+  // Prefer an explicit cover on the era (set by the cross-artist page from that
+  // artist's config); fall back to the active tracker's CUSTOM_IMAGES map.
+  return era.image || CUSTOM_IMAGES[era.name] || '';
 }
 
 function itemKey(kind: string, eraName: string, songName?: string, url?: string): string {
@@ -90,7 +101,7 @@ function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number
 
 // --------------------------------------------------------------------------
 
-export function TierListView({ eras, searchQuery = '', onPlaySong, onToast }: Props) {
+export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, artistCatalog }: Props) {
   const { tierLists, createTierList, renameTierList, deleteTierList, updateTierList } = useTierLists();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
@@ -99,6 +110,7 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast }: Pr
   const [pickerOpen, setPickerOpen] = useState(false);
   const [pickerTab, setPickerTab] = useState<'songs' | 'eras'>('songs');
   const [pickerQuery, setPickerQuery] = useState('');
+  const [pickerArtist, setPickerArtist] = useState('');
   const [editingRowId, setEditingRowId] = useState<string | null>(null);
   const [paletteRowId, setPaletteRowId] = useState<string | null>(null);
   const [exporting, setExporting] = useState(false);
@@ -115,12 +127,14 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast }: Pr
     const eraEntries: TierItem[] = [];
     const songEntries: TierItem[] = [];
     for (const era of eras) {
-      const cover = coverFor(era.name, eras);
-      eraEntries.push({ id: '', kind: 'era', eraName: era.name, image: cover });
+      const cover = coverFor(era);
+      const artist = (era as any).artistSlug as string | undefined;
+      const artistName = (era as any).artistName as string | undefined;
+      eraEntries.push({ id: '', kind: 'era', eraName: era.name, image: cover, artist, artistName });
       const songs = Object.values(era.data || {}).flat();
       for (const s of songs) {
         const url = s.url || (s.urls && s.urls[0]) || '';
-        songEntries.push({ id: '', kind: 'song', eraName: era.name, songName: s.name, version: s.extra, url, image: cover });
+        songEntries.push({ id: '', kind: 'song', eraName: era.name, songName: s.name, version: s.extra, url, image: cover, artist, artistName });
       }
     }
     return { eraEntries, songEntries };
@@ -177,13 +191,22 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast }: Pr
   const resolveAndPlay = useCallback((item: TierItem) => {
     if (item.kind !== 'song') return;
     const era = eras.find(e => e.name === item.eraName);
-    if (!era) { onToast?.('Era not found'); return; }
-    const songs = Object.values(era.data || {}).flat();
-    const song = songs.find(s => s.name === item.songName && (s.url || (s.urls && s.urls[0]) || '') === (item.url || ''))
-      || songs.find(s => s.name === item.songName);
-    if (!song) { onToast?.('Song not found'); return; }
-    const eraForPlay = { ...era, image: CUSTOM_IMAGES[era.name] || era.image } as Era;
-    onPlaySong(song as Song, eraForPlay, [song as Song]);
+    if (era) {
+      const songs = Object.values(era.data || {}).flat();
+      const song = songs.find(s => s.name === item.songName && (s.url || (s.urls && s.urls[0]) || '') === (item.url || ''))
+        || songs.find(s => s.name === item.songName);
+      if (song) {
+        const eraForPlay = { ...era, image: coverFor(era) } as Era;
+        onPlaySong(song as Song, eraForPlay, [song as Song]);
+        return;
+      }
+    }
+    // Fallback: the card's own era isn't loaded (e.g. a cross-artist card after a
+    // reload). Play straight from the stored url + cover.
+    if (!item.url) { onToast?.('Song not available'); return; }
+    const synthSong = { name: item.songName || '', extra: item.version, url: item.url, image: item.image } as Song;
+    const synthEra = { name: item.eraName, image: item.image, data: {} } as Era;
+    onPlaySong(synthSong, synthEra, [synthSong]);
   }, [eras, onPlaySong, onToast]);
 
   const onTilePointerDown = (e: React.PointerEvent, item: TierItem) => {
@@ -492,7 +515,13 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast }: Pr
   // Editor screen
   // ======================================================================
   const alreadyKey = (it: TierItem) => placedKeys.has(itemKey(it.kind, it.eraName, it.songName, it.url));
+  const selectArtist = (slug: string) => {
+    setPickerArtist(slug);
+    if (slug && artistCatalog && !artistCatalog.loaded.includes(slug)) artistCatalog.onLoad(slug);
+  };
+  const artistPending = !!artistCatalog && !!pickerArtist && (artistCatalog.loading === pickerArtist || !artistCatalog.loaded.includes(pickerArtist));
   const pickerItems = (pickerTab === 'songs' ? catalog.songEntries : catalog.eraEntries).filter(it => {
+    if (artistCatalog && pickerArtist && it.artist !== pickerArtist) return false;
     if (!pickerQuery) return true;
     const q = pickerQuery.toLowerCase();
     return (it.songName || '').toLowerCase().includes(q) || it.eraName.toLowerCase().includes(q);
@@ -628,6 +657,22 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast }: Pr
                   <h2 className="text-lg font-bold text-white">Add to tier list</h2>
                   <button onClick={() => setPickerOpen(false)} className="p-1.5 rounded-lg hover:bg-white/10 text-white"><X className="w-5 h-5" /></button>
                 </div>
+                {artistCatalog && (
+                  <div className="mb-3">
+                    <select
+                      value={pickerArtist}
+                      onChange={e => selectArtist(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm outline-none focus:border-[var(--theme-color)]"
+                    >
+                      <option value="">Choose an artist…</option>
+                      {artistCatalog.artists.map(a => (
+                        <option key={a.slug} value={a.slug} className="bg-[#121216]">
+                          {a.name}{artistCatalog.loaded.includes(a.slug) ? ' ✓' : ''}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
                 <div className="flex items-center gap-2 mb-3">
                   <button onClick={() => setPickerTab('songs')} className={`px-3 py-1.5 rounded-full text-sm font-semibold ${pickerTab === 'songs' ? 'bg-[var(--theme-color)] text-black' : 'bg-white/5 text-white/60'}`}>Songs</button>
                   <button onClick={() => setPickerTab('eras')} className={`px-3 py-1.5 rounded-full text-sm font-semibold ${pickerTab === 'eras' ? 'bg-[var(--theme-color)] text-black' : 'bg-white/5 text-white/60'}`}>Eras</button>
@@ -638,6 +683,16 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast }: Pr
                 </div>
               </div>
               <div className="flex-1 overflow-y-auto p-3">
+                {artistCatalog && !pickerArtist ? (
+                  <div className="text-center text-white/40 py-16">Pick an artist above to load their songs & eras.</div>
+                ) : artistPending ? (
+                  <div className="text-center text-white/50 py-16">
+                    {artistCatalog?.error && artistCatalog.loading !== pickerArtist
+                      ? <span className="text-red-400">{artistCatalog.error}</span>
+                      : `Loading ${artistCatalog?.artists.find(a => a.slug === pickerArtist)?.name || ''}…`}
+                  </div>
+                ) : (
+                <>
                 <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
                   {pickerItems.slice(0, 300).map((it, i) => {
                     const added = alreadyKey(it);
@@ -663,6 +718,8 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast }: Pr
                   })}
                 </div>
                 {pickerItems.length === 0 && <div className="text-center text-white/40 py-10">No matches.</div>}
+                </>
+                )}
               </div>
             </motion.div>
           </motion.div>
