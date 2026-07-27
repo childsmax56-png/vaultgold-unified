@@ -31,6 +31,7 @@ export const frankgoldConfig: ArtistConfig = {
   artistLabel: 'Frank Ocean',
   cardLetter: 'F',
   logoUrl: '',
+  artistPhotoUrl: '/artists/frankocean.jpg',
 
   getArtistName() {
     return 'Frank Ocean';
