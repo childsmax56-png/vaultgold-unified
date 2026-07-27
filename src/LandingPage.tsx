@@ -869,6 +869,7 @@ const SHEET_URLS: Record<string, string> = {
   vampgold:   'https://docs.google.com/spreadsheets/d/1Irtfvymu26CShYowLMMfD-rM0o9CJqE6-BBSlYsAaF4/edit?gid=0#gid=0',
   wolfgold:   'https://docs.google.com/spreadsheets/d/19GJTNp7PxK1OtyVBmGelZSMm5i8Fy82EGtcFdIkBpsY/edit?gid=1246511510#gid=1246511510',
   drizzygold: 'https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/edit?gid=755606328#gid=755606328',
+  frankgold:  'https://franktracker.net/',
   xgold:      'https://docs.google.com/spreadsheets/d/1wKq7lSERmXYutRFxipNbFFc-DUdqhVXWWlFnqkzwRFA/edit?usp=sharing',
   cactigold:  'https://docs.google.com/spreadsheets/d/1gJqbQrb3dIWF-PLMsKkNUrftpQb8zxsZFDAIpSvT5Fo/edit?gid=846204501#gid=846204501',
   kdotgold:   'https://docs.google.com/spreadsheets/d/1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI/edit?gid=1169728352#gid=1169728352',
@@ -1523,23 +1524,23 @@ export function LandingPage() {
       <style>{`
         .grid-top {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 8px;
         }
         .grid-pinned {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 8px;
         }
         .grid-small {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 8px;
         }
         @media (max-width: 600px) {
-          .grid-top { grid-template-columns: 1fr 1fr; }
+          .grid-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
           .grid-top > *:first-child { grid-column: 1 / -1; }
-          .grid-small { grid-template-columns: repeat(2, 1fr); }
+          .grid-small { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
       `}</style>

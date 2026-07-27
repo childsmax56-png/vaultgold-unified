@@ -3310,7 +3310,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               <span>·</span>
               <a href="https://docs.google.com/document/d/1b8aidNuSLLHfzgzrJ0uGdWHPuo-uNk6wI21Vscwzid4/edit?tab=t.0#heading=h.coxp3mvb86xr" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Changelog</a>
               <span>·</span>
-              <a href={`https://docs.google.com/spreadsheets/d/${activeConfig.HARDCODED_SHEET_ID}/`} target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Link For The Sheet</a>
+              <a href={activeConfig.sheetUrl || `https://docs.google.com/spreadsheets/d/${activeConfig.HARDCODED_SHEET_ID}/`} target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Link For The Sheet</a>
             </p>
           </div>
         </main>

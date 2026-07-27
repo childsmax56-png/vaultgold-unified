@@ -26,6 +26,7 @@ export const frankgoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
+  sheetUrl: 'https://franktracker.net/',
 
   accentColor: '#e8622c',
   artistLabel: 'Frank Ocean',

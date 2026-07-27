@@ -10,6 +10,11 @@ export interface ArtistConfig {
   // Google Sheets sync
   HARDCODED_SHEET_ID: string;
   HARDCODED_SHEET_GID: string;
+
+  // Public link to the source spreadsheet/tracker, shown as the in-tracker
+  // "Link For The Sheet". Overrides the docs.google.com URL built from
+  // HARDCODED_SHEET_ID (used by trackers whose source isn't a plain Google Sheet).
+  sheetUrl?: string;
   SHEET_URL_UNRELEASED: string;
   SHEET_URL_RECENT: string;
 
