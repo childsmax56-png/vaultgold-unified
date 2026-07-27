@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useCallback } from 'react';
+import { useState, useMemo, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Trash2, Pencil, Check, X, ChevronLeft, ChevronUp, ChevronDown, Download, Search, Play, Palette, Layers } from 'lucide-react';
 import { saveAs } from 'file-saver';
@@ -98,6 +98,50 @@ function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number
   }
   return lines.filter(Boolean);
 }
+
+// A single draggable card. Hoisted to module scope with a STABLE identity so
+// that the frequent drag-state re-renders of TierListView (drag position, drop
+// target, etc.) reconcile these in place instead of unmounting/remounting them
+// — a remount mid-drag would destroy the element holding the pointer capture
+// and silently kill the drag.
+const TierTile = memo(function TierTile({ it, dragging, onPointerDown, onPointerMove, onPointerUp, onRemove }: {
+  it: TierItem;
+  dragging: boolean;
+  onPointerDown: (e: React.PointerEvent, it: TierItem) => void;
+  onPointerMove: (e: React.PointerEvent) => void;
+  onPointerUp: (e: React.PointerEvent) => void;
+  onRemove: (id: string) => void;
+}) {
+  return (
+    <div
+      data-tile-id={it.id}
+      onPointerDown={e => onPointerDown(e, it)}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      style={{ touchAction: 'none' }}
+      className={`group relative w-[68px] h-[68px] shrink-0 rounded-md overflow-hidden bg-white/5 select-none cursor-grab active:cursor-grabbing ${dragging ? 'opacity-30' : ''}`}
+      title={it.kind === 'song' ? `${cleanName(it.songName)} ${it.version || ''}`.trim() : cleanName(it.eraName)}
+    >
+      {it.image
+        ? <img src={it.image} onError={retryImageOnError} referrerPolicy="no-referrer" draggable={false} className="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="" />
+        : <div className="absolute inset-0 bg-white/10" />}
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-1 pt-3 pb-0.5 pointer-events-none">
+        <div className="text-[8px] leading-tight font-semibold text-white line-clamp-2">{it.kind === 'era' ? cleanName(it.eraName) : cleanName(it.songName)}</div>
+        {it.kind === 'song' && it.version && <div className="text-[7px] leading-tight text-white/60 truncate">{it.version}</div>}
+      </div>
+      {it.kind === 'song' && (
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/30 pointer-events-none transition">
+          <Play className="w-5 h-5 text-white fill-white" />
+        </div>
+      )}
+      <button
+        onPointerDown={e => e.stopPropagation()}
+        onClick={e => { e.stopPropagation(); onRemove(it.id); }}
+        className="absolute top-0.5 right-0.5 p-0.5 rounded bg-black/70 text-white/70 opacity-0 group-hover:opacity-100 hover:text-red-400 transition"
+      ><X className="w-3 h-3" /></button>
+    </div>
+  );
+});
 
 // --------------------------------------------------------------------------
 
@@ -527,36 +571,6 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
     return (it.songName || '').toLowerCase().includes(q) || it.eraName.toLowerCase().includes(q);
   });
 
-  const Tile = ({ it }: { it: TierItem }) => (
-    <div
-      data-tile-id={it.id}
-      onPointerDown={e => onTilePointerDown(e, it)}
-      onPointerMove={onTilePointerMove}
-      onPointerUp={onTilePointerUp}
-      style={{ touchAction: 'none' }}
-      className={`group relative w-[68px] h-[68px] shrink-0 rounded-md overflow-hidden bg-white/5 select-none ${it.kind === 'song' ? 'cursor-grab active:cursor-grabbing' : 'cursor-grab active:cursor-grabbing'} ${dragItem?.id === it.id ? 'opacity-30' : ''}`}
-      title={it.kind === 'song' ? `${cleanName(it.songName)} ${it.version || ''}`.trim() : cleanName(it.eraName)}
-    >
-      {it.image
-        ? <img src={it.image} onError={retryImageOnError} referrerPolicy="no-referrer" draggable={false} className="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="" />
-        : <div className="absolute inset-0 bg-white/10" />}
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-1 pt-3 pb-0.5 pointer-events-none">
-        <div className="text-[8px] leading-tight font-semibold text-white line-clamp-2">{it.kind === 'era' ? cleanName(it.eraName) : cleanName(it.songName)}</div>
-        {it.kind === 'song' && it.version && <div className="text-[7px] leading-tight text-white/60 truncate">{it.version}</div>}
-      </div>
-      {it.kind === 'song' && (
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/30 pointer-events-none transition">
-          <Play className="w-5 h-5 text-white fill-white" />
-        </div>
-      )}
-      <button
-        onPointerDown={e => e.stopPropagation()}
-        onClick={e => { e.stopPropagation(); removeItem(it.id); }}
-        className="absolute top-0.5 right-0.5 p-0.5 rounded bg-black/70 text-white/70 opacity-0 group-hover:opacity-100 hover:text-red-400 transition"
-      ><X className="w-3 h-3" /></button>
-    </div>
-  );
-
   return (
     <div className="max-w-6xl mx-auto px-3 py-5">
       {/* Header */}
@@ -617,7 +631,9 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
               data-tier={row.id}
               className={`flex-1 min-h-[80px] flex flex-wrap gap-1.5 p-2 transition-colors ${dropTarget?.tier === row.id ? 'bg-[var(--theme-color)]/10' : ''}`}
             >
-              {(list.items[row.id] || []).map(it => <Tile key={it.id} it={it} />)}
+              {(list.items[row.id] || []).map(it => (
+                <TierTile key={it.id} it={it} dragging={dragItem?.id === it.id} onPointerDown={onTilePointerDown} onPointerMove={onTilePointerMove} onPointerUp={onTilePointerUp} onRemove={removeItem} />
+              ))}
             </div>
           </div>
         ))}
@@ -634,7 +650,9 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
         >
           {(list.items[UNRANKED] || []).length === 0
             ? <div className="text-white/30 text-sm px-2 py-6">Add songs or eras, then drag them up into tiers. Tap a song to play it.</div>
-            : (list.items[UNRANKED] || []).map(it => <Tile key={it.id} it={it} />)}
+            : (list.items[UNRANKED] || []).map(it => (
+                <TierTile key={it.id} it={it} dragging={dragItem?.id === it.id} onPointerDown={onTilePointerDown} onPointerMove={onTilePointerMove} onPointerUp={onTilePointerUp} onRemove={removeItem} />
+              ))}
         </div>
       </div>
 
