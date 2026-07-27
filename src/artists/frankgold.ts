@@ -37,7 +37,17 @@ export const frankgoldConfig: ArtistConfig = {
     return 'Frank Ocean';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Broken Glass':               '/frankgold/eras/broken-glass.jpg',
+    'Lonny Breaux':               '/frankgold/eras/lonny-breaux.jpg',
+    'nostalgia, ULTRA.':          '/frankgold/eras/nostalgia-ultra.jpg',
+    'channel ORANGE':             '/frankgold/eras/channel-orange.png',
+    'Endless':                    '/frankgold/eras/endless.png',
+    'blonde':                     '/frankgold/eras/blonde.png',
+    'blonded radio':              '/frankgold/eras/blonded-radio.png',
+    "Look At Us, We're In Love":  '/frankgold/eras/look-at-us-were-in-love.jpg',
+    'Upcoming':                   '/frankgold/eras/upcoming.jpg',
+  },
 
   // Keys must match the era names in public/frankgold/data/unreleased.csv exactly.
   ALBUM_RELEASE_DATES: {
