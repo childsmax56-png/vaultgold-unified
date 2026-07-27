@@ -27,6 +27,8 @@ FILES = {
                        platform=0, handle=1, notes=2, years=3, type=4, link=5),
     "drizzygold": dict(file="Drake Tracker - Media.csv",
                        platform=0, handle=1, notes=2, type=3, link=4),
+    "frankgold":  dict(file="Frank Ocean Tracker - Socials.csv",
+                       platform=0, handle=1, notes=2, link=3, type=4),
     "jojigold":   dict(file="Joji Tracker - 👤 Socials [WIP].csv",
                        platform=0, handle=1, notes=2, years=3, type=4, link=5),
     "kdotgold":   dict(file="Kendrick Lamar Music Tracker - 🌐 Socials.csv",

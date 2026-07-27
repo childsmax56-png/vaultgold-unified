@@ -689,6 +689,136 @@ export const SOCIALS_DATA: Record<string, SocialEntry[]> = {
       "link": "https://www.ovosound.com"
     }
   ],
+  "frankgold": [
+    {
+      "platform": "Audiomack",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://audiomack.com/frankocean"
+    },
+    {
+      "platform": "Amazon Music",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://music.amazon.com/artists/B0051RE4I6/frank-ocean"
+    },
+    {
+      "platform": "Apple Music",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://music.apple.com/us/artist/frank-ocean/442122051"
+    },
+    {
+      "platform": "Deezer",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://www.deezer.com/en/artist/1350335"
+    },
+    {
+      "platform": "Facebook",
+      "handle": "Frank Ocean",
+      "notes": "Frank Ocean's official Facebook page.",
+      "type": "Social Media",
+      "status": "",
+      "link": "https://www.facebook.com/frankocean/"
+    },
+    {
+      "platform": "Instagram",
+      "handle": "blonded",
+      "notes": "Frank Ocean's official Instagram page.",
+      "type": "Social Media",
+      "status": "",
+      "link": "https://www.instagram.com/blonded/"
+    },
+    {
+      "platform": "SoundCloud",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://soundcloud.com/frankocean"
+    },
+    {
+      "platform": "Spotify",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://open.spotify.com/artist/2h93pZq0e7k5yf4dywlkpM"
+    },
+    {
+      "platform": "Tidal",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://tidal.com/artist/3997333"
+    },
+    {
+      "platform": "Pandora",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://www.pandora.com/artist/frank-ocean/ARfx6tJl74PJ9zX"
+    },
+    {
+      "platform": "Qobuz",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://www.qobuz.com/us-en/interpreter/frank-ocean/595654"
+    },
+    {
+      "platform": "Twitter",
+      "handle": "Frank Ocean",
+      "notes": "Frank Ocean's archived Twitter page, dating all thet way back to April 1st, 2013.",
+      "type": "Social Media",
+      "status": "",
+      "link": "https://frank-tweets.commandtechno.com/"
+    },
+    {
+      "platform": "Tumblr",
+      "handle": "Frank Ocean",
+      "notes": "Frank Ocean's official Tumblr page.",
+      "type": "Social Media",
+      "status": "",
+      "link": "https://frankocean.tumblr.com/archive"
+    },
+    {
+      "platform": "YouTube",
+      "handle": "Blonded",
+      "notes": "Frank Ocean's official YouTube channel where music videos, interviews and live performances can be found.",
+      "type": "Social Media",
+      "status": "",
+      "link": "https://www.youtube.com/@blonded"
+    },
+    {
+      "platform": "YouTube Music",
+      "handle": "Frank Ocean",
+      "notes": "Subscription based streaming platform where Frank Ocean's commercial discography can be found.",
+      "type": "Streaming Service",
+      "status": "",
+      "link": "https://music.youtube.com/channel/UCETYiBLjt2v-pcKSgf8pe6g"
+    },
+    {
+      "platform": "Website",
+      "handle": "blonded.co",
+      "notes": "Frank Ocean's official website.",
+      "type": "Other",
+      "status": "",
+      "link": "https://blonded.co/"
+    }
+  ],
   "jojigold": [
     {
       "platform": "Vine",
