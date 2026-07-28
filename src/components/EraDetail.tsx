@@ -7,6 +7,7 @@ import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
 import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, ERA_DISCLAIMERS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , retryImageOnError, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { activeConfig } from '../artists/activeConfig';
+import { addItemsToGlobalTierList, readGlobalTierLists } from '../tierListStore';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
 import { useSettings } from '../SettingsContext';
@@ -225,6 +226,10 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
   const [isPlaylistMenuOpen, setIsPlaylistMenuOpen] = useState(false);
   const [playlistCreating, setPlaylistCreating] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState('');
+  const [isTierMenuOpen, setIsTierMenuOpen] = useState(false);
+  const [tierCreating, setTierCreating] = useState(false);
+  const [newTierName, setNewTierName] = useState('');
+  const [tierLists, setTierLists] = useState<{ id: string; name: string }[]>([]);
   const { playlists, addToPlaylist, createPlaylist } = usePlaylists();
 
   useEffect(() => {
@@ -502,6 +507,53 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
     setNewPlaylistName('');
     setPlaylistCreating(false);
     handleAddSelectedToPlaylist(id);
+  };
+
+  // --- Tier List (cross-artist Tier List Maker on the homepage) -------------
+  const openTierMenu = () => {
+    setTierLists(readGlobalTierLists().map(t => ({ id: t.id, name: t.name })));
+    setIsTierMenuOpen(o => !o);
+  };
+
+  const handleAddSelectedToTierList = (listId: string | null, name?: string) => {
+    // Rank cards can be any selected song, playable or not.
+    const selected = processedCategories.flatMap(({ category, songs }) =>
+      songs.map((song, i) => ({ song, key: getSongKey(category, i) }))
+    ).filter(({ key }) => selectedKeys.has(key)).map(({ song }) => song);
+
+    if (!selected.length) return;
+
+    const items = selected.map(song => {
+      const eraName = (song as any).realEra?.name || era.name;
+      const cover = CUSTOM_IMAGES[eraName] || (song as any).realEra?.image || era.image || '';
+      const url = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '') || '';
+      return {
+        kind: 'song' as const,
+        eraName,
+        songName: song.name,
+        version: song.extra,
+        url,
+        image: cover,
+        artist: activeConfig.slug,
+        artistName: activeConfig.artistLabel,
+      };
+    });
+
+    const { added } = addItemsToGlobalTierList(listId, name ?? null, items);
+    setIsTierMenuOpen(false);
+    setTierCreating(false);
+    setNewTierName('');
+    setToastMessage(
+      added > 0
+        ? `Added ${added} song${added !== 1 ? 's' : ''} to tier list · rank it on the Tier List Maker (homepage)`
+        : 'Those songs are already on that tier list'
+    );
+    setTimeout(() => setToastMessage(null), 4000);
+  };
+
+  const handleCreateTierListFromSelected = () => {
+    if (!newTierName.trim()) return;
+    handleAddSelectedToTierList(null, newTierName.trim());
   };
 
   const processedCategories = useMemo(() => {
@@ -1298,6 +1350,74 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                             New playlist...
                           </button>
                         )}
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div className="relative">
+                  <button
+                    onClick={openTierMenu}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    <Layers className="w-3.5 h-3.5 text-[var(--theme-color)]" />
+                    Tier List
+                  </button>
+                  {isTierMenuOpen && (
+                    <>
+                      <div className="fixed inset-0 z-40" onClick={() => { setIsTierMenuOpen(false); setTierCreating(false); setNewTierName(''); }} />
+                      <div className="absolute bottom-full mb-2 right-0 z-50 bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl min-w-[220px] overflow-hidden">
+                        {tierLists.length === 0 && !tierCreating && (
+                          <div className="px-4 py-2 text-xs text-white/40">No tier lists yet</div>
+                        )}
+                        {tierLists.map(t => (
+                          <button
+                            key={t.id}
+                            onClick={() => handleAddSelectedToTierList(t.id)}
+                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-left text-white/80 hover:bg-white/5 transition-colors cursor-pointer"
+                          >
+                            <span className="truncate">{t.name}</span>
+                          </button>
+                        ))}
+                        {tierCreating ? (
+                          <div className="p-2 border-t border-white/10" onClick={e => e.stopPropagation()}>
+                            <input
+                              autoFocus
+                              value={newTierName}
+                              onChange={e => setNewTierName(e.target.value)}
+                              onKeyDown={e => {
+                                if (e.key === 'Enter') handleCreateTierListFromSelected();
+                                if (e.key === 'Escape') { setTierCreating(false); setNewTierName(''); }
+                              }}
+                              placeholder="Tier list name..."
+                              className="w-full bg-white/10 border border-white/20 rounded px-3 py-1.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-white/40"
+                            />
+                            <div className="flex gap-2 mt-1.5">
+                              <button
+                                onClick={handleCreateTierListFromSelected}
+                                className="flex-1 text-xs py-1 rounded bg-[var(--theme-color)]/20 text-[var(--theme-color)] hover:bg-[var(--theme-color)]/30 transition-colors cursor-pointer"
+                              >
+                                Create
+                              </button>
+                              <button
+                                onClick={() => { setTierCreating(false); setNewTierName(''); }}
+                                className="flex-1 text-xs py-1 rounded bg-white/5 text-white/50 hover:bg-white/10 transition-colors cursor-pointer"
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => setTierCreating(true)}
+                            className={`w-full flex items-center gap-2 px-4 py-2 text-sm text-left text-white/50 hover:text-white hover:bg-white/5 transition-colors cursor-pointer ${tierLists.length > 0 ? 'border-t border-white/10' : ''}`}
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                            New tier list...
+                          </button>
+                        )}
+                        <div className="px-4 py-2 border-t border-white/10 text-[10px] leading-snug text-white/35">
+                          Tier lists are saved to the cross-artist <span className="text-white/55 font-semibold">Tier List Maker</span> on the homepage, where you can rank &amp; export them.
+                        </div>
                       </div>
                     </>
                   )}

@@ -501,6 +501,11 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
           </button>
         </div>
 
+        <div className="mb-6 flex items-start gap-2 text-xs text-white/45 bg-white/[0.03] border border-white/10 rounded-lg px-3 py-2">
+          <Layers className="w-4 h-4 shrink-0 mt-0.5 text-[var(--theme-color)]/70" />
+          <span>Tip: inside any era on a tracker, hit <span className="text-white/70 font-semibold">Select</span>, pick songs, and use <span className="text-white/70 font-semibold">Tier List</span> to send them straight here.</span>
+        </div>
+
         {creating && (
           <div className="flex items-center gap-2 mb-6">
             <input

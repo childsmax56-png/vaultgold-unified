@@ -3,10 +3,11 @@ import { ChevronLeft, Layers } from 'lucide-react';
 import { TierListProvider } from './TierListContext';
 import { TierListView } from './components/TierListView';
 import { ARTIST_LIST, getArtistConfig } from './artists/registry';
+import { GLOBAL_TIERLIST_KEY } from './tierListStore';
 import type { Era, Song } from './types';
 import * as audioStore from './player/audioStore';
 
-const GLOBAL_STORAGE_KEY = 'unvaulted_global_tierlists';
+const GLOBAL_STORAGE_KEY = GLOBAL_TIERLIST_KEY;
 
 // Sources the lightweight audio element can stream directly. YouTube/Spotify/
 // SoundCloud need the full per-tracker player, so we don't attempt them here.

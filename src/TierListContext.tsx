@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
 import { activeConfig } from './artists/activeConfig';
 
 // A single card placed on a tier list. Cards can be an individual song or a
@@ -77,11 +77,27 @@ export function TierListProvider({ children, storageKey: storageKeyProp }: { chi
     }
   });
 
+  const mountedRef = useRef(false);
   useEffect(() => {
+    // Skip the initial write so an external add (e.g. from an era's multi-select,
+    // which fires 'vg-tierlists-changed') isn't clobbered before we re-read it.
+    if (!mountedRef.current) { mountedRef.current = true; return; }
     try {
       localStorage.setItem(storageKey, JSON.stringify(tierLists));
     } catch {}
   }, [tierLists, storageKey]);
+
+  // Re-read when another surface writes to the same store while we're mounted.
+  useEffect(() => {
+    const reload = () => {
+      try {
+        const s = localStorage.getItem(storageKey);
+        setTierLists(s ? JSON.parse(s) : []);
+      } catch {}
+    };
+    window.addEventListener('vg-tierlists-changed', reload);
+    return () => window.removeEventListener('vg-tierlists-changed', reload);
+  }, [storageKey]);
 
   const createTierList = (name: string): string => {
     const tl = newTierList(name.trim() || 'My Tier List');
