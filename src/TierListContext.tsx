@@ -58,6 +58,8 @@ interface TierListContextValue {
   renameTierList: (id: string, name: string) => void;
   deleteTierList: (id: string) => void;
   updateTierList: (id: string, updater: (tl: TierList) => TierList) => void;
+  // Append a ready-made list (e.g. decoded from a share code). Returns its id.
+  importTierList: (list: TierList) => string;
 }
 
 const TierListContext = createContext<TierListContextValue | null>(null);
@@ -117,8 +119,13 @@ export function TierListProvider({ children, storageKey: storageKeyProp }: { chi
     setTierLists(prev => prev.map(tl => tl.id === id ? updater(tl) : tl));
   };
 
+  const importTierList = (list: TierList): string => {
+    setTierLists(prev => [...prev, list]);
+    return list.id;
+  };
+
   return (
-    <TierListContext.Provider value={{ tierLists, createTierList, renameTierList, deleteTierList, updateTierList }}>
+    <TierListContext.Provider value={{ tierLists, createTierList, renameTierList, deleteTierList, updateTierList, importTierList }}>
       {children}
     </TierListContext.Provider>
   );

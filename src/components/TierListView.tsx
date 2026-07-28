@@ -1,10 +1,11 @@
-import { useState, useMemo, useRef, useCallback, memo } from 'react';
+import { useState, useMemo, useRef, useCallback, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Trash2, Pencil, Check, X, ChevronLeft, ChevronUp, ChevronDown, Download, Search, Play, Palette, Layers } from 'lucide-react';
+import { Plus, Trash2, Pencil, Check, X, ChevronLeft, ChevronUp, ChevronDown, Download, Search, Play, Palette, Layers, Share2, Upload, Copy, Link2 } from 'lucide-react';
 import { saveAs } from 'file-saver';
 import { Era, Song } from '../types';
 import { CUSTOM_IMAGES, getCleanSongNameWithTags, retryImageOnError } from '../utils';
 import { useTierLists, TierItem, TierRow, UNRANKED, makeId } from '../TierListContext';
+import { encodeTierListShare, decodeTierListShare } from '../tierListStore';
 
 interface ArtistCatalog {
   artists: { slug: string; name: string }[];
@@ -143,10 +144,51 @@ const TierTile = memo(function TierTile({ it, dragging, onPointerDown, onPointer
   );
 });
 
+// Paste-a-share-code importer.
+function ImportModal({ open, text, error, onText, onClose, onImport }: {
+  open: boolean;
+  text: string;
+  error: string | null;
+  onText: (t: string) => void;
+  onClose: () => void;
+  onImport: () => void;
+}) {
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[95] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
+          <motion.div initial={{ scale: 0.96, y: 10 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 10 }} onClick={e => e.stopPropagation()} className="w-full max-w-lg bg-[#121216] border border-white/10 rounded-2xl overflow-hidden">
+            <div className="flex items-center justify-between p-4 border-b border-white/10">
+              <h2 className="text-lg font-bold text-white flex items-center gap-2"><Upload className="w-5 h-5 text-[var(--theme-color)]" /> Import a tier list</h2>
+              <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-white/10 text-white"><X className="w-5 h-5" /></button>
+            </div>
+            <div className="p-4">
+              <p className="text-sm text-white/50 mb-3">Paste a share code (or the whole share link) someone sent you.</p>
+              <textarea
+                autoFocus
+                value={text}
+                onChange={e => onText(e.target.value)}
+                placeholder="Paste share code or link…"
+                rows={4}
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-xs font-mono outline-none focus:border-[var(--theme-color)] resize-none break-all"
+              />
+              {error && <div className="text-red-400 text-xs mt-2">{error}</div>}
+              <div className="flex justify-end gap-2 mt-4">
+                <button onClick={onClose} className="px-4 py-2 rounded-lg bg-white/5 text-white/70 text-sm hover:bg-white/10">Cancel</button>
+                <button onClick={onImport} disabled={!text.trim()} className="px-4 py-2 rounded-lg bg-[var(--theme-color)] text-black text-sm font-semibold disabled:opacity-40">Import</button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 // --------------------------------------------------------------------------
 
 export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, artistCatalog }: Props) {
-  const { tierLists, createTierList, renameTierList, deleteTierList, updateTierList } = useTierLists();
+  const { tierLists, createTierList, renameTierList, deleteTierList, updateTierList, importTierList } = useTierLists();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState('');
@@ -158,8 +200,57 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
   const [editingRowId, setEditingRowId] = useState<string | null>(null);
   const [paletteRowId, setPaletteRowId] = useState<string | null>(null);
   const [exporting, setExporting] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
+  const [shareTemplate, setShareTemplate] = useState(true);
+  const [copied, setCopied] = useState<'code' | 'link' | null>(null);
+  const [importOpen, setImportOpen] = useState(false);
+  const [importText, setImportText] = useState('');
+  const [importError, setImportError] = useState<string | null>(null);
 
   const list = tierLists.find(t => t.id === selectedId) ?? null;
+
+  // ---- share / import ---------------------------------------------------
+  const copyText = async (text: string, which: 'code' | 'link') => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(which);
+      setTimeout(() => setCopied(null), 1500);
+    } catch {
+      onToast?.('Copy failed — select and copy manually');
+    }
+  };
+
+  const doImport = (raw: string) => {
+    // Accept a bare code or a full share link (…#import=<code>).
+    const linkMatch = raw.match(/[#&]import=([^&\s]+)/);
+    const code = linkMatch ? decodeURIComponent(linkMatch[1]) : raw.trim();
+    const decoded = decodeTierListShare(code);
+    if (!decoded) { setImportError("That code doesn't look right. Paste the full share code."); return; }
+    const id = importTierList(decoded);
+    const count = Object.values(decoded.items).reduce((a, b) => a + b.length, 0);
+    setImportOpen(false); setImportText(''); setImportError(null);
+    setSelectedId(id);
+    onToast?.(`Imported "${decoded.name}" · ${count} card${count !== 1 ? 's' : ''}`);
+  };
+
+  // Auto-import from a shared link: /tierlist#import=<code>
+  const importedFromHash = useRef(false);
+  useEffect(() => {
+    if (importedFromHash.current) return;
+    const m = window.location.hash.match(/[#&]import=([^&]+)/);
+    if (!m) return;
+    importedFromHash.current = true;
+    const decoded = decodeTierListShare(decodeURIComponent(m[1]));
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+    if (decoded) {
+      const id = importTierList(decoded);
+      setSelectedId(id);
+      onToast?.(`Imported "${decoded.name}"`);
+    } else {
+      onToast?.('That shared tier list link was invalid');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // ---- drag state -------------------------------------------------------
   const dragRef = useRef<{ item: TierItem; startX: number; startY: number; active: boolean } | null>(null);
@@ -493,12 +584,20 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
             <Layers className="w-6 h-6 text-[var(--theme-color)]" />
             <h1 className="text-2xl font-bold text-white">Tier Lists</h1>
           </div>
-          <button
-            onClick={() => { setCreating(true); setNewName(''); }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--theme-color)] text-black font-semibold text-sm hover:brightness-110 transition"
-          >
-            <Plus className="w-4 h-4" /> New tier list
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => { setImportText(''); setImportError(null); setImportOpen(true); }}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition"
+            >
+              <Upload className="w-4 h-4" /> Import
+            </button>
+            <button
+              onClick={() => { setCreating(true); setNewName(''); }}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--theme-color)] text-black font-semibold text-sm hover:brightness-110 transition"
+            >
+              <Plus className="w-4 h-4" /> New tier list
+            </button>
+          </div>
         </div>
 
         <div className="mb-6 flex items-start gap-2 text-xs text-white/45 bg-white/[0.03] border border-white/10 rounded-lg px-3 py-2">
@@ -556,6 +655,15 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
             })}
           </div>
         )}
+
+        <ImportModal
+          open={importOpen}
+          text={importText}
+          error={importError}
+          onText={t => { setImportText(t); setImportError(null); }}
+          onClose={() => setImportOpen(false)}
+          onImport={() => doImport(importText)}
+        />
       </div>
     );
   }
@@ -597,6 +705,7 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
         )}
         <div className="flex-1" />
         <button onClick={() => setPickerOpen(true)} className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--theme-color)] text-black font-semibold text-sm hover:brightness-110 transition"><Plus className="w-4 h-4" /> Add songs</button>
+        <button onClick={() => { setShareTemplate(true); setCopied(null); setShareOpen(true); }} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition"><Share2 className="w-4 h-4" /> Share</button>
         <button onClick={exportImage} disabled={exporting} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition disabled:opacity-50"><Download className="w-4 h-4" /> {exporting ? 'Rendering…' : 'Export image'}</button>
       </div>
 
@@ -748,6 +857,54 @@ export function TierListView({ eras, searchQuery = '', onPlaySong, onToast, arti
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Share modal */}
+      <AnimatePresence>
+        {shareOpen && list && (() => {
+          const code = encodeTierListShare(list, shareTemplate);
+          const link = `${window.location.origin}/tierlist#import=${code}`;
+          return (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[95] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShareOpen(false)}>
+              <motion.div initial={{ scale: 0.96, y: 10 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 10 }} onClick={e => e.stopPropagation()} className="w-full max-w-lg bg-[#121216] border border-white/10 rounded-2xl overflow-hidden">
+                <div className="flex items-center justify-between p-4 border-b border-white/10">
+                  <h2 className="text-lg font-bold text-white flex items-center gap-2"><Share2 className="w-5 h-5 text-[var(--theme-color)]" /> Share tier list</h2>
+                  <button onClick={() => setShareOpen(false)} className="p-1.5 rounded-lg hover:bg-white/10 text-white"><X className="w-5 h-5" /></button>
+                </div>
+                <div className="p-4">
+                  <div className="flex rounded-lg overflow-hidden border border-white/10 mb-3 text-sm">
+                    <button onClick={() => setShareTemplate(true)} className={`flex-1 px-3 py-2 font-semibold transition-colors ${shareTemplate ? 'bg-[var(--theme-color)] text-black' : 'bg-white/5 text-white/60 hover:text-white'}`}>Template</button>
+                    <button onClick={() => setShareTemplate(false)} className={`flex-1 px-3 py-2 font-semibold transition-colors ${!shareTemplate ? 'bg-[var(--theme-color)] text-black' : 'bg-white/5 text-white/60 hover:text-white'}`}>With my ranking</button>
+                  </div>
+                  <p className="text-xs text-white/45 mb-3">
+                    {shareTemplate
+                      ? 'Template: everyone gets the same songs & tiers, unranked, to rank themselves.'
+                      : 'Sends your exact placements so others see how you ranked it.'}
+                  </p>
+                  <label className="text-[11px] uppercase tracking-widest text-white/40">Share link</label>
+                  <div className="flex gap-2 mt-1 mb-3">
+                    <input readOnly value={link} onFocus={e => e.currentTarget.select()} className="flex-1 min-w-0 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white/80 text-xs outline-none" />
+                    <button onClick={() => copyText(link, 'link')} className="shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[var(--theme-color)] text-black text-xs font-semibold"><Link2 className="w-3.5 h-3.5" /> {copied === 'link' ? 'Copied' : 'Copy'}</button>
+                  </div>
+                  <label className="text-[11px] uppercase tracking-widest text-white/40">Or share code</label>
+                  <div className="flex gap-2 mt-1">
+                    <textarea readOnly value={code} onFocus={e => e.currentTarget.select()} rows={3} className="flex-1 min-w-0 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white/70 text-[11px] font-mono outline-none resize-none break-all" />
+                    <button onClick={() => copyText(code, 'code')} className="shrink-0 self-start flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 text-white text-xs font-semibold hover:bg-white/20"><Copy className="w-3.5 h-3.5" /> {copied === 'code' ? 'Copied' : 'Copy'}</button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          );
+        })()}
+      </AnimatePresence>
+
+      <ImportModal
+        open={importOpen}
+        text={importText}
+        error={importError}
+        onText={t => { setImportText(t); setImportError(null); }}
+        onClose={() => setImportOpen(false)}
+        onImport={() => doImport(importText)}
+      />
     </div>
   );
 }
