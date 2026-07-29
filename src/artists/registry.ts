@@ -36,6 +36,31 @@ import { macgoldConfig } from './macgold';
 import { frankgoldConfig } from './frankgold';
 import { kengoldConfig } from './kengold';
 import { d4vdgoldConfig } from './d4vdgold';
+// Big-update mass import (scripts/build-bigupdate-csvs.py)
+import { szagoldConfig } from './szagold';
+import { aaliyahgoldConfig } from './aaliyahgold';
+import { antclemonsgoldConfig } from './antclemonsgold';
+import { badbunnygoldConfig } from './badbunnygold';
+import { chancegoldConfig } from './chancegold';
+import { gambinogoldConfig } from './gambinogold';
+import { chrisbrowngoldConfig } from './chrisbrowngold';
+import { coldplaygoldConfig } from './coldplaygold';
+import { daftpunkgoldConfig } from './daftpunkgold';
+import { dannybrowngoldConfig } from './dannybrowngold';
+import { doechiigoldConfig } from './doechiigold';
+import { gibbsgoldConfig } from './gibbsgold';
+import { gunnagoldConfig } from './gunnagold';
+import { icecubegoldConfig } from './icecubegold';
+import { jamesblakegoldConfig } from './jamesblakegold';
+import { lauryngoldConfig } from './lauryngold';
+import { nasgoldConfig } from './nasgold';
+import { stevelacygoldConfig } from './stevelacygold';
+import { trippiegoldConfig } from './trippiegold';
+import { tydollagoldConfig } from './tydollagold';
+import { ushergoldConfig } from './ushergold';
+import { weekndgoldConfig } from './weekndgold';
+import { westsidegoldConfig } from './westsidegold';
+import { wutanggoldConfig } from './wutanggold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   // Featured + pinned lineup drives the landing page order (see LandingPage.tsx)
@@ -75,6 +100,31 @@ export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   macgold: macgoldConfig,
   frankgold: frankgoldConfig,
   kengold: kengoldConfig,
+  // Big-update mass import (scripts/build-bigupdate-csvs.py)
+  szagold: szagoldConfig,               // SZA
+  aaliyahgold: aaliyahgoldConfig,       // Aaliyah
+  antclemonsgold: antclemonsgoldConfig, // Ant Clemons
+  badbunnygold: badbunnygoldConfig,     // Bad Bunny
+  chancegold: chancegoldConfig,         // Chance the Rapper
+  gambinogold: gambinogoldConfig,       // Childish Gambino
+  chrisbrowngold: chrisbrowngoldConfig, // Chris Brown
+  coldplaygold: coldplaygoldConfig,     // Coldplay
+  daftpunkgold: daftpunkgoldConfig,     // Daft Punk
+  dannybrowngold: dannybrowngoldConfig, // Danny Brown
+  doechiigold: doechiigoldConfig,       // Doechii
+  gibbsgold: gibbsgoldConfig,           // Freddie Gibbs
+  gunnagold: gunnagoldConfig,           // Gunna
+  icecubegold: icecubegoldConfig,       // Ice Cube
+  jamesblakegold: jamesblakegoldConfig, // James Blake
+  lauryngold: lauryngoldConfig,         // Ms. Lauryn Hill
+  nasgold: nasgoldConfig,               // Nas
+  stevelacygold: stevelacygoldConfig,   // Steve Lacy
+  trippiegold: trippiegoldConfig,       // Trippie Redd
+  tydollagold: tydollagoldConfig,       // Ty Dolla $ign
+  ushergold: ushergoldConfig,           // Usher
+  weekndgold: weekndgoldConfig,         // The Weeknd
+  westsidegold: westsidegoldConfig,     // Westside Gunn
+  wutanggold: wutanggoldConfig,         // Wu-Tang Clan
   // Easter egg — hidden from the landing grid, reached by searching "d4vd".
   d4vdgold: d4vdgoldConfig,
 };

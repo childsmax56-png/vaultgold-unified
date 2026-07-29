@@ -1,0 +1,99 @@
+import type { ArtistConfig } from './types';
+
+// Coldplay tracker. Data served from committed CSV snapshots under
+// public/coldplaygold/data/*.csv, transformed from the source Google-Sheet exports by
+// scripts/build-bigupdate-csvs.py. An era only appears in the Music grid if its
+// name is a key in ALBUM_RELEASE_DATES.
+export const coldplaygoldConfig: ArtistConfig = {
+  slug: 'coldplaygold',
+  SITE_NAME: 'COLDPLAYGOLD',
+  SITE_DESCRIPTION: 'The Best Coldplay Tracker In The World!',
+  SITE_URL: 'https://unvaulted.cc/coldplaygold/',
+  OG_IMAGE_URL: '',
+  STORAGE_PREFIX: 'coldplaygold_',
+
+  HARDCODED_SHEET_ID: '',
+  HARDCODED_SHEET_GID: '',
+  SHEET_URL_UNRELEASED: '',
+  SHEET_URL_RECENT: '',
+
+  accentColor: '#eab308',
+  artistLabel: 'Coldplay',
+  cardLetter: 'C',
+  logoUrl: '',
+  artistPhotoUrl: '/artists/coldplaygold.jpg',
+
+  getArtistName() {
+    return 'Coldplay';
+  },
+
+  CUSTOM_IMAGES: {},
+
+  ALBUM_RELEASE_DATES: {
+    'ADD': '??/??/????',
+    'Early Days / Pre-Parachutes': '??/??/????',
+    'Early Days': '??/??/????',
+    'Parachutes': '??/??/????',
+    'A Rush of Blood to the Head': '??/??/????',
+    'X&Y': '??/??/????',
+    'Viva la Vida or Death and All His Friends': '??/??/????',
+    'Viva la Vida': '??/??/????',
+    'The Wedding Album': '??/??/????',
+    'Mylo Xyloto': '??/??/????',
+    'Ghost Stories': '??/??/????',
+    'A Head Full of Dreams': '??/??/????',
+    'Everyday Life': '??/??/????',
+    'Music of the Spheres': '??/??/????',
+    'Music of the Spheres, Vol. 2:': '??/??/????',
+    'Moon Music': '??/??/????',
+    '!': '??/??/????',
+    'Music Of The Spheres, Vol. 3': '??/??/????',
+    'Musical': '??/??/????',
+    'Coldplay (LP12)': '??/??/????',
+    'Coldplay': '??/??/????',
+    'Unknown Era': '??/??/????',
+    'Parachutes anniversary': '??/??/????',
+    'AROBTTH Anniversary': '??/??/????',
+    'X&Y Anniversary': '??/??/????',
+    'Viva Anniversary': '??/??/????'
+  },
+
+  HIDDEN_ALBUMS: [],
+  ALBUM_DESCRIPTIONS: {},
+  ALBUM_SONG_COUNTS: {},
+  CUSTOM_ALBUM_INFO: {},
+  ERA_MAPPINGS: {},
+
+  ALBUM_ORDER: [
+    'ADD',
+    'Early Days / Pre-Parachutes',
+    'Early Days',
+    'Parachutes',
+    'A Rush of Blood to the Head',
+    'X&Y',
+    'Viva la Vida or Death and All His Friends',
+    'Viva la Vida',
+    'The Wedding Album',
+    'Mylo Xyloto',
+    'Ghost Stories',
+    'A Head Full of Dreams',
+    'Everyday Life',
+    'Music of the Spheres',
+    'Music of the Spheres, Vol. 2:',
+    'Moon Music',
+    '!',
+    'Music Of The Spheres, Vol. 3',
+    'Musical',
+    'Coldplay (LP12)',
+    'Coldplay',
+    'Unknown Era',
+    'Parachutes anniversary',
+    'AROBTTH Anniversary',
+    'X&Y Anniversary',
+    'Viva Anniversary'
+  ],
+
+  TAG_MAP: {},
+  TAG_TOOLTIP_MAP: {},
+  ERA_THEMES: {},
+};
