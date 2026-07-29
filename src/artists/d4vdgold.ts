@@ -110,9 +110,8 @@ export const d4vdgoldConfig: ArtistConfig = {
   ERA_THEMES: {},
 
   // Chronological fundraiser-history tab (data from data/groupbuys.csv).
-  // Recent / Released / Stems / Misc / Tracklists are data-driven and appear
-  // automatically when their CSV/JSON returns rows. The source Art sheet has no
-  // images, so the Art tab is intentionally left off.
+  // Recent / Released / Stems / Art / Misc / Tracklists are data-driven and
+  // appear automatically when their CSV/JSON returns rows. Art was later added
+  // with local cover images under public/d4vdgold/art/ (see data/art.csv).
   hasGroupbuysTab: true,
-  hasArtTab: false,
 };
