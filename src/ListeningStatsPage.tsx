@@ -241,10 +241,13 @@ export function ListeningStatsPage() {
           {stats.byHour.length > 0 && (
             <Section title="When you listen">
               <BarChart
-                data={Array.from({ length: 24 }, (_, h) => ({
-                  label: `${h}`,
-                  value: stats.byHour.find(x => x.hour === h)?.plays ?? 0,
-                }))}
+                data={(() => {
+                  const offsetHours = Math.round(-new Date().getTimezoneOffset() / 60);
+                  return Array.from({ length: 24 }, (_, h) => ({
+                    label: `${h}`,
+                    value: stats.byHour.find(x => x.hour === ((h - offsetHours) % 24 + 24) % 24)?.plays ?? 0,
+                  }));
+                })()}
                 everyLabel={3}
               />
             </Section>
