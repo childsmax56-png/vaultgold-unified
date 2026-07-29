@@ -33,7 +33,8 @@ export const kengoldConfig: ArtistConfig = {
   artistLabel: 'Ken Carson',
   cardLetter: 'K',
   logoUrl: '',
-  artistPhotoUrl: '',
+  artistPhotoUrl: '/artists/kengold.jpg',
+  photoObjectPosition: 'center',
 
   getArtistName() {
     return 'Ken Carson';
