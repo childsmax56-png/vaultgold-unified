@@ -36,7 +36,7 @@ export const d4vdgoldConfig: ArtistConfig = {
   artistLabel: 'd4vd',
   cardLetter: 'D',
   logoUrl: '',
-  artistPhotoUrl: '',
+  artistPhotoUrl: '/artists/d4vd.png',
 
   getArtistName() {
     return 'd4vd';
