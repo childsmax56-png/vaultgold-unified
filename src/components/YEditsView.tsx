@@ -198,7 +198,7 @@ function ArtistSelect({ value, onChange, disabled }: ArtistSelectProps) {
         disabled={disabled}
       >
         <option value="">None / Original</option>
-        {ARTIST_LIST.map(a => (
+        {ARTIST_LIST.filter(a => !a.hidden).map(a => (
           <option key={a.slug} value={a.artistLabel}>{a.artistLabel}</option>
         ))}
         <option value="__other__">Other…</option>

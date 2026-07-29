@@ -35,6 +35,7 @@ import { jayzgoldConfig } from './jayzgold';
 import { macgoldConfig } from './macgold';
 import { frankgoldConfig } from './frankgold';
 import { kengoldConfig } from './kengold';
+import { d4vdgoldConfig } from './d4vdgold';
 
 export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   // Featured + pinned lineup drives the landing page order (see LandingPage.tsx)
@@ -74,6 +75,8 @@ export const ARTIST_REGISTRY: Record<string, ArtistConfig> = {
   macgold: macgoldConfig,
   frankgold: frankgoldConfig,
   kengold: kengoldConfig,
+  // Easter egg — hidden from the landing grid, reached by searching "d4vd".
+  d4vdgold: d4vdgoldConfig,
 };
 
 export const ARTIST_LIST: ArtistConfig[] = Object.values(ARTIST_REGISTRY);

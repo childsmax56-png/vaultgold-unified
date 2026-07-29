@@ -66,6 +66,12 @@ export interface ArtistConfig {
   // Albums that appear only in the Art tab (not in Music/Related listings)
   ART_ONLY_ALBUMS?: string[];
 
+  // Easter-egg: keep this artist off the landing-page grid. It stays reachable
+  // by URL. A hidden artist does NOT match its own name/slug in search — it only
+  // appears when the query contains one of its secret `searchAliases` passphrases.
+  hidden?: boolean;
+  searchAliases?: string[];
+
   // Landing page card
   accentColor: string;
   artistLabel: string;

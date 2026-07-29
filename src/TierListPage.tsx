@@ -27,6 +27,7 @@ function isDirectlyPlayableAudio(url: string): boolean {
 
 // Artists sorted by display label for the picker dropdown.
 const ARTISTS = ARTIST_LIST
+  .filter(c => !c.hidden) // keep easter-egg artists (e.g. d4vd) out of the picker
   .map(c => ({ slug: c.slug, name: c.artistLabel }))
   .sort((a, b) => a.name.localeCompare(b.name));
 

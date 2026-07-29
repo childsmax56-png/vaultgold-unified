@@ -1202,22 +1202,33 @@ export function LandingPage() {
   const isFavorite = (slug: string) => favorites.includes(slug);
 
   const query = searchQuery.trim().toLowerCase();
-  const matchesQuery = (c: ArtistConfig) =>
-    !query ||
-    c.artistLabel.toLowerCase().includes(query) ||
-    c.SITE_NAME.toLowerCase().includes(query) ||
-    c.slug.toLowerCase().includes(query);
+  const matchesQuery = (c: ArtistConfig) => {
+    if (!query) return true;
+    // Hidden (easter-egg) artists never match their own name/slug — they only
+    // surface when the typed query contains one of their secret passphrases.
+    if (c.hidden)
+      return (c.searchAliases ?? []).some(a => query.includes(a.toLowerCase()));
+    return (
+      c.artistLabel.toLowerCase().includes(query) ||
+      c.SITE_NAME.toLowerCase().includes(query) ||
+      c.slug.toLowerCase().includes(query)
+    );
+  };
 
+  // Search includes hidden (easter-egg) artists so typing "d4vd" surfaces them;
+  // the grid below is built from the visible-only list.
   const searchResults = query
     ? ARTIST_LIST.filter(matchesQuery).sort((a, b) => Number(isFavorite(b.slug)) - Number(isFavorite(a.slug)))
     : null;
 
-  const favoriteConfigs = ARTIST_LIST.filter(c => isFavorite(c.slug));
+  const gridList = ARTIST_LIST.filter(c => !c.hidden);
 
-  const featured = ARTIST_LIST[0];
+  const favoriteConfigs = gridList.filter(c => isFavorite(c.slug));
+
+  const featured = gridList[0];
   // Pinned 2×2 next to the featured card: Carti, Tyler, A$AP Rocky, Drake
-  const topRight = ARTIST_LIST.slice(1, 5);
-  const smallArtists = ARTIST_LIST.slice(5);
+  const topRight = gridList.slice(1, 5);
+  const smallArtists = gridList.slice(5);
   const allSmall = smallArtists.map(c => ({ type: 'artist' as const, config: c }));
   const INITIAL_SMALL = 4;
   const visibleSmall = showAll ? allSmall : allSmall.slice(0, INITIAL_SMALL);
