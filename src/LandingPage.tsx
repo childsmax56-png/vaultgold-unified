@@ -900,6 +900,7 @@ const SHEET_URLS: Record<string, string> = {
   cudigold:   'https://docs.google.com/spreadsheets/d/1fj9HcbyLbu5NGwJzbl1lExQud3FNKv-JUU6NY4OKM9Y/edit',
   rihannagold: 'https://docs.google.com/spreadsheets/d/1DKf6MBZ6KcKoKFH5Vnl1qc3CrPIiHey-EgOrpKpLZQo/edit',
   jayzgold:   'https://docs.google.com/spreadsheets/d/18GwItf2M92QimNMAbUCfFsxCkiHlkf8DPJPLWHAcoxQ/edit?gid=1202580443#gid=1202580443',
+  kengold:    'https://docs.google.com/spreadsheets/d/1OARID98xCqRaBr8gyQCvI3aD4jKQDGgtedyRaiP_pyo/edit?gid=1367980602#gid=1367980602',
 };
 
 function ShareButton({ url, accent }: { url: string; accent?: string }) {
