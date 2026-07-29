@@ -37,6 +37,7 @@ export const d4vdgoldConfig: ArtistConfig = {
   cardLetter: 'D',
   logoUrl: '',
   artistPhotoUrl: '/artists/d4vd.png',
+  photoObjectPosition: 'center', // center his face in the square card crop
 
   getArtistName() {
     return 'd4vd';
