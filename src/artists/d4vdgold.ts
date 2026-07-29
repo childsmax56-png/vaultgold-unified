@@ -43,7 +43,19 @@ export const d4vdgoldConfig: ArtistConfig = {
     return 'd4vd';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Pre-d4vd':                      '/d4vdgold/eras/pre-d4vd.jpg',
+    'The Hoodstar Diary':            '/d4vdgold/eras/the-hoodstar-diary.jpg',
+    'Love Is Blind':                 '/d4vdgold/eras/love-is-blind.jpg',
+    'Untitled Rock EP':              '/d4vdgold/eras/untitled-rock-ep.jpg',
+    'The Root Of It All [V1]':       '/d4vdgold/eras/the-root-of-it-all.jpg',
+    'Petals To Thorns [V2]':         '/d4vdgold/eras/petals-to-thorns.jpg',
+    'Garden Of Eden':                '/d4vdgold/eras/garden-of-eden.jpg',
+    'WITHERED':                      '/d4vdgold/eras/withered.jpg',
+    'WITHERED Deluxe: Marcescence':  '/d4vdgold/eras/withered-deluxe-marcescence.jpg',
+    'Post-Incident':                 '/d4vdgold/eras/post-incident.jpg',
+    'Unknown':                       '/d4vdgold/eras/unknown.jpg',
+  },
 
   // Keys must match the era names in public/d4vdgold/data/unreleased.csv exactly.
   ALBUM_RELEASE_DATES: {
