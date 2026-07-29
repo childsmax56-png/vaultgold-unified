@@ -251,7 +251,7 @@ export function CompsView({ eras, searchQuery, onNavigateToYedits }: CompsViewPr
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className="p-6 md:p-8 pb-32"
     >
-      {settings.yzyGoldMode && onNavigateToYedits && (
+      {settings.YZYGOLDMode && onNavigateToYedits && (
         <button
           onClick={onNavigateToYedits}
           className="w-full mb-8 relative overflow-hidden rounded-2xl border border-[var(--theme-color)]/30 bg-gradient-to-r from-black via-[#1a1400] to-black hover:border-[var(--theme-color)]/60 transition-all duration-300 group"

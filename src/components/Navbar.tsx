@@ -134,10 +134,10 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
         <div className="flex-1 flex flex-row items-center justify-between md:justify-start w-full relative gap-3">
           <div className="md:hidden flex items-center shrink-0">
             <img onError={retryImageOnError}
-              src={settings.landingArtistPhotos ? '/logo.png' : (activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png')}
-              alt={activeConfig.SITE_NAME}
+              src="/logo.png"
+              alt="UNVAULTED"
               onClick={onHomeClick}
-              className={`object-contain object-left cursor-pointer hover:opacity-80 transition-opacity duration-300 ${!settings.landingArtistPhotos && activeConfig.navLogoUrl ? 'h-[64px] w-[200px]' : 'h-[48px] w-[160px]'}`}
+              className="object-contain object-left cursor-pointer hover:opacity-80 transition-opacity duration-300 h-[48px] w-[160px]"
             />
           </div>
 
@@ -176,10 +176,10 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
                   )}
                 </AnimatePresence>
               </div>
-              <div className={`hidden md:block shrink-0 overflow-hidden ${!settings.landingArtistPhotos && activeConfig.navLogoUrl ? 'w-[220px] h-[80px]' : 'w-[170px] h-[60px]'}`}>
+              <div className="hidden md:block shrink-0 overflow-hidden w-[170px] h-[60px]">
                 <img onError={retryImageOnError}
-                  src={settings.landingArtistPhotos ? '/logo.png' : (activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png')}
-                  alt={activeConfig.SITE_NAME}
+                  src="/logo.png"
+                  alt="UNVAULTED"
                   onClick={onHomeClick}
                   className="w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300"
                   style={{ objectPosition: 'left center' }}

@@ -3297,13 +3297,10 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
 
           <div className="mt-auto px-6 py-8 text-center border-t border-white/5">
             <p className="text-[10px] text-white/30 leading-relaxed">
-              YZYGOLD does not host or hold any illegal files. All links are external and provided as-is for educational and archival purposes only.
+              UNVAULTED does not host or hold any illegal files. All links are external and provided as-is for educational and archival purposes only.
             </p>
             <p className="text-[10px] text-white/30 leading-relaxed">
-              YZYGOLD 2026 © · v2.1
-            </p>
-            <p className="text-[10px] text-white/30 leading-relaxed mt-1">
-              Logo created by Nr7th on discord
+              UNVAULTED 2026 © · v2.1
             </p>
             <p className="text-[10px] text-white/30 leading-relaxed mt-1 space-x-3">
               <a href="https://discord.gg/ZE5gHFYYGy" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
@@ -3482,7 +3479,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               
               <div className="space-y-4 mb-8 text-sm text-white/70 leading-relaxed font-medium">
                 <p>
-                  Vercel (The Hosting of yzygold) had a data breach, including my last.fm api keys! I needed to reset the keys, and now the old last.fm api key that you are using is not working!
+                  Vercel (The Hosting of UNVAULTED) had a data breach, including my last.fm api keys! I needed to reset the keys, and now the old last.fm api key that you are using is not working!
                 </p>
                 <p>
                   dont worry, you are not infected, and the site is not infected. Passwords from last.fm are protected.

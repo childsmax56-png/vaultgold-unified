@@ -278,14 +278,6 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
         </div>
 
         <div style={row}>
-          <div>
-            <div style={label}>Artist Photos</div>
-            <div style={sublabel}>Show artist photos on cards</div>
-          </div>
-          <Toggle on={settings.landingArtistPhotos} onToggle={() => updateSettings({ landingArtistPhotos: !settings.landingArtistPhotos })} />
-        </div>
-
-        <div style={row}>
           <div style={label}>Tags as Emojis</div>
           <Toggle on={settings.tagsAsEmojis} onToggle={() => updateSettings({ tagsAsEmojis: !settings.tagsAsEmojis })} />
         </div>
@@ -360,7 +352,7 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           <div style={{ ...row, flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
             <div>
               <div style={label}>Sync Spotify & Last.fm</div>
-              <div style={sublabel}>In order to gain access to Spotify and Last.fm, sign into your VaultGold account here.</div>
+              <div style={sublabel}>In order to gain access to Spotify and Last.fm, sign into your UNVAULTED account here.</div>
             </div>
             <button
               onClick={() => setShowSignIn(true)}
@@ -370,7 +362,7 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
                 cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
               }}
             >
-              <LogIn size={14} /> Sign in to VaultGold
+              <LogIn size={14} /> Sign in to UNVAULTED
             </button>
           </div>
         )}
@@ -405,7 +397,7 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-              <span style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>VaultGold Account</span>
+              <span style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>UNVAULTED Account</span>
               <button
                 onClick={() => setShowSignIn(false)}
                 style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)' }}
@@ -699,13 +691,12 @@ function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleF
             <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', background: 'rgba(201,162,36,0.25)', color: '#C9A224', padding: '2px 7px', borderRadius: 4, marginBottom: 6 }}>Featured</div>
           )}
           <div style={{ fontSize: NAME_SIZE[variant], fontWeight: 800, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.1 }}>{config.artistLabel}</div>
-          <div style={{ fontSize: ARTIST_SIZE[variant], color: 'rgba(255,255,255,0.5)', marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{config.SITE_NAME}</div>
         </div>
       </div>
     );
   }
 
-  // Logo / text mode
+  // Text-only fallback (no photo)
   const baseBorder = variant === 'featured' ? `${accent}30` : 'rgba(255,255,255,0.07)';
   return (
     <div
@@ -726,26 +717,8 @@ function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleF
         {variant === 'featured' && (
           <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', background: `${accent}20`, color: accent, padding: '2px 7px', borderRadius: 4, marginBottom: 10 }}>Featured</div>
         )}
-        {config.logoUrl ? (
-          <>
-            <img
-              src={config.logoUrl}
-              alt={config.SITE_NAME}
-              style={{ display: 'block', height: LOGO_HEIGHT[variant], width: 'auto', maxWidth: '100%', objectFit: 'contain', objectPosition: 'left center' }}
-              onError={e => {
-                const img = e.currentTarget;
-                img.style.display = 'none';
-                const fb = img.nextElementSibling as HTMLElement;
-                if (fb) fb.style.display = 'block';
-              }}
-            />
-            <div style={{ display: 'none', fontSize: NAME_SIZE[variant], fontWeight: 900, color: accent, letterSpacing: '-0.02em' }}>{config.SITE_NAME}</div>
-          </>
-        ) : (
-          <div style={{ fontSize: NAME_SIZE[variant], fontWeight: 900, color: accent, letterSpacing: '-0.02em' }}>{config.SITE_NAME}</div>
-        )}
+        <div style={{ fontSize: NAME_SIZE[variant], fontWeight: 900, color: accent, letterSpacing: '-0.02em' }}>{config.artistLabel}</div>
       </div>
-      <div style={{ fontSize: 9, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: `${accent}aa` }}>{config.artistLabel}</div>
     </div>
   );
 }
@@ -1196,7 +1169,7 @@ export function LandingPage() {
   const [socialsFor, setSocialsFor] = useState<ArtistConfig | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const { settings } = useSettings();
-  const showPhotos = settings.landingArtistPhotos;
+  const showPhotos = true;
   const { user, signInWithGoogle, signOut } = useVGAuth();
   const { favorites, toggleFavorite } = useFavoriteArtists();
   const isFavorite = (slug: string) => favorites.includes(slug);
@@ -1527,9 +1500,6 @@ export function LandingPage() {
       <footer style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
         <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
           © 2026 UNVAULTED
-        </span>
-        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.15)' }}>
-          Logos created by YZYsam &amp; north on Discord
         </span>
       </footer>
 
