@@ -86,4 +86,5 @@ export const weekndgoldConfig: ArtistConfig = {
   TAG_MAP: {},
   TAG_TOOLTIP_MAP: {},
   ERA_THEMES: {},
+  hasSubAlbumsTab: false, // no sub-albums data for this tracker
 };
