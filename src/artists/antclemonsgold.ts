@@ -21,7 +21,7 @@ export const antclemonsgoldConfig: ArtistConfig = {
   artistLabel: 'Ant Clemons',
   cardLetter: 'A',
   logoUrl: '',
-  artistPhotoUrl: '', // no Wikipedia photo available — falls back to letter card
+  artistPhotoUrl: '/artists/antclemonsgold.jpg',
 
   getArtistName() {
     return 'Ant Clemons';
