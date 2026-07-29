@@ -39,7 +39,17 @@ export const kengoldConfig: ArtistConfig = {
     return 'Ken Carson';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Before Boy Barbie':  '/kengold/eras/before-boy-barbie.png',
+    'Boy Barbie':         '/kengold/eras/boy-barbie.png',
+    'Teen X':             '/kengold/eras/teen-x.png',
+    'Teen X : Relapsed':  '/kengold/eras/teen-x-relapsed.png',
+    'Project X':          '/kengold/eras/project-x.png',
+    'X':                  '/kengold/eras/x.png',
+    'A Great Chaos':      '/kengold/eras/a-great-chaos.png',
+    'More Chaos':         '/kengold/eras/more-chaos.jpg',
+    'xperiment':          '/kengold/eras/xperiment.jpg',
+  },
 
   // Keys must match the era names in public/kengold/data/unreleased.csv exactly.
   ALBUM_RELEASE_DATES: {
