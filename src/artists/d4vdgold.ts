@@ -5,7 +5,7 @@ import type { ArtistConfig } from './types';
 // This config is marked `hidden: true`, so d4vd never appears on the landing
 // page grid — and, unlike a normal tracker, does NOT match his own name/slug in
 // search. It only surfaces when the search query contains the secret passphrase
-// "celeste" (see `searchAliases` below + matchesQuery in LandingPage.tsx).
+// "#justiceforceleste" (see `searchAliases` below + matchesQuery in LandingPage.tsx).
 //
 // Data is served from committed CSV snapshots under public/d4vdgold/data/*.csv,
 // transformed from the community d4vd tracker's Google-Sheet exports by
@@ -24,7 +24,7 @@ export const d4vdgoldConfig: ArtistConfig = {
 
   // Hidden from the landing grid — revealed only by searching the passphrase.
   hidden: true,
-  searchAliases: ['celeste'],
+  searchAliases: ['#justiceforceleste'],
 
   // All tabs read committed CSVs via the /api/d4vdgold/* endpoints.
   HARDCODED_SHEET_ID: '',
