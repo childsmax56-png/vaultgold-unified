@@ -35,9 +35,13 @@ export const wutanggoldConfig: ArtistConfig = {
     'Iron Flag':                           '/wutanggold/eras/iron-flag.png',
     '8 Diagrams':                          '/wutanggold/eras/8-diagrams.png',
     'A Better Tomorrow':                   '/wutanggold/eras/a-better-tomorrow.png',
-    'Shaolin School (Disc One)':           '/wutanggold/eras/shaolin-school-disc-one.png',
-    'Black Samson, The Bastard Swordsman': '/wutanggold/eras/black-samson-the-bastard-swordsman.png',
-    'Twice Upon A Time In Shaolin':        '/wutanggold/eras/twice-upon-a-time-in-shaolin.png',
+    'Shaolin School (Disc One)':                '/wutanggold/eras/shaolin-school-disc-one.png',
+    'Black Samson, The Bastard Swordsman':      '/wutanggold/eras/black-samson-the-bastard-swordsman.png',
+    'Once Upon A Time In Shaolin':              '/wutanggold/eras/once-upon-a-time-in-shaolin.jpg',
+    'Twice Upon A Time In Shaolin':             '/wutanggold/eras/twice-upon-a-time-in-shaolin.png',
+    'The Saga Continues [V1]':                  '/wutanggold/eras/the-saga-continues-v1.jpg',
+    'The Saga Continues [V2]':                  '/wutanggold/eras/the-saga-continues-v2.jpg',
+    '"The Eighth Diagrams" (8 Diagrams [V1])':  '/wutanggold/eras/the-eighth-diagrams-8-diagrams-v1.jpg',
   },
 
   ALBUM_RELEASE_DATES: {

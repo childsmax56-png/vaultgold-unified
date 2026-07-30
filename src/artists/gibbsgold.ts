@@ -28,9 +28,17 @@ export const gibbsgoldConfig: ArtistConfig = {
   },
 
   CUSTOM_IMAGES: {
+    'Baby Face Killa':      '/gibbsgold/eras/baby-face-killa.jpg',
+    'ESGN':                 '/gibbsgold/eras/esgn.jpg',
     'Piñata':               '/gibbsgold/eras/piñata.jpg',
-    '$oul $old $eparately': '/gibbsgold/eras/oul-old-eparately.jpg',
+    'Shadow of a Doubt':    '/gibbsgold/eras/shadow-of-a-doubt.jpg',
+    'You Only Live 2wice':  '/gibbsgold/eras/you-only-live-2wice.jpg',
+    'Freddie':              '/gibbsgold/eras/freddie.jpg',
+    'Bandana':              '/gibbsgold/eras/bandana.jpg',
     'Montana':              '/gibbsgold/eras/montana.jpg',
+    'Alfredo':              '/gibbsgold/eras/alfredo.jpg',
+    '$oul $old $eparately': '/gibbsgold/eras/oul-old-eparately.jpg',
+    'Alfredo 2':            '/gibbsgold/eras/alfredo-2.jpg',
   },
 
   ALBUM_RELEASE_DATES: {
