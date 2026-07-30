@@ -27,7 +27,19 @@ export const coldplaygoldConfig: ArtistConfig = {
     return 'Coldplay';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Early Days / Pre-Parachutes':               '/coldplaygold/eras/early-days-pre-parachutes.jpg',
+    'Parachutes':                                '/coldplaygold/eras/parachutes.jpg',
+    'A Rush of Blood to the Head':               '/coldplaygold/eras/a-rush-of-blood-to-the-head.jpg',
+    'X&Y':                                       '/coldplaygold/eras/xy.png',
+    'Viva la Vida or Death and All His Friends': '/coldplaygold/eras/viva-la-vida-or-death-and-all-his-friends.jpg',
+    'Mylo Xyloto':                               '/coldplaygold/eras/mylo-xyloto.jpg',
+    'Ghost Stories':                             '/coldplaygold/eras/ghost-stories.png',
+    'A Head Full of Dreams':                     '/coldplaygold/eras/a-head-full-of-dreams.png',
+    'Everyday Life':                             '/coldplaygold/eras/everyday-life.png',
+    'Music of the Spheres':                      '/coldplaygold/eras/music-of-the-spheres.png',
+    'Music of the Spheres, Vol. 2:':             '/coldplaygold/eras/music-of-the-spheres-vol-2.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'ADD': '??/??/????',

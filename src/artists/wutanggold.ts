@@ -27,7 +27,18 @@ export const wutanggoldConfig: ArtistConfig = {
     return 'Wu-Tang Clan';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Demo Tape':                           '/wutanggold/eras/demo-tape.png',
+    'Enter the Wu-Tang (36 Chambers)':     '/wutanggold/eras/enter-the-wu-tang-36-chambers.png',
+    'Wu-Tang Forever':                     '/wutanggold/eras/wu-tang-forever.png',
+    'The W':                               '/wutanggold/eras/the-w.png',
+    'Iron Flag':                           '/wutanggold/eras/iron-flag.png',
+    '8 Diagrams':                          '/wutanggold/eras/8-diagrams.png',
+    'A Better Tomorrow':                   '/wutanggold/eras/a-better-tomorrow.png',
+    'Shaolin School (Disc One)':           '/wutanggold/eras/shaolin-school-disc-one.png',
+    'Black Samson, The Bastard Swordsman': '/wutanggold/eras/black-samson-the-bastard-swordsman.png',
+    'Twice Upon A Time In Shaolin':        '/wutanggold/eras/twice-upon-a-time-in-shaolin.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Demo Tape': '??/??/????',

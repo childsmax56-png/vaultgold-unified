@@ -27,7 +27,23 @@ export const weekndgoldConfig: ArtistConfig = {
     return 'The Weeknd';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    "Bulleez N' Nerdz":          '/weekndgold/eras/bulleez-n-nerdz.jpg',
+    'The Noise':                 '/weekndgold/eras/the-noise.png',
+    'House Of Balloons':         '/weekndgold/eras/house-of-balloons.jpg',
+    'Thursday':                  '/weekndgold/eras/thursday.png',
+    'Echoes Of Silence':         '/weekndgold/eras/echoes-of-silence.jpg',
+    'Kiss Land':                 '/weekndgold/eras/kiss-land.png',
+    'Untitled':                  '/weekndgold/eras/untitled.png',
+    'Beauty Behind The Madness': '/weekndgold/eras/beauty-behind-the-madness.jpg',
+    'Starboy':                   '/weekndgold/eras/starboy.png',
+    'My Dear Melancholy,':       '/weekndgold/eras/my-dear-melancholy.jpg',
+    'After Hours [V1]':          '/weekndgold/eras/after-hours-v1.jpg',
+    'After Hours [V2]':          '/weekndgold/eras/after-hours-v2.png',
+    'Dawn FM':                   '/weekndgold/eras/dawn-fm.png',
+    'The Idol':                  '/weekndgold/eras/the-idol.jpg',
+    'Hurry Up Tomorrow':         '/weekndgold/eras/hurry-up-tomorrow.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Bulleez N\' Nerdz': '??/??/????',

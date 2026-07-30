@@ -27,7 +27,22 @@ export const gambinogoldConfig: ArtistConfig = {
     return 'Childish Gambino';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'The Younger I Get':             '/gambinogold/eras/the-younger-i-get.jpg',
+    'Poindexter':                    '/gambinogold/eras/poindexter.png',
+    'I AM JUST A RAPPER':            '/gambinogold/eras/i-am-just-a-rapper.jpg',
+    'Culdesac':                      '/gambinogold/eras/culdesac.jpg',
+    'EP':                            '/gambinogold/eras/ep.jpg',
+    'ROYALTY':                       '/gambinogold/eras/royalty.jpg',
+    'Because The Internet':          '/gambinogold/eras/because-the-internet.jpg',
+    'STN MTN / Kauai':               '/gambinogold/eras/stn-mtn-kauai.png',
+    '"Awaken, My Love!"':            '/gambinogold/eras/awaken-my-love.jpg',
+    'Untitled*':                     '/gambinogold/eras/untitled.jpg',
+    'Atavista [V1]':                 '/gambinogold/eras/atavista-v1.jpg',
+    '3.15.20':                       '/gambinogold/eras/31520.jpg',
+    'Atavista [V2]':                 '/gambinogold/eras/atavista-v2.png',
+    'Bando Stone and The New World': '/gambinogold/eras/bando-stone-and-the-new-world.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'The Younger I Get': '??/??/????',

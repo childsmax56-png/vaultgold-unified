@@ -27,7 +27,32 @@ export const trippiegoldConfig: ArtistConfig = {
     return 'Trippie Redd';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Awakening My InnerBeast':         '/trippiegold/eras/awakening-my-innerbeast.png',
+    'Beast Mode ++++':                 '/trippiegold/eras/beast-mode.png',
+    'Rock The World Trippie (xxxxx)':  '/trippiegold/eras/rock-the-world-trippie-xxxxx.png',
+    'White Room Project':              '/trippiegold/eras/white-room-project.png',
+    'A Love Letter To You':            '/trippiegold/eras/a-love-letter-to-you.png',
+    'A Love Letter To You 2':          '/trippiegold/eras/a-love-letter-to-you-2.png',
+    "LIFE'S A TRIP":                   '/trippiegold/eras/lifes-a-trip.png',
+    'TrippieBoat':                     '/trippiegold/eras/trippieboat.png',
+    'A Love Letter To You 3':          '/trippiegold/eras/a-love-letter-to-you-3.png',
+    'WE DONT DIAL 911':                '/trippiegold/eras/we-dont-dial-911.png',
+    '!':                               '/trippiegold/eras/exclamation.png',
+    'A Love Letter To You 4':          '/trippiegold/eras/a-love-letter-to-you-4.png',
+    'A Love Letter To You 4 (Deluxe)': '/trippiegold/eras/a-love-letter-to-you-4-deluxe.png',
+    'Pegasus':                         '/trippiegold/eras/pegasus.png',
+    'Trip At Knight [V1]':             '/trippiegold/eras/trip-at-knight-v1.png',
+    'Trip At Knight [V2]':             '/trippiegold/eras/trip-at-knight-v2.png',
+    'A Love Letter To You 5 [V1]':     '/trippiegold/eras/a-love-letter-to-you-5-v1.png',
+    'MANSION MUSIK [V1]':              '/trippiegold/eras/mansion-musik-v1.jpg',
+    'MANSION MUSIK [V2]':              '/trippiegold/eras/mansion-musik-v2.png',
+    'A Love Letter To You 5 [V2]':     '/trippiegold/eras/a-love-letter-to-you-5-v2.png',
+    'Saint Michael':                   '/trippiegold/eras/saint-michael.png',
+    "LIFE'S A TRIP 2":                 '/trippiegold/eras/lifes-a-trip-2.jpg',
+    'LIVE LOVE LAUGH DIE':             '/trippiegold/eras/live-love-laugh-die.jpg',
+    'NDA':                             '/trippiegold/eras/nda.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Awakening My InnerBeast': '??/??/????',

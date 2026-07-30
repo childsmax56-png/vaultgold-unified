@@ -27,7 +27,19 @@ export const westsidegoldConfig: ArtistConfig = {
     return 'Westside Gunn';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    "There's God and There's FLYGOD, Praise Both": '/westsidegold/eras/theres-god-and-theres-flygod-praise-both.jpg',
+    'WestSide DOOM':                               '/westsidegold/eras/westside-doom.png',
+    'Hitler Wears Hermes 5':                       '/westsidegold/eras/hitler-wears-hermes-5.jpg',
+    'Pray For Paris':                              '/westsidegold/eras/pray-for-paris.jpg',
+    'WHO MADE THE SUNSHINE':                       '/westsidegold/eras/who-made-the-sunshine.jpg',
+    'Hitler Wears Hermes 8: Sincerely Adolf':      '/westsidegold/eras/hitler-wears-hermes-8-sincerely-adolf.jpg',
+    'Peace "Fly" God':                             '/westsidegold/eras/peace-fly-god.jpg',
+    '10':                                          '/westsidegold/eras/10.jpg',
+    'FLYGOD is an Awesome God III':                '/westsidegold/eras/flygod-is-an-awesome-god-iii.jpg',
+    'And Then You Pray For Me':                    '/westsidegold/eras/and-then-you-pray-for-me.jpg',
+    '11':                                          '/westsidegold/eras/11.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'There’s God and There’s FLYGOD, Praise Both': '??/??/????',

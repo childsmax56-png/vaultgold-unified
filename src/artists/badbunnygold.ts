@@ -27,7 +27,18 @@ export const badbunnygoldConfig: ArtistConfig = {
     return 'Bad Bunny';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Before Hear This Music':              '/badbunnygold/eras/before-hear-this-music.jpg',
+    'Hear This Music Era':                 '/badbunnygold/eras/hear-this-music-era.jpg',
+    'X 100PRE':                            '/badbunnygold/eras/x-100pre.jpg',
+    'OASIS':                               '/badbunnygold/eras/oasis.jpg',
+    'YHLQMDLG':                            '/badbunnygold/eras/yhlqmdlg.jpg',
+    'EL ÚLTIMO TOUR DEL MUNDO':            '/badbunnygold/eras/el-último-tour-del-mundo.jpg',
+    'Un Verano Sin Ti':                    '/badbunnygold/eras/un-verano-sin-ti.jpg',
+    'nadie sabe lo que va a pasar mañana': '/badbunnygold/eras/nadie-sabe-lo-que-va-a-pasar-mañana.jpg',
+    'DeBÍ TiRAR MáS FOToS':                '/badbunnygold/eras/debí-tirar-más-fotos.jpg',
+    'Ongoing':                             '/badbunnygold/eras/ongoing.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Before Hear This Music': '??/??/????',

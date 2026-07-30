@@ -27,7 +27,20 @@ export const chancegoldConfig: ArtistConfig = {
     return 'Chance the Rapper';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Before 10 Day':                       '/chancegold/eras/before-10-day.jpg',
+    '10 Day':                              '/chancegold/eras/10-day.jpg',
+    'Acid Rap':                            '/chancegold/eras/acid-rap.jpg',
+    'Acid Rap 2':                          '/chancegold/eras/acid-rap-2.jpg',
+    'GOTENKS [V1]':                        '/chancegold/eras/gotenks-v1.jpg',
+    'Surf':                                '/chancegold/eras/surf.jpg',
+    'Coloring Book':                       '/chancegold/eras/coloring-book.jpg',
+    'Owbum':                               '/chancegold/eras/owbum.jpg',
+    'Collaboration with Childish Gambino': '/chancegold/eras/collaboration-with-childish-gambino.png',
+    'Good Ass Job':                        '/chancegold/eras/good-ass-job.png',
+    'The Big Day':                         '/chancegold/eras/the-big-day.png',
+    'STAR LINE':                           '/chancegold/eras/star-line.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Before 10 Day': '??/??/????',

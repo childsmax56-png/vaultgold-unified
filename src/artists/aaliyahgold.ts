@@ -27,7 +27,13 @@ export const aaliyahgoldConfig: ArtistConfig = {
     return 'Aaliyah';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    "Age Ain't Nothing But A Number": '/aaliyahgold/eras/age-aint-nothing-but-a-number.png',
+    'One In A Million':               '/aaliyahgold/eras/one-in-a-million.png',
+    'Aaliyah':                        '/aaliyahgold/eras/aaliyah.png',
+    'Aaliyah x Drake x 40 (A)':       '/aaliyahgold/eras/aaliyah-x-drake-x-40-a.jpg',
+    'Unstoppable':                    '/aaliyahgold/eras/unstoppable.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Age Ain\'t Nothing But A Number': '??/??/????',

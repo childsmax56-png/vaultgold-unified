@@ -27,7 +27,17 @@ export const szagoldConfig: ArtistConfig = {
     return 'SZA';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'See.SZA.Run': '/szagold/eras/seeszarun.png',
+    'S':           '/szagold/eras/s.png',
+    'Z':           '/szagold/eras/z.png',
+    'A [V1]':      '/szagold/eras/a-v1.jpg',
+    'Ctrl [V2]':   '/szagold/eras/ctrl-v2.png',
+    'SOS':         '/szagold/eras/sos.png',
+    'LANA [V1]':   '/szagold/eras/lana-v1.png',
+    'LANA [V2]':   '/szagold/eras/lana-v2.png',
+    'LP3 / LP4':   '/szagold/eras/lp3-lp4.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'See.SZA.Run': '??/??/????',

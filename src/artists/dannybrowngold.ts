@@ -27,7 +27,13 @@ export const dannybrowngoldConfig: ArtistConfig = {
     return 'Danny Brown';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Old':                 '/dannybrowngold/eras/old.jpg',
+    'Atrocity Exhibition': '/dannybrowngold/eras/atrocity-exhibition.jpg',
+    'Reign Supreme':       '/dannybrowngold/eras/reign-supreme.jpg',
+    'SCARING THE HOES':    '/dannybrowngold/eras/scaring-the-hoes.jpg',
+    'Quaranta':            '/dannybrowngold/eras/quaranta.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Old': '??/??/????',

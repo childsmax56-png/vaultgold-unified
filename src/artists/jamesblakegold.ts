@@ -27,7 +27,19 @@ export const jamesblakegoldConfig: ArtistConfig = {
     return 'James Blake';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Before James Blake':              '/jamesblakegold/eras/before-james-blake.jpg',
+    'James Blake':                     '/jamesblakegold/eras/james-blake.jpg',
+    'Overgrown':                       '/jamesblakegold/eras/overgrown.jpg',
+    'The Colour In Anything':          '/jamesblakegold/eras/the-colour-in-anything.jpg',
+    'Assume Form':                     '/jamesblakegold/eras/assume-form.png',
+    'Friends That Break Your Heart':   '/jamesblakegold/eras/friends-that-break-your-heart.jpg',
+    'Playing Robots Into Heaven [V1]': '/jamesblakegold/eras/playing-robots-into-heaven-v1.png',
+    'WAR':                             '/jamesblakegold/eras/war.png',
+    'Playing Robots Into Heaven [V2]': '/jamesblakegold/eras/playing-robots-into-heaven-v2.png',
+    'Bad Cameo':                       '/jamesblakegold/eras/bad-cameo.jpg',
+    'Trying Times':                    '/jamesblakegold/eras/trying-times.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Before James Blake': '??/??/????',

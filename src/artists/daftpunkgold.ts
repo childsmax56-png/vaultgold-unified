@@ -27,7 +27,15 @@ export const daftpunkgoldConfig: ArtistConfig = {
     return 'Daft Punk';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'SOMA Records Era':       '/daftpunkgold/eras/soma-records-era.jpg',
+    'Homework':               '/daftpunkgold/eras/homework.jpg',
+    'Discovery':              '/daftpunkgold/eras/discovery.jpg',
+    'Human After All':        '/daftpunkgold/eras/human-after-all.jpg',
+    'TRON Legacy':            '/daftpunkgold/eras/tron-legacy.jpg',
+    'Random Access Memories': '/daftpunkgold/eras/random-access-memories.jpg',
+    'Epilogue':               '/daftpunkgold/eras/epilogue.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'SOMA': '??/??/????',

@@ -27,7 +27,14 @@ export const stevelacygoldConfig: ArtistConfig = {
     return 'Steve Lacy';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Ego Death':         '/stevelacygold/eras/ego-death.jpg',
+    "Steve Lacy's Demo": '/stevelacygold/eras/steve-lacys-demo.jpg',
+    'Apollo XXI':        '/stevelacygold/eras/apollo-xxi.jpg',
+    'The Lo-Fis':        '/stevelacygold/eras/the-lo-fis.jpg',
+    'Gemini Rights':     '/stevelacygold/eras/gemini-rights.jpg',
+    'Oh yeah?':          '/stevelacygold/eras/oh-yeah.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Ego Death': '??/??/????',

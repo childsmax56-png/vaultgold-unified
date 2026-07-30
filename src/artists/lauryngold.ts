@@ -27,7 +27,17 @@ export const lauryngoldConfig: ArtistConfig = {
     return 'Ms. Lauryn Hill';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Before Blunted On Reality':       '/lauryngold/eras/before-blunted-on-reality.png',
+    'Blunted On Reality':              '/lauryngold/eras/blunted-on-reality.png',
+    'The Score':                       '/lauryngold/eras/the-score.jpg',
+    'The Miseducation of Lauryn Hill': '/lauryngold/eras/the-miseducation-of-lauryn-hill.jpg',
+    'The Intangibles':                 '/lauryngold/eras/the-intangibles.jpg',
+    'The Contract':                    '/lauryngold/eras/the-contract.jpg',
+    'Letters From Exile':              '/lauryngold/eras/letters-from-exile.jpg',
+    'Past, Present, Future':           '/lauryngold/eras/past-present-future.jpg',
+    'Ongoing':                         '/lauryngold/eras/ongoing.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Before Blunted On Reality': '??/??/????',

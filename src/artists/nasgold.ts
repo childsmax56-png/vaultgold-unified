@@ -27,7 +27,31 @@ export const nasgoldConfig: ArtistConfig = {
     return 'Nas';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Pre-Matic':                                              '/nasgold/eras/pre-matic.png',
+    'illmatic':                                               '/nasgold/eras/illmatic.jpg',
+    'It Was Written':                                         '/nasgold/eras/it-was-written.jpg',
+    'The Album':                                              '/nasgold/eras/the-album.jpg',
+    'I Am...':                                                '/nasgold/eras/i-am.jpg',
+    'Nastradamus':                                            '/nasgold/eras/nastradamus.jpg',
+    'Nas & Ill Will Records Presents Queensbridge The Album': '/nasgold/eras/nas-ill-will-records-presents-queensbridge-the-album.jpg',
+    'Stillmatic':                                             '/nasgold/eras/stillmatic.jpg',
+    "God's Son":                                              '/nasgold/eras/gods-son.jpg',
+    "Street's Disciple":                                      '/nasgold/eras/streets-disciple.jpg',
+    'Hip Hop Is Dead':                                        '/nasgold/eras/hip-hop-is-dead.jpg',
+    'Untitled':                                               '/nasgold/eras/untitled.jpg',
+    'Distant Relatives':                                      '/nasgold/eras/distant-relatives.jpg',
+    'Life Is Good':                                           '/nasgold/eras/life-is-good.jpg',
+    'NASIR':                                                  '/nasgold/eras/nasir.jpg',
+    "King's Disease":                                         '/nasgold/eras/kings-disease.jpg',
+    "King's Disease II":                                      '/nasgold/eras/kings-disease-ii.png',
+    'Magic':                                                  '/nasgold/eras/magic.jpg',
+    "King's Disease III":                                     '/nasgold/eras/kings-disease-iii.png',
+    'Magic 2':                                                '/nasgold/eras/magic-2.png',
+    'Magic 3':                                                '/nasgold/eras/magic-3.jpg',
+    'Light-Years':                                            '/nasgold/eras/light-years.png',
+    'Others':                                                 '/nasgold/eras/others.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Pre-Matic': '??/??/????',

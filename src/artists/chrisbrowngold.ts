@@ -27,7 +27,21 @@ export const chrisbrowngoldConfig: ArtistConfig = {
     return 'Chris Brown';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Chris Brown':               '/chrisbrowngold/eras/chris-brown.jpg',
+    'Exclusive':                 '/chrisbrowngold/eras/exclusive.jpg',
+    'Graffiti':                  '/chrisbrowngold/eras/graffiti.jpg',
+    'F.A.M.E.':                  '/chrisbrowngold/eras/fame.jpg',
+    'Fortune':                   '/chrisbrowngold/eras/fortune.png',
+    'X':                         '/chrisbrowngold/eras/x.jpg',
+    'Fan of a Fan: The Album':   '/chrisbrowngold/eras/fan-of-a-fan-the-album.jpg',
+    'Royalty':                   '/chrisbrowngold/eras/royalty.jpg',
+    'Heartbreak On A Full Moon': '/chrisbrowngold/eras/heartbreak-on-a-full-moon.jpg',
+    'Indigo':                    '/chrisbrowngold/eras/indigo.png',
+    'Breezy':                    '/chrisbrowngold/eras/breezy.jpg',
+    '11 : 11':                   '/chrisbrowngold/eras/11-11.jpg',
+    'BROWN':                     '/chrisbrowngold/eras/brown.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Chris Brown': '??/??/????',

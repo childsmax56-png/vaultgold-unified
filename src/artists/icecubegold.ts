@@ -27,7 +27,28 @@ export const icecubegoldConfig: ArtistConfig = {
     return 'Ice Cube';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    "Cru' In Action!":                      '/icecubegold/eras/cru-in-action.jpg',
+    'N.W.A and the Posse':                  '/icecubegold/eras/nwa-and-the-posse.jpg',
+    'Straight Outta Compton':               '/icecubegold/eras/straight-outta-compton.jpg',
+    "AmeriKKKa's Most Wanted":              '/icecubegold/eras/amerikkkas-most-wanted.jpg',
+    'Kill At Will':                         '/icecubegold/eras/kill-at-will.jpg',
+    'Death Certificate':                    '/icecubegold/eras/death-certificate.jpg',
+    'The Predator':                         '/icecubegold/eras/the-predator.jpg',
+    'Lethal Injection':                     '/icecubegold/eras/lethal-injection.jpg',
+    'Bow Down':                             '/icecubegold/eras/bow-down.jpg',
+    'War & Peace, Vol. 1 (The War Disc)':   '/icecubegold/eras/war-peace-vol-1-the-war-disc.jpg',
+    'War & Peace, Vol. 2 (The Peace Disc)': '/icecubegold/eras/war-peace-vol-2-the-peace-disc.jpg',
+    'Terrorist Threats':                    '/icecubegold/eras/terrorist-threats.jpg',
+    'Laugh Now, Cry Later':                 '/icecubegold/eras/laugh-now-cry-later.jpg',
+    'Raw Footage':                          '/icecubegold/eras/raw-footage.jpg',
+    'I Am The West':                        '/icecubegold/eras/i-am-the-west.jpg',
+    'Everythangs Corrupt':                  '/icecubegold/eras/everythangs-corrupt.jpg',
+    'SNOOP CUBE 40 $HORT':                  '/icecubegold/eras/snoop-cube-40-hort.jpg',
+    'Man Down':                             '/icecubegold/eras/man-down.jpg',
+    'Man Up':                               '/icecubegold/eras/man-up.png',
+    'Pre-VMAs':                             '/icecubegold/eras/pre-vmas.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Cru\' In Action!': '??/??/????',

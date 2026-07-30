@@ -27,7 +27,11 @@ export const gibbsgoldConfig: ArtistConfig = {
     return 'Freddie Gibbs';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Piñata':               '/gibbsgold/eras/piñata.jpg',
+    '$oul $old $eparately': '/gibbsgold/eras/oul-old-eparately.jpg',
+    'Montana':              '/gibbsgold/eras/montana.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Pre-BFK': '??/??/????',

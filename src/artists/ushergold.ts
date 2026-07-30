@@ -27,7 +27,22 @@ export const ushergoldConfig: ArtistConfig = {
     return 'Usher';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'usher':                   '/ushergold/eras/usher.jpg',
+    'My Way':                  '/ushergold/eras/my-way.jpg',
+    '8701 [V1] (ALL ABOUT U)': '/ushergold/eras/8701-v1-all-about-u.jpg',
+    '8701.0':                  '/ushergold/eras/87010.jpg',
+    'CONFESSIONS':             '/ushergold/eras/confessions.jpg',
+    'HERE I STAND':            '/ushergold/eras/here-i-stand.jpg',
+    'RAYMOND V RAYMOND':       '/ushergold/eras/raymond-v-raymond.jpg',
+    'Looking 4 Myself':        '/ushergold/eras/looking-4-myself.jpg',
+    'UR':                      '/ushergold/eras/ur.jpg',
+    'HARD II LOVE':            '/ushergold/eras/hard-ii-love.jpg',
+    '"A"':                     '/ushergold/eras/a.jpg',
+    'CONFESSIONS 2':           '/ushergold/eras/confessions-2.jpg',
+    'COMING HOME':             '/ushergold/eras/coming-home.jpg',
+    'Ongoing':                 '/ushergold/eras/ongoing.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'usher': '??/??/????',

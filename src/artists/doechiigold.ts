@@ -27,7 +27,17 @@ export const doechiigoldConfig: ArtistConfig = {
     return 'Doechii';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Coven Music Sessions Vol.1': '/doechiigold/eras/coven-music-sessions-vol1.png',
+    'Coven Music Sessions Vol.2': '/doechiigold/eras/coven-music-sessions-vol2.png',
+    "Oh The Places You'll Go":    '/doechiigold/eras/oh-the-places-youll-go.png',
+    'Bra-Less':                   '/doechiigold/eras/bra-less.png',
+    'Unfinished Love Songs':      '/doechiigold/eras/unfinished-love-songs.png',
+    'she / her / black bitch':    '/doechiigold/eras/she-her-black-bitch.png',
+    'Debut Album [V1]':           '/doechiigold/eras/debut-album-v1.png',
+    'Alligator Bites Never Heal': '/doechiigold/eras/alligator-bites-never-heal.png',
+    'Debut Album [V2]':           '/doechiigold/eras/debut-album-v2.png',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Coven Music Sessions Vol.1': '??/??/????',

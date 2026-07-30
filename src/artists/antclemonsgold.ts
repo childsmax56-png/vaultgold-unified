@@ -27,7 +27,14 @@ export const antclemonsgoldConfig: ArtistConfig = {
     return 'Ant Clemons';
   },
 
-  CUSTOM_IMAGES: {},
+  CUSTOM_IMAGES: {
+    'Before HAPPY 2 BE HERE':   '/antclemonsgold/eras/before-happy-2-be-here.jpg',
+    'HAPPY 2 BE HERE':          '/antclemonsgold/eras/happy-2-be-here.jpg',
+    'LOVE.$WEAT.TEAR$':         '/antclemonsgold/eras/loveweattear.jpg',
+    '4Play':                    '/antclemonsgold/eras/4play.jpg',
+    'HAPPY 2 BE HERE WITH YOU': '/antclemonsgold/eras/happy-2-be-here-with-you.jpg',
+    '4Play II':                 '/antclemonsgold/eras/4play-ii.jpg',
+  },
 
   ALBUM_RELEASE_DATES: {
     'Before HAPPY 2 BE HERE': '??/??/????',
