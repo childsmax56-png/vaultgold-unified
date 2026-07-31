@@ -12,6 +12,8 @@ export const nasgoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'nasgold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1TnALmkQdRX_spdUMLLamizAZYD3rERO_iGGzCqD-A6M/edit',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

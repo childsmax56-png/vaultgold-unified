@@ -12,6 +12,8 @@ export const szagoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'szagold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1mPq6ZvoQ1_kWqIH9JS8I2VbBb8WboFYyeMP2yqjtz7s/edit',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

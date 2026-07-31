@@ -22,6 +22,8 @@ export const d4vdgoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'd4vdgold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1N6_EyCC6AM_cpFkIJivCN0kWzEwJRev7vQCmFAChnjk/edit?gid=1194098099#1194098099',
+
   // Hidden from the landing grid — revealed only by searching the passphrase.
   hidden: true,
   searchAliases: ['#justiceforceleste'],

@@ -12,6 +12,8 @@ export const daftpunkgoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'daftpunkgold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1ua9PA27-_LdSddNcU5i4PsvrzI7NMLalsOsXlDTsjuw/edit',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

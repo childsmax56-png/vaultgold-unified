@@ -12,6 +12,8 @@ export const gibbsgoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'gibbsgold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1CCe1DI9VIp0J4MQyTsdMuOriZ9ucmCVMw6nS9j8e4N0/edit',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

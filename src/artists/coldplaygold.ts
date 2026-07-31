@@ -12,6 +12,8 @@ export const coldplaygoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'coldplaygold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1i4xfiqtONMps_FL9n_2O5UmpKKio6HUCh5y6zQniyPk/edit',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

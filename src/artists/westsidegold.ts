@@ -12,6 +12,8 @@ export const westsidegoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'westsidegold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1_dFPF4tSdIuwRUj_UXUFz5qeNVJm-9lCl3zhIGXt0wI/edit?gid=514066493#514066493',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

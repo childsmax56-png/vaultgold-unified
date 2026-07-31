@@ -12,6 +12,8 @@ export const lauryngoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'lauryngold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1mq4kMsy_ntvh-yI3i2YsriW_PgFRXeaJWg5nS1v-5mU/edit?gid=1520634709#1520634709',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

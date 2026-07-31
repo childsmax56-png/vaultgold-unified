@@ -12,6 +12,8 @@ export const tydollagoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'tydollagold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/11Kk3Mi8iiFmXEFV8vzcmTrnjcMkfgImABCavXhC4D48/edit?gid=2000110692#2000110692',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

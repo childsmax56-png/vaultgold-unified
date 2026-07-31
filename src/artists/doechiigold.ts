@@ -12,6 +12,8 @@ export const doechiigoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'doechiigold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1P2inSuDEuS_kp45qDAXJpb_hmj__Lj409bytyp4xiw8/edit',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

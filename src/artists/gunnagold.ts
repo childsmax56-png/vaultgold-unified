@@ -12,6 +12,8 @@ export const gunnagoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'gunnagold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1P_BA-CIy05lDl9j1H06awxNqvXYJcD-KeBPVdgTO7Eo/edit?gid=1630289126#1630289126',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

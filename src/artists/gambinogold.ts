@@ -12,6 +12,8 @@ export const gambinogoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'gambinogold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1eyBjj7qPxIT_P93RaSPZf5hTJemGi5jMqSJF777OsdE/edit?gid=1792554832#1792554832',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

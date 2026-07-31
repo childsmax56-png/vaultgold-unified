@@ -12,6 +12,8 @@ export const dannybrowngoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'dannybrowngold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1ybtg3wbiB63eHKGv8_ZFek3qQIoRbB8DUYAWObfeDZI/edit',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

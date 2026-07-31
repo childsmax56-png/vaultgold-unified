@@ -12,6 +12,8 @@ export const icecubegoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'icecubegold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1bsNrVejh4H27uafX6jpnllbAuiVqRnDUMegKdTYAFQA/edit?gid=1360798347#1360798347',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

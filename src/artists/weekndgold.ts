@@ -12,6 +12,8 @@ export const weekndgoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'weekndgold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1luU-KL_vKt72goUpSO2F0qMvXyqaT_q8VwYNjPeLgTg/edit?gid=766670282#766670282',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

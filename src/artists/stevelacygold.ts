@@ -12,6 +12,8 @@ export const stevelacygoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'stevelacygold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1xqnIw0wymufIjKfoaXGDC-KAVuF81S5quMCCX7lYQyc/edit?gid=944094987#944094987',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

@@ -12,6 +12,8 @@ export const chancegoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'chancegold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1GdfybfLFKseuArE_Mz9iO4AatmAYWIKahn_vwGR-nTc/edit?gid=997745212#997745212',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

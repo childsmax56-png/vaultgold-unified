@@ -12,6 +12,8 @@ export const jamesblakegoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'jamesblakegold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1_bPMUWLNzeMY0CtVEE3PHkuCsZL80wnA-6joAUfx7p4/edit?gid=2092886681#2092886681',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

@@ -12,6 +12,8 @@ export const chrisbrowngoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'chrisbrowngold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1o2M9juqyzh7EUCHm0ApKx0XSnGda6ZiM1kGrOp0EfMM/edit?gid=883120125#883120125',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',

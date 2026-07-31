@@ -12,6 +12,8 @@ export const trippiegoldConfig: ArtistConfig = {
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'trippiegold_',
 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1hZdGFBZmukWGH4IlnH0NJvphwEct2XEMJT_moTFhTvc/edit?gid=1555572772#1555572772',
+
   HARDCODED_SHEET_ID: '',
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
