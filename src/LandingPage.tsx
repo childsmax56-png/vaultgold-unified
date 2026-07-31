@@ -1547,6 +1547,7 @@ export function LandingPage() {
         @media (max-width: 600px) {
           .grid-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
           .grid-top > *:first-child { grid-column: 1 / -1; }
+          .grid-top > *:last-child { grid-column: 1 / -1; }
           .grid-small { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
