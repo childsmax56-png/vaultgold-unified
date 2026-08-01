@@ -691,7 +691,6 @@ function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleF
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: config.photoObjectPosition ?? 'top center' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
-        <div style={{ position: 'absolute', top: 10, right: 10, width: 7, height: 7, borderRadius: '50%', background: accent }} />
         {onToggleFavorite && <FavoriteButton active={!!isFavorite} onToggle={handleToggleFavorite} />}
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: CARD_PADDING[variant] }}>
           {variant === 'featured' && (
@@ -775,7 +774,6 @@ function ExternalSmallCard({ href, label, logoSrc, logoAlt, accent, photoSrc, va
       >
         <img onError={retryImageOnError} src={photoSrc} alt={label} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
-        <div style={{ position: 'absolute', top: 10, right: 10, width: 7, height: 7, borderRadius: '50%', background: accent }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '14px 10px 8px' }}>
           <div style={{ fontSize: 11, fontWeight: 800, color: '#fff', lineHeight: 1.1 }}>{label}</div>
           <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{logoAlt}</div>
