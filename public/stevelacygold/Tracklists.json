@@ -1,83 +1,519 @@
-[
- {
-  "era": "Ego Death",
-  "name": "Ego Death",
-  "date": "Jun 26, 2015",
-  "quality": "Full",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Steve Lacy's Demo",
-  "name": "Steve Lacy's Demo",
-  "date": "Feb 24, 2017",
-  "quality": "Full",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Apollo XXI",
-  "name": "Apollo XXI",
-  "date": "May 24, 2019",
-  "quality": "Full",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Apollo XXI",
-  "name": "Apollo XXI (Japanese Version)",
-  "date": "May 24, 2019",
-  "quality": "Full",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "The Lo-Fis",
-  "name": "The Lo-Fis",
-  "date": "Dec 4, 2020",
-  "quality": "Full",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Gemini Rights",
-  "name": "Gemini Rights",
-  "date": "Jul 15, 2022",
-  "quality": "Full",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Oh yeah?",
-  "name": "Oh yeah?",
-  "date": "Jun 5, 2026",
-  "quality": "Partial",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Oh yeah?",
-  "name": "Oh yeah?",
-  "date": "Jul 17, 2026",
-  "quality": "Full",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Unknown",
-  "name": "Gemini Rights 3",
-  "date": "???",
-  "quality": "Full",
-  "source": "Official",
-  "links": [],
-  "tracks": []
- }
-]
+{
+ "legend": [
+  {
+   "label": "Unknown",
+   "color": "#999999"
+  },
+  {
+   "label": "Completely Unheard",
+   "color": "#E06666"
+  },
+  {
+   "label": "Snippet / Partial / Beat / Recording Available",
+   "color": "#F6B26B"
+  },
+  {
+   "label": "Alternate Version Available",
+   "color": "#93C47D"
+  },
+  {
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
+  }
+ ],
+ "albums": [
+  {
+   "era": "Ego Death",
+   "name": "Ego Death",
+   "date": "Jun 26, 2015",
+   "quality": "Full",
+   "source": "Official",
+   "links": [],
+   "description": "Tracklist for Ego Death, released on June 26, 2015.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Get Away"
+    },
+    {
+     "num": "#2",
+     "name": "Gabby"
+    },
+    {
+     "num": "#3",
+     "name": "Under Control"
+    },
+    {
+     "num": "#4",
+     "name": "Go With It"
+    },
+    {
+     "num": "#5",
+     "name": "Just Sayin'"
+    },
+    {
+     "num": "#6",
+     "name": "I Tried"
+    },
+    {
+     "num": "#7",
+     "name": "For The World"
+    },
+    {
+     "num": "#8",
+     "name": "Girl"
+    },
+    {
+     "num": "#9",
+     "name": "Special Affair"
+    },
+    {
+     "num": "#10",
+     "name": "Somthing's Missing"
+    },
+    {
+     "num": "#11",
+     "name": "Partners In Crime Part Three"
+    },
+    {
+     "num": "#12",
+     "name": "Penthouse Cloud"
+    },
+    {
+     "num": "#13",
+     "name": "Palace"
+    },
+    {
+     "num": "#14",
+     "name": "Curse"
+    },
+    {
+     "num": "#15",
+     "name": "Famous"
+    },
+    {
+     "num": "#16",
+     "name": "Missing You"
+    }
+   ]
+  },
+  {
+   "era": "Steve Lacy's Demo",
+   "name": "Steve Lacy's Demo",
+   "date": "Feb 24, 2017",
+   "quality": "Full",
+   "source": "Official",
+   "links": [],
+   "description": "Tracklist for Steve Lacy's Demo, released on February 24th, 2017.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Looks"
+    },
+    {
+     "num": "#2",
+     "name": "Ryd"
+    },
+    {
+     "num": "#3",
+     "name": "Dark Red"
+    },
+    {
+     "num": "#4",
+     "name": "Thangs"
+    },
+    {
+     "num": "#5",
+     "name": "Haterlovin"
+    },
+    {
+     "num": "#6",
+     "name": "Some"
+    }
+   ]
+  },
+  {
+   "era": "Apollo XXI",
+   "name": "Apollo XXI",
+   "date": "May 24, 2019",
+   "quality": "Full",
+   "source": "Official",
+   "links": [],
+   "description": "Tracklist for Apollo XXI, released on May 24th, 2019.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Only If"
+    },
+    {
+     "num": "#2",
+     "name": "Like Me (feat. DAISY WORLD)"
+    },
+    {
+     "num": "#3",
+     "name": "Playground"
+    },
+    {
+     "num": "#4",
+     "name": "Basement Jack"
+    },
+    {
+     "num": "#5",
+     "name": "Guide"
+    },
+    {
+     "num": "#6",
+     "name": "Lay Me Down"
+    },
+    {
+     "num": "#7",
+     "name": "Hate CD"
+    },
+    {
+     "num": "#8",
+     "name": "In Lust We Trust"
+    },
+    {
+     "num": "#9",
+     "name": "Love 2 Fast"
+    },
+    {
+     "num": "#10",
+     "name": "Amandla's Interlude"
+    },
+    {
+     "num": "#11",
+     "name": "N Side"
+    },
+    {
+     "num": "#12",
+     "name": "Outro Freestyle/4ever"
+    }
+   ]
+  },
+  {
+   "era": "Apollo XXI",
+   "name": "Apollo XXI (Japanese Version)",
+   "date": "May 24, 2019",
+   "quality": "Full",
+   "source": "Official",
+   "links": [],
+   "description": "Tracklist for the Japanese release of Apollo XXI, released on May 24th, 2019. Has a bonus track titled \"The Night Howl\" with a feature from Asiatica, Steve's sister.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Only If"
+    },
+    {
+     "num": "#2",
+     "name": "Like Me (feat. DAISY WORLD)"
+    },
+    {
+     "num": "#3",
+     "name": "Playground"
+    },
+    {
+     "num": "#4",
+     "name": "Basement Jack"
+    },
+    {
+     "num": "#5",
+     "name": "Guide"
+    },
+    {
+     "num": "#6",
+     "name": "Lay Me Down"
+    },
+    {
+     "num": "#7",
+     "name": "Hate CD"
+    },
+    {
+     "num": "#8",
+     "name": "In Lust We Trust"
+    },
+    {
+     "num": "#9",
+     "name": "Love 2 Fast"
+    },
+    {
+     "num": "#10",
+     "name": "Amandla's Interlude"
+    },
+    {
+     "num": "#11",
+     "name": "N Side"
+    },
+    {
+     "num": "#12",
+     "name": "Outro Freestyle/4ever"
+    },
+    {
+     "num": "#13",
+     "name": "The Night Howl (feat. Asiatica)"
+    }
+   ]
+  },
+  {
+   "era": "The Lo-Fis",
+   "name": "The Lo-Fis",
+   "date": "Dec 4, 2020",
+   "quality": "Full",
+   "source": "Official",
+   "links": [],
+   "description": "Tracklist for The Lo-Fis, released on December 4th, 2020.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Atomic Vomit"
+    },
+    {
+     "num": "#2",
+     "name": "When I"
+    },
+    {
+     "num": "#3",
+     "name": "Thats No Fun"
+    },
+    {
+     "num": "#4",
+     "name": "Cocky Girl"
+    },
+    {
+     "num": "#5",
+     "name": "Uuuu"
+    },
+    {
+     "num": "#6",
+     "name": "Jars Of It"
+    },
+    {
+     "num": "#7",
+     "name": "Bars. 16"
+    },
+    {
+     "num": "#8",
+     "name": "Infrunami"
+    },
+    {
+     "num": "#9",
+     "name": "Hummer"
+    },
+    {
+     "num": "#10",
+     "name": "4real"
+    },
+    {
+     "num": "#11",
+     "name": "I Think I Should"
+    },
+    {
+     "num": "#12",
+     "name": "Daze"
+    },
+    {
+     "num": "#13",
+     "name": "Out Of Me Head"
+    },
+    {
+     "num": "#14",
+     "name": "Donchano"
+    },
+    {
+     "num": "#15",
+     "name": "The Song"
+    }
+   ]
+  },
+  {
+   "era": "Gemini Rights",
+   "name": "Gemini Rights",
+   "date": "Jul 15, 2022",
+   "quality": "Full",
+   "source": "Official",
+   "links": [],
+   "description": "Tracklist for Gemini Rights, released on July 15th, 2022.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Static"
+    },
+    {
+     "num": "#2",
+     "name": "Helmet"
+    },
+    {
+     "num": "#3",
+     "name": "Mercury"
+    },
+    {
+     "num": "#4",
+     "name": "Buttons"
+    },
+    {
+     "num": "#5",
+     "name": "Bad Habit"
+    },
+    {
+     "num": "#6",
+     "name": "2Gether (Enterlude)"
+    },
+    {
+     "num": "#7",
+     "name": "Cody Freestyle"
+    },
+    {
+     "num": "#8",
+     "name": "Amber"
+    },
+    {
+     "num": "#9",
+     "name": "Sunshine"
+    },
+    {
+     "num": "#10",
+     "name": "Give You The World"
+    }
+   ]
+  },
+  {
+   "era": "Oh yeah?",
+   "name": "Oh yeah?",
+   "date": "Jun 5, 2026",
+   "quality": "Partial",
+   "source": "Official",
+   "links": [],
+   "description": "Version of the Oh yeah? tracklist that was seen in a picture of Steve in the studio. Only track 9 and 10 are visible. Unknown if there are any other differences to the release tracklist.\n#1-8. ???",
+   "tracks": [
+    {
+     "num": "#9",
+     "name": "nice (shoes)"
+    },
+    {
+     "num": "#10",
+     "name": "bebe"
+    }
+   ],
+   "images": [
+    "/stevelacygold/art/tl-9-0.jpg"
+   ]
+  },
+  {
+   "era": "Oh yeah?",
+   "name": "Oh yeah?",
+   "date": "Jul 17, 2026",
+   "quality": "Full",
+   "source": "Official",
+   "links": [],
+   "description": "Tracklist for Oh yeah?, released on July 17th, 2026.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "oh yeah?"
+    },
+    {
+     "num": "#2",
+     "name": "is it cool? (feat. SZA)"
+    },
+    {
+     "num": "#3",
+     "name": "the feeling"
+    },
+    {
+     "num": "#4",
+     "name": "pure colour (feat. Erykah Badu)"
+    },
+    {
+     "num": "#5",
+     "name": "show you me"
+    },
+    {
+     "num": "#6",
+     "name": "doom"
+    },
+    {
+     "num": "#7",
+     "name": "nothing (nuthin)"
+    },
+    {
+     "num": "#8",
+     "name": "lovesexdrugbomb (feat. Cecile Believe)"
+    },
+    {
+     "num": "#9",
+     "name": "nice shoes / in your world"
+    },
+    {
+     "num": "#10",
+     "name": "bebe"
+    }
+   ]
+  },
+  {
+   "era": "Unknown",
+   "name": "Gemini Rights 3",
+   "date": "???",
+   "quality": "Full",
+   "source": "Official",
+   "links": [],
+   "description": "Tracklist that was posted by Steve himself and called \"Gemini Rights 3.\" Likely meant as a joke and has no connection to any of his future projects.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Santa"
+    },
+    {
+     "num": "#2",
+     "name": "Bobby 100"
+    },
+    {
+     "num": "#3",
+     "name": "Hit Me"
+    },
+    {
+     "num": "#4",
+     "name": "Love Is..."
+    },
+    {
+     "num": "#5",
+     "name": "TT (feat. Fousheé)"
+    },
+    {
+     "num": "#6",
+     "name": "!?!"
+    },
+    {
+     "num": "#7",
+     "name": "Ring Tony"
+    },
+    {
+     "num": "#8",
+     "name": "Bad Hobby"
+    },
+    {
+     "num": "#9",
+     "name": "Guitar and Bass"
+    },
+    {
+     "num": "#10",
+     "name": "Thank Us"
+    },
+    {
+     "num": "#11",
+     "name": "Lapdog"
+    },
+    {
+     "num": "#12",
+     "name": "Virginia II"
+    },
+    {
+     "num": "#13",
+     "name": "Tickle Me Twice"
+    }
+   ],
+   "images": [
+    "/stevelacygold/art/tl-11-0.jpg"
+   ]
+  }
+ ]
+}

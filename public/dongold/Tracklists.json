@@ -1,1805 +1,2275 @@
-[
+{
+ "legend": [
   {
-    "era": "Space Age Pimping Trilogy",
-    "name": "Space Age Pimping 1",
-    "date": "",
-    "quality": "N/A",
-    "source": "Release",
-    "links": [],
-    "tracks": []
+   "label": "Unknown",
+   "color": "#999999"
   },
   {
-    "era": "Space Age Pimping Trilogy",
-    "name": "Space Age Pimping 2",
-    "date": "",
-    "quality": "N/A",
-    "source": "Release",
-    "links": [],
-    "tracks": []
+   "label": "Completely Unheard",
+   "color": "#E06666"
   },
   {
-    "era": "Space Age Pimping Trilogy",
-    "name": "Space Age Pimping 3",
-    "date": "",
-    "quality": "N/A",
-    "source": "Release",
-    "links": [],
-    "tracks": []
+   "label": "Snippet / Partial / Beat / Recording Available",
+   "color": "#F6B26B"
   },
   {
-    "era": "Life Before Death",
-    "name": "Life Before Death [EP]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "He Said"
-      },
-      {
-        "num": "2.",
-        "name": "Cash Money"
-      },
-      {
-        "num": "3.",
-        "name": "IDK"
-      },
-      {
-        "num": "4.",
-        "name": "You Know It"
-      },
-      {
-        "num": "5.",
-        "name": "Po A 4"
-      },
-      {
-        "num": "6.",
-        "name": "My Time"
-      },
-      {
-        "num": "7.",
-        "name": "Play Me [Clean]"
-      }
-    ]
+   "label": "Alternate Version Available",
+   "color": "#93C47D"
   },
   {
-    "era": "Playa Familia",
-    "name": "Playa Familia [Mixtape]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "MAGIC & BIRD"
-      },
-      {
-        "num": "2.",
-        "name": "NO QUESTIONS"
-      },
-      {
-        "num": "3.",
-        "name": "PIMPIN PIMPIN"
-      },
-      {
-        "num": "4.",
-        "name": "STAY AWAY"
-      },
-      {
-        "num": "5.",
-        "name": "PERCOSET"
-      },
-      {
-        "num": "6.",
-        "name": "CHIEF KEEF"
-      },
-      {
-        "num": "7.",
-        "name": "FIFTY"
-      },
-      {
-        "num": "8.",
-        "name": "CHEEFIN"
-      },
-      {
-        "num": "9.",
-        "name": "FLYING ON TIME"
-      },
-      {
-        "num": "10.",
-        "name": "PLAY ME"
-      }
-    ]
-  },
-  {
-    "era": "Donny Womack",
-    "name": "Donny Womack [V1]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "I Gotta"
-      },
-      {
-        "num": "2.",
-        "name": "Diva"
-      },
-      {
-        "num": "3.",
-        "name": "Make Sumn"
-      },
-      {
-        "num": "4.",
-        "name": "Run It Up"
-      },
-      {
-        "num": "5.",
-        "name": "C4"
-      },
-      {
-        "num": "6.",
-        "name": "Diamonds"
-      },
-      {
-        "num": "7.",
-        "name": "Around"
-      },
-      {
-        "num": "8.",
-        "name": "Thrasher"
-      },
-      {
-        "num": "9.",
-        "name": "Options"
-      },
-      {
-        "num": "10.",
-        "name": "2 Lil Shorty"
-      },
-      {
-        "num": "11.",
-        "name": "In The Field"
-      },
-      {
-        "num": "12.",
-        "name": "My City"
-      },
-      {
-        "num": "13.",
-        "name": "Hand To Hand"
-      },
-      {
-        "num": "14.",
-        "name": "AMG"
-      }
-    ]
-  },
-  {
-    "era": "Donny Womack",
-    "name": "Donny Womack [V2]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "2 Lil Shorty"
-      },
-      {
-        "num": "2.",
-        "name": "My City"
-      },
-      {
-        "num": "3.",
-        "name": "Diva"
-      },
-      {
-        "num": "4.",
-        "name": "Diamonds"
-      },
-      {
-        "num": "5.",
-        "name": "C4"
-      },
-      {
-        "num": "6.",
-        "name": "I Gotta"
-      },
-      {
-        "num": "7.",
-        "name": "AMG"
-      },
-      {
-        "num": "8.",
-        "name": "Run It Up"
-      },
-      {
-        "num": "9.",
-        "name": "Around"
-      },
-      {
-        "num": "10.",
-        "name": "Make Sumn"
-      },
-      {
-        "num": "11.",
-        "name": "Hand To Hand"
-      },
-      {
-        "num": "12.",
-        "name": "Options"
-      },
-      {
-        "num": "13.",
-        "name": "Thrasher"
-      },
-      {
-        "num": "14.",
-        "name": "All I See"
-      },
-      {
-        "num": "15.",
-        "name": "In The Field"
-      }
-    ]
-  },
-  {
-    "era": "Donny Womack",
-    "name": "Donny Womack [V3]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "2 Lil Shorty"
-      },
-      {
-        "num": "2.",
-        "name": "My City"
-      },
-      {
-        "num": "3.",
-        "name": "Diva"
-      },
-      {
-        "num": "4.",
-        "name": "Diamonds"
-      },
-      {
-        "num": "5.",
-        "name": "C4"
-      },
-      {
-        "num": "6.",
-        "name": "I Gotta"
-      },
-      {
-        "num": "7.",
-        "name": "AMG"
-      },
-      {
-        "num": "8.",
-        "name": "Run It Up"
-      },
-      {
-        "num": "9.",
-        "name": "Around"
-      },
-      {
-        "num": "10.",
-        "name": "Checks"
-      },
-      {
-        "num": "11.",
-        "name": "Back End"
-      },
-      {
-        "num": "12.",
-        "name": "High No More"
-      },
-      {
-        "num": "13.",
-        "name": "Stove"
-      },
-      {
-        "num": "14.",
-        "name": "Time"
-      },
-      {
-        "num": "15.",
-        "name": "Issues"
-      }
-    ]
-  },
-  {
-    "era": "Donny Womack",
-    "name": "Donny Womack [Mixtape]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Diamonds"
-      },
-      {
-        "num": "2.",
-        "name": "Diva"
-      },
-      {
-        "num": "3.",
-        "name": "Issues"
-      },
-      {
-        "num": "4.",
-        "name": "Backend"
-      },
-      {
-        "num": "5.",
-        "name": "Mamma Mia"
-      },
-      {
-        "num": "6.",
-        "name": "Holdin' Steel (feat. Dice SoHo)"
-      },
-      {
-        "num": "7.",
-        "name": "Bang Bang"
-      },
-      {
-        "num": "8.",
-        "name": "2 Lil Shorty"
-      },
-      {
-        "num": "9.",
-        "name": "Video Girl"
-      },
-      {
-        "num": "10.",
-        "name": "Around"
-      },
-      {
-        "num": "11.",
-        "name": "AMG"
-      },
-      {
-        "num": "12.",
-        "name": "Run Up"
-      },
-      {
-        "num": "13.",
-        "name": "Talk No More"
-      }
-    ]
-  },
-  {
-    "era": "JACKBOYS",
-    "name": "JACKBOYS [October 2019 Considerations]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Classy (Don Toliver x Sheck Wes)"
-      },
-      {
-        "num": "2.",
-        "name": "What To Do (Don Toliver x Sheck Wes)"
-      },
-      {
-        "num": "3.",
-        "name": "Solid (Don Toliver x Sheck Wes x Quavo)"
-      }
-    ]
-  },
-  {
-    "era": "JACKBOYS",
-    "name": "JACKBOYS [November - December 2019]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Out West (presumably with Young Thug)"
-      },
-      {
-        "num": "2.",
-        "name": "Gang Moves (retitled \"Gang Gang\"; might be missing Luxury Tax since he isn't credited as a JackBoy)"
-      },
-      {
-        "num": "3.",
-        "name": "What To Do (with Don Toliver and Sheck Wes; unclear if Travis had recorded yet)"
-      },
-      {
-        "num": "4.",
-        "name": "Solid (Don Toliver x Sheck Wes x Quavo)"
-      },
-      {
-        "num": "5.",
-        "name": "Gold Blackberry (Travis Scott)"
-      },
-      {
-        "num": "6.",
-        "name": "Top Floor (presumably with Gunna)"
-      },
-      {
-        "num": "7.",
-        "name": "Don Toliver - Had Enough (with Quavo and Offset)"
-      },
-      {
-        "num": "8.",
-        "name": "Chase B - May Day (with Sheck Wes and Young Thug)"
-      },
-      {
-        "num": "9.",
-        "name": "OMD (presumably with Kendrick Lamar wanted)"
-      },
-      {
-        "num": "10.",
-        "name": "Da Baby (no information)"
-      },
-      {
-        "num": "11.",
-        "name": "Sheck Wes - Glock on Ice"
-      },
-      {
-        "num": "12.",
-        "name": "Highest In the Room - Remix (Travis Scott and probably Lil Baby; possibly no Mike Dean)"
-      }
-    ]
-  },
-  {
-    "era": "JACKBOYS",
-    "name": "JACKBOYS [Album]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "HIGHEST IN THE ROOM (feat. ROSALÍA & Lil Baby) - REMIX"
-      },
-      {
-        "num": "2.",
-        "name": "JACKBOYS"
-      },
-      {
-        "num": "3.",
-        "name": "GANG GANG"
-      },
-      {
-        "num": "4.",
-        "name": "Don Toliver - HAD ENOUGH (feat. Quavo & Offset)"
-      },
-      {
-        "num": "5.",
-        "name": "OUT WEST (feat. Young Thug)"
-      },
-      {
-        "num": "6.",
-        "name": "WHAT TO DO? (feat. Don Toliver)"
-      },
-      {
-        "num": "7.",
-        "name": "GATTI (feat. Pop Smoke)"
-      }
-    ]
-  },
-  {
-    "era": "Heaven Or Hell",
-    "name": "Heaven Or Hell [Album]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Heaven Or Hell"
-      },
-      {
-        "num": "2.",
-        "name": "Euphoria (feat. Travis Scott & Kaash Paige)"
-      },
-      {
-        "num": "3.",
-        "name": "Cardigan"
-      },
-      {
-        "num": "4.",
-        "name": "After Party"
-      },
-      {
-        "num": "5.",
-        "name": "Wasted"
-      },
-      {
-        "num": "6.",
-        "name": "Can't Feel My Legs"
-      },
-      {
-        "num": "7.",
-        "name": "Candy"
-      },
-      {
-        "num": "8.",
-        "name": "Company"
-      },
-      {
-        "num": "9.",
-        "name": "Had Enough (feat. Quavo & Offset)"
-      },
-      {
-        "num": "10.",
-        "name": "Spaceship (feat. Sheck Wes)"
-      },
-      {
-        "num": "11.",
-        "name": "No Photos"
-      },
-      {
-        "num": "12.",
-        "name": "No Idea"
-      }
-    ]
-  },
-  {
-    "era": "Heaven Or Hell",
-    "name": "Heaven Or Hell [Deluxe]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Leaked",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Life of a DON",
-    "name": "Documentary Whiteboard #1",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Documentary",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Life of a DON",
-    "name": "Documentary Whiteboard #2",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Documentary",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Life of a DON",
-    "name": "Documentary Computer Screen",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Documentary",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Life of a DON",
-    "name": "Life of a DON [Atlantic Records, Sept 30]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Teaser",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "XSCAPE"
-      },
-      {
-        "num": "2.",
-        "name": "5 TIMES"
-      },
-      {
-        "num": "3.",
-        "name": "WAY BIGGER"
-      },
-      {
-        "num": "4.",
-        "name": "FLOCKY FLOCKY"
-      },
-      {
-        "num": "5.",
-        "name": "WHAT YOU NEED"
-      },
-      {
-        "num": "6.",
-        "name": "DOUBLE STANDARDS"
-      },
-      {
-        "num": "7.",
-        "name": "FIVE IN THE MORNING"
-      },
-      {
-        "num": "8.",
-        "name": "DRUGS N HELLA MELODIES"
-      },
-      {
-        "num": "9.",
-        "name": "2AM"
-      },
-      {
-        "num": "10.",
-        "name": "GET THROWED"
-      },
-      {
-        "num": "11.",
-        "name": "COMPANY PT. 2"
-      },
-      {
-        "num": "12.",
-        "name": "OUTER SPACE"
-      },
-      {
-        "num": "13.",
-        "name": "SMOKE"
-      },
-      {
-        "num": "14.",
-        "name": "I SEE YOU"
-      },
-      {
-        "num": "15.",
-        "name": "BOGUS"
-      }
-    ]
-  },
-  {
-    "era": "Life of a DON",
-    "name": "Life of a DON [Guess Hoodie, Oct 5]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Teaser",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "XSCAPE"
-      },
-      {
-        "num": "2.",
-        "name": "5 TIMES"
-      },
-      {
-        "num": "3.",
-        "name": "Way Bigger"
-      },
-      {
-        "num": "4.",
-        "name": "FLOCKY FLOCKY"
-      },
-      {
-        "num": "5.",
-        "name": "WHAT YOU NEED"
-      },
-      {
-        "num": "6.",
-        "name": "Double Standards"
-      },
-      {
-        "num": "7.",
-        "name": "FIVE IN THE MORNING"
-      },
-      {
-        "num": "8.",
-        "name": "DRUGS N HELLA MELODIES"
-      },
-      {
-        "num": "9.",
-        "name": "2 AM"
-      },
-      {
-        "num": "10.",
-        "name": "Get Throwed"
-      },
-      {
-        "num": "11.",
-        "name": "COMPANY (Pt. 2)"
-      },
-      {
-        "num": "12.",
-        "name": "OUTER SPACE"
-      },
-      {
-        "num": "13.",
-        "name": "SMOKE"
-      },
-      {
-        "num": "14.",
-        "name": "YOU"
-      },
-      {
-        "num": "15.",
-        "name": "I See"
-      },
-      {
-        "num": "16.",
-        "name": "Bogus"
-      }
-    ]
-  },
-  {
-    "era": "Life of a DON",
-    "name": "Life of a DON [Suitcase, Oct 7]",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Teaser",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "XSCAPE"
-      },
-      {
-        "num": "2.",
-        "name": "5 TIMES"
-      },
-      {
-        "num": "3.",
-        "name": "Way Bigger"
-      },
-      {
-        "num": "4.",
-        "name": "FLOCKY FLOCKY"
-      },
-      {
-        "num": "5.",
-        "name": "WHAT YOU NEED"
-      },
-      {
-        "num": "6.",
-        "name": "Double Standards"
-      },
-      {
-        "num": "7.",
-        "name": "FIVE IN THE MORNING"
-      },
-      {
-        "num": "8.",
-        "name": "DRUGS N HELLA MELODIES"
-      },
-      {
-        "num": "9.",
-        "name": "2 AM"
-      },
-      {
-        "num": "10.",
-        "name": "Get Throwed"
-      },
-      {
-        "num": "11.",
-        "name": "COMPANY (Pt. 2)"
-      },
-      {
-        "num": "12.",
-        "name": "OUTERSPACE"
-      },
-      {
-        "num": "13.",
-        "name": "SMOKE"
-      },
-      {
-        "num": "14.",
-        "name": "YOU"
-      },
-      {
-        "num": "15.",
-        "name": "Crossfaded"
-      },
-      {
-        "num": "16.",
-        "name": "Bogus"
-      }
-    ]
-  },
-  {
-    "era": "Life of a DON",
-    "name": "Life of a DON [Album]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "XSCAPE"
-      },
-      {
-        "num": "2.",
-        "name": "5X"
-      },
-      {
-        "num": "3.",
-        "name": "Way Bigger"
-      },
-      {
-        "num": "4.",
-        "name": "Flocky Flocky (feat. Travis Scott)"
-      },
-      {
-        "num": "5.",
-        "name": "What You Need"
-      },
-      {
-        "num": "6.",
-        "name": "Double Standards"
-      },
-      {
-        "num": "7.",
-        "name": "Swangin' On Westheimer"
-      },
-      {
-        "num": "8.",
-        "name": "Drugs N Hella Melodies (feat. Kali Uchis)"
-      },
-      {
-        "num": "9.",
-        "name": "2AM"
-      },
-      {
-        "num": "10.",
-        "name": "Get Throwed"
-      },
-      {
-        "num": "11.",
-        "name": "Company, Pt. 2"
-      },
-      {
-        "num": "12.",
-        "name": "OUTERSPACE (feat. Baby Keem)"
-      },
-      {
-        "num": "13.",
-        "name": "Smoke (feat. HVN & SoFaygo)"
-      },
-      {
-        "num": "14.",
-        "name": "You (feat. Travis Scott)"
-      },
-      {
-        "num": "15.",
-        "name": "Crossfaded"
-      },
-      {
-        "num": "16.",
-        "name": "BOGUS"
-      }
-    ]
-  },
-  {
-    "era": "Love Sick",
-    "name": "Love Sick [Original Concept]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Brandy (feat. ???)"
-      },
-      {
-        "num": "2.",
-        "name": "Honeymoon (feat. Anderson .Paak)"
-      },
-      {
-        "num": "3.",
-        "name": "Lit City (feat. Toro y Moi)"
-      },
-      {
-        "num": "4.",
-        "name": "Go Down (feat. TisaKorean)"
-      },
-      {
-        "num": "5.",
-        "name": "Love Sick"
-      },
-      {
-        "num": "?.",
-        "name": "If I Had (feat. Sampha)"
-      },
-      {
-        "num": "?.",
-        "name": "Leave The Club"
-      },
-      {
-        "num": "?.",
-        "name": "Walk In"
-      },
-      {
-        "num": "?.",
-        "name": "Slow Motion (feat. WizKid)"
-      }
-    ]
-  },
-  {
-    "era": "Love Sick",
-    "name": "Love Sick [Filenames]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Love Sick"
-      },
-      {
-        "num": "2.",
-        "name": "Leave The Club"
-      },
-      {
-        "num": "3.",
-        "name": "Walk-In"
-      },
-      {
-        "num": "7.",
-        "name": "Rolling Stone"
-      },
-      {
-        "num": "7.",
-        "name": "Honeymoon (feat. Anderson .Paak)"
-      },
-      {
-        "num": "7.",
-        "name": "If I Had"
-      },
-      {
-        "num": "8.",
-        "name": "Brandy (feat. ???)"
-      },
-      {
-        "num": "9.",
-        "name": "Slow Motion (feat. WizKid)"
-      },
-      {
-        "num": "11.",
-        "name": "Rolling Stone (feat. Kid Cudi)"
-      },
-      {
-        "num": "12.",
-        "name": "Lit City (feat. Toro y Moi)"
-      },
-      {
-        "num": "15.",
-        "name": "Time Heals All"
-      },
-      {
-        "num": "17.",
-        "name": "Go Down"
-      }
-    ]
-  },
-  {
-    "era": "Love Sick",
-    "name": "Love Sick [Diner Menu]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Teaser",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "COMPLICATED"
-      },
-      {
-        "num": "2.",
-        "name": "SPECIAL"
-      },
-      {
-        "num": "3.",
-        "name": "DO IT RIGHT"
-      },
-      {
-        "num": "4.",
-        "name": "LEAVE THE CLUB"
-      },
-      {
-        "num": "5.",
-        "name": "BACK SEAT"
-      },
-      {
-        "num": "6.",
-        "name": "SLOW MOTION"
-      },
-      {
-        "num": "7.",
-        "name": "LOVE SICK"
-      },
-      {
-        "num": "8.",
-        "name": "LIT CITY"
-      },
-      {
-        "num": "9.",
-        "name": "IF I HAD"
-      },
-      {
-        "num": "10.",
-        "name": "HONEYMOON"
-      },
-      {
-        "num": "11.",
-        "name": "4 ME"
-      },
-      {
-        "num": "12.",
-        "name": "ROLLING STONE"
-      },
-      {
-        "num": "13.",
-        "name": "ENCOURAGEMENT"
-      }
-    ]
-  },
-  {
-    "era": "Love Sick",
-    "name": "Love Sick [Album]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Lovesickness"
-      },
-      {
-        "num": "2.",
-        "name": "Let Her Go (feat. James Blake)"
-      },
-      {
-        "num": "3.",
-        "name": "Leave The Club (feat. Lil Durk & GloRilla)"
-      },
-      {
-        "num": "4.",
-        "name": "4 Me (feat. Kali Uchis)"
-      },
-      {
-        "num": "5.",
-        "name": "Go Down (feat. TisaKorean)"
-      },
-      {
-        "num": "6.",
-        "name": "Time Heals All"
-      },
-      {
-        "num": "7.",
-        "name": "Leather Coat"
-      },
-      {
-        "num": "8.",
-        "name": "Honeymoon"
-      },
-      {
-        "num": "9.",
-        "name": "Private Landing (feat. Justin Bieber & Future)"
-      },
-      {
-        "num": "10.",
-        "name": "Slow Motion (feat. WizKid)"
-      },
-      {
-        "num": "11.",
-        "name": "Do It Right"
-      },
-      {
-        "num": "12.",
-        "name": "If I Had (feat. Charlie Wilson)"
-      },
-      {
-        "num": "13.",
-        "name": "Company Pt. 3"
-      },
-      {
-        "num": "14.",
-        "name": "Bus Stop (feat. Brent Faiyaz)"
-      },
-      {
-        "num": "15.",
-        "name": "Cinderella (feat. Toro y Moi)"
-      },
-      {
-        "num": "16.",
-        "name": "Encouragement"
-      }
-    ]
-  },
-  {
-    "era": "Love Sick",
-    "name": "Love Sick [Deluxe]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "No Pole"
-      },
-      {
-        "num": "2.",
-        "name": "Embarassed (feat. Travis Scott)"
-      },
-      {
-        "num": "3.",
-        "name": "Geronimo"
-      },
-      {
-        "num": "4.",
-        "name": "Luckily I'm Having (feat. Teezo Touchdown)"
-      },
-      {
-        "num": "5.",
-        "name": "Lovesickness"
-      },
-      {
-        "num": "6.",
-        "name": "Let Her Go (feat. James Blake)"
-      },
-      {
-        "num": "7.",
-        "name": "Leave The Club (feat. Lil Durk & GloRilla)"
-      },
-      {
-        "num": "8.",
-        "name": "4 Me (feat. Kali Uchis)"
-      },
-      {
-        "num": "9.",
-        "name": "Go Down (feat. TisaKorean)"
-      },
-      {
-        "num": "10.",
-        "name": "Time Heals All"
-      },
-      {
-        "num": "11.",
-        "name": "Leather Coat"
-      },
-      {
-        "num": "12.",
-        "name": "Honeymoon"
-      },
-      {
-        "num": "13.",
-        "name": "Private Landing (feat. Justin Bieber & Future)"
-      },
-      {
-        "num": "14.",
-        "name": "Slow Motion (feat. WizKid)"
-      },
-      {
-        "num": "15.",
-        "name": "Do It Right"
-      },
-      {
-        "num": "16.",
-        "name": "If I Had (feat. Charlie Wilson)"
-      },
-      {
-        "num": "17.",
-        "name": "Company Pt. 3"
-      },
-      {
-        "num": "18.",
-        "name": "Bus Stop (feat. Brent Faiyaz)"
-      },
-      {
-        "num": "19.",
-        "name": "Cinderella (feat. Toro y Moi)"
-      },
-      {
-        "num": "20.",
-        "name": "Encouragement"
-      }
-    ]
-  },
-  {
-    "era": "Hardstone Psycho",
-    "name": "Hardstone Psycho",
-    "date": "",
-    "quality": "N/A",
-    "source": "Documentary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "???"
-      },
-      {
-        "num": "2.",
-        "name": "???"
-      },
-      {
-        "num": "3.",
-        "name": "It´s Up"
-      }
-    ]
-  },
-  {
-    "era": "Hardstone Psycho",
-    "name": "Hardstone Psycho [March 2024 tracklist]",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Documentary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Kryptonite - 1 mix"
-      },
-      {
-        "num": "2.",
-        "name": "Ture up - no second verse - 1 mix"
-      },
-      {
-        "num": "3.",
-        "name": "Purple rain x GEEKED UP YEAT"
-      },
-      {
-        "num": "4.",
-        "name": "Deep in the water 1 mix"
-      },
-      {
-        "num": "1.",
-        "name": "Bandit 1 mix"
-      },
-      {
-        "num": "2.",
-        "name": "DARKO"
-      },
-      {
-        "num": "3.",
-        "name": "Attitude"
-      },
-      {
-        "num": "1.",
-        "name": "Glock    Need to switch second verse"
-      },
-      {
-        "num": "2.",
-        "name": "New drop"
-      },
-      {
-        "num": "3.",
-        "name": "Backstreets 1mix"
-      },
-      {
-        "num": "4.",
-        "name": "Heavy"
-      },
-      {
-        "num": "1.",
-        "name": "You pt2"
-      },
-      {
-        "num": "2.",
-        "name": "Last laught 1 mix"
-      },
-      {
-        "num": "3.",
-        "name": "5 to 10"
-      },
-      {
-        "num": "4.",
-        "name": "Vegas"
-      }
-    ]
-  },
-  {
-    "era": "Hardstone Psycho",
-    "name": "Hardstone Psycho [Album]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "KRYPTONITE"
-      },
-      {
-        "num": "2.",
-        "name": "TORE UP"
-      },
-      {
-        "num": "3.",
-        "name": "BROTHER STONE (FEAT. KODAK BLACK)"
-      },
-      {
-        "num": "4.",
-        "name": "ATTITUDE (FEAT. CHARLIE WILSON & CASH COBAIN)"
-      },
-      {
-        "num": "1.",
-        "name": "BANDIT"
-      },
-      {
-        "num": "2.",
-        "name": "GLOCK"
-      },
-      {
-        "num": "3.",
-        "name": "IC AGE (FEAT. TRAVIS SCOTT)"
-      },
-      {
-        "num": "4.",
-        "name": "4X4"
-      },
-      {
-        "num": "1.",
-        "name": "PURPLE RAIN (FEAT. FUTURE & METRO BOOMIN)"
-      },
-      {
-        "num": "2.",
-        "name": "NEW DROP"
-      },
-      {
-        "num": "3.",
-        "name": "BACKSTREETS (FEAT. TEEZO TOUCHDOWN)"
-      },
-      {
-        "num": "4.",
-        "name": "DEEP IN THE WATER"
-      },
-      {
-        "num": "1.",
-        "name": "INSIDE (FEAT. TRAVIS SCOTT)"
-      },
-      {
-        "num": "2.",
-        "name": "5 TO 10"
-      },
-      {
-        "num": "3.",
-        "name": "LAST LAUGH"
-      },
-      {
-        "num": "4.",
-        "name": "HARDSTONE NATIONAL ANTHEM"
-      }
-    ]
-  },
-  {
-    "era": "Hardstone Psycho",
-    "name": "Hardstone Psycho [Deluxe]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "KRYPTONITE"
-      },
-      {
-        "num": "2.",
-        "name": "TORE UP"
-      },
-      {
-        "num": "3.",
-        "name": "BROTHER STONE (FEAT. KODAK BLACK)"
-      },
-      {
-        "num": "4.",
-        "name": "ATTITUDE (FEAT. CHARLIE WILSON & CASH COBAIN)"
-      },
-      {
-        "num": "1.",
-        "name": "BANDIT"
-      },
-      {
-        "num": "2.",
-        "name": "GLOCK"
-      },
-      {
-        "num": "3.",
-        "name": "IC AGE (FEAT. TRAVIS SCOTT)"
-      },
-      {
-        "num": "4.",
-        "name": "4X4"
-      },
-      {
-        "num": "1.",
-        "name": "PURPLE RAIN (FEAT. FUTURE & METRO BOOMIN)"
-      },
-      {
-        "num": "2.",
-        "name": "NEW DROP"
-      },
-      {
-        "num": "3.",
-        "name": "BACKSTREETS (FEAT. TEEZO TOUCHDOWN)"
-      },
-      {
-        "num": "4.",
-        "name": "DEEP IN THE WATER"
-      },
-      {
-        "num": "1.",
-        "name": "INSIDE (FEAT. TRAVIS SCOTT)"
-      },
-      {
-        "num": "2.",
-        "name": "5 TO 10"
-      },
-      {
-        "num": "3.",
-        "name": "LAST LAUGH"
-      },
-      {
-        "num": "4.",
-        "name": "HARDSTONE NATIONAL ANTHEM"
-      },
-      {
-        "num": "1.",
-        "name": "ROCKSTAR GIRL"
-      },
-      {
-        "num": "2.",
-        "name": "LOVE IS A DRUG"
-      },
-      {
-        "num": "3.",
-        "name": "DONNY DARKO (FEAT. LIL UZI VERT)"
-      },
-      {
-        "num": "4.",
-        "name": "GEEKED UP (FEAT. YEAT)"
-      }
-    ]
-  },
-  {
-    "era": "OCTANE",
-    "name": "Octane Whiteboard #1",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Documentary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "CALL BACK"
-      },
-      {
-        "num": "2.",
-        "name": "FWU"
-      },
-      {
-        "num": "3.",
-        "name": "MS PRETTY PUSSY"
-      },
-      {
-        "num": "4.",
-        "name": "ONE WAY TICKET"
-      },
-      {
-        "num": "5.",
-        "name": "TICKET TO THE RODEO"
-      },
-      {
-        "num": "6.",
-        "name": "TO TELL THE TROUTH"
-      },
-      {
-        "num": "7.",
-        "name": "LIFESTYLE"
-      },
-      {
-        "num": "8.",
-        "name": "TOXIC"
-      }
-    ]
-  },
-  {
-    "era": "OCTANE",
-    "name": "Octane Whiteboard #2",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Documentary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Toxic"
-      },
-      {
-        "num": "2.",
-        "name": "K9"
-      },
-      {
-        "num": "3.",
-        "name": "Excavator"
-      },
-      {
-        "num": "4.",
-        "name": "Gemstone"
-      },
-      {
-        "num": "5.",
-        "name": "Opposite"
-      },
-      {
-        "num": "6.",
-        "name": "Pleasure"
-      },
-      {
-        "num": "7.",
-        "name": "Sweet (Sweet Home)"
-      },
-      {
-        "num": "8.",
-        "name": "???"
-      }
-    ]
-  },
-  {
-    "era": "OCTANE",
-    "name": "Octane [Physical] [1] (Rumored)",
-    "date": "",
-    "quality": "N/A",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "E85"
-      },
-      {
-        "num": "2.",
-        "name": "Body"
-      },
-      {
-        "num": "3.",
-        "name": "Diamonds"
-      },
-      {
-        "num": "4.",
-        "name": "2nd Hand (feat. Rema)"
-      },
-      {
-        "num": "5.",
-        "name": "Tiramisu"
-      },
-      {
-        "num": "6.",
-        "name": "ATM"
-      },
-      {
-        "num": "7.",
-        "name": "Calabasas"
-      },
-      {
-        "num": "8.",
-        "name": "Rosary"
-      },
-      {
-        "num": "9.",
-        "name": "Up & Down"
-      },
-      {
-        "num": "10.",
-        "name": "Call Back"
-      },
-      {
-        "num": "11.",
-        "name": "Toxic"
-      },
-      {
-        "num": "12.",
-        "name": "K9 (feat. SahBabii)"
-      },
-      {
-        "num": "13.",
-        "name": "Excavator"
-      },
-      {
-        "num": "14.",
-        "name": "Gemstone"
-      },
-      {
-        "num": "15.",
-        "name": "Opposite"
-      },
-      {
-        "num": "16.",
-        "name": "To Tell The Truth"
-      },
-      {
-        "num": "17.",
-        "name": "The Pleasure's Mine"
-      },
-      {
-        "num": "18.",
-        "name": "Sweet Home"
-      }
-    ]
-  },
-  {
-    "era": "OCTANE",
-    "name": "Octane [Physical] [2]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Release",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "E85"
-      },
-      {
-        "num": "2.",
-        "name": "Body"
-      },
-      {
-        "num": "3.",
-        "name": "Diamonds (feat. Yeat)"
-      },
-      {
-        "num": "4.",
-        "name": "2nd Hand (feat. Rema)"
-      },
-      {
-        "num": "5.",
-        "name": "Tiramisu"
-      },
-      {
-        "num": "6.",
-        "name": "ATM"
-      },
-      {
-        "num": "7.",
-        "name": "Calabasas"
-      },
-      {
-        "num": "8.",
-        "name": "Rosary"
-      },
-      {
-        "num": "9.",
-        "name": "Up & Down"
-      },
-      {
-        "num": "10.",
-        "name": "Call Back"
-      },
-      {
-        "num": "11.",
-        "name": "Toxic"
-      },
-      {
-        "num": "12.",
-        "name": "K9 (feat. SahBabii)"
-      },
-      {
-        "num": "13.",
-        "name": "Excavator"
-      },
-      {
-        "num": "14.",
-        "name": "Gemstone"
-      },
-      {
-        "num": "15.",
-        "name": "Opposite"
-      },
-      {
-        "num": "16.",
-        "name": "To Tell The Truth"
-      },
-      {
-        "num": "17.",
-        "name": "The Pleasure's Mine"
-      },
-      {
-        "num": "18.",
-        "name": "Sweet Home"
-      }
-    ]
-  },
-  {
-    "era": "OCTANE",
-    "name": "Octane [Album]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Teaser",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "E85"
-      },
-      {
-        "num": "2.",
-        "name": "Body"
-      },
-      {
-        "num": "3.",
-        "name": "Rendezvous (feat. Yeat)"
-      },
-      {
-        "num": "4.",
-        "name": "Secondhand (feat. Rema)"
-      },
-      {
-        "num": "5.",
-        "name": "Tiramisu"
-      },
-      {
-        "num": "6.",
-        "name": "ATM"
-      },
-      {
-        "num": "7.",
-        "name": "Long Way To Calabasas"
-      },
-      {
-        "num": "8.",
-        "name": "Rosary (feat. Travis Scott)"
-      },
-      {
-        "num": "9.",
-        "name": "All The Signs (feat. Teezo Touchdown)"
-      },
-      {
-        "num": "10.",
-        "name": "Call Back"
-      },
-      {
-        "num": "11.",
-        "name": "Tuition"
-      },
-      {
-        "num": "12.",
-        "name": "K9 (feat. SahBabii)"
-      },
-      {
-        "num": "13.",
-        "name": "Excavator"
-      },
-      {
-        "num": "14.",
-        "name": "Gemstone"
-      },
-      {
-        "num": "15.",
-        "name": "OPPOSITE"
-      },
-      {
-        "num": "16.",
-        "name": "TMU"
-      },
-      {
-        "num": "17.",
-        "name": "The Pleasure's Mine"
-      },
-      {
-        "num": "18.",
-        "name": "Sweet Home"
-      }
-    ]
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
   }
-]
+ ],
+ "albums": [
+  {
+   "era": "Space Age Pimping Trilogy",
+   "name": "Space Age Pimping 1",
+   "date": "",
+   "quality": "N/A",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": []
+  },
+  {
+   "era": "Space Age Pimping Trilogy",
+   "name": "Space Age Pimping 2",
+   "date": "",
+   "quality": "N/A",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": []
+  },
+  {
+   "era": "Space Age Pimping Trilogy",
+   "name": "Space Age Pimping 3",
+   "date": "",
+   "quality": "N/A",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": []
+  },
+  {
+   "era": "Life Before Death",
+   "name": "Life Before Death [EP]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "He Said"
+    },
+    {
+     "num": "#2",
+     "name": "Cash Money"
+    },
+    {
+     "num": "#3",
+     "name": "IDK"
+    },
+    {
+     "num": "#4",
+     "name": "You Know It"
+    },
+    {
+     "num": "#5",
+     "name": "Po A 4"
+    },
+    {
+     "num": "#6",
+     "name": "My Time"
+    },
+    {
+     "num": "#7",
+     "name": "Play Me [Clean]"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-6-0.jpg"
+   ]
+  },
+  {
+   "era": "Playa Familia",
+   "name": "Playa Familia [Mixtape]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "MAGIC & BIRD"
+    },
+    {
+     "num": "#2",
+     "name": "NO QUESTIONS"
+    },
+    {
+     "num": "#3",
+     "name": "PIMPIN PIMPIN"
+    },
+    {
+     "num": "#4",
+     "name": "STAY AWAY"
+    },
+    {
+     "num": "#5",
+     "name": "PERCOSET"
+    },
+    {
+     "num": "#6",
+     "name": "CHIEF KEEF"
+    },
+    {
+     "num": "#7",
+     "name": "FIFTY"
+    },
+    {
+     "num": "#8",
+     "name": "CHEEFIN"
+    },
+    {
+     "num": "#9",
+     "name": "FLYING ON TIME"
+    },
+    {
+     "num": "#10",
+     "name": "PLAY ME"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-7-0.jpg"
+   ]
+  },
+  {
+   "era": "Donny Womack",
+   "name": "Donny Womack [V1]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "I Gotta",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Diva",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Make Sumn",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Run It Up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "C4",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "Diamonds",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Around",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Thrasher",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Options",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "2 Lil Shorty",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "In The Field",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "My City",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "Hand To Hand",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "AMG",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-8-0.jpg"
+   ]
+  },
+  {
+   "era": "Donny Womack",
+   "name": "Donny Womack [V2]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "2 Lil Shorty",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "My City",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Diva",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Diamonds",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "C4",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "I Gotta",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "AMG",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Run It Up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Around",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "Make Sumn",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "Hand To Hand",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "Options",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "Thrasher",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "All I See",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Beat / Recording Available"
+    },
+    {
+     "num": "#15",
+     "name": "In The Field",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-9-0.jpg"
+   ]
+  },
+  {
+   "era": "Donny Womack",
+   "name": "Donny Womack [V3]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "2 Lil Shorty",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "My City",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Diva",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Diamonds",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "C4",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "I Gotta",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "AMG",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Run It Up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Around",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "Checks",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "Back End",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "High No More",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "Stove",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Beat / Recording Available"
+    },
+    {
+     "num": "#14",
+     "name": "Time",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "Issues",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-10-0.jpg"
+   ]
+  },
+  {
+   "era": "Donny Womack",
+   "name": "Donny Womack [Mixtape]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Diamonds"
+    },
+    {
+     "num": "#2",
+     "name": "Diva"
+    },
+    {
+     "num": "#3",
+     "name": "Issues"
+    },
+    {
+     "num": "#4",
+     "name": "Backend"
+    },
+    {
+     "num": "#5",
+     "name": "Mamma Mia"
+    },
+    {
+     "num": "#6",
+     "name": "Holdin' Steel (feat. Dice SoHo)"
+    },
+    {
+     "num": "#7",
+     "name": "Bang Bang"
+    },
+    {
+     "num": "#8",
+     "name": "2 Lil Shorty"
+    },
+    {
+     "num": "#9",
+     "name": "Video Girl"
+    },
+    {
+     "num": "#10",
+     "name": "Around"
+    },
+    {
+     "num": "#11",
+     "name": "AMG"
+    },
+    {
+     "num": "#12",
+     "name": "Run Up"
+    },
+    {
+     "num": "#13",
+     "name": "Talk No More"
+    }
+   ]
+  },
+  {
+   "era": "JACKBOYS",
+   "name": "JACKBOYS [October 2019 Considerations]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "A folder containing three songs labelled for 'JackBoys', all made during the early Don Toliver x Sheck Wes sessions.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Classy (Don Toliver x Sheck Wes)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "What To Do (Don Toliver x Sheck Wes)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Solid (Don Toliver x Sheck Wes x Quavo)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "JACKBOYS",
+   "name": "JACKBOYS [November - December 2019]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "Lengthy tentative tracklist that was ultimately trimmed down. Features were not listed, but some songs were credited to specific artists. Credited as \"Jack Boys (Travis Scott, Don Toliver, Sheck Wes and OG Chase B)\". Anything in parentheses is commentary.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Out West (presumably with Young Thug)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Gang Moves (retitled \"Gang Gang\"; might be missing Luxury Tax since he isn't credited as a JackBoy)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "What To Do (with Don Toliver and Sheck Wes; unclear if Travis had recorded yet)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Solid (Don Toliver x Sheck Wes x Quavo)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Gold Blackberry (Travis Scott)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "Top Floor (presumably with Gunna)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Don Toliver - Had Enough (with Quavo and Offset)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Chase B - May Day (with Sheck Wes and Young Thug)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "OMD (presumably with Kendrick Lamar wanted)",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#10",
+     "name": "Da Baby (no information)",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#11",
+     "name": "Sheck Wes - Glock on Ice",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "Highest In the Room - Remix (Travis Scott and probably Lil Baby; possibly no Mike Dean)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "JACKBOYS",
+   "name": "JACKBOYS [Album]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "HIGHEST IN THE ROOM (feat. ROSALÍA & Lil Baby) - REMIX"
+    },
+    {
+     "num": "#2",
+     "name": "JACKBOYS"
+    },
+    {
+     "num": "#3",
+     "name": "GANG GANG"
+    },
+    {
+     "num": "#4",
+     "name": "Don Toliver - HAD ENOUGH (feat. Quavo & Offset)"
+    },
+    {
+     "num": "#5",
+     "name": "OUT WEST (feat. Young Thug)"
+    },
+    {
+     "num": "#6",
+     "name": "WHAT TO DO? (feat. Don Toliver)"
+    },
+    {
+     "num": "#7",
+     "name": "GATTI (feat. Pop Smoke)"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-14-0.jpg"
+   ]
+  },
+  {
+   "era": "Heaven Or Hell",
+   "name": "Heaven Or Hell [Album]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Heaven Or Hell"
+    },
+    {
+     "num": "#2",
+     "name": "Euphoria (feat. Travis Scott & Kaash Paige)"
+    },
+    {
+     "num": "#3",
+     "name": "Cardigan"
+    },
+    {
+     "num": "#4",
+     "name": "After Party"
+    },
+    {
+     "num": "#5",
+     "name": "Wasted"
+    },
+    {
+     "num": "#6",
+     "name": "Can't Feel My Legs"
+    },
+    {
+     "num": "#7",
+     "name": "Candy"
+    },
+    {
+     "num": "#8",
+     "name": "Company"
+    },
+    {
+     "num": "#9",
+     "name": "Had Enough (feat. Quavo & Offset)"
+    },
+    {
+     "num": "#10",
+     "name": "Spaceship (feat. Sheck Wes)"
+    },
+    {
+     "num": "#11",
+     "name": "No Photos"
+    },
+    {
+     "num": "#12",
+     "name": "No Idea"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-15-0.jpg"
+   ]
+  },
+  {
+   "era": "Heaven Or Hell",
+   "name": "Heaven Or Hell [Deluxe]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "- Clap\n- Slippy Slide",
+   "tracks": []
+  },
+  {
+   "era": "Life of a DON",
+   "name": "Documentary Whiteboard #1",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Documentary",
+   "links": [],
+   "description": "- C_____\n- GET THROWED [?]\n- GOT IT COMING [?]\n- SAVE + SPOT [?]\n- FREE [?]\n- MR. TOLIVER\n- NEED YOUR LOVIN",
+   "tracks": [],
+   "images": [
+    "/dongold/art/tl-17-0.jpg"
+   ]
+  },
+  {
+   "era": "Life of a DON",
+   "name": "Documentary Whiteboard #2",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Documentary",
+   "links": [],
+   "description": "- FLOCKY FLOCKY\n- I SEE YOU\n- WHAT U NEED (HB #2) (Hit-Boy 2)\n- YOU\n- IN-N-OUT\n- 5 TIMES\n- WAY BETTER\n- LIGHTS OUT\n- DONT COUNT",
+   "tracks": [],
+   "images": [
+    "/dongold/art/tl-18-0.jpg"
+   ]
+  },
+  {
+   "era": "Life of a DON",
+   "name": "Documentary Computer Screen",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Documentary",
+   "links": [],
+   "description": "- Question Is 10.1\n- Save A Spot 9.26.20 5\n- Take My Place 10\n- U Kno I Like It\n- Way Bigger\n- Way It Go (Rain) 10.16.\n- What You Need 10.16.\n- Where You Going\n- WWYD 10.16.20 1\n- Don’t Go 10 (Don Toliver X JB)\n- Flocky Flocky [T\n- HOW HIGH",
+   "tracks": [],
+   "images": [
+    "/dongold/art/tl-19-0.jpg"
+   ]
+  },
+  {
+   "era": "Life of a DON",
+   "name": "Life of a DON [Atlantic Records, Sept 30]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Teaser",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "XSCAPE"
+    },
+    {
+     "num": "#2",
+     "name": "5 TIMES"
+    },
+    {
+     "num": "#3",
+     "name": "WAY BIGGER"
+    },
+    {
+     "num": "#4",
+     "name": "FLOCKY FLOCKY"
+    },
+    {
+     "num": "#5",
+     "name": "WHAT YOU NEED"
+    },
+    {
+     "num": "#6",
+     "name": "DOUBLE STANDARDS"
+    },
+    {
+     "num": "#7",
+     "name": "FIVE IN THE MORNING"
+    },
+    {
+     "num": "#8",
+     "name": "DRUGS N HELLA MELODIES"
+    },
+    {
+     "num": "#9",
+     "name": "2AM"
+    },
+    {
+     "num": "#10",
+     "name": "GET THROWED"
+    },
+    {
+     "num": "#11",
+     "name": "COMPANY PT. 2"
+    },
+    {
+     "num": "#12",
+     "name": "OUTER SPACE"
+    },
+    {
+     "num": "#13",
+     "name": "SMOKE"
+    },
+    {
+     "num": "#14",
+     "name": "I SEE YOU"
+    },
+    {
+     "num": "#15",
+     "name": "BOGUS"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-20-0.jpg"
+   ]
+  },
+  {
+   "era": "Life of a DON",
+   "name": "Life of a DON [Guess Hoodie, Oct 5]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Teaser",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "XSCAPE"
+    },
+    {
+     "num": "#2",
+     "name": "5 TIMES"
+    },
+    {
+     "num": "#3",
+     "name": "Way Bigger"
+    },
+    {
+     "num": "#4",
+     "name": "FLOCKY FLOCKY"
+    },
+    {
+     "num": "#5",
+     "name": "WHAT YOU NEED"
+    },
+    {
+     "num": "#6",
+     "name": "Double Standards"
+    },
+    {
+     "num": "#7",
+     "name": "FIVE IN THE MORNING"
+    },
+    {
+     "num": "#8",
+     "name": "DRUGS N HELLA MELODIES"
+    },
+    {
+     "num": "#9",
+     "name": "2 AM"
+    },
+    {
+     "num": "#10",
+     "name": "Get Throwed"
+    },
+    {
+     "num": "#11",
+     "name": "COMPANY (Pt. 2)"
+    },
+    {
+     "num": "#12",
+     "name": "OUTER SPACE"
+    },
+    {
+     "num": "#13",
+     "name": "SMOKE"
+    },
+    {
+     "num": "#14",
+     "name": "YOU"
+    },
+    {
+     "num": "#15",
+     "name": "I See"
+    },
+    {
+     "num": "#16",
+     "name": "Bogus"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-21-0.jpg"
+   ]
+  },
+  {
+   "era": "Life of a DON",
+   "name": "Life of a DON [Suitcase, Oct 7]",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Teaser",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "XSCAPE"
+    },
+    {
+     "num": "#2",
+     "name": "5 TIMES"
+    },
+    {
+     "num": "#3",
+     "name": "Way Bigger"
+    },
+    {
+     "num": "#4",
+     "name": "FLOCKY FLOCKY"
+    },
+    {
+     "num": "#5",
+     "name": "WHAT YOU NEED"
+    },
+    {
+     "num": "#6",
+     "name": "Double Standards"
+    },
+    {
+     "num": "#7",
+     "name": "FIVE IN THE MORNING"
+    },
+    {
+     "num": "#8",
+     "name": "DRUGS N HELLA MELODIES"
+    },
+    {
+     "num": "#9",
+     "name": "2 AM"
+    },
+    {
+     "num": "#10",
+     "name": "Get Throwed"
+    },
+    {
+     "num": "#11",
+     "name": "COMPANY (Pt. 2)"
+    },
+    {
+     "num": "#12",
+     "name": "OUTERSPACE"
+    },
+    {
+     "num": "#13",
+     "name": "SMOKE"
+    },
+    {
+     "num": "#14",
+     "name": "YOU"
+    },
+    {
+     "num": "#15",
+     "name": "Crossfaded"
+    },
+    {
+     "num": "#16",
+     "name": "Bogus"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-22-0.jpg"
+   ]
+  },
+  {
+   "era": "Life of a DON",
+   "name": "Life of a DON [Album]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "XSCAPE"
+    },
+    {
+     "num": "#2",
+     "name": "5X"
+    },
+    {
+     "num": "#3",
+     "name": "Way Bigger"
+    },
+    {
+     "num": "#4",
+     "name": "Flocky Flocky (feat. Travis Scott)"
+    },
+    {
+     "num": "#5",
+     "name": "What You Need"
+    },
+    {
+     "num": "#6",
+     "name": "Double Standards"
+    },
+    {
+     "num": "#7",
+     "name": "Swangin' On Westheimer"
+    },
+    {
+     "num": "#8",
+     "name": "Drugs N Hella Melodies (feat. Kali Uchis)"
+    },
+    {
+     "num": "#9",
+     "name": "2AM"
+    },
+    {
+     "num": "#10",
+     "name": "Get Throwed"
+    },
+    {
+     "num": "#11",
+     "name": "Company, Pt. 2"
+    },
+    {
+     "num": "#12",
+     "name": "OUTERSPACE (feat. Baby Keem)"
+    },
+    {
+     "num": "#13",
+     "name": "Smoke (feat. HVN & SoFaygo)"
+    },
+    {
+     "num": "#14",
+     "name": "You (feat. Travis Scott)"
+    },
+    {
+     "num": "#15",
+     "name": "Crossfaded"
+    },
+    {
+     "num": "#16",
+     "name": "BOGUS"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-23-0.jpg"
+   ]
+  },
+  {
+   "era": "Love Sick",
+   "name": "Love Sick [Original Concept]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Brandy (feat. ???)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Honeymoon (feat. Anderson .Paak)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Lit City (feat. Toro y Moi)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Go Down (feat. TisaKorean)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Love Sick",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#?",
+     "name": "If I Had (feat. Sampha)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Leave The Club",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Walk In",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Beat / Recording Available"
+    },
+    {
+     "num": "#?",
+     "name": "Slow Motion (feat. WizKid)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "Love Sick",
+   "name": "Love Sick [Filenames]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Love Sick",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#2",
+     "name": "Leave The Club",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Walk-In",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Beat / Recording Available"
+    },
+    {
+     "num": "#7",
+     "name": "Rolling Stone",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Honeymoon (feat. Anderson .Paak)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "If I Had",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Brandy (feat. ???)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Slow Motion (feat. WizKid)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "Rolling Stone (feat. Kid Cudi)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "Lit City (feat. Toro y Moi)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "Time Heals All",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "Go Down",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "Love Sick",
+   "name": "Love Sick [Diner Menu]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Teaser",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "COMPLICATED",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#2",
+     "name": "SPECIAL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "DO IT RIGHT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "LEAVE THE CLUB",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "BACK SEAT",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "SLOW MOTION",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "LOVE SICK",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#8",
+     "name": "LIT CITY",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "IF I HAD",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "HONEYMOON",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "4 ME",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "ROLLING STONE",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "ENCOURAGEMENT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "Love Sick",
+   "name": "Love Sick [Album]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Lovesickness"
+    },
+    {
+     "num": "#2",
+     "name": "Let Her Go (feat. James Blake)"
+    },
+    {
+     "num": "#3",
+     "name": "Leave The Club (feat. Lil Durk & GloRilla)"
+    },
+    {
+     "num": "#4",
+     "name": "4 Me (feat. Kali Uchis)"
+    },
+    {
+     "num": "#5",
+     "name": "Go Down (feat. TisaKorean)"
+    },
+    {
+     "num": "#6",
+     "name": "Time Heals All"
+    },
+    {
+     "num": "#7",
+     "name": "Leather Coat"
+    },
+    {
+     "num": "#8",
+     "name": "Honeymoon"
+    },
+    {
+     "num": "#9",
+     "name": "Private Landing (feat. Justin Bieber & Future)"
+    },
+    {
+     "num": "#10",
+     "name": "Slow Motion (feat. WizKid)"
+    },
+    {
+     "num": "#11",
+     "name": "Do It Right"
+    },
+    {
+     "num": "#12",
+     "name": "If I Had (feat. Charlie Wilson)"
+    },
+    {
+     "num": "#13",
+     "name": "Company Pt. 3"
+    },
+    {
+     "num": "#14",
+     "name": "Bus Stop (feat. Brent Faiyaz)"
+    },
+    {
+     "num": "#15",
+     "name": "Cinderella (feat. Toro y Moi)"
+    },
+    {
+     "num": "#16",
+     "name": "Encouragement"
+    }
+   ]
+  },
+  {
+   "era": "Love Sick",
+   "name": "Love Sick [Deluxe]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "No Pole"
+    },
+    {
+     "num": "#2",
+     "name": "Embarassed (feat. Travis Scott)"
+    },
+    {
+     "num": "#3",
+     "name": "Geronimo"
+    },
+    {
+     "num": "#4",
+     "name": "Luckily I'm Having (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#5",
+     "name": "Lovesickness"
+    },
+    {
+     "num": "#6",
+     "name": "Let Her Go (feat. James Blake)"
+    },
+    {
+     "num": "#7",
+     "name": "Leave The Club (feat. Lil Durk & GloRilla)"
+    },
+    {
+     "num": "#8",
+     "name": "4 Me (feat. Kali Uchis)"
+    },
+    {
+     "num": "#9",
+     "name": "Go Down (feat. TisaKorean)"
+    },
+    {
+     "num": "#10",
+     "name": "Time Heals All"
+    },
+    {
+     "num": "#11",
+     "name": "Leather Coat"
+    },
+    {
+     "num": "#12",
+     "name": "Honeymoon"
+    },
+    {
+     "num": "#13",
+     "name": "Private Landing (feat. Justin Bieber & Future)"
+    },
+    {
+     "num": "#14",
+     "name": "Slow Motion (feat. WizKid)"
+    },
+    {
+     "num": "#15",
+     "name": "Do It Right"
+    },
+    {
+     "num": "#16",
+     "name": "If I Had (feat. Charlie Wilson)"
+    },
+    {
+     "num": "#17",
+     "name": "Company Pt. 3"
+    },
+    {
+     "num": "#18",
+     "name": "Bus Stop (feat. Brent Faiyaz)"
+    },
+    {
+     "num": "#19",
+     "name": "Cinderella (feat. Toro y Moi)"
+    },
+    {
+     "num": "#20",
+     "name": "Encouragement"
+    }
+   ]
+  },
+  {
+   "era": "Hardstone Psycho",
+   "name": "Hardstone Psycho",
+   "date": "",
+   "quality": "N/A",
+   "source": "Documentary",
+   "links": [],
+   "description": "It´s Up said to be track 3 in a video. Track 1, 2 and the rest is unknown.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "???"
+    },
+    {
+     "num": "#2",
+     "name": "???"
+    },
+    {
+     "num": "#3",
+     "name": "It´s Up",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Beat / Recording Available"
+    }
+   ]
+  },
+  {
+   "era": "Hardstone Psycho",
+   "name": "Hardstone Psycho [March 2024 tracklist]",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Documentary",
+   "links": [],
+   "description": "THUNDER ROAD",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Kryptonite - 1 mix",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Ture up - no second verse - 1 mix",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Purple rain x GEEKED UP YEAT",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Deep in the water 1 mix",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "Bandit 1 mix",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "DARKO",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#3",
+     "name": "Attitude",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "Glock    Need to switch second verse",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "New drop",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Backstreets 1mix",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Heavy",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "You pt2",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Last laught 1 mix",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "5 to 10",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Vegas",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-30-0.jpg"
+   ]
+  },
+  {
+   "era": "Hardstone Psycho",
+   "name": "Hardstone Psycho [Album]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Release",
+   "links": [],
+   "description": "Disc 1",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "KRYPTONITE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "TORE UP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "BROTHER STONE (FEAT. KODAK BLACK)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "ATTITUDE (FEAT. CHARLIE WILSON & CASH COBAIN)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "BANDIT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "GLOCK",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "IC AGE (FEAT. TRAVIS SCOTT)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "4X4",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "PURPLE RAIN (FEAT. FUTURE & METRO BOOMIN)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "NEW DROP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "BACKSTREETS (FEAT. TEEZO TOUCHDOWN)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "DEEP IN THE WATER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "INSIDE (FEAT. TRAVIS SCOTT)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "5 TO 10",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "LAST LAUGH",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "HARDSTONE NATIONAL ANTHEM",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-31-0.jpg"
+   ]
+  },
+  {
+   "era": "Hardstone Psycho",
+   "name": "Hardstone Psycho [Deluxe]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Release",
+   "links": [],
+   "description": "Disc 1",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "KRYPTONITE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "TORE UP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "BROTHER STONE (FEAT. KODAK BLACK)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "ATTITUDE (FEAT. CHARLIE WILSON & CASH COBAIN)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "BANDIT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "GLOCK",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "IC AGE (FEAT. TRAVIS SCOTT)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "4X4",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "PURPLE RAIN (FEAT. FUTURE & METRO BOOMIN)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "NEW DROP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "BACKSTREETS (FEAT. TEEZO TOUCHDOWN)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "DEEP IN THE WATER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "INSIDE (FEAT. TRAVIS SCOTT)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "5 TO 10",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "LAST LAUGH",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "HARDSTONE NATIONAL ANTHEM",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#1",
+     "name": "ROCKSTAR GIRL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "LOVE IS A DRUG",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "DONNY DARKO (FEAT. LIL UZI VERT)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "GEEKED UP (FEAT. YEAT)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "OCTANE",
+   "name": "Octane Whiteboard #1",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Documentary",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "CALL BACK",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "FWU"
+    },
+    {
+     "num": "#3",
+     "name": "MS PRETTY PUSSY",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#4",
+     "name": "ONE WAY TICKET",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#5",
+     "name": "TICKET TO THE RODEO",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#6",
+     "name": "TO TELL THE TROUTH",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "LIFESTYLE",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#8",
+     "name": "TOXIC",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-33-0.jpg"
+   ]
+  },
+  {
+   "era": "OCTANE",
+   "name": "Octane Whiteboard #2",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Documentary",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Toxic",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "K9",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Excavator",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Gemstone",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Opposite",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "Pleasure",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Sweet (Sweet Home)",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "???"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-34-0.jpg"
+   ]
+  },
+  {
+   "era": "OCTANE",
+   "name": "Octane [Physical] [1] (Rumored)",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "E85",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Body",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Diamonds",
+     "color": "#93C47D",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "2nd Hand (feat. Rema)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Tiramisu",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "ATM",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Calabasas",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Rosary",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Up & Down",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "Call Back",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "Toxic",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "K9 (feat. SahBabii)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "Excavator",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "Gemstone",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "Opposite",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "To Tell The Truth",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "The Pleasure's Mine",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "Sweet Home",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "OCTANE",
+   "name": "Octane [Physical] [2]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Release",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "E85"
+    },
+    {
+     "num": "#2",
+     "name": "Body"
+    },
+    {
+     "num": "#3",
+     "name": "Diamonds (feat. Yeat)"
+    },
+    {
+     "num": "#4",
+     "name": "2nd Hand (feat. Rema)"
+    },
+    {
+     "num": "#5",
+     "name": "Tiramisu"
+    },
+    {
+     "num": "#6",
+     "name": "ATM"
+    },
+    {
+     "num": "#7",
+     "name": "Calabasas"
+    },
+    {
+     "num": "#8",
+     "name": "Rosary"
+    },
+    {
+     "num": "#9",
+     "name": "Up & Down"
+    },
+    {
+     "num": "#10",
+     "name": "Call Back"
+    },
+    {
+     "num": "#11",
+     "name": "Toxic"
+    },
+    {
+     "num": "#12",
+     "name": "K9 (feat. SahBabii)"
+    },
+    {
+     "num": "#13",
+     "name": "Excavator"
+    },
+    {
+     "num": "#14",
+     "name": "Gemstone"
+    },
+    {
+     "num": "#15",
+     "name": "Opposite"
+    },
+    {
+     "num": "#16",
+     "name": "To Tell The Truth"
+    },
+    {
+     "num": "#17",
+     "name": "The Pleasure's Mine"
+    },
+    {
+     "num": "#18",
+     "name": "Sweet Home"
+    }
+   ]
+  },
+  {
+   "era": "OCTANE",
+   "name": "Octane [Album]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Teaser",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "E85"
+    },
+    {
+     "num": "#2",
+     "name": "Body"
+    },
+    {
+     "num": "#3",
+     "name": "Rendezvous (feat. Yeat)"
+    },
+    {
+     "num": "#4",
+     "name": "Secondhand (feat. Rema)"
+    },
+    {
+     "num": "#5",
+     "name": "Tiramisu"
+    },
+    {
+     "num": "#6",
+     "name": "ATM"
+    },
+    {
+     "num": "#7",
+     "name": "Long Way To Calabasas"
+    },
+    {
+     "num": "#8",
+     "name": "Rosary (feat. Travis Scott)"
+    },
+    {
+     "num": "#9",
+     "name": "All The Signs (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#10",
+     "name": "Call Back"
+    },
+    {
+     "num": "#11",
+     "name": "Tuition"
+    },
+    {
+     "num": "#12",
+     "name": "K9 (feat. SahBabii)"
+    },
+    {
+     "num": "#13",
+     "name": "Excavator"
+    },
+    {
+     "num": "#14",
+     "name": "Gemstone"
+    },
+    {
+     "num": "#15",
+     "name": "OPPOSITE"
+    },
+    {
+     "num": "#16",
+     "name": "TMU"
+    },
+    {
+     "num": "#17",
+     "name": "The Pleasure's Mine"
+    },
+    {
+     "num": "#18",
+     "name": "Sweet Home"
+    }
+   ],
+   "images": [
+    "/dongold/art/tl-37-0.jpg"
+   ]
+  }
+ ]
+}

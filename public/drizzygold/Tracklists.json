@@ -1,3057 +1,3366 @@
-[
+{
+ "legend": [
   {
-    "era": "Before So Far Gone",
-    "name": "Drake Demo Tape",
-    "date": "",
-    "quality": "Clear",
-    "source": "Secondary",
-    "links": [
-      "Link Needed"
-    ],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "City Is Mine"
-      },
-      {
-        "num": "2",
-        "name": "Inst"
-      },
-      {
-        "num": "3",
-        "name": "Acapella"
-      },
-      {
-        "num": "4",
-        "name": "Do What You Want (Remix) (feat. Nickelus F & Malice of Clipse)"
-      }
-    ]
+   "label": "Unknown",
+   "color": "#999999"
   },
   {
-    "era": "Before So Far Gone",
-    "name": "Room For Improvement",
-    "date": "",
-    "quality": "Clear",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Intro"
-      },
-      {
-        "num": "2",
-        "name": "Make Things Right"
-      },
-      {
-        "num": "3",
-        "name": "Fever"
-      },
-      {
-        "num": "4",
-        "name": "Special Bones Knife (?)"
-      },
-      {
-        "num": "5",
-        "name": "Special"
-      },
-      {
-        "num": "6",
-        "name": "Memphis Secrets"
-      },
-      {
-        "num": "7",
-        "name": "Money"
-      },
-      {
-        "num": "8",
-        "name": "All Figured Out"
-      },
-      {
-        "num": "9",
-        "name": "Amir 902"
-      },
-      {
-        "num": "10",
-        "name": "Thrill Is Gone"
-      },
-      {
-        "num": "11",
-        "name": "Advice"
-      },
-      {
-        "num": "12",
-        "name": "Apple Jacks Interlude"
-      },
-      {
-        "num": "13",
-        "name": "Get It"
-      },
-      {
-        "num": "14",
-        "name": "Al-Khaliq Track"
-      },
-      {
-        "num": "15",
-        "name": "City Is Mine"
-      },
-      {
-        "num": "16",
-        "name": "Come Winter"
-      },
-      {
-        "num": "17",
-        "name": "Rewind"
-      },
-      {
-        "num": "18",
-        "name": "Go Crazy RMX"
-      },
-      {
-        "num": "19",
-        "name": "Comin For YOU RMX"
-      },
-      {
-        "num": "20",
-        "name": "About Da Game RMX"
-      },
-      {
-        "num": "21",
-        "name": "Special Intro"
-      }
-    ]
+   "label": "Completely Unheard",
+   "color": "#E06666"
   },
   {
-    "era": "Before So Far Gone",
-    "name": "Room For Improvement",
-    "date": "",
-    "quality": "Clear",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Pianist Hands Intro"
-      },
-      {
-        "num": "2",
-        "name": "Make Things Right"
-      },
-      {
-        "num": "3",
-        "name": "Thrill Is Gone"
-      },
-      {
-        "num": "4",
-        "name": "Special"
-      },
-      {
-        "num": "5",
-        "name": "All Figured Out"
-      },
-      {
-        "num": "6",
-        "name": "Money"
-      },
-      {
-        "num": "7",
-        "name": "Do What You Do"
-      },
-      {
-        "num": "8",
-        "name": "AMPM (AM 2 PM)"
-      },
-      {
-        "num": "9",
-        "name": "A Scorpio's Mind"
-      },
-      {
-        "num": "10",
-        "name": "Video Girl"
-      },
-      {
-        "num": "11",
-        "name": "Held Down"
-      },
-      {
-        "num": "12",
-        "name": "Apple Jacks Interlude"
-      },
-      {
-        "num": "13",
-        "name": "City Is Mine"
-      },
-      {
-        "num": "14",
-        "name": "S.T.R.E.S.S."
-      },
-      {
-        "num": "15",
-        "name": "Come Winter"
-      },
-      {
-        "num": "16",
-        "name": "Bad Meaning Good"
-      },
-      {
-        "num": "17",
-        "name": "High School"
-      },
-      {
-        "num": "18",
-        "name": "Extra Special"
-      },
-      {
-        "num": "19",
-        "name": "Try Harder"
-      }
-    ]
+   "label": "Snippet / Partial / Beat / Recording Available",
+   "color": "#F6B26B"
   },
   {
-    "era": "So Far Gone",
-    "name": "So Far Gone",
-    "date": "Feb 13, 2009",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Lust For Life"
-      },
-      {
-        "num": "2",
-        "name": "Houstatlantavegas"
-      },
-      {
-        "num": "3",
-        "name": "Successful (feat. Trey Songz & Lil Wayne)"
-      },
-      {
-        "num": "4",
-        "name": "Let's Call It Off (feat. Peter Bjorn and John)"
-      },
-      {
-        "num": "5",
-        "name": "November 18th"
-      },
-      {
-        "num": "6",
-        "name": "Ignant Shit (feat. Lil Wayne)"
-      },
-      {
-        "num": "7",
-        "name": "A Night Off (feat. Lloyd)"
-      },
-      {
-        "num": "8",
-        "name": "Say What's Real"
-      },
-      {
-        "num": "9",
-        "name": "Little Bit (feat. Lykke Li)"
-      },
-      {
-        "num": "10",
-        "name": "Best I Ever Had"
-      },
-      {
-        "num": "11",
-        "name": "Unstoppable (feat. Santigold & Lil Wayne)"
-      },
-      {
-        "num": "12",
-        "name": "Uptown (feat. Bun B & Lil Wayne)"
-      },
-      {
-        "num": "13",
-        "name": "Sooner Than Later"
-      },
-      {
-        "num": "14",
-        "name": "Bria's Interlude (feat. Omarion)"
-      },
-      {
-        "num": "15",
-        "name": "The Calm"
-      },
-      {
-        "num": "16",
-        "name": "Outro (feat. Chilly Gonzales)"
-      },
-      {
-        "num": "17",
-        "name": "Brand New (Bonus Track)"
-      },
-      {
-        "num": "18",
-        "name": "Congratulations (Bonus Track)"
-      }
-    ]
+   "label": "Alternate Version Available",
+   "color": "#93C47D"
   },
   {
-    "era": "Thank Me Later",
-    "name": "Thank Me Later",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "FIREWORKS - HOOK"
-      },
-      {
-        "num": "2",
-        "name": "KARAOKE - VOCAL TWEAK"
-      },
-      {
-        "num": "3",
-        "name": "THE RESISTANCE - HOOK"
-      },
-      {
-        "num": "4",
-        "name": "OVER - DONE ✔"
-      },
-      {
-        "num": "5",
-        "name": "U KNOW YOU KNOW - PRODUCTION (You Know, You Know)"
-      },
-      {
-        "num": "6",
-        "name": "FANCY GIRLS - 3000, SWIZZ (Fancy)"
-      },
-      {
-        "num": "7",
-        "name": "SHUT IT DOWN - DREAM VOCALS RESING LAY"
-      },
-      {
-        "num": "8",
-        "name": "LIGHT UP - OUTRO"
-      },
-      {
-        "num": "9",
-        "name": "MISS ME - OUTRO"
-      },
-      {
-        "num": "10",
-        "name": "FIND YOUR LOVE - MIX"
-      },
-      {
-        "num": "11",
-        "name": "THANK ME KNOW - PRODUCTION OUTRO (ALBUM)"
-      }
-    ]
-  },
-  {
-    "era": "Thank Me Later",
-    "name": "Thank Me Later",
-    "date": "Jun 15, 2010",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Fireworks"
-      },
-      {
-        "num": "2",
-        "name": "Karaoke"
-      },
-      {
-        "num": "3",
-        "name": "The Resistance"
-      },
-      {
-        "num": "4",
-        "name": "Over"
-      },
-      {
-        "num": "5",
-        "name": "Show Me A Good Time"
-      },
-      {
-        "num": "6",
-        "name": "Up All Night"
-      },
-      {
-        "num": "7",
-        "name": "Fancy"
-      },
-      {
-        "num": "8",
-        "name": "Shut It Down (feat. The-Dream)"
-      },
-      {
-        "num": "9",
-        "name": "Unforgettable"
-      },
-      {
-        "num": "10",
-        "name": "Light Up"
-      },
-      {
-        "num": "11",
-        "name": "Miss Me"
-      },
-      {
-        "num": "12",
-        "name": "Cece's Interlude"
-      },
-      {
-        "num": "13",
-        "name": "Find Your Love"
-      },
-      {
-        "num": "14",
-        "name": "Thank Me Now"
-      }
-    ]
-  },
-  {
-    "era": "Take Care",
-    "name": "Take Care",
-    "date": "",
-    "quality": "Blocked",
-    "source": "N/A",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Dre(ams) M(oney Can) Buy | Mix"
-      },
-      {
-        "num": "2",
-        "name": "(C)rew (Love) | 3 Verses"
-      },
-      {
-        "num": "3",
-        "name": "??? | Mix"
-      },
-      {
-        "num": "4",
-        "name": "Club P(aradise) | 2nd Verse / Hook"
-      },
-      {
-        "num": "5",
-        "name": "(The) Rid(e) | 3rd Verse / Sonic F(???)"
-      },
-      {
-        "num": "6",
-        "name": "Th(e) R(eal) He(r) | Mix"
-      },
-      {
-        "num": "7",
-        "name": "??? | 3rd Verse / Hook"
-      },
-      {
-        "num": "8",
-        "name": "(???)hing | Chorus Melody Adjust / (???)"
-      },
-      {
-        "num": "9",
-        "name": "(G)ood Ones (Go) | Second Pre-Chorus / Rap"
-      },
-      {
-        "num": "10",
-        "name": "??? | M(ix)"
-      }
-    ]
-  },
-  {
-    "era": "Take Care",
-    "name": "Take Care",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "✔ OVER MY DEAD BODY - one punch"
-      },
-      {
-        "num": "2",
-        "name": "✔ SHOT FOR ME - one punch"
-      },
-      {
-        "num": "3",
-        "name": "CAMERAS ✔"
-      },
-      {
-        "num": "4",
-        "name": "HATE SLEEPING ALONE ✔"
-      },
-      {
-        "num": "5",
-        "name": "✔ LOOK WHAT YOU'VE DONE - Hook"
-      },
-      {
-        "num": "6",
-        "name": "The Ride ✔"
-      },
-      {
-        "num": "7",
-        "name": "The Real Her ✔"
-      },
-      {
-        "num": "8",
-        "name": "Good Ones Go ✔"
-      }
-    ]
-  },
-  {
-    "era": "Take Care",
-    "name": "Take Care",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Over My Dead Body"
-      },
-      {
-        "num": "2",
-        "name": "Shot For Me"
-      },
-      {
-        "num": "3",
-        "name": "Headlines"
-      },
-      {
-        "num": "4",
-        "name": "Crew Love"
-      },
-      {
-        "num": "5",
-        "name": "Take Care"
-      },
-      {
-        "num": "6",
-        "name": "Marvins Room"
-      },
-      {
-        "num": "7",
-        "name": "Buried Alive Interlude"
-      },
-      {
-        "num": "8",
-        "name": "Under Ground Kings"
-      },
-      {
-        "num": "9",
-        "name": "We'll Be Fine"
-      },
-      {
-        "num": "10",
-        "name": "Make Me Proud"
-      },
-      {
-        "num": "11",
-        "name": "Lord Knows"
-      },
-      {
-        "num": "12",
-        "name": "Cameras / Good Ones Go Interlude - Medley"
-      },
-      {
-        "num": "13",
-        "name": "Doing It Wrong"
-      },
-      {
-        "num": "14",
-        "name": "The Real Her"
-      },
-      {
-        "num": "15",
-        "name": "Look What You've Done"
-      },
-      {
-        "num": "16",
-        "name": "HYFR (Hell Ya Fucking Right)"
-      },
-      {
-        "num": "17",
-        "name": "Practice"
-      },
-      {
-        "num": "18",
-        "name": "The Ride"
-      }
-    ]
-  },
-  {
-    "era": "Take Care",
-    "name": "Take Care (Deluxe)",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Over My Dead Body"
-      },
-      {
-        "num": "2",
-        "name": "Shot For Me"
-      },
-      {
-        "num": "3",
-        "name": "Headlines"
-      },
-      {
-        "num": "4",
-        "name": "Crew Love"
-      },
-      {
-        "num": "5",
-        "name": "Take Care"
-      },
-      {
-        "num": "6",
-        "name": "Marvins Room"
-      },
-      {
-        "num": "7",
-        "name": "Buried Alive Interlude"
-      },
-      {
-        "num": "8",
-        "name": "Under Ground Kings"
-      },
-      {
-        "num": "9",
-        "name": "We'll Be Fine"
-      },
-      {
-        "num": "10",
-        "name": "Make Me Proud"
-      },
-      {
-        "num": "11",
-        "name": "Lord Knows"
-      },
-      {
-        "num": "12",
-        "name": "Cameras / Good Ones Go Interlude - Medley"
-      },
-      {
-        "num": "13",
-        "name": "Doing It Wrong"
-      },
-      {
-        "num": "14",
-        "name": "The Real Her"
-      },
-      {
-        "num": "15",
-        "name": "Look What You've Done"
-      },
-      {
-        "num": "16",
-        "name": "HYFR (Hell Ya Fucking Right)"
-      },
-      {
-        "num": "17",
-        "name": "Practice"
-      },
-      {
-        "num": "18",
-        "name": "The Ride"
-      },
-      {
-        "num": "19",
-        "name": "The Motto"
-      }
-    ]
-  },
-  {
-    "era": "Nothing Was The Same",
-    "name": "Nothing Was The Same",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Tuscan Leather"
-      },
-      {
-        "num": "2",
-        "name": "Left Field"
-      },
-      {
-        "num": "3",
-        "name": "Started From The Bottom"
-      },
-      {
-        "num": "4",
-        "name": "Wu Tang Forever"
-      },
-      {
-        "num": "5",
-        "name": "Own It"
-      },
-      {
-        "num": "6",
-        "name": "All Me"
-      },
-      {
-        "num": "7",
-        "name": "Hold On, We're Going Home"
-      },
-      {
-        "num": "8",
-        "name": "Jhené"
-      },
-      {
-        "num": "9",
-        "name": "Connect"
-      },
-      {
-        "num": "10",
-        "name": "Come Thru"
-      },
-      {
-        "num": "11",
-        "name": "(???)"
-      },
-      {
-        "num": "12",
-        "name": "Pound Cake"
-      }
-    ]
-  },
-  {
-    "era": "Nothing Was The Same",
-    "name": "Nothing Was The Same",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Tuscan Leather"
-      },
-      {
-        "num": "2",
-        "name": "Left Field"
-      },
-      {
-        "num": "3",
-        "name": "Started From The Bottom"
-      },
-      {
-        "num": "4",
-        "name": "Wu Tang Forever"
-      },
-      {
-        "num": "5",
-        "name": "Own It"
-      },
-      {
-        "num": "6",
-        "name": "All Me"
-      },
-      {
-        "num": "7",
-        "name": "From Time"
-      },
-      {
-        "num": "8",
-        "name": "Hold On, We're Going Home"
-      },
-      {
-        "num": "9",
-        "name": "Connect"
-      },
-      {
-        "num": "10",
-        "name": "Pound Cake / Paris Morton Music 2"
-      },
-      {
-        "num": "#?",
-        "name": "Paul Beat (Too Much?)"
-      },
-      {
-        "num": "#?",
-        "name": "Hit Boy (Trophies)"
-      },
-      {
-        "num": "#?",
-        "name": "James Blake"
-      },
-      {
-        "num": "#?",
-        "name": "Too Many Worries"
-      }
-    ]
-  },
-  {
-    "era": "Nothing Was The Same",
-    "name": "Nothing Was The Same",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "TUSCAN LEATHER"
-      },
-      {
-        "num": "2",
-        "name": "LEFT FIELD"
-      },
-      {
-        "num": "3",
-        "name": "STARTED FROM THE BOTTOM"
-      },
-      {
-        "num": "4",
-        "name": "WU TANG FOREVER"
-      },
-      {
-        "num": "5",
-        "name": "JHENE / (Brittany)'S INTERLUDE"
-      },
-      {
-        "num": "6",
-        "name": "HIT BOY (Trophies)"
-      },
-      {
-        "num": "7",
-        "name": "SEAN / CHAINZ / DRAKE ? (All Me)"
-      },
-      {
-        "num": "8",
-        "name": "NAS IDEA"
-      },
-      {
-        "num": "9",
-        "name": "CONNECT"
-      },
-      {
-        "num": "10",
-        "name": "COME THRU"
-      },
-      {
-        "num": "11",
-        "name": "CAKE (Pound Cake)"
-      },
-      {
-        "num": "#?",
-        "name": "JODECI (LEAK) (Jodeci Freestyle)"
-      },
-      {
-        "num": "#?",
-        "name": "MOTIONS (The Motion)"
-      },
-      {
-        "num": "#?",
-        "name": "HEAT OF THE MOMENT (OG RON C)"
-      },
-      {
-        "num": "#?",
-        "name": "YOURS + MINE"
-      }
-    ]
-  },
-  {
-    "era": "Nothing Was The Same",
-    "name": "Nothing Was The Same",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "TUSCAN LEATHER"
-      },
-      {
-        "num": "2",
-        "name": "FURTHEST THING"
-      },
-      {
-        "num": "3",
-        "name": "STARTED FROM THE BOTTOM"
-      },
-      {
-        "num": "4",
-        "name": "WU-TANG FOREVER"
-      },
-      {
-        "num": "5",
-        "name": "OWN IT"
-      },
-      {
-        "num": "6",
-        "name": "TROPHIES"
-      },
-      {
-        "num": "7",
-        "name": "ALL ME"
-      },
-      {
-        "num": "8",
-        "name": "FROM TIME"
-      },
-      {
-        "num": "9",
-        "name": "HOLD ON, WE'RE GOING HOME"
-      },
-      {
-        "num": "10",
-        "name": "CONNECT"
-      },
-      {
-        "num": "11",
-        "name": "THE LANGUAGE"
-      },
-      {
-        "num": "12",
-        "name": "305 TO MY CITY"
-      },
-      {
-        "num": "13",
-        "name": "POUND CAKE"
-      }
-    ]
-  },
-  {
-    "era": "Nothing Was The Same",
-    "name": "Nothing Was The Same",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Tuscan Leather"
-      },
-      {
-        "num": "2",
-        "name": "Furthest Thing"
-      },
-      {
-        "num": "3",
-        "name": "Started From the Bottom"
-      },
-      {
-        "num": "4",
-        "name": "Wu-Tang Forever"
-      },
-      {
-        "num": "5",
-        "name": "Own It"
-      },
-      {
-        "num": "6",
-        "name": "Worst Behavior"
-      },
-      {
-        "num": "7",
-        "name": "From Time"
-      },
-      {
-        "num": "8",
-        "name": "Hold On, We're Going Home"
-      },
-      {
-        "num": "9",
-        "name": "Connect"
-      },
-      {
-        "num": "10",
-        "name": "The Language"
-      },
-      {
-        "num": "11",
-        "name": "305 To My City"
-      },
-      {
-        "num": "12",
-        "name": "Too Much"
-      },
-      {
-        "num": "13",
-        "name": "Pound Cake / Paris Morton Music 2"
-      }
-    ]
-  },
-  {
-    "era": "Nothing Was The Same",
-    "name": "Nothing Was The Same (Deluxe)",
-    "date": "",
-    "quality": "N/A",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Pound Cake / Paris Morton Music 2"
-      },
-      {
-        "num": "2",
-        "name": "Too Much"
-      },
-      {
-        "num": "3",
-        "name": "305 to My City"
-      },
-      {
-        "num": "4",
-        "name": "The Language"
-      },
-      {
-        "num": "5",
-        "name": "Connect"
-      },
-      {
-        "num": "6",
-        "name": "Hold On, We're Going Home"
-      },
-      {
-        "num": "7",
-        "name": "From Time"
-      },
-      {
-        "num": "8",
-        "name": "Worst Behavior"
-      },
-      {
-        "num": "9",
-        "name": "Own It"
-      },
-      {
-        "num": "10",
-        "name": "Wu-Tang Forever"
-      },
-      {
-        "num": "11",
-        "name": "Started From The Bottom"
-      },
-      {
-        "num": "12",
-        "name": "Furthest Thing"
-      },
-      {
-        "num": "13",
-        "name": "Tuscan Leather"
-      }
-    ]
-  },
-  {
-    "era": "Nothing Was The Same",
-    "name": "Nothing Was The Same (Deluxe)",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Tuscan Leather"
-      },
-      {
-        "num": "2",
-        "name": "Furthest Thing"
-      },
-      {
-        "num": "3",
-        "name": "Started From the Bottom"
-      },
-      {
-        "num": "4",
-        "name": "Wu-Tang Forever"
-      },
-      {
-        "num": "5",
-        "name": "Own It"
-      },
-      {
-        "num": "6",
-        "name": "Worst Behavior"
-      },
-      {
-        "num": "7",
-        "name": "From Time"
-      },
-      {
-        "num": "8",
-        "name": "Hold On, We're Going Home"
-      },
-      {
-        "num": "9",
-        "name": "Connect"
-      },
-      {
-        "num": "10",
-        "name": "The Language"
-      },
-      {
-        "num": "11",
-        "name": "305 To My City"
-      },
-      {
-        "num": "12",
-        "name": "Too Much"
-      },
-      {
-        "num": "13",
-        "name": "Pound Cake / Paris Morton Music 2"
-      },
-      {
-        "num": "14",
-        "name": "Come Thru"
-      },
-      {
-        "num": "15",
-        "name": "All Me"
-      }
-    ]
-  },
-  {
-    "era": "If You're Reading This It's Too Late",
-    "name": "If You're Reading This It's Too Late",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Legend"
-      },
-      {
-        "num": "2",
-        "name": "Energy"
-      },
-      {
-        "num": "3",
-        "name": "10 Bands"
-      },
-      {
-        "num": "4",
-        "name": "Know Yourself"
-      },
-      {
-        "num": "5",
-        "name": "No Tellin"
-      },
-      {
-        "num": "6",
-        "name": "Madonna"
-      },
-      {
-        "num": "7",
-        "name": "6 God"
-      },
-      {
-        "num": "8",
-        "name": "* 67 (Star67)"
-      },
-      {
-        "num": "9",
-        "name": "Preach"
-      },
-      {
-        "num": "10",
-        "name": "Used To"
-      },
-      {
-        "num": "11",
-        "name": "Lou Will (6 Man)"
-      },
-      {
-        "num": "12",
-        "name": "Now And Forever (Now & Forever)"
-      },
-      {
-        "num": "13",
-        "name": "Company"
-      },
-      {
-        "num": "14",
-        "name": "You + The 6 (You & The 6)"
-      },
-      {
-        "num": "15",
-        "name": "Jungle Cat (Jungle)"
-      },
-      {
-        "num": "16",
-        "name": "6PM In New York"
-      }
-    ]
-  },
-  {
-    "era": "If You're Reading This It's Too Late",
-    "name": "If You're Reading This It's Too Late",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Legend"
-      },
-      {
-        "num": "2",
-        "name": "Energy"
-      },
-      {
-        "num": "3",
-        "name": "10 Bands"
-      },
-      {
-        "num": "4",
-        "name": "Know Yourself"
-      },
-      {
-        "num": "5",
-        "name": "No Tellin'"
-      },
-      {
-        "num": "6",
-        "name": "Madonna"
-      },
-      {
-        "num": "7",
-        "name": "6 God"
-      },
-      {
-        "num": "8",
-        "name": "Star67"
-      },
-      {
-        "num": "9",
-        "name": "Preach"
-      },
-      {
-        "num": "10",
-        "name": "Wednesday Night Interlude"
-      },
-      {
-        "num": "11",
-        "name": "Used To"
-      },
-      {
-        "num": "12",
-        "name": "6 Man"
-      },
-      {
-        "num": "13",
-        "name": "Now & Forever"
-      },
-      {
-        "num": "14",
-        "name": "Company"
-      },
-      {
-        "num": "15",
-        "name": "You & The 6"
-      },
-      {
-        "num": "16",
-        "name": "Jungle"
-      },
-      {
-        "num": "17",
-        "name": "6PM In New York"
-      }
-    ]
-  },
-  {
-    "era": "If You're Reading This It's Too Late",
-    "name": "If You're Reading This It's Too Late [CD Version]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Legend"
-      },
-      {
-        "num": "2",
-        "name": "Energy"
-      },
-      {
-        "num": "3",
-        "name": "10 Bands"
-      },
-      {
-        "num": "4",
-        "name": "Know Yourself"
-      },
-      {
-        "num": "5",
-        "name": "No Tellin'"
-      },
-      {
-        "num": "6",
-        "name": "Madonna"
-      },
-      {
-        "num": "7",
-        "name": "6 God"
-      },
-      {
-        "num": "8",
-        "name": "Star67"
-      },
-      {
-        "num": "9",
-        "name": "Preach"
-      },
-      {
-        "num": "10",
-        "name": "Wednesday Night Interlude"
-      },
-      {
-        "num": "11",
-        "name": "Used To"
-      },
-      {
-        "num": "12",
-        "name": "6 Man"
-      },
-      {
-        "num": "13",
-        "name": "Now & Forever"
-      },
-      {
-        "num": "14",
-        "name": "Company"
-      },
-      {
-        "num": "15",
-        "name": "You & The 6"
-      },
-      {
-        "num": "16",
-        "name": "Jungle"
-      },
-      {
-        "num": "17",
-        "name": "6PM In New York"
-      },
-      {
-        "num": "18",
-        "name": "How About Now"
-      },
-      {
-        "num": "19",
-        "name": "My Side"
-      }
-    ]
-  },
-  {
-    "era": "What A Time To Be Alive",
-    "name": "What A Time To Be Alive",
-    "date": "",
-    "quality": "Clear",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Digital Dash"
-      },
-      {
-        "num": "2",
-        "name": "Chain Cost A House"
-      },
-      {
-        "num": "3",
-        "name": "Live From The Gutter"
-      },
-      {
-        "num": "4",
-        "name": "Diamonds Dancing"
-      },
-      {
-        "num": "5",
-        "name": "Do Me Dirty (Interlude)"
-      },
-      {
-        "num": "6",
-        "name": "Scholarships"
-      },
-      {
-        "num": "7",
-        "name": "Plastic Bag"
-      },
-      {
-        "num": "8",
-        "name": "I'm The Pluggg"
-      },
-      {
-        "num": "9",
-        "name": "Change Locations"
-      },
-      {
-        "num": "#",
-        "name": "Paris Morton Music 3 (30 For 30 Freestyle)"
-      }
-    ]
-  },
-  {
-    "era": "What A Time To Be Alive",
-    "name": "What A Time To Be Alive",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Digital Dash"
-      },
-      {
-        "num": "2",
-        "name": "Big Rings"
-      },
-      {
-        "num": "3",
-        "name": "Live From The Gutter"
-      },
-      {
-        "num": "4",
-        "name": "Diamonds Dancing"
-      },
-      {
-        "num": "5",
-        "name": "Scholarships"
-      },
-      {
-        "num": "6",
-        "name": "Plastic Bag"
-      },
-      {
-        "num": "7",
-        "name": "I'm The Plug"
-      },
-      {
-        "num": "8",
-        "name": "Change Locations"
-      },
-      {
-        "num": "9",
-        "name": "Jumpman"
-      },
-      {
-        "num": "10",
-        "name": "Jersey"
-      },
-      {
-        "num": "11",
-        "name": "30 for 30 Freestyle"
-      }
-    ]
-  },
-  {
-    "era": "Views",
-    "name": "Views",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Hotline Bling"
-      },
-      {
-        "num": "2",
-        "name": "Can I"
-      },
-      {
-        "num": "3",
-        "name": "Redemption"
-      },
-      {
-        "num": "4",
-        "name": "Different Talk"
-      },
-      {
-        "num": "5",
-        "name": "Being Good"
-      }
-    ]
-  },
-  {
-    "era": "Views",
-    "name": "Views",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Feel No Ways"
-      },
-      {
-        "num": "2",
-        "name": "40KW (Revenge?)"
-      },
-      {
-        "num": "3",
-        "name": "Redemption"
-      },
-      {
-        "num": "4",
-        "name": "Still Here"
-      },
-      {
-        "num": "5",
-        "name": "Pompeii"
-      },
-      {
-        "num": "6",
-        "name": "Too Good To You (Too Good)"
-      },
-      {
-        "num": "7",
-        "name": "Childs Play"
-      },
-      {
-        "num": "8",
-        "name": "Controlla"
-      },
-      {
-        "num": "9",
-        "name": "Faithful"
-      },
-      {
-        "num": "10",
-        "name": "Still Here"
-      },
-      {
-        "num": "11",
-        "name": "Controlla"
-      },
-      {
-        "num": "12",
-        "name": "Faithful"
-      },
-      {
-        "num": "13",
-        "name": "Don't Run"
-      },
-      {
-        "num": "14",
-        "name": "Keep The Family Close"
-      },
-      {
-        "num": "15",
-        "name": "One Dance"
-      },
-      {
-        "num": "16",
-        "name": "Weston Road Flows"
-      },
-      {
-        "num": "17",
-        "name": "PND?"
-      },
-      {
-        "num": "18",
-        "name": "(???)"
-      }
-    ]
-  },
-  {
-    "era": "Views",
-    "name": "Views",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Keep The Family Close"
-      },
-      {
-        "num": "2",
-        "name": "9"
-      },
-      {
-        "num": "3",
-        "name": "U With Me?"
-      },
-      {
-        "num": "4",
-        "name": "Feel No Ways"
-      },
-      {
-        "num": "5",
-        "name": "Hype"
-      },
-      {
-        "num": "6",
-        "name": "Weston Road Flows"
-      },
-      {
-        "num": "7",
-        "name": "Redemption"
-      },
-      {
-        "num": "8",
-        "name": "With You"
-      },
-      {
-        "num": "9",
-        "name": "Faithful"
-      },
-      {
-        "num": "10",
-        "name": "Still Here"
-      },
-      {
-        "num": "11",
-        "name": "Controlla"
-      },
-      {
-        "num": "12",
-        "name": "One Dance"
-      },
-      {
-        "num": "13",
-        "name": "Grammys"
-      },
-      {
-        "num": "14",
-        "name": "Childs Play"
-      },
-      {
-        "num": "15",
-        "name": "Pop Style"
-      },
-      {
-        "num": "16",
-        "name": "Too Good"
-      },
-      {
-        "num": "17",
-        "name": "Summers Over Interlude"
-      },
-      {
-        "num": "18",
-        "name": "Fire & Desire"
-      },
-      {
-        "num": "19",
-        "name": "Views"
-      },
-      {
-        "num": "20",
-        "name": "Hotline Bling"
-      }
-    ]
-  },
-  {
-    "era": "More Life",
-    "name": "More Life",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Free Smoke"
-      },
-      {
-        "num": "2",
-        "name": "No Long Talk"
-      },
-      {
-        "num": "3",
-        "name": "Passionfruit"
-      },
-      {
-        "num": "4",
-        "name": "Jorja Interlude"
-      },
-      {
-        "num": "5",
-        "name": "Get It Together"
-      },
-      {
-        "num": "6",
-        "name": "Madiba Riddim"
-      },
-      {
-        "num": "7",
-        "name": "Blem"
-      },
-      {
-        "num": "8",
-        "name": "4422"
-      },
-      {
-        "num": "9",
-        "name": "Gyalchester"
-      },
-      {
-        "num": "10",
-        "name": "Skepta Interlude"
-      },
-      {
-        "num": "11",
-        "name": "Portland"
-      },
-      {
-        "num": "12",
-        "name": "Sacrifices"
-      },
-      {
-        "num": "13",
-        "name": "Nothings Into Somethings"
-      },
-      {
-        "num": "14",
-        "name": "Teenage Fever"
-      },
-      {
-        "num": "15",
-        "name": "KMT"
-      },
-      {
-        "num": "16",
-        "name": "Lose You"
-      },
-      {
-        "num": "17",
-        "name": "Can't Have Everything"
-      },
-      {
-        "num": "18",
-        "name": "Glow"
-      },
-      {
-        "num": "19",
-        "name": "Since Way Back"
-      },
-      {
-        "num": "20",
-        "name": "Fake Love"
-      },
-      {
-        "num": "21",
-        "name": "Ice Melts"
-      },
-      {
-        "num": "22",
-        "name": "Do Not Disturb"
-      }
-    ]
-  },
-  {
-    "era": "Scorpion",
-    "name": "Scary Hours",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "God's Plan"
-      },
-      {
-        "num": "2",
-        "name": "Diplomatic Immunity"
-      }
-    ]
-  },
-  {
-    "era": "Scorpion",
-    "name": "Scorpion",
-    "date": "Jun 25, 2018",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Survival"
-      },
-      {
-        "num": "2",
-        "name": "Nonstop"
-      },
-      {
-        "num": "3",
-        "name": "Elevate"
-      },
-      {
-        "num": "4",
-        "name": "Emotionless"
-      },
-      {
-        "num": "5",
-        "name": "God's Plan"
-      },
-      {
-        "num": "6",
-        "name": "I'm Upset"
-      },
-      {
-        "num": "7",
-        "name": "8 Out Of 10"
-      },
-      {
-        "num": "8",
-        "name": "Mob Ties"
-      },
-      {
-        "num": "9",
-        "name": "Can't Take A Joke"
-      },
-      {
-        "num": "10",
-        "name": "Sandra's Rose"
-      },
-      {
-        "num": "11",
-        "name": "Talk Up (feat. JAY-Z)"
-      },
-      {
-        "num": "12",
-        "name": "Is There More"
-      },
-      {
-        "num": "13",
-        "name": "Peak"
-      },
-      {
-        "num": "14",
-        "name": "Summer Games"
-      },
-      {
-        "num": "15",
-        "name": "Jaded"
-      },
-      {
-        "num": "16",
-        "name": "Nice For What"
-      },
-      {
-        "num": "17",
-        "name": "Finesse"
-      },
-      {
-        "num": "18",
-        "name": "Ratchet Happy Birthday"
-      },
-      {
-        "num": "19",
-        "name": "That's How You Feel"
-      },
-      {
-        "num": "20",
-        "name": "Blue Tint"
-      },
-      {
-        "num": "21",
-        "name": "In My Feelings"
-      },
-      {
-        "num": "22",
-        "name": "Don't Matter To Me (with Michael Jackson)"
-      },
-      {
-        "num": "23",
-        "name": "After Dark (feat. Static Major & Ty Dolla $ign)"
-      },
-      {
-        "num": "24",
-        "name": "Final Fantasy"
-      },
-      {
-        "num": "25",
-        "name": "March 14"
-      }
-    ]
-  },
-  {
-    "era": "What A Time To Be Alive 2",
-    "name": "What A Time To Be Alive 2",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Certified Lover Boy [V1]",
-    "name": "The Best In The World Pack",
-    "date": "Jun 15, 2019",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Omertà"
-      },
-      {
-        "num": "2",
-        "name": "Money In The Grave (feat. Rick Ross)"
-      }
-    ]
-  },
-  {
-    "era": "Certified Lover Boy [V1]",
-    "name": "Care Package",
-    "date": "Aug 2, 2019",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Dreams Money Can Buy"
-      },
-      {
-        "num": "2",
-        "name": "The Motion"
-      },
-      {
-        "num": "3",
-        "name": "How Bout Now"
-      },
-      {
-        "num": "4",
-        "name": "Trust Issues"
-      },
-      {
-        "num": "5",
-        "name": "Days in the East"
-      },
-      {
-        "num": "6",
-        "name": "Draft Day"
-      },
-      {
-        "num": "7",
-        "name": "4PM In Calabasas"
-      },
-      {
-        "num": "8",
-        "name": "5AM in Toronto"
-      },
-      {
-        "num": "9",
-        "name": "I Get Lonely"
-      },
-      {
-        "num": "10",
-        "name": "My Side"
-      },
-      {
-        "num": "11",
-        "name": "Jodeci Freestyle"
-      },
-      {
-        "num": "12",
-        "name": "Club Paradise"
-      },
-      {
-        "num": "13",
-        "name": "Free Spirit"
-      },
-      {
-        "num": "14",
-        "name": "Heat of the Moment"
-      },
-      {
-        "num": "15",
-        "name": "Girls Love Beyoncé"
-      },
-      {
-        "num": "16",
-        "name": "Paris Morton Music"
-      },
-      {
-        "num": "17",
-        "name": "Can I"
-      }
-    ]
-  },
-  {
-    "era": "Certified Lover Boy [V1]",
-    "name": "Care Package 2\n(Dark Lane Demo Tapes)",
-    "date": "2020",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [
-      "https://ibb.co/bzBXfdz"
-    ],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Deep Pockets"
-      },
-      {
-        "num": "2",
-        "name": "Time Flies"
-      },
-      {
-        "num": "3",
-        "name": "Crazy Girls (feat. Smiley)"
-      },
-      {
-        "num": "4",
-        "name": "Manifested"
-      },
-      {
-        "num": "5",
-        "name": "Cardo Sticks"
-      },
-      {
-        "num": "6",
-        "name": "Desires (feat. Future)"
-      },
-      {
-        "num": "7",
-        "name": "When To Say When"
-      },
-      {
-        "num": "8",
-        "name": "Chicago Freestyle"
-      },
-      {
-        "num": "9",
-        "name": "TT"
-      },
-      {
-        "num": "10",
-        "name": "Greece"
-      },
-      {
-        "num": "11",
-        "name": "Not You Too"
-      },
-      {
-        "num": "12",
-        "name": "Pain 1993 (feat. Playboi Carti)"
-      },
-      {
-        "num": "13",
-        "name": "From Florida With Love"
-      },
-      {
-        "num": "14",
-        "name": "War"
-      },
-      {
-        "num": "15",
-        "name": "Demons (feat. Fivio Foreign & Sosa Greek)"
-      }
-    ]
-  },
-  {
-    "era": "Certified Lover Boy [V1]",
-    "name": "Dark Lane Demo Tapes",
-    "date": "May 1, 2020",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Deep Pockets"
-      },
-      {
-        "num": "2",
-        "name": "When To Say When"
-      },
-      {
-        "num": "3",
-        "name": "Chicago Freestyle"
-      },
-      {
-        "num": "4",
-        "name": "Not You Too"
-      },
-      {
-        "num": "5",
-        "name": "Toosie Slide"
-      },
-      {
-        "num": "6",
-        "name": "Desires"
-      },
-      {
-        "num": "7",
-        "name": "Time Flies"
-      },
-      {
-        "num": "8",
-        "name": "Landed"
-      },
-      {
-        "num": "9",
-        "name": "D4L"
-      },
-      {
-        "num": "10",
-        "name": "Pain 1993"
-      },
-      {
-        "num": "11",
-        "name": "Losses"
-      },
-      {
-        "num": "12",
-        "name": "From Florida With Love"
-      },
-      {
-        "num": "13",
-        "name": "Demons"
-      },
-      {
-        "num": "14",
-        "name": "War"
-      }
-    ]
-  },
-  {
-    "era": "Certified Lover Boy [V2]",
-    "name": "Scary Hours 2",
-    "date": "Mar 5, 2021",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "What's Next"
-      },
-      {
-        "num": "2",
-        "name": "Wants and Needs (feat. Lil Baby)"
-      },
-      {
-        "num": "3",
-        "name": "Lemon Pepper Freestyle (feat. Rick Ross)"
-      }
-    ]
-  },
-  {
-    "era": "Certified Lover Boy [V2]",
-    "name": "Certified Lover Boy",
-    "date": "N/A",
-    "quality": "N/A",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "13",
-        "name": "Forgot I Was Famous"
-      },
-      {
-        "num": "14",
-        "name": "Knife Talk"
-      }
-    ]
-  },
-  {
-    "era": "Certified Lover Boy [V2]",
-    "name": "Certified Lover Boy",
-    "date": "May 28, 2021",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [
-      "https://images.genius.com/fcee56d332456ba352e2eda0a51b35cb.525x655x1.png"
-    ],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Champa(gne) Poe(try)"
-      }
-    ]
-  },
-  {
-    "era": "Certified Lover Boy [V2]",
-    "name": "Certified Lover Boy",
-    "date": "Sep 3, 2021",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Champagne Poetry"
-      },
-      {
-        "num": "2",
-        "name": "Papi's Home"
-      },
-      {
-        "num": "3",
-        "name": "Girls Want Girls (with Lil Baby)"
-      },
-      {
-        "num": "4",
-        "name": "In The Bible (with Lil Durk & GIVĒON)"
-      },
-      {
-        "num": "5",
-        "name": "Love All (with JAY-Z)"
-      },
-      {
-        "num": "6",
-        "name": "Fair Trade (with Travis Scott)"
-      },
-      {
-        "num": "7",
-        "name": "Way 2 Sexy (with Future & Young Thug)"
-      },
-      {
-        "num": "8",
-        "name": "TSU"
-      },
-      {
-        "num": "9",
-        "name": "N 2 Deep (feat. Future)"
-      },
-      {
-        "num": "10",
-        "name": "Pipe Down"
-      },
-      {
-        "num": "11",
-        "name": "Yebba's Heartbreak (feat. Yebba)"
-      },
-      {
-        "num": "12",
-        "name": "No Friends In The Industry"
-      },
-      {
-        "num": "13",
-        "name": "Knife Talk (with 21 Savage ft. Project Pat)"
-      },
-      {
-        "num": "14",
-        "name": "7am On Bridle Path"
-      },
-      {
-        "num": "15",
-        "name": "Race My Mind"
-      },
-      {
-        "num": "16",
-        "name": "Fountains (with Tems)"
-      },
-      {
-        "num": "17",
-        "name": "Get Along Better (feat. Ty Dolla $ign)"
-      },
-      {
-        "num": "18",
-        "name": "You Only Live Twice (with Lil Wayne & Rick Ross)"
-      },
-      {
-        "num": "19",
-        "name": "IMY2 (with Kid Cudi)"
-      },
-      {
-        "num": "20",
-        "name": "F*****g Fans"
-      },
-      {
-        "num": "21",
-        "name": "The Remorse"
-      }
-    ]
-  },
-  {
-    "era": "Honestly, Nevermind",
-    "name": "Honestly, Nevermind",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [
-      "https://ibb.co/gZwBHNC"
-    ],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Intro"
-      },
-      {
-        "num": "2",
-        "name": "Falling Back"
-      },
-      {
-        "num": "3",
-        "name": "Texts Go Green"
-      },
-      {
-        "num": "4",
-        "name": "Currents"
-      },
-      {
-        "num": "5",
-        "name": "A Keeper"
-      },
-      {
-        "num": "6",
-        "name": "Calling My Name"
-      },
-      {
-        "num": "7",
-        "name": "Trance"
-      },
-      {
-        "num": "8",
-        "name": "Sticky"
-      },
-      {
-        "num": "9",
-        "name": "Massive"
-      },
-      {
-        "num": "10",
-        "name": "Flight's Booked"
-      },
-      {
-        "num": "11",
-        "name": "Over Drive"
-      },
-      {
-        "num": "12",
-        "name": "Down Hill"
-      },
-      {
-        "num": "13",
-        "name": "Tie That Binds"
-      },
-      {
-        "num": "14",
-        "name": "Liability"
-      },
-      {
-        "num": "15",
-        "name": "Jimmy Cooks"
-      }
-    ]
-  },
-  {
-    "era": "Honestly, Nevermind",
-    "name": "Honestly, Nevermind",
-    "date": "Jun 2022",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Intro"
-      },
-      {
-        "num": "2",
-        "name": "Falling Back"
-      },
-      {
-        "num": "3",
-        "name": "Texts Go Green"
-      },
-      {
-        "num": "4",
-        "name": "Currents"
-      },
-      {
-        "num": "5",
-        "name": "A Keeper"
-      },
-      {
-        "num": "6",
-        "name": "Calling My Name"
-      },
-      {
-        "num": "7",
-        "name": "Sticky"
-      },
-      {
-        "num": "8",
-        "name": "Massive"
-      },
-      {
-        "num": "9",
-        "name": "Flight's Booked"
-      },
-      {
-        "num": "10",
-        "name": "Overdrive"
-      },
-      {
-        "num": "11",
-        "name": "Down Hill"
-      },
-      {
-        "num": "12",
-        "name": "Tie That Binds"
-      },
-      {
-        "num": "13",
-        "name": "Liability"
-      },
-      {
-        "num": "14",
-        "name": "Jimmy Cooks (feat. 21 Savage)"
-      }
-    ]
-  },
-  {
-    "era": "Her Loss",
-    "name": "Her Loss",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Her Loss",
-    "name": "Her Loss",
-    "date": "Nov 3, 2022",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Rich Flex"
-      },
-      {
-        "num": "2",
-        "name": "Major Distribution"
-      },
-      {
-        "num": "3",
-        "name": "On BS"
-      },
-      {
-        "num": "4",
-        "name": "BackOutsideBoyz"
-      },
-      {
-        "num": "5",
-        "name": "Drake - Privileged Rappers"
-      },
-      {
-        "num": "6",
-        "name": "Spin Bout U"
-      },
-      {
-        "num": "7",
-        "name": "Hours In Silence"
-      },
-      {
-        "num": "8",
-        "name": "Treacherous Twins"
-      },
-      {
-        "num": "9",
-        "name": "Circo Loco"
-      },
-      {
-        "num": "10",
-        "name": "Pussy & Millions (feat. Travis Scott)"
-      },
-      {
-        "num": "11",
-        "name": "Broke Boys"
-      },
-      {
-        "num": "12",
-        "name": "Drake - Middle of the Ocean"
-      },
-      {
-        "num": "13",
-        "name": "Drake - Jumbotron Poppin Shit"
-      },
-      {
-        "num": "14",
-        "name": "More M's"
-      },
-      {
-        "num": "15",
-        "name": "21 Savage - 3AM on Glenwood"
-      },
-      {
-        "num": "16",
-        "name": "Drake - I Guess It's Fuck Me"
-      }
-    ]
-  },
-  {
-    "era": "Her Loss",
-    "name": "Her Loss",
-    "date": "Nov 4, 2022",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Rich Flex"
-      },
-      {
-        "num": "2",
-        "name": "Major Distribution"
-      },
-      {
-        "num": "3",
-        "name": "On BS"
-      },
-      {
-        "num": "4",
-        "name": "BackOutsideBoyz"
-      },
-      {
-        "num": "5",
-        "name": "Drake - Privileged Rappers"
-      },
-      {
-        "num": "6",
-        "name": "Spin Bout U"
-      },
-      {
-        "num": "7",
-        "name": "Hours In Silence"
-      },
-      {
-        "num": "8",
-        "name": "Treacherous Twins"
-      },
-      {
-        "num": "9",
-        "name": "Circo Loco"
-      },
-      {
-        "num": "10",
-        "name": "Pussy & Millions (feat. Travis Scott)"
-      },
-      {
-        "num": "11",
-        "name": "Broke Boys"
-      },
-      {
-        "num": "12",
-        "name": "Drake - Middle of the Ocean"
-      },
-      {
-        "num": "13",
-        "name": "Drake - Jumbotron Shit Poppin"
-      },
-      {
-        "num": "14",
-        "name": "More M's"
-      },
-      {
-        "num": "15",
-        "name": "21 Savage - 3AM on Glenwood"
-      },
-      {
-        "num": "16",
-        "name": "Drake - I Guess It's Fuck Me"
-      }
-    ]
-  },
-  {
-    "era": "For All The Dogs",
-    "name": "FOR ALL THE DOGSDEM",
-    "date": "Oct 2023",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Virginia Beach ✔ MIX"
-      },
-      {
-        "num": "2",
-        "name": "Amen ✔ 40 MASTER"
-      },
-      {
-        "num": "3",
-        "name": "Calling For You ✔ MI(X)"
-      },
-      {
-        "num": "4",
-        "name": "Fear Of Heights ✔ N(OE)L MIX"
-      },
-      {
-        "num": "5",
-        "name": "Daylight ✔ NOEL (M)IX"
-      },
-      {
-        "num": "6",
-        "name": "Cole or Slap? FIR(ST) PERSON SHOOTER (First Person Shooter)"
-      },
-      {
-        "num": "7",
-        "name": "IDAGF 40 TO(???)T (IDGAF)"
-      },
-      {
-        "num": "8",
-        "name": "7969 Santa ✔ NO(EL) MIX / LINE CHANGE"
-      },
-      {
-        "num": "9",
-        "name": "Slime You Out (✔) COMPLETE"
-      },
-      {
-        "num": "10",
-        "name": "Bahamas Prom(ises) ✔ NOEL MIX / NO PA(???)"
-      },
-      {
-        "num": "11",
-        "name": "Tried (Tried Our Best)"
-      },
-      {
-        "num": "12",
-        "name": "Screw The W(orld) Interlude ✔"
-      },
-      {
-        "num": "13",
-        "name": "Drew A Pic(asso) ✔ 40 MIX V2"
-      },
-      {
-        "num": "14",
-        "name": "Members (Only) - 2ND ROUND MASTER"
-      },
-      {
-        "num": "15",
-        "name": "Bal Harbour"
-      },
-      {
-        "num": "16",
-        "name": "What W(ould) Pluto Do ✔ MASTER"
-      },
-      {
-        "num": "16",
-        "name": "All The Parties - ON ME 40 MIX FI(???)"
-      },
-      {
-        "num": "17",
-        "name": "8am In Charlotte ✔ 40 MIX"
-      },
-      {
-        "num": "18",
-        "name": "BBL Love Interlude ✔ NOEL 40 MIX"
-      },
-      {
-        "num": "#?",
-        "name": "???"
-      }
-    ]
-  },
-  {
-    "era": "For All The Dogs",
-    "name": "For All The Dogs",
-    "date": "Oct 2023",
-    "quality": "Clear",
-    "source": "Secondary",
-    "links": [
-      "https://pbs.twimg.com/media/F923PixWMAANtOT?format=jpg&name=medium"
-    ],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "VIRGINA BEACH (Virginia Beach)"
-      },
-      {
-        "num": "2",
-        "name": "AMEN"
-      },
-      {
-        "num": "3",
-        "name": "CALLING FOR YOU"
-      },
-      {
-        "num": "4",
-        "name": "FEAR OF HEIGHTS"
-      },
-      {
-        "num": "5",
-        "name": "DAYLIGHT"
-      },
-      {
-        "num": "6",
-        "name": "FIRST PERSON SHOOTER"
-      },
-      {
-        "num": "7",
-        "name": "IDGAF VOX UP"
-      },
-      {
-        "num": "8",
-        "name": "7969 SANTA"
-      },
-      {
-        "num": "9",
-        "name": "SLIME YOU OUT"
-      },
-      {
-        "num": "10",
-        "name": "BAHAMAS PROMISES"
-      },
-      {
-        "num": "11",
-        "name": "TRIED OUR BEST"
-      },
-      {
-        "num": "12",
-        "name": "SCREW THE WORLD (Screw The World - Interlude)"
-      },
-      {
-        "num": "13",
-        "name": "DREW A PICASSO"
-      },
-      {
-        "num": "14",
-        "name": "MEMBERS ONLY"
-      },
-      {
-        "num": "15",
-        "name": "WHAT WOULD PLUTO DO"
-      },
-      {
-        "num": "16",
-        "name": "ALL THE PARTIES"
-      },
-      {
-        "num": "17",
-        "name": "8AM IN CHARLOTTE"
-      },
-      {
-        "num": "18",
-        "name": "BBL LOVE (BBL Love - Interlude)"
-      },
-      {
-        "num": "19",
-        "name": "GENTLY"
-      },
-      {
-        "num": "20",
-        "name": "ST LOUIS SPIRIT (Rich Baby Daddy)"
-      },
-      {
-        "num": "21",
-        "name": "ANOTHER LATE NIGHT"
-      },
-      {
-        "num": "22",
-        "name": "AWAY FROM HOME"
-      },
-      {
-        "num": "23",
-        "name": "BI POLAR BABY (Polar Opposites)"
-      },
-      {
-        "num": "24",
-        "name": "SEARCH & RESCUE"
-      },
-      {
-        "num": "#?",
-        "name": "???"
-      }
-    ]
-  },
-  {
-    "era": "For All The Dogs",
-    "name": "For All The Dogs",
-    "date": "Oct 6, 2023",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [
-      "https://songwhip.com/drake/for-all-the-dogs"
-    ],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Virginia Beach"
-      },
-      {
-        "num": "2",
-        "name": "Amen (feat. Teezo Touchdown)"
-      },
-      {
-        "num": "3",
-        "name": "Calling For You (feat. 21 Savage)"
-      },
-      {
-        "num": "4",
-        "name": "Fear of Heights"
-      },
-      {
-        "num": "5",
-        "name": "Daylight"
-      },
-      {
-        "num": "6",
-        "name": "First Person Shooter (feat. J. Cole)"
-      },
-      {
-        "num": "7",
-        "name": "IDGAF (feat. Yeat)"
-      },
-      {
-        "num": "8",
-        "name": "7969 Santa"
-      },
-      {
-        "num": "9",
-        "name": "Slime You Out (feat. SZA)"
-      },
-      {
-        "num": "10",
-        "name": "Bahamas Promises"
-      },
-      {
-        "num": "11",
-        "name": "Tried Our Best"
-      },
-      {
-        "num": "12",
-        "name": "Screw the World (Interlude)"
-      },
-      {
-        "num": "13",
-        "name": "Members Only (feat. PARTYNEXTDOOR)"
-      },
-      {
-        "num": "14",
-        "name": "Drew a Picasso"
-      },
-      {
-        "num": "15",
-        "name": "What Would Pluto Do"
-      },
-      {
-        "num": "16",
-        "name": "All the Parties (feat. Chief Keef)"
-      },
-      {
-        "num": "17",
-        "name": "8AM in Charlotte"
-      },
-      {
-        "num": "18",
-        "name": "BBL Love (Interlude)"
-      },
-      {
-        "num": "19",
-        "name": "Gently (feat. Bad Bunny)"
-      },
-      {
-        "num": "20",
-        "name": "Rich Baby Daddy (feat. Sexyy Red & SZA)"
-      },
-      {
-        "num": "21",
-        "name": "Another Late Night (feat. Lil Yachty)"
-      },
-      {
-        "num": "22",
-        "name": "Away from Home"
-      },
-      {
-        "num": "23",
-        "name": "Polar Opposites"
-      }
-    ]
-  },
-  {
-    "era": "For All The Dogs",
-    "name": "For All The Dogs: Scary Hours Edition",
-    "date": "Nov 17, 2023",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [
-      "https://songwhip.com/drake/for-all-the-dogs-scary-hours-edition"
-    ],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Virginia Beach"
-      },
-      {
-        "num": "2",
-        "name": "Amen (feat. Teezo Touchdown)"
-      },
-      {
-        "num": "3",
-        "name": "Calling For You (feat. 21 Savage)"
-      },
-      {
-        "num": "4",
-        "name": "Fear of Heights"
-      },
-      {
-        "num": "5",
-        "name": "Daylight"
-      },
-      {
-        "num": "6",
-        "name": "First Person Shooter (feat. J. Cole)"
-      },
-      {
-        "num": "7",
-        "name": "IDGAF (feat. Yeat)"
-      },
-      {
-        "num": "8",
-        "name": "7969 Santa"
-      },
-      {
-        "num": "9",
-        "name": "Slime You Out (feat. SZA)"
-      },
-      {
-        "num": "10",
-        "name": "Bahamas Promises"
-      },
-      {
-        "num": "11",
-        "name": "Tried Our Best"
-      },
-      {
-        "num": "12",
-        "name": "Screw the World (Interlude)"
-      },
-      {
-        "num": "13",
-        "name": "Members Only (feat. PARTYNEXTDOOR)"
-      },
-      {
-        "num": "14",
-        "name": "Drew a Picasso"
-      },
-      {
-        "num": "15",
-        "name": "What Would Pluto Do"
-      },
-      {
-        "num": "16",
-        "name": "All the Parties (feat. Chief Keef)"
-      },
-      {
-        "num": "17",
-        "name": "8AM in Charlotte"
-      },
-      {
-        "num": "18",
-        "name": "BBL Love (Interlude)"
-      },
-      {
-        "num": "19",
-        "name": "Gently (feat. Bad Bunny)"
-      },
-      {
-        "num": "20",
-        "name": "Rich Baby Daddy (feat. Sexyy Red & SZA)"
-      },
-      {
-        "num": "21",
-        "name": "Another Late Night (feat. Lil Yachty)"
-      },
-      {
-        "num": "22",
-        "name": "Away from Home"
-      },
-      {
-        "num": "23",
-        "name": "Polar Opposites"
-      },
-      {
-        "num": "24",
-        "name": "Red Button"
-      },
-      {
-        "num": "25",
-        "name": "Stories About My Brother"
-      },
-      {
-        "num": "26",
-        "name": "The Shoe Fits"
-      },
-      {
-        "num": "27",
-        "name": "Wick Man"
-      },
-      {
-        "num": "28",
-        "name": "Evil Ways (feat. J. Cole)"
-      },
-      {
-        "num": "29",
-        "name": "You Broke My Heart"
-      }
-    ]
-  },
-  {
-    "era": "For All The Dogs",
-    "name": "For All The Dogs: Scary Hours Edition (Instrumentals)",
-    "date": "",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1",
-        "name": "Red Button"
-      },
-      {
-        "num": "2",
-        "name": "Stories About My Brother"
-      },
-      {
-        "num": "3",
-        "name": "The Shoe Fits"
-      },
-      {
-        "num": "4",
-        "name": "Wick Man"
-      },
-      {
-        "num": "5",
-        "name": "Evil Ways (feat. J. Cole)"
-      },
-      {
-        "num": "6",
-        "name": "You Broke My Heart"
-      }
-    ]
-  },
-  {
-    "era": "$ome $exy $ongs 4 U",
-    "name": "$ome $exy $ongs 4 U",
-    "date": "",
-    "quality": "Clear",
-    "source": "Unknown",
-    "links": [],
-    "tracks": []
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
   }
-]
+ ],
+ "albums": [
+  {
+   "era": "Before So Far Gone",
+   "name": "Drake Demo Tape",
+   "date": "",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "The tracklist of a Drake demo disk. Although you can find the whole album online, the actual album is on the CD, not much is known about this as it was released very early in Drakes career and their is little info on it",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "City Is Mine"
+    },
+    {
+     "num": "#2",
+     "name": "Inst"
+    },
+    {
+     "num": "#3",
+     "name": "Acapella"
+    },
+    {
+     "num": "#4",
+     "name": "Do What You Want (Remix) (feat. Nickelus F & Malice of Clipse)"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-3-0.jpg"
+   ]
+  },
+  {
+   "era": "Before So Far Gone",
+   "name": "Room For Improvement",
+   "date": "",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Original tracklist made for Drake's 2006 mixtape Room For Improvement.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro"
+    },
+    {
+     "num": "#2",
+     "name": "Make Things Right"
+    },
+    {
+     "num": "#3",
+     "name": "Fever"
+    },
+    {
+     "num": "#4",
+     "name": "Special Bones Knife (?)"
+    },
+    {
+     "num": "#5",
+     "name": "Special"
+    },
+    {
+     "num": "#6",
+     "name": "Memphis Secrets"
+    },
+    {
+     "num": "#7",
+     "name": "Money"
+    },
+    {
+     "num": "#8",
+     "name": "All Figured Out"
+    },
+    {
+     "num": "#9",
+     "name": "Amir 902"
+    },
+    {
+     "num": "#10",
+     "name": "Thrill Is Gone"
+    },
+    {
+     "num": "#11",
+     "name": "Advice"
+    },
+    {
+     "num": "#12",
+     "name": "Apple Jacks Interlude"
+    },
+    {
+     "num": "#13",
+     "name": "Get It"
+    },
+    {
+     "num": "#14",
+     "name": "Al-Khaliq Track"
+    },
+    {
+     "num": "#15",
+     "name": "City Is Mine"
+    },
+    {
+     "num": "#16",
+     "name": "Come Winter"
+    },
+    {
+     "num": "#17",
+     "name": "Rewind"
+    },
+    {
+     "num": "#18",
+     "name": "Go Crazy RMX"
+    },
+    {
+     "num": "#19",
+     "name": "Comin For YOU RMX"
+    },
+    {
+     "num": "#20",
+     "name": "About Da Game RMX"
+    },
+    {
+     "num": "#21",
+     "name": "Special Intro"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-4-0.jpg"
+   ]
+  },
+  {
+   "era": "Before So Far Gone",
+   "name": "Room For Improvement",
+   "date": "",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Original tracklist made for Drake's 2006 mixtape Room For Improvement.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Pianist Hands Intro"
+    },
+    {
+     "num": "#2",
+     "name": "Make Things Right"
+    },
+    {
+     "num": "#3",
+     "name": "Thrill Is Gone"
+    },
+    {
+     "num": "#4",
+     "name": "Special"
+    },
+    {
+     "num": "#5",
+     "name": "All Figured Out"
+    },
+    {
+     "num": "#6",
+     "name": "Money"
+    },
+    {
+     "num": "#7",
+     "name": "Do What You Do"
+    },
+    {
+     "num": "#8",
+     "name": "AMPM (AM 2 PM)"
+    },
+    {
+     "num": "#9",
+     "name": "A Scorpio's Mind"
+    },
+    {
+     "num": "#10",
+     "name": "Video Girl"
+    },
+    {
+     "num": "#11",
+     "name": "Held Down"
+    },
+    {
+     "num": "#12",
+     "name": "Apple Jacks Interlude"
+    },
+    {
+     "num": "#13",
+     "name": "City Is Mine"
+    },
+    {
+     "num": "#14",
+     "name": "S.T.R.E.S.S."
+    },
+    {
+     "num": "#15",
+     "name": "Come Winter"
+    },
+    {
+     "num": "#16",
+     "name": "Bad Meaning Good"
+    },
+    {
+     "num": "#17",
+     "name": "High School"
+    },
+    {
+     "num": "#18",
+     "name": "Extra Special"
+    },
+    {
+     "num": "#19",
+     "name": "Try Harder"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-5-0.jpg"
+   ]
+  },
+  {
+   "era": "So Far Gone",
+   "name": "So Far Gone",
+   "date": "2009-02-13",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for So Far Gone.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Lust For Life"
+    },
+    {
+     "num": "#2",
+     "name": "Houstatlantavegas"
+    },
+    {
+     "num": "#3",
+     "name": "Successful (feat. Trey Songz & Lil Wayne)"
+    },
+    {
+     "num": "#4",
+     "name": "Let's Call It Off (feat. Peter Bjorn and John)"
+    },
+    {
+     "num": "#5",
+     "name": "November 18th"
+    },
+    {
+     "num": "#6",
+     "name": "Ignant Shit (feat. Lil Wayne)"
+    },
+    {
+     "num": "#7",
+     "name": "A Night Off (feat. Lloyd)"
+    },
+    {
+     "num": "#8",
+     "name": "Say What's Real"
+    },
+    {
+     "num": "#9",
+     "name": "Little Bit (feat. Lykke Li)"
+    },
+    {
+     "num": "#10",
+     "name": "Best I Ever Had"
+    },
+    {
+     "num": "#11",
+     "name": "Unstoppable (feat. Santigold & Lil Wayne)"
+    },
+    {
+     "num": "#12",
+     "name": "Uptown (feat. Bun B & Lil Wayne)"
+    },
+    {
+     "num": "#13",
+     "name": "Sooner Than Later"
+    },
+    {
+     "num": "#14",
+     "name": "Bria's Interlude (feat. Omarion)"
+    },
+    {
+     "num": "#15",
+     "name": "The Calm"
+    },
+    {
+     "num": "#16",
+     "name": "Outro (feat. Chilly Gonzales)"
+    },
+    {
+     "num": "#17",
+     "name": "Brand New (Bonus Track)"
+    },
+    {
+     "num": "#18",
+     "name": "Congratulations (Bonus Track)"
+    }
+   ]
+  },
+  {
+   "era": "We Are Young Money",
+   "name": "We Are Young Money",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "Early tracklist for the Young Money compilation album \"We Are Young Money\".",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bedrock"
+    },
+    {
+     "num": "#2",
+     "name": "New Shit"
+    },
+    {
+     "num": "#3",
+     "name": "Pass Me the Dutch"
+    },
+    {
+     "num": "#4",
+     "name": "Wifebeater (Wife Beater)"
+    },
+    {
+     "num": "#5",
+     "name": "Fuck the Bullshit (Fuck da Bullshit)"
+    },
+    {
+     "num": "#6",
+     "name": "Ms. Parker"
+    },
+    {
+     "num": "#7",
+     "name": "Target"
+    },
+    {
+     "num": "#8",
+     "name": "Sacrifice"
+    },
+    {
+     "num": "#9",
+     "name": "Every Girl"
+    },
+    {
+     "num": "#10",
+     "name": "She Is Gone"
+    },
+    {
+     "num": "#11",
+     "name": "Girl I Got You"
+    },
+    {
+     "num": "#12",
+     "name": "Gooder"
+    },
+    {
+     "num": "#13",
+     "name": "Roger That"
+    },
+    {
+     "num": "#14",
+     "name": "Steady Mobbin'"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-7-0.jpg"
+   ]
+  },
+  {
+   "era": "Thank Me Later",
+   "name": "Thank Me Later",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Early tracklist for Thank Me Later posted by Drake, framed in a plague with a Thank Me Later CD below it, alongside an early Nothing Was The Same tracklist and an early Take Care tracklist.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FIREWORKS - HOOK"
+    },
+    {
+     "num": "#2",
+     "name": "KARAOKE - VOCAL TWEAK"
+    },
+    {
+     "num": "#3",
+     "name": "THE RESISTANCE - HOOK"
+    },
+    {
+     "num": "#4",
+     "name": "OVER - DONE ✔"
+    },
+    {
+     "num": "#5",
+     "name": "U KNOW YOU KNOW - PRODUCTION (You Know, You Know)"
+    },
+    {
+     "num": "#6",
+     "name": "FANCY GIRLS - 3000, SWIZZ (Fancy)"
+    },
+    {
+     "num": "#7",
+     "name": "SHUT IT DOWN - DREAM VOCALS RESING LAY"
+    },
+    {
+     "num": "#8",
+     "name": "LIGHT UP - OUTRO"
+    },
+    {
+     "num": "#9",
+     "name": "MISS ME - OUTRO"
+    },
+    {
+     "num": "#10",
+     "name": "FIND YOUR LOVE - MIX"
+    },
+    {
+     "num": "#11",
+     "name": "THANK ME KNOW - PRODUCTION OUTRO (ALBUM)"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-8-0.jpg"
+   ]
+  },
+  {
+   "era": "Thank Me Later",
+   "name": "Thank Me Later",
+   "date": "2010-06-15",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Thank Me Later",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Fireworks"
+    },
+    {
+     "num": "#2",
+     "name": "Karaoke"
+    },
+    {
+     "num": "#3",
+     "name": "The Resistance"
+    },
+    {
+     "num": "#4",
+     "name": "Over"
+    },
+    {
+     "num": "#5",
+     "name": "Show Me A Good Time"
+    },
+    {
+     "num": "#6",
+     "name": "Up All Night"
+    },
+    {
+     "num": "#7",
+     "name": "Fancy"
+    },
+    {
+     "num": "#8",
+     "name": "Shut It Down (feat. The-Dream)"
+    },
+    {
+     "num": "#9",
+     "name": "Unforgettable"
+    },
+    {
+     "num": "#10",
+     "name": "Light Up"
+    },
+    {
+     "num": "#11",
+     "name": "Miss Me"
+    },
+    {
+     "num": "#12",
+     "name": "Cece's Interlude"
+    },
+    {
+     "num": "#13",
+     "name": "Find Your Love"
+    },
+    {
+     "num": "#14",
+     "name": "Thank Me Now"
+    }
+   ]
+  },
+  {
+   "era": "Take Care",
+   "name": "Take Care",
+   "date": "",
+   "quality": "Blocked",
+   "source": "N/A",
+   "links": [],
+   "description": "Early tracklist for Take Care.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dre(ams) M(oney Can) Buy | Mix"
+    },
+    {
+     "num": "#2",
+     "name": "(C)rew (Love) | 3 Verses"
+    },
+    {
+     "num": "#3",
+     "name": "??? | Mix"
+    },
+    {
+     "num": "#4",
+     "name": "Club P(aradise) | 2nd Verse / Hook"
+    },
+    {
+     "num": "#5",
+     "name": "(The) Rid(e) | 3rd Verse / Sonic F(???)"
+    },
+    {
+     "num": "#6",
+     "name": "Th(e) R(eal) He(r) | Mix"
+    },
+    {
+     "num": "#7",
+     "name": "??? | 3rd Verse / Hook"
+    },
+    {
+     "num": "#8",
+     "name": "(???)hing | Chorus Melody Adjust / (???)"
+    },
+    {
+     "num": "#9",
+     "name": "(G)ood Ones (Go) | Second Pre-Chorus / Rap"
+    },
+    {
+     "num": "#10",
+     "name": "??? | M(ix)"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-10-0.jpg"
+   ]
+  },
+  {
+   "era": "Take Care",
+   "name": "Take Care",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Early tracklist for Take Care posted by Drake, framed in a plague with a Take Care CD below it, alongside an early Thank Me Later tracklist and an early Nothing Was The Same tracklist.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "✔ OVER MY DEAD BODY - one punch"
+    },
+    {
+     "num": "#2",
+     "name": "✔ SHOT FOR ME - one punch"
+    },
+    {
+     "num": "#3",
+     "name": "CAMERAS ✔"
+    },
+    {
+     "num": "#4",
+     "name": "HATE SLEEPING ALONE ✔"
+    },
+    {
+     "num": "#5",
+     "name": "✔ LOOK WHAT YOU'VE DONE - Hook"
+    },
+    {
+     "num": "#6",
+     "name": "The Ride ✔"
+    },
+    {
+     "num": "#7",
+     "name": "The Real Her ✔"
+    },
+    {
+     "num": "#8",
+     "name": "Good Ones Go ✔"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-11-0.jpg"
+   ]
+  },
+  {
+   "era": "Take Care",
+   "name": "Take Care",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Take Care.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Over My Dead Body"
+    },
+    {
+     "num": "#2",
+     "name": "Shot For Me"
+    },
+    {
+     "num": "#3",
+     "name": "Headlines"
+    },
+    {
+     "num": "#4",
+     "name": "Crew Love"
+    },
+    {
+     "num": "#5",
+     "name": "Take Care"
+    },
+    {
+     "num": "#6",
+     "name": "Marvins Room"
+    },
+    {
+     "num": "#7",
+     "name": "Buried Alive Interlude"
+    },
+    {
+     "num": "#8",
+     "name": "Under Ground Kings"
+    },
+    {
+     "num": "#9",
+     "name": "We'll Be Fine"
+    },
+    {
+     "num": "#10",
+     "name": "Make Me Proud"
+    },
+    {
+     "num": "#11",
+     "name": "Lord Knows"
+    },
+    {
+     "num": "#12",
+     "name": "Cameras / Good Ones Go Interlude - Medley"
+    },
+    {
+     "num": "#13",
+     "name": "Doing It Wrong"
+    },
+    {
+     "num": "#14",
+     "name": "The Real Her"
+    },
+    {
+     "num": "#15",
+     "name": "Look What You've Done"
+    },
+    {
+     "num": "#16",
+     "name": "HYFR (Hell Ya Fucking Right)"
+    },
+    {
+     "num": "#17",
+     "name": "Practice"
+    },
+    {
+     "num": "#18",
+     "name": "The Ride"
+    }
+   ]
+  },
+  {
+   "era": "Take Care",
+   "name": "Take Care (Deluxe)",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Take Care (Deluxe). Adds \"The Motto\".",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Over My Dead Body"
+    },
+    {
+     "num": "#2",
+     "name": "Shot For Me"
+    },
+    {
+     "num": "#3",
+     "name": "Headlines"
+    },
+    {
+     "num": "#4",
+     "name": "Crew Love"
+    },
+    {
+     "num": "#5",
+     "name": "Take Care"
+    },
+    {
+     "num": "#6",
+     "name": "Marvins Room"
+    },
+    {
+     "num": "#7",
+     "name": "Buried Alive Interlude"
+    },
+    {
+     "num": "#8",
+     "name": "Under Ground Kings"
+    },
+    {
+     "num": "#9",
+     "name": "We'll Be Fine"
+    },
+    {
+     "num": "#10",
+     "name": "Make Me Proud"
+    },
+    {
+     "num": "#11",
+     "name": "Lord Knows"
+    },
+    {
+     "num": "#12",
+     "name": "Cameras / Good Ones Go Interlude - Medley"
+    },
+    {
+     "num": "#13",
+     "name": "Doing It Wrong"
+    },
+    {
+     "num": "#14",
+     "name": "The Real Her"
+    },
+    {
+     "num": "#15",
+     "name": "Look What You've Done"
+    },
+    {
+     "num": "#16",
+     "name": "HYFR (Hell Ya Fucking Right)"
+    },
+    {
+     "num": "#17",
+     "name": "Practice"
+    },
+    {
+     "num": "#18",
+     "name": "The Ride"
+    },
+    {
+     "num": "#19",
+     "name": "The Motto"
+    }
+   ]
+  },
+  {
+   "era": "Nothing Was The Same",
+   "name": "Nothing Was The Same",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Drake",
+   "links": [],
+   "description": "Early tracklist seen in NWTS-era footage from 100gigs.org.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Tuscan Leather"
+    },
+    {
+     "num": "#2",
+     "name": "Left Field"
+    },
+    {
+     "num": "#3",
+     "name": "Started From The Bottom"
+    },
+    {
+     "num": "#4",
+     "name": "Wu Tang Forever"
+    },
+    {
+     "num": "#5",
+     "name": "Own It"
+    },
+    {
+     "num": "#6",
+     "name": "All Me"
+    },
+    {
+     "num": "#7",
+     "name": "Hold On, We're Going Home"
+    },
+    {
+     "num": "#8",
+     "name": "Jhené"
+    },
+    {
+     "num": "#9",
+     "name": "Connect"
+    },
+    {
+     "num": "#10",
+     "name": "Come Thru"
+    },
+    {
+     "num": "#11",
+     "name": "(???)"
+    },
+    {
+     "num": "#12",
+     "name": "Pound Cake"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-14-0.jpg"
+   ]
+  },
+  {
+   "era": "Nothing Was The Same",
+   "name": "Nothing Was The Same",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Early tracklist seen in NWTS-era footage from 100gigs.org.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Tuscan Leather"
+    },
+    {
+     "num": "#2",
+     "name": "Left Field"
+    },
+    {
+     "num": "#3",
+     "name": "Started From The Bottom"
+    },
+    {
+     "num": "#4",
+     "name": "Wu Tang Forever"
+    },
+    {
+     "num": "#5",
+     "name": "Own It"
+    },
+    {
+     "num": "#6",
+     "name": "All Me"
+    },
+    {
+     "num": "#7",
+     "name": "From Time"
+    },
+    {
+     "num": "#8",
+     "name": "Hold On, We're Going Home"
+    },
+    {
+     "num": "#9",
+     "name": "Connect"
+    },
+    {
+     "num": "#10",
+     "name": "Pound Cake / Paris Morton Music 2"
+    },
+    {
+     "num": "#?",
+     "name": "Paul Beat (Too Much?)"
+    },
+    {
+     "num": "#?",
+     "name": "Hit Boy (Trophies)"
+    },
+    {
+     "num": "#?",
+     "name": "James Blake"
+    },
+    {
+     "num": "#?",
+     "name": "Too Many Worries"
+    }
+   ]
+  },
+  {
+   "era": "Nothing Was The Same",
+   "name": "Nothing Was The Same",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Original tracklist posted on one of Drake's Instagram stories. Second interlude person was blacked out by Drake. Jodeci Freestyle mentions \"leak\", indicating this tracklist was made after the song had leaked online in June 2013.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "TUSCAN LEATHER"
+    },
+    {
+     "num": "#2",
+     "name": "LEFT FIELD"
+    },
+    {
+     "num": "#3",
+     "name": "STARTED FROM THE BOTTOM"
+    },
+    {
+     "num": "#4",
+     "name": "WU TANG FOREVER"
+    },
+    {
+     "num": "#5",
+     "name": "JHENE / (Brittany)'S INTERLUDE"
+    },
+    {
+     "num": "#6",
+     "name": "HIT BOY (Trophies)"
+    },
+    {
+     "num": "#7",
+     "name": "SEAN / CHAINZ / DRAKE ? (All Me)"
+    },
+    {
+     "num": "#8",
+     "name": "NAS IDEA"
+    },
+    {
+     "num": "#9",
+     "name": "CONNECT"
+    },
+    {
+     "num": "#10",
+     "name": "COME THRU"
+    },
+    {
+     "num": "#11",
+     "name": "CAKE (Pound Cake)"
+    },
+    {
+     "num": "#?",
+     "name": "JODECI (LEAK) (Jodeci Freestyle)"
+    },
+    {
+     "num": "#?",
+     "name": "MOTIONS (The Motion)"
+    },
+    {
+     "num": "#?",
+     "name": "HEAT OF THE MOMENT (OG RON C)"
+    },
+    {
+     "num": "#?",
+     "name": "YOURS + MINE"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-16-0.jpg"
+   ]
+  },
+  {
+   "era": "Nothing Was The Same",
+   "name": "Nothing Was The Same",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Original tracklist for Nothing Was The Same posted by Drake, framed in a plague with a Nothing Was The Same CD below it, alongside an early Thank Me Later tracklist and an early Take Care tracklist. Similar to the final album, with the addition of \"Trophies\" and \"All Me\" to the main tracklist and the absence of \"Worst Behavior\" and \"Too Much\".",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "TUSCAN LEATHER"
+    },
+    {
+     "num": "#2",
+     "name": "FURTHEST THING"
+    },
+    {
+     "num": "#3",
+     "name": "STARTED FROM THE BOTTOM"
+    },
+    {
+     "num": "#4",
+     "name": "WU-TANG FOREVER"
+    },
+    {
+     "num": "#5",
+     "name": "OWN IT"
+    },
+    {
+     "num": "#6",
+     "name": "TROPHIES"
+    },
+    {
+     "num": "#7",
+     "name": "ALL ME"
+    },
+    {
+     "num": "#8",
+     "name": "FROM TIME"
+    },
+    {
+     "num": "#9",
+     "name": "HOLD ON, WE'RE GOING HOME"
+    },
+    {
+     "num": "#10",
+     "name": "CONNECT"
+    },
+    {
+     "num": "#11",
+     "name": "THE LANGUAGE"
+    },
+    {
+     "num": "#12",
+     "name": "305 TO MY CITY"
+    },
+    {
+     "num": "#13",
+     "name": "POUND CAKE"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-17-0.jpg"
+   ]
+  },
+  {
+   "era": "Nothing Was The Same",
+   "name": "Nothing Was The Same",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Nothing Was The Same.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Tuscan Leather"
+    },
+    {
+     "num": "#2",
+     "name": "Furthest Thing"
+    },
+    {
+     "num": "#3",
+     "name": "Started From the Bottom"
+    },
+    {
+     "num": "#4",
+     "name": "Wu-Tang Forever"
+    },
+    {
+     "num": "#5",
+     "name": "Own It"
+    },
+    {
+     "num": "#6",
+     "name": "Worst Behavior"
+    },
+    {
+     "num": "#7",
+     "name": "From Time"
+    },
+    {
+     "num": "#8",
+     "name": "Hold On, We're Going Home"
+    },
+    {
+     "num": "#9",
+     "name": "Connect"
+    },
+    {
+     "num": "#10",
+     "name": "The Language"
+    },
+    {
+     "num": "#11",
+     "name": "305 To My City"
+    },
+    {
+     "num": "#12",
+     "name": "Too Much"
+    },
+    {
+     "num": "#13",
+     "name": "Pound Cake / Paris Morton Music 2"
+    }
+   ]
+  },
+  {
+   "era": "Nothing Was The Same",
+   "name": "Nothing Was The Same (Deluxe)",
+   "date": "",
+   "quality": "N/A",
+   "source": "Drake",
+   "links": [],
+   "description": "Drake said in an interview after NWTS released, that the original deluxe version was going to be the album's tracklist flipped/reversed. He said, \"The deluxe edition was going to flip the whole track list, so it would go 'Pound Cake' then 'Too Much'—it would go in reverse. It was a cool, different listening experience. We never brought it into fruition; I think it was some iTunes issue or something like that.\"",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Pound Cake / Paris Morton Music 2"
+    },
+    {
+     "num": "#2",
+     "name": "Too Much"
+    },
+    {
+     "num": "#3",
+     "name": "305 to My City"
+    },
+    {
+     "num": "#4",
+     "name": "The Language"
+    },
+    {
+     "num": "#5",
+     "name": "Connect"
+    },
+    {
+     "num": "#6",
+     "name": "Hold On, We're Going Home"
+    },
+    {
+     "num": "#7",
+     "name": "From Time"
+    },
+    {
+     "num": "#8",
+     "name": "Worst Behavior"
+    },
+    {
+     "num": "#9",
+     "name": "Own It"
+    },
+    {
+     "num": "#10",
+     "name": "Wu-Tang Forever"
+    },
+    {
+     "num": "#11",
+     "name": "Started From The Bottom"
+    },
+    {
+     "num": "#12",
+     "name": "Furthest Thing"
+    },
+    {
+     "num": "#13",
+     "name": "Tuscan Leather"
+    }
+   ]
+  },
+  {
+   "era": "Nothing Was The Same",
+   "name": "Nothing Was The Same (Deluxe)",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Nothing Was The Same (Deluxe). Adds \"Come Thru\" & \"All Me\".",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Tuscan Leather"
+    },
+    {
+     "num": "#2",
+     "name": "Furthest Thing"
+    },
+    {
+     "num": "#3",
+     "name": "Started From the Bottom"
+    },
+    {
+     "num": "#4",
+     "name": "Wu-Tang Forever"
+    },
+    {
+     "num": "#5",
+     "name": "Own It"
+    },
+    {
+     "num": "#6",
+     "name": "Worst Behavior"
+    },
+    {
+     "num": "#7",
+     "name": "From Time"
+    },
+    {
+     "num": "#8",
+     "name": "Hold On, We're Going Home"
+    },
+    {
+     "num": "#9",
+     "name": "Connect"
+    },
+    {
+     "num": "#10",
+     "name": "The Language"
+    },
+    {
+     "num": "#11",
+     "name": "305 To My City"
+    },
+    {
+     "num": "#12",
+     "name": "Too Much"
+    },
+    {
+     "num": "#13",
+     "name": "Pound Cake / Paris Morton Music 2"
+    },
+    {
+     "num": "#14",
+     "name": "Come Thru"
+    },
+    {
+     "num": "#15",
+     "name": "All Me"
+    }
+   ]
+  },
+  {
+   "era": "Views From The 6ix [V1]",
+   "name": "Views From The 6ix",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Early tracklist for Views, seen in footage from 100gigs.org. Very likely made during the early stages of development for the album, due to the short length of tracks.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Hotline Bling"
+    },
+    {
+     "num": "#2",
+     "name": "Can I"
+    },
+    {
+     "num": "#3",
+     "name": "Redemption"
+    },
+    {
+     "num": "#4",
+     "name": "Different Talk"
+    },
+    {
+     "num": "#5",
+     "name": "Being Good"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-21-0.jpg"
+   ]
+  },
+  {
+   "era": "If You're Reading This It's Too Late",
+   "name": "If You're Reading This It's Too Late",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Original tracklist for If You're Reading This It's Too Late. Not too many differences.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Legend"
+    },
+    {
+     "num": "#2",
+     "name": "Energy"
+    },
+    {
+     "num": "#3",
+     "name": "10 Bands"
+    },
+    {
+     "num": "#4",
+     "name": "Know Yourself"
+    },
+    {
+     "num": "#5",
+     "name": "No Tellin"
+    },
+    {
+     "num": "#6",
+     "name": "Madonna"
+    },
+    {
+     "num": "#7",
+     "name": "6 God"
+    },
+    {
+     "num": "#8",
+     "name": "* 67 (Star67)"
+    },
+    {
+     "num": "#9",
+     "name": "Preach"
+    },
+    {
+     "num": "#10",
+     "name": "Used To"
+    },
+    {
+     "num": "#11",
+     "name": "Lou Will (6 Man)"
+    },
+    {
+     "num": "#12",
+     "name": "Now And Forever (Now & Forever)"
+    },
+    {
+     "num": "#13",
+     "name": "Company"
+    },
+    {
+     "num": "#14",
+     "name": "You + The 6 (You & The 6)"
+    },
+    {
+     "num": "#15",
+     "name": "Jungle Cat (Jungle)"
+    },
+    {
+     "num": "#16",
+     "name": "6PM In New York"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-22-0.jpg"
+   ]
+  },
+  {
+   "era": "If You're Reading This It's Too Late",
+   "name": "If You're Reading This It's Too Late",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for If You're Reading This It's Too Late.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Legend"
+    },
+    {
+     "num": "#2",
+     "name": "Energy"
+    },
+    {
+     "num": "#3",
+     "name": "10 Bands"
+    },
+    {
+     "num": "#4",
+     "name": "Know Yourself"
+    },
+    {
+     "num": "#5",
+     "name": "No Tellin'"
+    },
+    {
+     "num": "#6",
+     "name": "Madonna"
+    },
+    {
+     "num": "#7",
+     "name": "6 God"
+    },
+    {
+     "num": "#8",
+     "name": "Star67"
+    },
+    {
+     "num": "#9",
+     "name": "Preach"
+    },
+    {
+     "num": "#10",
+     "name": "Wednesday Night Interlude"
+    },
+    {
+     "num": "#11",
+     "name": "Used To"
+    },
+    {
+     "num": "#12",
+     "name": "6 Man"
+    },
+    {
+     "num": "#13",
+     "name": "Now & Forever"
+    },
+    {
+     "num": "#14",
+     "name": "Company"
+    },
+    {
+     "num": "#15",
+     "name": "You & The 6"
+    },
+    {
+     "num": "#16",
+     "name": "Jungle"
+    },
+    {
+     "num": "#17",
+     "name": "6PM In New York"
+    }
+   ]
+  },
+  {
+   "era": "If You're Reading This It's Too Late",
+   "name": "If You're Reading This It's Too Late [CD Version]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for the CD version of If You're Reading This It's Too Late. Adds \"How About Now\" & \"My Side\".",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Legend"
+    },
+    {
+     "num": "#2",
+     "name": "Energy"
+    },
+    {
+     "num": "#3",
+     "name": "10 Bands"
+    },
+    {
+     "num": "#4",
+     "name": "Know Yourself"
+    },
+    {
+     "num": "#5",
+     "name": "No Tellin'"
+    },
+    {
+     "num": "#6",
+     "name": "Madonna"
+    },
+    {
+     "num": "#7",
+     "name": "6 God"
+    },
+    {
+     "num": "#8",
+     "name": "Star67"
+    },
+    {
+     "num": "#9",
+     "name": "Preach"
+    },
+    {
+     "num": "#10",
+     "name": "Wednesday Night Interlude"
+    },
+    {
+     "num": "#11",
+     "name": "Used To"
+    },
+    {
+     "num": "#12",
+     "name": "6 Man"
+    },
+    {
+     "num": "#13",
+     "name": "Now & Forever"
+    },
+    {
+     "num": "#14",
+     "name": "Company"
+    },
+    {
+     "num": "#15",
+     "name": "You & The 6"
+    },
+    {
+     "num": "#16",
+     "name": "Jungle"
+    },
+    {
+     "num": "#17",
+     "name": "6PM In New York"
+    },
+    {
+     "num": "#18",
+     "name": "How About Now"
+    },
+    {
+     "num": "#19",
+     "name": "My Side"
+    }
+   ]
+  },
+  {
+   "era": "What A Time To Be Alive",
+   "name": "What A Time To Be Alive",
+   "date": "",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Early tracklist shown in \"THE WIZRD\" documentary.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Digital Dash"
+    },
+    {
+     "num": "#2",
+     "name": "Chain Cost A House"
+    },
+    {
+     "num": "#3",
+     "name": "Live From The Gutter"
+    },
+    {
+     "num": "#4",
+     "name": "Diamonds Dancing"
+    },
+    {
+     "num": "#5",
+     "name": "Do Me Dirty (Interlude)"
+    },
+    {
+     "num": "#6",
+     "name": "Scholarships"
+    },
+    {
+     "num": "#7",
+     "name": "Plastic Bag"
+    },
+    {
+     "num": "#8",
+     "name": "I'm The Pluggg"
+    },
+    {
+     "num": "#9",
+     "name": "Change Locations"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-25-0.jpg"
+   ]
+  },
+  {
+   "era": "What A Time To Be Alive",
+   "name": "What A Time To Be Alive",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for What A Time To Be Alive.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Digital Dash"
+    },
+    {
+     "num": "#2",
+     "name": "Big Rings"
+    },
+    {
+     "num": "#3",
+     "name": "Live From The Gutter"
+    },
+    {
+     "num": "#4",
+     "name": "Diamonds Dancing"
+    },
+    {
+     "num": "#5",
+     "name": "Scholarships"
+    },
+    {
+     "num": "#6",
+     "name": "Plastic Bag"
+    },
+    {
+     "num": "#7",
+     "name": "I'm The Plug"
+    },
+    {
+     "num": "#8",
+     "name": "Change Locations"
+    },
+    {
+     "num": "#9",
+     "name": "Jumpman"
+    },
+    {
+     "num": "#10",
+     "name": "Jersey"
+    },
+    {
+     "num": "#11",
+     "name": "30 for 30 Freestyle"
+    }
+   ]
+  },
+  {
+   "era": "Views",
+   "name": "Views",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Drake",
+   "links": [],
+   "description": "Early tracklist for Views, seen in footage from 100gigs.org. The songs separated from the initial tracklist were the planned bonus tracks for the album, as said by Drake while working on the tracklist in the 100gigs.org footage, but Hotline Bling would end up being the sole bonus track from Views. Can I was likely scrapped from the album due to leaks. The writing above Hotline Bling is likely not a track, as 40 pointed out that there were \"three bonuses\" and not four. This version (according to 40 in the footage) is 1 hour and 11 minutes in length.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Feel No Ways"
+    },
+    {
+     "num": "#2",
+     "name": "40KW (Revenge?)"
+    },
+    {
+     "num": "#3",
+     "name": "Redemption"
+    },
+    {
+     "num": "#4",
+     "name": "Still Here"
+    },
+    {
+     "num": "#5",
+     "name": "Pompeii"
+    },
+    {
+     "num": "#6",
+     "name": "Too Good To You (Too Good)"
+    },
+    {
+     "num": "#7",
+     "name": "Childs Play"
+    },
+    {
+     "num": "#8",
+     "name": "Controlla"
+    },
+    {
+     "num": "#9",
+     "name": "Faithful"
+    },
+    {
+     "num": "#10",
+     "name": "Still Here"
+    },
+    {
+     "num": "#11",
+     "name": "Controlla"
+    },
+    {
+     "num": "#12",
+     "name": "Faithful"
+    },
+    {
+     "num": "#13",
+     "name": "Don't Run"
+    },
+    {
+     "num": "#14",
+     "name": "Keep The Family Close"
+    },
+    {
+     "num": "#15",
+     "name": "One Dance"
+    },
+    {
+     "num": "#16",
+     "name": "Weston Road Flows"
+    },
+    {
+     "num": "#17",
+     "name": "PND?"
+    },
+    {
+     "num": "#18",
+     "name": "(???)"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-27-0.jpg"
+   ]
+  },
+  {
+   "era": "Views",
+   "name": "Views",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Views.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Keep The Family Close"
+    },
+    {
+     "num": "#2",
+     "name": "9"
+    },
+    {
+     "num": "#3",
+     "name": "U With Me?"
+    },
+    {
+     "num": "#4",
+     "name": "Feel No Ways"
+    },
+    {
+     "num": "#5",
+     "name": "Hype"
+    },
+    {
+     "num": "#6",
+     "name": "Weston Road Flows"
+    },
+    {
+     "num": "#7",
+     "name": "Redemption"
+    },
+    {
+     "num": "#8",
+     "name": "With You"
+    },
+    {
+     "num": "#9",
+     "name": "Faithful"
+    },
+    {
+     "num": "#10",
+     "name": "Still Here"
+    },
+    {
+     "num": "#11",
+     "name": "Controlla"
+    },
+    {
+     "num": "#12",
+     "name": "One Dance"
+    },
+    {
+     "num": "#13",
+     "name": "Grammys"
+    },
+    {
+     "num": "#14",
+     "name": "Childs Play"
+    },
+    {
+     "num": "#15",
+     "name": "Pop Style"
+    },
+    {
+     "num": "#16",
+     "name": "Too Good"
+    },
+    {
+     "num": "#17",
+     "name": "Summers Over Interlude"
+    },
+    {
+     "num": "#18",
+     "name": "Fire & Desire"
+    },
+    {
+     "num": "#19",
+     "name": "Views"
+    },
+    {
+     "num": "#20",
+     "name": "Hotline Bling"
+    }
+   ]
+  },
+  {
+   "era": "More Life",
+   "name": "More Life",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for the mixtape, More Life.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Free Smoke"
+    },
+    {
+     "num": "#2",
+     "name": "No Long Talk"
+    },
+    {
+     "num": "#3",
+     "name": "Passionfruit"
+    },
+    {
+     "num": "#4",
+     "name": "Jorja Interlude"
+    },
+    {
+     "num": "#5",
+     "name": "Get It Together"
+    },
+    {
+     "num": "#6",
+     "name": "Madiba Riddim"
+    },
+    {
+     "num": "#7",
+     "name": "Blem"
+    },
+    {
+     "num": "#8",
+     "name": "4422"
+    },
+    {
+     "num": "#9",
+     "name": "Gyalchester"
+    },
+    {
+     "num": "#10",
+     "name": "Skepta Interlude"
+    },
+    {
+     "num": "#11",
+     "name": "Portland"
+    },
+    {
+     "num": "#12",
+     "name": "Sacrifices"
+    },
+    {
+     "num": "#13",
+     "name": "Nothings Into Somethings"
+    },
+    {
+     "num": "#14",
+     "name": "Teenage Fever"
+    },
+    {
+     "num": "#15",
+     "name": "KMT"
+    },
+    {
+     "num": "#16",
+     "name": "Lose You"
+    },
+    {
+     "num": "#17",
+     "name": "Can't Have Everything"
+    },
+    {
+     "num": "#18",
+     "name": "Glow"
+    },
+    {
+     "num": "#19",
+     "name": "Since Way Back"
+    },
+    {
+     "num": "#20",
+     "name": "Fake Love"
+    },
+    {
+     "num": "#21",
+     "name": "Ice Melts"
+    },
+    {
+     "num": "#22",
+     "name": "Do Not Disturb"
+    }
+   ]
+  },
+  {
+   "era": "Scorpion",
+   "name": "Scary Hours",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Scary Hours.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "God's Plan"
+    },
+    {
+     "num": "#2",
+     "name": "Diplomatic Immunity"
+    }
+   ]
+  },
+  {
+   "era": "Scorpion",
+   "name": "Scorpion",
+   "date": "Jun 25, 2018",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Scorpion.\n\nDISC 1",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Survival"
+    },
+    {
+     "num": "#2",
+     "name": "Nonstop"
+    },
+    {
+     "num": "#3",
+     "name": "Elevate"
+    },
+    {
+     "num": "#4",
+     "name": "Emotionless"
+    },
+    {
+     "num": "#5",
+     "name": "God's Plan"
+    },
+    {
+     "num": "#6",
+     "name": "I'm Upset"
+    },
+    {
+     "num": "#7",
+     "name": "8 Out Of 10"
+    },
+    {
+     "num": "#8",
+     "name": "Mob Ties"
+    },
+    {
+     "num": "#9",
+     "name": "Can't Take A Joke"
+    },
+    {
+     "num": "#10",
+     "name": "Sandra's Rose"
+    },
+    {
+     "num": "#11",
+     "name": "Talk Up (feat. JAY-Z)"
+    },
+    {
+     "num": "#12",
+     "name": "Is There More"
+    },
+    {
+     "num": "#13",
+     "name": "Peak"
+    },
+    {
+     "num": "#14",
+     "name": "Summer Games"
+    },
+    {
+     "num": "#15",
+     "name": "Jaded"
+    },
+    {
+     "num": "#16",
+     "name": "Nice For What"
+    },
+    {
+     "num": "#17",
+     "name": "Finesse"
+    },
+    {
+     "num": "#18",
+     "name": "Ratchet Happy Birthday"
+    },
+    {
+     "num": "#19",
+     "name": "That's How You Feel"
+    },
+    {
+     "num": "#20",
+     "name": "Blue Tint"
+    },
+    {
+     "num": "#21",
+     "name": "In My Feelings"
+    },
+    {
+     "num": "#22",
+     "name": "Don't Matter To Me (with Michael Jackson)"
+    },
+    {
+     "num": "#23",
+     "name": "After Dark (feat. Static Major & Ty Dolla $ign)"
+    },
+    {
+     "num": "#24",
+     "name": "Final Fantasy"
+    },
+    {
+     "num": "#25",
+     "name": "March 14"
+    }
+   ]
+  },
+  {
+   "era": "What A Time To Be Alive 2",
+   "name": "What A Time To Be Alive 2",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Posted and quickly deleted by ATL Jacob on his IG. 9 unnamed songs with Future and Drake are visible at the bottom, and there are likely more after. Could be just beats, but it's likely that they're recorded on because Drake is mentioned in the filenames, and ATL Jacob doesn't work with him often (unlike Future).\n\nFUT X DRA 1 [ATLJACOB]\nFUT X DRA 2 [ATLJACOB]\nFUT X DRA 3 [ATLJACOB]\nFUT X DRA 4 [ATLJACOB]\nFUT X DRA 5  [ATLJACOB]\nFUT X DRA 6 [ATLJACOB]\nFUT X DRA 7 [ATLJACOB]\nFUT X DRA 8 [ATLJACOB]\nFUT X DRA 9 [ATLJACOB]",
+   "tracks": []
+  },
+  {
+   "era": "Certified Lover Boy [V1]",
+   "name": "The Best In The World Pack",
+   "date": "Jun 15, 2019",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for The Best In The World Pack.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Omertà"
+    },
+    {
+     "num": "#2",
+     "name": "Money In The Grave (feat. Rick Ross)"
+    }
+   ]
+  },
+  {
+   "era": "Certified Lover Boy [V1]",
+   "name": "Care Package",
+   "date": "Aug 2, 2019",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for the mixtape, Care Package.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dreams Money Can Buy"
+    },
+    {
+     "num": "#2",
+     "name": "The Motion"
+    },
+    {
+     "num": "#3",
+     "name": "How Bout Now"
+    },
+    {
+     "num": "#4",
+     "name": "Trust Issues"
+    },
+    {
+     "num": "#5",
+     "name": "Days in the East"
+    },
+    {
+     "num": "#6",
+     "name": "Draft Day"
+    },
+    {
+     "num": "#7",
+     "name": "4PM In Calabasas"
+    },
+    {
+     "num": "#8",
+     "name": "5AM in Toronto"
+    },
+    {
+     "num": "#9",
+     "name": "I Get Lonely"
+    },
+    {
+     "num": "#10",
+     "name": "My Side"
+    },
+    {
+     "num": "#11",
+     "name": "Jodeci Freestyle"
+    },
+    {
+     "num": "#12",
+     "name": "Club Paradise"
+    },
+    {
+     "num": "#13",
+     "name": "Free Spirit"
+    },
+    {
+     "num": "#14",
+     "name": "Heat of the Moment"
+    },
+    {
+     "num": "#15",
+     "name": "Girls Love Beyoncé"
+    },
+    {
+     "num": "#16",
+     "name": "Paris Morton Music"
+    },
+    {
+     "num": "#17",
+     "name": "Can I"
+    }
+   ]
+  },
+  {
+   "era": "Certified Lover Boy [V1]",
+   "name": "Care Package 2\n(Dark Lane Demo Tapes)",
+   "date": "2020",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Alternate tracklist for \"Dark Lane Demo Tapes\", which was titled \"Care Package 2\" before the official release.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Deep Pockets"
+    },
+    {
+     "num": "#2",
+     "name": "Time Flies"
+    },
+    {
+     "num": "#3",
+     "name": "Crazy Girls (feat. Smiley)"
+    },
+    {
+     "num": "#4",
+     "name": "Manifested"
+    },
+    {
+     "num": "#5",
+     "name": "Cardo Sticks"
+    },
+    {
+     "num": "#6",
+     "name": "Desires (feat. Future)"
+    },
+    {
+     "num": "#7",
+     "name": "When To Say When"
+    },
+    {
+     "num": "#8",
+     "name": "Chicago Freestyle"
+    },
+    {
+     "num": "#9",
+     "name": "TT"
+    },
+    {
+     "num": "#10",
+     "name": "Greece"
+    },
+    {
+     "num": "#11",
+     "name": "Not You Too"
+    },
+    {
+     "num": "#12",
+     "name": "Pain 1993 (feat. Playboi Carti)"
+    },
+    {
+     "num": "#13",
+     "name": "From Florida With Love"
+    },
+    {
+     "num": "#14",
+     "name": "War"
+    },
+    {
+     "num": "#15",
+     "name": "Demons (feat. Fivio Foreign & Sosa Greek)"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-35-0.jpg"
+   ]
+  },
+  {
+   "era": "Certified Lover Boy [V1]",
+   "name": "Dark Lane Demo Tapes",
+   "date": "May 1, 2020",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for the mixtape, Dark Lane Demo Tapes.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Deep Pockets"
+    },
+    {
+     "num": "#2",
+     "name": "When To Say When"
+    },
+    {
+     "num": "#3",
+     "name": "Chicago Freestyle"
+    },
+    {
+     "num": "#4",
+     "name": "Not You Too"
+    },
+    {
+     "num": "#5",
+     "name": "Toosie Slide"
+    },
+    {
+     "num": "#6",
+     "name": "Desires"
+    },
+    {
+     "num": "#7",
+     "name": "Time Flies"
+    },
+    {
+     "num": "#8",
+     "name": "Landed"
+    },
+    {
+     "num": "#9",
+     "name": "D4L"
+    },
+    {
+     "num": "#10",
+     "name": "Pain 1993"
+    },
+    {
+     "num": "#11",
+     "name": "Losses"
+    },
+    {
+     "num": "#12",
+     "name": "From Florida With Love"
+    },
+    {
+     "num": "#13",
+     "name": "Demons"
+    },
+    {
+     "num": "#14",
+     "name": "War"
+    }
+   ]
+  },
+  {
+   "era": "Certified Lover Boy [V2]",
+   "name": "Scary Hours 2",
+   "date": "Mar 5, 2021",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Scary Hours 2.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "What's Next"
+    },
+    {
+     "num": "#2",
+     "name": "Wants and Needs (feat. Lil Baby)"
+    },
+    {
+     "num": "#3",
+     "name": "Lemon Pepper Freestyle (feat. Rick Ross)"
+    }
+   ]
+  },
+  {
+   "era": "Certified Lover Boy [V2]",
+   "name": "Certified Lover Boy",
+   "date": "N/A",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "Early draft tracklist for Certified Lover Boy. Track confirmed due to the filename. Song is said to transition into \"Knife Talk\".\n\n1-12. ?",
+   "tracks": [
+    {
+     "num": "#13",
+     "name": "Forgot I Was Famous"
+    },
+    {
+     "num": "#14",
+     "name": "Knife Talk"
+    }
+   ]
+  },
+  {
+   "era": "Certified Lover Boy [V2]",
+   "name": "Certified Lover Boy",
+   "date": "May 28, 2021",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "In an Instagram post from May 28, 2021, Drake’s son, Adonis, was seen holding a dry-ease whiteboard in which Drake teased the album’s tracklist, where he wrote, \"They keep asking for a track list... can't seem to get one off 😂\".",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Champa(gne) Poe(try)"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-39-0.jpg"
+   ]
+  },
+  {
+   "era": "Certified Lover Boy [V2]",
+   "name": "Certified Lover Boy",
+   "date": "Sep 3, 2021",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Certified Lover Boy.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Champagne Poetry"
+    },
+    {
+     "num": "#2",
+     "name": "Papi's Home"
+    },
+    {
+     "num": "#3",
+     "name": "Girls Want Girls (with Lil Baby)"
+    },
+    {
+     "num": "#4",
+     "name": "In The Bible (with Lil Durk & GIVĒON)"
+    },
+    {
+     "num": "#5",
+     "name": "Love All (with JAY-Z)"
+    },
+    {
+     "num": "#6",
+     "name": "Fair Trade (with Travis Scott)"
+    },
+    {
+     "num": "#7",
+     "name": "Way 2 Sexy (with Future & Young Thug)"
+    },
+    {
+     "num": "#8",
+     "name": "TSU"
+    },
+    {
+     "num": "#9",
+     "name": "N 2 Deep (feat. Future)"
+    },
+    {
+     "num": "#10",
+     "name": "Pipe Down"
+    },
+    {
+     "num": "#11",
+     "name": "Yebba's Heartbreak (feat. Yebba)"
+    },
+    {
+     "num": "#12",
+     "name": "No Friends In The Industry"
+    },
+    {
+     "num": "#13",
+     "name": "Knife Talk (with 21 Savage ft. Project Pat)"
+    },
+    {
+     "num": "#14",
+     "name": "7am On Bridle Path"
+    },
+    {
+     "num": "#15",
+     "name": "Race My Mind"
+    },
+    {
+     "num": "#16",
+     "name": "Fountains (with Tems)"
+    },
+    {
+     "num": "#17",
+     "name": "Get Along Better (feat. Ty Dolla $ign)"
+    },
+    {
+     "num": "#18",
+     "name": "You Only Live Twice (with Lil Wayne & Rick Ross)"
+    },
+    {
+     "num": "#19",
+     "name": "IMY2 (with Kid Cudi)"
+    },
+    {
+     "num": "#20",
+     "name": "F*****g Fans"
+    },
+    {
+     "num": "#21",
+     "name": "The Remorse"
+    }
+   ]
+  },
+  {
+   "era": "Honestly, Nevermind",
+   "name": "Honestly, Nevermind",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Early tracklist for Honestly, Nevermind. Basically the same tracklist as the released version but with Trance added.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro"
+    },
+    {
+     "num": "#2",
+     "name": "Falling Back"
+    },
+    {
+     "num": "#3",
+     "name": "Texts Go Green"
+    },
+    {
+     "num": "#4",
+     "name": "Currents"
+    },
+    {
+     "num": "#5",
+     "name": "A Keeper"
+    },
+    {
+     "num": "#6",
+     "name": "Calling My Name"
+    },
+    {
+     "num": "#7",
+     "name": "Trance"
+    },
+    {
+     "num": "#8",
+     "name": "Sticky"
+    },
+    {
+     "num": "#9",
+     "name": "Massive"
+    },
+    {
+     "num": "#10",
+     "name": "Flight's Booked"
+    },
+    {
+     "num": "#11",
+     "name": "Over Drive"
+    },
+    {
+     "num": "#12",
+     "name": "Down Hill"
+    },
+    {
+     "num": "#13",
+     "name": "Tie That Binds"
+    },
+    {
+     "num": "#14",
+     "name": "Liability"
+    },
+    {
+     "num": "#15",
+     "name": "Jimmy Cooks"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-41-0.jpg"
+   ]
+  },
+  {
+   "era": "Honestly, Nevermind",
+   "name": "Honestly, Nevermind",
+   "date": "Jun 2022",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Honestly, Nevermind.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro"
+    },
+    {
+     "num": "#2",
+     "name": "Falling Back"
+    },
+    {
+     "num": "#3",
+     "name": "Texts Go Green"
+    },
+    {
+     "num": "#4",
+     "name": "Currents"
+    },
+    {
+     "num": "#5",
+     "name": "A Keeper"
+    },
+    {
+     "num": "#6",
+     "name": "Calling My Name"
+    },
+    {
+     "num": "#7",
+     "name": "Sticky"
+    },
+    {
+     "num": "#8",
+     "name": "Massive"
+    },
+    {
+     "num": "#9",
+     "name": "Flight's Booked"
+    },
+    {
+     "num": "#10",
+     "name": "Overdrive"
+    },
+    {
+     "num": "#11",
+     "name": "Down Hill"
+    },
+    {
+     "num": "#12",
+     "name": "Tie That Binds"
+    },
+    {
+     "num": "#13",
+     "name": "Liability"
+    },
+    {
+     "num": "#14",
+     "name": "Jimmy Cooks (feat. 21 Savage)"
+    }
+   ]
+  },
+  {
+   "era": "Her Loss",
+   "name": "Her Loss",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Early album copy for Her Loss seen in footage from 100gigs.org, titled \"herlossbooby\". Not in order.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "01 PRIVILEGED RAPPERS NOEL REF 1B"
+    },
+    {
+     "num": "#?",
+     "name": "01 Rich Flex S5V6 - master"
+    },
+    {
+     "num": "#?",
+     "name": "02 Major Distrobution S5V7 - master (Major Distribution)"
+    },
+    {
+     "num": "#?",
+     "name": "03 On BS Noel Ref 4 Mstr  - master"
+    },
+    {
+     "num": "#?",
+     "name": "04 BACKOUTSIDEBOYS S5V2b_01 - master (BackOutsideBoyz)"
+    },
+    {
+     "num": "#?",
+     "name": "06 Spin Bout You S5V5b - master (Spin Bout U)"
+    },
+    {
+     "num": "#?",
+     "name": "10 Pussy & Millions S5V4 - master"
+    },
+    {
+     "num": "#?",
+     "name": "15 3 AM On Glenwood (Chasin M's) S5V2 - master (3AM On Glenwood)"
+    },
+    {
+     "num": "#?",
+     "name": "Circo Loco Flow S5V4b-ProL2 (Circo Loco)"
+    },
+    {
+     "num": "#?",
+     "name": "More M's S5V1"
+    },
+    {
+     "num": "#?",
+     "name": "TMBU Noel Ref Revised 2-PnTPro_01 (Hours In Silence)"
+    },
+    {
+     "num": "#?",
+     "name": "Treacherous Twins S5V3b-ProL2 FIX"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-43-0.jpg"
+   ]
+  },
+  {
+   "era": "Her Loss",
+   "name": "Her Loss",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Early album copy for Her Loss seen in footage from 100gigs.org, titled \"new masters\". Not in order.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "04 BACKOUT...- master"
+    },
+    {
+     "num": "#?",
+     "name": "Broke Boyz S...- master"
+    },
+    {
+     "num": "#?",
+     "name": "More M's S5V...- master"
+    },
+    {
+     "num": "#?",
+     "name": "Privileged Ra...r UPDATE"
+    },
+    {
+     "num": "#?",
+     "name": "Rich Flex S5V...r update"
+    },
+    {
+     "num": "#?",
+     "name": "TMBU 40 Mix...er update (Hours In Silence)"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-44-0.jpg"
+   ]
+  },
+  {
+   "era": "Her Loss",
+   "name": "Her Loss",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Early album copy for Her Loss seen in footage from 100gigs.org, titled \"final files\". Not in order.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "02 Major Distr....- master"
+    },
+    {
+     "num": "#?",
+     "name": "03 On BS Noel...- master"
+    },
+    {
+     "num": "#?",
+     "name": "04 BACKOUT....- master"
+    },
+    {
+     "num": "#?",
+     "name": "08 Spin Bout Y...- master"
+    },
+    {
+     "num": "#?",
+     "name": "Privileged Ra...r UPDATE"
+    },
+    {
+     "num": "#?",
+     "name": "TMBU 40 Mix...er update (Hours In Silence)"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-45-0.jpg"
+   ]
+  },
+  {
+   "era": "Her Loss",
+   "name": "Her Loss",
+   "date": "Nov 3, 2022",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "First tracklist that was originally released for the album Her Loss. The only difference is that \"Jumbotron Shit Poppin\" is titled \"Jumbotron Poppin Shit\".",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Rich Flex"
+    },
+    {
+     "num": "#2",
+     "name": "Major Distribution"
+    },
+    {
+     "num": "#3",
+     "name": "On BS"
+    },
+    {
+     "num": "#4",
+     "name": "BackOutsideBoyz"
+    },
+    {
+     "num": "#5",
+     "name": "Drake - Privileged Rappers"
+    },
+    {
+     "num": "#6",
+     "name": "Spin Bout U"
+    },
+    {
+     "num": "#7",
+     "name": "Hours In Silence"
+    },
+    {
+     "num": "#8",
+     "name": "Treacherous Twins"
+    },
+    {
+     "num": "#9",
+     "name": "Circo Loco"
+    },
+    {
+     "num": "#10",
+     "name": "Pussy & Millions (feat. Travis Scott)"
+    },
+    {
+     "num": "#11",
+     "name": "Broke Boys"
+    },
+    {
+     "num": "#12",
+     "name": "Drake - Middle of the Ocean"
+    },
+    {
+     "num": "#13",
+     "name": "Drake - Jumbotron Poppin Shit"
+    },
+    {
+     "num": "#14",
+     "name": "More M's"
+    },
+    {
+     "num": "#15",
+     "name": "21 Savage - 3AM on Glenwood"
+    },
+    {
+     "num": "#16",
+     "name": "Drake - I Guess It's Fuck Me"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-46-0.jpg"
+   ]
+  },
+  {
+   "era": "Her Loss",
+   "name": "Her Loss",
+   "date": "Nov 4, 2022",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for Her Loss.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Rich Flex"
+    },
+    {
+     "num": "#2",
+     "name": "Major Distribution"
+    },
+    {
+     "num": "#3",
+     "name": "On BS"
+    },
+    {
+     "num": "#4",
+     "name": "BackOutsideBoyz"
+    },
+    {
+     "num": "#5",
+     "name": "Drake - Privileged Rappers"
+    },
+    {
+     "num": "#6",
+     "name": "Spin Bout U"
+    },
+    {
+     "num": "#7",
+     "name": "Hours In Silence"
+    },
+    {
+     "num": "#8",
+     "name": "Treacherous Twins"
+    },
+    {
+     "num": "#9",
+     "name": "Circo Loco"
+    },
+    {
+     "num": "#10",
+     "name": "Pussy & Millions (feat. Travis Scott)"
+    },
+    {
+     "num": "#11",
+     "name": "Broke Boys"
+    },
+    {
+     "num": "#12",
+     "name": "Drake - Middle of the Ocean"
+    },
+    {
+     "num": "#13",
+     "name": "Drake - Jumbotron Shit Poppin"
+    },
+    {
+     "num": "#14",
+     "name": "More M's"
+    },
+    {
+     "num": "#15",
+     "name": "21 Savage - 3AM on Glenwood"
+    },
+    {
+     "num": "#16",
+     "name": "Drake - I Guess It's Fuck Me"
+    }
+   ]
+  },
+  {
+   "era": "For All The Dogs",
+   "name": "FOR ALL THE DOGSDEM",
+   "date": "Oct 2023",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Tracklist posted by Drake the day after For All The Dogs released. Tried Our Best seems to have been added to the album last minute. The tracklist is cut off after BBL Love Interlude.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Virginia Beach ✔ MIX"
+    },
+    {
+     "num": "#2",
+     "name": "Amen ✔ 40 MASTER"
+    },
+    {
+     "num": "#3",
+     "name": "Calling For You ✔ MI(X)"
+    },
+    {
+     "num": "#4",
+     "name": "Fear Of Heights ✔ N(OE)L MIX"
+    },
+    {
+     "num": "#5",
+     "name": "Daylight ✔ NOEL (M)IX"
+    },
+    {
+     "num": "#6",
+     "name": "Cole or Slap? FIR(ST) PERSON SHOOTER (First Person Shooter)"
+    },
+    {
+     "num": "#7",
+     "name": "IDAGF 40 TO(???)T (IDGAF)"
+    },
+    {
+     "num": "#8",
+     "name": "7969 Santa ✔ NO(EL) MIX / LINE CHANGE"
+    },
+    {
+     "num": "#9",
+     "name": "Slime You Out (✔) COMPLETE"
+    },
+    {
+     "num": "#10",
+     "name": "Bahamas Prom(ises) ✔ NOEL MIX / NO PA(???)"
+    },
+    {
+     "num": "#11",
+     "name": "Tried (Tried Our Best)"
+    },
+    {
+     "num": "#12",
+     "name": "Screw The W(orld) Interlude ✔"
+    },
+    {
+     "num": "#13",
+     "name": "Drew A Pic(asso) ✔ 40 MIX V2"
+    },
+    {
+     "num": "#14",
+     "name": "Members (Only) - 2ND ROUND MASTER"
+    },
+    {
+     "num": "#15",
+     "name": "Bal Harbour"
+    },
+    {
+     "num": "#16",
+     "name": "What W(ould) Pluto Do ✔ MASTER"
+    },
+    {
+     "num": "#16",
+     "name": "All The Parties - ON ME 40 MIX FI(???)"
+    },
+    {
+     "num": "#17",
+     "name": "8am In Charlotte ✔ 40 MIX"
+    },
+    {
+     "num": "#18",
+     "name": "BBL Love Interlude ✔ NOEL 40 MIX"
+    },
+    {
+     "num": "#?",
+     "name": "???"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-48-0.jpg"
+   ]
+  },
+  {
+   "era": "For All The Dogs",
+   "name": "For All The Dogs",
+   "date": "Oct 2023",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Tracklist posted by Noel Cadastre on November 1st, 2023. similar to the final release besides some alt names and \"Search & Rescue\" added to the end. There's a blacked out entry below Search & Rescue, with an empty entry in between, although no entries in its row have been checked off so it's unclear if it was actually a track that's been removed or some kind of sensitive information.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "VIRGINA BEACH (Virginia Beach)"
+    },
+    {
+     "num": "#2",
+     "name": "AMEN"
+    },
+    {
+     "num": "#3",
+     "name": "CALLING FOR YOU"
+    },
+    {
+     "num": "#4",
+     "name": "FEAR OF HEIGHTS"
+    },
+    {
+     "num": "#5",
+     "name": "DAYLIGHT"
+    },
+    {
+     "num": "#6",
+     "name": "FIRST PERSON SHOOTER"
+    },
+    {
+     "num": "#7",
+     "name": "IDGAF VOX UP"
+    },
+    {
+     "num": "#8",
+     "name": "7969 SANTA"
+    },
+    {
+     "num": "#9",
+     "name": "SLIME YOU OUT"
+    },
+    {
+     "num": "#10",
+     "name": "BAHAMAS PROMISES"
+    },
+    {
+     "num": "#11",
+     "name": "TRIED OUR BEST"
+    },
+    {
+     "num": "#12",
+     "name": "SCREW THE WORLD (Screw The World - Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "DREW A PICASSO"
+    },
+    {
+     "num": "#14",
+     "name": "MEMBERS ONLY"
+    },
+    {
+     "num": "#15",
+     "name": "WHAT WOULD PLUTO DO"
+    },
+    {
+     "num": "#16",
+     "name": "ALL THE PARTIES"
+    },
+    {
+     "num": "#17",
+     "name": "8AM IN CHARLOTTE"
+    },
+    {
+     "num": "#18",
+     "name": "BBL LOVE (BBL Love - Interlude)"
+    },
+    {
+     "num": "#19",
+     "name": "GENTLY"
+    },
+    {
+     "num": "#20",
+     "name": "ST LOUIS SPIRIT (Rich Baby Daddy)"
+    },
+    {
+     "num": "#21",
+     "name": "ANOTHER LATE NIGHT"
+    },
+    {
+     "num": "#22",
+     "name": "AWAY FROM HOME"
+    },
+    {
+     "num": "#23",
+     "name": "BI POLAR BABY (Polar Opposites)"
+    },
+    {
+     "num": "#24",
+     "name": "SEARCH & RESCUE"
+    },
+    {
+     "num": "#?",
+     "name": "???"
+    }
+   ],
+   "images": [
+    "/drizzygold/art/tl-49-0.jpg"
+   ]
+  },
+  {
+   "era": "For All The Dogs",
+   "name": "For All The Dogs",
+   "date": "Oct 6, 2023",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Officially tracklist for For All The Dogs.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Virginia Beach"
+    },
+    {
+     "num": "#2",
+     "name": "Amen (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#3",
+     "name": "Calling For You (feat. 21 Savage)"
+    },
+    {
+     "num": "#4",
+     "name": "Fear of Heights"
+    },
+    {
+     "num": "#5",
+     "name": "Daylight"
+    },
+    {
+     "num": "#6",
+     "name": "First Person Shooter (feat. J. Cole)"
+    },
+    {
+     "num": "#7",
+     "name": "IDGAF (feat. Yeat)"
+    },
+    {
+     "num": "#8",
+     "name": "7969 Santa"
+    },
+    {
+     "num": "#9",
+     "name": "Slime You Out (feat. SZA)"
+    },
+    {
+     "num": "#10",
+     "name": "Bahamas Promises"
+    },
+    {
+     "num": "#11",
+     "name": "Tried Our Best"
+    },
+    {
+     "num": "#12",
+     "name": "Screw the World (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "Members Only (feat. PARTYNEXTDOOR)"
+    },
+    {
+     "num": "#14",
+     "name": "Drew a Picasso"
+    },
+    {
+     "num": "#15",
+     "name": "What Would Pluto Do"
+    },
+    {
+     "num": "#16",
+     "name": "All the Parties (feat. Chief Keef)"
+    },
+    {
+     "num": "#17",
+     "name": "8AM in Charlotte"
+    },
+    {
+     "num": "#18",
+     "name": "BBL Love (Interlude)"
+    },
+    {
+     "num": "#19",
+     "name": "Gently (feat. Bad Bunny)"
+    },
+    {
+     "num": "#20",
+     "name": "Rich Baby Daddy (feat. Sexyy Red & SZA)"
+    },
+    {
+     "num": "#21",
+     "name": "Another Late Night (feat. Lil Yachty)"
+    },
+    {
+     "num": "#22",
+     "name": "Away from Home"
+    },
+    {
+     "num": "#23",
+     "name": "Polar Opposites"
+    }
+   ]
+  },
+  {
+   "era": "For All The Dogs",
+   "name": "For All The Dogs: Scary Hours Edition",
+   "date": "Nov 17, 2023",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for For All The Dogs: Scary Hours Edition / For All The Dogs (Deluxe).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Virginia Beach"
+    },
+    {
+     "num": "#2",
+     "name": "Amen (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#3",
+     "name": "Calling For You (feat. 21 Savage)"
+    },
+    {
+     "num": "#4",
+     "name": "Fear of Heights"
+    },
+    {
+     "num": "#5",
+     "name": "Daylight"
+    },
+    {
+     "num": "#6",
+     "name": "First Person Shooter (feat. J. Cole)"
+    },
+    {
+     "num": "#7",
+     "name": "IDGAF (feat. Yeat)"
+    },
+    {
+     "num": "#8",
+     "name": "7969 Santa"
+    },
+    {
+     "num": "#9",
+     "name": "Slime You Out (feat. SZA)"
+    },
+    {
+     "num": "#10",
+     "name": "Bahamas Promises"
+    },
+    {
+     "num": "#11",
+     "name": "Tried Our Best"
+    },
+    {
+     "num": "#12",
+     "name": "Screw the World (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "Members Only (feat. PARTYNEXTDOOR)"
+    },
+    {
+     "num": "#14",
+     "name": "Drew a Picasso"
+    },
+    {
+     "num": "#15",
+     "name": "What Would Pluto Do"
+    },
+    {
+     "num": "#16",
+     "name": "All the Parties (feat. Chief Keef)"
+    },
+    {
+     "num": "#17",
+     "name": "8AM in Charlotte"
+    },
+    {
+     "num": "#18",
+     "name": "BBL Love (Interlude)"
+    },
+    {
+     "num": "#19",
+     "name": "Gently (feat. Bad Bunny)"
+    },
+    {
+     "num": "#20",
+     "name": "Rich Baby Daddy (feat. Sexyy Red & SZA)"
+    },
+    {
+     "num": "#21",
+     "name": "Another Late Night (feat. Lil Yachty)"
+    },
+    {
+     "num": "#22",
+     "name": "Away from Home"
+    },
+    {
+     "num": "#23",
+     "name": "Polar Opposites"
+    },
+    {
+     "num": "#24",
+     "name": "Red Button"
+    },
+    {
+     "num": "#25",
+     "name": "Stories About My Brother"
+    },
+    {
+     "num": "#26",
+     "name": "The Shoe Fits"
+    },
+    {
+     "num": "#27",
+     "name": "Wick Man"
+    },
+    {
+     "num": "#28",
+     "name": "Evil Ways (feat. J. Cole)"
+    },
+    {
+     "num": "#29",
+     "name": "You Broke My Heart"
+    }
+   ]
+  },
+  {
+   "era": "For All The Dogs",
+   "name": "For All The Dogs: Scary Hours Edition (Instrumentals)",
+   "date": "",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Official tracklist for For All The Dogs Scary Hours Edition (Instrumentals)",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Red Button"
+    },
+    {
+     "num": "#2",
+     "name": "Stories About My Brother"
+    },
+    {
+     "num": "#3",
+     "name": "The Shoe Fits"
+    },
+    {
+     "num": "#4",
+     "name": "Wick Man"
+    },
+    {
+     "num": "#5",
+     "name": "Evil Ways (feat. J. Cole)"
+    },
+    {
+     "num": "#6",
+     "name": "You Broke My Heart"
+    }
+   ]
+  },
+  {
+   "era": "$ome $exy $ongs 4 U",
+   "name": "$ome $exy $ongs 4 U",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "",
+   "tracks": []
+  }
+ ]
+}

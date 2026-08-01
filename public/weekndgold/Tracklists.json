@@ -1,3064 +1,3210 @@
-[
- {
-  "era": "The Noise",
-  "name": "The Noise",
-  "date": "Apr 5, 2024",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Rescue You"
-   },
-   {
-    "num": "#2",
-    "name": "Do It"
-   },
-   {
-    "num": "#3",
-    "name": "Appointment"
-   },
-   {
-    "num": "#4",
-    "name": "Release Me"
-   },
-   {
-    "num": "#5",
-    "name": "X-Ray"
-   },
-   {
-    "num": "#6",
-    "name": "Birthday Suit"
-   }
-  ]
- },
- {
-  "era": "House Of Balloons",
-  "name": "House Of Balloons",
-  "date": "Mar 21, 2011",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "High For This"
-   },
-   {
-    "num": "#2",
-    "name": "What You Need"
-   },
-   {
-    "num": "#3",
-    "name": "House of Balloons / Glass Table Girls"
-   },
-   {
-    "num": "#4",
-    "name": "The Morning"
-   },
-   {
-    "num": "#5",
-    "name": "Wicked Games"
-   },
-   {
-    "num": "#6",
-    "name": "The Party & the After Party"
-   },
-   {
-    "num": "#7",
-    "name": "Coming Down"
-   },
-   {
-    "num": "#8",
-    "name": "Loft Music"
-   },
-   {
-    "num": "#9",
-    "name": "The Knowing"
-   }
-  ]
- },
- {
-  "era": "Thursday",
-  "name": "Thursday",
-  "date": "Aug 18, 2011",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Lonely Star"
-   },
-   {
-    "num": "#2",
-    "name": "Life of The Party"
-   },
-   {
-    "num": "#3",
-    "name": "Thursday"
-   },
-   {
-    "num": "#4",
-    "name": "The Zone (feat. Drake)"
-   },
-   {
-    "num": "#5",
-    "name": "The Birds Pt. 1"
-   },
-   {
-    "num": "#6",
-    "name": "The Birds Pt. 2"
-   },
-   {
-    "num": "#7",
-    "name": "Gone"
-   },
-   {
-    "num": "#8",
-    "name": "Rolling Stone"
-   },
-   {
-    "num": "#9",
-    "name": "Heaven or Las Vegas"
-   }
-  ]
- },
- {
-  "era": "Echoes Of Silence",
-  "name": "Echoes Of Silence",
-  "date": "Dec 21, 2011",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "D.D."
-   },
-   {
-    "num": "#2",
-    "name": "Montreal"
-   },
-   {
-    "num": "#3",
-    "name": "Outside"
-   },
-   {
-    "num": "#4",
-    "name": "XO / The Host"
-   },
-   {
-    "num": "#5",
-    "name": "Initiation"
-   },
-   {
-    "num": "#6",
-    "name": "Same Old Song (feat. Juicy J)"
-   },
-   {
-    "num": "#7",
-    "name": "The Fall"
-   },
-   {
-    "num": "#8",
-    "name": "Next"
-   },
-   {
-    "num": "#9",
-    "name": "Echoes Of Silence"
-   }
-  ]
- },
- {
-  "era": "Trilogy",
-  "name": "Trilogy",
-  "date": "Nov 3, 2012",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "High For This"
-   },
-   {
-    "num": "#2",
-    "name": "What You Need"
-   },
-   {
-    "num": "#3",
-    "name": "House of Balloons / Glass Table Girls"
-   },
-   {
-    "num": "#4",
-    "name": "The Morning"
-   },
-   {
-    "num": "#5",
-    "name": "Wicked Games"
-   },
-   {
-    "num": "#6",
-    "name": "The Party & the After Party"
-   },
-   {
-    "num": "#7",
-    "name": "Coming Down"
-   },
-   {
-    "num": "#8",
-    "name": "Loft Music"
-   },
-   {
-    "num": "#9",
-    "name": "The Knowing"
-   },
-   {
-    "num": "#10",
-    "name": "Twenty Eight"
-   },
-   {
-    "num": "#1",
-    "name": "Lonely Star"
-   },
-   {
-    "num": "#2",
-    "name": "Life of The Party"
-   },
-   {
-    "num": "#3",
-    "name": "Thursday"
-   },
-   {
-    "num": "#4",
-    "name": "The Zone (feat. Drake)"
-   },
-   {
-    "num": "#5",
-    "name": "The Birds Pt. 1"
-   },
-   {
-    "num": "#6",
-    "name": "The Birds Pt. 2"
-   },
-   {
-    "num": "#7",
-    "name": "Gone"
-   },
-   {
-    "num": "#8",
-    "name": "Rolling Stone"
-   },
-   {
-    "num": "#9",
-    "name": "Heaven or Las Vegas"
-   },
-   {
-    "num": "#10",
-    "name": "Valerie"
-   },
-   {
-    "num": "#1",
-    "name": "D.D."
-   },
-   {
-    "num": "#2",
-    "name": "Montreal"
-   },
-   {
-    "num": "#3",
-    "name": "Outside"
-   },
-   {
-    "num": "#4",
-    "name": "XO / The Host"
-   },
-   {
-    "num": "#5",
-    "name": "Initiation"
-   },
-   {
-    "num": "#6",
-    "name": "Same Old Song (feat. Juicy J)"
-   },
-   {
-    "num": "#7",
-    "name": "The Fall"
-   },
-   {
-    "num": "#8",
-    "name": "Next"
-   },
-   {
-    "num": "#9",
-    "name": "Echoes Of Silence"
-   },
-   {
-    "num": "#10",
-    "name": "Till Dawn (Here Comes The Sun)"
-   }
-  ]
- },
- {
-  "era": "Kiss Land",
-  "name": "Kiss Land",
-  "date": "",
-  "quality": "N/A",
-  "source": "Abel",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Kiss Land",
-  "name": "Kiss Land",
-  "date": "Sep 10, 2013",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Professional"
-   },
-   {
-    "num": "#2",
-    "name": "The Town"
-   },
-   {
-    "num": "#3",
-    "name": "Adaptation"
-   },
-   {
-    "num": "#4",
-    "name": "Love In The Sky"
-   },
-   {
-    "num": "#5",
-    "name": "Belong To the World"
-   },
-   {
-    "num": "#6",
-    "name": "Live For (feat. Drake)"
-   },
-   {
-    "num": "#7",
-    "name": "Wanderlust"
-   },
-   {
-    "num": "#8",
-    "name": "Kiss Land"
-   },
-   {
-    "num": "#9",
-    "name": "Pretty"
-   },
-   {
-    "num": "#10",
-    "name": "Tears In The Rain"
-   }
-  ]
- },
- {
-  "era": "Kiss Land",
-  "name": "Kiss Land (Deluxe)",
-  "date": "",
-  "quality": "N/A",
-  "source": "N/A",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Professional"
-   },
-   {
-    "num": "#2",
-    "name": "The Town"
-   },
-   {
-    "num": "#3",
-    "name": "Adaptation"
-   },
-   {
-    "num": "#4",
-    "name": "Love In The Sky"
-   },
-   {
-    "num": "#5",
-    "name": "Belong To the World"
-   },
-   {
-    "num": "#6",
-    "name": "Live For (feat. Drake)"
-   },
-   {
-    "num": "#7",
-    "name": "Wanderlust"
-   },
-   {
-    "num": "#8",
-    "name": "Kiss Land"
-   },
-   {
-    "num": "#9",
-    "name": "Pretty"
-   },
-   {
-    "num": "#10",
-    "name": "Tears In The Rain"
-   },
-   {
-    "num": "#11",
-    "name": "Wanderlust (Pharrell Remix)"
-   },
-   {
-    "num": "#12",
-    "name": "Odd Look (feat. The Weeknd)"
-   },
-   {
-    "num": "#13",
-    "name": "Heavenly Creatures"
-   },
-   {
-    "num": "#14",
-    "name": "Pure Life"
-   }
-  ]
- },
- {
-  "era": "Kiss Land",
-  "name": "Kiss Land (Deluxe)",
-  "date": "Sep 10, 2015",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Professional"
-   },
-   {
-    "num": "#2",
-    "name": "The Town"
-   },
-   {
-    "num": "#3",
-    "name": "Adaptation"
-   },
-   {
-    "num": "#4",
-    "name": "Love In The Sky"
-   },
-   {
-    "num": "#5",
-    "name": "Belong To the World"
-   },
-   {
-    "num": "#6",
-    "name": "Live For (feat. Drake)"
-   },
-   {
-    "num": "#7",
-    "name": "Wanderlust"
-   },
-   {
-    "num": "#8",
-    "name": "Kiss Land"
-   },
-   {
-    "num": "#9",
-    "name": "Pretty"
-   },
-   {
-    "num": "#10",
-    "name": "Tears In The Rain"
-   },
-   {
-    "num": "#11",
-    "name": "Wanderlust (Pharrell Remix)"
-   },
-   {
-    "num": "#12",
-    "name": "Kavinsky - Odd Look (feat. The Weeknd)"
-   }
-  ]
- },
- {
-  "era": "BBTM",
-  "name": "Beauty Behind The Madness",
-  "date": "Jun 13, 2015",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Real Life"
-   },
-   {
-    "num": "#2",
-    "name": "Tell Your Friends About It (ft. Kanye West) (Tell Your Friends)"
-   },
-   {
-    "num": "#3",
-    "name": "Often"
-   },
-   {
-    "num": "#4",
-    "name": "The Hills"
-   },
-   {
-    "num": "#5",
-    "name": "Acquainted"
-   },
-   {
-    "num": "#6",
-    "name": "Can't Feel My Face"
-   },
-   {
-    "num": "#7",
-    "name": "Shameless"
-   },
-   {
-    "num": "#8",
-    "name": "Earned It (Album Version)"
-   },
-   {
-    "num": "#9",
-    "name": "In The Night"
-   },
-   {
-    "num": "#10",
-    "name": "Angel"
-   },
-   {
-    "num": "#11",
-    "name": "As We Are (As You Are)"
-   },
-   {
-    "num": "#12",
-    "name": "Prisoners"
-   }
-  ]
- },
- {
-  "era": "BBTM",
-  "name": "Beauty Behind The Madness",
-  "date": "Jul 8, 2015",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Real Life"
-   },
-   {
-    "num": "#2",
-    "name": "Losers (featuring Labrinth)"
-   },
-   {
-    "num": "#3",
-    "name": "Tell Your Friends (featuring Kanye West) (Tell Your Friends About It)"
-   },
-   {
-    "num": "#4",
-    "name": "Often"
-   },
-   {
-    "num": "#5",
-    "name": "The Hills"
-   },
-   {
-    "num": "#6",
-    "name": "Acquainted"
-   },
-   {
-    "num": "#7",
-    "name": "Can't Feel My Face"
-   },
-   {
-    "num": "#8",
-    "name": "Shameless"
-   },
-   {
-    "num": "#9",
-    "name": "Earned It (Album Version)"
-   },
-   {
-    "num": "#10",
-    "name": "In The Night"
-   },
-   {
-    "num": "#11",
-    "name": "As You Are (As We Are)"
-   },
-   {
-    "num": "#12",
-    "name": "Prisoner"
-   },
-   {
-    "num": "#13",
-    "name": "Dark Times (featuring Ed Sheeran)"
-   },
-   {
-    "num": "#14",
-    "name": "Angel"
-   }
-  ]
- },
- {
-  "era": "BBTM",
-  "name": "Beauty Behind The Madness",
-  "date": "Aug 28, 2015",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Real Life"
-   },
-   {
-    "num": "#2",
-    "name": "Losers (feat. Labrinth)"
-   },
-   {
-    "num": "#3",
-    "name": "Tell Your Friends"
-   },
-   {
-    "num": "#4",
-    "name": "Often"
-   },
-   {
-    "num": "#5",
-    "name": "The Hills"
-   },
-   {
-    "num": "#6",
-    "name": "Acquainted"
-   },
-   {
-    "num": "#7",
-    "name": "Can't Feel My Face"
-   },
-   {
-    "num": "#8",
-    "name": "Shameless"
-   },
-   {
-    "num": "#9",
-    "name": "Earned It (Fifty Shades of Grey)"
-   },
-   {
-    "num": "#10",
-    "name": "In The Night"
-   },
-   {
-    "num": "#11",
-    "name": "As You Are"
-   },
-   {
-    "num": "#12",
-    "name": "Dark Times (feat. Ed Sheeran)"
-   },
-   {
-    "num": "#13",
-    "name": "Prisoner (feat. Lana Del Rey)"
-   },
-   {
-    "num": "#14",
-    "name": "Angel"
-   }
-  ]
- },
- {
-  "era": "BBTM",
-  "name": "Beauty Behind The Madness [Japanese Edition]",
-  "date": "Mar 16, 2016",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Real Life"
-   },
-   {
-    "num": "#2",
-    "name": "Losers (feat. Labrinth)"
-   },
-   {
-    "num": "#3",
-    "name": "Tell Your Friends"
-   },
-   {
-    "num": "#4",
-    "name": "Often"
-   },
-   {
-    "num": "#5",
-    "name": "The Hills"
-   },
-   {
-    "num": "#6",
-    "name": "Acquainted"
-   },
-   {
-    "num": "#7",
-    "name": "Can't Feel My Face"
-   },
-   {
-    "num": "#8",
-    "name": "Shameless"
-   },
-   {
-    "num": "#9",
-    "name": "Earned It (Fifty Shades of Grey)"
-   },
-   {
-    "num": "#10",
-    "name": "In The Night"
-   },
-   {
-    "num": "#11",
-    "name": "As You Are"
-   },
-   {
-    "num": "#12",
-    "name": "Dark Times (feat. Ed Sheeran)"
-   },
-   {
-    "num": "#13",
-    "name": "Prisoner (feat. Lana Del Rey)"
-   },
-   {
-    "num": "#14",
-    "name": "Angel"
-   },
-   {
-    "num": "#15",
-    "name": "Can't Feel My Face (Martin Garrix Remix)"
-   },
-   {
-    "num": "#16",
-    "name": "The Hills (Remix) [feat. Eminem]"
-   },
-   {
-    "num": "#17",
-    "name": "The Hills (Remix) [feat. Nicki Minaj]"
-   }
-  ]
- },
- {
-  "era": "Starboy",
-  "name": "Starboy",
-  "date": "Nov 25, 2016",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Starboy (feat. Daft Punk)"
-   },
-   {
-    "num": "#2",
-    "name": "Party Monster"
-   },
-   {
-    "num": "#3",
-    "name": "False Alarm"
-   },
-   {
-    "num": "#4",
-    "name": "Reminder"
-   },
-   {
-    "num": "#5",
-    "name": "Rockin'"
-   },
-   {
-    "num": "#6",
-    "name": "Secrets"
-   },
-   {
-    "num": "#7",
-    "name": "True Colors"
-   },
-   {
-    "num": "#8",
-    "name": "Stargirl Interlude (feat. Lana Del Rey)"
-   },
-   {
-    "num": "#9",
-    "name": "Sidewalks (feat. Kendrick Lamar)"
-   },
-   {
-    "num": "#10",
-    "name": "Six Feet Under"
-   },
-   {
-    "num": "#11",
-    "name": "Love To Lay"
-   },
-   {
-    "num": "#12",
-    "name": "A Lonely Night"
-   },
-   {
-    "num": "#13",
-    "name": "Attention"
-   },
-   {
-    "num": "#14",
-    "name": "Ordinary Life"
-   },
-   {
-    "num": "#15",
-    "name": "Nothing Without You"
-   },
-   {
-    "num": "#16",
-    "name": "All I Know (feat. Future)"
-   },
-   {
-    "num": "#17",
-    "name": "Die For You"
-   },
-   {
-    "num": "#18",
-    "name": "I Feel It Coming (feat. Daft Punk)"
-   }
-  ]
- },
- {
-  "era": "Starboy",
-  "name": "Starboy [Japanese Edition]",
-  "date": "Dec 23, 2016",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Starboy (feat. Daft Punk)"
-   },
-   {
-    "num": "#2",
-    "name": "Party Monster"
-   },
-   {
-    "num": "#3",
-    "name": "False Alarm"
-   },
-   {
-    "num": "#4",
-    "name": "Reminder"
-   },
-   {
-    "num": "#5",
-    "name": "Rockin'"
-   },
-   {
-    "num": "#6",
-    "name": "Secrets"
-   },
-   {
-    "num": "#7",
-    "name": "True Colors"
-   },
-   {
-    "num": "#8",
-    "name": "Stargirl Interlude (feat. Lana Del Rey)"
-   },
-   {
-    "num": "#9",
-    "name": "Sidewalks (feat. Kendrick Lamar)"
-   },
-   {
-    "num": "#10",
-    "name": "Six Feet Under"
-   },
-   {
-    "num": "#11",
-    "name": "Love To Lay"
-   },
-   {
-    "num": "#12",
-    "name": "A Lonely Night"
-   },
-   {
-    "num": "#13",
-    "name": "Attention"
-   },
-   {
-    "num": "#14",
-    "name": "Ordinary Life"
-   },
-   {
-    "num": "#15",
-    "name": "Nothing Without You"
-   },
-   {
-    "num": "#16",
-    "name": "All I Know (feat. Future)"
-   },
-   {
-    "num": "#17",
-    "name": "Die For You"
-   },
-   {
-    "num": "#18",
-    "name": "I Feel It Coming (feat. Daft Punk)"
-   },
-   {
-    "num": "#19",
-    "name": "Starboy (Kygo Remix) [feat. Daft Punk]"
-   }
-  ]
- },
- {
-  "era": "My Dear Melancholy,",
-  "name": "My Dear Melancholy,",
-  "date": "Mar 30, 2018",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Call Out My Name"
-   },
-   {
-    "num": "#2",
-    "name": "Try Me"
-   },
-   {
-    "num": "#3",
-    "name": "Wasted Times"
-   },
-   {
-    "num": "#4",
-    "name": "I Was Never There (with Gessaffelstein)"
-   },
-   {
-    "num": "#5",
-    "name": "Hurt You (with Gessaffelstein)"
-   },
-   {
-    "num": "#6",
-    "name": "Privilege"
-   }
-  ]
- },
- {
-  "era": "My Dear Melancholy,",
-  "name": "My Dear Melancholy,",
-  "date": "",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Call Out My Name"
-   },
-   {
-    "num": "#2",
-    "name": "Try Me"
-   },
-   {
-    "num": "#3",
-    "name": "Wasted Times"
-   },
-   {
-    "num": "#4",
-    "name": "I Was Never There (with Gessaffelstein)"
-   },
-   {
-    "num": "#5",
-    "name": "Hurt You (with Gessaffelstein)"
-   },
-   {
-    "num": "#6",
-    "name": "Privilege"
-   },
-   {
-    "num": "#7",
-    "name": "Call Out My Name (A Capella)"
-   }
-  ]
- },
- {
-  "era": "My Dear Melancholy,",
-  "name": "The Weeknd In Japan",
-  "date": "Nov 21, 2018",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Wicked Games"
-   },
-   {
-    "num": "#2",
-    "name": "Wanderlust (Pharrell Remix)"
-   },
-   {
-    "num": "#3",
-    "name": "The Hills"
-   },
-   {
-    "num": "#4",
-    "name": "Can't Feel My Face"
-   },
-   {
-    "num": "#5",
-    "name": "In The Night"
-   },
-   {
-    "num": "#6",
-    "name": "Acquainted"
-   },
-   {
-    "num": "#7",
-    "name": "Often"
-   },
-   {
-    "num": "#8",
-    "name": "Belly - Might Not (feat. The Weeknd)"
-   },
-   {
-    "num": "#9",
-    "name": "Starboy (feat. Daft Punk)"
-   },
-   {
-    "num": "#10",
-    "name": "I Feel It Coming (feat. Daft Punk)"
-   },
-   {
-    "num": "#11",
-    "name": "Party Monster"
-   },
-   {
-    "num": "#12",
-    "name": "Secrets"
-   },
-   {
-    "num": "#13",
-    "name": "Call Out My Name"
-   },
-   {
-    "num": "#14",
-    "name": "Wasted Times"
-   }
-  ]
- },
- {
-  "era": "After Hours [V2]",
-  "name": "After Hours",
-  "date": "Mar 20, 2020",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Alone Again"
-   },
-   {
-    "num": "#2",
-    "name": "Too Late"
-   },
-   {
-    "num": "#3",
-    "name": "Hardest To Love"
-   },
-   {
-    "num": "#4",
-    "name": "Scared To Live"
-   },
-   {
-    "num": "#5",
-    "name": "Snowchild"
-   },
-   {
-    "num": "#6",
-    "name": "Escape From LA"
-   },
-   {
-    "num": "#7",
-    "name": "Heartless"
-   },
-   {
-    "num": "#8",
-    "name": "Faith"
-   },
-   {
-    "num": "#9",
-    "name": "Blinding Lights"
-   },
-   {
-    "num": "#10",
-    "name": "In Your Eyes"
-   },
-   {
-    "num": "#11",
-    "name": "Save Your Tears"
-   },
-   {
-    "num": "#12",
-    "name": "Repeat After Me (Interlude)"
-   },
-   {
-    "num": "#13",
-    "name": "After Hours"
-   },
-   {
-    "num": "#14",
-    "name": "Until I Bleed Out"
-   }
-  ]
- },
- {
-  "era": "After Hours [V2]",
-  "name": "After Hours (Deluxe)",
-  "date": "Mar 20, 2020",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Alone Again"
-   },
-   {
-    "num": "#2",
-    "name": "Too Late"
-   },
-   {
-    "num": "#3",
-    "name": "Hardest To Love"
-   },
-   {
-    "num": "#4",
-    "name": "Scared To Live"
-   },
-   {
-    "num": "#5",
-    "name": "Snowchild"
-   },
-   {
-    "num": "#6",
-    "name": "Escape From LA"
-   },
-   {
-    "num": "#7",
-    "name": "Heartless"
-   },
-   {
-    "num": "#8",
-    "name": "Faith"
-   },
-   {
-    "num": "#9",
-    "name": "Blinding Lights"
-   },
-   {
-    "num": "#10",
-    "name": "In Your Eyes"
-   },
-   {
-    "num": "#11",
-    "name": "Save Your Tears"
-   },
-   {
-    "num": "#12",
-    "name": "Repeat After Me (Interlude)"
-   },
-   {
-    "num": "#13",
-    "name": "After Hours"
-   },
-   {
-    "num": "#14",
-    "name": "Until I Bleed Out"
-   },
-   {
-    "num": "#15",
-    "name": "Blinding Lights (Chromatics Remix)"
-   },
-   {
-    "num": "#16",
-    "name": "Save Your Tears (OPN Remix)"
-   },
-   {
-    "num": "#17",
-    "name": "Heartless (Vapor Wave Remix) [feat. Lil Uzi Vert]"
-   },
-   {
-    "num": "#18",
-    "name": "After Hours (The Blaze Remix)"
-   },
-   {
-    "num": "#19",
-    "name": "Scared To Live (SNL Live)"
-   }
-  ]
- },
- {
-  "era": "After Hours [V2]",
-  "name": "After Hours (Deluxe)",
-  "date": "",
-  "quality": "N/A",
-  "source": "N/A",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Alone Again"
-   },
-   {
-    "num": "#2",
-    "name": "Too Late"
-   },
-   {
-    "num": "#3",
-    "name": "Hardest To Love"
-   },
-   {
-    "num": "#4",
-    "name": "Scared To Live"
-   },
-   {
-    "num": "#5",
-    "name": "Snowchild"
-   },
-   {
-    "num": "#6",
-    "name": "Escape From LA"
-   },
-   {
-    "num": "#7",
-    "name": "Heartless"
-   },
-   {
-    "num": "#8",
-    "name": "Faith"
-   },
-   {
-    "num": "#9",
-    "name": "Blinding Lights"
-   },
-   {
-    "num": "#10",
-    "name": "In Your Eyes"
-   },
-   {
-    "num": "#11",
-    "name": "Save Your Tears"
-   },
-   {
-    "num": "#12",
-    "name": "Repeat After Me (Interlude)"
-   },
-   {
-    "num": "#13",
-    "name": "After Hours"
-   },
-   {
-    "num": "#14",
-    "name": "Until I Bleed Out"
-   }
-  ]
- },
- {
-  "era": "After Hours [V2]",
-  "name": "After Hours (Deluxe)",
-  "date": "Mar 30, 2020",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Alone Again"
-   },
-   {
-    "num": "#2",
-    "name": "Too Late"
-   },
-   {
-    "num": "#3",
-    "name": "Hardest To Love"
-   },
-   {
-    "num": "#4",
-    "name": "Scared To Live"
-   },
-   {
-    "num": "#5",
-    "name": "Snowchild"
-   },
-   {
-    "num": "#6",
-    "name": "Escape From LA"
-   },
-   {
-    "num": "#7",
-    "name": "Heartless"
-   },
-   {
-    "num": "#8",
-    "name": "Faith"
-   },
-   {
-    "num": "#9",
-    "name": "Blinding Lights"
-   },
-   {
-    "num": "#10",
-    "name": "In Your Eyes"
-   },
-   {
-    "num": "#11",
-    "name": "Save Your Tears"
-   },
-   {
-    "num": "#12",
-    "name": "Repeat After Me (Interlude)"
-   },
-   {
-    "num": "#13",
-    "name": "After Hours"
-   },
-   {
-    "num": "#14",
-    "name": "Until I Bleed Out"
-   },
-   {
-    "num": "#15",
-    "name": "Nothing Compares"
-   },
-   {
-    "num": "#16",
-    "name": "Missed You"
-   },
-   {
-    "num": "#17",
-    "name": "Final Lullaby"
-   }
-  ]
- },
- {
-  "era": "After Hours [V2]",
-  "name": "After Hours (Remixes)",
-  "date": "Mar 30, 2020",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Heartless (Remix) [feat. Lil Uzi Vert]"
-   },
-   {
-    "num": "#2",
-    "name": "Blinding Lights (Chromatics Remix)"
-   },
-   {
-    "num": "#3",
-    "name": "Save Your Tears (OPN Remix)"
-   },
-   {
-    "num": "#4",
-    "name": "Heartless (Vapor Wave Remix) [feat. Lil Uzi Vert]"
-   },
-   {
-    "num": "#5",
-    "name": "After Hours (The Blaze Remix)"
-   },
-   {
-    "num": "#6",
-    "name": "Scared To Live (SNL Live)"
-   }
-  ]
- },
- {
-  "era": "After Hours [V2]",
-  "name": "After Hours (Deluxe) [Japanese Edition]",
-  "date": "Dec 4, 2020",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Alone Again"
-   },
-   {
-    "num": "#2",
-    "name": "Too Late"
-   },
-   {
-    "num": "#3",
-    "name": "Hardest To Love"
-   },
-   {
-    "num": "#4",
-    "name": "Scared To Live"
-   },
-   {
-    "num": "#5",
-    "name": "Snowchild"
-   },
-   {
-    "num": "#6",
-    "name": "Escape From LA"
-   },
-   {
-    "num": "#7",
-    "name": "Heartless"
-   },
-   {
-    "num": "#8",
-    "name": "Faith"
-   },
-   {
-    "num": "#9",
-    "name": "Blinding Lights"
-   },
-   {
-    "num": "#10",
-    "name": "In Your Eyes"
-   },
-   {
-    "num": "#11",
-    "name": "Save Your Tears"
-   },
-   {
-    "num": "#12",
-    "name": "Repeat After Me (Interlude)"
-   },
-   {
-    "num": "#13",
-    "name": "After Hours"
-   },
-   {
-    "num": "#14",
-    "name": "Until I Bleed Out"
-   },
-   {
-    "num": "#15",
-    "name": "Nothing Compares"
-   },
-   {
-    "num": "#16",
-    "name": "Missed You"
-   },
-   {
-    "num": "#17",
-    "name": "Final Lullaby"
-   },
-   {
-    "num": "#18",
-    "name": "In Your Eyes (Remix) [feat. Doja Cat]"
-   },
-   {
-    "num": "#19",
-    "name": "Blinding Lights (Chromatics Remix)"
-   }
-  ]
- },
- {
-  "era": "After Hours [V2]",
-  "name": "The Highlights",
-  "date": "Feb 5, 2021",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Save Your Tears"
-   },
-   {
-    "num": "#2",
-    "name": "Blinding Lights"
-   },
-   {
-    "num": "#3",
-    "name": "In Your Eyes"
-   },
-   {
-    "num": "#4",
-    "name": "Can't Feel My Eyes"
-   },
-   {
-    "num": "#5",
-    "name": "I Feel It Coming (feat. Daft Punk)"
-   },
-   {
-    "num": "#6",
-    "name": "Starboy (feat. Daft Punk)"
-   },
-   {
-    "num": "#7",
-    "name": "Pray For Me (with Kendrick Lamar)"
-   },
-   {
-    "num": "#8",
-    "name": "Heartless"
-   },
-   {
-    "num": "#9",
-    "name": "Often"
-   },
-   {
-    "num": "#10",
-    "name": "The Hills"
-   },
-   {
-    "num": "#11",
-    "name": "Call Out My Name"
-   },
-   {
-    "num": "#12",
-    "name": "Die For You"
-   },
-   {
-    "num": "#13",
-    "name": "Earned It (Fifty Shades Of Grey)"
-   },
-   {
-    "num": "#14",
-    "name": "Ariana Grande - Love Me Harder (feat. The Weeknd)"
-   },
-   {
-    "num": "#15",
-    "name": "Acquainted"
-   },
-   {
-    "num": "#16",
-    "name": "Wicked Games"
-   },
-   {
-    "num": "#17",
-    "name": "The Morning"
-   },
-   {
-    "num": "#18",
-    "name": "After Hours"
-   }
-  ]
- },
- {
-  "era": "Dawn FM",
-  "name": "Dawn FM",
-  "date": "Jan 3, 2022",
-  "quality": "Clear",
-  "source": "Leaked",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Dawn FM (feat. Jim Carrey)"
-   },
-   {
-    "num": "#2",
-    "name": "Gasoline"
-   },
-   {
-    "num": "#3",
-    "name": "How Can I Make You Love Me? (How Do I Make You Love Me)"
-   },
-   {
-    "num": "#4",
-    "name": "Take My Breath (Extended)"
-   },
-   {
-    "num": "#5",
-    "name": "Sacrifice"
-   },
-   {
-    "num": "#6",
-    "name": "A Tale By Quincy (feat. Quincy Jones)"
-   },
-   {
-    "num": "#7",
-    "name": "Out Of Time"
-   },
-   {
-    "num": "#8",
-    "name": "Here We Go Again (feat. Tyler, The Creator)"
-   },
-   {
-    "num": "#9",
-    "name": "Best Friends Interlude (Best Friends)"
-   },
-   {
-    "num": "#10",
-    "name": "Is There Someone Else?"
-   },
-   {
-    "num": "#11",
-    "name": "Starry Eyes"
-   },
-   {
-    "num": "#12",
-    "name": "Every Angel Is Terrifying"
-   },
-   {
-    "num": "#13",
-    "name": "Don't Break My Heart"
-   },
-   {
-    "num": "#14",
-    "name": "I Heard You're Married (feat. Lil Wayne)"
-   },
-   {
-    "num": "#15",
-    "name": "Less Than Zero"
-   },
-   {
-    "num": "#16",
-    "name": "May Peace Be With You (feat. Jim Carrey) (Phantom Regret By Jim)"
-   }
-  ]
- },
- {
-  "era": "Dawn FM",
-  "name": "Dawn FM",
-  "date": "Jan 7, 2022",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Dawn FM"
-   },
-   {
-    "num": "#2",
-    "name": "Gasoline"
-   },
-   {
-    "num": "#3",
-    "name": "How Do I Make You Love Me?"
-   },
-   {
-    "num": "#4",
-    "name": "Take My Breath"
-   },
-   {
-    "num": "#5",
-    "name": "Sacrifice"
-   },
-   {
-    "num": "#6",
-    "name": "A Tale By Quincy"
-   },
-   {
-    "num": "#7",
-    "name": "Out of Time"
-   },
-   {
-    "num": "#8",
-    "name": "Here We Go...Again (feat. Tyler, The Creator)"
-   },
-   {
-    "num": "#9",
-    "name": "Best Friends"
-   },
-   {
-    "num": "#10",
-    "name": "Is There Someone Else?"
-   },
-   {
-    "num": "#11",
-    "name": "Starry Eyes"
-   },
-   {
-    "num": "#12",
-    "name": "Every Angel Is Terrifying"
-   },
-   {
-    "num": "#13",
-    "name": "Don't Break My Heart"
-   },
-   {
-    "num": "#14",
-    "name": "I Heard You're Married (feat. Lil Wayne)"
-   },
-   {
-    "num": "#15",
-    "name": "Less Than Zero"
-   },
-   {
-    "num": "#16",
-    "name": "Phantom Regret By Jim"
-   }
-  ]
- },
- {
-  "era": "Dawn FM",
-  "name": "Dawn FM (Alternate World)",
-  "date": "Jan 12, 2022",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Dawn FM"
-   },
-   {
-    "num": "#2",
-    "name": "Gasoline"
-   },
-   {
-    "num": "#3",
-    "name": "How Do I Make You Love Me?"
-   },
-   {
-    "num": "#4",
-    "name": "Take My Breath"
-   },
-   {
-    "num": "#5",
-    "name": "Sacrifice"
-   },
-   {
-    "num": "#6",
-    "name": "A Tale By Quincy"
-   },
-   {
-    "num": "#7",
-    "name": "Out of Time"
-   },
-   {
-    "num": "#8",
-    "name": "Here We Go...Again (feat. Tyler, The Creator)"
-   },
-   {
-    "num": "#9",
-    "name": "Best Friends"
-   },
-   {
-    "num": "#10",
-    "name": "Is There Someone Else?"
-   },
-   {
-    "num": "#11",
-    "name": "Starry Eyes"
-   },
-   {
-    "num": "#12",
-    "name": "Every Angel Is Terrifying"
-   },
-   {
-    "num": "#13",
-    "name": "Don't Break My Heart"
-   },
-   {
-    "num": "#14",
-    "name": "I Heard You're Married (feat. Lil Wayne)"
-   },
-   {
-    "num": "#15",
-    "name": "Less Than Zero"
-   },
-   {
-    "num": "#16",
-    "name": "Phantom Regret By Jim"
-   },
-   {
-    "num": "#17",
-    "name": "Take My Breath (Agents of Time Remix)"
-   },
-   {
-    "num": "#18",
-    "name": "Sacrifice (Swedish House Mafia Remix)"
-   },
-   {
-    "num": "#19",
-    "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
-   }
-  ]
- },
- {
-  "era": "Dawn FM",
-  "name": "Dawn FM (Alternate World)",
-  "date": "",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Dawn FM"
-   },
-   {
-    "num": "#2",
-    "name": "Gasoline"
-   },
-   {
-    "num": "#3",
-    "name": "How Do I Make You Love Me?"
-   },
-   {
-    "num": "#4",
-    "name": "Take My Breath"
-   },
-   {
-    "num": "#5",
-    "name": "Sacrifice"
-   },
-   {
-    "num": "#6",
-    "name": "A Tale By Quincy"
-   },
-   {
-    "num": "#7",
-    "name": "Out of Time"
-   },
-   {
-    "num": "#8",
-    "name": "Here We Go...Again (feat. Tyler, The Creator)"
-   },
-   {
-    "num": "#9",
-    "name": "Best Friends"
-   },
-   {
-    "num": "#10",
-    "name": "Is There Someone Else?"
-   },
-   {
-    "num": "#11",
-    "name": "Starry Eyes"
-   },
-   {
-    "num": "#12",
-    "name": "Every Angel Is Terrifying"
-   },
-   {
-    "num": "#13",
-    "name": "Don't Break My Heart"
-   },
-   {
-    "num": "#14",
-    "name": "I Heard You're Married (feat. Lil Wayne)"
-   },
-   {
-    "num": "#15",
-    "name": "Less Than Zero"
-   },
-   {
-    "num": "#16",
-    "name": "Phantom Regret By Jim"
-   },
-   {
-    "num": "#17",
-    "name": "Take My Breath (Single Version)"
-   },
-   {
-    "num": "#18",
-    "name": "Sacrifice (Swedish House Mafia Remix)"
-   },
-   {
-    "num": "#19",
-    "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
-   }
-  ]
- },
- {
-  "era": "Dawn FM",
-  "name": "Dawn FM (Alternate World)",
-  "date": "",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Dawn FM"
-   },
-   {
-    "num": "#2",
-    "name": "Gasoline"
-   },
-   {
-    "num": "#3",
-    "name": "How Do I Make You Love Me?"
-   },
-   {
-    "num": "#4",
-    "name": "Take My Breath"
-   },
-   {
-    "num": "#5",
-    "name": "Sacrifice"
-   },
-   {
-    "num": "#6",
-    "name": "A Tale By Quincy"
-   },
-   {
-    "num": "#7",
-    "name": "Out of Time"
-   },
-   {
-    "num": "#8",
-    "name": "Here We Go...Again (feat. Tyler, The Creator)"
-   },
-   {
-    "num": "#9",
-    "name": "Best Friends"
-   },
-   {
-    "num": "#10",
-    "name": "Is There Someone Else?"
-   },
-   {
-    "num": "#11",
-    "name": "Starry Eyes"
-   },
-   {
-    "num": "#12",
-    "name": "Every Angel Is Terrifying"
-   },
-   {
-    "num": "#13",
-    "name": "Don't Break My Heart"
-   },
-   {
-    "num": "#14",
-    "name": "I Heard You're Married (feat. Lil Wayne)"
-   },
-   {
-    "num": "#15",
-    "name": "Less Than Zero"
-   },
-   {
-    "num": "#16",
-    "name": "Phantom Regret By Jim"
-   },
-   {
-    "num": "#17",
-    "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
-   },
-   {
-    "num": "#18",
-    "name": "Sacrifice (Swedish House Mafia Remix)"
-   },
-   {
-    "num": "#19",
-    "name": "Out Of Time (KAYTRANADA Remix)"
-   },
-   {
-    "num": "#20",
-    "name": "Take My Breath (Single Version)"
-   }
-  ]
- },
- {
-  "era": "Dawn FM",
-  "name": "Dawn FM (Alternate World)",
-  "date": "",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Dawn FM"
-   },
-   {
-    "num": "#2",
-    "name": "Gasoline"
-   },
-   {
-    "num": "#3",
-    "name": "How Do I Make You Love Me?"
-   },
-   {
-    "num": "#4",
-    "name": "Take My Breath"
-   },
-   {
-    "num": "#5",
-    "name": "Sacrifice"
-   },
-   {
-    "num": "#6",
-    "name": "A Tale By Quincy"
-   },
-   {
-    "num": "#7",
-    "name": "Out of Time"
-   },
-   {
-    "num": "#8",
-    "name": "Here We Go...Again (feat. Tyler, The Creator)"
-   },
-   {
-    "num": "#9",
-    "name": "Best Friends"
-   },
-   {
-    "num": "#10",
-    "name": "Is There Someone Else?"
-   },
-   {
-    "num": "#11",
-    "name": "Starry Eyes"
-   },
-   {
-    "num": "#12",
-    "name": "Every Angel Is Terrifying"
-   },
-   {
-    "num": "#13",
-    "name": "Don't Break My Heart"
-   },
-   {
-    "num": "#14",
-    "name": "I Heard You're Married (feat. Lil Wayne)"
-   },
-   {
-    "num": "#15",
-    "name": "Less Than Zero"
-   },
-   {
-    "num": "#16",
-    "name": "Phantom Regret By Jim"
-   },
-   {
-    "num": "#17",
-    "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
-   },
-   {
-    "num": "#18",
-    "name": "Dawn FM (OPN Remix)"
-   },
-   {
-    "num": "#19",
-    "name": "How Do I Make You Love Me? (Sebastian Ingrosso & Salvatore Ganacci Remix)"
-   },
-   {
-    "num": "#20",
-    "name": "Sacrifice (Swedish House Mafia Remix)"
-   },
-   {
-    "num": "#21",
-    "name": "Out Of Time (KAYTRANADA Remix)"
-   },
-   {
-    "num": "#22",
-    "name": "Best Friends (Remix) [feat. Summer Walker]"
-   },
-   {
-    "num": "#23",
-    "name": "Starry Eyes (MIKE DEAN Remix)"
-   },
-   {
-    "num": "#24",
-    "name": "Take My Breath (Single Version)"
-   }
-  ]
- },
- {
-  "era": "The Idol",
-  "name": "The Idol Vol. 1",
-  "date": "April 10, 2023",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Idol Score Day 4 (Lure) (The Lure)"
-   },
-   {
-    "num": "#2",
-    "name": "Like A God"
-   },
-   {
-    "num": "#3",
-    "name": "One of My Girls (Tough Love)"
-   },
-   {
-    "num": "#4",
-    "name": "I'm A Lesser Man"
-   },
-   {
-    "num": "#5",
-    "name": "Jealous Guy"
-   },
-   {
-    "num": "#6",
-    "name": "Double Fantasy * ft. vox"
-   },
-   {
-    "num": "#7",
-    "name": "Fill The Void"
-   },
-   {
-    "num": "#8",
-    "name": "Take All Of Me (Take Me Back)"
-   }
-  ]
- },
- {
-  "era": "The Idol",
-  "name": "The Idol Vol. 1",
-  "date": "Jun 2, 2023",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "???"
-   },
-   {
-    "num": "#2",
-    "name": "??? [Explicit]"
-   },
-   {
-    "num": "#3",
-    "name": "??? [Explicit]"
-   },
-   {
-    "num": "#4",
-    "name": "Double Fantasy (feat. Future)"
-   },
-   {
-    "num": "#5",
-    "name": "Popular (with Madonna) (feat. Playboi Carti)"
-   },
-   {
-    "num": "#6",
-    "name": "Like A God"
-   },
-   {
-    "num": "#7",
-    "name": "False Idols (feat. Lil Baby & Suzanna Son)"
-   }
-  ]
- },
- {
-  "era": "The Idol",
-  "name": "The Idol Episode 1",
-  "date": "Jun 9, 2023",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "The Lure (Main Theme) [with MIKE DEAN]"
-   },
-   {
-    "num": "#2",
-    "name": "Lily-Rose Depp - World Class Sinner / I'm A Freak"
-   }
-  ]
- },
- {
-  "era": "The Idol",
-  "name": "The Idol Episode 2",
-  "date": "Jun 12, 2023",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Family (with Suzanna Son)"
-   },
-   {
-    "num": "#2",
-    "name": "MIKE DEAN - Devil's Paradise"
-   },
-   {
-    "num": "#3",
-    "name": "Double Fantasy (with Future)"
-   }
-  ]
- },
- {
-  "era": "The Idol",
-  "name": "The Idol Episode 3",
-  "date": "Jun 19, 2023",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "A Lesser Man"
-   },
-   {
-    "num": "#2",
-    "name": "Take Me Back"
-   },
-   {
-    "num": "#3",
-    "name": "Moses Sumney - Get It B4"
-   }
-  ]
- },
- {
-  "era": "The Idol",
-  "name": "The Idol Episode 4",
-  "date": "Jun 23, 2023",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "One Of The Girls (with JENNIE & Lily-Rose Depp)"
-   },
-   {
-    "num": "#2",
-    "name": "Jealous Guy"
-   },
-   {
-    "num": "#3",
-    "name": "Fill The Void (with Lily-Rose Depp & Ramsey)"
-   }
-  ]
- },
- {
-  "era": "The Idol",
-  "name": "The Idol Episode 5 Part 1",
-  "date": "Jun 30, 2023",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Like A God"
-   },
-   {
-    "num": "#2",
-    "name": "False Idols (with Lil Baby & Suzanna Son)"
-   }
-  ]
- },
- {
-  "era": "The Idol",
-  "name": "The Idol Episode 5 Part 2",
-  "date": "Jul 3, 2023",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Dollhouse (with Lily-Rose Depp)"
-   },
-   {
-    "num": "#2",
-    "name": "Troye Sivan - My Sweet Lord"
-   },
-   {
-    "num": "#3",
-    "name": "Suzanna Son - Crocodile Tears"
-   }
-  ]
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "The Highlights (Deluxe)",
-  "date": "Feb 9, 2024",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Die For You"
-   },
-   {
-    "num": "#2",
-    "name": "Starboy (feat. Daft Punk)"
-   },
-   {
-    "num": "#3",
-    "name": "Save Your Tears"
-   },
-   {
-    "num": "#4",
-    "name": "Blinding Lights"
-   },
-   {
-    "num": "#5",
-    "name": "In Your Eyes"
-   },
-   {
-    "num": "#6",
-    "name": "Wicked Games"
-   },
-   {
-    "num": "#7",
-    "name": "Can't Feel My Face"
-   },
-   {
-    "num": "#8",
-    "name": "I Feel It Coming (feat. Daft Punk)"
-   },
-   {
-    "num": "#9",
-    "name": "Pray For Me (with Kendrick Lamar)"
-   },
-   {
-    "num": "#10",
-    "name": "Heartless"
-   },
-   {
-    "num": "#11",
-    "name": "The Hills"
-   },
-   {
-    "num": "#12",
-    "name": "The Morning"
-   },
-   {
-    "num": "#13",
-    "name": "Call Out My Name"
-   },
-   {
-    "num": "#14",
-    "name": "Often"
-   },
-   {
-    "num": "#15",
-    "name": "Ariana Grande - Love Me Harder (feat. The Weeknd)"
-   },
-   {
-    "num": "#16",
-    "name": "Earned It (Fifty Shades Of Grey)"
-   },
-   {
-    "num": "#17",
-    "name": "Acquainted"
-   },
-   {
-    "num": "#18",
-    "name": "After Hours"
-   },
-   {
-    "num": "#19",
-    "name": "One Of The Girls (with JENNIE & Lily-Rose Depp)"
-   },
-   {
-    "num": "#20",
-    "name": "Popular (with Madonna) (feat. Playboi Carti)"
-   },
-   {
-    "num": "#21",
-    "name": "I Was Never There (with Gesaffelstein)"
-   },
-   {
-    "num": "#22",
-    "name": "House of Balloons / Glass Table Girls"
-   },
-   {
-    "num": "#23",
-    "name": "Less Than Zero"
-   },
-   {
-    "num": "#24",
-    "name": "Is There Someone Else?"
-   },
-   {
-    "num": "#25",
-    "name": "Party Monster"
-   },
-   {
-    "num": "#26",
-    "name": "Stargirl Interlude (feat. Lana Del Rey)"
-   },
-   {
-    "num": "#27",
-    "name": "Tell Your Friends"
-   },
-   {
-    "num": "#28",
-    "name": "Sacrifice"
-   },
-   {
-    "num": "#29",
-    "name": "Reminder"
-   },
-   {
-    "num": "#30",
-    "name": "In The Night"
-   },
-   {
-    "num": "#31",
-    "name": "Wasted Times"
-   },
-   {
-    "num": "#32",
-    "name": "Take My Breath"
-   },
-   {
-    "num": "#33",
-    "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
-   },
-   {
-    "num": "#34",
-    "name": "Out Of Time"
-   },
-   {
-    "num": "#35",
-    "name": "King Of The Fall"
-   },
-   {
-    "num": "#36",
-    "name": "High For This"
-   }
-  ]
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "Hurry Up Tomorrow\n[First Pressing]",
-  "date": "September/October, 2024",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "The Crowd (Without a Warning)"
-   },
-   {
-    "num": "#2",
-    "name": "Cry For Me"
-   },
-   {
-    "num": "#3",
-    "name": "São Paulo"
-   },
-   {
-    "num": "#4",
-    "name": "How It Feels (Society)"
-   },
-   {
-    "num": "#5",
-    "name": "Take Me Back To LA"
-   },
-   {
-    "num": "#6",
-    "name": "The Abyss"
-   },
-   {
-    "num": "#7",
-    "name": "Open Hearts"
-   },
-   {
-    "num": "#8",
-    "name": "Timeless"
-   },
-   {
-    "num": "#9",
-    "name": "Africa (Give Me Mercy)"
-   },
-   {
-    "num": "#10",
-    "name": "Runaway"
-   },
-   {
-    "num": "#11",
-    "name": "Red Terror"
-   }
-  ]
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "Hurry Up Tomorrow",
-  "date": "",
-  "quality": "N/A",
-  "source": "N/A",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "Hurry Up Tomorrow",
-  "date": "Jan 31, 2025",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Wake Me Up (feat. Justice)"
-   },
-   {
-    "num": "#2",
-    "name": "Cry For Me"
-   },
-   {
-    "num": "#3",
-    "name": "I Can't Fucking Sing (I Can't F*****g Sing)"
-   },
-   {
-    "num": "#4",
-    "name": "São Paulo (feat. Anitta)"
-   },
-   {
-    "num": "#5",
-    "name": "Until We're Skin & Bones"
-   },
-   {
-    "num": "#6",
-    "name": "Baptized In Fear"
-   },
-   {
-    "num": "#7",
-    "name": "Open Hearts"
-   },
-   {
-    "num": "#8",
-    "name": "Opening Nights"
-   },
-   {
-    "num": "#9",
-    "name": "Reflections Laughing (feat. Travis Scott & Florence + The Machine)"
-   },
-   {
-    "num": "#10",
-    "name": "Enjoy The Show (feat. Future)"
-   },
-   {
-    "num": "#11",
-    "name": "Given Up On Me"
-   },
-   {
-    "num": "#12",
-    "name": "I Can't Wait To Get There"
-   },
-   {
-    "num": "#13",
-    "name": "Timeless (feat. Playboi Carti)"
-   },
-   {
-    "num": "#14",
-    "name": "Niagara Falls"
-   },
-   {
-    "num": "#15",
-    "name": "Take Me Back To LA"
-   },
-   {
-    "num": "#16",
-    "name": "Big Sleep (feat. Giorgio Moroder)"
-   },
-   {
-    "num": "#17",
-    "name": "Give Me Mercy"
-   },
-   {
-    "num": "#18",
-    "name": "Drive"
-   },
-   {
-    "num": "#19",
-    "name": "The Abyss (feat. Lana Del Rey)"
-   },
-   {
-    "num": "#20",
-    "name": "Red Terror"
-   },
-   {
-    "num": "#21",
-    "name": "Without A Warning"
-   },
-   {
-    "num": "#22",
-    "name": "Hurry Up Tomorrow"
-   }
-  ]
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "Hurry Up Tomorrow\n[iTunes Version]",
-  "date": "Jan 31, 2025",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Cry For Me"
-   },
-   {
-    "num": "#2",
-    "name": "São Paulo (with Anitta)"
-   },
-   {
-    "num": "#3",
-    "name": "Open Hearts"
-   },
-   {
-    "num": "#4",
-    "name": "Timeless (with Playboi Carti)"
-   },
-   {
-    "num": "#5",
-    "name": "Take Me Back To LA"
-   },
-   {
-    "num": "#6",
-    "name": "Give Me Mercy"
-   },
-   {
-    "num": "#7",
-    "name": "The Abyss (with Lana Del Rey)"
-   },
-   {
-    "num": "#8",
-    "name": "Red Terror"
-   },
-   {
-    "num": "#9",
-    "name": "Without a Warning"
-   }
-  ]
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "Hurry Up Tomorrow\n[00XO Edition]",
-  "date": "Jan 31, 2025",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Wake Me Up"
-   },
-   {
-    "num": "#2",
-    "name": "Cry For Me"
-   },
-   {
-    "num": "#3",
-    "name": "I Can't Fucking Sing (I Can't F*****g Sing)"
-   },
-   {
-    "num": "#4",
-    "name": "São Paulo"
-   },
-   {
-    "num": "#5",
-    "name": "Until We're Skin & Bones"
-   },
-   {
-    "num": "#6",
-    "name": "Baptized In Fear"
-   },
-   {
-    "num": "#7",
-    "name": "Open Hearts"
-   },
-   {
-    "num": "#8",
-    "name": "Opening Nights"
-   },
-   {
-    "num": "#9",
-    "name": "Reflections Laughing"
-   },
-   {
-    "num": "#10",
-    "name": "Enjoy The Show"
-   },
-   {
-    "num": "#11",
-    "name": "Given Up On Me"
-   },
-   {
-    "num": "#12",
-    "name": "I Can't Wait To Get There"
-   },
-   {
-    "num": "#13",
-    "name": "Timeless"
-   },
-   {
-    "num": "#14",
-    "name": "Niagara Falls"
-   },
-   {
-    "num": "#15",
-    "name": "Take Me Back To LA"
-   },
-   {
-    "num": "#16",
-    "name": "Big Sleep"
-   },
-   {
-    "num": "#17",
-    "name": "Give Me Mercy"
-   },
-   {
-    "num": "#18",
-    "name": "Drive"
-   },
-   {
-    "num": "#19",
-    "name": "The Abyss"
-   },
-   {
-    "num": "#20",
-    "name": "Red Terror"
-   },
-   {
-    "num": "#21",
-    "name": "Without A Warning"
-   },
-   {
-    "num": "#22",
-    "name": "Hurry Up Tomorrow"
-   },
-   {
-    "num": "#23",
-    "name": "Runaway"
-   },
-   {
-    "num": "#24",
-    "name": "Society"
-   }
-  ]
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "Hurry Up Tomorrow\n[Pharrell Williams Edition]",
-  "date": "Feb 5, 2025",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Wake Me Up"
-   },
-   {
-    "num": "#2",
-    "name": "Cry For Me"
-   },
-   {
-    "num": "#3",
-    "name": "I Can't Fucking Sing (I Can't F*****g Sing)"
-   },
-   {
-    "num": "#4",
-    "name": "São Paulo"
-   },
-   {
-    "num": "#5",
-    "name": "Until We're Skin & Bones"
-   },
-   {
-    "num": "#6",
-    "name": "Baptized In Fear"
-   },
-   {
-    "num": "#7",
-    "name": "Open Hearts"
-   },
-   {
-    "num": "#8",
-    "name": "Opening Nights"
-   },
-   {
-    "num": "#9",
-    "name": "Reflections Laughing"
-   },
-   {
-    "num": "#10",
-    "name": "Enjoy The Show"
-   },
-   {
-    "num": "#11",
-    "name": "Given Up On Me"
-   },
-   {
-    "num": "#12",
-    "name": "I Can't Wait To Get There"
-   },
-   {
-    "num": "#13",
-    "name": "Timeless"
-   },
-   {
-    "num": "#14",
-    "name": "Niagara Falls"
-   },
-   {
-    "num": "#15",
-    "name": "Take Me Back To LA"
-   },
-   {
-    "num": "#16",
-    "name": "Big Sleep"
-   },
-   {
-    "num": "#17",
-    "name": "Give Me Mercy"
-   },
-   {
-    "num": "#18",
-    "name": "Drive"
-   },
-   {
-    "num": "#19",
-    "name": "The Abyss"
-   },
-   {
-    "num": "#20",
-    "name": "Red Terror"
-   },
-   {
-    "num": "#21",
-    "name": "Without A Warning"
-   },
-   {
-    "num": "#22",
-    "name": "Hurry Up Tomorrow"
-   },
-   {
-    "num": "#23",
-    "name": "Closing Night"
-   }
-  ]
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "Hurry Up Tomorrow\n[Japanese Edition]",
-  "date": "May 23, 2025",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Wake Me Up"
-   },
-   {
-    "num": "#2",
-    "name": "Cry For Me"
-   },
-   {
-    "num": "#3",
-    "name": "I Can't Fucking Sing (I Can't F*****g Sing)"
-   },
-   {
-    "num": "#4",
-    "name": "São Paulo"
-   },
-   {
-    "num": "#5",
-    "name": "Until We're Skin & Bones"
-   },
-   {
-    "num": "#6",
-    "name": "Baptized In Fear"
-   },
-   {
-    "num": "#7",
-    "name": "Open Hearts"
-   },
-   {
-    "num": "#8",
-    "name": "Opening Nights"
-   },
-   {
-    "num": "#9",
-    "name": "Reflections Laughing"
-   },
-   {
-    "num": "#10",
-    "name": "Enjoy The Show"
-   },
-   {
-    "num": "#11",
-    "name": "Given Up On Me"
-   },
-   {
-    "num": "#12",
-    "name": "I Can't Wait To Get There"
-   },
-   {
-    "num": "#13",
-    "name": "Timeless"
-   },
-   {
-    "num": "#14",
-    "name": "Niagara Falls"
-   },
-   {
-    "num": "#15",
-    "name": "Take Me Back To LA"
-   },
-   {
-    "num": "#16",
-    "name": "Big Sleep"
-   },
-   {
-    "num": "#17",
-    "name": "Give Me Mercy"
-   },
-   {
-    "num": "#18",
-    "name": "Drive"
-   },
-   {
-    "num": "#19",
-    "name": "The Abyss"
-   },
-   {
-    "num": "#20",
-    "name": "Red Terror"
-   },
-   {
-    "num": "#21",
-    "name": "Without A Warning"
-   },
-   {
-    "num": "#22",
-    "name": "Hurry Up Tomorrow"
-   },
-   {
-    "num": "#23",
-    "name": "Closing Night"
-   }
-  ]
- },
- {
-  "era": "Hurry Up Tomorrow",
-  "name": "Hurry Up Tomorrow (Original Motion Picture Score)",
-  "date": "July 11, 2025",
-  "quality": "Clear",
-  "source": "Abel",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Please Leave A Message"
-   },
-   {
-    "num": "#2",
-    "name": "Anima Pt. 1"
-   },
-   {
-    "num": "#3",
-    "name": "Gas Station"
-   },
-   {
-    "num": "#4",
-    "name": "Dance Until We’re Skin And Bones"
-   },
-   {
-    "num": "#5",
-    "name": "It’s Mostly Psychological"
-   },
-   {
-    "num": "#6",
-    "name": "Sky Is Falling"
-   },
-   {
-    "num": "#7",
-    "name": "Heartbeat Slower"
-   },
-   {
-    "num": "#8",
-    "name": "We’ll Take It Backstage"
-   },
-   {
-    "num": "#9",
-    "name": "Muted"
-   },
-   {
-    "num": "#10",
-    "name": "Close Encounter"
-   },
-   {
-    "num": "#11",
-    "name": "I Feel Like I Know You"
-   },
-   {
-    "num": "#12",
-    "name": "Champagne Solves Everything"
-   },
-   {
-    "num": "#13",
-    "name": "In Too Deep"
-   },
-   {
-    "num": "#14",
-    "name": "Can You Hear Me Knocking?"
-   },
-   {
-    "num": "#15",
-    "name": "Anima Pt. 2"
-   },
-   {
-    "num": "#16",
-    "name": "Tomorrow’s Coming"
-   },
-   {
-    "num": "#17",
-    "name": "Cry For Me"
-   },
-   {
-    "num": "#18",
-    "name": "São Paulo (feat. Anitta)"
-   },
-   {
-    "num": "#19",
-    "name": "Open Hearts"
-   },
-   {
-    "num": "#20",
-    "name": "Timeless (feat. Playboi Carti)"
-   },
-   {
-    "num": "#21",
-    "name": "Take Me Back To LA"
-   },
-   {
-    "num": "#22",
-    "name": "Give Me Mercy"
-   },
-   {
-    "num": "#23",
-    "name": "The Abyss (feat. Lana Del Rey)"
-   },
-   {
-    "num": "#24",
-    "name": "Red Terror"
-   },
-   {
-    "num": "#25",
-    "name": "Without a Warning"
-   },
-   {
-    "num": "#26",
-    "name": "Hurry Up Tomorrow"
-   }
-  ]
- }
-]
+{
+ "legend": [
+  {
+   "label": "Completely Unheard",
+   "color": "#E06666"
+  },
+  {
+   "label": "Snippet / Partial / Recording Available",
+   "color": "#F6B26B"
+  },
+  {
+   "label": "Alternate Version Available",
+   "color": "#93C47D"
+  },
+  {
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
+  }
+ ],
+ "albums": [
+  {
+   "era": "The Noise",
+   "name": "The Noise",
+   "date": "Apr 5, 2024",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Demo CD from producers Kid Klassic & T-Minus (aka The Noise)",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Rescue You"
+    },
+    {
+     "num": "#2",
+     "name": "Do It"
+    },
+    {
+     "num": "#3",
+     "name": "Appointment"
+    },
+    {
+     "num": "#4",
+     "name": "Release Me"
+    },
+    {
+     "num": "#5",
+     "name": "X-Ray"
+    },
+    {
+     "num": "#6",
+     "name": "Birthday Suit"
+    }
+   ],
+   "images": [
+    "/weekndgold/art/tl-3-0.jpg"
+   ]
+  },
+  {
+   "era": "House Of Balloons",
+   "name": "House Of Balloons",
+   "date": "Mar 21, 2011",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Tracklist for 'House Of Balloons', the debut mixtape by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "High For This"
+    },
+    {
+     "num": "#2",
+     "name": "What You Need"
+    },
+    {
+     "num": "#3",
+     "name": "House of Balloons / Glass Table Girls"
+    },
+    {
+     "num": "#4",
+     "name": "The Morning"
+    },
+    {
+     "num": "#5",
+     "name": "Wicked Games"
+    },
+    {
+     "num": "#6",
+     "name": "The Party & the After Party"
+    },
+    {
+     "num": "#7",
+     "name": "Coming Down"
+    },
+    {
+     "num": "#8",
+     "name": "Loft Music"
+    },
+    {
+     "num": "#9",
+     "name": "The Knowing"
+    }
+   ]
+  },
+  {
+   "era": "Thursday",
+   "name": "Thursday",
+   "date": "Aug 18, 2011",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Thursday', the second studio mixtape by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Lonely Star"
+    },
+    {
+     "num": "#2",
+     "name": "Life of The Party"
+    },
+    {
+     "num": "#3",
+     "name": "Thursday"
+    },
+    {
+     "num": "#4",
+     "name": "The Zone (feat. Drake)"
+    },
+    {
+     "num": "#5",
+     "name": "The Birds Pt. 1"
+    },
+    {
+     "num": "#6",
+     "name": "The Birds Pt. 2"
+    },
+    {
+     "num": "#7",
+     "name": "Gone"
+    },
+    {
+     "num": "#8",
+     "name": "Rolling Stone"
+    },
+    {
+     "num": "#9",
+     "name": "Heaven or Las Vegas"
+    }
+   ]
+  },
+  {
+   "era": "Echoes Of Silence",
+   "name": "Echoes Of Silence",
+   "date": "Dec 21, 2011",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Echoes Of Silence', the third studio mixtape by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "D.D."
+    },
+    {
+     "num": "#2",
+     "name": "Montreal"
+    },
+    {
+     "num": "#3",
+     "name": "Outside"
+    },
+    {
+     "num": "#4",
+     "name": "XO / The Host"
+    },
+    {
+     "num": "#5",
+     "name": "Initiation"
+    },
+    {
+     "num": "#6",
+     "name": "Same Old Song (feat. Juicy J)"
+    },
+    {
+     "num": "#7",
+     "name": "The Fall"
+    },
+    {
+     "num": "#8",
+     "name": "Next"
+    },
+    {
+     "num": "#9",
+     "name": "Echoes Of Silence"
+    }
+   ]
+  },
+  {
+   "era": "Trilogy",
+   "name": "Trilogy",
+   "date": "Nov 3, 2012",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for the 'Trilogy' compilation album, includes remasters and bonus tracks for House of Balloons, Thursday, & Echoes of Silence.\n\nDisc 1: House of Balloons",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "High For This"
+    },
+    {
+     "num": "#2",
+     "name": "What You Need"
+    },
+    {
+     "num": "#3",
+     "name": "House of Balloons / Glass Table Girls"
+    },
+    {
+     "num": "#4",
+     "name": "The Morning"
+    },
+    {
+     "num": "#5",
+     "name": "Wicked Games"
+    },
+    {
+     "num": "#6",
+     "name": "The Party & the After Party"
+    },
+    {
+     "num": "#7",
+     "name": "Coming Down"
+    },
+    {
+     "num": "#8",
+     "name": "Loft Music"
+    },
+    {
+     "num": "#9",
+     "name": "The Knowing"
+    },
+    {
+     "num": "#10",
+     "name": "Twenty Eight"
+    },
+    {
+     "num": "#1",
+     "name": "Lonely Star"
+    },
+    {
+     "num": "#2",
+     "name": "Life of The Party"
+    },
+    {
+     "num": "#3",
+     "name": "Thursday"
+    },
+    {
+     "num": "#4",
+     "name": "The Zone (feat. Drake)"
+    },
+    {
+     "num": "#5",
+     "name": "The Birds Pt. 1"
+    },
+    {
+     "num": "#6",
+     "name": "The Birds Pt. 2"
+    },
+    {
+     "num": "#7",
+     "name": "Gone"
+    },
+    {
+     "num": "#8",
+     "name": "Rolling Stone"
+    },
+    {
+     "num": "#9",
+     "name": "Heaven or Las Vegas"
+    },
+    {
+     "num": "#10",
+     "name": "Valerie"
+    },
+    {
+     "num": "#1",
+     "name": "D.D."
+    },
+    {
+     "num": "#2",
+     "name": "Montreal"
+    },
+    {
+     "num": "#3",
+     "name": "Outside"
+    },
+    {
+     "num": "#4",
+     "name": "XO / The Host"
+    },
+    {
+     "num": "#5",
+     "name": "Initiation"
+    },
+    {
+     "num": "#6",
+     "name": "Same Old Song (feat. Juicy J)"
+    },
+    {
+     "num": "#7",
+     "name": "The Fall"
+    },
+    {
+     "num": "#8",
+     "name": "Next"
+    },
+    {
+     "num": "#9",
+     "name": "Echoes Of Silence"
+    },
+    {
+     "num": "#10",
+     "name": "Till Dawn (Here Comes The Sun)"
+    }
+   ]
+  },
+  {
+   "era": "Kiss Land",
+   "name": "Kiss Land",
+   "date": "",
+   "quality": "N/A",
+   "source": "Abel",
+   "links": [],
+   "description": "On the BBC Radio 1 interview with Zane Lowe Abel mentioned that chronologically, \"The Town\" would be the last song on the album. Also, leaked instrumental of the song has a transition from \"Pretty\" in the beginning. All of that allows us to speculate that a version of the tracklist with \"The Town\" as the last track could exist.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Pretty"
+    },
+    {
+     "num": "#?",
+     "name": "The Town (Not Used To)"
+    }
+   ]
+  },
+  {
+   "era": "Kiss Land",
+   "name": "Kiss Land",
+   "date": "Sep 10, 2013",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Kiss Land', the first studio album by The Weeknd",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Professional"
+    },
+    {
+     "num": "#2",
+     "name": "The Town"
+    },
+    {
+     "num": "#3",
+     "name": "Adaptation"
+    },
+    {
+     "num": "#4",
+     "name": "Love In The Sky"
+    },
+    {
+     "num": "#5",
+     "name": "Belong To the World"
+    },
+    {
+     "num": "#6",
+     "name": "Live For (feat. Drake)"
+    },
+    {
+     "num": "#7",
+     "name": "Wanderlust"
+    },
+    {
+     "num": "#8",
+     "name": "Kiss Land"
+    },
+    {
+     "num": "#9",
+     "name": "Pretty"
+    },
+    {
+     "num": "#10",
+     "name": "Tears In The Rain"
+    }
+   ]
+  },
+  {
+   "era": "Kiss Land",
+   "name": "Kiss Land (Deluxe)",
+   "date": "",
+   "quality": "N/A",
+   "source": "N/A",
+   "links": [],
+   "description": "Possible original tracklist for the Deluxe edition of 'Kiss Land', based off the Work IDs on ASCAP. Lists all the songs in the same order, Pharrel Remix of \"Wanderlust\" and two unreleased songs: \"Heavenly Creatures\" and \"Pure Life\". Work ID between \"Wanderlust\" Remix and \"Heavenly Creatures\" isn't listed, but can be assumed to still be \"Odd Look\", and \"Professional\" has an entirely separate ID.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Professional"
+    },
+    {
+     "num": "#2",
+     "name": "The Town"
+    },
+    {
+     "num": "#3",
+     "name": "Adaptation"
+    },
+    {
+     "num": "#4",
+     "name": "Love In The Sky"
+    },
+    {
+     "num": "#5",
+     "name": "Belong To the World"
+    },
+    {
+     "num": "#6",
+     "name": "Live For (feat. Drake)"
+    },
+    {
+     "num": "#7",
+     "name": "Wanderlust"
+    },
+    {
+     "num": "#8",
+     "name": "Kiss Land"
+    },
+    {
+     "num": "#9",
+     "name": "Pretty"
+    },
+    {
+     "num": "#10",
+     "name": "Tears In The Rain"
+    },
+    {
+     "num": "#11",
+     "name": "Wanderlust (Pharrell Remix)"
+    },
+    {
+     "num": "#12",
+     "name": "Odd Look (feat. The Weeknd)"
+    },
+    {
+     "num": "#13",
+     "name": "Heavenly Creatures"
+    },
+    {
+     "num": "#14",
+     "name": "Pure Life"
+    }
+   ]
+  },
+  {
+   "era": "Kiss Land",
+   "name": "Kiss Land (Deluxe)",
+   "date": "Sep 10, 2015",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Tracklist for the Deluxe edition of 'Kiss Land', adds two additional bonus songs.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Professional"
+    },
+    {
+     "num": "#2",
+     "name": "The Town"
+    },
+    {
+     "num": "#3",
+     "name": "Adaptation"
+    },
+    {
+     "num": "#4",
+     "name": "Love In The Sky"
+    },
+    {
+     "num": "#5",
+     "name": "Belong To the World"
+    },
+    {
+     "num": "#6",
+     "name": "Live For (feat. Drake)"
+    },
+    {
+     "num": "#7",
+     "name": "Wanderlust"
+    },
+    {
+     "num": "#8",
+     "name": "Kiss Land"
+    },
+    {
+     "num": "#9",
+     "name": "Pretty"
+    },
+    {
+     "num": "#10",
+     "name": "Tears In The Rain"
+    },
+    {
+     "num": "#11",
+     "name": "Wanderlust (Pharrell Remix)"
+    },
+    {
+     "num": "#12",
+     "name": "Kavinsky - Odd Look (feat. The Weeknd)"
+    }
+   ]
+  },
+  {
+   "era": "BBTM",
+   "name": "Beauty Behind The Madness",
+   "date": "Jun 13, 2015",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Original BBTM tracklist dated June 13, shown in the \"Beauty Behind The Madness\" photo book.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Real Life"
+    },
+    {
+     "num": "#2",
+     "name": "Tell Your Friends About It (ft. Kanye West) (Tell Your Friends)"
+    },
+    {
+     "num": "#3",
+     "name": "Often"
+    },
+    {
+     "num": "#4",
+     "name": "The Hills"
+    },
+    {
+     "num": "#5",
+     "name": "Acquainted"
+    },
+    {
+     "num": "#6",
+     "name": "Can't Feel My Face"
+    },
+    {
+     "num": "#7",
+     "name": "Shameless"
+    },
+    {
+     "num": "#8",
+     "name": "Earned It (Album Version)"
+    },
+    {
+     "num": "#9",
+     "name": "In The Night"
+    },
+    {
+     "num": "#10",
+     "name": "Angel"
+    },
+    {
+     "num": "#11",
+     "name": "As We Are (As You Are)"
+    },
+    {
+     "num": "#12",
+     "name": "Prisoners"
+    }
+   ],
+   "images": [
+    "/weekndgold/art/tl-12-0.jpg"
+   ]
+  },
+  {
+   "era": "BBTM",
+   "name": "Beauty Behind The Madness",
+   "date": "Jul 8, 2015",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Original BBTM tracklist dated July 8, shown in the \"Beauty Behind The Madness\" photo book.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Real Life"
+    },
+    {
+     "num": "#2",
+     "name": "Losers (featuring Labrinth)"
+    },
+    {
+     "num": "#3",
+     "name": "Tell Your Friends (featuring Kanye West) (Tell Your Friends About It)"
+    },
+    {
+     "num": "#4",
+     "name": "Often"
+    },
+    {
+     "num": "#5",
+     "name": "The Hills"
+    },
+    {
+     "num": "#6",
+     "name": "Acquainted"
+    },
+    {
+     "num": "#7",
+     "name": "Can't Feel My Face"
+    },
+    {
+     "num": "#8",
+     "name": "Shameless"
+    },
+    {
+     "num": "#9",
+     "name": "Earned It (Album Version)"
+    },
+    {
+     "num": "#10",
+     "name": "In The Night"
+    },
+    {
+     "num": "#11",
+     "name": "As You Are (As We Are)"
+    },
+    {
+     "num": "#12",
+     "name": "Prisoner"
+    },
+    {
+     "num": "#13",
+     "name": "Dark Times (featuring Ed Sheeran)"
+    },
+    {
+     "num": "#14",
+     "name": "Angel"
+    }
+   ],
+   "images": [
+    "/weekndgold/art/tl-13-0.jpg"
+   ]
+  },
+  {
+   "era": "BBTM",
+   "name": "Beauty Behind The Madness",
+   "date": "Aug 28, 2015",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Beauty Behind The Madness', the second studio album by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Real Life"
+    },
+    {
+     "num": "#2",
+     "name": "Losers (feat. Labrinth)"
+    },
+    {
+     "num": "#3",
+     "name": "Tell Your Friends"
+    },
+    {
+     "num": "#4",
+     "name": "Often"
+    },
+    {
+     "num": "#5",
+     "name": "The Hills"
+    },
+    {
+     "num": "#6",
+     "name": "Acquainted"
+    },
+    {
+     "num": "#7",
+     "name": "Can't Feel My Face"
+    },
+    {
+     "num": "#8",
+     "name": "Shameless"
+    },
+    {
+     "num": "#9",
+     "name": "Earned It (Fifty Shades of Grey)"
+    },
+    {
+     "num": "#10",
+     "name": "In The Night"
+    },
+    {
+     "num": "#11",
+     "name": "As You Are"
+    },
+    {
+     "num": "#12",
+     "name": "Dark Times (feat. Ed Sheeran)"
+    },
+    {
+     "num": "#13",
+     "name": "Prisoner (feat. Lana Del Rey)"
+    },
+    {
+     "num": "#14",
+     "name": "Angel"
+    }
+   ]
+  },
+  {
+   "era": "BBTM",
+   "name": "Beauty Behind The Madness [Japanese Edition]",
+   "date": "Mar 16, 2016",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for Japanese edition of 'Beauty Behind The Madness', which adds three bonus remixes.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Real Life"
+    },
+    {
+     "num": "#2",
+     "name": "Losers (feat. Labrinth)"
+    },
+    {
+     "num": "#3",
+     "name": "Tell Your Friends"
+    },
+    {
+     "num": "#4",
+     "name": "Often"
+    },
+    {
+     "num": "#5",
+     "name": "The Hills"
+    },
+    {
+     "num": "#6",
+     "name": "Acquainted"
+    },
+    {
+     "num": "#7",
+     "name": "Can't Feel My Face"
+    },
+    {
+     "num": "#8",
+     "name": "Shameless"
+    },
+    {
+     "num": "#9",
+     "name": "Earned It (Fifty Shades of Grey)"
+    },
+    {
+     "num": "#10",
+     "name": "In The Night"
+    },
+    {
+     "num": "#11",
+     "name": "As You Are"
+    },
+    {
+     "num": "#12",
+     "name": "Dark Times (feat. Ed Sheeran)"
+    },
+    {
+     "num": "#13",
+     "name": "Prisoner (feat. Lana Del Rey)"
+    },
+    {
+     "num": "#14",
+     "name": "Angel"
+    },
+    {
+     "num": "#15",
+     "name": "Can't Feel My Face (Martin Garrix Remix)"
+    },
+    {
+     "num": "#16",
+     "name": "The Hills (Remix) [feat. Eminem]"
+    },
+    {
+     "num": "#17",
+     "name": "The Hills (Remix) [feat. Nicki Minaj]"
+    }
+   ]
+  },
+  {
+   "era": "Starboy",
+   "name": "Starboy",
+   "date": "Nov 25, 2016",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Starboy', the third studio album by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Starboy (feat. Daft Punk)"
+    },
+    {
+     "num": "#2",
+     "name": "Party Monster"
+    },
+    {
+     "num": "#3",
+     "name": "False Alarm"
+    },
+    {
+     "num": "#4",
+     "name": "Reminder"
+    },
+    {
+     "num": "#5",
+     "name": "Rockin'"
+    },
+    {
+     "num": "#6",
+     "name": "Secrets"
+    },
+    {
+     "num": "#7",
+     "name": "True Colors"
+    },
+    {
+     "num": "#8",
+     "name": "Stargirl Interlude (feat. Lana Del Rey)"
+    },
+    {
+     "num": "#9",
+     "name": "Sidewalks (feat. Kendrick Lamar)"
+    },
+    {
+     "num": "#10",
+     "name": "Six Feet Under"
+    },
+    {
+     "num": "#11",
+     "name": "Love To Lay"
+    },
+    {
+     "num": "#12",
+     "name": "A Lonely Night"
+    },
+    {
+     "num": "#13",
+     "name": "Attention"
+    },
+    {
+     "num": "#14",
+     "name": "Ordinary Life"
+    },
+    {
+     "num": "#15",
+     "name": "Nothing Without You"
+    },
+    {
+     "num": "#16",
+     "name": "All I Know (feat. Future)"
+    },
+    {
+     "num": "#17",
+     "name": "Die For You"
+    },
+    {
+     "num": "#18",
+     "name": "I Feel It Coming (feat. Daft Punk)"
+    }
+   ]
+  },
+  {
+   "era": "Starboy",
+   "name": "Starboy [Japanese Edition]",
+   "date": "Dec 23, 2016",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for the Japanese edition of 'Starboy', adding one bonus remix.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Starboy (feat. Daft Punk)"
+    },
+    {
+     "num": "#2",
+     "name": "Party Monster"
+    },
+    {
+     "num": "#3",
+     "name": "False Alarm"
+    },
+    {
+     "num": "#4",
+     "name": "Reminder"
+    },
+    {
+     "num": "#5",
+     "name": "Rockin'"
+    },
+    {
+     "num": "#6",
+     "name": "Secrets"
+    },
+    {
+     "num": "#7",
+     "name": "True Colors"
+    },
+    {
+     "num": "#8",
+     "name": "Stargirl Interlude (feat. Lana Del Rey)"
+    },
+    {
+     "num": "#9",
+     "name": "Sidewalks (feat. Kendrick Lamar)"
+    },
+    {
+     "num": "#10",
+     "name": "Six Feet Under"
+    },
+    {
+     "num": "#11",
+     "name": "Love To Lay"
+    },
+    {
+     "num": "#12",
+     "name": "A Lonely Night"
+    },
+    {
+     "num": "#13",
+     "name": "Attention"
+    },
+    {
+     "num": "#14",
+     "name": "Ordinary Life"
+    },
+    {
+     "num": "#15",
+     "name": "Nothing Without You"
+    },
+    {
+     "num": "#16",
+     "name": "All I Know (feat. Future)"
+    },
+    {
+     "num": "#17",
+     "name": "Die For You"
+    },
+    {
+     "num": "#18",
+     "name": "I Feel It Coming (feat. Daft Punk)"
+    },
+    {
+     "num": "#19",
+     "name": "Starboy (Kygo Remix) [feat. Daft Punk]"
+    }
+   ]
+  },
+  {
+   "era": "My Dear Melancholy,",
+   "name": "My Dear Melancholy,",
+   "date": "Mar 30, 2018",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for My Dear Melancholy,', the first studio EP by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Call Out My Name"
+    },
+    {
+     "num": "#2",
+     "name": "Try Me"
+    },
+    {
+     "num": "#3",
+     "name": "Wasted Times"
+    },
+    {
+     "num": "#4",
+     "name": "I Was Never There (with Gessaffelstein)"
+    },
+    {
+     "num": "#5",
+     "name": "Hurt You (with Gessaffelstein)"
+    },
+    {
+     "num": "#6",
+     "name": "Privilege"
+    }
+   ]
+  },
+  {
+   "era": "My Dear Melancholy,",
+   "name": "My Dear Melancholy,",
+   "date": "",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Second version of 'My Dear Melancholy,' with a bonus acapella track.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Call Out My Name"
+    },
+    {
+     "num": "#2",
+     "name": "Try Me"
+    },
+    {
+     "num": "#3",
+     "name": "Wasted Times"
+    },
+    {
+     "num": "#4",
+     "name": "I Was Never There (with Gessaffelstein)"
+    },
+    {
+     "num": "#5",
+     "name": "Hurt You (with Gessaffelstein)"
+    },
+    {
+     "num": "#6",
+     "name": "Privilege"
+    },
+    {
+     "num": "#7",
+     "name": "Call Out My Name (A Capella)"
+    }
+   ]
+  },
+  {
+   "era": "My Dear Melancholy,",
+   "name": "The Weeknd In Japan",
+   "date": "Nov 21, 2018",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official Tracklist for 'The Weeknd In Japan', the first greatest hits album by The Weeknd. Released exclusively in Japan.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Wicked Games"
+    },
+    {
+     "num": "#2",
+     "name": "Wanderlust (Pharrell Remix)"
+    },
+    {
+     "num": "#3",
+     "name": "The Hills"
+    },
+    {
+     "num": "#4",
+     "name": "Can't Feel My Face"
+    },
+    {
+     "num": "#5",
+     "name": "In The Night"
+    },
+    {
+     "num": "#6",
+     "name": "Acquainted"
+    },
+    {
+     "num": "#7",
+     "name": "Often"
+    },
+    {
+     "num": "#8",
+     "name": "Belly - Might Not (feat. The Weeknd)"
+    },
+    {
+     "num": "#9",
+     "name": "Starboy (feat. Daft Punk)"
+    },
+    {
+     "num": "#10",
+     "name": "I Feel It Coming (feat. Daft Punk)"
+    },
+    {
+     "num": "#11",
+     "name": "Party Monster"
+    },
+    {
+     "num": "#12",
+     "name": "Secrets"
+    },
+    {
+     "num": "#13",
+     "name": "Call Out My Name"
+    },
+    {
+     "num": "#14",
+     "name": "Wasted Times"
+    }
+   ]
+  },
+  {
+   "era": "After Hours [V2]",
+   "name": "After Hours",
+   "date": "Mar 20, 2020",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'After Hours', the fourth studio album by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Alone Again"
+    },
+    {
+     "num": "#2",
+     "name": "Too Late"
+    },
+    {
+     "num": "#3",
+     "name": "Hardest To Love"
+    },
+    {
+     "num": "#4",
+     "name": "Scared To Live"
+    },
+    {
+     "num": "#5",
+     "name": "Snowchild"
+    },
+    {
+     "num": "#6",
+     "name": "Escape From LA"
+    },
+    {
+     "num": "#7",
+     "name": "Heartless"
+    },
+    {
+     "num": "#8",
+     "name": "Faith"
+    },
+    {
+     "num": "#9",
+     "name": "Blinding Lights"
+    },
+    {
+     "num": "#10",
+     "name": "In Your Eyes"
+    },
+    {
+     "num": "#11",
+     "name": "Save Your Tears"
+    },
+    {
+     "num": "#12",
+     "name": "Repeat After Me (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "After Hours"
+    },
+    {
+     "num": "#14",
+     "name": "Until I Bleed Out"
+    }
+   ]
+  },
+  {
+   "era": "After Hours [V2]",
+   "name": "After Hours (Deluxe)",
+   "date": "Mar 20, 2020",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "First version of 'After Hours' (Deluxe), released on March 23rd, 2020.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Alone Again"
+    },
+    {
+     "num": "#2",
+     "name": "Too Late"
+    },
+    {
+     "num": "#3",
+     "name": "Hardest To Love"
+    },
+    {
+     "num": "#4",
+     "name": "Scared To Live"
+    },
+    {
+     "num": "#5",
+     "name": "Snowchild"
+    },
+    {
+     "num": "#6",
+     "name": "Escape From LA"
+    },
+    {
+     "num": "#7",
+     "name": "Heartless"
+    },
+    {
+     "num": "#8",
+     "name": "Faith"
+    },
+    {
+     "num": "#9",
+     "name": "Blinding Lights"
+    },
+    {
+     "num": "#10",
+     "name": "In Your Eyes"
+    },
+    {
+     "num": "#11",
+     "name": "Save Your Tears"
+    },
+    {
+     "num": "#12",
+     "name": "Repeat After Me (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "After Hours"
+    },
+    {
+     "num": "#14",
+     "name": "Until I Bleed Out"
+    },
+    {
+     "num": "#15",
+     "name": "Blinding Lights (Chromatics Remix)"
+    },
+    {
+     "num": "#16",
+     "name": "Save Your Tears (OPN Remix)"
+    },
+    {
+     "num": "#17",
+     "name": "Heartless (Vapor Wave Remix) [feat. Lil Uzi Vert]"
+    },
+    {
+     "num": "#18",
+     "name": "After Hours (The Blaze Remix)"
+    },
+    {
+     "num": "#19",
+     "name": "Scared To Live (SNL Live)"
+    }
+   ]
+  },
+  {
+   "era": "After Hours [V2]",
+   "name": "After Hours (Deluxe)",
+   "date": "",
+   "quality": "N/A",
+   "source": "N/A",
+   "links": [],
+   "description": "\"Take Me Back To LA'\"and \"Hold Your Heart\" were possibly considered for the deluxe album as Abel played them on Instagram Live on March 25th, 2020 alongside 'Missed You' & 'Nothing Compares'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Alone Again"
+    },
+    {
+     "num": "#2",
+     "name": "Too Late"
+    },
+    {
+     "num": "#3",
+     "name": "Hardest To Love"
+    },
+    {
+     "num": "#4",
+     "name": "Scared To Live"
+    },
+    {
+     "num": "#5",
+     "name": "Snowchild"
+    },
+    {
+     "num": "#6",
+     "name": "Escape From LA"
+    },
+    {
+     "num": "#7",
+     "name": "Heartless"
+    },
+    {
+     "num": "#8",
+     "name": "Faith"
+    },
+    {
+     "num": "#9",
+     "name": "Blinding Lights"
+    },
+    {
+     "num": "#10",
+     "name": "In Your Eyes"
+    },
+    {
+     "num": "#11",
+     "name": "Save Your Tears"
+    },
+    {
+     "num": "#12",
+     "name": "Repeat After Me (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "After Hours"
+    },
+    {
+     "num": "#14",
+     "name": "Until I Bleed Out"
+    },
+    {
+     "num": "#?",
+     "name": "Hold Your Heart (Hold Me Close)"
+    },
+    {
+     "num": "#?",
+     "name": "Take Me Back To LA (Myself)"
+    }
+   ]
+  },
+  {
+   "era": "After Hours [V2]",
+   "name": "After Hours (Deluxe)",
+   "date": "Mar 30, 2020",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Second version of 'After Hours' (Deluxe) with actual bonus songs, released on March 30th, 2020.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Alone Again"
+    },
+    {
+     "num": "#2",
+     "name": "Too Late"
+    },
+    {
+     "num": "#3",
+     "name": "Hardest To Love"
+    },
+    {
+     "num": "#4",
+     "name": "Scared To Live"
+    },
+    {
+     "num": "#5",
+     "name": "Snowchild"
+    },
+    {
+     "num": "#6",
+     "name": "Escape From LA"
+    },
+    {
+     "num": "#7",
+     "name": "Heartless"
+    },
+    {
+     "num": "#8",
+     "name": "Faith"
+    },
+    {
+     "num": "#9",
+     "name": "Blinding Lights"
+    },
+    {
+     "num": "#10",
+     "name": "In Your Eyes"
+    },
+    {
+     "num": "#11",
+     "name": "Save Your Tears"
+    },
+    {
+     "num": "#12",
+     "name": "Repeat After Me (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "After Hours"
+    },
+    {
+     "num": "#14",
+     "name": "Until I Bleed Out"
+    },
+    {
+     "num": "#15",
+     "name": "Nothing Compares"
+    },
+    {
+     "num": "#16",
+     "name": "Missed You"
+    },
+    {
+     "num": "#17",
+     "name": "Final Lullaby"
+    }
+   ]
+  },
+  {
+   "era": "After Hours [V2]",
+   "name": "After Hours (Remixes)",
+   "date": "Mar 30, 2020",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "After the release of 'After Hours' (Deluxe), some of the remixes from the previous deluxe revision of the album were seperated into a standalone EP, released on March 30th, 2020.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Heartless (Remix) [feat. Lil Uzi Vert]"
+    },
+    {
+     "num": "#2",
+     "name": "Blinding Lights (Chromatics Remix)"
+    },
+    {
+     "num": "#3",
+     "name": "Save Your Tears (OPN Remix)"
+    },
+    {
+     "num": "#4",
+     "name": "Heartless (Vapor Wave Remix) [feat. Lil Uzi Vert]"
+    },
+    {
+     "num": "#5",
+     "name": "After Hours (The Blaze Remix)"
+    },
+    {
+     "num": "#6",
+     "name": "Scared To Live (SNL Live)"
+    }
+   ]
+  },
+  {
+   "era": "After Hours [V2]",
+   "name": "After Hours (Deluxe) [Japanese Edition]",
+   "date": "Dec 4, 2020",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for the Japanese edition of 'After Hours' (Deluxe). Features the standard Deluxe tracklisting and two bonus remixes.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Alone Again"
+    },
+    {
+     "num": "#2",
+     "name": "Too Late"
+    },
+    {
+     "num": "#3",
+     "name": "Hardest To Love"
+    },
+    {
+     "num": "#4",
+     "name": "Scared To Live"
+    },
+    {
+     "num": "#5",
+     "name": "Snowchild"
+    },
+    {
+     "num": "#6",
+     "name": "Escape From LA"
+    },
+    {
+     "num": "#7",
+     "name": "Heartless"
+    },
+    {
+     "num": "#8",
+     "name": "Faith"
+    },
+    {
+     "num": "#9",
+     "name": "Blinding Lights"
+    },
+    {
+     "num": "#10",
+     "name": "In Your Eyes"
+    },
+    {
+     "num": "#11",
+     "name": "Save Your Tears"
+    },
+    {
+     "num": "#12",
+     "name": "Repeat After Me (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "After Hours"
+    },
+    {
+     "num": "#14",
+     "name": "Until I Bleed Out"
+    },
+    {
+     "num": "#15",
+     "name": "Nothing Compares"
+    },
+    {
+     "num": "#16",
+     "name": "Missed You"
+    },
+    {
+     "num": "#17",
+     "name": "Final Lullaby"
+    },
+    {
+     "num": "#18",
+     "name": "In Your Eyes (Remix) [feat. Doja Cat]"
+    },
+    {
+     "num": "#19",
+     "name": "Blinding Lights (Chromatics Remix)"
+    }
+   ]
+  },
+  {
+   "era": "After Hours [V2]",
+   "name": "The Highlights",
+   "date": "Feb 5, 2021",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'The Highlights', the second greatest hits album by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Save Your Tears"
+    },
+    {
+     "num": "#2",
+     "name": "Blinding Lights"
+    },
+    {
+     "num": "#3",
+     "name": "In Your Eyes"
+    },
+    {
+     "num": "#4",
+     "name": "Can't Feel My Eyes"
+    },
+    {
+     "num": "#5",
+     "name": "I Feel It Coming (feat. Daft Punk)"
+    },
+    {
+     "num": "#6",
+     "name": "Starboy (feat. Daft Punk)"
+    },
+    {
+     "num": "#7",
+     "name": "Pray For Me (with Kendrick Lamar)"
+    },
+    {
+     "num": "#8",
+     "name": "Heartless"
+    },
+    {
+     "num": "#9",
+     "name": "Often"
+    },
+    {
+     "num": "#10",
+     "name": "The Hills"
+    },
+    {
+     "num": "#11",
+     "name": "Call Out My Name"
+    },
+    {
+     "num": "#12",
+     "name": "Die For You"
+    },
+    {
+     "num": "#13",
+     "name": "Earned It (Fifty Shades Of Grey)"
+    },
+    {
+     "num": "#14",
+     "name": "Ariana Grande - Love Me Harder (feat. The Weeknd)"
+    },
+    {
+     "num": "#15",
+     "name": "Acquainted"
+    },
+    {
+     "num": "#16",
+     "name": "Wicked Games"
+    },
+    {
+     "num": "#17",
+     "name": "The Morning"
+    },
+    {
+     "num": "#18",
+     "name": "After Hours"
+    }
+   ]
+  },
+  {
+   "era": "Dawn FM",
+   "name": "Dawn FM",
+   "date": "Jan 3, 2022",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Early tracklist leaked on Jan 3rd, 2022, has some early names for certain tracks.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dawn FM (feat. Jim Carrey)"
+    },
+    {
+     "num": "#2",
+     "name": "Gasoline"
+    },
+    {
+     "num": "#3",
+     "name": "How Can I Make You Love Me? (How Do I Make You Love Me)"
+    },
+    {
+     "num": "#4",
+     "name": "Take My Breath (Extended)"
+    },
+    {
+     "num": "#5",
+     "name": "Sacrifice"
+    },
+    {
+     "num": "#6",
+     "name": "A Tale By Quincy (feat. Quincy Jones)"
+    },
+    {
+     "num": "#7",
+     "name": "Out Of Time"
+    },
+    {
+     "num": "#8",
+     "name": "Here We Go Again (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#9",
+     "name": "Best Friends Interlude (Best Friends)"
+    },
+    {
+     "num": "#10",
+     "name": "Is There Someone Else?"
+    },
+    {
+     "num": "#11",
+     "name": "Starry Eyes"
+    },
+    {
+     "num": "#12",
+     "name": "Every Angel Is Terrifying"
+    },
+    {
+     "num": "#13",
+     "name": "Don't Break My Heart"
+    },
+    {
+     "num": "#14",
+     "name": "I Heard You're Married (feat. Lil Wayne)"
+    },
+    {
+     "num": "#15",
+     "name": "Less Than Zero"
+    },
+    {
+     "num": "#16",
+     "name": "May Peace Be With You (feat. Jim Carrey) (Phantom Regret By Jim)"
+    }
+   ]
+  },
+  {
+   "era": "Dawn FM",
+   "name": "Dawn FM",
+   "date": "Jan 7, 2022",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Dawn FM', the fifth studio album by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dawn FM"
+    },
+    {
+     "num": "#2",
+     "name": "Gasoline"
+    },
+    {
+     "num": "#3",
+     "name": "How Do I Make You Love Me?"
+    },
+    {
+     "num": "#4",
+     "name": "Take My Breath"
+    },
+    {
+     "num": "#5",
+     "name": "Sacrifice"
+    },
+    {
+     "num": "#6",
+     "name": "A Tale By Quincy"
+    },
+    {
+     "num": "#7",
+     "name": "Out of Time"
+    },
+    {
+     "num": "#8",
+     "name": "Here We Go...Again (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#9",
+     "name": "Best Friends"
+    },
+    {
+     "num": "#10",
+     "name": "Is There Someone Else?"
+    },
+    {
+     "num": "#11",
+     "name": "Starry Eyes"
+    },
+    {
+     "num": "#12",
+     "name": "Every Angel Is Terrifying"
+    },
+    {
+     "num": "#13",
+     "name": "Don't Break My Heart"
+    },
+    {
+     "num": "#14",
+     "name": "I Heard You're Married (feat. Lil Wayne)"
+    },
+    {
+     "num": "#15",
+     "name": "Less Than Zero"
+    },
+    {
+     "num": "#16",
+     "name": "Phantom Regret By Jim"
+    }
+   ]
+  },
+  {
+   "era": "Dawn FM",
+   "name": "Dawn FM (Alternate World)",
+   "date": "Jan 12, 2022",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "First version of 'Dawn FM (Alternate World)'.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dawn FM"
+    },
+    {
+     "num": "#2",
+     "name": "Gasoline"
+    },
+    {
+     "num": "#3",
+     "name": "How Do I Make You Love Me?"
+    },
+    {
+     "num": "#4",
+     "name": "Take My Breath"
+    },
+    {
+     "num": "#5",
+     "name": "Sacrifice"
+    },
+    {
+     "num": "#6",
+     "name": "A Tale By Quincy"
+    },
+    {
+     "num": "#7",
+     "name": "Out of Time"
+    },
+    {
+     "num": "#8",
+     "name": "Here We Go...Again (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#9",
+     "name": "Best Friends"
+    },
+    {
+     "num": "#10",
+     "name": "Is There Someone Else?"
+    },
+    {
+     "num": "#11",
+     "name": "Starry Eyes"
+    },
+    {
+     "num": "#12",
+     "name": "Every Angel Is Terrifying"
+    },
+    {
+     "num": "#13",
+     "name": "Don't Break My Heart"
+    },
+    {
+     "num": "#14",
+     "name": "I Heard You're Married (feat. Lil Wayne)"
+    },
+    {
+     "num": "#15",
+     "name": "Less Than Zero"
+    },
+    {
+     "num": "#16",
+     "name": "Phantom Regret By Jim"
+    },
+    {
+     "num": "#17",
+     "name": "Take My Breath (Agents of Time Remix)"
+    },
+    {
+     "num": "#18",
+     "name": "Sacrifice (Swedish House Mafia Remix)"
+    },
+    {
+     "num": "#19",
+     "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
+    }
+   ]
+  },
+  {
+   "era": "Dawn FM",
+   "name": "Dawn FM (Alternate World)",
+   "date": "",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Reissue of 'Dawn FM (Alternate World)', replacing Take My Breath (Agents of Time Remix) with the single version.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dawn FM"
+    },
+    {
+     "num": "#2",
+     "name": "Gasoline"
+    },
+    {
+     "num": "#3",
+     "name": "How Do I Make You Love Me?"
+    },
+    {
+     "num": "#4",
+     "name": "Take My Breath"
+    },
+    {
+     "num": "#5",
+     "name": "Sacrifice"
+    },
+    {
+     "num": "#6",
+     "name": "A Tale By Quincy"
+    },
+    {
+     "num": "#7",
+     "name": "Out of Time"
+    },
+    {
+     "num": "#8",
+     "name": "Here We Go...Again (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#9",
+     "name": "Best Friends"
+    },
+    {
+     "num": "#10",
+     "name": "Is There Someone Else?"
+    },
+    {
+     "num": "#11",
+     "name": "Starry Eyes"
+    },
+    {
+     "num": "#12",
+     "name": "Every Angel Is Terrifying"
+    },
+    {
+     "num": "#13",
+     "name": "Don't Break My Heart"
+    },
+    {
+     "num": "#14",
+     "name": "I Heard You're Married (feat. Lil Wayne)"
+    },
+    {
+     "num": "#15",
+     "name": "Less Than Zero"
+    },
+    {
+     "num": "#16",
+     "name": "Phantom Regret By Jim"
+    },
+    {
+     "num": "#17",
+     "name": "Take My Breath (Single Version)"
+    },
+    {
+     "num": "#18",
+     "name": "Sacrifice (Swedish House Mafia Remix)"
+    },
+    {
+     "num": "#19",
+     "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
+    }
+   ]
+  },
+  {
+   "era": "Dawn FM",
+   "name": "Dawn FM (Alternate World)",
+   "date": "",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Second reissue of 'Dawn FM (Alternate World)'.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dawn FM"
+    },
+    {
+     "num": "#2",
+     "name": "Gasoline"
+    },
+    {
+     "num": "#3",
+     "name": "How Do I Make You Love Me?"
+    },
+    {
+     "num": "#4",
+     "name": "Take My Breath"
+    },
+    {
+     "num": "#5",
+     "name": "Sacrifice"
+    },
+    {
+     "num": "#6",
+     "name": "A Tale By Quincy"
+    },
+    {
+     "num": "#7",
+     "name": "Out of Time"
+    },
+    {
+     "num": "#8",
+     "name": "Here We Go...Again (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#9",
+     "name": "Best Friends"
+    },
+    {
+     "num": "#10",
+     "name": "Is There Someone Else?"
+    },
+    {
+     "num": "#11",
+     "name": "Starry Eyes"
+    },
+    {
+     "num": "#12",
+     "name": "Every Angel Is Terrifying"
+    },
+    {
+     "num": "#13",
+     "name": "Don't Break My Heart"
+    },
+    {
+     "num": "#14",
+     "name": "I Heard You're Married (feat. Lil Wayne)"
+    },
+    {
+     "num": "#15",
+     "name": "Less Than Zero"
+    },
+    {
+     "num": "#16",
+     "name": "Phantom Regret By Jim"
+    },
+    {
+     "num": "#17",
+     "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
+    },
+    {
+     "num": "#18",
+     "name": "Sacrifice (Swedish House Mafia Remix)"
+    },
+    {
+     "num": "#19",
+     "name": "Out Of Time (KAYTRANADA Remix)"
+    },
+    {
+     "num": "#20",
+     "name": "Take My Breath (Single Version)"
+    }
+   ]
+  },
+  {
+   "era": "Dawn FM",
+   "name": "Dawn FM (Alternate World)",
+   "date": "",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Third reissue of 'Dawn FM (Alternate World)'.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dawn FM"
+    },
+    {
+     "num": "#2",
+     "name": "Gasoline"
+    },
+    {
+     "num": "#3",
+     "name": "How Do I Make You Love Me?"
+    },
+    {
+     "num": "#4",
+     "name": "Take My Breath"
+    },
+    {
+     "num": "#5",
+     "name": "Sacrifice"
+    },
+    {
+     "num": "#6",
+     "name": "A Tale By Quincy"
+    },
+    {
+     "num": "#7",
+     "name": "Out of Time"
+    },
+    {
+     "num": "#8",
+     "name": "Here We Go...Again (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#9",
+     "name": "Best Friends"
+    },
+    {
+     "num": "#10",
+     "name": "Is There Someone Else?"
+    },
+    {
+     "num": "#11",
+     "name": "Starry Eyes"
+    },
+    {
+     "num": "#12",
+     "name": "Every Angel Is Terrifying"
+    },
+    {
+     "num": "#13",
+     "name": "Don't Break My Heart"
+    },
+    {
+     "num": "#14",
+     "name": "I Heard You're Married (feat. Lil Wayne)"
+    },
+    {
+     "num": "#15",
+     "name": "Less Than Zero"
+    },
+    {
+     "num": "#16",
+     "name": "Phantom Regret By Jim"
+    },
+    {
+     "num": "#17",
+     "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
+    },
+    {
+     "num": "#18",
+     "name": "Dawn FM (OPN Remix)"
+    },
+    {
+     "num": "#19",
+     "name": "How Do I Make You Love Me? (Sebastian Ingrosso & Salvatore Ganacci Remix)"
+    },
+    {
+     "num": "#20",
+     "name": "Sacrifice (Swedish House Mafia Remix)"
+    },
+    {
+     "num": "#21",
+     "name": "Out Of Time (KAYTRANADA Remix)"
+    },
+    {
+     "num": "#22",
+     "name": "Best Friends (Remix) [feat. Summer Walker]"
+    },
+    {
+     "num": "#23",
+     "name": "Starry Eyes (MIKE DEAN Remix)"
+    },
+    {
+     "num": "#24",
+     "name": "Take My Breath (Single Version)"
+    }
+   ]
+  },
+  {
+   "era": "The Idol",
+   "name": "The Idol Vol. 1",
+   "date": "April 10, 2023",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Whiteboard for 'The Idol' soundtrack spotted on Mike Dean's Instagram Live on April 10th, 2023.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Idol Score Day 4 (Lure) (The Lure)"
+    },
+    {
+     "num": "#2",
+     "name": "Like A God"
+    },
+    {
+     "num": "#3",
+     "name": "One of My Girls (Tough Love)"
+    },
+    {
+     "num": "#4",
+     "name": "I'm A Lesser Man"
+    },
+    {
+     "num": "#5",
+     "name": "Jealous Guy"
+    },
+    {
+     "num": "#6",
+     "name": "Double Fantasy * ft. vox"
+    },
+    {
+     "num": "#7",
+     "name": "Fill The Void"
+    },
+    {
+     "num": "#8",
+     "name": "Take All Of Me (Take Me Back)"
+    }
+   ],
+   "images": [
+    "/weekndgold/art/tl-34-0.jpg"
+   ]
+  },
+  {
+   "era": "The Idol",
+   "name": "The Idol Vol. 1",
+   "date": "Jun 2, 2023",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Pre-save tracklist for 'The Idol Vol.1' before Abel scrapped it to release standalone singles instead.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "???"
+    },
+    {
+     "num": "#2",
+     "name": "??? [Explicit]"
+    },
+    {
+     "num": "#3",
+     "name": "??? [Explicit]"
+    },
+    {
+     "num": "#4",
+     "name": "Double Fantasy (feat. Future)"
+    },
+    {
+     "num": "#5",
+     "name": "Popular (with Madonna) (feat. Playboi Carti)"
+    },
+    {
+     "num": "#6",
+     "name": "Like A God"
+    },
+    {
+     "num": "#7",
+     "name": "False Idols (feat. Lil Baby & Suzanna Son)"
+    }
+   ]
+  },
+  {
+   "era": "The Idol",
+   "name": "The Idol Episode 1",
+   "date": "Jun 9, 2023",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'The Idol Episode 1', the first EP of the Idol soundtrack.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "The Lure (Main Theme) [with MIKE DEAN]"
+    },
+    {
+     "num": "#2",
+     "name": "Lily-Rose Depp - World Class Sinner / I'm A Freak"
+    }
+   ]
+  },
+  {
+   "era": "The Idol",
+   "name": "The Idol Episode 2",
+   "date": "Jun 12, 2023",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'The Idol Episode 2', the second EP of the Idol soundtrack.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Family (with Suzanna Son)"
+    },
+    {
+     "num": "#2",
+     "name": "MIKE DEAN - Devil's Paradise"
+    },
+    {
+     "num": "#3",
+     "name": "Double Fantasy (with Future)"
+    }
+   ]
+  },
+  {
+   "era": "The Idol",
+   "name": "The Idol Episode 3",
+   "date": "Jun 19, 2023",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'The Idol Episode 3', the third EP of the Idol soundtrack.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "A Lesser Man"
+    },
+    {
+     "num": "#2",
+     "name": "Take Me Back"
+    },
+    {
+     "num": "#3",
+     "name": "Moses Sumney - Get It B4"
+    }
+   ]
+  },
+  {
+   "era": "The Idol",
+   "name": "The Idol Episode 4",
+   "date": "Jun 23, 2023",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'The Idol Episode 4', the fourth EP of the Idol soundtrack.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "One Of The Girls (with JENNIE & Lily-Rose Depp)"
+    },
+    {
+     "num": "#2",
+     "name": "Jealous Guy"
+    },
+    {
+     "num": "#3",
+     "name": "Fill The Void (with Lily-Rose Depp & Ramsey)"
+    }
+   ]
+  },
+  {
+   "era": "The Idol",
+   "name": "The Idol Episode 5 Part 1",
+   "date": "Jun 30, 2023",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'The Idol Episode 5 Part 1', the fifth EP of the Idol soundtrack.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Like A God"
+    },
+    {
+     "num": "#2",
+     "name": "False Idols (with Lil Baby & Suzanna Son)"
+    }
+   ]
+  },
+  {
+   "era": "The Idol",
+   "name": "The Idol Episode 5 Part 2",
+   "date": "Jul 3, 2023",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'The Idol Episode 5 Part 2', the sixth EP of the Idol soundtrack.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Dollhouse (with Lily-Rose Depp)"
+    },
+    {
+     "num": "#2",
+     "name": "Troye Sivan - My Sweet Lord"
+    },
+    {
+     "num": "#3",
+     "name": "Suzanna Son - Crocodile Tears"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "The Highlights (Deluxe)",
+   "date": "Feb 9, 2024",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for the Deluxe edition of 'The Highlights'.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Die For You"
+    },
+    {
+     "num": "#2",
+     "name": "Starboy (feat. Daft Punk)"
+    },
+    {
+     "num": "#3",
+     "name": "Save Your Tears"
+    },
+    {
+     "num": "#4",
+     "name": "Blinding Lights"
+    },
+    {
+     "num": "#5",
+     "name": "In Your Eyes"
+    },
+    {
+     "num": "#6",
+     "name": "Wicked Games"
+    },
+    {
+     "num": "#7",
+     "name": "Can't Feel My Face"
+    },
+    {
+     "num": "#8",
+     "name": "I Feel It Coming (feat. Daft Punk)"
+    },
+    {
+     "num": "#9",
+     "name": "Pray For Me (with Kendrick Lamar)"
+    },
+    {
+     "num": "#10",
+     "name": "Heartless"
+    },
+    {
+     "num": "#11",
+     "name": "The Hills"
+    },
+    {
+     "num": "#12",
+     "name": "The Morning"
+    },
+    {
+     "num": "#13",
+     "name": "Call Out My Name"
+    },
+    {
+     "num": "#14",
+     "name": "Often"
+    },
+    {
+     "num": "#15",
+     "name": "Ariana Grande - Love Me Harder (feat. The Weeknd)"
+    },
+    {
+     "num": "#16",
+     "name": "Earned It (Fifty Shades Of Grey)"
+    },
+    {
+     "num": "#17",
+     "name": "Acquainted"
+    },
+    {
+     "num": "#18",
+     "name": "After Hours"
+    },
+    {
+     "num": "#19",
+     "name": "One Of The Girls (with JENNIE & Lily-Rose Depp)"
+    },
+    {
+     "num": "#20",
+     "name": "Popular (with Madonna) (feat. Playboi Carti)"
+    },
+    {
+     "num": "#21",
+     "name": "I Was Never There (with Gesaffelstein)"
+    },
+    {
+     "num": "#22",
+     "name": "House of Balloons / Glass Table Girls"
+    },
+    {
+     "num": "#23",
+     "name": "Less Than Zero"
+    },
+    {
+     "num": "#24",
+     "name": "Is There Someone Else?"
+    },
+    {
+     "num": "#25",
+     "name": "Party Monster"
+    },
+    {
+     "num": "#26",
+     "name": "Stargirl Interlude (feat. Lana Del Rey)"
+    },
+    {
+     "num": "#27",
+     "name": "Tell Your Friends"
+    },
+    {
+     "num": "#28",
+     "name": "Sacrifice"
+    },
+    {
+     "num": "#29",
+     "name": "Reminder"
+    },
+    {
+     "num": "#30",
+     "name": "In The Night"
+    },
+    {
+     "num": "#31",
+     "name": "Wasted Times"
+    },
+    {
+     "num": "#32",
+     "name": "Take My Breath"
+    },
+    {
+     "num": "#33",
+     "name": "Swedish House Mafia - Moth To A Flame (with The Weeknd)"
+    },
+    {
+     "num": "#34",
+     "name": "Out Of Time"
+    },
+    {
+     "num": "#35",
+     "name": "King Of The Fall"
+    },
+    {
+     "num": "#36",
+     "name": "High For This"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "Hurry Up Tomorrow\n[First Pressing]",
+   "date": "September/October, 2024",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "First Pressing tracklist for 'Hurry Up Tomorrow'. Features alt names for some tracks and mixing differences.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "The Crowd (Without a Warning)"
+    },
+    {
+     "num": "#2",
+     "name": "Cry For Me"
+    },
+    {
+     "num": "#3",
+     "name": "São Paulo"
+    },
+    {
+     "num": "#4",
+     "name": "How It Feels (Society)"
+    },
+    {
+     "num": "#5",
+     "name": "Take Me Back To LA"
+    },
+    {
+     "num": "#6",
+     "name": "The Abyss"
+    },
+    {
+     "num": "#7",
+     "name": "Open Hearts"
+    },
+    {
+     "num": "#8",
+     "name": "Timeless"
+    },
+    {
+     "num": "#9",
+     "name": "Africa (Give Me Mercy)"
+    },
+    {
+     "num": "#10",
+     "name": "Runaway"
+    },
+    {
+     "num": "#11",
+     "name": "Red Terror"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "Hurry Up Tomorrow",
+   "date": "",
+   "quality": "N/A",
+   "source": "N/A",
+   "links": [],
+   "description": "Even though it was left off the First Pressing & inital release versions of 'Hurry Up Tomorrow'. Under the YouTube description of the \"Dancing in The Flames\" video, it is stated that the song is a single from the album, meaning it was at one point on a tracklist.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Dancing In The Flames"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "Hurry Up Tomorrow",
+   "date": "Jan 31, 2025",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Hurry Up Tomorrow', the fifth studio album by The Weeknd.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Wake Me Up (feat. Justice)"
+    },
+    {
+     "num": "#2",
+     "name": "Cry For Me"
+    },
+    {
+     "num": "#3",
+     "name": "I Can't Fucking Sing (I Can't F*****g Sing)"
+    },
+    {
+     "num": "#4",
+     "name": "São Paulo (feat. Anitta)"
+    },
+    {
+     "num": "#5",
+     "name": "Until We're Skin & Bones"
+    },
+    {
+     "num": "#6",
+     "name": "Baptized In Fear"
+    },
+    {
+     "num": "#7",
+     "name": "Open Hearts"
+    },
+    {
+     "num": "#8",
+     "name": "Opening Nights"
+    },
+    {
+     "num": "#9",
+     "name": "Reflections Laughing (feat. Travis Scott & Florence + The Machine)"
+    },
+    {
+     "num": "#10",
+     "name": "Enjoy The Show (feat. Future)"
+    },
+    {
+     "num": "#11",
+     "name": "Given Up On Me"
+    },
+    {
+     "num": "#12",
+     "name": "I Can't Wait To Get There"
+    },
+    {
+     "num": "#13",
+     "name": "Timeless (feat. Playboi Carti)"
+    },
+    {
+     "num": "#14",
+     "name": "Niagara Falls",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "Take Me Back To LA"
+    },
+    {
+     "num": "#16",
+     "name": "Big Sleep (feat. Giorgio Moroder)"
+    },
+    {
+     "num": "#17",
+     "name": "Give Me Mercy"
+    },
+    {
+     "num": "#18",
+     "name": "Drive"
+    },
+    {
+     "num": "#19",
+     "name": "The Abyss (feat. Lana Del Rey)"
+    },
+    {
+     "num": "#20",
+     "name": "Red Terror"
+    },
+    {
+     "num": "#21",
+     "name": "Without A Warning"
+    },
+    {
+     "num": "#22",
+     "name": "Hurry Up Tomorrow"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "Hurry Up Tomorrow\n[iTunes Version]",
+   "date": "Jan 31, 2025",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "iTunes variant of the album that uses the First Pressing cover but has release-ready mixes with the addition of Lana Del Rey on 'The Abyss'. \"Society\" and \"Runaway\" are both excluded from this variant",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Cry For Me"
+    },
+    {
+     "num": "#2",
+     "name": "São Paulo (with Anitta)"
+    },
+    {
+     "num": "#3",
+     "name": "Open Hearts"
+    },
+    {
+     "num": "#4",
+     "name": "Timeless (with Playboi Carti)"
+    },
+    {
+     "num": "#5",
+     "name": "Take Me Back To LA"
+    },
+    {
+     "num": "#6",
+     "name": "Give Me Mercy"
+    },
+    {
+     "num": "#7",
+     "name": "The Abyss (with Lana Del Rey)"
+    },
+    {
+     "num": "#8",
+     "name": "Red Terror"
+    },
+    {
+     "num": "#9",
+     "name": "Without a Warning"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "Hurry Up Tomorrow\n[00XO Edition]",
+   "date": "Jan 31, 2025",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Hurry Up Tomorrow 00XO Edition', sold on his website & uses the same release tracklist but with 2 bonus tracks at the end.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Wake Me Up"
+    },
+    {
+     "num": "#2",
+     "name": "Cry For Me"
+    },
+    {
+     "num": "#3",
+     "name": "I Can't Fucking Sing (I Can't F*****g Sing)"
+    },
+    {
+     "num": "#4",
+     "name": "São Paulo"
+    },
+    {
+     "num": "#5",
+     "name": "Until We're Skin & Bones"
+    },
+    {
+     "num": "#6",
+     "name": "Baptized In Fear"
+    },
+    {
+     "num": "#7",
+     "name": "Open Hearts"
+    },
+    {
+     "num": "#8",
+     "name": "Opening Nights"
+    },
+    {
+     "num": "#9",
+     "name": "Reflections Laughing"
+    },
+    {
+     "num": "#10",
+     "name": "Enjoy The Show"
+    },
+    {
+     "num": "#11",
+     "name": "Given Up On Me"
+    },
+    {
+     "num": "#12",
+     "name": "I Can't Wait To Get There"
+    },
+    {
+     "num": "#13",
+     "name": "Timeless"
+    },
+    {
+     "num": "#14",
+     "name": "Niagara Falls"
+    },
+    {
+     "num": "#15",
+     "name": "Take Me Back To LA"
+    },
+    {
+     "num": "#16",
+     "name": "Big Sleep"
+    },
+    {
+     "num": "#17",
+     "name": "Give Me Mercy"
+    },
+    {
+     "num": "#18",
+     "name": "Drive"
+    },
+    {
+     "num": "#19",
+     "name": "The Abyss"
+    },
+    {
+     "num": "#20",
+     "name": "Red Terror"
+    },
+    {
+     "num": "#21",
+     "name": "Without A Warning"
+    },
+    {
+     "num": "#22",
+     "name": "Hurry Up Tomorrow"
+    },
+    {
+     "num": "#23",
+     "name": "Runaway"
+    },
+    {
+     "num": "#24",
+     "name": "Society"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "Hurry Up Tomorrow\n[Pharrell Williams Edition]",
+   "date": "Feb 5, 2025",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Official tracklist for 'Hurry Up Tomorrow Pharrell Williams Edition', sold on the Hurry Up Tomorrow Club website & uses the same release tracklist but features the bonus track \"Closing Night\"",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Wake Me Up"
+    },
+    {
+     "num": "#2",
+     "name": "Cry For Me"
+    },
+    {
+     "num": "#3",
+     "name": "I Can't Fucking Sing (I Can't F*****g Sing)"
+    },
+    {
+     "num": "#4",
+     "name": "São Paulo"
+    },
+    {
+     "num": "#5",
+     "name": "Until We're Skin & Bones"
+    },
+    {
+     "num": "#6",
+     "name": "Baptized In Fear"
+    },
+    {
+     "num": "#7",
+     "name": "Open Hearts"
+    },
+    {
+     "num": "#8",
+     "name": "Opening Nights"
+    },
+    {
+     "num": "#9",
+     "name": "Reflections Laughing"
+    },
+    {
+     "num": "#10",
+     "name": "Enjoy The Show"
+    },
+    {
+     "num": "#11",
+     "name": "Given Up On Me"
+    },
+    {
+     "num": "#12",
+     "name": "I Can't Wait To Get There"
+    },
+    {
+     "num": "#13",
+     "name": "Timeless"
+    },
+    {
+     "num": "#14",
+     "name": "Niagara Falls"
+    },
+    {
+     "num": "#15",
+     "name": "Take Me Back To LA"
+    },
+    {
+     "num": "#16",
+     "name": "Big Sleep"
+    },
+    {
+     "num": "#17",
+     "name": "Give Me Mercy"
+    },
+    {
+     "num": "#18",
+     "name": "Drive"
+    },
+    {
+     "num": "#19",
+     "name": "The Abyss"
+    },
+    {
+     "num": "#20",
+     "name": "Red Terror"
+    },
+    {
+     "num": "#21",
+     "name": "Without A Warning"
+    },
+    {
+     "num": "#22",
+     "name": "Hurry Up Tomorrow"
+    },
+    {
+     "num": "#23",
+     "name": "Closing Night"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "Hurry Up Tomorrow\n[Japanese Edition]",
+   "date": "May 23, 2025",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "Japanese release for \"Hurry Up Tomorrow\" featuring the bonus track \"Closing Night\"",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Wake Me Up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Cry For Me"
+    },
+    {
+     "num": "#3",
+     "name": "I Can't Fucking Sing (I Can't F*****g Sing)"
+    },
+    {
+     "num": "#4",
+     "name": "São Paulo",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Until We're Skin & Bones",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "Baptized In Fear",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Open Hearts",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Opening Nights",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Reflections Laughing",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "Enjoy The Show",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "Given Up On Me",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "I Can't Wait To Get There",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "Timeless",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "Niagara Falls",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "Take Me Back To LA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "Big Sleep",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "Give Me Mercy",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "Drive",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "The Abyss",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "Red Terror",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "Without A Warning",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#22",
+     "name": "Hurry Up Tomorrow",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#23",
+     "name": "Closing Night",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "Hurry Up Tomorrow",
+   "name": "Hurry Up Tomorrow (Original Motion Picture Score)",
+   "date": "July 11, 2025",
+   "quality": "Clear",
+   "source": "Abel",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Please Leave A Message"
+    },
+    {
+     "num": "#2",
+     "name": "Anima Pt. 1"
+    },
+    {
+     "num": "#3",
+     "name": "Gas Station"
+    },
+    {
+     "num": "#4",
+     "name": "Dance Until We’re Skin And Bones"
+    },
+    {
+     "num": "#5",
+     "name": "It’s Mostly Psychological"
+    },
+    {
+     "num": "#6",
+     "name": "Sky Is Falling"
+    },
+    {
+     "num": "#7",
+     "name": "Heartbeat Slower"
+    },
+    {
+     "num": "#8",
+     "name": "We’ll Take It Backstage"
+    },
+    {
+     "num": "#9",
+     "name": "Muted"
+    },
+    {
+     "num": "#10",
+     "name": "Close Encounter"
+    },
+    {
+     "num": "#11",
+     "name": "I Feel Like I Know You"
+    },
+    {
+     "num": "#12",
+     "name": "Champagne Solves Everything"
+    },
+    {
+     "num": "#13",
+     "name": "In Too Deep"
+    },
+    {
+     "num": "#14",
+     "name": "Can You Hear Me Knocking?"
+    },
+    {
+     "num": "#15",
+     "name": "Anima Pt. 2"
+    },
+    {
+     "num": "#16",
+     "name": "Tomorrow’s Coming"
+    },
+    {
+     "num": "#17",
+     "name": "Cry For Me"
+    },
+    {
+     "num": "#18",
+     "name": "São Paulo (feat. Anitta)"
+    },
+    {
+     "num": "#19",
+     "name": "Open Hearts"
+    },
+    {
+     "num": "#20",
+     "name": "Timeless (feat. Playboi Carti)"
+    },
+    {
+     "num": "#21",
+     "name": "Take Me Back To LA"
+    },
+    {
+     "num": "#22",
+     "name": "Give Me Mercy"
+    },
+    {
+     "num": "#23",
+     "name": "The Abyss (feat. Lana Del Rey)"
+    },
+    {
+     "num": "#24",
+     "name": "Red Terror"
+    },
+    {
+     "num": "#25",
+     "name": "Without a Warning"
+    },
+    {
+     "num": "#26",
+     "name": "Hurry Up Tomorrow"
+    }
+   ]
+  }
+ ]
+}

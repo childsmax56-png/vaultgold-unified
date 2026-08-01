@@ -1,861 +1,1306 @@
-[
- {
-  "era": "The Hoodstar Diary",
-  "name": "The Hoodstar Diary",
-  "date": "",
-  "quality": "Clear",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "What A World"
-   },
-   {
-    "num": "#2",
-    "name": "Gazer"
-   },
-   {
-    "num": "#3",
-    "name": "Hoodstar Diary"
-   },
-   {
-    "num": "#4",
-    "name": "Turnt Up"
-   },
-   {
-    "num": "#5",
-    "name": "Believe In Love"
-   },
-   {
-    "num": "#6",
-    "name": "Shot Down"
-   },
-   {
-    "num": "#7",
-    "name": "Like Wick (feat. yrsci)"
-   },
-   {
-    "num": "#8",
-    "name": "Rainy Days"
-   }
-  ]
- },
- {
-  "era": "Love Is Blind",
-  "name": "Love Is Blind [V1]",
-  "date": "",
-  "quality": "Unavailable",
-  "source": "Insiders",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Love Is Blind",
-  "name": "Love Is Blind [V2]",
-  "date": "N/A",
-  "quality": "Unavailable",
-  "source": "Insiders",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Untitled Rock EP",
-  "name": "Untitled Rock EP",
-  "date": "8/16/2022",
-  "quality": "Clear",
-  "source": "Leaked",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "WATCH YOUR HANDS"
-   },
-   {
-    "num": "#2",
-    "name": "YOUTH"
-   },
-   {
-    "num": "#3",
-    "name": "DON'T FOLLOW ME"
-   },
-   {
-    "num": "#4",
-    "name": "BREAK OUT"
-   }
-  ]
- },
- {
-  "era": "Untitled 2023 Album",
-  "name": "Untitled 2023 Album",
-  "date": "1/9/2023",
-  "quality": "Clear",
-  "source": "Leaked",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Birthday Suicide"
-   },
-   {
-    "num": "#2",
-    "name": "Hide Your Face From The Devil"
-   },
-   {
-    "num": "#3",
-    "name": "My Better Halves"
-   },
-   {
-    "num": "#4",
-    "name": "Present Beauty"
-   },
-   {
-    "num": "#5",
-    "name": "The Shy Girl"
-   },
-   {
-    "num": "#6",
-    "name": "Time Waits For No Man"
-   },
-   {
-    "num": "#7",
-    "name": "Why Haven't I Found Love By Now?"
-   }
-  ]
- },
- {
-  "era": "Petals To Thorns [V2]",
-  "name": "The Root Of It All [V1]",
-  "date": "4/25/2023",
-  "quality": "Clear",
-  "source": "Insiders",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Sleep Well"
-   },
-   {
-    "num": "#2",
-    "name": "Here With Me"
-   },
-   {
-    "num": "#3",
-    "name": "This Is How It Feels (with Laufey)"
-   },
-   {
-    "num": "#4",
-    "name": "From Whence You Came"
-   },
-   {
-    "num": "#5",
-    "name": "Don't Forget About Me"
-   },
-   {
-    "num": "#6",
-    "name": "WORTHLESS"
-   },
-   {
-    "num": "#7",
-    "name": "The Backstreet Girl"
-   },
-   {
-    "num": "#8",
-    "name": "You And I"
-   },
-   {
-    "num": "#9",
-    "name": "Romantic Homicide"
-   },
-   {
-    "num": "#10",
-    "name": "The Bridge"
-   },
-   {
-    "num": "#11",
-    "name": "Accident"
-   }
-  ]
- },
- {
-  "era": "Petals To Thorns [V2]",
-  "name": "Petals To Thorns [V2]",
-  "date": "5/26/2023",
-  "quality": "Clear",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Sleep Well"
-   },
-   {
-    "num": "#2",
-    "name": "Here With Me"
-   },
-   {
-    "num": "#3",
-    "name": "This Is How It Feels (with Laufey)"
-   },
-   {
-    "num": "#4",
-    "name": "Don't Forget About Me"
-   },
-   {
-    "num": "#5",
-    "name": "WORTHLESS"
-   },
-   {
-    "num": "#6",
-    "name": "Backstreet Girl"
-   },
-   {
-    "num": "#7",
-    "name": "You And I"
-   },
-   {
-    "num": "#8",
-    "name": "Romantic Homicide"
-   },
-   {
-    "num": "#9",
-    "name": "The Bridge"
-   }
-  ]
- },
- {
-  "era": "Petals To Thorns [V2]",
-  "name": "Petals To Thorns (Japanese CD Version)",
-  "date": "5/26/2023",
-  "quality": "Clear",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Sleep Well"
-   },
-   {
-    "num": "#2",
-    "name": "Here With Me"
-   },
-   {
-    "num": "#3",
-    "name": "This Is How It Feels (with Laufey)"
-   },
-   {
-    "num": "#4",
-    "name": "Don't Forget About Me"
-   },
-   {
-    "num": "#5",
-    "name": "WORTHLESS"
-   },
-   {
-    "num": "#6",
-    "name": "Backstreet Girl"
-   },
-   {
-    "num": "#7",
-    "name": "You And I"
-   },
-   {
-    "num": "#8",
-    "name": "Romantic Homicide"
-   },
-   {
-    "num": "#9",
-    "name": "The Bridge"
-   },
-   {
-    "num": "#10",
-    "name": "Placebo Effect"
-   },
-   {
-    "num": "#11",
-    "name": "Backstreet Girl (Live)"
-   }
-  ]
- },
- {
-  "era": "Garden Of Eden",
-  "name": "The Lost Petals",
-  "date": "09/08/2023",
-  "quality": "Clear",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Notes From A Wrist"
-   },
-   {
-    "num": "#2",
-    "name": "Hollow Prayers"
-   },
-   {
-    "num": "#3",
-    "name": "Rehab"
-   },
-   {
-    "num": "#4",
-    "name": "Poetic Vulgarity"
-   },
-   {
-    "num": "#5",
-    "name": "Once More"
-   }
-  ]
- },
- {
-  "era": "Garden Of Eden",
-  "name": "Garden Of Eden [V1]",
-  "date": "N/A",
-  "quality": "Unavailable",
-  "source": "Insiders",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Garden Of Eden",
-  "name": "Garden Of Eden [V2]",
-  "date": "N/A",
-  "quality": "Unavailable",
-  "source": "Insiders",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Gaslight"
-   }
-  ]
- },
- {
-  "era": "WITHERED",
-  "name": "Withering",
-  "date": "",
-  "quality": "Clear",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Leave Her"
-   },
-   {
-    "num": "#2",
-    "name": "2016"
-   }
-  ]
- },
- {
-  "era": "WITHERED",
-  "name": "Withered [V1]",
-  "date": "",
-  "quality": "Unavailable",
-  "source": "Insiders",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "",
-  "name": "Withered [V2]",
-  "date": "",
-  "quality": "Unavailable",
-  "source": "Leaked",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#4",
-    "name": "My House Is Not A Home"
-   },
-   {
-    "num": "#11",
-    "name": "Matter"
-   },
-   {
-    "num": "#12",
-    "name": "Afterlife"
-   }
-  ]
- },
- {
-  "era": "WITHERED",
-  "name": "WITHERED",
-  "date": "8/7/2024",
-  "quality": "Unavailable",
-  "source": "Leaked",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "WITHERED",
-  "name": "WITHERED",
-  "date": "4/25/2025",
-  "quality": "Clear",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Atomic Land"
-   },
-   {
-    "num": "#2",
-    "name": "Sky"
-   },
-   {
-    "num": "#3",
-    "name": "You Left Me First"
-   },
-   {
-    "num": "#4",
-    "name": "Say It Back"
-   },
-   {
-    "num": "#5",
-    "name": "Friend Again"
-   },
-   {
-    "num": "#6",
-    "name": "Somewhere In The Middle"
-   },
-   {
-    "num": "#7",
-    "name": "Crashing (with Kali Uchis)"
-   },
-   {
-    "num": "#9",
-    "name": "Is This Really Love?"
-   },
-   {
-    "num": "#10",
-    "name": "Where'd It Go Wrong?"
-   },
-   {
-    "num": "#11",
-    "name": "Feel It"
-   },
-   {
-    "num": "#12",
-    "name": "What Are You Waiting For"
-   },
-   {
-    "num": "#13",
-    "name": "One More Dance"
-   },
-   {
-    "num": "#14",
-    "name": "Ghost"
-   },
-   {
-    "num": "#15",
-    "name": "Afterlife"
-   }
-  ]
- },
- {
-  "era": "WITHERED",
-  "name": "WITHERED (Bonus Tracks)",
-  "date": "5/30/2025",
-  "quality": "Clear",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Atomic Land"
-   },
-   {
-    "num": "#2",
-    "name": "Sky"
-   },
-   {
-    "num": "#3",
-    "name": "You Left Me First"
-   },
-   {
-    "num": "#4",
-    "name": "Say It Back"
-   },
-   {
-    "num": "#5",
-    "name": "Friend Again"
-   },
-   {
-    "num": "#6",
-    "name": "Somewhere In The Middle"
-   },
-   {
-    "num": "#7",
-    "name": "Crashing (with Kali Uchis)"
-   },
-   {
-    "num": "#9",
-    "name": "Is This Really Love?"
-   },
-   {
-    "num": "#10",
-    "name": "Where'd It Go Wrong?"
-   },
-   {
-    "num": "#11",
-    "name": "Feel It"
-   },
-   {
-    "num": "#12",
-    "name": "What Are You Waiting For"
-   },
-   {
-    "num": "#13",
-    "name": "One More Dance"
-   },
-   {
-    "num": "#14",
-    "name": "Unrequited - Bonus Track"
-   },
-   {
-    "num": "#15",
-    "name": "Ghost"
-   },
-   {
-    "num": "#16",
-    "name": "Where Did You Go? - Bonus Track"
-   },
-   {
-    "num": "#17",
-    "name": "Afterlife"
-   }
-  ]
- },
- {
-  "era": "WITHERED Deluxe: Marcescence",
-  "name": "Fortnite Jam Tracks",
-  "date": "6/?/2025",
-  "quality": "Unavailable",
-  "source": "Leaked",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "WITHERED Deluxe: Marcescence",
-  "name": "Decay",
-  "date": "7/2/2025",
-  "quality": "Unavailable",
-  "source": "Insiders",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Issues"
-   },
-   {
-    "num": "#14",
-    "name": "How I See You"
-   }
-  ]
- },
- {
-  "era": "",
-  "name": "Marcescence",
-  "date": "",
-  "quality": "Unavailable",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#8",
-    "name": "Always Love (feat. Hyunjin)"
-   },
-   {
-    "num": "#9",
-    "name": "I'm In Love"
-   },
-   {
-    "num": "#10",
-    "name": "11PM"
-   },
-   {
-    "num": "#11",
-    "name": "Summer Don't End (feat. keshi)"
-   },
-   {
-    "num": "#12",
-    "name": "Talking To Myself"
-   },
-   {
-    "num": "#13",
-    "name": "Affirmation"
-   },
-   {
-    "num": "#14",
-    "name": "???"
-   }
-  ]
- },
- {
-  "era": "WITHERED Deluxe: Marcescence",
-  "name": "WITHERED Deluxe: Marcescence",
-  "date": "9/7/2025",
-  "quality": "Clear",
-  "source": "d4vd",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Favorite"
-   },
-   {
-    "num": "#2",
-    "name": "Issues"
-   },
-   {
-    "num": "#3",
-    "name": "Take The Photos (ft. Malcom Todd)"
-   },
-   {
-    "num": "#4",
-    "name": "How Do You Sleep?"
-   },
-   {
-    "num": "#5",
-    "name": "You Still Love Me"
-   },
-   {
-    "num": "#6",
-    "name": "Best Friend (ft. RealestK)"
-   },
-   {
-    "num": "#7",
-    "name": "I'm Good"
-   },
-   {
-    "num": "#8",
-    "name": "Always Love (ft. Hyunjin)"
-   },
-   {
-    "num": "#9",
-    "name": "11PM"
-   },
-   {
-    "num": "#10",
-    "name": "Summer Don't End (ft. keshi)"
-   },
-   {
-    "num": "#11",
-    "name": "Talking To Myself"
-   },
-   {
-    "num": "#12",
-    "name": "Affirmation"
-   },
-   {
-    "num": "#13",
-    "name": "L.O.V.E.U (ft. hannah bahng)"
-   },
-   {
-    "num": "#14",
-    "name": "Glue (ft. Julia Wolf)"
-   },
-   {
-    "num": "#15",
-    "name": "Front Line"
-   }
-  ]
- },
- {
-  "era": "WITHERED Deluxe: Marcescence",
-  "name": "WITHERED Deluxe: Marcescence (Physical Version)",
-  "date": "N/A",
-  "quality": "Clear",
-  "source": "Insiders",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Favorite"
-   },
-   {
-    "num": "#2",
-    "name": "Issues"
-   },
-   {
-    "num": "#3",
-    "name": "Take The Photos (ft. Malcom Todd)"
-   },
-   {
-    "num": "#4",
-    "name": "How Do You Sleep?"
-   },
-   {
-    "num": "#5",
-    "name": "You Still Love Me"
-   },
-   {
-    "num": "#6",
-    "name": "Best Friend (ft. RealestK)"
-   },
-   {
-    "num": "#7",
-    "name": "I'm Good"
-   },
-   {
-    "num": "#8",
-    "name": "Always Love (ft. Hyunjin)"
-   },
-   {
-    "num": "#9",
-    "name": "11PM"
-   },
-   {
-    "num": "#10",
-    "name": "Summer Don't End (ft. keshi)"
-   },
-   {
-    "num": "#11",
-    "name": "Talking To Myself"
-   },
-   {
-    "num": "#12",
-    "name": "Affirmation"
-   },
-   {
-    "num": "#13",
-    "name": "L.O.V.E.U (ft. hannah bahng)"
-   },
-   {
-    "num": "#14",
-    "name": "Glue (ft. Julia Wolf)"
-   },
-   {
-    "num": "#15",
-    "name": "Front Line"
-   },
-   {
-    "num": "#16",
-    "name": "Floating - Bonus Track"
-   }
-  ]
- },
- {
-  "era": "WITHERED",
-  "name": "WITHERED [V3]",
-  "date": "10/1/2025",
-  "quality": "Clear",
-  "source": "Darkroom/Interscope",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Atomic Land"
-   },
-   {
-    "num": "#2",
-    "name": "Sky"
-   },
-   {
-    "num": "#3",
-    "name": "You Left Me First"
-   },
-   {
-    "num": "#4",
-    "name": "Say It Back"
-   },
-   {
-    "num": "#5",
-    "name": "Friend Again"
-   },
-   {
-    "num": "#6",
-    "name": "Somewhere In The Middle"
-   },
-   {
-    "num": "#8",
-    "name": "Is This Really Love?"
-   },
-   {
-    "num": "#9",
-    "name": "Where'd It Go Wrong?"
-   },
-   {
-    "num": "#10",
-    "name": "Feel It"
-   },
-   {
-    "num": "#11",
-    "name": "What Are You Waiting For"
-   },
-   {
-    "num": "#12",
-    "name": "One More Dance"
-   },
-   {
-    "num": "#13",
-    "name": "Unrequited - Bonus Track"
-   },
-   {
-    "num": "#14",
-    "name": "Ghost"
-   },
-   {
-    "num": "#15",
-    "name": "Where Did You Go? - Bonus Track"
-   },
-   {
-    "num": "#16",
-    "name": "Afterlife"
-   }
-  ]
- },
- {
-  "era": "Petals To Thorns [V2]",
-  "name": "Petals To Thorns [V3]",
-  "date": "10/1/2025",
-  "quality": "Clear",
-  "source": "Darkroom/Interscope",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Sleep Well"
-   },
-   {
-    "num": "#2",
-    "name": "Here With Me"
-   },
-   {
-    "num": "#3",
-    "name": "Don't Forget About Me"
-   },
-   {
-    "num": "#4",
-    "name": "WORTHLESS"
-   },
-   {
-    "num": "#5",
-    "name": "Backstreet Girl"
-   },
-   {
-    "num": "#6",
-    "name": "You And I"
-   },
-   {
-    "num": "#7",
-    "name": "Romantic Homicide"
-   },
-   {
-    "num": "#8",
-    "name": "The Bridge"
-   }
-  ]
- },
- {
-  "era": "Post-Incident",
-  "name": "Jesus, I",
-  "date": "?/?/2026",
-  "quality": "Unavailable",
-  "source": "Insiders",
-  "links": [],
-  "tracks": []
- }
-]
+{
+ "legend": [
+  {
+   "label": "Completely Unheard",
+   "color": "#E06666"
+  },
+  {
+   "label": "Snippet",
+   "color": "#F6B26B"
+  },
+  {
+   "label": "Alternate Version Available",
+   "color": "#8E7CC3"
+  },
+  {
+   "label": "Confirmed Version Available",
+   "color": "#6AA84F"
+  }
+ ],
+ "albums": [
+  {
+   "era": "The Hoodstar Diary",
+   "name": "The Hoodstar Diary",
+   "date": "",
+   "quality": "Clear",
+   "source": "d4vd",
+   "links": [],
+   "description": "Official tracklist for \"The Hoodstar Diary\"",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "What A World"
+    },
+    {
+     "num": "#2",
+     "name": "Gazer"
+    },
+    {
+     "num": "#3",
+     "name": "Hoodstar Diary"
+    },
+    {
+     "num": "#4",
+     "name": "Turnt Up"
+    },
+    {
+     "num": "#5",
+     "name": "Believe In Love"
+    },
+    {
+     "num": "#6",
+     "name": "Shot Down"
+    },
+    {
+     "num": "#7",
+     "name": "Like Wick (feat. yrsci)"
+    },
+    {
+     "num": "#8",
+     "name": "Rainy Days"
+    }
+   ]
+  },
+  {
+   "era": "Love Is Blind",
+   "name": "Love Is Blind [V1]",
+   "date": "",
+   "quality": "Unavailable",
+   "source": "Insiders",
+   "links": [],
+   "description": "Early tracklist for \"Love Is Blind\"",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "11:00 PM",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Company",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Fall Down",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Hard To Find",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Possibilites",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Reason",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Rooftop",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    }
+   ]
+  },
+  {
+   "era": "Love Is Blind",
+   "name": "Love Is Blind [V2]",
+   "date": "N/A",
+   "quality": "Unavailable",
+   "source": "Insiders",
+   "links": [],
+   "description": "Later tracklist for \"Love Is Blind\" with singles added.\n? Thorns",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Run Away"
+    },
+    {
+     "num": "#?",
+     "name": "11:00 PM"
+    },
+    {
+     "num": "#?",
+     "name": "Company"
+    },
+    {
+     "num": "#?",
+     "name": "Fall Down"
+    },
+    {
+     "num": "#?",
+     "name": "You And I"
+    },
+    {
+     "num": "#?",
+     "name": "Hard To Find",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#?",
+     "name": "Decide"
+    },
+    {
+     "num": "#?",
+     "name": "Bleed Out"
+    },
+    {
+     "num": "#?",
+     "name": "Possibilities",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Reason",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#?",
+     "name": "Rooftop",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    }
+   ]
+  },
+  {
+   "era": "Untitled Rock EP",
+   "name": "Untitled Rock EP",
+   "date": "2022-08-16",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Official tracklist for the EP.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "WATCH YOUR HANDS"
+    },
+    {
+     "num": "#2",
+     "name": "YOUTH"
+    },
+    {
+     "num": "#3",
+     "name": "DON'T FOLLOW ME"
+    },
+    {
+     "num": "#4",
+     "name": "BREAK OUT"
+    }
+   ]
+  },
+  {
+   "era": "Untitled 2023 Album",
+   "name": "Untitled 2023 Album",
+   "date": "2023-01-09",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist leaked for a scrapped album, all which have production from Spencer Stewart.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Birthday Suicide"
+    },
+    {
+     "num": "#2",
+     "name": "Hide Your Face From The Devil"
+    },
+    {
+     "num": "#3",
+     "name": "My Better Halves"
+    },
+    {
+     "num": "#4",
+     "name": "Present Beauty"
+    },
+    {
+     "num": "#5",
+     "name": "The Shy Girl"
+    },
+    {
+     "num": "#6",
+     "name": "Time Waits For No Man"
+    },
+    {
+     "num": "#7",
+     "name": "Why Haven't I Found Love By Now?"
+    }
+   ]
+  },
+  {
+   "era": "Petals To Thorns",
+   "name": "The Root Of It All [V1]",
+   "date": "2023-04-25",
+   "quality": "Clear",
+   "source": "Insiders",
+   "links": [],
+   "description": "Early tracklist with \"From Whence You Came\" as an interlude and \"Accident\" as the outro track.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Sleep Well",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Here With Me",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "This Is How It Feels (with Laufey)",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "From Whence You Came"
+    },
+    {
+     "num": "#5",
+     "name": "Don't Forget About Me"
+    },
+    {
+     "num": "#6",
+     "name": "WORTHLESS",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "The Backstreet Girl"
+    },
+    {
+     "num": "#8",
+     "name": "You And I",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Romantic Homicide",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "The Bridge"
+    },
+    {
+     "num": "#11",
+     "name": "Accident"
+    }
+   ]
+  },
+  {
+   "era": "Petals To Thorns",
+   "name": "Petals To Thorns [V2]",
+   "date": "2023-05-26",
+   "quality": "Clear",
+   "source": "d4vd",
+   "links": [],
+   "description": "Official released version of \"Petals To Thorns\" Before the removal of This Is How It Feels.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Sleep Well"
+    },
+    {
+     "num": "#2",
+     "name": "Here With Me"
+    },
+    {
+     "num": "#3",
+     "name": "This Is How It Feels (with Laufey)",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Don't Forget About Me"
+    },
+    {
+     "num": "#5",
+     "name": "WORTHLESS"
+    },
+    {
+     "num": "#6",
+     "name": "Backstreet Girl"
+    },
+    {
+     "num": "#7",
+     "name": "You And I"
+    },
+    {
+     "num": "#8",
+     "name": "Romantic Homicide"
+    },
+    {
+     "num": "#9",
+     "name": "The Bridge"
+    }
+   ]
+  },
+  {
+   "era": "Petals To Thorns",
+   "name": "Petals To Thorns (Japanese CD Version)",
+   "date": "2023-05-26",
+   "quality": "Clear",
+   "source": "d4vd",
+   "links": [],
+   "description": "Japanese CD exclusive tracklist of Petals To Thorns with 2 bonus tracks",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Sleep Well"
+    },
+    {
+     "num": "#2",
+     "name": "Here With Me"
+    },
+    {
+     "num": "#3",
+     "name": "This Is How It Feels (with Laufey)",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Don't Forget About Me"
+    },
+    {
+     "num": "#5",
+     "name": "WORTHLESS"
+    },
+    {
+     "num": "#6",
+     "name": "Backstreet Girl"
+    },
+    {
+     "num": "#7",
+     "name": "You And I"
+    },
+    {
+     "num": "#8",
+     "name": "Romantic Homicide"
+    },
+    {
+     "num": "#9",
+     "name": "The Bridge"
+    },
+    {
+     "num": "#10",
+     "name": "Placebo Effect"
+    },
+    {
+     "num": "#11",
+     "name": "Backstreet Girl (Live)"
+    }
+   ]
+  },
+  {
+   "era": "Garden Of Eden",
+   "name": "The Lost Petals",
+   "date": "2023-09-08",
+   "quality": "Clear",
+   "source": "d4vd",
+   "links": [],
+   "description": "Official released version of \"The Lost Petals\" available on all DSPs.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Notes From A Wrist"
+    },
+    {
+     "num": "#2",
+     "name": "Hollow Prayers"
+    },
+    {
+     "num": "#3",
+     "name": "Rehab"
+    },
+    {
+     "num": "#4",
+     "name": "Poetic Vulgarity"
+    },
+    {
+     "num": "#5",
+     "name": "Once More"
+    }
+   ]
+  },
+  {
+   "era": "Garden Of Eden",
+   "name": "Garden Of Eden [V1]",
+   "date": "N/A",
+   "quality": "Unavailable",
+   "source": "Insiders",
+   "links": [],
+   "description": "Early tracklist for Garden Of Eden thats said to be 12 tracks long. Unknown which songs are on it.\n\n1-12. ???",
+   "tracks": []
+  },
+  {
+   "era": "Garden Of Eden",
+   "name": "Garden Of Eden [V2]",
+   "date": "N/A",
+   "quality": "Unavailable",
+   "source": "Insiders",
+   "links": [],
+   "description": "Tracklist for Garden Of Eden with some known tracks. Unknown which order they're in.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Gaslight"
+    },
+    {
+     "num": "#?",
+     "name": "Bad News"
+    },
+    {
+     "num": "#?",
+     "name": "Lost Now"
+    },
+    {
+     "num": "#?",
+     "name": "Nomad"
+    },
+    {
+     "num": "#?",
+     "name": "Worthy"
+    },
+    {
+     "num": "#?",
+     "name": "We Don't Have To Die To Reach God"
+    }
+   ]
+  },
+  {
+   "era": "WITHERED",
+   "name": "Withering",
+   "date": "",
+   "quality": "Clear",
+   "source": "d4vd",
+   "links": [],
+   "description": "Official released version of \"Withering\" available on all DSPs.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Leave Her"
+    },
+    {
+     "num": "#2",
+     "name": "2016"
+    }
+   ]
+  },
+  {
+   "era": "WITHERED",
+   "name": "Withered [V1]",
+   "date": "",
+   "quality": "Unavailable",
+   "source": "Insiders",
+   "links": [],
+   "description": "Early 2024 tracklist for WITHERED with only a few known songs.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Call Me"
+    },
+    {
+     "num": "#?",
+     "name": "Is This Really Love?",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Somewhere In The Middle",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Unrequited"
+    },
+    {
+     "num": "#?",
+     "name": "Friend Again"
+    },
+    {
+     "num": "#?",
+     "name": "Afterlife"
+    },
+    {
+     "num": "#?",
+     "name": "My House Is Not A Home"
+    }
+   ]
+  },
+  {
+   "era": "Withered [V2]",
+   "name": "Withered [V2]",
+   "date": "",
+   "quality": "Unavailable",
+   "source": "Leaked",
+   "links": [],
+   "description": "Unknown 2024 copy of WITHERED with some previously unheard tracks and some released songs.\n\n1-3. ???",
+   "tracks": [
+    {
+     "num": "#4",
+     "name": "My House Is Not A Home"
+    },
+    {
+     "num": "#11",
+     "name": "Matter"
+    },
+    {
+     "num": "#12",
+     "name": "Afterlife"
+    },
+    {
+     "num": "#?",
+     "name": "Somewhere In The Middle"
+    },
+    {
+     "num": "#?",
+     "name": "Is This Really Love?"
+    },
+    {
+     "num": "#?",
+     "name": "There Goes My Baby"
+    },
+    {
+     "num": "#?",
+     "name": "Leave Her"
+    },
+    {
+     "num": "#?",
+     "name": "Say It Back"
+    },
+    {
+     "num": "#?",
+     "name": "Good Time"
+    },
+    {
+     "num": "#?",
+     "name": "One More Dance"
+    },
+    {
+     "num": "#?",
+     "name": "Purpose"
+    }
+   ]
+  },
+  {
+   "era": "WITHERED",
+   "name": "WITHERED",
+   "date": "2024-08-07",
+   "quality": "Unavailable",
+   "source": "Leaked",
+   "links": [],
+   "description": "Unknown album copy of WITHERED found in a Darkroom dropbox leak. Re-uses some Garden Of \nEden tracks and has some tracks from Petals To Thorns Era",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Afterlife"
+    },
+    {
+     "num": "#?",
+     "name": "Bad News"
+    },
+    {
+     "num": "#?",
+     "name": "Born To Fail"
+    },
+    {
+     "num": "#?",
+     "name": "Breakup Szn"
+    },
+    {
+     "num": "#?",
+     "name": "Come Home"
+    },
+    {
+     "num": "#?",
+     "name": "Where Did You Go?"
+    },
+    {
+     "num": "#?",
+     "name": "Danger"
+    },
+    {
+     "num": "#?",
+     "name": "Friend Again"
+    },
+    {
+     "num": "#?",
+     "name": "Heart In Your Mouth"
+    },
+    {
+     "num": "#?",
+     "name": "Heaven Don't Need You Yet"
+    },
+    {
+     "num": "#?",
+     "name": "Is This Really Love?"
+    },
+    {
+     "num": "#?",
+     "name": "Lost Now"
+    },
+    {
+     "num": "#?",
+     "name": "NPC Activities"
+    },
+    {
+     "num": "#?",
+     "name": "Nomad"
+    },
+    {
+     "num": "#?",
+     "name": "One More Dance"
+    },
+    {
+     "num": "#?",
+     "name": "Only Now"
+    },
+    {
+     "num": "#?",
+     "name": "Somewhere In The Middle"
+    },
+    {
+     "num": "#?",
+     "name": "Waterfall"
+    },
+    {
+     "num": "#?",
+     "name": "Yours Again"
+    }
+   ]
+  },
+  {
+   "era": "WITHERED",
+   "name": "WITHERED",
+   "date": "2025-04-25",
+   "quality": "Clear",
+   "source": "d4vd",
+   "links": [],
+   "description": "Official released version of \"WITHERED\" before the removal of Crashing.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Atomic Land"
+    },
+    {
+     "num": "#2",
+     "name": "Sky"
+    },
+    {
+     "num": "#3",
+     "name": "You Left Me First"
+    },
+    {
+     "num": "#4",
+     "name": "Say It Back"
+    },
+    {
+     "num": "#5",
+     "name": "Friend Again"
+    },
+    {
+     "num": "#6",
+     "name": "Somewhere In The Middle"
+    },
+    {
+     "num": "#7",
+     "name": "Crashing (with Kali Uchis)"
+    },
+    {
+     "num": "#9",
+     "name": "Is This Really Love?"
+    },
+    {
+     "num": "#10",
+     "name": "Where'd It Go Wrong?"
+    },
+    {
+     "num": "#11",
+     "name": "Feel It"
+    },
+    {
+     "num": "#12",
+     "name": "What Are You Waiting For"
+    },
+    {
+     "num": "#13",
+     "name": "One More Dance"
+    },
+    {
+     "num": "#14",
+     "name": "Ghost"
+    },
+    {
+     "num": "#15",
+     "name": "Afterlife"
+    }
+   ]
+  },
+  {
+   "era": "WITHERED",
+   "name": "WITHERED (Bonus Tracks)",
+   "date": "2025-05-30",
+   "quality": "Clear",
+   "source": "d4vd",
+   "links": [],
+   "description": "Official version of \"WITHERED\" with bonus tracks \"Where Did You Go?\" and \"Unrequited.\"",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Atomic Land"
+    },
+    {
+     "num": "#2",
+     "name": "Sky"
+    },
+    {
+     "num": "#3",
+     "name": "You Left Me First"
+    },
+    {
+     "num": "#4",
+     "name": "Say It Back"
+    },
+    {
+     "num": "#5",
+     "name": "Friend Again"
+    },
+    {
+     "num": "#6",
+     "name": "Somewhere In The Middle"
+    },
+    {
+     "num": "#7",
+     "name": "Crashing (with Kali Uchis)"
+    },
+    {
+     "num": "#9",
+     "name": "Is This Really Love?"
+    },
+    {
+     "num": "#10",
+     "name": "Where'd It Go Wrong?"
+    },
+    {
+     "num": "#11",
+     "name": "Feel It"
+    },
+    {
+     "num": "#12",
+     "name": "What Are You Waiting For"
+    },
+    {
+     "num": "#13",
+     "name": "One More Dance"
+    },
+    {
+     "num": "#14",
+     "name": "Unrequited - Bonus Track"
+    },
+    {
+     "num": "#15",
+     "name": "Ghost"
+    },
+    {
+     "num": "#16",
+     "name": "Where Did You Go? - Bonus Track"
+    },
+    {
+     "num": "#17",
+     "name": "Afterlife"
+    }
+   ]
+  },
+  {
+   "era": "Marcescence",
+   "name": "Fortnite Jam Tracks",
+   "date": "6/?/2025",
+   "quality": "Unavailable",
+   "source": "Leaked",
+   "links": [],
+   "description": "A bundle of songs recorded in June 2025 for a collaboration with Fortnite, where these \nsongs would be in the game as jam tracks and be performed at d4vd's own festival event.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Locked And Loaded"
+    },
+    {
+     "num": "#?",
+     "name": "Don't Leave Me In The Storm"
+    },
+    {
+     "num": "#?",
+     "name": "Promise"
+    },
+    {
+     "num": "#?",
+     "name": "Never Lose"
+    },
+    {
+     "num": "#?",
+     "name": "Running 4Ever"
+    }
+   ]
+  },
+  {
+   "era": "Marcescence",
+   "name": "Decay",
+   "date": "2025-07-02",
+   "quality": "Unavailable",
+   "source": "Insiders",
+   "links": [],
+   "description": "Early tracklist of WITHERED Deluxe: Marcescence with \"Issues\" as the intro track \nand scrapped track \"How I See You.\"",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Issues"
+    },
+    {
+     "num": "#14",
+     "name": "How I See You"
+    },
+    {
+     "num": "#?",
+     "name": "Take The Photos"
+    },
+    {
+     "num": "#?",
+     "name": "Summer Don't End",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#?",
+     "name": "Empty The Clip",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "I'm In Love",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    }
+   ]
+  },
+  {
+   "era": "Marcescence",
+   "name": "Marcescence",
+   "date": "",
+   "quality": "Unavailable",
+   "source": "d4vd",
+   "links": [],
+   "description": "Partial tracklist for the album posted to d4vd's Twitter/X\n\n1-7. ???",
+   "tracks": [
+    {
+     "num": "#8",
+     "name": "Always Love (feat. Hyunjin)"
+    },
+    {
+     "num": "#9",
+     "name": "I'm In Love",
+     "color": "#8E7CC3",
+     "colorLabel": "Alternate Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "11PM"
+    },
+    {
+     "num": "#11",
+     "name": "Summer Don't End (feat. keshi)"
+    },
+    {
+     "num": "#12",
+     "name": "Talking To Myself"
+    },
+    {
+     "num": "#13",
+     "name": "Affirmation"
+    },
+    {
+     "num": "#14",
+     "name": "???",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    }
+   ]
+  },
+  {
+   "era": "Marcescence",
+   "name": "WITHERED Deluxe: Marcescence",
+   "date": "2025-09-07",
+   "quality": "Clear",
+   "source": "d4vd",
+   "links": [],
+   "description": "Official tracklist for WITHERED Deluxe: Marcescence",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Favorite"
+    },
+    {
+     "num": "#2",
+     "name": "Issues"
+    },
+    {
+     "num": "#3",
+     "name": "Take The Photos (ft. Malcom Todd)"
+    },
+    {
+     "num": "#4",
+     "name": "How Do You Sleep?"
+    },
+    {
+     "num": "#5",
+     "name": "You Still Love Me"
+    },
+    {
+     "num": "#6",
+     "name": "Best Friend (ft. RealestK)"
+    },
+    {
+     "num": "#7",
+     "name": "I'm Good"
+    },
+    {
+     "num": "#8",
+     "name": "Always Love (ft. Hyunjin)"
+    },
+    {
+     "num": "#9",
+     "name": "11PM"
+    },
+    {
+     "num": "#10",
+     "name": "Summer Don't End (ft. keshi)"
+    },
+    {
+     "num": "#11",
+     "name": "Talking To Myself"
+    },
+    {
+     "num": "#12",
+     "name": "Affirmation"
+    },
+    {
+     "num": "#13",
+     "name": "L.O.V.E.U (ft. hannah bahng)"
+    },
+    {
+     "num": "#14",
+     "name": "Glue (ft. Julia Wolf)"
+    },
+    {
+     "num": "#15",
+     "name": "Front Line"
+    }
+   ]
+  },
+  {
+   "era": "Marcescence",
+   "name": "WITHERED Deluxe: Marcescence (Physical Version)",
+   "date": "N/A",
+   "quality": "Clear",
+   "source": "Insiders",
+   "links": [],
+   "description": "Physical version of WITHERED Deluxe: Marcescence with bonus track \"Floating.\"",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Favorite"
+    },
+    {
+     "num": "#2",
+     "name": "Issues"
+    },
+    {
+     "num": "#3",
+     "name": "Take The Photos (ft. Malcom Todd)"
+    },
+    {
+     "num": "#4",
+     "name": "How Do You Sleep?"
+    },
+    {
+     "num": "#5",
+     "name": "You Still Love Me"
+    },
+    {
+     "num": "#6",
+     "name": "Best Friend (ft. RealestK)"
+    },
+    {
+     "num": "#7",
+     "name": "I'm Good"
+    },
+    {
+     "num": "#8",
+     "name": "Always Love (ft. Hyunjin)"
+    },
+    {
+     "num": "#9",
+     "name": "11PM"
+    },
+    {
+     "num": "#10",
+     "name": "Summer Don't End (ft. keshi)"
+    },
+    {
+     "num": "#11",
+     "name": "Talking To Myself"
+    },
+    {
+     "num": "#12",
+     "name": "Affirmation"
+    },
+    {
+     "num": "#13",
+     "name": "L.O.V.E.U (ft. hannah bahng)"
+    },
+    {
+     "num": "#14",
+     "name": "Glue (ft. Julia Wolf)"
+    },
+    {
+     "num": "#15",
+     "name": "Front Line"
+    },
+    {
+     "num": "#16",
+     "name": "Floating - Bonus Track"
+    }
+   ]
+  },
+  {
+   "era": "WITHERED",
+   "name": "WITHERED [V3]",
+   "date": "2025-10-01",
+   "quality": "Clear",
+   "source": "Darkroom/Interscope",
+   "links": [],
+   "description": "Newest available tracklist for WITHERED after the removal of \"Crashing\" from streaming services.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Atomic Land"
+    },
+    {
+     "num": "#2",
+     "name": "Sky"
+    },
+    {
+     "num": "#3",
+     "name": "You Left Me First"
+    },
+    {
+     "num": "#4",
+     "name": "Say It Back"
+    },
+    {
+     "num": "#5",
+     "name": "Friend Again"
+    },
+    {
+     "num": "#6",
+     "name": "Somewhere In The Middle"
+    },
+    {
+     "num": "#8",
+     "name": "Is This Really Love?"
+    },
+    {
+     "num": "#9",
+     "name": "Where'd It Go Wrong?"
+    },
+    {
+     "num": "#10",
+     "name": "Feel It"
+    },
+    {
+     "num": "#11",
+     "name": "What Are You Waiting For"
+    },
+    {
+     "num": "#12",
+     "name": "One More Dance"
+    },
+    {
+     "num": "#13",
+     "name": "Unrequited - Bonus Track"
+    },
+    {
+     "num": "#14",
+     "name": "Ghost"
+    },
+    {
+     "num": "#15",
+     "name": "Where Did You Go? - Bonus Track"
+    },
+    {
+     "num": "#16",
+     "name": "Afterlife"
+    }
+   ]
+  },
+  {
+   "era": "Petals To Thorns",
+   "name": "Petals To Thorns [V3]",
+   "date": "2025-10-01",
+   "quality": "Clear",
+   "source": "Darkroom/Interscope",
+   "links": [],
+   "description": "Newest available tracklist for Petals To Thorns after the removal of \"This Is How It Feels\" from \nstreaming services",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Sleep Well"
+    },
+    {
+     "num": "#2",
+     "name": "Here With Me"
+    },
+    {
+     "num": "#3",
+     "name": "Don't Forget About Me"
+    },
+    {
+     "num": "#4",
+     "name": "WORTHLESS"
+    },
+    {
+     "num": "#5",
+     "name": "Backstreet Girl"
+    },
+    {
+     "num": "#6",
+     "name": "You And I"
+    },
+    {
+     "num": "#7",
+     "name": "Romantic Homicide"
+    },
+    {
+     "num": "#8",
+     "name": "The Bridge"
+    }
+   ]
+  },
+  {
+   "era": "Post-Incident",
+   "name": "Jesus, I",
+   "date": "?/?/2026",
+   "quality": "Unavailable",
+   "source": "Insiders",
+   "links": [],
+   "description": "Sources say that d4vd recorded an entire gospel album with 15 tracks \nthat was mostly complete. Tracklist order is currently unknown.\n\n1-15. ???",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Ever Known",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "The Hymn",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "For It All",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "I Need You Now",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Sins Of The Father (Cover)",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "So Will I",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "I Believe",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Safe",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Trust In You",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Near",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Nobody Greater",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "I Remember",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    },
+    {
+     "num": "#?",
+     "name": "Jesus, I",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet"
+    }
+   ]
+  }
+ ]
+}

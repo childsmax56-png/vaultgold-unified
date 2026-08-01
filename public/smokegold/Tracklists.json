@@ -1,1426 +1,1389 @@
-[
+{
+ "legend": [
   {
-    "era": "Meet The Woo 1",
-    "name": "Meet The Woo, Vol. 1",
-    "date": "Jul 26, 2019",
-    "quality": "Clear",
-    "source": "Pop Smoke",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Meet The Woo"
-      },
-      {
-        "num": "2.",
-        "name": "Welcome To The Party"
-      },
-      {
-        "num": "3.",
-        "name": "Hawk Em"
-      },
-      {
-        "num": "4.",
-        "name": "Better Have Your Gun"
-      },
-      {
-        "num": "5.",
-        "name": "Scenario"
-      },
-      {
-        "num": "6.",
-        "name": "Dior"
-      },
-      {
-        "num": "7.",
-        "name": "Feeling"
-      },
-      {
-        "num": "8.",
-        "name": "PTSD"
-      },
-      {
-        "num": "9.",
-        "name": "Brother Man"
-      }
-    ]
+   "label": "Unknown",
+   "color": "#999999"
   },
   {
-    "era": "Meet The Woo 1",
-    "name": "Meet The Woo, Vol. 1 (Deluxe Version)",
-    "date": "Sep 13, 2019",
-    "quality": "Clear",
-    "source": "Pop Smoke",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Meet The Woo"
-      },
-      {
-        "num": "2.",
-        "name": "Welcome To The Party"
-      },
-      {
-        "num": "3.",
-        "name": "Hawk Em"
-      },
-      {
-        "num": "4.",
-        "name": "Better Have Your Gun"
-      },
-      {
-        "num": "5.",
-        "name": "Scenario"
-      },
-      {
-        "num": "6.",
-        "name": "Dior"
-      },
-      {
-        "num": "7.",
-        "name": "Feeling"
-      },
-      {
-        "num": "8.",
-        "name": "PTSD"
-      },
-      {
-        "num": "9.",
-        "name": "Brother Man"
-      },
-      {
-        "num": "10.",
-        "name": "Welcome To The Party (feat. Nicki Minaj) [Remix]"
-      },
-      {
-        "num": "11.",
-        "name": "Welcome To The Party (feat. Skepta) [Remix]"
-      }
-    ]
+   "label": "Completely Unheard",
+   "color": "#E06666"
   },
   {
-    "era": "Meet The Woo 2",
-    "name": "Meet The Woo, Vol. 2 [Original Tracklist]",
-    "date": "Jan 7, 2020",
-    "quality": "Clear",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "*",
-        "name": "Diana"
-      },
-      {
-        "num": "*",
-        "name": "Foreigner"
-      },
-      {
-        "num": "*",
-        "name": "Shake the Room"
-      },
-      {
-        "num": "*",
-        "name": "Christopher Walken (Christopher Walking)"
-      },
-      {
-        "num": "*",
-        "name": "44 Bulldog"
-      },
-      {
-        "num": "*",
-        "name": "Mannequin"
-      },
-      {
-        "num": "*",
-        "name": "Invincible"
-      },
-      {
-        "num": "*",
-        "name": "Perc 30 (Dreaming)"
-      },
-      {
-        "num": "*",
-        "name": "Yea Yea"
-      },
-      {
-        "num": "*",
-        "name": "AP * Double G"
-      },
-      {
-        "num": "*",
-        "name": "Hotel Lobby"
-      },
-      {
-        "num": "*",
-        "name": "Armed & Dangerous (Armed N Dangerous)"
-      }
-    ]
+   "label": "Snippet / Partial / Recording Available",
+   "color": "#F6B26B"
   },
   {
-    "era": "Meet The Woo 2",
-    "name": "Meet The Woo, Vol. 2",
-    "date": "Feb 7, 2020",
-    "quality": "Clear",
-    "source": "Pop Smoke",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Invincible"
-      },
-      {
-        "num": "2.",
-        "name": "Shake The Room (feat. Quavo)"
-      },
-      {
-        "num": "3.",
-        "name": "Get Back"
-      },
-      {
-        "num": "4.",
-        "name": "Christopher Walking"
-      },
-      {
-        "num": "5.",
-        "name": "Foreigner (feat. A Boogie wit da Hoodie)"
-      },
-      {
-        "num": "6.",
-        "name": "Sweetheart (feat. Fivio Foreign)"
-      },
-      {
-        "num": "7.",
-        "name": "Element"
-      },
-      {
-        "num": "8.",
-        "name": "Armed N Dangerous (Charlie Sloth Freestyle)"
-      },
-      {
-        "num": "9.",
-        "name": "Mannequin (feat. Lil Tjay)"
-      },
-      {
-        "num": "10.",
-        "name": "Dreaming"
-      },
-      {
-        "num": "11.",
-        "name": "She Got A Thing"
-      },
-      {
-        "num": "12.",
-        "name": "Dior (Bonus)"
-      },
-      {
-        "num": "13.",
-        "name": "War (feat. Lil Tjay) [Bonus]"
-      }
-    ]
+   "label": "Alternate Version Available",
+   "color": "#93C47D"
   },
   {
-    "era": "Meet The Woo 2",
-    "name": "Meet The Woo, Vol. 2 (Deluxe)",
-    "date": "Feb 12, 2020",
-    "quality": "Clear",
-    "source": "Pop Smoke",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Invincible"
-      },
-      {
-        "num": "2.",
-        "name": "Shake The Room (feat. Quavo)"
-      },
-      {
-        "num": "3.",
-        "name": "Get Back"
-      },
-      {
-        "num": "4.",
-        "name": "Christopher Walking"
-      },
-      {
-        "num": "5.",
-        "name": "Foreigner (feat. A Boogie wit da Hoodie)"
-      },
-      {
-        "num": "6.",
-        "name": "Sweetheart (feat. Fivio Foreign)"
-      },
-      {
-        "num": "7.",
-        "name": "Element"
-      },
-      {
-        "num": "8.",
-        "name": "Armed N Dangerous (Charlie Sloth Freestyle)"
-      },
-      {
-        "num": "9.",
-        "name": "Mannequin (feat. Lil Tjay)"
-      },
-      {
-        "num": "10.",
-        "name": "Dreaming"
-      },
-      {
-        "num": "11.",
-        "name": "She Got A Thing"
-      },
-      {
-        "num": "12.",
-        "name": "Dior (Bonus)"
-      },
-      {
-        "num": "13.",
-        "name": "War (feat. Lil Tjay) [Bonus]"
-      },
-      {
-        "num": "14.",
-        "name": "Wolves (feat. NAV)"
-      },
-      {
-        "num": "15.",
-        "name": "Dior (Remix) [feat. Gunna]"
-      },
-      {
-        "num": "16.",
-        "name": "Like Me (feat. PnB Rock)"
-      }
-    ]
-  },
-  {
-    "era": "PS3",
-    "name": "PS3",
-    "date": "Feb 19, 2020",
-    "quality": "",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Aim For The Moon (feat. Quavo)"
-      },
-      {
-        "num": "?.",
-        "name": "For The Night (feat. Tafia)"
-      },
-      {
-        "num": "?.",
-        "name": "Gangstas"
-      },
-      {
-        "num": "?.",
-        "name": "What You Know Bout Love"
-      },
-      {
-        "num": "?.",
-        "name": "Yea Yea"
-      }
-    ]
-  },
-  {
-    "era": "SFTSAFTM",
-    "name": "Shoot For The Stars Aim For The Moon [Original Tracklist]",
-    "date": "",
-    "quality": "",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?.",
-        "name": "Make It Rain (feat. Rowdy Rebel)"
-      },
-      {
-        "num": "#?.",
-        "name": "Tsunami (feat. Davido)"
-      },
-      {
-        "num": "#?.",
-        "name": "The Woo (feat. Roddy Ricch & 50 Cent)"
-      },
-      {
-        "num": "#?.",
-        "name": "Got It On Me"
-      }
-    ]
-  },
-  {
-    "era": "SFTSAFTM",
-    "name": "Shoot For The Stars Aim For The Moon [Original Tracklist]",
-    "date": "Jun 30, 2020",
-    "quality": "Clear",
-    "source": "Victor Victor Worldwide",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Bad Bitch From Tokyo (Intro)"
-      },
-      {
-        "num": "2.",
-        "name": "Aim For The Moon feat. Quavo"
-      },
-      {
-        "num": "3.",
-        "name": "For The Night feat. Lil Baby & DaBaby"
-      },
-      {
-        "num": "4.",
-        "name": "44 BullDog"
-      },
-      {
-        "num": "5.",
-        "name": "Gangstas"
-      },
-      {
-        "num": "6.",
-        "name": "Yea Yea"
-      },
-      {
-        "num": "7.",
-        "name": "Creature feat. Swae Lee"
-      },
-      {
-        "num": "8.",
-        "name": "Snitchin' feat. Quavo, Polo G & Future"
-      },
-      {
-        "num": "9.",
-        "name": "Make It Rain feat. Rowdy Rebel"
-      },
-      {
-        "num": "10.",
-        "name": "The Woo feat. 50 Cent & Roddy Ricch"
-      },
-      {
-        "num": "11.",
-        "name": "West Coast feat. Tyga & Quavo"
-      },
-      {
-        "num": "12.",
-        "name": "Enjoy Yourself feat. Karol G"
-      },
-      {
-        "num": "13.",
-        "name": "Hotel Lobby"
-      },
-      {
-        "num": "14.",
-        "name": "Something Special"
-      },
-      {
-        "num": "15.",
-        "name": "What You Know Bout Love"
-      },
-      {
-        "num": "16.",
-        "name": "Diana feat. King Combs"
-      },
-      {
-        "num": "17.",
-        "name": "Got It On Me"
-      },
-      {
-        "num": "18.",
-        "name": "Tunnel Vision (Outro)"
-      },
-      {
-        "num": "19.",
-        "name": "Dior"
-      }
-    ]
-  },
-  {
-    "era": "SFTSAFTM",
-    "name": "Shoot For The Stars Aim For The Moon (Deluxe) [Original Tracklist]",
-    "date": "",
-    "quality": "",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Bad Bitch From Tokyo (Intro)"
-      },
-      {
-        "num": "2.",
-        "name": "Aim For The Moon feat. Quavo"
-      },
-      {
-        "num": "3.",
-        "name": "For The Night feat. Lil Baby & DaBaby"
-      },
-      {
-        "num": "4.",
-        "name": "44 BullDog"
-      },
-      {
-        "num": "5.",
-        "name": "Gangstas"
-      },
-      {
-        "num": "6.",
-        "name": "Yea Yea"
-      },
-      {
-        "num": "7.",
-        "name": "Creature feat. Swae Lee"
-      },
-      {
-        "num": "8.",
-        "name": "Snitchin' feat. Quavo, Polo G & Future"
-      },
-      {
-        "num": "9.",
-        "name": "Make It Rain feat. Rowdy Rebel"
-      },
-      {
-        "num": "10.",
-        "name": "The Woo feat. 50 Cent & Roddy Ricch"
-      },
-      {
-        "num": "11.",
-        "name": "West Coast feat. Tyga & Quavo"
-      },
-      {
-        "num": "12.",
-        "name": "Enjoy Yourself feat. Karol G"
-      },
-      {
-        "num": "13.",
-        "name": "Hotel Lobby"
-      },
-      {
-        "num": "14.",
-        "name": "Something Special"
-      },
-      {
-        "num": "15.",
-        "name": "What You Know Bout Love"
-      },
-      {
-        "num": "16.",
-        "name": "Diana feat. King Combs"
-      },
-      {
-        "num": "17.",
-        "name": "Got It On Me"
-      },
-      {
-        "num": "18.",
-        "name": "Tunnel Vision (Outro)"
-      },
-      {
-        "num": "19.",
-        "name": "Dior"
-      },
-      {
-        "num": "20.",
-        "name": "??"
-      },
-      {
-        "num": "21.",
-        "name": "??"
-      },
-      {
-        "num": "22.",
-        "name": "??"
-      },
-      {
-        "num": "23.",
-        "name": "??"
-      },
-      {
-        "num": "24.",
-        "name": "??"
-      },
-      {
-        "num": "25.",
-        "name": "??"
-      },
-      {
-        "num": "26.",
-        "name": "??"
-      },
-      {
-        "num": "27.",
-        "name": "??"
-      }
-    ]
-  },
-  {
-    "era": "SFTSAFTM",
-    "name": "Shoot For The Stars Aim For The Moon [Original Tracklist]",
-    "date": "Jul 3, 2020",
-    "quality": "Clear",
-    "source": "Victor Victor Worldwide",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Bad Bitch From Tokyo (Intro)"
-      },
-      {
-        "num": "2.",
-        "name": "Aim For The Moon feat. Quavo"
-      },
-      {
-        "num": "3.",
-        "name": "For The Night feat. Lil Baby & DaBaby"
-      },
-      {
-        "num": "4.",
-        "name": "44 BullDog"
-      },
-      {
-        "num": "5.",
-        "name": "Paranoia feat. Young Thug, Gunna & Pusha T"
-      },
-      {
-        "num": "6.",
-        "name": "Gangstas"
-      },
-      {
-        "num": "7.",
-        "name": "Yea Yea"
-      },
-      {
-        "num": "8.",
-        "name": "Creature feat. Swae Lee"
-      },
-      {
-        "num": "9.",
-        "name": "Snitching feat. Quavo & Future"
-      },
-      {
-        "num": "10.",
-        "name": "Make It Rain feat. Rowdy Rebel"
-      },
-      {
-        "num": "11.",
-        "name": "The Woo feat. 50 Cent & Roddy Ricch"
-      },
-      {
-        "num": "12.",
-        "name": "West Coast Shit feat. Tyga & Quavo"
-      },
-      {
-        "num": "13.",
-        "name": "Enjoy Yourself feat. Karol G"
-      },
-      {
-        "num": "14.",
-        "name": "Mood Swings feat. Lil Tjay"
-      },
-      {
-        "num": "15.",
-        "name": "Something Special"
-      },
-      {
-        "num": "16.",
-        "name": "What You Know Bout Love"
-      },
-      {
-        "num": "17.",
-        "name": "Diana feat. King Combs"
-      },
-      {
-        "num": "18.",
-        "name": "Got It On Me"
-      },
-      {
-        "num": "19.",
-        "name": "Tunnel Vision (Outro)"
-      },
-      {
-        "num": "20.",
-        "name": "Dior"
-      }
-    ]
-  },
-  {
-    "era": "SFTSAFTM",
-    "name": "Shoot For The Stars Aim For The Moon",
-    "date": "Jul 3, 2020",
-    "quality": "Clear",
-    "source": "Victor Victor Worldwide",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Bad Bitch From Tokyo (Intro)"
-      },
-      {
-        "num": "2.",
-        "name": "Aim For The Moon feat. Quavo"
-      },
-      {
-        "num": "3.",
-        "name": "For The Night feat. Lil Baby & DaBaby"
-      },
-      {
-        "num": "4.",
-        "name": "44 BullDog"
-      },
-      {
-        "num": "5.",
-        "name": "Gangstas"
-      },
-      {
-        "num": "6.",
-        "name": "Yea Yea"
-      },
-      {
-        "num": "7.",
-        "name": "Creature feat. Swae Lee"
-      },
-      {
-        "num": "8.",
-        "name": "Snitching feat. Quavo & Future"
-      },
-      {
-        "num": "9.",
-        "name": "Make It Rain feat. Rowdy Rebel"
-      },
-      {
-        "num": "10.",
-        "name": "The Woo feat. 50 Cent & Roddy Ricch"
-      },
-      {
-        "num": "11.",
-        "name": "West Coast Shit feat. Tyga & Quavo"
-      },
-      {
-        "num": "12.",
-        "name": "Enjoy Yourself feat. Karol G"
-      },
-      {
-        "num": "13.",
-        "name": "Mood Swings feat. Lil Tjay"
-      },
-      {
-        "num": "14.",
-        "name": "Something Special"
-      },
-      {
-        "num": "15.",
-        "name": "What You Know Bout Love"
-      },
-      {
-        "num": "16.",
-        "name": "Diana feat. King Combs"
-      },
-      {
-        "num": "17.",
-        "name": "Got It On Me"
-      },
-      {
-        "num": "18.",
-        "name": "Tunnel Vision (Outro)"
-      },
-      {
-        "num": "19.",
-        "name": "Dior"
-      }
-    ]
-  },
-  {
-    "era": "SFTSAFTM (Deluxe)",
-    "name": "Shoot For The Stars Aim For The Moon (Deluxe)",
-    "date": "Jul 20, 2020",
-    "quality": "Clear",
-    "source": "Victor Victor Worldwide",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Bad Bitch From Tokyo (Intro)"
-      },
-      {
-        "num": "2.",
-        "name": "Aim For The Moon feat. Quavo"
-      },
-      {
-        "num": "3.",
-        "name": "For The Night feat. Lil Baby & DaBaby"
-      },
-      {
-        "num": "4.",
-        "name": "44 BullDog"
-      },
-      {
-        "num": "5.",
-        "name": "Gangstas"
-      },
-      {
-        "num": "6.",
-        "name": "Yea Yea"
-      },
-      {
-        "num": "7.",
-        "name": "Creature feat. Swae Lee"
-      },
-      {
-        "num": "8.",
-        "name": "Snitching feat. Quavo & Future"
-      },
-      {
-        "num": "9.",
-        "name": "Make It Rain feat. Rowdy Rebel"
-      },
-      {
-        "num": "10.",
-        "name": "The Woo feat. 50 Cent & Roddy Ricch"
-      },
-      {
-        "num": "11.",
-        "name": "West Coast Shit feat. Tyga & Quavo"
-      },
-      {
-        "num": "12.",
-        "name": "Enjoy Yourself feat. Karol G"
-      },
-      {
-        "num": "13.",
-        "name": "Mood Swings feat. Lil Tjay"
-      },
-      {
-        "num": "14.",
-        "name": "Something Special"
-      },
-      {
-        "num": "15.",
-        "name": "What You Know Bout Love"
-      },
-      {
-        "num": "16.",
-        "name": "Diana feat. King Combs"
-      },
-      {
-        "num": "17.",
-        "name": "Got It On Me"
-      },
-      {
-        "num": "18.",
-        "name": "Tunnel Vision (Outro)"
-      },
-      {
-        "num": "19.",
-        "name": "Dior"
-      },
-      {
-        "num": "20.",
-        "name": "Hotel Lobby"
-      },
-      {
-        "num": "21.",
-        "name": "Showin Off, Pt. 1 (feat. Fivio Foreign)"
-      },
-      {
-        "num": "22.",
-        "name": "Showin Off, Pt. 2 (feat. Fivio Foreign)"
-      },
-      {
-        "num": "23.",
-        "name": "Iced Out Audemars (feat. Dafi Woo)"
-      },
-      {
-        "num": "24.",
-        "name": "Woo Year (feat. Dread Woo)"
-      },
-      {
-        "num": "25.",
-        "name": "Tsunami (feat. Davido)"
-      },
-      {
-        "num": "26.",
-        "name": "Backseat (feat. PnB Rock)"
-      },
-      {
-        "num": "27.",
-        "name": "Imperfections (Interlude)"
-      },
-      {
-        "num": "28.",
-        "name": "She Feelin Nice (feat. Jamie Foxx)"
-      },
-      {
-        "num": "29.",
-        "name": "Paranoia (feat. Gunna & Young Thug)"
-      },
-      {
-        "num": "30.",
-        "name": "Hello (feat. A Boogie wit da Hoodie)"
-      },
-      {
-        "num": "31.",
-        "name": "Be Clearr"
-      },
-      {
-        "num": "32.",
-        "name": "Yea Yea (Remix) [feat. Queen Naija]"
-      },
-      {
-        "num": "33.",
-        "name": "Diana (Remix) [feat. King Combs & Calboy]"
-      },
-      {
-        "num": "34.",
-        "name": "Enjoy Yourself (Remix) [feat. Burna Boy]"
-      }
-    ]
-  },
-  {
-    "era": "Boogie",
-    "name": "Boogie: Original Motion Picture Soundtrack",
-    "date": "Mar 4, 2021",
-    "quality": "Clear",
-    "source": "Victor Victor Worldwide",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "AP"
-      },
-      {
-        "num": "2.",
-        "name": "Fashion (feat. Polo G)"
-      },
-      {
-        "num": "3.",
-        "name": "No Cap (feat. M24) [Remix]"
-      },
-      {
-        "num": "4.",
-        "name": "Up It by Mula 10k"
-      },
-      {
-        "num": "5.",
-        "name": "Need It by Nycani"
-      },
-      {
-        "num": "6.",
-        "name": "Plug Speak Taiwanese (feat. Eddie Huang) by Bad Boy Raco G"
-      },
-      {
-        "num": "7.",
-        "name": "Faded by Jacquees"
-      },
-      {
-        "num": "8.",
-        "name": "Big Drip by Fivio Foreign"
-      },
-      {
-        "num": "9.",
-        "name": "So Pay La by Triad God"
-      },
-      {
-        "num": "10.",
-        "name": "Stylin by Bella Siu & Bad Boy Raco G"
-      },
-      {
-        "num": "11.",
-        "name": "Mr. Chin by Yellowman"
-      },
-      {
-        "num": "12.",
-        "name": "When It's All Over by Kamaal Williams"
-      },
-      {
-        "num": "13.",
-        "name": "Fear Over Love by Sheff G"
-      },
-      {
-        "num": "14.",
-        "name": "Welcome to the Party"
-      }
-    ]
-  },
-  {
-    "era": "Faith",
-    "name": "Faith [Demo Tracklist]",
-    "date": "2021",
-    "quality": "Blocked",
-    "source": "Secondary",
-    "links": [
-      "https://cdn.discordapp.com/attachments/1122579747654869014/1143760578154856488/image.png"
-    ],
-    "tracks": [
-      {
-        "num": "*",
-        "name": "Trailer"
-      },
-      {
-        "num": "*",
-        "name": "S- (Spoiled?)"
-      },
-      {
-        "num": "*",
-        "name": "8-Ball"
-      },
-      {
-        "num": "*",
-        "name": "Beat The Speaker"
-      },
-      {
-        "num": "*",
-        "name": "What's Crackin"
-      },
-      {
-        "num": "*",
-        "name": "Jewels"
-      },
-      {
-        "num": "*",
-        "name": "H- (How We Move?)"
-      },
-      {
-        "num": "*",
-        "name": "More Time"
-      },
-      {
-        "num": "*",
-        "name": "Manslaughter"
-      },
-      {
-        "num": "*",
-        "name": "Tiger"
-      },
-      {
-        "num": "*",
-        "name": "30"
-      },
-      {
-        "num": "*",
-        "name": "Genius"
-      }
-    ]
-  },
-  {
-    "era": "Faith",
-    "name": "Faith [Original Tracklist]",
-    "date": "2021",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [
-      "https://cdn.discordapp.com/attachments/1189072112678359060/1189100121636487168/image.png?ex=659ceec9&is=658a79c9&hm=304eedbbce735e67b08c62d8642bdf3433c490aef86a1953686c02232d690626&"
-    ],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Spoiled (feat. Pharrell Williams)"
-      },
-      {
-        "num": "2.",
-        "name": "8-Ball (feat. Kid Cudi)"
-      },
-      {
-        "num": "3.",
-        "name": "Beat The Speaker"
-      },
-      {
-        "num": "4.",
-        "name": "What's Crackin (feat. Takeoff)"
-      },
-      {
-        "num": "5.",
-        "name": "Jewels (feat. 21 Savage)"
-      },
-      {
-        "num": "6.",
-        "name": "How We Move (feat. Dave East)"
-      },
-      {
-        "num": "7.",
-        "name": "More Time"
-      },
-      {
-        "num": "8.",
-        "name": "Manslaughter (feat. Dafi Woo & Dread Woo)"
-      },
-      {
-        "num": "9.",
-        "name": "Tiger (feat. Fivio Foreign)"
-      },
-      {
-        "num": "10.",
-        "name": "Genius (feat. Lil Tjay & Swae Lee)"
-      },
-      {
-        "num": "11.",
-        "name": "Run Down (feat. OnPointLikeOP & G Herbo)"
-      },
-      {
-        "num": "12.",
-        "name": "Mr. Jones (feat. Future)"
-      },
-      {
-        "num": "13.",
-        "name": "30 (feat. Bizzy Banks)"
-      },
-      {
-        "num": "14.",
-        "name": "Brush Em (feat. Rah Swish)"
-      },
-      {
-        "num": "15.",
-        "name": "Top Shotta (feat. Eli Fross)"
-      },
-      {
-        "num": "16.",
-        "name": "Coupe"
-      },
-      {
-        "num": "17.",
-        "name": "Demeanor (feat. Dua Lipa & Nicki Minaj)"
-      },
-      {
-        "num": "18.",
-        "name": "Woo Baby (feat. Chris Brown & Tory Lanez)"
-      },
-      {
-        "num": "19.",
-        "name": "Questions"
-      },
-      {
-        "num": "20.",
-        "name": "Back Door (feat. YoungBoy Never Broke Again)"
-      },
-      {
-        "num": "21.",
-        "name": "Merci Beaucoup (feat. Rah Swish)"
-      }
-    ]
-  },
-  {
-    "era": "Faith",
-    "name": "Faith",
-    "date": "Jul 16, 2021",
-    "quality": "Clear",
-    "source": "Victor Victor Worldwide",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Good News"
-      },
-      {
-        "num": "2.",
-        "name": "More Time"
-      },
-      {
-        "num": "3.",
-        "name": "Tell The Vision (feat. Kanye West & Pusha T)"
-      },
-      {
-        "num": "4.",
-        "name": "Manslaughter (feat. Rick Ross & The-Dream)"
-      },
-      {
-        "num": "5.",
-        "name": "Bout A Million (feat. 21 Savage & 42 Dugg)"
-      },
-      {
-        "num": "6.",
-        "name": "Brush Em (feat. Rah Swish)"
-      },
-      {
-        "num": "7.",
-        "name": "Top Shotta (with The Neptunes) (feat. Pusha T, TRAVI & Beam)"
-      },
-      {
-        "num": "8.",
-        "name": "30 (feat. Bizzy Banks)"
-      },
-      {
-        "num": "9.",
-        "name": "Beat The Speaker"
-      },
-      {
-        "num": "10.",
-        "name": "Coupe"
-      },
-      {
-        "num": "11.",
-        "name": "What's Crackin (feat. Takeoff)"
-      },
-      {
-        "num": "12.",
-        "name": "Genius (with Lil Tjay & Swae Lee)"
-      },
-      {
-        "num": "13.",
-        "name": "Mr. Jones (feat. Future)"
-      },
-      {
-        "num": "14.",
-        "name": "Woo Baby Interlude"
-      },
-      {
-        "num": "15.",
-        "name": "Woo Baby (feat. Chris Brown)"
-      },
-      {
-        "num": "16.",
-        "name": "Demeanor (feat. Dua Lipa)"
-      },
-      {
-        "num": "17.",
-        "name": "Spoiled (feat. Pharrell Williams)"
-      },
-      {
-        "num": "18.",
-        "name": "8-Ball (feat. Kid Cudi)"
-      },
-      {
-        "num": "19.",
-        "name": "Back Door (feat. Quavo & Kodak Black)"
-      },
-      {
-        "num": "20.",
-        "name": "Merci Beaucoup"
-      }
-    ]
-  },
-  {
-    "era": "Faith",
-    "name": "Faith (Birthday Pack)",
-    "date": "Jul 20, 2021",
-    "quality": "Clear",
-    "source": "Victor Victor Worldwide",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Good News"
-      },
-      {
-        "num": "2.",
-        "name": "More Time"
-      },
-      {
-        "num": "3.",
-        "name": "Tell The Vision (feat. Kanye West & Pusha T)"
-      },
-      {
-        "num": "4.",
-        "name": "Manslaughter (feat. Rick Ross & The-Dream)"
-      },
-      {
-        "num": "5.",
-        "name": "Bout A Million (feat. 21 Savage & 42 Dugg)"
-      },
-      {
-        "num": "6.",
-        "name": "Brush Em (feat. Rah Swish)"
-      },
-      {
-        "num": "7.",
-        "name": "Top Shotta (with The Neptunes) (feat. Pusha T, TRAVI & Beam)"
-      },
-      {
-        "num": "8.",
-        "name": "30 (feat. Bizzy Banks)"
-      },
-      {
-        "num": "9.",
-        "name": "Beat The Speaker"
-      },
-      {
-        "num": "10.",
-        "name": "Coupe"
-      },
-      {
-        "num": "11.",
-        "name": "What's Crackin (feat. Takeoff)"
-      },
-      {
-        "num": "12.",
-        "name": "Genius (with Lil Tjay & Swae Lee)"
-      },
-      {
-        "num": "13.",
-        "name": "Mr. Jones (feat. Future)"
-      },
-      {
-        "num": "14.",
-        "name": "Woo Baby Interlude"
-      },
-      {
-        "num": "15.",
-        "name": "Woo Baby (feat. Chris Brown)"
-      },
-      {
-        "num": "16.",
-        "name": "Demeanor (feat. Dua Lipa)"
-      },
-      {
-        "num": "17.",
-        "name": "Spoiled (feat. Pharrell Williams)"
-      },
-      {
-        "num": "18.",
-        "name": "8-Ball (feat. Kid Cudi)"
-      },
-      {
-        "num": "19.",
-        "name": "Back Door (feat. Quavo & Kodak Black)"
-      },
-      {
-        "num": "20.",
-        "name": "Merci Beaucoup"
-      },
-      {
-        "num": "21.",
-        "name": "Questions"
-      },
-      {
-        "num": "22.",
-        "name": "Run Down (feat. OnPointLikeOP & G Herbo)"
-      },
-      {
-        "num": "23.",
-        "name": "Money Man (feat. Killa)"
-      },
-      {
-        "num": "24.",
-        "name": "Defiant (feat. Dread Woo & TRAVI)"
-      }
-    ]
-  },
-  {
-    "era": "Faith",
-    "name": "Faith (Deluxe)",
-    "date": "Jul 31, 2021",
-    "quality": "Clear",
-    "source": "Victor Victor Worldwide",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1.",
-        "name": "Good News"
-      },
-      {
-        "num": "2.",
-        "name": "More Time"
-      },
-      {
-        "num": "3.",
-        "name": "Tell The Vision (feat. Kanye West & Pusha T)"
-      },
-      {
-        "num": "4.",
-        "name": "Manslaughter (feat. Rick Ross & The-Dream)"
-      },
-      {
-        "num": "5.",
-        "name": "Bout A Million (feat. 21 Savage & 42 Dugg)"
-      },
-      {
-        "num": "6.",
-        "name": "Brush Em (feat. Rah Swish)"
-      },
-      {
-        "num": "7.",
-        "name": "Top Shotta (with The Neptunes) (feat. Pusha T, TRAVI & Beam)"
-      },
-      {
-        "num": "8.",
-        "name": "30 (feat. Bizzy Banks)"
-      },
-      {
-        "num": "9.",
-        "name": "Beat The Speaker"
-      },
-      {
-        "num": "10.",
-        "name": "Coupe"
-      },
-      {
-        "num": "11.",
-        "name": "What's Crackin (feat. Takeoff)"
-      },
-      {
-        "num": "12.",
-        "name": "Genius (with Lil Tjay & Swae Lee)"
-      },
-      {
-        "num": "13.",
-        "name": "Mr. Jones (feat. Future)"
-      },
-      {
-        "num": "14.",
-        "name": "Woo Baby Interlude"
-      },
-      {
-        "num": "15.",
-        "name": "Woo Baby (feat. Chris Brown)"
-      },
-      {
-        "num": "16.",
-        "name": "Demeanor (feat. Dua Lipa)"
-      },
-      {
-        "num": "17.",
-        "name": "Spoiled (feat. Pharrell Williams)"
-      },
-      {
-        "num": "18.",
-        "name": "8-Ball (feat. Kid Cudi)"
-      },
-      {
-        "num": "19.",
-        "name": "Back Door (feat. Quavo & Kodak Black)"
-      },
-      {
-        "num": "20.",
-        "name": "Merci Beaucoup"
-      },
-      {
-        "num": "21.",
-        "name": "Questions"
-      },
-      {
-        "num": "22.",
-        "name": "Run Down (feat. OnPointLikeOP & G Herbo)"
-      },
-      {
-        "num": "23.",
-        "name": "Money Man (feat. Killa)"
-      },
-      {
-        "num": "24.",
-        "name": "Defiant (feat. Dread Woo & TRAVI)"
-      },
-      {
-        "num": "25.",
-        "name": "Rumble (feat. Tayy Floss)"
-      },
-      {
-        "num": "26.",
-        "name": "Don't Know Em (with Rah Swish)"
-      },
-      {
-        "num": "27.",
-        "name": "Double It (feat. Fetty Luciano)"
-      },
-      {
-        "num": "28.",
-        "name": "Mr. Jones (with Anuel AA)"
-      },
-      {
-        "num": "29.",
-        "name": "Bad Boys (feat. Obasi Jackson)"
-      },
-      {
-        "num": "30.",
-        "name": "Dior"
-      }
-    ]
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
   }
-]
+ ],
+ "albums": [
+  {
+   "era": "Meet The Woo 1",
+   "name": "Meet The Woo, Vol. 1",
+   "date": "2019-07-26",
+   "quality": "Clear",
+   "source": "Pop Smoke",
+   "links": [],
+   "description": "Official tracklist for Meet The Woo, Vol. 1.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Meet The Woo"
+    },
+    {
+     "num": "#2",
+     "name": "Welcome To The Party"
+    },
+    {
+     "num": "#3",
+     "name": "Hawk Em"
+    },
+    {
+     "num": "#4",
+     "name": "Better Have Your Gun"
+    },
+    {
+     "num": "#5",
+     "name": "Scenario"
+    },
+    {
+     "num": "#6",
+     "name": "Dior"
+    },
+    {
+     "num": "#7",
+     "name": "Feeling"
+    },
+    {
+     "num": "#8",
+     "name": "PTSD"
+    },
+    {
+     "num": "#9",
+     "name": "Brother Man"
+    }
+   ],
+   "images": [
+    "/smokegold/art/tl-3-0.jpg"
+   ]
+  },
+  {
+   "era": "Meet The Woo 1",
+   "name": "Meet The Woo, Vol. 1 (Deluxe Version)",
+   "date": "2019-09-13",
+   "quality": "Clear",
+   "source": "Pop Smoke",
+   "links": [],
+   "description": "Official tracklist for Meet The Woo, Vol. 1 (Deluxe).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Meet The Woo"
+    },
+    {
+     "num": "#2",
+     "name": "Welcome To The Party"
+    },
+    {
+     "num": "#3",
+     "name": "Hawk Em"
+    },
+    {
+     "num": "#4",
+     "name": "Better Have Your Gun"
+    },
+    {
+     "num": "#5",
+     "name": "Scenario"
+    },
+    {
+     "num": "#6",
+     "name": "Dior"
+    },
+    {
+     "num": "#7",
+     "name": "Feeling"
+    },
+    {
+     "num": "#8",
+     "name": "PTSD"
+    },
+    {
+     "num": "#9",
+     "name": "Brother Man"
+    },
+    {
+     "num": "#10",
+     "name": "Welcome To The Party (feat. Nicki Minaj) [Remix]"
+    },
+    {
+     "num": "#11",
+     "name": "Welcome To The Party (feat. Skepta) [Remix]"
+    }
+   ]
+  },
+  {
+   "era": "Meet The Woo 2",
+   "name": "Meet The Woo, Vol. 2 [Original Tracklist]",
+   "date": "2020-01-07",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "An early version of Meet The Woo, Vol. 2 tracklist seen via Steven Victor, including the producers 808 Melo, CashMoneyAP and YoungKio (from what is visible). The songs were in contention for the tape, the songs wouldn't necessarily be in this order.\n\n* Diana\n* Foreigner\n* Shake the Room\n* Christopher Walken (Christopher Walking)\n* 44 Bulldog\n* Mannequin\n* Invincible\n* Perc 30 (Dreaming)\n* Yea Yea\n\n* AP * Double G\n* Hotel Lobby\n* Armed & Dangerous (Armed N Dangerous)\n\nGangstas\nChristop(her Walken)\nInvinsi(ble)\nShake the Room\nYea Yea",
+   "tracks": [],
+   "images": [
+    "/smokegold/art/tl-5-0.jpg"
+   ]
+  },
+  {
+   "era": "Meet The Woo 2",
+   "name": "Meet The Woo, Vol. 2",
+   "date": "2020-02-07",
+   "quality": "Clear",
+   "source": "Pop Smoke",
+   "links": [],
+   "description": "Official tracklist for Pop Smoke's second mixtape, Meet The Woo, Vol. 2.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Invincible"
+    },
+    {
+     "num": "#2",
+     "name": "Shake The Room (feat. Quavo)"
+    },
+    {
+     "num": "#3",
+     "name": "Get Back"
+    },
+    {
+     "num": "#4",
+     "name": "Christopher Walking"
+    },
+    {
+     "num": "#5",
+     "name": "Foreigner (feat. A Boogie wit da Hoodie)"
+    },
+    {
+     "num": "#6",
+     "name": "Sweetheart (feat. Fivio Foreign)"
+    },
+    {
+     "num": "#7",
+     "name": "Element"
+    },
+    {
+     "num": "#8",
+     "name": "Armed N Dangerous (Charlie Sloth Freestyle)"
+    },
+    {
+     "num": "#9",
+     "name": "Mannequin (feat. Lil Tjay)"
+    },
+    {
+     "num": "#10",
+     "name": "Dreaming"
+    },
+    {
+     "num": "#11",
+     "name": "She Got A Thing"
+    },
+    {
+     "num": "#12",
+     "name": "Dior (Bonus)"
+    },
+    {
+     "num": "#13",
+     "name": "War (feat. Lil Tjay) [Bonus]"
+    }
+   ]
+  },
+  {
+   "era": "Meet The Woo 2",
+   "name": "Meet The Woo, Vol. 2 (Deluxe)",
+   "date": "2020-02-12",
+   "quality": "Clear",
+   "source": "Pop Smoke",
+   "links": [],
+   "description": "Official tracklist for Meet The Woo, Vol. 2 (Deluxe).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Invincible"
+    },
+    {
+     "num": "#2",
+     "name": "Shake The Room (feat. Quavo)"
+    },
+    {
+     "num": "#3",
+     "name": "Get Back"
+    },
+    {
+     "num": "#4",
+     "name": "Christopher Walking"
+    },
+    {
+     "num": "#5",
+     "name": "Foreigner (feat. A Boogie wit da Hoodie)"
+    },
+    {
+     "num": "#6",
+     "name": "Sweetheart (feat. Fivio Foreign)"
+    },
+    {
+     "num": "#7",
+     "name": "Element"
+    },
+    {
+     "num": "#8",
+     "name": "Armed N Dangerous (Charlie Sloth Freestyle)"
+    },
+    {
+     "num": "#9",
+     "name": "Mannequin (feat. Lil Tjay)"
+    },
+    {
+     "num": "#10",
+     "name": "Dreaming"
+    },
+    {
+     "num": "#11",
+     "name": "She Got A Thing"
+    },
+    {
+     "num": "#12",
+     "name": "Dior (Bonus)"
+    },
+    {
+     "num": "#13",
+     "name": "War (feat. Lil Tjay) [Bonus]"
+    },
+    {
+     "num": "#14",
+     "name": "Wolves (feat. NAV)"
+    },
+    {
+     "num": "#15",
+     "name": "Dior (Remix) [feat. Gunna]"
+    },
+    {
+     "num": "#16",
+     "name": "Like Me (feat. PnB Rock)"
+    }
+   ]
+  },
+  {
+   "era": "PS3",
+   "name": "PS3",
+   "date": "2020-02-19",
+   "quality": "N/A",
+   "source": "Secondary",
+   "links": [],
+   "description": "During the making of Meet The Woo, Vol. 2, there were numerous records that Pop Smoke was \"saving for his album\", with the first song that he KNEW was going to be on it was \"Aim For The Moon,\" (which was originally Travis Scott's record, but Pop recorded with Quavo right after the Travis session). The title of the album was not confirmed before his passing, however the theme came from this song, and was chosen posthumously. This list compiles the songs that Pop Smoke was intending for the album, without a specific order.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Aim For The Moon (feat. Quavo)"
+    },
+    {
+     "num": "#?",
+     "name": "For The Night (feat. Tafia)"
+    },
+    {
+     "num": "#?",
+     "name": "Gangstas"
+    },
+    {
+     "num": "#?",
+     "name": "What You Know Bout Love"
+    },
+    {
+     "num": "#?",
+     "name": "Yea Yea"
+    }
+   ]
+  },
+  {
+   "era": "SFTSAFTM",
+   "name": "Shoot For The Stars Aim For The Moon [Original Tracklist]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Secondary",
+   "links": [],
+   "description": "50 Cent announced that Shoot For The Stars Aim For The Moon was going to be released on June 12, 2020. However, the album's release was delayed to July 3, 2020 and Make It Rain feat. Rowdy Rebel dropped as a single instead. It is unknown how different this version of the album is to the final but it is known there was a different tracklist.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Make It Rain (feat. Rowdy Rebel)"
+    },
+    {
+     "num": "#?",
+     "name": "Tsunami (feat. Davido)"
+    },
+    {
+     "num": "#?",
+     "name": "The Woo (feat. Roddy Ricch & 50 Cent)"
+    },
+    {
+     "num": "#?",
+     "name": "Got It On Me"
+    }
+   ]
+  },
+  {
+   "era": "SFTSAFTM",
+   "name": "Shoot For The Stars Aim For The Moon [Original Tracklist]",
+   "date": "2020-06-30",
+   "quality": "Clear",
+   "source": "Victor Victor Worldwide",
+   "links": [],
+   "description": "This is the tracklist that Pop Smoke’s manager Steven Victor posted on his Instagram page on June 30, 2020. This was shortly after Jess Jackson had submitted the album for release. There ended up being a few changes with Polo G being removed off Snitching and Hotel Lobby being removed.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bad Bitch From Tokyo (Intro)"
+    },
+    {
+     "num": "#2",
+     "name": "Aim For The Moon feat. Quavo"
+    },
+    {
+     "num": "#3",
+     "name": "For The Night feat. Lil Baby & DaBaby"
+    },
+    {
+     "num": "#4",
+     "name": "44 BullDog"
+    },
+    {
+     "num": "#5",
+     "name": "Gangstas"
+    },
+    {
+     "num": "#6",
+     "name": "Yea Yea"
+    },
+    {
+     "num": "#7",
+     "name": "Creature feat. Swae Lee"
+    },
+    {
+     "num": "#8",
+     "name": "Snitchin' feat. Quavo, Polo G & Future"
+    },
+    {
+     "num": "#9",
+     "name": "Make It Rain feat. Rowdy Rebel"
+    },
+    {
+     "num": "#10",
+     "name": "The Woo feat. 50 Cent & Roddy Ricch"
+    },
+    {
+     "num": "#11",
+     "name": "West Coast feat. Tyga & Quavo"
+    },
+    {
+     "num": "#12",
+     "name": "Enjoy Yourself feat. Karol G"
+    },
+    {
+     "num": "#13",
+     "name": "Hotel Lobby"
+    },
+    {
+     "num": "#14",
+     "name": "Something Special"
+    },
+    {
+     "num": "#15",
+     "name": "What You Know Bout Love"
+    },
+    {
+     "num": "#16",
+     "name": "Diana feat. King Combs"
+    },
+    {
+     "num": "#17",
+     "name": "Got It On Me"
+    },
+    {
+     "num": "#18",
+     "name": "Tunnel Vision (Outro)"
+    },
+    {
+     "num": "#19",
+     "name": "Dior"
+    }
+   ]
+  },
+  {
+   "era": "SFTSAFTM",
+   "name": "Shoot For The Stars Aim For The Moon (Deluxe) [Original Tracklist]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Secondary",
+   "links": [],
+   "description": "In a Complex article, Jess Jackson revealed that he was going to master 8 additional songs for the deluxe version of SFTSAFTM. This was said on June 30, 2020, shortly after he had submitted the album for release. It is unknown what the 8 songs he intended to put on the deluxe were and if they ended up on the final version of the deluxe.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bad Bitch From Tokyo (Intro)"
+    },
+    {
+     "num": "#2",
+     "name": "Aim For The Moon feat. Quavo"
+    },
+    {
+     "num": "#3",
+     "name": "For The Night feat. Lil Baby & DaBaby"
+    },
+    {
+     "num": "#4",
+     "name": "44 BullDog"
+    },
+    {
+     "num": "#5",
+     "name": "Gangstas"
+    },
+    {
+     "num": "#6",
+     "name": "Yea Yea"
+    },
+    {
+     "num": "#7",
+     "name": "Creature feat. Swae Lee"
+    },
+    {
+     "num": "#8",
+     "name": "Snitchin' feat. Quavo, Polo G & Future"
+    },
+    {
+     "num": "#9",
+     "name": "Make It Rain feat. Rowdy Rebel"
+    },
+    {
+     "num": "#10",
+     "name": "The Woo feat. 50 Cent & Roddy Ricch"
+    },
+    {
+     "num": "#11",
+     "name": "West Coast feat. Tyga & Quavo"
+    },
+    {
+     "num": "#12",
+     "name": "Enjoy Yourself feat. Karol G"
+    },
+    {
+     "num": "#13",
+     "name": "Hotel Lobby"
+    },
+    {
+     "num": "#14",
+     "name": "Something Special"
+    },
+    {
+     "num": "#15",
+     "name": "What You Know Bout Love"
+    },
+    {
+     "num": "#16",
+     "name": "Diana feat. King Combs"
+    },
+    {
+     "num": "#17",
+     "name": "Got It On Me"
+    },
+    {
+     "num": "#18",
+     "name": "Tunnel Vision (Outro)"
+    },
+    {
+     "num": "#19",
+     "name": "Dior"
+    },
+    {
+     "num": "#20",
+     "name": "??"
+    },
+    {
+     "num": "#21",
+     "name": "??"
+    },
+    {
+     "num": "#22",
+     "name": "??"
+    },
+    {
+     "num": "#23",
+     "name": "??"
+    },
+    {
+     "num": "#24",
+     "name": "??"
+    },
+    {
+     "num": "#25",
+     "name": "??"
+    },
+    {
+     "num": "#26",
+     "name": "??"
+    },
+    {
+     "num": "#27",
+     "name": "??"
+    }
+   ]
+  },
+  {
+   "era": "SFTSAFTM",
+   "name": "Shoot For The Stars Aim For The Moon [Original Tracklist]",
+   "date": "2020-07-03",
+   "quality": "Clear",
+   "source": "Victor Victor Worldwide",
+   "links": [],
+   "description": "This is the tracklist that Pop Smoke’s manager Steven Victor posted on his Instagram page on the day of the release. There was only one song that was left off the album which was “Paranoia” featuring Young Thug, Gunna, and Pusha T. \"Paranoia\" was later released on the deluxe as Track 29, however the Pusha T feature was removed due to controversy around his verse being a Drake diss.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bad Bitch From Tokyo (Intro)"
+    },
+    {
+     "num": "#2",
+     "name": "Aim For The Moon feat. Quavo"
+    },
+    {
+     "num": "#3",
+     "name": "For The Night feat. Lil Baby & DaBaby"
+    },
+    {
+     "num": "#4",
+     "name": "44 BullDog"
+    },
+    {
+     "num": "#5",
+     "name": "Paranoia feat. Young Thug, Gunna & Pusha T"
+    },
+    {
+     "num": "#6",
+     "name": "Gangstas"
+    },
+    {
+     "num": "#7",
+     "name": "Yea Yea"
+    },
+    {
+     "num": "#8",
+     "name": "Creature feat. Swae Lee"
+    },
+    {
+     "num": "#9",
+     "name": "Snitching feat. Quavo & Future"
+    },
+    {
+     "num": "#10",
+     "name": "Make It Rain feat. Rowdy Rebel"
+    },
+    {
+     "num": "#11",
+     "name": "The Woo feat. 50 Cent & Roddy Ricch"
+    },
+    {
+     "num": "#12",
+     "name": "West Coast Shit feat. Tyga & Quavo"
+    },
+    {
+     "num": "#13",
+     "name": "Enjoy Yourself feat. Karol G"
+    },
+    {
+     "num": "#14",
+     "name": "Mood Swings feat. Lil Tjay"
+    },
+    {
+     "num": "#15",
+     "name": "Something Special"
+    },
+    {
+     "num": "#16",
+     "name": "What You Know Bout Love"
+    },
+    {
+     "num": "#17",
+     "name": "Diana feat. King Combs"
+    },
+    {
+     "num": "#18",
+     "name": "Got It On Me"
+    },
+    {
+     "num": "#19",
+     "name": "Tunnel Vision (Outro)"
+    },
+    {
+     "num": "#20",
+     "name": "Dior"
+    }
+   ],
+   "images": [
+    "/smokegold/art/tl-12-0.jpg"
+   ]
+  },
+  {
+   "era": "SFTSAFTM",
+   "name": "Shoot For The Stars Aim For The Moon",
+   "date": "2020-07-03",
+   "quality": "Clear",
+   "source": "Victor Victor Worldwide",
+   "links": [],
+   "description": "Official tracklist for Shoot For The Stars Aim For The Moon.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bad Bitch From Tokyo (Intro)"
+    },
+    {
+     "num": "#2",
+     "name": "Aim For The Moon feat. Quavo"
+    },
+    {
+     "num": "#3",
+     "name": "For The Night feat. Lil Baby & DaBaby"
+    },
+    {
+     "num": "#4",
+     "name": "44 BullDog"
+    },
+    {
+     "num": "#5",
+     "name": "Gangstas"
+    },
+    {
+     "num": "#6",
+     "name": "Yea Yea"
+    },
+    {
+     "num": "#7",
+     "name": "Creature feat. Swae Lee"
+    },
+    {
+     "num": "#8",
+     "name": "Snitching feat. Quavo & Future"
+    },
+    {
+     "num": "#9",
+     "name": "Make It Rain feat. Rowdy Rebel"
+    },
+    {
+     "num": "#10",
+     "name": "The Woo feat. 50 Cent & Roddy Ricch"
+    },
+    {
+     "num": "#11",
+     "name": "West Coast Shit feat. Tyga & Quavo"
+    },
+    {
+     "num": "#12",
+     "name": "Enjoy Yourself feat. Karol G"
+    },
+    {
+     "num": "#13",
+     "name": "Mood Swings feat. Lil Tjay"
+    },
+    {
+     "num": "#14",
+     "name": "Something Special"
+    },
+    {
+     "num": "#15",
+     "name": "What You Know Bout Love"
+    },
+    {
+     "num": "#16",
+     "name": "Diana feat. King Combs"
+    },
+    {
+     "num": "#17",
+     "name": "Got It On Me"
+    },
+    {
+     "num": "#18",
+     "name": "Tunnel Vision (Outro)"
+    },
+    {
+     "num": "#19",
+     "name": "Dior"
+    }
+   ]
+  },
+  {
+   "era": "SFTSAFTM (Deluxe)",
+   "name": "Shoot For The Stars Aim For The Moon (Deluxe)",
+   "date": "2020-07-20",
+   "quality": "Clear",
+   "source": "Victor Victor Worldwide",
+   "links": [],
+   "description": "Official tracklist for Shoot For The Stars Aim For The Moon (Deluxe).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bad Bitch From Tokyo (Intro)"
+    },
+    {
+     "num": "#2",
+     "name": "Aim For The Moon feat. Quavo"
+    },
+    {
+     "num": "#3",
+     "name": "For The Night feat. Lil Baby & DaBaby"
+    },
+    {
+     "num": "#4",
+     "name": "44 BullDog"
+    },
+    {
+     "num": "#5",
+     "name": "Gangstas"
+    },
+    {
+     "num": "#6",
+     "name": "Yea Yea"
+    },
+    {
+     "num": "#7",
+     "name": "Creature feat. Swae Lee"
+    },
+    {
+     "num": "#8",
+     "name": "Snitching feat. Quavo & Future"
+    },
+    {
+     "num": "#9",
+     "name": "Make It Rain feat. Rowdy Rebel"
+    },
+    {
+     "num": "#10",
+     "name": "The Woo feat. 50 Cent & Roddy Ricch"
+    },
+    {
+     "num": "#11",
+     "name": "West Coast Shit feat. Tyga & Quavo"
+    },
+    {
+     "num": "#12",
+     "name": "Enjoy Yourself feat. Karol G"
+    },
+    {
+     "num": "#13",
+     "name": "Mood Swings feat. Lil Tjay"
+    },
+    {
+     "num": "#14",
+     "name": "Something Special"
+    },
+    {
+     "num": "#15",
+     "name": "What You Know Bout Love"
+    },
+    {
+     "num": "#16",
+     "name": "Diana feat. King Combs"
+    },
+    {
+     "num": "#17",
+     "name": "Got It On Me"
+    },
+    {
+     "num": "#18",
+     "name": "Tunnel Vision (Outro)"
+    },
+    {
+     "num": "#19",
+     "name": "Dior"
+    },
+    {
+     "num": "#20",
+     "name": "Hotel Lobby"
+    },
+    {
+     "num": "#21",
+     "name": "Showin Off, Pt. 1 (feat. Fivio Foreign)"
+    },
+    {
+     "num": "#22",
+     "name": "Showin Off, Pt. 2 (feat. Fivio Foreign)"
+    },
+    {
+     "num": "#23",
+     "name": "Iced Out Audemars (feat. Dafi Woo)"
+    },
+    {
+     "num": "#24",
+     "name": "Woo Year (feat. Dread Woo)"
+    },
+    {
+     "num": "#25",
+     "name": "Tsunami (feat. Davido)"
+    },
+    {
+     "num": "#26",
+     "name": "Backseat (feat. PnB Rock)"
+    },
+    {
+     "num": "#27",
+     "name": "Imperfections (Interlude)"
+    },
+    {
+     "num": "#28",
+     "name": "She Feelin Nice (feat. Jamie Foxx)"
+    },
+    {
+     "num": "#29",
+     "name": "Paranoia (feat. Gunna & Young Thug)"
+    },
+    {
+     "num": "#30",
+     "name": "Hello (feat. A Boogie wit da Hoodie)"
+    },
+    {
+     "num": "#31",
+     "name": "Be Clearr"
+    },
+    {
+     "num": "#32",
+     "name": "Yea Yea (Remix) [feat. Queen Naija]"
+    },
+    {
+     "num": "#33",
+     "name": "Diana (Remix) [feat. King Combs & Calboy]"
+    },
+    {
+     "num": "#34",
+     "name": "Enjoy Yourself (Remix) [feat. Burna Boy]"
+    }
+   ],
+   "images": [
+    "/smokegold/art/tl-14-0.jpg"
+   ]
+  },
+  {
+   "era": "Boogie",
+   "name": "Boogie: Original Motion Picture Soundtrack",
+   "date": "2021-03-04",
+   "quality": "Clear",
+   "source": "Victor Victor Worldwide",
+   "links": [],
+   "description": "Official tracklist Boogie: Original Motion Picture Soundtrack.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "AP"
+    },
+    {
+     "num": "#2",
+     "name": "Fashion (feat. Polo G)"
+    },
+    {
+     "num": "#3",
+     "name": "No Cap (feat. M24) [Remix]"
+    },
+    {
+     "num": "#4",
+     "name": "Up It by Mula 10k"
+    },
+    {
+     "num": "#5",
+     "name": "Need It by Nycani"
+    },
+    {
+     "num": "#6",
+     "name": "Plug Speak Taiwanese (feat. Eddie Huang) by Bad Boy Raco G"
+    },
+    {
+     "num": "#7",
+     "name": "Faded by Jacquees"
+    },
+    {
+     "num": "#8",
+     "name": "Big Drip by Fivio Foreign"
+    },
+    {
+     "num": "#9",
+     "name": "So Pay La by Triad God"
+    },
+    {
+     "num": "#10",
+     "name": "Stylin by Bella Siu & Bad Boy Raco G"
+    },
+    {
+     "num": "#11",
+     "name": "Mr. Chin by Yellowman"
+    },
+    {
+     "num": "#12",
+     "name": "When It's All Over by Kamaal Williams"
+    },
+    {
+     "num": "#13",
+     "name": "Fear Over Love by Sheff G"
+    },
+    {
+     "num": "#14",
+     "name": "Welcome to the Party"
+    }
+   ]
+  },
+  {
+   "era": "Faith",
+   "name": "Faith [Demo Tracklist]",
+   "date": "2021.0",
+   "quality": "Blocked",
+   "source": "Secondary",
+   "links": [],
+   "description": "Early tracklist for Pop Smoke's posthumous and 2nd studio album Faith. Previewed on Jess Jackson's Instagram story.\n\n* Trailer\n* S- (Spoiled?)\n* 8-Ball\n* Beat The Speaker\n* What's Crackin\n* Jewels\n* H- (How We Move?)\n* More Time\n* Manslaughter\n* Tiger\n* 30\n* Genius",
+   "tracks": [],
+   "images": [
+    "/smokegold/art/tl-16-0.jpg"
+   ]
+  },
+  {
+   "era": "Faith",
+   "name": "Faith [Original Tracklist]",
+   "date": "2021.0",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Original tracklist for Faith.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Spoiled (feat. Pharrell Williams)"
+    },
+    {
+     "num": "#2",
+     "name": "8-Ball (feat. Kid Cudi)"
+    },
+    {
+     "num": "#3",
+     "name": "Beat The Speaker"
+    },
+    {
+     "num": "#4",
+     "name": "What's Crackin (feat. Takeoff)"
+    },
+    {
+     "num": "#5",
+     "name": "Jewels (feat. 21 Savage)"
+    },
+    {
+     "num": "#6",
+     "name": "How We Move (feat. Dave East)"
+    },
+    {
+     "num": "#7",
+     "name": "More Time"
+    },
+    {
+     "num": "#8",
+     "name": "Manslaughter (feat. Dafi Woo & Dread Woo)"
+    },
+    {
+     "num": "#9",
+     "name": "Tiger (feat. Fivio Foreign)"
+    },
+    {
+     "num": "#10",
+     "name": "Genius (feat. Lil Tjay & Swae Lee)"
+    },
+    {
+     "num": "#11",
+     "name": "Run Down (feat. OnPointLikeOP & G Herbo)"
+    },
+    {
+     "num": "#12",
+     "name": "Mr. Jones (feat. Future)"
+    },
+    {
+     "num": "#13",
+     "name": "30 (feat. Bizzy Banks)"
+    },
+    {
+     "num": "#14",
+     "name": "Brush Em (feat. Rah Swish)"
+    },
+    {
+     "num": "#15",
+     "name": "Top Shotta (feat. Eli Fross)"
+    },
+    {
+     "num": "#16",
+     "name": "Coupe"
+    },
+    {
+     "num": "#17",
+     "name": "Demeanor (feat. Dua Lipa & Nicki Minaj)"
+    },
+    {
+     "num": "#18",
+     "name": "Woo Baby (feat. Chris Brown & Tory Lanez)"
+    },
+    {
+     "num": "#19",
+     "name": "Questions"
+    },
+    {
+     "num": "#20",
+     "name": "Back Door (feat. YoungBoy Never Broke Again)"
+    },
+    {
+     "num": "#21",
+     "name": "Merci Beaucoup (feat. Rah Swish)"
+    }
+   ],
+   "images": [
+    "/smokegold/art/tl-17-0.jpg"
+   ]
+  },
+  {
+   "era": "Faith",
+   "name": "Faith",
+   "date": "2021-07-16",
+   "quality": "Clear",
+   "source": "Victor Victor Worldwide",
+   "links": [],
+   "description": "Official tracklist for Faith.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Good News"
+    },
+    {
+     "num": "#2",
+     "name": "More Time"
+    },
+    {
+     "num": "#3",
+     "name": "Tell The Vision (feat. Kanye West & Pusha T)"
+    },
+    {
+     "num": "#4",
+     "name": "Manslaughter (feat. Rick Ross & The-Dream)"
+    },
+    {
+     "num": "#5",
+     "name": "Bout A Million (feat. 21 Savage & 42 Dugg)"
+    },
+    {
+     "num": "#6",
+     "name": "Brush Em (feat. Rah Swish)"
+    },
+    {
+     "num": "#7",
+     "name": "Top Shotta (with The Neptunes) (feat. Pusha T, TRAVI & Beam)"
+    },
+    {
+     "num": "#8",
+     "name": "30 (feat. Bizzy Banks)"
+    },
+    {
+     "num": "#9",
+     "name": "Beat The Speaker"
+    },
+    {
+     "num": "#10",
+     "name": "Coupe"
+    },
+    {
+     "num": "#11",
+     "name": "What's Crackin (feat. Takeoff)"
+    },
+    {
+     "num": "#12",
+     "name": "Genius (with Lil Tjay & Swae Lee)"
+    },
+    {
+     "num": "#13",
+     "name": "Mr. Jones (feat. Future)"
+    },
+    {
+     "num": "#14",
+     "name": "Woo Baby Interlude"
+    },
+    {
+     "num": "#15",
+     "name": "Woo Baby (feat. Chris Brown)"
+    },
+    {
+     "num": "#16",
+     "name": "Demeanor (feat. Dua Lipa)"
+    },
+    {
+     "num": "#17",
+     "name": "Spoiled (feat. Pharrell Williams)"
+    },
+    {
+     "num": "#18",
+     "name": "8-Ball (feat. Kid Cudi)"
+    },
+    {
+     "num": "#19",
+     "name": "Back Door (feat. Quavo & Kodak Black)"
+    },
+    {
+     "num": "#20",
+     "name": "Merci Beaucoup"
+    }
+   ],
+   "images": [
+    "/smokegold/art/tl-18-0.jpg"
+   ]
+  },
+  {
+   "era": "Faith",
+   "name": "Faith (Birthday Pack)",
+   "date": "2021-07-20",
+   "quality": "Clear",
+   "source": "Victor Victor Worldwide",
+   "links": [],
+   "description": "Official tracklist for the bonus tracks added to Faith on Pop Smoke's birthday.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Good News"
+    },
+    {
+     "num": "#2",
+     "name": "More Time"
+    },
+    {
+     "num": "#3",
+     "name": "Tell The Vision (feat. Kanye West & Pusha T)"
+    },
+    {
+     "num": "#4",
+     "name": "Manslaughter (feat. Rick Ross & The-Dream)"
+    },
+    {
+     "num": "#5",
+     "name": "Bout A Million (feat. 21 Savage & 42 Dugg)"
+    },
+    {
+     "num": "#6",
+     "name": "Brush Em (feat. Rah Swish)"
+    },
+    {
+     "num": "#7",
+     "name": "Top Shotta (with The Neptunes) (feat. Pusha T, TRAVI & Beam)"
+    },
+    {
+     "num": "#8",
+     "name": "30 (feat. Bizzy Banks)"
+    },
+    {
+     "num": "#9",
+     "name": "Beat The Speaker"
+    },
+    {
+     "num": "#10",
+     "name": "Coupe"
+    },
+    {
+     "num": "#11",
+     "name": "What's Crackin (feat. Takeoff)"
+    },
+    {
+     "num": "#12",
+     "name": "Genius (with Lil Tjay & Swae Lee)"
+    },
+    {
+     "num": "#13",
+     "name": "Mr. Jones (feat. Future)"
+    },
+    {
+     "num": "#14",
+     "name": "Woo Baby Interlude"
+    },
+    {
+     "num": "#15",
+     "name": "Woo Baby (feat. Chris Brown)"
+    },
+    {
+     "num": "#16",
+     "name": "Demeanor (feat. Dua Lipa)"
+    },
+    {
+     "num": "#17",
+     "name": "Spoiled (feat. Pharrell Williams)"
+    },
+    {
+     "num": "#18",
+     "name": "8-Ball (feat. Kid Cudi)"
+    },
+    {
+     "num": "#19",
+     "name": "Back Door (feat. Quavo & Kodak Black)"
+    },
+    {
+     "num": "#20",
+     "name": "Merci Beaucoup"
+    },
+    {
+     "num": "#21",
+     "name": "Questions"
+    },
+    {
+     "num": "#22",
+     "name": "Run Down (feat. OnPointLikeOP & G Herbo)"
+    },
+    {
+     "num": "#23",
+     "name": "Money Man (feat. Killa)"
+    },
+    {
+     "num": "#24",
+     "name": "Defiant (feat. Dread Woo & TRAVI)"
+    }
+   ]
+  },
+  {
+   "era": "Faith",
+   "name": "Faith (Deluxe)",
+   "date": "2021-07-31",
+   "quality": "Clear",
+   "source": "Victor Victor Worldwide",
+   "links": [],
+   "description": "Official tracklist for Faith (Deluxe).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Good News"
+    },
+    {
+     "num": "#2",
+     "name": "More Time"
+    },
+    {
+     "num": "#3",
+     "name": "Tell The Vision (feat. Kanye West & Pusha T)"
+    },
+    {
+     "num": "#4",
+     "name": "Manslaughter (feat. Rick Ross & The-Dream)"
+    },
+    {
+     "num": "#5",
+     "name": "Bout A Million (feat. 21 Savage & 42 Dugg)"
+    },
+    {
+     "num": "#6",
+     "name": "Brush Em (feat. Rah Swish)"
+    },
+    {
+     "num": "#7",
+     "name": "Top Shotta (with The Neptunes) (feat. Pusha T, TRAVI & Beam)"
+    },
+    {
+     "num": "#8",
+     "name": "30 (feat. Bizzy Banks)"
+    },
+    {
+     "num": "#9",
+     "name": "Beat The Speaker"
+    },
+    {
+     "num": "#10",
+     "name": "Coupe"
+    },
+    {
+     "num": "#11",
+     "name": "What's Crackin (feat. Takeoff)"
+    },
+    {
+     "num": "#12",
+     "name": "Genius (with Lil Tjay & Swae Lee)"
+    },
+    {
+     "num": "#13",
+     "name": "Mr. Jones (feat. Future)"
+    },
+    {
+     "num": "#14",
+     "name": "Woo Baby Interlude"
+    },
+    {
+     "num": "#15",
+     "name": "Woo Baby (feat. Chris Brown)"
+    },
+    {
+     "num": "#16",
+     "name": "Demeanor (feat. Dua Lipa)"
+    },
+    {
+     "num": "#17",
+     "name": "Spoiled (feat. Pharrell Williams)"
+    },
+    {
+     "num": "#18",
+     "name": "8-Ball (feat. Kid Cudi)"
+    },
+    {
+     "num": "#19",
+     "name": "Back Door (feat. Quavo & Kodak Black)"
+    },
+    {
+     "num": "#20",
+     "name": "Merci Beaucoup"
+    },
+    {
+     "num": "#21",
+     "name": "Questions"
+    },
+    {
+     "num": "#22",
+     "name": "Run Down (feat. OnPointLikeOP & G Herbo)"
+    },
+    {
+     "num": "#23",
+     "name": "Money Man (feat. Killa)"
+    },
+    {
+     "num": "#24",
+     "name": "Defiant (feat. Dread Woo & TRAVI)"
+    },
+    {
+     "num": "#25",
+     "name": "Rumble (feat. Tayy Floss)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#26",
+     "name": "Don't Know Em (with Rah Swish)"
+    },
+    {
+     "num": "#27",
+     "name": "Double It (feat. Fetty Luciano)"
+    },
+    {
+     "num": "#28",
+     "name": "Mr. Jones (with Anuel AA)"
+    },
+    {
+     "num": "#29",
+     "name": "Bad Boys (feat. Obasi Jackson)"
+    },
+    {
+     "num": "#30",
+     "name": "Dior"
+    }
+   ]
+  }
+ ]
+}

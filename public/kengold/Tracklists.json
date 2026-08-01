@@ -1,1729 +1,1951 @@
-[
- {
-  "era": "Before Boy Barbie",
-  "name": "Boy Barbie [V1]",
-  "date": "",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [
-   "https://t2.genius.com/unsafe/830x0/https%3A%2F%2Fimages.genius.com%2F507b841200b62c44b9028eb0100f1e69.899x899x1.jpg"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "What You Know (feat. Lancey Foux)"
-   },
-   {
-    "num": "#2",
-    "name": "Pink Panther (feat. Lancey Foux)"
-   }
-  ]
- },
- {
-  "era": "Before Boy Barbie",
-  "name": "Boy Barbie [V2]",
-  "date": "",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [
-   "https://t2.genius.com/unsafe/830x0/https%3A%2F%2Fimages.genius.com%2F4db345894c3b0cfdaf9fe68d4a487b18.899x899x1.jpg"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Intro"
-   },
-   {
-    "num": "#2",
-    "name": "Splash"
-   },
-   {
-    "num": "#3",
-    "name": "Hoky Oky"
-   },
-   {
-    "num": "#4",
-    "name": "Fan Behavior (feat. Young Jordan)"
-   },
-   {
-    "num": "#5",
-    "name": "Dream"
-   },
-   {
-    "num": "#6",
-    "name": "Going Krazy"
-   },
-   {
-    "num": "#7",
-    "name": "No Mo"
-   },
-   {
-    "num": "#8",
-    "name": "Geeked Up"
-   },
-   {
-    "num": "#9",
-    "name": "Back Then"
-   },
-   {
-    "num": "#10",
-    "name": "Die About It"
-   }
-  ]
- },
- {
-  "era": "Boy Barbie",
-  "name": "Boy Barbie [V3]",
-  "date": "May 12, 2020",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [
-   "https://t2.genius.com/unsafe/830x0/https%3A%2F%2Fimages.genius.com%2Fb02b56888fb1482002f5c8ae5e9af993.827x827x1.jpg"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Gold Medal (feat. International Jefe & Lil Unky)"
-   },
-   {
-    "num": "#2",
-    "name": "Geeked Up"
-   },
-   {
-    "num": "#3",
-    "name": "What You Know (feat. Lancey Foux)"
-   },
-   {
-    "num": "#4",
-    "name": "Pink Panther (feat. Lancey Foux)"
-   },
-   {
-    "num": "#5",
-    "name": "Flexing (feat. Lil Yachty)"
-   },
-   {
-    "num": "#6",
-    "name": "Moshpit"
-   }
-  ]
- },
- {
-  "era": "Teen X",
-  "name": "Teen X",
-  "date": "Aug 14, 2020",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [
-   "https://images.genius.com/2a64fa7a58dd2958aa0d0c199c6dbf4b.1000x1000x1.png"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Teen X"
-   },
-   {
-    "num": "#2",
-    "name": "Yale"
-   },
-   {
-    "num": "#3",
-    "name": "Meds"
-   },
-   {
-    "num": "#4",
-    "name": "Why"
-   },
-   {
-    "num": "#5",
-    "name": "For Her"
-   },
-   {
-    "num": "#6",
-    "name": "Pissed Off"
-   }
-  ]
- },
- {
-  "era": "Lost Files",
-  "name": "Lost Files",
-  "date": "Jan 20, 2021",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "opium"
-   },
-   {
-    "num": "#2",
-    "name": "no love"
-   },
-   {
-    "num": "#3",
-    "name": "pose 2 do"
-   },
-   {
-    "num": "#4",
-    "name": "phenomenon"
-   },
-   {
-    "num": "#5",
-    "name": "stuck (feat. Lil Yachty)"
-   },
-   {
-    "num": "#6",
-    "name": "fuk shit"
-   }
-  ]
- },
- {
-  "era": "Teen X : Relapsed",
-  "name": "Teen X : Relapsed",
-  "date": "Jan 31, 2021",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Teen X Babe"
-   },
-   {
-    "num": "#2",
-    "name": "Teenager Rager"
-   },
-   {
-    "num": "#3",
-    "name": "Butterfly"
-   },
-   {
-    "num": "#4",
-    "name": "High as Sh!T"
-   },
-   {
-    "num": "#5",
-    "name": "On the Low"
-   }
-  ]
- },
- {
-  "era": "Lost Files 2",
-  "name": "Lost Files 2",
-  "date": "Jul 10, 2021",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Glock 19"
-   },
-   {
-    "num": "#2",
-    "name": "Patrick Ewing (feat. Lil Tecca)"
-   },
-   {
-    "num": "#3",
-    "name": "Celebrate"
-   },
-   {
-    "num": "#4",
-    "name": "M&M"
-   },
-   {
-    "num": "#5",
-    "name": "BackPack"
-   },
-   {
-    "num": "#6",
-    "name": "How 2 Flex"
-   },
-   {
-    "num": "#7",
-    "name": "Been Braggin"
-   },
-   {
-    "num": "#8",
-    "name": "Killstreak"
-   },
-   {
-    "num": "#9",
-    "name": "Teen Bean"
-   }
-  ]
- },
- {
-  "era": "Project X",
-  "name": "Project X [V1]",
-  "date": "",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Who's Next"
-   },
-   {
-    "num": "#2",
-    "name": "Rock N Roll"
-   },
-   {
-    "num": "#3",
-    "name": "Party All Day"
-   },
-   {
-    "num": "#4",
-    "name": "Change"
-   },
-   {
-    "num": "#5",
-    "name": "Run + Ran"
-   },
-   {
-    "num": "#6",
-    "name": "Shake"
-   },
-   {
-    "num": "#7",
-    "name": "Hella (feat. Playboi Carti)"
-   },
-   {
-    "num": "#8",
-    "name": "Clutch"
-   },
-   {
-    "num": "#9",
-    "name": "Till I Die"
-   },
-   {
-    "num": "#10",
-    "name": "Burnin Up"
-   },
-   {
-    "num": "#11",
-    "name": "So What"
-   }
-  ]
- },
- {
-  "era": "Project X",
-  "name": "Project X [V2]",
-  "date": "Jul 23, 2021",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Who's Next"
-   },
-   {
-    "num": "#2",
-    "name": "Rock N Roll"
-   },
-   {
-    "num": "#3",
-    "name": "Party All Day"
-   },
-   {
-    "num": "#4",
-    "name": "Change"
-   },
-   {
-    "num": "#5",
-    "name": "Run + Ran"
-   },
-   {
-    "num": "#6",
-    "name": "Shake"
-   },
-   {
-    "num": "#7",
-    "name": "Hella"
-   },
-   {
-    "num": "#8",
-    "name": "Clutch"
-   },
-   {
-    "num": "#9",
-    "name": "Till I Die"
-   },
-   {
-    "num": "#10",
-    "name": "Burnin Up"
-   },
-   {
-    "num": "#11",
-    "name": "So What"
-   }
-  ]
- },
- {
-  "era": "lost_files_3",
-  "name": "lost_files_3",
-  "date": "Jan 29, 2022",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "hang_fire :/"
-   },
-   {
-    "num": "#2",
-    "name": "gang (feat. Lil Tecca & Destroy Lonely)"
-   },
-   {
-    "num": "#3",
-    "name": "drugs_over_love :{"
-   },
-   {
-    "num": "#4",
-    "name": "i_influence"
-   },
-   {
-    "num": "#5",
-    "name": "r_u_srs_?"
-   },
-   {
-    "num": "#6",
-    "name": "murder_musik (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#7",
-    "name": "upside_down"
-   },
-   {
-    "num": "#8",
-    "name": "sh00t"
-   },
-   {
-    "num": "#9",
-    "name": "over_dosed"
-   }
-  ]
- },
- {
-  "era": "lost_files_3",
-  "name": "lost_files_3",
-  "date": "",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "hang_fire :/"
-   },
-   {
-    "num": "#2",
-    "name": "gang (feat. Lil Tecca & Destroy Lonely)"
-   },
-   {
-    "num": "#3",
-    "name": "drugs_over_love :{"
-   },
-   {
-    "num": "#4",
-    "name": "i_influence"
-   },
-   {
-    "num": "#5",
-    "name": "r_u_srs_?"
-   },
-   {
-    "num": "#6",
-    "name": "murder_musik (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#7",
-    "name": "upside_down"
-   },
-   {
-    "num": "#8",
-    "name": "sh00t"
-   },
-   {
-    "num": "#9",
-    "name": "over_dosed"
-   },
-   {
-    "num": "#10",
-    "name": "by_my_lonely (feat. JBan$2Turnt)"
-   },
-   {
-    "num": "#11",
-    "name": "raver (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#12",
-    "name": "exodus (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#13",
-    "name": "wockstar (feat. Offset)"
-   }
-  ]
- },
- {
-  "era": "X TWO THREE",
-  "name": "X TWO THREE",
-  "date": "Jun 8, 2022",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "X GAMES"
-   },
-   {
-    "num": "#2",
-    "name": "X FOR BREAKFAST (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#3",
-    "name": "STICK"
-   },
-   {
-    "num": "#4",
-    "name": "POP"
-   },
-   {
-    "num": "#5",
-    "name": "PUSSY PINK (feat. SoFaygo)"
-   },
-   {
-    "num": "#6",
-    "name": "AQUAFINA"
-   },
-   {
-    "num": "#7",
-    "name": "SHOULDA LISTENED (feat. Lil Tecca & Destroy Lonely)"
-   },
-   {
-    "num": "#8",
-    "name": "LIL VAMP"
-   },
-   {
-    "num": "#9",
-    "name": "KEEPS"
-   },
-   {
-    "num": "#10",
-    "name": "ALL YEAR FREESTYLE"
-   }
-  ]
- },
- {
-  "era": "X",
-  "name": "X",
-  "date": "Jul 8, 2022",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [
-   "https://t2.genius.com/unsafe/830x0/https%3A%2F%2Fimages.genius.com%2Ff21660e5765b78f1c8d5cd5ec6a55076.1000x1000x1.png"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Intro"
-   },
-   {
-    "num": "#2",
-    "name": "New"
-   },
-   {
-    "num": "#3",
-    "name": "Gems"
-   },
-   {
-    "num": "#4",
-    "name": "Nobody"
-   },
-   {
-    "num": "#5",
-    "name": "Go"
-   },
-   {
-    "num": "#6",
-    "name": "MDMA (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#7",
-    "name": "X"
-   },
-   {
-    "num": "#8",
-    "name": "PDBMH"
-   },
-   {
-    "num": "#9",
-    "name": "Money Hunt"
-   },
-   {
-    "num": "#10",
-    "name": "South Beach"
-   },
-   {
-    "num": "#11",
-    "name": "Going Schitz"
-   },
-   {
-    "num": "#12",
-    "name": "Same Thing"
-   },
-   {
-    "num": "#13",
-    "name": "Freestyle 1"
-   },
-   {
-    "num": "#14",
-    "name": "Freestyle 2"
-   },
-   {
-    "num": "#15",
-    "name": "Fuk 12"
-   },
-   {
-    "num": "#16",
-    "name": "Murda Musik (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#17",
-    "name": "Delinquent (feat. HXG)"
-   },
-   {
-    "num": "#18",
-    "name": "Get Rich Or Die"
-   },
-   {
-    "num": "#19",
-    "name": "Turn Up"
-   },
-   {
-    "num": "#20",
-    "name": "The End"
-   }
-  ]
- },
- {
-  "era": "XTENDED",
-  "name": "XTENDED",
-  "date": "Oct 31, 2022",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Intro"
-   },
-   {
-    "num": "#2",
-    "name": "New"
-   },
-   {
-    "num": "#3",
-    "name": "Gems"
-   },
-   {
-    "num": "#4",
-    "name": "Nobody"
-   },
-   {
-    "num": "#5",
-    "name": "Go"
-   },
-   {
-    "num": "#6",
-    "name": "MDMA (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#7",
-    "name": "X"
-   },
-   {
-    "num": "#8",
-    "name": "PDBMH"
-   },
-   {
-    "num": "#9",
-    "name": "Money Hunt"
-   },
-   {
-    "num": "#10",
-    "name": "South Beach"
-   },
-   {
-    "num": "#11",
-    "name": "Going Schitz"
-   },
-   {
-    "num": "#12",
-    "name": "Same Thing"
-   },
-   {
-    "num": "#13",
-    "name": "Freestyle 1"
-   },
-   {
-    "num": "#14",
-    "name": "Freestyle 2"
-   },
-   {
-    "num": "#15",
-    "name": "Fuk 12"
-   },
-   {
-    "num": "#16",
-    "name": "Murda Musik (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#17",
-    "name": "Delinquent (feat. HXG)"
-   },
-   {
-    "num": "#18",
-    "name": "Get Rich Or Die"
-   },
-   {
-    "num": "#19",
-    "name": "Turn Up"
-   },
-   {
-    "num": "#20",
-    "name": "The End"
-   },
-   {
-    "num": "#21",
-    "name": "Freestyle 3"
-   },
-   {
-    "num": "#22",
-    "name": "Fashion Habits"
-   },
-   {
-    "num": "#23",
-    "name": "Shoot"
-   },
-   {
-    "num": "#24",
-    "name": "Swag Overload"
-   },
-   {
-    "num": "#25",
-    "name": "Lookbook"
-   }
-  ]
- },
- {
-  "era": "lost ?",
-  "name": "lost ?",
-  "date": "Jan 3, 2023",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "𝓼𝓾𝓲𝓬𝓲𝓭𝓪𝓵"
-   },
-   {
-    "num": "#2",
-    "name": "𝓯𝓻𝓮𝓮 𝔂𝓸𝓾𝓷𝓰 𝓽𝓱𝓾𝓰"
-   },
-   {
-    "num": "#3",
-    "name": "𝓫𝓸𝓼𝓼𝓮𝓼"
-   },
-   {
-    "num": "#4",
-    "name": "𝓵𝓮𝓽𝓼 𝓰𝓸 𝓼𝓱𝓸𝓹𝓹𝓲𝓷"
-   },
-   {
-    "num": "#5",
-    "name": "𝓹𝓵𝓪𝔂𝓮𝓻"
-   },
-   {
-    "num": "#6",
-    "name": "𝓰𝓵𝓸𝓬𝓴 𝔀𝓲𝓽𝓱 𝓪 𝓼𝔀𝓲𝓽𝓬𝓱"
-   },
-   {
-    "num": "#7",
-    "name": "𝓱𝓲𝓰𝓱𝓮𝓻 & 𝓯𝓵𝔂𝓮𝓻"
-   },
-   {
-    "num": "#8",
-    "name": "𝓫𝓪𝓬𝓴 𝓯𝓻𝓸𝓶 𝓽𝓱𝓮 𝓭𝓮𝓪𝓭"
-   }
-  ]
- },
- {
-  "era": "A Great Chaos",
-  "name": "A Great Chaos [V1]",
-  "date": "Jun 25, 2023",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [
-   "https://agc.pillar.land/assets/content/tracklist.webp"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "intro"
-   },
-   {
-    "num": "#2",
-    "name": "jennifer's body"
-   },
-   {
-    "num": "#3",
-    "name": "hardcore"
-   },
-   {
-    "num": "#4",
-    "name": "pouring out the syrup"
-   },
-   {
-    "num": "#5",
-    "name": "singapore ft"
-   },
-   {
-    "num": "#6",
-    "name": "it's over"
-   },
-   {
-    "num": "#7",
-    "name": "drugs talkin ft"
-   },
-   {
-    "num": "#8",
-    "name": "like this ft"
-   },
-   {
-    "num": "#9",
-    "name": "paranoid ft"
-   },
-   {
-    "num": "#10",
-    "name": "interlude"
-   },
-   {
-    "num": "#11",
-    "name": "fyt"
-   },
-   {
-    "num": "#12",
-    "name": "so dark"
-   },
-   {
-    "num": "#13",
-    "name": "ken carson"
-   },
-   {
-    "num": "#14",
-    "name": "outro"
-   }
-  ]
- },
- {
-  "era": "A Great Chaos",
-  "name": "A Great Chaos [Masters]",
-  "date": "Sep 25, 2023",
-  "quality": "Leaked",
-  "source": "Leaked",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Green Room"
-   },
-   {
-    "num": "#2",
-    "name": "Jennifer's Body"
-   },
-   {
-    "num": "#3",
-    "name": "Fighting Demons"
-   },
-   {
-    "num": "#4",
-    "name": "Singapore (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#5",
-    "name": "Lose It"
-   },
-   {
-    "num": "#6",
-    "name": "Hardcore"
-   },
-   {
-    "num": "#7",
-    "name": "Me N My Kup"
-   },
-   {
-    "num": "#8",
-    "name": "It's Over"
-   },
-   {
-    "num": "#9",
-    "name": "Like This (feat. Lil Uzi Vert & Destroy Lonely)"
-   },
-   {
-    "num": "#10",
-    "name": "Succubus"
-   },
-   {
-    "num": "#11",
-    "name": "Paranoid (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#12",
-    "name": "Pots"
-   },
-   {
-    "num": "#13",
-    "name": "Overtime"
-   },
-   {
-    "num": "#14",
-    "name": "Vampire Hour"
-   },
-   {
-    "num": "#15",
-    "name": "Nightcore"
-   },
-   {
-    "num": "#16",
-    "name": "Nightcore 2"
-   },
-   {
-    "num": "#17",
-    "name": "Rockstar Lifestyle"
-   }
-  ]
- },
- {
-  "era": "A Great Chaos",
-  "name": "A Great Chaos",
-  "date": "Oct 13, 2023",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [
-   "https://t2.genius.com/unsafe/830x0/https%3A%2F%2Fimages.genius.com%2F9707d12a3aa440b938a76344adb5a954.1000x1000x1.jpg"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Green Room"
-   },
-   {
-    "num": "#2",
-    "name": "Jennifer's Body"
-   },
-   {
-    "num": "#3",
-    "name": "Fighting My Demons"
-   },
-   {
-    "num": "#4",
-    "name": "Singapore (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#5",
-    "name": "Lose It"
-   },
-   {
-    "num": "#6",
-    "name": "Hardcore"
-   },
-   {
-    "num": "#7",
-    "name": "Me N My Kup"
-   },
-   {
-    "num": "#8",
-    "name": "It's Over"
-   },
-   {
-    "num": "#9",
-    "name": "Succubus"
-   },
-   {
-    "num": "#10",
-    "name": "Paranoid (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#11",
-    "name": "Pots"
-   },
-   {
-    "num": "#12",
-    "name": "Like This (feat. Lil Uzi Vert & Destroy Lonely)"
-   },
-   {
-    "num": "#13",
-    "name": "Overtime"
-   },
-   {
-    "num": "#14",
-    "name": "Vampire Hour"
-   },
-   {
-    "num": "#15",
-    "name": "Nightcore"
-   },
-   {
-    "num": "#16",
-    "name": "Nightcore 2"
-   },
-   {
-    "num": "#17",
-    "name": "Rockstar Lifestyle"
-   },
-   {
-    "num": "#18",
-    "name": "i need u"
-   }
-  ]
- },
- {
-  "era": "A Great Chaos",
-  "name": "A Great Chaos (Deluxe) [V1]",
-  "date": "Jul 5, 2024",
-  "quality": "Clear",
-  "source": "Leaked",
-  "links": [
-   "https://i.ibb.co/JFspjDJh/20250816-142648.jpg"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Green Room"
-   },
-   {
-    "num": "#2",
-    "name": "Jennifer's Body"
-   },
-   {
-    "num": "#3",
-    "name": "Fighting My Demons"
-   },
-   {
-    "num": "#4",
-    "name": "Singapore (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#5",
-    "name": "Lose It"
-   },
-   {
-    "num": "#6",
-    "name": "Hardcore"
-   },
-   {
-    "num": "#7",
-    "name": "Me N My Kup"
-   },
-   {
-    "num": "#8",
-    "name": "It's Over"
-   },
-   {
-    "num": "#9",
-    "name": "Succubus"
-   },
-   {
-    "num": "#10",
-    "name": "Paranoid (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#11",
-    "name": "Pots"
-   },
-   {
-    "num": "#12",
-    "name": "Like This (feat. Lil Uzi Vert & Destroy Lonely)"
-   },
-   {
-    "num": "#13",
-    "name": "Overtime"
-   },
-   {
-    "num": "#14",
-    "name": "Vampire Hour"
-   },
-   {
-    "num": "#15",
-    "name": "Nightcore"
-   },
-   {
-    "num": "#16",
-    "name": "Nightcore 2"
-   },
-   {
-    "num": "#17",
-    "name": "Rockstar Lifestyle"
-   },
-   {
-    "num": "#18",
-    "name": "i need u"
-   },
-   {
-    "num": "#19",
-    "name": "loading"
-   },
-   {
-    "num": "#20",
-    "name": "more chaos"
-   },
-   {
-    "num": "#21",
-    "name": "toxic"
-   },
-   {
-    "num": "#22",
-    "name": "leather jacket"
-   },
-   {
-    "num": "#23",
-    "name": "mewtwo"
-   },
-   {
-    "num": "#24",
-    "name": "ss"
-   },
-   {
-    "num": "#25",
-    "name": "overseas"
-   }
-  ]
- },
- {
-  "era": "A Great Chaos",
-  "name": "A Great Chaos (Deluxe) [V2]",
-  "date": "Jul 5, 2024",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Green Room"
-   },
-   {
-    "num": "#2",
-    "name": "Jennifer's Body"
-   },
-   {
-    "num": "#3",
-    "name": "Fighting My Demons"
-   },
-   {
-    "num": "#4",
-    "name": "Singapore (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#5",
-    "name": "Lose It"
-   },
-   {
-    "num": "#6",
-    "name": "Hardcore"
-   },
-   {
-    "num": "#7",
-    "name": "Me N My Kup"
-   },
-   {
-    "num": "#8",
-    "name": "It's Over"
-   },
-   {
-    "num": "#9",
-    "name": "Succubus"
-   },
-   {
-    "num": "#10",
-    "name": "Paranoid (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#11",
-    "name": "Pots"
-   },
-   {
-    "num": "#12",
-    "name": "Like This (feat. Lil Uzi Vert & Destroy Lonely)"
-   },
-   {
-    "num": "#13",
-    "name": "Overtime"
-   },
-   {
-    "num": "#14",
-    "name": "Vampire Hour"
-   },
-   {
-    "num": "#15",
-    "name": "Nightcore"
-   },
-   {
-    "num": "#16",
-    "name": "Nightcore 2"
-   },
-   {
-    "num": "#17",
-    "name": "Rockstar Lifestyle"
-   },
-   {
-    "num": "#18",
-    "name": "i need u"
-   },
-   {
-    "num": "#19",
-    "name": "loading"
-   },
-   {
-    "num": "#20",
-    "name": "more chaos"
-   },
-   {
-    "num": "#21",
-    "name": "toxic"
-   },
-   {
-    "num": "#22",
-    "name": "leather jacket"
-   },
-   {
-    "num": "#23",
-    "name": "mewtwo"
-   },
-   {
-    "num": "#24",
-    "name": "ss"
-   },
-   {
-    "num": "#25",
-    "name": "overseas"
-   }
-  ]
- },
- {
-  "era": "More Chaos",
-  "name": "More Chaos [V1]",
-  "date": "Jan 25, 2025",
-  "quality": "Blurry",
-  "source": "Ken",
-  "links": [
-   "https://i.ibb.co/bMddY9GR/image.png"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "TrapJump"
-   },
-   {
-    "num": "#2",
-    "name": "Sniffer"
-   },
-   {
-    "num": "#3",
-    "name": "Naked"
-   },
-   {
-    "num": "#4",
-    "name": "Dismantled"
-   },
-   {
-    "num": "#5",
-    "name": "ROAE"
-   },
-   {
-    "num": "#6",
-    "name": "Down2Earth"
-   },
-   {
-    "num": "#7",
-    "name": "BC<3"
-   },
-   {
-    "num": "#8",
-    "name": "VMP"
-   },
-   {
-    "num": "#9",
-    "name": "XPOSED"
-   },
-   {
-    "num": "#10",
-    "name": "1st Night"
-   },
-   {
-    "num": "#11",
-    "name": "200 Kash"
-   },
-   {
-    "num": "#12",
-    "name": "confetti"
-   },
-   {
-    "num": "#13",
-    "name": "psycho"
-   },
-   {
-    "num": "#14",
-    "name": "Narcotics"
-   },
-   {
-    "num": "#15",
-    "name": "???"
-   },
-   {
-    "num": "#16",
-    "name": "MOH"
-   },
-   {
-    "num": "#17",
-    "name": "???"
-   },
-   {
-    "num": "#18",
-    "name": "Proud Family"
-   },
-   {
-    "num": "#19",
-    "name": "???"
-   },
-   {
-    "num": "#20",
-    "name": "THX"
-   }
-  ]
- },
- {
-  "era": "More Chaos",
-  "name": "More Chaos [V2]",
-  "date": "Apr 11, 2025",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Lord Of Chaos"
-   },
-   {
-    "num": "#2",
-    "name": "Xposed"
-   },
-   {
-    "num": "#3",
-    "name": "Money Spread"
-   },
-   {
-    "num": "#4",
-    "name": "Root Of All Evil"
-   },
-   {
-    "num": "#5",
-    "name": "K-Hole"
-   },
-   {
-    "num": "#6",
-    "name": "Trap Jump"
-   },
-   {
-    "num": "#7",
-    "name": "Blakk Rokkstar"
-   },
-   {
-    "num": "#8",
-    "name": "LiveLeak"
-   },
-   {
-    "num": "#9",
-    "name": "Diamonds"
-   },
-   {
-    "num": "#10",
-    "name": "Dismantled"
-   },
-   {
-    "num": "#11",
-    "name": "200 Kash"
-   },
-   {
-    "num": "#12",
-    "name": "Down2Earth"
-   },
-   {
-    "num": "#13",
-    "name": "Confetti"
-   },
-   {
-    "num": "#14",
-    "name": "Naked"
-   },
-   {
-    "num": "#15",
-    "name": "Kryptonite"
-   },
-   {
-    "num": "#16",
-    "name": "Psycho"
-   },
-   {
-    "num": "#17",
-    "name": "Inferno"
-   },
-   {
-    "num": "#18",
-    "name": "Thx"
-   }
-  ]
- },
- {
-  "era": "More Chaos",
-  "name": "More Chaos [V3]",
-  "date": "Apr 11, 2025",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Lord Of Chaos"
-   },
-   {
-    "num": "#2",
-    "name": "Xposed"
-   },
-   {
-    "num": "#3",
-    "name": "Money Spread"
-   },
-   {
-    "num": "#4",
-    "name": "Root Of All Evil"
-   },
-   {
-    "num": "#5",
-    "name": "K-Hole"
-   },
-   {
-    "num": "#6",
-    "name": "Trap Jump"
-   },
-   {
-    "num": "#7",
-    "name": "Blakk Rokkstar"
-   },
-   {
-    "num": "#8",
-    "name": "LiveLeak"
-   },
-   {
-    "num": "#9",
-    "name": "Diamonds"
-   },
-   {
-    "num": "#10",
-    "name": "Dismantled"
-   },
-   {
-    "num": "#11",
-    "name": "200 Kash"
-   },
-   {
-    "num": "#12",
-    "name": "Down2Earth"
-   },
-   {
-    "num": "#13",
-    "name": "Confetti"
-   },
-   {
-    "num": "#14",
-    "name": "Naked"
-   },
-   {
-    "num": "#15",
-    "name": "Kryptonite"
-   },
-   {
-    "num": "#16",
-    "name": "Psycho"
-   },
-   {
-    "num": "#17",
-    "name": "Inferno"
-   },
-   {
-    "num": "#18",
-    "name": "Thx"
-   },
-   {
-    "num": "#19",
-    "name": "2000"
-   },
-   {
-    "num": "#20",
-    "name": "Evolution"
-   },
-   {
-    "num": "#21",
-    "name": "Ghoul"
-   }
-  ]
- },
- {
-  "era": "More Chaos",
-  "name": "More Chaos [V4]",
-  "date": "Apr 11, 2025",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Lord Of Chaos"
-   },
-   {
-    "num": "#2",
-    "name": "Xposed"
-   },
-   {
-    "num": "#3",
-    "name": "Money Spread"
-   },
-   {
-    "num": "#4",
-    "name": "Root Of All Evil"
-   },
-   {
-    "num": "#5",
-    "name": "K-Hole"
-   },
-   {
-    "num": "#6",
-    "name": "Trap Jump"
-   },
-   {
-    "num": "#7",
-    "name": "Blakk Rokkstar"
-   },
-   {
-    "num": "#8",
-    "name": "LiveLeak"
-   },
-   {
-    "num": "#9",
-    "name": "Diamonds"
-   },
-   {
-    "num": "#10",
-    "name": "Dismantled"
-   },
-   {
-    "num": "#11",
-    "name": "200 Kash"
-   },
-   {
-    "num": "#12",
-    "name": "Down2Earth"
-   },
-   {
-    "num": "#13",
-    "name": "Confetti"
-   },
-   {
-    "num": "#14",
-    "name": "Naked"
-   },
-   {
-    "num": "#15",
-    "name": "Kryptonite"
-   },
-   {
-    "num": "#16",
-    "name": "Psycho"
-   },
-   {
-    "num": "#17",
-    "name": "Inferno"
-   },
-   {
-    "num": "#18",
-    "name": "Thx"
-   },
-   {
-    "num": "#19",
-    "name": "2000"
-   },
-   {
-    "num": "#20",
-    "name": "Evolution"
-   },
-   {
-    "num": "#21",
-    "name": "Ghoul"
-   },
-   {
-    "num": "#22",
-    "name": "Off The Meter (with Playboi Carti & Destroy Lonely)"
-   }
-  ]
- },
- {
-  "era": "xperiment",
-  "name": "the experiment [V1]",
-  "date": "Jan 15, 2026",
-  "quality": "Rumored",
-  "source": "Leaked",
-  "links": [
-   "https://i.ibb.co/9k13hFNC/Rumored-Experiment.png"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "stars"
-   },
-   {
-    "num": "#2",
-    "name": "boil"
-   },
-   {
-    "num": "#3",
-    "name": "lotto"
-   },
-   {
-    "num": "#4",
-    "name": "call up yo shooters (feat. Playboi Carti)"
-   },
-   {
-    "num": "#5",
-    "name": "switch up (feat. Lil Uzi Vert)"
-   },
-   {
-    "num": "#6",
-    "name": "amnesia"
-   },
-   {
-    "num": "#7",
-    "name": "chains & watches"
-   },
-   {
-    "num": "#8",
-    "name": "shawty"
-   }
-  ]
- },
- {
-  "era": "xperiment",
-  "name": "xperiment [V2]",
-  "date": "Jul 3, 2026",
-  "quality": "Clear",
-  "source": "Ken",
-  "links": [
-   "http://open.spotify.com/prerelease/6Dx9MCwVAX6WDcOCvrG4In",
-   "https://music.apple.com/ca/album/xperiment/6781478597"
-  ],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "wheredoistart"
-   },
-   {
-    "num": "#2",
-    "name": "deaf note (feat. Playboi Carti)"
-   },
-   {
-    "num": "#3",
-    "name": "shadeson (feat. 2hollis)"
-   },
-   {
-    "num": "#4",
-    "name": "gynecologist"
-   },
-   {
-    "num": "#5",
-    "name": "wrist"
-   },
-   {
-    "num": "#6",
-    "name": "edm"
-   },
-   {
-    "num": "#7",
-    "name": "truth"
-   },
-   {
-    "num": "#8",
-    "name": "outofmybody"
-   },
-   {
-    "num": "#9",
-    "name": "the ritual"
-   },
-   {
-    "num": "#10",
-    "name": "interlude"
-   },
-   {
-    "num": "#11",
-    "name": "ghost (feat. Lil Uzi Vert)"
-   },
-   {
-    "num": "#12",
-    "name": "drug kit (feat. Young Thug)"
-   },
-   {
-    "num": "#13",
-    "name": "possession"
-   },
-   {
-    "num": "#14",
-    "name": "fw00"
-   },
-   {
-    "num": "#15",
-    "name": "somanybags"
-   },
-   {
-    "num": "#16",
-    "name": "shopping (feat. Destroy Lonely)"
-   },
-   {
-    "num": "#17",
-    "name": "amandabynes"
-   },
-   {
-    "num": "#18",
-    "name": "amnesia"
-   },
-   {
-    "num": "#19",
-    "name": "flamethrower"
-   },
-   {
-    "num": "#20",
-    "name": "knocking"
-   },
-   {
-    "num": "#21",
-    "name": "addiction"
-   },
-   {
-    "num": "#22",
-    "name": "wedidit (feat. Playboi Carti)"
-   }
-  ]
- }
-]
+{
+ "legend": [
+  {
+   "label": "Unknown",
+   "color": ""
+  },
+  {
+   "label": "Completely Unheard",
+   "color": ""
+  },
+  {
+   "label": "Snippet Available",
+   "color": ""
+  },
+  {
+   "label": "Version Available",
+   "color": ""
+  },
+  {
+   "label": "Confirmed Version Available",
+   "color": ""
+  }
+ ],
+ "albums": [
+  {
+   "era": "Before Boy Barbie",
+   "name": "Boy Barbie [V1]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Unused tracklist cover art for Boy Barbie, when it was at one point just two tracks, with Lancey Foux being the sole feature on both songs.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "What You Know (feat. Lancey Foux)"
+    },
+    {
+     "num": "#2",
+     "name": "Pink Panther (feat. Lancey Foux)"
+    }
+   ]
+  },
+  {
+   "era": "Before Boy Barbie",
+   "name": "Boy Barbie [V2]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "The original tracklist for Boy Barbie. It consisted of ten tracks, with Young Jordan being the sole featue. It was also originally intended for release under 808 Mafia, however in 2019, Ken Carson signed to Opium.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro"
+    },
+    {
+     "num": "#2",
+     "name": "Splash"
+    },
+    {
+     "num": "#3",
+     "name": "Hoky Oky"
+    },
+    {
+     "num": "#4",
+     "name": "Fan Behavior (feat. Young Jordan)"
+    },
+    {
+     "num": "#5",
+     "name": "Dream"
+    },
+    {
+     "num": "#6",
+     "name": "Going Krazy"
+    },
+    {
+     "num": "#7",
+     "name": "No Mo"
+    },
+    {
+     "num": "#8",
+     "name": "Geeked Up"
+    },
+    {
+     "num": "#9",
+     "name": "Back Then"
+    },
+    {
+     "num": "#10",
+     "name": "Die About It"
+    }
+   ]
+  },
+  {
+   "era": "Boy Barbie",
+   "name": "Boy Barbie",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(2019) (Ken Carson meets Playboi Carti and joins Opium®)\n(May 12, 2020) (Boy Barbie is released)",
+   "tracks": []
+  },
+  {
+   "era": "Boy Barbie",
+   "name": "Boy Barbie [V3]",
+   "date": "May 12, 2020",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "This is the third and final version of the tracklist.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Gold Medal (feat. International Jefe & Lil Unky)"
+    },
+    {
+     "num": "#2",
+     "name": "Geeked Up"
+    },
+    {
+     "num": "#3",
+     "name": "What You Know (feat. Lancey Foux)"
+    },
+    {
+     "num": "#4",
+     "name": "Pink Panther (feat. Lancey Foux)"
+    },
+    {
+     "num": "#5",
+     "name": "Flexing (feat. Lil Yachty)"
+    },
+    {
+     "num": "#6",
+     "name": "Moshpit"
+    }
+   ]
+  },
+  {
+   "era": "Teen X",
+   "name": "Teen X",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(May 12, 2020) (Boy Barbie is released)\n(Aug 14, 2020) (Teen X is released)",
+   "tracks": []
+  },
+  {
+   "era": "Teen X",
+   "name": "Teen X",
+   "date": "Aug 14, 2020",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for Teen X.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Teen X"
+    },
+    {
+     "num": "#2",
+     "name": "Yale"
+    },
+    {
+     "num": "#3",
+     "name": "Meds"
+    },
+    {
+     "num": "#4",
+     "name": "Why"
+    },
+    {
+     "num": "#5",
+     "name": "For Her"
+    },
+    {
+     "num": "#6",
+     "name": "Pissed Off"
+    }
+   ]
+  },
+  {
+   "era": "Lost Files",
+   "name": "Lost Files",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Aug 14, 2020) (Teen X is released)\n(Jan 20, 2021) (Lost Files is released)",
+   "tracks": []
+  },
+  {
+   "era": "Lost Files",
+   "name": "Lost Files",
+   "date": "Jan 20, 2021",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for Lost Files.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "opium"
+    },
+    {
+     "num": "#2",
+     "name": "no love"
+    },
+    {
+     "num": "#3",
+     "name": "pose 2 do"
+    },
+    {
+     "num": "#4",
+     "name": "phenomenon"
+    },
+    {
+     "num": "#5",
+     "name": "stuck (feat. Lil Yachty)"
+    },
+    {
+     "num": "#6",
+     "name": "fuk shit"
+    }
+   ]
+  },
+  {
+   "era": "Teen X : Relapsed\n(Teen X Deluxe)",
+   "name": "Teen X : Relapsed\n(Teen X Deluxe)",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jan 20, 2021) (Lost Files is released)\n(Jan 31, 2021) (Teen X : Relapsed is released)",
+   "tracks": []
+  },
+  {
+   "era": "Teen X : Relapsed",
+   "name": "Teen X : Relapsed",
+   "date": "Jan 31, 2021",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for Teen X : Relapsed.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Teen X Babe"
+    },
+    {
+     "num": "#2",
+     "name": "Teenager Rager"
+    },
+    {
+     "num": "#3",
+     "name": "Butterfly"
+    },
+    {
+     "num": "#4",
+     "name": "High as Sh!T"
+    },
+    {
+     "num": "#5",
+     "name": "On the Low"
+    }
+   ]
+  },
+  {
+   "era": "Lost Files 2",
+   "name": "Lost Files 2",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jan 31, 2021) (Teen X : Relapsed is released)\n(Jul 10, 2021) (Lost Files 2 is released)",
+   "tracks": []
+  },
+  {
+   "era": "Lost Files 2",
+   "name": "Lost Files 2",
+   "date": "Jul 10, 2021",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for Lost Files 2.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Glock 19"
+    },
+    {
+     "num": "#2",
+     "name": "Patrick Ewing (feat. Lil Tecca)"
+    },
+    {
+     "num": "#3",
+     "name": "Celebrate"
+    },
+    {
+     "num": "#4",
+     "name": "M&M"
+    },
+    {
+     "num": "#5",
+     "name": "BackPack"
+    },
+    {
+     "num": "#6",
+     "name": "How 2 Flex"
+    },
+    {
+     "num": "#7",
+     "name": "Been Braggin"
+    },
+    {
+     "num": "#8",
+     "name": "Killstreak"
+    },
+    {
+     "num": "#9",
+     "name": "Teen Bean"
+    }
+   ]
+  },
+  {
+   "era": "Project X",
+   "name": "Project X",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jul 10, 2021) (Lost Files 2 is released)\n(Jul 23, 2021) (Project X is released)",
+   "tracks": []
+  },
+  {
+   "era": "Project X",
+   "name": "Project X [V1]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "@isseyboy (Caskets) mentioned that Carti was meant to appear on the album, stating that the song was allegedly \"Hella,\" but Carti didn't like his verse and had it taken off.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Who's Next"
+    },
+    {
+     "num": "#2",
+     "name": "Rock N Roll"
+    },
+    {
+     "num": "#3",
+     "name": "Party All Day"
+    },
+    {
+     "num": "#4",
+     "name": "Change"
+    },
+    {
+     "num": "#5",
+     "name": "Run + Ran"
+    },
+    {
+     "num": "#6",
+     "name": "Shake"
+    },
+    {
+     "num": "#7",
+     "name": "Hella (feat. Playboi Carti)"
+    },
+    {
+     "num": "#8",
+     "name": "Clutch"
+    },
+    {
+     "num": "#9",
+     "name": "Till I Die"
+    },
+    {
+     "num": "#10",
+     "name": "Burnin Up"
+    },
+    {
+     "num": "#11",
+     "name": "So What"
+    }
+   ]
+  },
+  {
+   "era": "Project X",
+   "name": "Project X [V2]",
+   "date": "Jul 23, 2021",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for Project X.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Who's Next"
+    },
+    {
+     "num": "#2",
+     "name": "Rock N Roll"
+    },
+    {
+     "num": "#3",
+     "name": "Party All Day"
+    },
+    {
+     "num": "#4",
+     "name": "Change"
+    },
+    {
+     "num": "#5",
+     "name": "Run + Ran"
+    },
+    {
+     "num": "#6",
+     "name": "Shake"
+    },
+    {
+     "num": "#7",
+     "name": "Hella"
+    },
+    {
+     "num": "#8",
+     "name": "Clutch"
+    },
+    {
+     "num": "#9",
+     "name": "Till I Die"
+    },
+    {
+     "num": "#10",
+     "name": "Burnin Up"
+    },
+    {
+     "num": "#11",
+     "name": "So What"
+    }
+   ]
+  },
+  {
+   "era": "lost_files_3\n(Lost Files 3)",
+   "name": "lost_files_3\n(Lost Files 3)",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jul 23, 2021) (Project X is released)\n(Jan 29, 2022) (lost_files_3 is released)",
+   "tracks": []
+  },
+  {
+   "era": "lost_files_3",
+   "name": "lost_files_3",
+   "date": "Jan 29, 2022",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for lost_files_3.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "hang_fire :/"
+    },
+    {
+     "num": "#2",
+     "name": "gang (feat. Lil Tecca & Destroy Lonely)"
+    },
+    {
+     "num": "#3",
+     "name": "drugs_over_love :{"
+    },
+    {
+     "num": "#4",
+     "name": "i_influence"
+    },
+    {
+     "num": "#5",
+     "name": "r_u_srs_?"
+    },
+    {
+     "num": "#6",
+     "name": "murder_musik (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#7",
+     "name": "upside_down"
+    },
+    {
+     "num": "#8",
+     "name": "sh00t"
+    },
+    {
+     "num": "#9",
+     "name": "over_dosed"
+    }
+   ]
+  },
+  {
+   "era": "lost_files_3",
+   "name": "lost_files_3",
+   "date": "",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Another version of the tracklist when Sicko added four more tracks to the mixtape.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "hang_fire :/"
+    },
+    {
+     "num": "#2",
+     "name": "gang (feat. Lil Tecca & Destroy Lonely)"
+    },
+    {
+     "num": "#3",
+     "name": "drugs_over_love :{"
+    },
+    {
+     "num": "#4",
+     "name": "i_influence"
+    },
+    {
+     "num": "#5",
+     "name": "r_u_srs_?"
+    },
+    {
+     "num": "#6",
+     "name": "murder_musik (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#7",
+     "name": "upside_down"
+    },
+    {
+     "num": "#8",
+     "name": "sh00t"
+    },
+    {
+     "num": "#9",
+     "name": "over_dosed"
+    },
+    {
+     "num": "#10",
+     "name": "by_my_lonely (feat. JBan$2Turnt)"
+    },
+    {
+     "num": "#11",
+     "name": "raver (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#12",
+     "name": "exodus (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#13",
+     "name": "wockstar (feat. Offset)"
+    }
+   ]
+  },
+  {
+   "era": "X TWO THREE\n(X-23, Lost Files 3.5)",
+   "name": "X TWO THREE\n(X-23, Lost Files 3.5)",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jan 29, 2022) (lost_files_3 is released)\n(Jun 8, 2022) (X TWO THREE is released)",
+   "tracks": []
+  },
+  {
+   "era": "X TWO THREE",
+   "name": "X TWO THREE",
+   "date": "Jun 8, 2022",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for X TWO THREE.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "X GAMES"
+    },
+    {
+     "num": "#2",
+     "name": "X FOR BREAKFAST (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#3",
+     "name": "STICK"
+    },
+    {
+     "num": "#4",
+     "name": "POP"
+    },
+    {
+     "num": "#5",
+     "name": "PUSSY PINK (feat. SoFaygo)"
+    },
+    {
+     "num": "#6",
+     "name": "AQUAFINA"
+    },
+    {
+     "num": "#7",
+     "name": "SHOULDA LISTENED (feat. Lil Tecca & Destroy Lonely)"
+    },
+    {
+     "num": "#8",
+     "name": "LIL VAMP"
+    },
+    {
+     "num": "#9",
+     "name": "KEEPS"
+    },
+    {
+     "num": "#10",
+     "name": "ALL YEAR FREESTYLE"
+    }
+   ]
+  },
+  {
+   "era": "X\n(Project Xtended, Ken Carson, X_MAN)",
+   "name": "X\n(Project Xtended, Ken Carson, X_MAN)",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jul 23, 2021) (Project X is released)\n(Jul 8, 2022) (X is released)",
+   "tracks": []
+  },
+  {
+   "era": "X",
+   "name": "X",
+   "date": "Jul 8, 2022",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for X.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro"
+    },
+    {
+     "num": "#2",
+     "name": "New"
+    },
+    {
+     "num": "#3",
+     "name": "Gems"
+    },
+    {
+     "num": "#4",
+     "name": "Nobody"
+    },
+    {
+     "num": "#5",
+     "name": "Go"
+    },
+    {
+     "num": "#6",
+     "name": "MDMA (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#7",
+     "name": "X"
+    },
+    {
+     "num": "#8",
+     "name": "PDBMH"
+    },
+    {
+     "num": "#9",
+     "name": "Money Hunt"
+    },
+    {
+     "num": "#10",
+     "name": "South Beach"
+    },
+    {
+     "num": "#11",
+     "name": "Going Schitz"
+    },
+    {
+     "num": "#12",
+     "name": "Same Thing"
+    },
+    {
+     "num": "#13",
+     "name": "Freestyle 1"
+    },
+    {
+     "num": "#14",
+     "name": "Freestyle 2"
+    },
+    {
+     "num": "#15",
+     "name": "Fuk 12"
+    },
+    {
+     "num": "#16",
+     "name": "Murda Musik (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#17",
+     "name": "Delinquent (feat. HXG)"
+    },
+    {
+     "num": "#18",
+     "name": "Get Rich Or Die"
+    },
+    {
+     "num": "#19",
+     "name": "Turn Up"
+    },
+    {
+     "num": "#20",
+     "name": "The End"
+    }
+   ]
+  },
+  {
+   "era": "XTENDED\n(X Deluxe)",
+   "name": "XTENDED\n(X Deluxe)",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jul 8, 2022) (X is released)\n(Oct 31, 2022) (XTENDED is released)",
+   "tracks": []
+  },
+  {
+   "era": "XTENDED",
+   "name": "XTENDED",
+   "date": "Oct 31, 2022",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for XTENDED. Features 5 additional tracks.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro"
+    },
+    {
+     "num": "#2",
+     "name": "New"
+    },
+    {
+     "num": "#3",
+     "name": "Gems"
+    },
+    {
+     "num": "#4",
+     "name": "Nobody"
+    },
+    {
+     "num": "#5",
+     "name": "Go"
+    },
+    {
+     "num": "#6",
+     "name": "MDMA (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#7",
+     "name": "X"
+    },
+    {
+     "num": "#8",
+     "name": "PDBMH"
+    },
+    {
+     "num": "#9",
+     "name": "Money Hunt"
+    },
+    {
+     "num": "#10",
+     "name": "South Beach"
+    },
+    {
+     "num": "#11",
+     "name": "Going Schitz"
+    },
+    {
+     "num": "#12",
+     "name": "Same Thing"
+    },
+    {
+     "num": "#13",
+     "name": "Freestyle 1"
+    },
+    {
+     "num": "#14",
+     "name": "Freestyle 2"
+    },
+    {
+     "num": "#15",
+     "name": "Fuk 12"
+    },
+    {
+     "num": "#16",
+     "name": "Murda Musik (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#17",
+     "name": "Delinquent (feat. HXG)"
+    },
+    {
+     "num": "#18",
+     "name": "Get Rich Or Die"
+    },
+    {
+     "num": "#19",
+     "name": "Turn Up"
+    },
+    {
+     "num": "#20",
+     "name": "The End"
+    },
+    {
+     "num": "#21",
+     "name": "Freestyle 3"
+    },
+    {
+     "num": "#22",
+     "name": "Fashion Habits"
+    },
+    {
+     "num": "#23",
+     "name": "Shoot"
+    },
+    {
+     "num": "#24",
+     "name": "Swag Overload"
+    },
+    {
+     "num": "#25",
+     "name": "Lookbook"
+    }
+   ]
+  },
+  {
+   "era": "lost ?\n(Lost Files 4)",
+   "name": "lost ?\n(Lost Files 4)",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Oct 31, 2022) (XTENDED is released)\n(Jan 3, 2023) (lost ? is released)",
+   "tracks": []
+  },
+  {
+   "era": "lost ?",
+   "name": "lost ?",
+   "date": "Jan 3, 2023",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for lost ?",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "𝓼𝓾𝓲𝓬𝓲𝓭𝓪𝓵"
+    },
+    {
+     "num": "#2",
+     "name": "𝓯𝓻𝓮𝓮 𝔂𝓸𝓾𝓷𝓰 𝓽𝓱𝓾𝓰"
+    },
+    {
+     "num": "#3",
+     "name": "𝓫𝓸𝓼𝓼𝓮𝓼"
+    },
+    {
+     "num": "#4",
+     "name": "𝓵𝓮𝓽𝓼 𝓰𝓸 𝓼𝓱𝓸𝓹𝓹𝓲𝓷"
+    },
+    {
+     "num": "#5",
+     "name": "𝓹𝓵𝓪𝔂𝓮𝓻"
+    },
+    {
+     "num": "#6",
+     "name": "𝓰𝓵𝓸𝓬𝓴 𝔀𝓲𝓽𝓱 𝓪 𝓼𝔀𝓲𝓽𝓬𝓱"
+    },
+    {
+     "num": "#7",
+     "name": "𝓱𝓲𝓰𝓱𝓮𝓻 & 𝓯𝓵𝔂𝓮𝓻"
+    },
+    {
+     "num": "#8",
+     "name": "𝓫𝓪𝓬𝓴 𝓯𝓻𝓸𝓶 𝓽𝓱𝓮 𝓭𝓮𝓪𝓭"
+    }
+   ]
+  },
+  {
+   "era": "A Great Chaos\n(AGC, X2)",
+   "name": "A Great Chaos\n(AGC, X2)",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jan 3, 2023) (lost ? is released)\n(Oct 13, 2023) (A Great Chaos is released)\n(Jul 5, 2024) (A Great Chaos (Deluxe) is released)",
+   "tracks": []
+  },
+  {
+   "era": "A Great Chaos",
+   "name": "A Great Chaos [V1]",
+   "date": "Jun 25, 2023",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "The first version of the tracklist shared by Ken Carson via his Twitter.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "intro"
+    },
+    {
+     "num": "#2",
+     "name": "jennifer's body"
+    },
+    {
+     "num": "#3",
+     "name": "hardcore"
+    },
+    {
+     "num": "#4",
+     "name": "pouring out the syrup"
+    },
+    {
+     "num": "#5",
+     "name": "singapore ft"
+    },
+    {
+     "num": "#6",
+     "name": "it's over"
+    },
+    {
+     "num": "#7",
+     "name": "drugs talkin ft"
+    },
+    {
+     "num": "#8",
+     "name": "like this ft"
+    },
+    {
+     "num": "#9",
+     "name": "paranoid ft"
+    },
+    {
+     "num": "#10",
+     "name": "interlude"
+    },
+    {
+     "num": "#11",
+     "name": "fyt"
+    },
+    {
+     "num": "#12",
+     "name": "so dark"
+    },
+    {
+     "num": "#13",
+     "name": "ken carson"
+    },
+    {
+     "num": "#14",
+     "name": "outro"
+    }
+   ]
+  },
+  {
+   "era": "A Great Chaos",
+   "name": "A Great Chaos [Masters]",
+   "date": "Sep 25, 2023",
+   "quality": "Leaked",
+   "source": "Leaked",
+   "links": [],
+   "description": "Original tracklist order for A Great Chaos based on the filenames of the album's masters. Does not include 'i need u' as that was mastered seperately.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Green Room"
+    },
+    {
+     "num": "#2",
+     "name": "Jennifer's Body"
+    },
+    {
+     "num": "#3",
+     "name": "Fighting Demons"
+    },
+    {
+     "num": "#4",
+     "name": "Singapore (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#5",
+     "name": "Lose It"
+    },
+    {
+     "num": "#6",
+     "name": "Hardcore"
+    },
+    {
+     "num": "#7",
+     "name": "Me N My Kup"
+    },
+    {
+     "num": "#8",
+     "name": "It's Over"
+    },
+    {
+     "num": "#9",
+     "name": "Like This (feat. Lil Uzi Vert & Destroy Lonely)"
+    },
+    {
+     "num": "#10",
+     "name": "Succubus"
+    },
+    {
+     "num": "#11",
+     "name": "Paranoid (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#12",
+     "name": "Pots"
+    },
+    {
+     "num": "#13",
+     "name": "Overtime"
+    },
+    {
+     "num": "#14",
+     "name": "Vampire Hour"
+    },
+    {
+     "num": "#15",
+     "name": "Nightcore"
+    },
+    {
+     "num": "#16",
+     "name": "Nightcore 2"
+    },
+    {
+     "num": "#17",
+     "name": "Rockstar Lifestyle"
+    }
+   ]
+  },
+  {
+   "era": "A Great Chaos",
+   "name": "A Great Chaos",
+   "date": "Oct 13, 2023",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for A Great Chaos.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Green Room"
+    },
+    {
+     "num": "#2",
+     "name": "Jennifer's Body"
+    },
+    {
+     "num": "#3",
+     "name": "Fighting My Demons"
+    },
+    {
+     "num": "#4",
+     "name": "Singapore (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#5",
+     "name": "Lose It"
+    },
+    {
+     "num": "#6",
+     "name": "Hardcore"
+    },
+    {
+     "num": "#7",
+     "name": "Me N My Kup"
+    },
+    {
+     "num": "#8",
+     "name": "It's Over"
+    },
+    {
+     "num": "#9",
+     "name": "Succubus"
+    },
+    {
+     "num": "#10",
+     "name": "Paranoid (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#11",
+     "name": "Pots"
+    },
+    {
+     "num": "#12",
+     "name": "Like This (feat. Lil Uzi Vert & Destroy Lonely)"
+    },
+    {
+     "num": "#13",
+     "name": "Overtime"
+    },
+    {
+     "num": "#14",
+     "name": "Vampire Hour"
+    },
+    {
+     "num": "#15",
+     "name": "Nightcore"
+    },
+    {
+     "num": "#16",
+     "name": "Nightcore 2"
+    },
+    {
+     "num": "#17",
+     "name": "Rockstar Lifestyle"
+    },
+    {
+     "num": "#18",
+     "name": "i need u"
+    }
+   ]
+  },
+  {
+   "era": "A Great Chaos",
+   "name": "Birthday EP",
+   "date": "Jul 5, 2024",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Instead of only Overseas releasing on Ken's birthday, an EP was originally planned.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "overseas"
+    },
+    {
+     "num": "#?",
+     "name": "toxic"
+    },
+    {
+     "num": "#?",
+     "name": "leather jacket"
+    },
+    {
+     "num": "#?",
+     "name": "kryptonite"
+    },
+    {
+     "num": "#?",
+     "name": "mewtwo"
+    }
+   ]
+  },
+  {
+   "era": "A Great Chaos",
+   "name": "A Great Chaos (Deluxe) [V1]",
+   "date": "Jul 5, 2024",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist for A Great Chaos (Deluxe). Xposed was intended for release alongside everything else on the deluxe, but it didn't for an unknown reason. It later released on More Chaos.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Green Room"
+    },
+    {
+     "num": "#2",
+     "name": "Jennifer's Body"
+    },
+    {
+     "num": "#3",
+     "name": "Fighting My Demons"
+    },
+    {
+     "num": "#4",
+     "name": "Singapore (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#5",
+     "name": "Lose It"
+    },
+    {
+     "num": "#6",
+     "name": "Hardcore"
+    },
+    {
+     "num": "#7",
+     "name": "Me N My Kup"
+    },
+    {
+     "num": "#8",
+     "name": "It's Over"
+    },
+    {
+     "num": "#9",
+     "name": "Succubus"
+    },
+    {
+     "num": "#10",
+     "name": "Paranoid (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#11",
+     "name": "Pots"
+    },
+    {
+     "num": "#12",
+     "name": "Like This (feat. Lil Uzi Vert & Destroy Lonely)"
+    },
+    {
+     "num": "#13",
+     "name": "Overtime"
+    },
+    {
+     "num": "#14",
+     "name": "Vampire Hour"
+    },
+    {
+     "num": "#15",
+     "name": "Nightcore"
+    },
+    {
+     "num": "#16",
+     "name": "Nightcore 2"
+    },
+    {
+     "num": "#17",
+     "name": "Rockstar Lifestyle"
+    },
+    {
+     "num": "#18",
+     "name": "i need u"
+    },
+    {
+     "num": "#19",
+     "name": "loading"
+    },
+    {
+     "num": "#20",
+     "name": "more chaos"
+    },
+    {
+     "num": "#21",
+     "name": "toxic"
+    },
+    {
+     "num": "#22",
+     "name": "leather jacket"
+    },
+    {
+     "num": "#23",
+     "name": "mewtwo"
+    },
+    {
+     "num": "#24",
+     "name": "ss"
+    },
+    {
+     "num": "#25",
+     "name": "overseas"
+    },
+    {
+     "num": "#?",
+     "name": "xposed"
+    }
+   ]
+  },
+  {
+   "era": "A Great Chaos",
+   "name": "A Great Chaos (Deluxe) [V2]",
+   "date": "Jul 5, 2024",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Official tracklist for A Great Chaos (Deluxe).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Green Room"
+    },
+    {
+     "num": "#2",
+     "name": "Jennifer's Body"
+    },
+    {
+     "num": "#3",
+     "name": "Fighting My Demons"
+    },
+    {
+     "num": "#4",
+     "name": "Singapore (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#5",
+     "name": "Lose It"
+    },
+    {
+     "num": "#6",
+     "name": "Hardcore"
+    },
+    {
+     "num": "#7",
+     "name": "Me N My Kup"
+    },
+    {
+     "num": "#8",
+     "name": "It's Over"
+    },
+    {
+     "num": "#9",
+     "name": "Succubus"
+    },
+    {
+     "num": "#10",
+     "name": "Paranoid (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#11",
+     "name": "Pots"
+    },
+    {
+     "num": "#12",
+     "name": "Like This (feat. Lil Uzi Vert & Destroy Lonely)"
+    },
+    {
+     "num": "#13",
+     "name": "Overtime"
+    },
+    {
+     "num": "#14",
+     "name": "Vampire Hour"
+    },
+    {
+     "num": "#15",
+     "name": "Nightcore"
+    },
+    {
+     "num": "#16",
+     "name": "Nightcore 2"
+    },
+    {
+     "num": "#17",
+     "name": "Rockstar Lifestyle"
+    },
+    {
+     "num": "#18",
+     "name": "i need u"
+    },
+    {
+     "num": "#19",
+     "name": "loading"
+    },
+    {
+     "num": "#20",
+     "name": "more chaos"
+    },
+    {
+     "num": "#21",
+     "name": "toxic"
+    },
+    {
+     "num": "#22",
+     "name": "leather jacket"
+    },
+    {
+     "num": "#23",
+     "name": "mewtwo"
+    },
+    {
+     "num": "#24",
+     "name": "ss"
+    },
+    {
+     "num": "#25",
+     "name": "overseas"
+    }
+   ]
+  },
+  {
+   "era": "More Chaos",
+   "name": "More Chaos",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Oct 13, 2023) (A Great Chaos is released)\n(Ongoing)",
+   "tracks": []
+  },
+  {
+   "era": "More Chaos",
+   "name": "More Chaos [V1]",
+   "date": "Jan 25, 2025",
+   "quality": "Blurry",
+   "source": "Ken",
+   "links": [],
+   "description": "An unfinished tracklist for More Chaos posted on January 25th, 2025.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "TrapJump"
+    },
+    {
+     "num": "#2",
+     "name": "Sniffer"
+    },
+    {
+     "num": "#3",
+     "name": "Naked"
+    },
+    {
+     "num": "#4",
+     "name": "Dismantled"
+    },
+    {
+     "num": "#5",
+     "name": "ROAE"
+    },
+    {
+     "num": "#6",
+     "name": "Down2Earth"
+    },
+    {
+     "num": "#7",
+     "name": "BC<3"
+    },
+    {
+     "num": "#8",
+     "name": "VMP"
+    },
+    {
+     "num": "#9",
+     "name": "XPOSED"
+    },
+    {
+     "num": "#10",
+     "name": "1st Night"
+    },
+    {
+     "num": "#11",
+     "name": "200 Kash"
+    },
+    {
+     "num": "#12",
+     "name": "confetti"
+    },
+    {
+     "num": "#13",
+     "name": "psycho"
+    },
+    {
+     "num": "#14",
+     "name": "Narcotics"
+    },
+    {
+     "num": "#15",
+     "name": "???"
+    },
+    {
+     "num": "#16",
+     "name": "MOH"
+    },
+    {
+     "num": "#17",
+     "name": "???"
+    },
+    {
+     "num": "#18",
+     "name": "Proud Family"
+    },
+    {
+     "num": "#19",
+     "name": "???"
+    },
+    {
+     "num": "#20",
+     "name": "THX"
+    }
+   ]
+  },
+  {
+   "era": "More Chaos",
+   "name": "More Chaos [V2]",
+   "date": "Apr 11, 2025",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Tracklist on physical copies of More Chaos. Missing 2000, Evolution, Ghoul & Off The Meter.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Lord Of Chaos"
+    },
+    {
+     "num": "#2",
+     "name": "Xposed"
+    },
+    {
+     "num": "#3",
+     "name": "Money Spread"
+    },
+    {
+     "num": "#4",
+     "name": "Root Of All Evil"
+    },
+    {
+     "num": "#5",
+     "name": "K-Hole"
+    },
+    {
+     "num": "#6",
+     "name": "Trap Jump"
+    },
+    {
+     "num": "#7",
+     "name": "Blakk Rokkstar"
+    },
+    {
+     "num": "#8",
+     "name": "LiveLeak"
+    },
+    {
+     "num": "#9",
+     "name": "Diamonds"
+    },
+    {
+     "num": "#10",
+     "name": "Dismantled"
+    },
+    {
+     "num": "#11",
+     "name": "200 Kash"
+    },
+    {
+     "num": "#12",
+     "name": "Down2Earth"
+    },
+    {
+     "num": "#13",
+     "name": "Confetti"
+    },
+    {
+     "num": "#14",
+     "name": "Naked"
+    },
+    {
+     "num": "#15",
+     "name": "Kryptonite"
+    },
+    {
+     "num": "#16",
+     "name": "Psycho"
+    },
+    {
+     "num": "#17",
+     "name": "Inferno"
+    },
+    {
+     "num": "#18",
+     "name": "Thx"
+    }
+   ]
+  },
+  {
+   "era": "More Chaos",
+   "name": "More Chaos [V3]",
+   "date": "Apr 11, 2025",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Initial streaming tracklist for More Chaos.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Lord Of Chaos"
+    },
+    {
+     "num": "#2",
+     "name": "Xposed"
+    },
+    {
+     "num": "#3",
+     "name": "Money Spread"
+    },
+    {
+     "num": "#4",
+     "name": "Root Of All Evil"
+    },
+    {
+     "num": "#5",
+     "name": "K-Hole"
+    },
+    {
+     "num": "#6",
+     "name": "Trap Jump"
+    },
+    {
+     "num": "#7",
+     "name": "Blakk Rokkstar"
+    },
+    {
+     "num": "#8",
+     "name": "LiveLeak"
+    },
+    {
+     "num": "#9",
+     "name": "Diamonds"
+    },
+    {
+     "num": "#10",
+     "name": "Dismantled"
+    },
+    {
+     "num": "#11",
+     "name": "200 Kash"
+    },
+    {
+     "num": "#12",
+     "name": "Down2Earth"
+    },
+    {
+     "num": "#13",
+     "name": "Confetti"
+    },
+    {
+     "num": "#14",
+     "name": "Naked"
+    },
+    {
+     "num": "#15",
+     "name": "Kryptonite"
+    },
+    {
+     "num": "#16",
+     "name": "Psycho"
+    },
+    {
+     "num": "#17",
+     "name": "Inferno"
+    },
+    {
+     "num": "#18",
+     "name": "Thx"
+    },
+    {
+     "num": "#19",
+     "name": "2000"
+    },
+    {
+     "num": "#20",
+     "name": "Evolution"
+    },
+    {
+     "num": "#21",
+     "name": "Ghoul"
+    }
+   ]
+  },
+  {
+   "era": "More Chaos",
+   "name": "More Chaos [V4]",
+   "date": "Apr 11, 2025",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Streaming tracklist for More Chaos. Has an additional song which was released shortly after the main album.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Lord Of Chaos"
+    },
+    {
+     "num": "#2",
+     "name": "Xposed"
+    },
+    {
+     "num": "#3",
+     "name": "Money Spread"
+    },
+    {
+     "num": "#4",
+     "name": "Root Of All Evil"
+    },
+    {
+     "num": "#5",
+     "name": "K-Hole"
+    },
+    {
+     "num": "#6",
+     "name": "Trap Jump"
+    },
+    {
+     "num": "#7",
+     "name": "Blakk Rokkstar"
+    },
+    {
+     "num": "#8",
+     "name": "LiveLeak"
+    },
+    {
+     "num": "#9",
+     "name": "Diamonds"
+    },
+    {
+     "num": "#10",
+     "name": "Dismantled"
+    },
+    {
+     "num": "#11",
+     "name": "200 Kash"
+    },
+    {
+     "num": "#12",
+     "name": "Down2Earth"
+    },
+    {
+     "num": "#13",
+     "name": "Confetti"
+    },
+    {
+     "num": "#14",
+     "name": "Naked"
+    },
+    {
+     "num": "#15",
+     "name": "Kryptonite"
+    },
+    {
+     "num": "#16",
+     "name": "Psycho"
+    },
+    {
+     "num": "#17",
+     "name": "Inferno"
+    },
+    {
+     "num": "#18",
+     "name": "Thx"
+    },
+    {
+     "num": "#19",
+     "name": "2000"
+    },
+    {
+     "num": "#20",
+     "name": "Evolution"
+    },
+    {
+     "num": "#21",
+     "name": "Ghoul"
+    },
+    {
+     "num": "#22",
+     "name": "Off The Meter (with Playboi Carti & Destroy Lonely)"
+    }
+   ]
+  },
+  {
+   "era": "xperiment\n(Xperiment, The Xperiment, the experiment)",
+   "name": "xperiment\n(Xperiment, The Xperiment, the experiment)",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Apr 11, 2025) (More Chaos is released)\n(Jun 10, 2026) (Album USBs are showcased by various collaborators)\n(Ongoing)",
+   "tracks": []
+  },
+  {
+   "era": "xperiment",
+   "name": "the experiment [V1]\n(xperiment)",
+   "date": "Jan 15, 2026",
+   "quality": "Rumored",
+   "source": "Leaked",
+   "links": [],
+   "description": "An alleged unfinished tracklist for \"xperiment\" with a planned release date of July 23rd, 2026. These are only the confirmed songs, and more are planned as the album is still being worked on.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "stars"
+    },
+    {
+     "num": "#2",
+     "name": "boil"
+    },
+    {
+     "num": "#3",
+     "name": "lotto"
+    },
+    {
+     "num": "#4",
+     "name": "call up yo shooters (feat. Playboi Carti)"
+    },
+    {
+     "num": "#5",
+     "name": "switch up (feat. Lil Uzi Vert)"
+    },
+    {
+     "num": "#6",
+     "name": "amnesia"
+    },
+    {
+     "num": "#7",
+     "name": "chains & watches"
+    },
+    {
+     "num": "#8",
+     "name": "shawty"
+    }
+   ]
+  },
+  {
+   "era": "xperiment",
+   "name": "xperiment [V2]",
+   "date": "Jul 3, 2026",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Streaming tracklist for xperiment. Features 22 tracks.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "wheredoistart"
+    },
+    {
+     "num": "#2",
+     "name": "deaf note (feat. Playboi Carti)"
+    },
+    {
+     "num": "#3",
+     "name": "shadeson (feat. 2hollis)"
+    },
+    {
+     "num": "#4",
+     "name": "gynecologist"
+    },
+    {
+     "num": "#5",
+     "name": "wrist"
+    },
+    {
+     "num": "#6",
+     "name": "edm"
+    },
+    {
+     "num": "#7",
+     "name": "truth"
+    },
+    {
+     "num": "#8",
+     "name": "outofmybody"
+    },
+    {
+     "num": "#9",
+     "name": "the ritual"
+    },
+    {
+     "num": "#10",
+     "name": "interlude"
+    },
+    {
+     "num": "#11",
+     "name": "ghost (feat. Lil Uzi Vert)"
+    },
+    {
+     "num": "#12",
+     "name": "drug kit (feat. Young Thug)"
+    },
+    {
+     "num": "#13",
+     "name": "possession"
+    },
+    {
+     "num": "#14",
+     "name": "fw00"
+    },
+    {
+     "num": "#15",
+     "name": "somanybags"
+    },
+    {
+     "num": "#16",
+     "name": "shopping (feat. Destroy Lonely)"
+    },
+    {
+     "num": "#17",
+     "name": "amandabynes"
+    },
+    {
+     "num": "#18",
+     "name": "amnesia"
+    },
+    {
+     "num": "#19",
+     "name": "flamethrower"
+    },
+    {
+     "num": "#20",
+     "name": "knocking"
+    },
+    {
+     "num": "#21",
+     "name": "addiction"
+    },
+    {
+     "num": "#22",
+     "name": "wedidit (feat. Playboi Carti)"
+    }
+   ]
+  },
+  {
+   "era": "cartunez",
+   "name": "cartunez",
+   "date": "",
+   "quality": "",
+   "source": "",
+   "links": [],
+   "description": "(Jul 3, 2026) (xperiment is released)\n(Jul 10, 2026) (cartunez fails to release as expected)\n(Ongoing)",
+   "tracks": []
+  },
+  {
+   "era": "cartunez",
+   "name": "cartunez",
+   "date": "Jul 2026",
+   "quality": "Clear",
+   "source": "Ken",
+   "links": [],
+   "description": "Tracklist for cartunez. TBD.\n\nConfirmed & Speculated Tracks:\n\n50k\nHome Rollin\nscraping the pot\ncounterfeit\nlisten\nheart\npacks\ntaste",
+   "tracks": []
+  }
+ ]
+}

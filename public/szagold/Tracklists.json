@@ -1,837 +1,913 @@
-[
- {
-  "era": "See.SZA.Run",
-  "name": "See.SZA.Run",
-  "date": "Oct 29, 2012",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Bed"
-   },
-   {
-    "num": "#2",
-    "name": "Euphraxia"
-   },
-   {
-    "num": "#3",
-    "name": "Advil"
-   },
-   {
-    "num": "#4",
-    "name": "Time Travel Undone"
-   },
-   {
-    "num": "#5",
-    "name": "Crack Dreams"
-   },
-   {
-    "num": "#6",
-    "name": "Country"
-   },
-   {
-    "num": "#7",
-    "name": "Once Upon a High"
-   }
-  ]
- },
- {
-  "era": "S",
-  "name": "S",
-  "date": "Oct 28, 2013",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Castles"
-   },
-   {
-    "num": "#2",
-    "name": "Terror Dome"
-   },
-   {
-    "num": "#3",
-    "name": "Aftermath"
-   },
-   {
-    "num": "#4",
-    "name": "The Odyssey"
-   },
-   {
-    "num": "#5",
-    "name": "Pray"
-   },
-   {
-    "num": "#6",
-    "name": "Ice Moon"
-   },
-   {
-    "num": "#7",
-    "name": "Wings"
-   },
-   {
-    "num": "#8",
-    "name": "Kismet"
-   }
-  ]
- },
- {
-  "era": "Z",
-  "name": "Z",
-  "date": "Apr 8, 2014",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Ur"
-   },
-   {
-    "num": "#2",
-    "name": "Child's Play (feat. Chance the Rapper)"
-   },
-   {
-    "num": "#3",
-    "name": "Julia"
-   },
-   {
-    "num": "#4",
-    "name": "Warm Winds (feat. Isaiah Rashad)"
-   },
-   {
-    "num": "#5",
-    "name": "HiiJack"
-   },
-   {
-    "num": "#6",
-    "name": "Green Mile"
-   },
-   {
-    "num": "#7",
-    "name": "Babylon (feat. Kendrick Lamar)"
-   },
-   {
-    "num": "#8",
-    "name": "Sweet November"
-   },
-   {
-    "num": "#9",
-    "name": "Shattered Ring"
-   },
-   {
-    "num": "#10",
-    "name": "Omega"
-   }
-  ]
- },
- {
-  "era": "A [V1]",
-  "name": "The Michiana Sessions",
-  "date": "2016",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "A [V1]",
-  "name": "A",
-  "date": "2015",
-  "quality": "Blocked",
-  "source": "SZA",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "A [V1]",
-  "name": "A",
-  "date": "Jun 21, 2016",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Doves In The Wind"
-   },
-   {
-    "num": "#2",
-    "name": "Anything"
-   },
-   {
-    "num": "#3",
-    "name": "Eureka"
-   },
-   {
-    "num": "#4",
-    "name": "Go Gina"
-   },
-   {
-    "num": "#5",
-    "name": "Percolator"
-   },
-   {
-    "num": "#6",
-    "name": "Supermodel"
-   },
-   {
-    "num": "#7",
-    "name": "Decisions"
-   },
-   {
-    "num": "#8",
-    "name": "Breaking Even"
-   },
-   {
-    "num": "#9",
-    "name": "Jodie Foster (Jodie)"
-   },
-   {
-    "num": "#10",
-    "name": "Drew Barrymore"
-   },
-   {
-    "num": "#11",
-    "name": "Anything Outro"
-   },
-   {
-    "num": "#12",
-    "name": "Drunk"
-   },
-   {
-    "num": "#13",
-    "name": "Inside Man"
-   },
-   {
-    "num": "#14",
-    "name": "Let Me Know"
-   },
-   {
-    "num": "#15",
-    "name": "Free Dumb"
-   },
-   {
-    "num": "#16",
-    "name": "Prom"
-   },
-   {
-    "num": "#17",
-    "name": "Thundercat Outro"
-   },
-   {
-    "num": "#18",
-    "name": "Passport"
-   },
-   {
-    "num": "#19",
-    "name": "Tread Carefully"
-   },
-   {
-    "num": "#20",
-    "name": "Pretty Little Bird(s)"
-   },
-   {
-    "num": "#21",
-    "name": "Give It Up"
-   },
-   {
-    "num": "#22",
-    "name": "Broken Clock(s)"
-   },
-   {
-    "num": "#23",
-    "name": "Simmer (Lady Friend)"
-   },
-   {
-    "num": "#24",
-    "name": "A Little More Time"
-   },
-   {
-    "num": "#25",
-    "name": "Black"
-   },
-   {
-    "num": "#26",
-    "name": "Wavy"
-   },
-   {
-    "num": "#27",
-    "name": "Roses"
-   },
-   {
-    "num": "#28",
-    "name": "Lack of Better Words"
-   }
-  ]
- },
- {
-  "era": "Ctrl [V2]",
-  "name": "Ctrl",
-  "date": "2017",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Doves In The Wind"
-   },
-   {
-    "num": "#2",
-    "name": "Drew Barrymore"
-   },
-   {
-    "num": "#3",
-    "name": "Supermodel"
-   },
-   {
-    "num": "#4",
-    "name": "Love Galore"
-   },
-   {
-    "num": "#5",
-    "name": "Anything"
-   },
-   {
-    "num": "#6",
-    "name": "Go Gina"
-   },
-   {
-    "num": "#7",
-    "name": "(The) Weekend"
-   },
-   {
-    "num": "#8",
-    "name": "Prom"
-   },
-   {
-    "num": "#9",
-    "name": "Inside Man Interlude"
-   },
-   {
-    "num": "#10",
-    "name": "Percolator"
-   },
-   {
-    "num": "#11",
-    "name": "Broken Clocks"
-   },
-   {
-    "num": "#12",
-    "name": "Wavy (Interlude)"
-   },
-   {
-    "num": "#13",
-    "name": "Anything Outro"
-   },
-   {
-    "num": "#14",
-    "name": "Dem Dem Dem Ay Ayy (Breaking Even)"
-   },
-   {
-    "num": "#15",
-    "name": "Zip Loc Bag"
-   },
-   {
-    "num": "#16",
-    "name": "Consideration (LouAnne Johnson)"
-   },
-   {
-    "num": "#17",
-    "name": "Drunk"
-   },
-   {
-    "num": "#18",
-    "name": "MMS"
-   },
-   {
-    "num": "#19",
-    "name": "Bikini Bottom"
-   }
-  ]
- },
- {
-  "era": "Ctrl [V2]",
-  "name": "Ctrl",
-  "date": "Apr 2017",
-  "quality": "Clear",
-  "source": "Leaked",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Ctrl [V2]",
-  "name": "Ctrl",
-  "date": "Jun 9, 2017",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Supermodel"
-   },
-   {
-    "num": "#2",
-    "name": "Love Galore (feat. Travis Scott)"
-   },
-   {
-    "num": "#3",
-    "name": "Doves In The Wind (feat. Kendrick Lamar)"
-   },
-   {
-    "num": "#4",
-    "name": "Drew Barrymore"
-   },
-   {
-    "num": "#5",
-    "name": "Prom"
-   },
-   {
-    "num": "#6",
-    "name": "The Weekend"
-   },
-   {
-    "num": "#7",
-    "name": "Go Gina"
-   },
-   {
-    "num": "#8",
-    "name": "Garden (Say It Like Dat)"
-   },
-   {
-    "num": "#9",
-    "name": "Broken Clocks"
-   },
-   {
-    "num": "#10",
-    "name": "Anything"
-   },
-   {
-    "num": "#11",
-    "name": "Wavy (Interlude) [feat. James Fauntleroy]"
-   },
-   {
-    "num": "#12",
-    "name": "Normal Girl"
-   },
-   {
-    "num": "#13",
-    "name": "Pretty Little Birds (feat. Isaiah Rashad)"
-   },
-   {
-    "num": "#14",
-    "name": "20 Something"
-   }
-  ]
- },
- {
-  "era": "SOS",
-  "name": "SOS",
-  "date": "2021",
-  "quality": "Blurry",
-  "source": "SZA",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "SOS",
-  "name": "SOS",
-  "date": "2022",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "SOS",
-  "name": "SOS",
-  "date": "2022",
-  "quality": "Blocked",
-  "source": "SZA",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "SOS",
-  "name": "SOS",
-  "date": "Dec 9, 2022",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "SOS"
-   },
-   {
-    "num": "#2",
-    "name": "Kill Bill"
-   },
-   {
-    "num": "#3",
-    "name": "Seek & Destroy"
-   },
-   {
-    "num": "#4",
-    "name": "Low"
-   },
-   {
-    "num": "#5",
-    "name": "Love Language"
-   },
-   {
-    "num": "#6",
-    "name": "Blind"
-   },
-   {
-    "num": "#7",
-    "name": "Used (feat. Don Toliver)"
-   },
-   {
-    "num": "#8",
-    "name": "Snooze"
-   },
-   {
-    "num": "#9",
-    "name": "Notice Me"
-   },
-   {
-    "num": "#10",
-    "name": "Gone Girl"
-   },
-   {
-    "num": "#11",
-    "name": "Smoking on My Ex Pack"
-   },
-   {
-    "num": "#12",
-    "name": "Ghost in the Machine (feat. Phoebe Bridgers)"
-   },
-   {
-    "num": "#13",
-    "name": "F2F"
-   },
-   {
-    "num": "#14",
-    "name": "Nobody Gets Me"
-   },
-   {
-    "num": "#15",
-    "name": "Conceited"
-   },
-   {
-    "num": "#16",
-    "name": "Special"
-   },
-   {
-    "num": "#17",
-    "name": "Too Late"
-   },
-   {
-    "num": "#18",
-    "name": "Far"
-   },
-   {
-    "num": "#19",
-    "name": "Shirt"
-   },
-   {
-    "num": "#20",
-    "name": "Open Arms (feat. Travis Scott)"
-   },
-   {
-    "num": "#21",
-    "name": "I Hate U"
-   },
-   {
-    "num": "#22",
-    "name": "Good Days"
-   },
-   {
-    "num": "#23",
-    "name": "Forgiveless (feat. Ol' Dirty Bastard)"
-   }
-  ]
- },
- {
-  "era": "SOS",
-  "name": "SOS (Webstore Edition)",
-  "date": "Jan 5, 2023",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "SOS"
-   },
-   {
-    "num": "#2",
-    "name": "Kill Bill"
-   },
-   {
-    "num": "#3",
-    "name": "Seek & Destroy"
-   },
-   {
-    "num": "#4",
-    "name": "Low"
-   },
-   {
-    "num": "#5",
-    "name": "Love Language"
-   },
-   {
-    "num": "#6",
-    "name": "Blind"
-   },
-   {
-    "num": "#7",
-    "name": "Used (feat. Don Toliver)"
-   },
-   {
-    "num": "#8",
-    "name": "Snooze"
-   },
-   {
-    "num": "#9",
-    "name": "Notice Me"
-   },
-   {
-    "num": "#10",
-    "name": "Gone Girl"
-   },
-   {
-    "num": "#11",
-    "name": "Smoking on My Ex Pack"
-   },
-   {
-    "num": "#12",
-    "name": "Ghost in the Machine (feat. Phoebe Bridgers)"
-   },
-   {
-    "num": "#13",
-    "name": "F2F"
-   },
-   {
-    "num": "#14",
-    "name": "Nobody Gets Me"
-   },
-   {
-    "num": "#15",
-    "name": "Conceited"
-   },
-   {
-    "num": "#16",
-    "name": "Special"
-   },
-   {
-    "num": "#17",
-    "name": "Too Late"
-   },
-   {
-    "num": "#18",
-    "name": "Far"
-   },
-   {
-    "num": "#19",
-    "name": "Shirt"
-   },
-   {
-    "num": "#20",
-    "name": "Open Arms (feat. Travis Scott)"
-   },
-   {
-    "num": "#21",
-    "name": "I Hate U"
-   },
-   {
-    "num": "#22",
-    "name": "Good Days"
-   },
-   {
-    "num": "#23",
-    "name": "Forgiveless (feat. Ol' Dirty Bastard)"
-   },
-   {
-    "num": "#24",
-    "name": "PSA"
-   },
-   {
-    "num": "#25",
-    "name": "Open Arms (Solo Version)"
-   }
-  ]
- },
- {
-  "era": "LANA [V2]",
-  "name": "SOS Deluxe: LANA",
-  "date": "Dec 6, 2024",
-  "quality": "Blocked",
-  "source": "SZA",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "LANA [V2]",
-  "name": "SOS Deluxe: LANA",
-  "date": "Dec 20, 2024",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "No More Hiding"
-   },
-   {
-    "num": "#2",
-    "name": "What Do I Do"
-   },
-   {
-    "num": "#3",
-    "name": "30 For 30 (with Kendrick Lamar)"
-   },
-   {
-    "num": "#4",
-    "name": "Diamond Boy (DTM)"
-   },
-   {
-    "num": "#5",
-    "name": "BMF"
-   },
-   {
-    "num": "#6",
-    "name": "Scorsese Baby Daddy"
-   },
-   {
-    "num": "#7",
-    "name": "Love Me 4 Me"
-   },
-   {
-    "num": "#8",
-    "name": "Chill Baby"
-   },
-   {
-    "num": "#9",
-    "name": "My Turn"
-   },
-   {
-    "num": "#10",
-    "name": "Crybaby"
-   },
-   {
-    "num": "#11",
-    "name": "Kitchen"
-   },
-   {
-    "num": "#12",
-    "name": "Get Behind Me (Interlude)"
-   },
-   {
-    "num": "#13",
-    "name": "Drive"
-   },
-   {
-    "num": "#14",
-    "name": "Another Life"
-   },
-   {
-    "num": "#15",
-    "name": "Saturn"
-   }
-  ]
- },
- {
-  "era": "LANA [V2]",
-  "name": "SOS Deluxe: LANA [Reissue]",
-  "date": "Feb 10, 2025",
-  "quality": "Clear",
-  "source": "SZA",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "No More Hiding"
-   },
-   {
-    "num": "#2",
-    "name": "What Do I Do"
-   },
-   {
-    "num": "#3",
-    "name": "30 For 30 (with Kendrick Lamar)"
-   },
-   {
-    "num": "#4",
-    "name": "Diamond Boy (DTM)"
-   },
-   {
-    "num": "#5",
-    "name": "BMF"
-   },
-   {
-    "num": "#6",
-    "name": "Scorsese Baby Daddy"
-   },
-   {
-    "num": "#7",
-    "name": "Love Me 4 Me"
-   },
-   {
-    "num": "#8",
-    "name": "Chill Baby"
-   },
-   {
-    "num": "#9",
-    "name": "My Turn"
-   },
-   {
-    "num": "#10",
-    "name": "Crybaby"
-   },
-   {
-    "num": "#11",
-    "name": "Kitchen"
-   },
-   {
-    "num": "#12",
-    "name": "Get Behind Me (Interlude)"
-   },
-   {
-    "num": "#13",
-    "name": "Drive"
-   },
-   {
-    "num": "#14",
-    "name": "Another Life"
-   },
-   {
-    "num": "#15",
-    "name": "Saturn"
-   },
-   {
-    "num": "#16",
-    "name": "Joni (feat. Don Toliver)"
-   },
-   {
-    "num": "#17",
-    "name": "Take You Down"
-   },
-   {
-    "num": "#18",
-    "name": "Open Arms (just SZA)"
-   },
-   {
-    "num": "#19",
-    "name": "PSA"
-   }
-  ]
- }
-]
+{
+ "legend": [
+  {
+   "label": "Unknown",
+   "color": "#999999"
+  },
+  {
+   "label": "Completely Unheard",
+   "color": "#E06666"
+  },
+  {
+   "label": "Snippet / Partial / Beat / Recording Available",
+   "color": "#F6B26B"
+  },
+  {
+   "label": "Alternate Version Available",
+   "color": "#93C47D"
+  },
+  {
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
+  }
+ ],
+ "albums": [
+  {
+   "era": "See.SZA.Run",
+   "name": "See.SZA.Run",
+   "date": "Oct 29, 2012",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bed"
+    },
+    {
+     "num": "#2",
+     "name": "Euphraxia"
+    },
+    {
+     "num": "#3",
+     "name": "Advil"
+    },
+    {
+     "num": "#4",
+     "name": "Time Travel Undone"
+    },
+    {
+     "num": "#5",
+     "name": "Crack Dreams"
+    },
+    {
+     "num": "#6",
+     "name": "Country"
+    },
+    {
+     "num": "#7",
+     "name": "Once Upon a High"
+    }
+   ]
+  },
+  {
+   "era": "S",
+   "name": "S",
+   "date": "Oct 28, 2013",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Castles"
+    },
+    {
+     "num": "#2",
+     "name": "Terror Dome"
+    },
+    {
+     "num": "#3",
+     "name": "Aftermath"
+    },
+    {
+     "num": "#4",
+     "name": "The Odyssey"
+    },
+    {
+     "num": "#5",
+     "name": "Pray"
+    },
+    {
+     "num": "#6",
+     "name": "Ice Moon"
+    },
+    {
+     "num": "#7",
+     "name": "Wings"
+    },
+    {
+     "num": "#8",
+     "name": "Kismet"
+    }
+   ]
+  },
+  {
+   "era": "Z",
+   "name": "Z",
+   "date": "Apr 8, 2014",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Ur"
+    },
+    {
+     "num": "#2",
+     "name": "Child's Play (feat. Chance the Rapper)"
+    },
+    {
+     "num": "#3",
+     "name": "Julia"
+    },
+    {
+     "num": "#4",
+     "name": "Warm Winds (feat. Isaiah Rashad)"
+    },
+    {
+     "num": "#5",
+     "name": "HiiJack"
+    },
+    {
+     "num": "#6",
+     "name": "Green Mile"
+    },
+    {
+     "num": "#7",
+     "name": "Babylon (feat. Kendrick Lamar)"
+    },
+    {
+     "num": "#8",
+     "name": "Sweet November"
+    },
+    {
+     "num": "#9",
+     "name": "Shattered Ring"
+    },
+    {
+     "num": "#10",
+     "name": "Omega"
+    }
+   ]
+  },
+  {
+   "era": "A [V1]",
+   "name": "The Michiana Sessions",
+   "date": "2016",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "- twoAM\n- Midnight HR (Midnight Hour)\n- All I Got (Broken Clocks)\n- Pu$$y Monsta",
+   "tracks": [],
+   "images": [
+    "/szagold/art/tl-6-0.jpg"
+   ]
+  },
+  {
+   "era": "A [V1]",
+   "name": "A",
+   "date": "2015",
+   "quality": "Blocked",
+   "source": "SZA",
+   "links": [],
+   "description": "\"Consideration\" was part of a 2015 track listing as far as what SZA implied, stating the song was the centerpiece of the album before it was released by Rihanna in January 2016.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "LouAnne Johnson"
+    }
+   ]
+  },
+  {
+   "era": "A [V1]",
+   "name": "A",
+   "date": "Jun 21, 2016",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Doves In The Wind"
+    },
+    {
+     "num": "#2",
+     "name": "Anything"
+    },
+    {
+     "num": "#3",
+     "name": "Eureka"
+    },
+    {
+     "num": "#4",
+     "name": "Go Gina"
+    },
+    {
+     "num": "#5",
+     "name": "Percolator"
+    },
+    {
+     "num": "#6",
+     "name": "Supermodel"
+    },
+    {
+     "num": "#7",
+     "name": "Decisions"
+    },
+    {
+     "num": "#8",
+     "name": "Breaking Even"
+    },
+    {
+     "num": "#9",
+     "name": "Jodie Foster (Jodie)"
+    },
+    {
+     "num": "#10",
+     "name": "Drew Barrymore"
+    },
+    {
+     "num": "#11",
+     "name": "Anything Outro"
+    },
+    {
+     "num": "#12",
+     "name": "Drunk"
+    },
+    {
+     "num": "#13",
+     "name": "Inside Man"
+    },
+    {
+     "num": "#14",
+     "name": "Let Me Know"
+    },
+    {
+     "num": "#15",
+     "name": "Free Dumb"
+    },
+    {
+     "num": "#16",
+     "name": "Prom"
+    },
+    {
+     "num": "#17",
+     "name": "Thundercat Outro"
+    },
+    {
+     "num": "#18",
+     "name": "Passport"
+    },
+    {
+     "num": "#19",
+     "name": "Tread Carefully"
+    },
+    {
+     "num": "#20",
+     "name": "Pretty Little Bird(s)"
+    },
+    {
+     "num": "#21",
+     "name": "Give It Up"
+    },
+    {
+     "num": "#22",
+     "name": "Broken Clock(s)"
+    },
+    {
+     "num": "#23",
+     "name": "Simmer (Lady Friend)"
+    },
+    {
+     "num": "#24",
+     "name": "A Little More Time"
+    },
+    {
+     "num": "#25",
+     "name": "Black"
+    },
+    {
+     "num": "#26",
+     "name": "Wavy"
+    },
+    {
+     "num": "#27",
+     "name": "Roses"
+    },
+    {
+     "num": "#28",
+     "name": "Lack of Better Words"
+    }
+   ],
+   "images": [
+    "/szagold/art/tl-8-0.jpg"
+   ]
+  },
+  {
+   "era": "Ctrl [V2]",
+   "name": "Ctrl",
+   "date": "2017",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Doves In The Wind"
+    },
+    {
+     "num": "#2",
+     "name": "Drew Barrymore"
+    },
+    {
+     "num": "#3",
+     "name": "Supermodel"
+    },
+    {
+     "num": "#4",
+     "name": "Love Galore"
+    },
+    {
+     "num": "#5",
+     "name": "Anything"
+    },
+    {
+     "num": "#6",
+     "name": "Go Gina"
+    },
+    {
+     "num": "#7",
+     "name": "(The) Weekend"
+    },
+    {
+     "num": "#8",
+     "name": "Prom"
+    },
+    {
+     "num": "#9",
+     "name": "Inside Man Interlude"
+    },
+    {
+     "num": "#10",
+     "name": "Percolator"
+    },
+    {
+     "num": "#11",
+     "name": "Broken Clocks"
+    },
+    {
+     "num": "#12",
+     "name": "Wavy (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "Anything Outro"
+    },
+    {
+     "num": "#14",
+     "name": "Dem Dem Dem Ay Ayy (Breaking Even)"
+    },
+    {
+     "num": "#15",
+     "name": "Zip Loc Bag"
+    },
+    {
+     "num": "#16",
+     "name": "Consideration (LouAnne Johnson)"
+    },
+    {
+     "num": "#17",
+     "name": "Drunk"
+    },
+    {
+     "num": "#18",
+     "name": "MMS"
+    },
+    {
+     "num": "#19",
+     "name": "Bikini Bottom"
+    }
+   ],
+   "images": [
+    "/szagold/art/tl-9-0.jpg"
+   ]
+  },
+  {
+   "era": "Ctrl [V2]",
+   "name": "Ctrl",
+   "date": "Apr 2017",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Unknown what the full track list at the time was, but it is likely that \"Decisions\" was to be apart of a later revision in April 2017 before it was suddenly scrapped.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Super Model"
+    },
+    {
+     "num": "#?",
+     "name": "Decisions"
+    }
+   ]
+  },
+  {
+   "era": "Ctrl [V2]",
+   "name": "Ctrl",
+   "date": "Jun 9, 2017",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Supermodel"
+    },
+    {
+     "num": "#2",
+     "name": "Love Galore (feat. Travis Scott)"
+    },
+    {
+     "num": "#3",
+     "name": "Doves In The Wind (feat. Kendrick Lamar)"
+    },
+    {
+     "num": "#4",
+     "name": "Drew Barrymore"
+    },
+    {
+     "num": "#5",
+     "name": "Prom"
+    },
+    {
+     "num": "#6",
+     "name": "The Weekend"
+    },
+    {
+     "num": "#7",
+     "name": "Go Gina"
+    },
+    {
+     "num": "#8",
+     "name": "Garden (Say It Like Dat)"
+    },
+    {
+     "num": "#9",
+     "name": "Broken Clocks"
+    },
+    {
+     "num": "#10",
+     "name": "Anything"
+    },
+    {
+     "num": "#11",
+     "name": "Wavy (Interlude) [feat. James Fauntleroy]"
+    },
+    {
+     "num": "#12",
+     "name": "Normal Girl"
+    },
+    {
+     "num": "#13",
+     "name": "Pretty Little Birds (feat. Isaiah Rashad)"
+    },
+    {
+     "num": "#14",
+     "name": "20 Something"
+    }
+   ]
+  },
+  {
+   "era": "SOS",
+   "name": "SOS",
+   "date": "2021",
+   "quality": "Blurry",
+   "source": "SZA",
+   "links": [],
+   "description": "- I Hate U\n- Joni\n- Shirt\n- Dahi (Used)\n\n- Snooze\n- I Like It (30 For 30)\n- King & Queen\n\n- [?] Williams (Glo/Hit Different?)\n- Lure Me\n- Down 4 U\n- Turn Some U's\n- May (Interlude)\n- The Challenger (Interlude)\n\nRODNEY\n- Sunrise\n- Clean Cruise\n- Shirt\n\nSONGS\n- Work It\n- Another World\n\nPOP\n- Nobody Gets Me\n\nBOOM\n- Dahi (Used)\n- Aspara(gus)\n- Narnia Dirt Bike (Shirt)\n- Rod(eo)",
+   "tracks": [],
+   "images": [
+    "/szagold/art/tl-12-0.jpg"
+   ]
+  },
+  {
+   "era": "SOS",
+   "name": "SOS",
+   "date": "2022",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "This list is in no particular order. Shown in the SOS: Where The Hell Have You Been documentary. \"Grief\" is likely \"SOS\" under a different title.\n\n- Grief (SOS)\n- Kill Bill\n- Seek & Destroy\n- Nobody Gets Me\n[UNKNOWN # OF SONGS BLOCKED]\n- Notice Me\n- Gone Girl\n- Smoking on My Ex Pack\n- Ghost in the Machine",
+   "tracks": [],
+   "images": [
+    "/szagold/art/tl-13-0.jpg"
+   ]
+  },
+  {
+   "era": "SOS",
+   "name": "SOS",
+   "date": "2022",
+   "quality": "Blocked",
+   "source": "SZA",
+   "links": [],
+   "description": "The full track list from the previous entry which is displayed on an iPhone, but it is too far away, making the text blurry and nearly impossible to decipher accurately. It is unknown what differences there are, although the track list appears differently ordered compared to the released version. Shown in the SOS: Where The Hell Have You Been documentary.",
+   "tracks": [],
+   "images": [
+    "/szagold/art/tl-14-0.jpg"
+   ]
+  },
+  {
+   "era": "SOS",
+   "name": "SOS",
+   "date": "Dec 9, 2022",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SOS"
+    },
+    {
+     "num": "#2",
+     "name": "Kill Bill"
+    },
+    {
+     "num": "#3",
+     "name": "Seek & Destroy"
+    },
+    {
+     "num": "#4",
+     "name": "Low"
+    },
+    {
+     "num": "#5",
+     "name": "Love Language"
+    },
+    {
+     "num": "#6",
+     "name": "Blind"
+    },
+    {
+     "num": "#7",
+     "name": "Used (feat. Don Toliver)"
+    },
+    {
+     "num": "#8",
+     "name": "Snooze"
+    },
+    {
+     "num": "#9",
+     "name": "Notice Me"
+    },
+    {
+     "num": "#10",
+     "name": "Gone Girl"
+    },
+    {
+     "num": "#11",
+     "name": "Smoking on My Ex Pack"
+    },
+    {
+     "num": "#12",
+     "name": "Ghost in the Machine (feat. Phoebe Bridgers)"
+    },
+    {
+     "num": "#13",
+     "name": "F2F"
+    },
+    {
+     "num": "#14",
+     "name": "Nobody Gets Me"
+    },
+    {
+     "num": "#15",
+     "name": "Conceited"
+    },
+    {
+     "num": "#16",
+     "name": "Special"
+    },
+    {
+     "num": "#17",
+     "name": "Too Late"
+    },
+    {
+     "num": "#18",
+     "name": "Far"
+    },
+    {
+     "num": "#19",
+     "name": "Shirt"
+    },
+    {
+     "num": "#20",
+     "name": "Open Arms (feat. Travis Scott)"
+    },
+    {
+     "num": "#21",
+     "name": "I Hate U"
+    },
+    {
+     "num": "#22",
+     "name": "Good Days"
+    },
+    {
+     "num": "#23",
+     "name": "Forgiveless (feat. Ol' Dirty Bastard)"
+    }
+   ]
+  },
+  {
+   "era": "SOS",
+   "name": "SOS (Webstore Edition)",
+   "date": "Jan 5, 2023",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SOS"
+    },
+    {
+     "num": "#2",
+     "name": "Kill Bill"
+    },
+    {
+     "num": "#3",
+     "name": "Seek & Destroy"
+    },
+    {
+     "num": "#4",
+     "name": "Low"
+    },
+    {
+     "num": "#5",
+     "name": "Love Language"
+    },
+    {
+     "num": "#6",
+     "name": "Blind"
+    },
+    {
+     "num": "#7",
+     "name": "Used (feat. Don Toliver)"
+    },
+    {
+     "num": "#8",
+     "name": "Snooze"
+    },
+    {
+     "num": "#9",
+     "name": "Notice Me"
+    },
+    {
+     "num": "#10",
+     "name": "Gone Girl"
+    },
+    {
+     "num": "#11",
+     "name": "Smoking on My Ex Pack"
+    },
+    {
+     "num": "#12",
+     "name": "Ghost in the Machine (feat. Phoebe Bridgers)"
+    },
+    {
+     "num": "#13",
+     "name": "F2F"
+    },
+    {
+     "num": "#14",
+     "name": "Nobody Gets Me"
+    },
+    {
+     "num": "#15",
+     "name": "Conceited"
+    },
+    {
+     "num": "#16",
+     "name": "Special"
+    },
+    {
+     "num": "#17",
+     "name": "Too Late"
+    },
+    {
+     "num": "#18",
+     "name": "Far"
+    },
+    {
+     "num": "#19",
+     "name": "Shirt"
+    },
+    {
+     "num": "#20",
+     "name": "Open Arms (feat. Travis Scott)"
+    },
+    {
+     "num": "#21",
+     "name": "I Hate U"
+    },
+    {
+     "num": "#22",
+     "name": "Good Days"
+    },
+    {
+     "num": "#23",
+     "name": "Forgiveless (feat. Ol' Dirty Bastard)"
+    },
+    {
+     "num": "#24",
+     "name": "PSA"
+    },
+    {
+     "num": "#25",
+     "name": "Open Arms (Solo Version)"
+    }
+   ]
+  },
+  {
+   "era": "LANA [V2]",
+   "name": "SOS Deluxe: LANA",
+   "date": "Dec 6, 2024",
+   "quality": "Blocked",
+   "source": "SZA",
+   "links": [],
+   "description": "This list is in no particular order.\n\n- Potting Season\n- Brace Yourself\n- (My Tu)rn\n- (Wo)rk (It)\n- (Gua)rd (Down)\n- Dri(ve)\n- No (M)ore Hid(in)g\n- Saturn\n- D(i)amond (B)oy\n- BMF(?)\n- (S)corses(e Baby D)addy\n- (Another) Life\n- (Ta)ke (Yo)u (Do)wn\n- (Lo)ve Me For Me\n- A(spar)a(gus)\n- Crybaby\n- C(hill Ba)by\n- Wonderland",
+   "tracks": [],
+   "images": [
+    "/szagold/art/tl-17-0.jpg"
+   ]
+  },
+  {
+   "era": "LANA [V2]",
+   "name": "SOS Deluxe: LANA",
+   "date": "Dec 20, 2024",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "No More Hiding"
+    },
+    {
+     "num": "#2",
+     "name": "What Do I Do"
+    },
+    {
+     "num": "#3",
+     "name": "30 For 30 (with Kendrick Lamar)"
+    },
+    {
+     "num": "#4",
+     "name": "Diamond Boy (DTM)"
+    },
+    {
+     "num": "#5",
+     "name": "BMF"
+    },
+    {
+     "num": "#6",
+     "name": "Scorsese Baby Daddy"
+    },
+    {
+     "num": "#7",
+     "name": "Love Me 4 Me"
+    },
+    {
+     "num": "#8",
+     "name": "Chill Baby"
+    },
+    {
+     "num": "#9",
+     "name": "My Turn"
+    },
+    {
+     "num": "#10",
+     "name": "Crybaby"
+    },
+    {
+     "num": "#11",
+     "name": "Kitchen"
+    },
+    {
+     "num": "#12",
+     "name": "Get Behind Me (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "Drive"
+    },
+    {
+     "num": "#14",
+     "name": "Another Life"
+    },
+    {
+     "num": "#15",
+     "name": "Saturn"
+    }
+   ]
+  },
+  {
+   "era": "LANA [V2]",
+   "name": "SOS Deluxe: LANA [Reissue]",
+   "date": "Feb 10, 2025",
+   "quality": "Clear",
+   "source": "SZA",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "No More Hiding"
+    },
+    {
+     "num": "#2",
+     "name": "What Do I Do"
+    },
+    {
+     "num": "#3",
+     "name": "30 For 30 (with Kendrick Lamar)"
+    },
+    {
+     "num": "#4",
+     "name": "Diamond Boy (DTM)"
+    },
+    {
+     "num": "#5",
+     "name": "BMF"
+    },
+    {
+     "num": "#6",
+     "name": "Scorsese Baby Daddy"
+    },
+    {
+     "num": "#7",
+     "name": "Love Me 4 Me"
+    },
+    {
+     "num": "#8",
+     "name": "Chill Baby"
+    },
+    {
+     "num": "#9",
+     "name": "My Turn"
+    },
+    {
+     "num": "#10",
+     "name": "Crybaby"
+    },
+    {
+     "num": "#11",
+     "name": "Kitchen"
+    },
+    {
+     "num": "#12",
+     "name": "Get Behind Me (Interlude)"
+    },
+    {
+     "num": "#13",
+     "name": "Drive"
+    },
+    {
+     "num": "#14",
+     "name": "Another Life"
+    },
+    {
+     "num": "#15",
+     "name": "Saturn"
+    },
+    {
+     "num": "#16",
+     "name": "Joni (feat. Don Toliver)"
+    },
+    {
+     "num": "#17",
+     "name": "Take You Down"
+    },
+    {
+     "num": "#18",
+     "name": "Open Arms (just SZA)"
+    },
+    {
+     "num": "#19",
+     "name": "PSA"
+    }
+   ]
+  }
+ ]
+}

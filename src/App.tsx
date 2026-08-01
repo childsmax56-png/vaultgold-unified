@@ -12,7 +12,7 @@ import { FullScreenPlayer } from './components/FullScreenPlayer';
 import { ArtGallery, ArtEntry } from './components/ArtGallery';
 import { StemsView, StemEntry } from './components/StemsView';
 import { MiscView, MiscEntry } from './components/MiscView';
-import { TracklistsView, TracklistAlbum } from './components/TracklistsView';
+import { TracklistsView, TracklistAlbum, TracklistLegendItem } from './components/TracklistsView';
 import { QueueModal } from './components/QueueModal';
 import { handleShareSilent } from './components/EraDetail';
 
@@ -195,6 +195,7 @@ export default function App() {
   const [groupbuysData, setGroupbuysData] = useState<GroupbuysData>({ years: [], grandTotal: '' });
   const [productionData, setProductionData] = useState<TrackerData | null>(null);
   const [tracklistsData, setTracklistsData] = useState<TracklistAlbum[]>([]);
+  const [tracklistsLegend, setTracklistsLegend] = useState<TracklistLegendItem[]>([]);
   const [releasedData, setReleasedData] = useState<ReleasedEntry[]>([]);
   const [videosData, setVideosData] = useState<VideoRawEntry[]>([]);
   const [subAlbumsData, setSubAlbumsData] = useState<SubAlbumEntry[]>([]);
@@ -1358,8 +1359,12 @@ export default function App() {
 
     axios.get(`/${ARTIST_SLUG}/Tracklists.json`)
       .then(res => {
-        const tl = res.data as TracklistAlbum[];
+        // Newer builds ship { legend, albums }; older ones a bare album array.
+        const raw = res.data;
+        const tl = (Array.isArray(raw) ? raw : raw?.albums ?? []) as TracklistAlbum[];
+        const legend = (Array.isArray(raw) ? [] : raw?.legend ?? []) as TracklistLegendItem[];
         setTracklistsData(tl);
+        setTracklistsLegend(legend);
         setFetchedTabs(prev => new Set([...prev, 'tracklists']));
         if (tl.length > 0) setTabsWithData(prev => new Set([...prev, 'tracklists']));
       })
@@ -3072,6 +3077,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                 <TracklistsView
                   key={`tracklists-${selectedAlbum.name}`}
                   data={tracklistsData.filter(t => t.era.toLowerCase() === selectedAlbum.name.toLowerCase())}
+                  legend={tracklistsLegend}
                   searchQuery={searchQuery}
                   eras={[...erasArray, ...relatedErasArray]}
                   onPlaySong={handlePlaySong}

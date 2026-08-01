@@ -1,2057 +1,2173 @@
-[
- {
-  "era": "Early Days",
-  "name": "Ode to Deodorant Promo Cassette",
-  "date": "1998",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Ode to Deodorant"
-   },
-   {
-    "num": "#2",
-    "name": "Brothers + Sisters"
-   }
-  ]
- },
- {
-  "era": "Early Days",
-  "name": "Safety E.P.",
-  "date": "",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "High Speed"
-   },
-   {
-    "num": "#2",
-    "name": "Such a Rush"
-   },
-   {
-    "num": "#3",
-    "name": "Ode to Deodorant"
-   },
-   {
-    "num": "#4",
-    "name": "If All Else Fails"
-   },
-   {
-    "num": "#5",
-    "name": "Bigger Stronger"
-   },
-   {
-    "num": "#6",
-    "name": "Panic (Don't Panic)"
-   },
-   {
-    "num": "#7",
-    "name": "No More Keeping My Feet on the Ground"
-   }
-  ]
- },
- {
-  "era": "Early Days",
-  "name": "Safety E.P.",
-  "date": "May 25, 1998",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Bigger Stronger"
-   },
-   {
-    "num": "#2",
-    "name": "No More Keeping My Feet on the Ground"
-   },
-   {
-    "num": "#3",
-    "name": "Such a Rush"
-   }
-  ]
- },
- {
-  "era": "Early Days",
-  "name": "Panic E.P.",
-  "date": "May 25, 1998",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Early Days",
-  "name": "Rough Demos Cassette",
-  "date": "",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Shiver"
-   },
-   {
-    "num": "#2",
-    "name": "Wooden House (We Never Change)"
-   },
-   {
-    "num": "#3",
-    "name": "Bigger Stronger"
-   },
-   {
-    "num": "#4",
-    "name": "Brothers + Sisters"
-   },
-   {
-    "num": "#5",
-    "name": "Ode (to Deodorant)"
-   }
-  ]
- },
- {
-  "era": "Early Days",
-  "name": "The Blue Room E.P.",
-  "date": "1999",
-  "quality": "Clear",
-  "source": "N/A",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Don't Panic"
-   },
-   {
-    "num": "#2",
-    "name": "Spies"
-   },
-   {
-    "num": "#3",
-    "name": "High Speed"
-   },
-   {
-    "num": "#4",
-    "name": "See You Soon"
-   }
-  ]
- },
- {
-  "era": "Early Days",
-  "name": "The Blue Room E.P.",
-  "date": "1999",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Bigger Stronger"
-   },
-   {
-    "num": "#2",
-    "name": "Don't Panic"
-   },
-   {
-    "num": "#3",
-    "name": "See You Soon"
-   },
-   {
-    "num": "#4",
-    "name": "High Speed"
-   },
-   {
-    "num": "#5",
-    "name": "Such a Rush"
-   }
-  ]
- },
- {
-  "era": "Parachutes",
-  "name": "Parachutes",
-  "date": "2000",
-  "quality": "Clear",
-  "source": "N/A",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Shiver"
-   },
-   {
-    "num": "#2",
-    "name": "Trouble"
-   },
-   {
-    "num": "#3",
-    "name": "Parachutes"
-   },
-   {
-    "num": "#4",
-    "name": "Yellow"
-   },
-   {
-    "num": "#5",
-    "name": "Spies"
-   },
-   {
-    "num": "#6",
-    "name": "Sparks"
-   },
-   {
-    "num": "#7",
-    "name": "Everything's Not Lost"
-   },
-   {
-    "num": "#8",
-    "name": "Don't Panic"
-   },
-   {
-    "num": "#9",
-    "name": "High Speed"
-   },
-   {
-    "num": "#10",
-    "name": "We Never Change"
-   },
-   {
-    "num": "#11",
-    "name": "Life Is For Living"
-   }
-  ]
- },
- {
-  "era": "Parachutes",
-  "name": "Parachutes",
-  "date": "2000",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Don't Panic"
-   },
-   {
-    "num": "#2",
-    "name": "Shiver"
-   },
-   {
-    "num": "#3",
-    "name": "Spies"
-   },
-   {
-    "num": "#4",
-    "name": "Sparks"
-   },
-   {
-    "num": "#5",
-    "name": "Yellow"
-   },
-   {
-    "num": "#6",
-    "name": "Trouble"
-   },
-   {
-    "num": "#7",
-    "name": "Parachutes"
-   },
-   {
-    "num": "#8",
-    "name": "High Speed"
-   },
-   {
-    "num": "#9",
-    "name": "We Never Change"
-   },
-   {
-    "num": "#10",
-    "name": "Everything's Not Lost (inc. Life Is For Living)"
-   }
-  ]
- },
- {
-  "era": "Parachutes",
-  "name": "Acoustic E.P.",
-  "date": "2000",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Sparks"
-   },
-   {
-    "num": "#2",
-    "name": "Careful Where You Stand"
-   },
-   {
-    "num": "#3",
-    "name": "Yellow (Acoustic Version From Jo Whiley's Lunchtime Social)"
-   },
-   {
-    "num": "#4",
-    "name": "See You Soon"
-   }
-  ]
- },
- {
-  "era": "A Rush of Blood to the Head",
-  "name": "A Rush of Blood to the Head (?) (\"COLDPLAY 2ND ALBUM\")",
-  "date": "Dec 2001",
-  "quality": "Blurry",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "I Ran Away"
-   },
-   {
-    "num": "#2",
-    "name": "Eyes For Eyes"
-   },
-   {
-    "num": "#3",
-    "name": "Warning Sign"
-   },
-   {
-    "num": "#4",
-    "name": "Amsterdam"
-   },
-   {
-    "num": "#5",
-    "name": "Harmless"
-   },
-   {
-    "num": "#6",
-    "name": "Deserter"
-   },
-   {
-    "num": "#7",
-    "name": "Green Eyes"
-   }
-  ]
- },
- {
-  "era": "A Rush of Blood to the Head",
-  "name": "A Rush of Blood to the Head",
-  "date": "2002",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Politik"
-   },
-   {
-    "num": "#2",
-    "name": "In My Place"
-   },
-   {
-    "num": "#3",
-    "name": "God Put A Smile Upon Your Face"
-   },
-   {
-    "num": "#4",
-    "name": "The Scientist"
-   },
-   {
-    "num": "#5",
-    "name": "Clocks"
-   },
-   {
-    "num": "#6",
-    "name": "Daylight"
-   },
-   {
-    "num": "#7",
-    "name": "Green Eyes"
-   },
-   {
-    "num": "#8",
-    "name": "Warning Sign"
-   },
-   {
-    "num": "#9",
-    "name": "A Whisper"
-   },
-   {
-    "num": "#10",
-    "name": "A Rush Of Blood To The Head"
-   },
-   {
-    "num": "#11",
-    "name": "Amsterdam"
-   }
-  ]
- },
- {
-  "era": "X&Y",
-  "name": "Zero Theory",
-  "date": "2003",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Square/1 (Square One)"
-   },
-   {
-    "num": "#2",
-    "name": "Talk"
-   },
-   {
-    "num": "#3",
-    "name": "Something Ain't Right"
-   },
-   {
-    "num": "#4",
-    "name": "Fury"
-   },
-   {
-    "num": "#5",
-    "name": "Till Kingdom Come (Til Kingdom Come)"
-   },
-   {
-    "num": "#6",
-    "name": "Blasphemy"
-   },
-   {
-    "num": "#7",
-    "name": "What If"
-   },
-   {
-    "num": "#8",
-    "name": "Echo My Name (I Can't Believe You're Gone)"
-   },
-   {
-    "num": "#9",
-    "name": "X&Y"
-   },
-   {
-    "num": "#10",
-    "name": "The Hardest Part"
-   },
-   {
-    "num": "#11",
-    "name": "Deja Vu"
-   }
-  ]
- },
- {
-  "era": "X&Y",
-  "name": "Zero Theory",
-  "date": "2003/2004",
-  "quality": "N/A",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Square/1 (Square One)"
-   },
-   {
-    "num": "#2",
-    "name": "Fury"
-   },
-   {
-    "num": "#3",
-    "name": "Talk"
-   },
-   {
-    "num": "#4",
-    "name": "Echo my name (I Can't Believe You're Gone)"
-   },
-   {
-    "num": "#5",
-    "name": "Deja vu"
-   },
-   {
-    "num": "#6",
-    "name": "What if"
-   },
-   {
-    "num": "#7",
-    "name": "White Shadow's"
-   },
-   {
-    "num": "#8",
-    "name": "Something aint right"
-   },
-   {
-    "num": "#9",
-    "name": "Pour Me"
-   },
-   {
-    "num": "#10",
-    "name": "Til kingdom come"
-   },
-   {
-    "num": "#11",
-    "name": "The Hardest part"
-   },
-   {
-    "num": "#12",
-    "name": "Until The Water Flows Over/Solid ground"
-   },
-   {
-    "num": "#13",
-    "name": "X&Y"
-   },
-   {
-    "num": "#14",
-    "name": "Zurich"
-   },
-   {
-    "num": "#15",
-    "name": "In isolation"
-   },
-   {
-    "num": "#16",
-    "name": "Leonardo"
-   },
-   {
-    "num": "#17",
-    "name": "Ladder to the sun"
-   },
-   {
-    "num": "#18",
-    "name": "Proof"
-   },
-   {
-    "num": "#19",
-    "name": "The World Turns Upside Down/Turn Your World Around"
-   },
-   {
-    "num": "#20",
-    "name": "Fix you/Lights will guide you home"
-   }
-  ]
- },
- {
-  "era": "X&Y",
-  "name": "X&Y",
-  "date": "2004",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "X&Y"
-   },
-   {
-    "num": "#2",
-    "name": "Talk"
-   },
-   {
-    "num": "#3",
-    "name": "Things i dont understand"
-   },
-   {
-    "num": "#4",
-    "name": "The Speed of Sound"
-   },
-   {
-    "num": "#5",
-    "name": "Til Kingdom Come"
-   },
-   {
-    "num": "#6",
-    "name": "Square one"
-   },
-   {
-    "num": "#7",
-    "name": "Fix you"
-   },
-   {
-    "num": "#8",
-    "name": "The Hardest Part"
-   },
-   {
-    "num": "#9",
-    "name": "Swallowed in the sea"
-   },
-   {
-    "num": "#10",
-    "name": "How we see the world"
-   },
-   {
-    "num": "#11",
-    "name": "Low"
-   },
-   {
-    "num": "#11",
-    "name": "In isolation"
-   },
-   {
-    "num": "#12",
-    "name": "Leonardo"
-   }
-  ]
- },
- {
-  "era": "X&Y",
-  "name": "X&Y",
-  "date": "2005",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Talk"
-   },
-   {
-    "num": "#2",
-    "name": "Low"
-   },
-   {
-    "num": "#3",
-    "name": "The Hardest Part"
-   },
-   {
-    "num": "#4",
-    "name": "Speed Of Sound"
-   },
-   {
-    "num": "#5",
-    "name": "What If"
-   },
-   {
-    "num": "#6",
-    "name": "X&Y"
-   },
-   {
-    "num": "#1",
-    "name": "Square One"
-   },
-   {
-    "num": "#2",
-    "name": "White Shadows"
-   },
-   {
-    "num": "#3",
-    "name": "Fix You"
-   },
-   {
-    "num": "#4",
-    "name": "A Message"
-   },
-   {
-    "num": "#5",
-    "name": "Twisted Logic"
-   },
-   {
-    "num": "#6",
-    "name": "Swallowed In The Sea"
-   }
-  ]
- },
- {
-  "era": "X&Y",
-  "name": "X&Y",
-  "date": "2005",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Square One"
-   },
-   {
-    "num": "#2",
-    "name": "What If"
-   },
-   {
-    "num": "#3",
-    "name": "White Shadows"
-   },
-   {
-    "num": "#4",
-    "name": "Fix You"
-   },
-   {
-    "num": "#5",
-    "name": "Talk"
-   },
-   {
-    "num": "#6",
-    "name": "X&Y"
-   },
-   {
-    "num": "#7",
-    "name": "Speed of Sound"
-   },
-   {
-    "num": "#8",
-    "name": "A Message"
-   },
-   {
-    "num": "#9",
-    "name": "Low"
-   },
-   {
-    "num": "#10",
-    "name": "The Hardest Part"
-   },
-   {
-    "num": "#11",
-    "name": "Swallowed In The Sea"
-   },
-   {
-    "num": "#12",
-    "name": "Twisted Logic"
-   },
-   {
-    "num": "#13",
-    "name": "Til Kingdom Come"
-   }
-  ]
- },
- {
-  "era": "Viva la Vida",
-  "name": "LeftrightLeftRightleft",
-  "date": "Sep 5, 2007",
-  "quality": "N/A",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Lost!"
-   },
-   {
-    "num": "#2",
-    "name": "Cemeteries of London"
-   },
-   {
-    "num": "#3",
-    "name": "Violet Hill"
-   },
-   {
-    "num": "#4",
-    "name": "Poppyfields"
-   },
-   {
-    "num": "#5",
-    "name": "42"
-   },
-   {
-    "num": "#6",
-    "name": "Yes!"
-   },
-   {
-    "num": "#7",
-    "name": "Leftrightleftrightleft"
-   },
-   {
-    "num": "#8",
-    "name": "Rainy Day"
-   }
-  ]
- },
- {
-  "era": "Viva la Vida",
-  "name": "Viva la Vida or Death and All His Friends",
-  "date": "2007",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Life in Technicolor"
-   },
-   {
-    "num": "#2",
-    "name": "Cemeteries of London"
-   },
-   {
-    "num": "#3",
-    "name": "Lost!"
-   },
-   {
-    "num": "#4",
-    "name": "Prospekt's March"
-   },
-   {
-    "num": "#5",
-    "name": "Lovers in Japan"
-   },
-   {
-    "num": "#6",
-    "name": "Yes"
-   },
-   {
-    "num": "#7",
-    "name": "Chinese Sleep Chant"
-   },
-   {
-    "num": "#8",
-    "name": "Reign of Love"
-   },
-   {
-    "num": "#9",
-    "name": "Death and All His Friends"
-   }
-  ]
- },
- {
-  "era": "Viva la Vida",
-  "name": "Viva la Vida or Death and All His Friends",
-  "date": "",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Life in Technicolor (instrumental) (Life in Technicolor)"
-   },
-   {
-    "num": "#2",
-    "name": "Cemeteries of London"
-   },
-   {
-    "num": "#3",
-    "name": "Lost!"
-   },
-   {
-    "num": "#4",
-    "name": "42"
-   },
-   {
-    "num": "#5",
-    "name": "Lovers in Japan"
-   },
-   {
-    "num": "#6",
-    "name": "School / Death and All His Friends"
-   },
-   {
-    "num": "#7",
-    "name": "Reign of Love"
-   },
-   {
-    "num": "#8",
-    "name": "Yes"
-   },
-   {
-    "num": "#9",
-    "name": "Chinese Sleep Chant"
-   },
-   {
-    "num": "#10",
-    "name": "Viva la Vida"
-   },
-   {
-    "num": "#11",
-    "name": "Strawberry Swing"
-   },
-   {
-    "num": "#12",
-    "name": "Life in Technicolor (Life in Technicolor ii)"
-   },
-   {
-    "num": "#13",
-    "name": "The Escapist"
-   },
-   {
-    "num": "#14",
-    "name": "Violet Hill"
-   },
-   {
-    "num": "#15",
-    "name": "Postcards from Far Away / Glass of Water"
-   }
-  ]
- },
- {
-  "era": "Viva la Vida",
-  "name": "Viva la Vida or Death and All His Friends",
-  "date": "",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "42"
-   },
-   {
-    "num": "#2",
-    "name": "Glass Of Water"
-   },
-   {
-    "num": "#3",
-    "name": "Lost!"
-   },
-   {
-    "num": "#4",
-    "name": "Postcards From Far Away / Chinese Sleep Chant"
-   },
-   {
-    "num": "#5",
-    "name": "Prospekt's March / Poppy Fields"
-   },
-   {
-    "num": "#6",
-    "name": "Yes"
-   },
-   {
-    "num": "#7",
-    "name": "Death And All His Friends"
-   },
-   {
-    "num": "#8",
-    "name": "Cemeteries Of London"
-   },
-   {
-    "num": "#9",
-    "name": "Rainy Day"
-   },
-   {
-    "num": "#10",
-    "name": "¡Viva la Vida!"
-   },
-   {
-    "num": "#11",
-    "name": "The Escapist"
-   }
-  ]
- },
- {
-  "era": "Viva la Vida",
-  "name": "Prospekt's March E.P. (?)",
-  "date": "2007",
-  "quality": "Blurry",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Life in Technicolour"
-   },
-   {
-    "num": "#2",
-    "name": "Prospekt's March"
-   },
-   {
-    "num": "#3",
-    "name": "Lukas"
-   },
-   {
-    "num": "#4",
-    "name": "Chinese U.F.O. / Chinese Dreams"
-   },
-   {
-    "num": "#5",
-    "name": "Lhuna"
-   },
-   {
-    "num": "#6",
-    "name": "The Goldrush"
-   },
-   {
-    "num": "#7",
-    "name": "Rainy Day"
-   }
-  ]
- },
- {
-  "era": "Viva la Vida",
-  "name": "Viva la Vida or Death And All His Friends",
-  "date": "2008",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Life in Technicolor"
-   },
-   {
-    "num": "#2",
-    "name": "Cemeteries Of London"
-   },
-   {
-    "num": "#3",
-    "name": "Lost!"
-   },
-   {
-    "num": "#4",
-    "name": "42"
-   },
-   {
-    "num": "#5",
-    "name": "Lovers in Japan / Reign Of Love"
-   },
-   {
-    "num": "#6",
-    "name": "Yes"
-   },
-   {
-    "num": "#7",
-    "name": "Viva La Vida"
-   },
-   {
-    "num": "#8",
-    "name": "Violet Hill"
-   },
-   {
-    "num": "#9",
-    "name": "Strawberry Swing"
-   },
-   {
-    "num": "#10",
-    "name": "Death And All His Friends"
-   }
-  ]
- },
- {
-  "era": "Viva la Vida",
-  "name": "Prospekt's March E.P.",
-  "date": "2008",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Life in Technicolor ii"
-   },
-   {
-    "num": "#2",
-    "name": "Postcards From Far Away"
-   },
-   {
-    "num": "#3",
-    "name": "Glass Of Water"
-   },
-   {
-    "num": "#4",
-    "name": "Rainy Day"
-   },
-   {
-    "num": "#5",
-    "name": "Prospekt's March / Poppyfields"
-   },
-   {
-    "num": "#6",
-    "name": "Lost+"
-   },
-   {
-    "num": "#7",
-    "name": "Lovers in Japan (Osaka Sun Mix)"
-   },
-   {
-    "num": "#8",
-    "name": "Now My Feet Won't Touch The Ground"
-   }
-  ]
- },
- {
-  "era": "The Wedding Album",
-  "name": "The Wedding Album",
-  "date": "2009",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Wedding Bells"
-   },
-   {
-    "num": "#2",
-    "name": "Love In A Lethal Dose"
-   },
-   {
-    "num": "#3",
-    "name": "Drunks & Guns"
-   },
-   {
-    "num": "#4",
-    "name": "Cartoon Heart (Charlie Brown)"
-   },
-   {
-    "num": "#5",
-    "name": "1000-1 (Ballad Of St. John) (Bani Adam)"
-   },
-   {
-    "num": "#6",
-    "name": "Gardeners On The Frontline"
-   },
-   {
-    "num": "#7",
-    "name": "Famous Old Painters"
-   },
-   {
-    "num": "#8",
-    "name": "Cartoon Head"
-   },
-   {
-    "num": "#9",
-    "name": "Spanish Rain"
-   },
-   {
-    "num": "#10",
-    "name": "Christmas Lights"
-   }
-  ]
- },
- {
-  "era": "The Wedding Album",
-  "name": "The Wedding Album",
-  "date": "",
-  "quality": "N/A",
-  "source": "Secondary",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Mylo Xyloto",
-  "name": "Mylo Xyloto",
-  "date": "Jun 16, 2010",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Great Expectations (U.F.O., Mylo Xyloto)"
-   },
-   {
-    "num": "#2",
-    "name": "Charlie Brown"
-   },
-   {
-    "num": "#3",
-    "name": "Paradise"
-   },
-   {
-    "num": "#4",
-    "name": "W (Weirdo)"
-   },
-   {
-    "num": "#5",
-    "name": "Hurts Like Heaven"
-   },
-   {
-    "num": "#6",
-    "name": "M.M.I.X."
-   },
-   {
-    "num": "#7",
-    "name": "Major Minus"
-   },
-   {
-    "num": "#8",
-    "name": "Moving To Mars"
-   },
-   {
-    "num": "#9",
-    "name": "Car Kids"
-   },
-   {
-    "num": "#10",
-    "name": "A Hopeful Transmission"
-   },
-   {
-    "num": "#11",
-    "name": "Every Teardrop Is A Waterfall"
-   }
-  ]
- },
- {
-  "era": "Mylo Xyloto",
-  "name": "Mylo Xyloto",
-  "date": "2010",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Mylo Xyloto/Great Expectations"
-   },
-   {
-    "num": "#2",
-    "name": "Hurts Like Heaven"
-   },
-   {
-    "num": "#3",
-    "name": "Paradise"
-   },
-   {
-    "num": "#4",
-    "name": "Charlie Brown"
-   },
-   {
-    "num": "#5",
-    "name": "Up With The Birds"
-   },
-   {
-    "num": "#6",
-    "name": "Us Against The World"
-   },
-   {
-    "num": "#7",
-    "name": "Princess Of China"
-   },
-   {
-    "num": "#8",
-    "name": "A Hopeful Transmission"
-   },
-   {
-    "num": "#9",
-    "name": "Car Kids"
-   },
-   {
-    "num": "#10",
-    "name": "Moving To Mars"
-   },
-   {
-    "num": "#11",
-    "name": "Every Teardrop Is A Waterfall"
-   }
-  ]
- },
- {
-  "era": "Mylo Xyloto",
-  "name": "Mylo Xyloto",
-  "date": "2010",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Mylo Xyloto"
-   },
-   {
-    "num": "#2",
-    "name": "Hurts Like Heaven"
-   },
-   {
-    "num": "#3",
-    "name": "Princess of China"
-   },
-   {
-    "num": "#4",
-    "name": "Charlie Brown"
-   },
-   {
-    "num": "#5",
-    "name": "Paradise"
-   },
-   {
-    "num": "#6",
-    "name": "Us Against The World"
-   },
-   {
-    "num": "#7",
-    "name": "Major Minus"
-   },
-   {
-    "num": "#8",
-    "name": "Up With The Birds"
-   },
-   {
-    "num": "#9",
-    "name": "UFO"
-   },
-   {
-    "num": "#10",
-    "name": "Every Teardrop Is A Waterfall"
-   }
-  ]
- },
- {
-  "era": "Mylo Xyloto",
-  "name": "Mylo Xyloto",
-  "date": "2010",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Mylo Xyloto"
-   },
-   {
-    "num": "#2",
-    "name": "Hurts Like Heaven"
-   },
-   {
-    "num": "#3",
-    "name": "Paradise"
-   },
-   {
-    "num": "#4",
-    "name": "Charlie Brown"
-   },
-   {
-    "num": "#5",
-    "name": "Car Kids"
-   },
-   {
-    "num": "#6",
-    "name": "Moving To Mars"
-   },
-   {
-    "num": "#7",
-    "name": "Every Teardrop Is A Waterfall"
-   },
-   {
-    "num": "#8",
-    "name": "Major Minus"
-   },
-   {
-    "num": "#9",
-    "name": "Rescue St."
-   },
-   {
-    "num": "#10",
-    "name": "UFO"
-   },
-   {
-    "num": "#11",
-    "name": "A Hopeful Transmission"
-   },
-   {
-    "num": "#12",
-    "name": "Us Against The World"
-   },
-   {
-    "num": "#13",
-    "name": "Up With The Birds"
-   },
-   {
-    "num": "#14",
-    "name": "Princess Of China"
-   }
-  ]
- },
- {
-  "era": "Mylo Xyloto",
-  "name": "Mylo Xyloto",
-  "date": "?",
-  "quality": "Blurry",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Mylo Xyloto"
-   },
-   {
-    "num": "#2",
-    "name": "Hurts Like Heaven"
-   },
-   {
-    "num": "#3",
-    "name": "Paradise"
-   },
-   {
-    "num": "#4",
-    "name": "Car Kids"
-   },
-   {
-    "num": "#5",
-    "name": "Us Against the World"
-   },
-   {
-    "num": "#6",
-    "name": "M.M.I.X."
-   },
-   {
-    "num": "#7",
-    "name": "Every Teardrop is a Waterfall"
-   },
-   {
-    "num": "#8",
-    "name": "Major Minus"
-   },
-   {
-    "num": "#9",
-    "name": "U.F.O."
-   },
-   {
-    "num": "#10",
-    "name": "Princess of China"
-   },
-   {
-    "num": "#11",
-    "name": "Up in Flames"
-   },
-   {
-    "num": "#12",
-    "name": "A Hopeful Transmission"
-   },
-   {
-    "num": "#13",
-    "name": "Don’t Let It Break Your Heart"
-   },
-   {
-    "num": "#14",
-    "name": "Up with the Birds"
-   }
-  ]
- },
- {
-  "era": "Mylo Xyloto",
-  "name": "Mylo Xyloto",
-  "date": "2011",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Mylo Xyloto"
-   },
-   {
-    "num": "#2",
-    "name": "Hurts Like Heaven"
-   },
-   {
-    "num": "#3",
-    "name": "Paradise"
-   },
-   {
-    "num": "#4",
-    "name": "Charlie Brown"
-   },
-   {
-    "num": "#5",
-    "name": "Us Against The World"
-   },
-   {
-    "num": "#6",
-    "name": "M.M.I.X."
-   },
-   {
-    "num": "#7",
-    "name": "Every Teardrop Is a Waterfall"
-   },
-   {
-    "num": "#8",
-    "name": "Major Minus"
-   },
-   {
-    "num": "#9",
-    "name": "U.F.O."
-   },
-   {
-    "num": "#10",
-    "name": "Princess of China"
-   },
-   {
-    "num": "#11",
-    "name": "Up in Flames"
-   },
-   {
-    "num": "#12",
-    "name": "A Hopeful Transmission"
-   },
-   {
-    "num": "#13",
-    "name": "Don't Let It Break Your Heart"
-   },
-   {
-    "num": "#14",
-    "name": "Up With The Birds"
-   }
-  ]
- },
- {
-  "era": "Ghost Stories",
-  "name": "Ghost Stories",
-  "date": "2013",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "O"
-   },
-   {
-    "num": "#2",
-    "name": "The Race"
-   },
-   {
-    "num": "#3",
-    "name": "Another's Arms"
-   },
-   {
-    "num": "#4",
-    "name": "Atlas"
-   },
-   {
-    "num": "#6",
-    "name": "Ghost Stories (Ghost Story)"
-   },
-   {
-    "num": "#7",
-    "name": "Oceans"
-   },
-   {
-    "num": "#8",
-    "name": "Tomorrow World Without You"
-   },
-   {
-    "num": "#9",
-    "name": "Fly On"
-   }
-  ]
- },
- {
-  "era": "Ghost Stories",
-  "name": "Ghost Stories",
-  "date": "2014",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Always In My Head"
-   },
-   {
-    "num": "#2",
-    "name": "Magic"
-   },
-   {
-    "num": "#3",
-    "name": "Ink"
-   },
-   {
-    "num": "#4",
-    "name": "True Love"
-   },
-   {
-    "num": "#5",
-    "name": "Midnight"
-   },
-   {
-    "num": "#6",
-    "name": "Another's Arms"
-   },
-   {
-    "num": "#7",
-    "name": "Oceans"
-   },
-   {
-    "num": "#8",
-    "name": "A Sky Full Of Stars"
-   },
-   {
-    "num": "#9",
-    "name": "O"
-   }
-  ]
- },
- {
-  "era": "A Head Full of Dreams",
-  "name": "A Head Full of Dreams",
-  "date": "2015",
-  "quality": "N/A",
-  "source": "Leaked",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "A Head Full of Dreams",
-  "name": "A Head Full of Dreams",
-  "date": "2015",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "A Head Full Of Dreams"
-   },
-   {
-    "num": "#2",
-    "name": "Birds"
-   },
-   {
-    "num": "#3",
-    "name": "Hymn For The Weekend"
-   },
-   {
-    "num": "#4",
-    "name": "Everglow"
-   },
-   {
-    "num": "#5",
-    "name": "Adventure Of A Lifetime"
-   },
-   {
-    "num": "#6",
-    "name": "Fun"
-   },
-   {
-    "num": "#7",
-    "name": "Kaleidoscope"
-   },
-   {
-    "num": "#8",
-    "name": "Army Of One"
-   },
-   {
-    "num": "#9",
-    "name": "Amazing Day"
-   },
-   {
-    "num": "#10",
-    "name": "Colour Spectrum"
-   },
-   {
-    "num": "#11",
-    "name": "Up&Up"
-   }
-  ]
- },
- {
-  "era": "A Head Full of Dreams",
-  "name": "Kaleidoscope E.P.",
-  "date": "2017",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "All I Can Think About Is You"
-   },
-   {
-    "num": "#2",
-    "name": "Miracles (Someone Special)"
-   },
-   {
-    "num": "#3",
-    "name": "A L I E N S"
-   },
-   {
-    "num": "#4",
-    "name": "Something Just Like This (Tokyo Remix)"
-   },
-   {
-    "num": "#5",
-    "name": "Hypnotised (EP Mix)"
-   }
-  ]
- },
- {
-  "era": "Everyday Life",
-  "name": "The Lovers",
-  "date": "2019",
-  "quality": "N/A",
-  "source": "Leaked",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "Everyday Life",
-  "name": "Everyday Life",
-  "date": "2019",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#2",
-    "name": "Church"
-   },
-   {
-    "num": "#3",
-    "name": "Trouble in Town"
-   },
-   {
-    "num": "#4",
-    "name": "BrokEn"
-   },
-   {
-    "num": "#5",
-    "name": "Daddy"
-   },
-   {
-    "num": "#6",
-    "name": "WOTW / POTP"
-   },
-   {
-    "num": "#7",
-    "name": "Arabesque"
-   },
-   {
-    "num": "#8",
-    "name": "When I Need a Friend"
-   },
-   {
-    "num": "#1",
-    "name": "Guns"
-   },
-   {
-    "num": "#2",
-    "name": "Orphans"
-   },
-   {
-    "num": "#3",
-    "name": "Èkó"
-   },
-   {
-    "num": "#5",
-    "name": "Old Friends"
-   },
-   {
-    "num": "#6",
-    "name": "Bani Adam"
-   },
-   {
-    "num": "#7",
-    "name": "Champion Of The World"
-   },
-   {
-    "num": "#8",
-    "name": "Everyday Life"
-   }
-  ]
- },
- {
-  "era": "Music of the Spheres",
-  "name": "Music of the Spheres",
-  "date": "Dec 16, 2020",
-  "quality": "Clear",
-  "source": "Leaked",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "---"
-   },
-   {
-    "num": "#2",
-    "name": "---"
-   },
-   {
-    "num": "#3",
-    "name": "Blessed"
-   },
-   {
-    "num": "#4",
-    "name": "---"
-   },
-   {
-    "num": "#5",
-    "name": "---"
-   },
-   {
-    "num": "#6",
-    "name": "---"
-   },
-   {
-    "num": "#7",
-    "name": "---"
-   },
-   {
-    "num": "#8",
-    "name": "Biutyful"
-   },
-   {
-    "num": "#9",
-    "name": "---"
-   },
-   {
-    "num": "#10",
-    "name": "Infinity Sign"
-   },
-   {
-    "num": "#11",
-    "name": "---"
-   },
-   {
-    "num": "#12",
-    "name": "---"
-   }
-  ]
- },
- {
-  "era": "Music of the Spheres",
-  "name": "Music of the Spheres",
-  "date": "2021",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Music Of The Spheres"
-   },
-   {
-    "num": "#2",
-    "name": "Higher Power"
-   },
-   {
-    "num": "#3",
-    "name": "Humankind"
-   },
-   {
-    "num": "#4",
-    "name": "Alien Choir"
-   },
-   {
-    "num": "#5",
-    "name": "Let Somebody Go"
-   },
-   {
-    "num": "#6",
-    "name": "Human Heart"
-   },
-   {
-    "num": "#7",
-    "name": "People Of The Pride"
-   },
-   {
-    "num": "#8",
-    "name": "Biutyful"
-   },
-   {
-    "num": "#9",
-    "name": "Music Of The Spheres ii"
-   },
-   {
-    "num": "#10",
-    "name": "My Universe"
-   },
-   {
-    "num": "#11",
-    "name": "Infinity Sign"
-   },
-   {
-    "num": "#12",
-    "name": "Coloratura"
-   }
-  ]
- },
- {
-  "era": "Moon Music",
-  "name": "Moon Music",
-  "date": "2023",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "MOON MUSiC"
-   },
-   {
-    "num": "#2",
-    "name": "JUPiTER🌈"
-   },
-   {
-    "num": "#3",
-    "name": "feelslikeimfallinginlove"
-   },
-   {
-    "num": "#4",
-    "name": "GOOD FEELiNGS"
-   },
-   {
-    "num": "#5",
-    "name": "ALL MY LOVE"
-   },
-   {
-    "num": "#6",
-    "name": "MOON MUSiiC (ALiEN HiTS / ALiEN RADiO)"
-   },
-   {
-    "num": "#7",
-    "name": "FRNDZ (Man In The Moon)"
-   },
-   {
-    "num": "#8",
-    "name": "MOON MUSiiiC (Earthling)"
-   },
-   {
-    "num": "#9",
-    "name": "One World"
-   }
-  ]
- },
- {
-  "era": "Moon Music",
-  "name": "Moon Music",
-  "date": "Dec 2023",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "MOON MUSiC"
-   },
-   {
-    "num": "#2",
-    "name": "Man in The Moon"
-   },
-   {
-    "num": "#3",
-    "name": "JUPiTER"
-   },
-   {
-    "num": "#4",
-    "name": "GOOD FEELiNGS"
-   },
-   {
-    "num": "#5",
-    "name": "ALL MY LOVE"
-   },
-   {
-    "num": "#6",
-    "name": "🌈 (NEON FOREST)"
-   },
-   {
-    "num": "#7",
-    "name": "WE PRAY"
-   },
-   {
-    "num": "#8",
-    "name": "feelslikeimfallinginlove"
-   },
-   {
-    "num": "#9",
-    "name": "ONE WORLD"
-   }
-  ]
- },
- {
-  "era": "Moon Music",
-  "name": "Moon Music",
-  "date": "Feb 2024",
-  "quality": "Blurry",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "MOON MUSiC"
-   },
-   {
-    "num": "#2",
-    "name": "feelslikeimfallinginlove"
-   },
-   {
-    "num": "#3",
-    "name": "JUPiTER"
-   },
-   {
-    "num": "#4",
-    "name": "GOOD FEELiNGS"
-   },
-   {
-    "num": "#5",
-    "name": "m.u.s.i.c. (🌈 | ALiEN HiTS / ALiEN RADiO)"
-   },
-   {
-    "num": "#6",
-    "name": "🌈 (ALiEN HiTS / ALiEN RADiO)"
-   },
-   {
-    "num": "#7",
-    "name": "WE PRAY"
-   },
-   {
-    "num": "#8",
-    "name": "AETERNA / m.u.s.i.c."
-   },
-   {
-    "num": "#9",
-    "name": "feelslikeimfallinginlove pt. 2 LUNA"
-   },
-   {
-    "num": "#10",
-    "name": "ALL MY LOVE"
-   },
-   {
-    "num": "#11",
-    "name": "ONE WORLD (1🌍)"
-   }
-  ]
- },
- {
-  "era": "Moon Music",
-  "name": "Moon Music",
-  "date": "2024",
-  "quality": "Clear",
-  "source": "Coldplay",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "MOON MUSiC"
-   },
-   {
-    "num": "#2",
-    "name": "feelslikeimfallinginlove"
-   },
-   {
-    "num": "#3",
-    "name": "WE PRAY"
-   },
-   {
-    "num": "#4",
-    "name": "JUPiTER"
-   },
-   {
-    "num": "#5",
-    "name": "GOOD FEELiNGS"
-   },
-   {
-    "num": "#6",
-    "name": "ALiEN HiTS / ALiEN RADiO"
-   },
-   {
-    "num": "#7",
-    "name": "iAAM"
-   },
-   {
-    "num": "#8",
-    "name": "AETERNA"
-   },
-   {
-    "num": "#9",
-    "name": "ALL MY LOVE"
-   },
-   {
-    "num": "#10",
-    "name": "ONE WORLD"
-   }
-  ]
- },
- {
-  "era": "Alphabetica",
-  "name": "Alphabetica (2022)",
-  "date": "2022",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": []
- }
-]
+{
+ "legend": [
+  {
+   "label": "Unheard",
+   "color": "#E06666"
+  },
+  {
+   "label": "Snippet / Partial / Recording",
+   "color": "#F6B26B"
+  },
+  {
+   "label": "Alternate Version Available",
+   "color": "#93C47D"
+  },
+  {
+   "label": "Full Version Available",
+   "color": "#8E7CC3"
+  }
+ ],
+ "albums": [
+  {
+   "era": "Early Days",
+   "name": "Ode to Deodorant Promo Cassette",
+   "date": "1998",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for the Ode to Deodorant Promo Cassette as 'The Coldplay'.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Ode to Deodorant"
+    },
+    {
+     "num": "#2",
+     "name": "Brothers + Sisters"
+    }
+   ]
+  },
+  {
+   "era": "Early Days",
+   "name": "Safety E.P.",
+   "date": "",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Early tracklist from the Safety E.P.'s recording sessions according to Nikki Rosetti, the EP's producer.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "High Speed"
+    },
+    {
+     "num": "#2",
+     "name": "Such a Rush"
+    },
+    {
+     "num": "#3",
+     "name": "Ode to Deodorant"
+    },
+    {
+     "num": "#4",
+     "name": "If All Else Fails"
+    },
+    {
+     "num": "#5",
+     "name": "Bigger Stronger"
+    },
+    {
+     "num": "#6",
+     "name": "Panic (Don't Panic)"
+    },
+    {
+     "num": "#7",
+     "name": "No More Keeping My Feet on the Ground"
+    }
+   ]
+  },
+  {
+   "era": "Early Days",
+   "name": "Safety E.P.",
+   "date": "May 25, 1998",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for the Safety E.P.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bigger Stronger"
+    },
+    {
+     "num": "#2",
+     "name": "No More Keeping My Feet on the Ground"
+    },
+    {
+     "num": "#3",
+     "name": "Such a Rush"
+    }
+   ]
+  },
+  {
+   "era": "Early Days",
+   "name": "Panic E.P.",
+   "date": "May 25, 1998",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Made public through Debs Wild's Life In Technicolor book. Not in order. Made by 'Starfish'.\n\nSo Sad\nPanic (Don't Panic)\nHigh Speed",
+   "tracks": []
+  },
+  {
+   "era": "Early Days",
+   "name": "Rough Demos Cassette",
+   "date": "",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Early demo cassette meant to be sent to Supergrass by Coldplay, but was instead sent to Debs Wild.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Shiver"
+    },
+    {
+     "num": "#2",
+     "name": "Wooden House (We Never Change)"
+    },
+    {
+     "num": "#3",
+     "name": "Bigger Stronger"
+    },
+    {
+     "num": "#4",
+     "name": "Brothers + Sisters"
+    },
+    {
+     "num": "#5",
+     "name": "Ode (to Deodorant)"
+    }
+   ]
+  },
+  {
+   "era": "Early Days",
+   "name": "The Blue Room E.P.",
+   "date": "1999",
+   "quality": "Clear",
+   "source": "N/A",
+   "links": [],
+   "description": "Early unnamed version of The Blue Room. Only 30 copies made.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Don't Panic"
+    },
+    {
+     "num": "#2",
+     "name": "Spies"
+    },
+    {
+     "num": "#3",
+     "name": "High Speed"
+    },
+    {
+     "num": "#4",
+     "name": "See You Soon"
+    }
+   ]
+  },
+  {
+   "era": "Early Days",
+   "name": "The Blue Room E.P.",
+   "date": "1999",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for The Blue Room E.P.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bigger Stronger"
+    },
+    {
+     "num": "#2",
+     "name": "Don't Panic"
+    },
+    {
+     "num": "#3",
+     "name": "See You Soon"
+    },
+    {
+     "num": "#4",
+     "name": "High Speed"
+    },
+    {
+     "num": "#5",
+     "name": "Such a Rush"
+    }
+   ]
+  },
+  {
+   "era": "Parachutes",
+   "name": "Parachutes",
+   "date": "2000",
+   "quality": "Clear",
+   "source": "N/A",
+   "links": [],
+   "description": "Early unnamed version of Parachutes. French Promo CD.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Shiver"
+    },
+    {
+     "num": "#2",
+     "name": "Trouble"
+    },
+    {
+     "num": "#3",
+     "name": "Parachutes"
+    },
+    {
+     "num": "#4",
+     "name": "Yellow"
+    },
+    {
+     "num": "#5",
+     "name": "Spies"
+    },
+    {
+     "num": "#6",
+     "name": "Sparks"
+    },
+    {
+     "num": "#7",
+     "name": "Everything's Not Lost"
+    },
+    {
+     "num": "#8",
+     "name": "Don't Panic"
+    },
+    {
+     "num": "#9",
+     "name": "High Speed"
+    },
+    {
+     "num": "#10",
+     "name": "We Never Change"
+    },
+    {
+     "num": "#11",
+     "name": "Life Is For Living"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-10-0.jpg"
+   ]
+  },
+  {
+   "era": "Parachutes",
+   "name": "Parachutes",
+   "date": "2000",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Parachutes.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Don't Panic"
+    },
+    {
+     "num": "#2",
+     "name": "Shiver"
+    },
+    {
+     "num": "#3",
+     "name": "Spies"
+    },
+    {
+     "num": "#4",
+     "name": "Sparks"
+    },
+    {
+     "num": "#5",
+     "name": "Yellow"
+    },
+    {
+     "num": "#6",
+     "name": "Trouble"
+    },
+    {
+     "num": "#7",
+     "name": "Parachutes"
+    },
+    {
+     "num": "#8",
+     "name": "High Speed"
+    },
+    {
+     "num": "#9",
+     "name": "We Never Change"
+    },
+    {
+     "num": "#10",
+     "name": "Everything's Not Lost (inc. Life Is For Living)"
+    }
+   ]
+  },
+  {
+   "era": "Parachutes",
+   "name": "Acoustic E.P.",
+   "date": "2000",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for the Acoustic E.P.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Sparks"
+    },
+    {
+     "num": "#2",
+     "name": "Careful Where You Stand"
+    },
+    {
+     "num": "#3",
+     "name": "Yellow (Acoustic Version From Jo Whiley's Lunchtime Social)"
+    },
+    {
+     "num": "#4",
+     "name": "See You Soon"
+    }
+   ]
+  },
+  {
+   "era": "A Rush of Blood to the Head",
+   "name": "A Rush of Blood to the Head (?) (\"COLDPLAY 2ND ALBUM\")",
+   "date": "Dec 2001",
+   "quality": "Blurry",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Unknown what this tracklist is for. Seen in the 'Jonny Goes Jazz' Video.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "I Ran Away"
+    },
+    {
+     "num": "#2",
+     "name": "Eyes For Eyes"
+    },
+    {
+     "num": "#3",
+     "name": "Warning Sign"
+    },
+    {
+     "num": "#4",
+     "name": "Amsterdam"
+    },
+    {
+     "num": "#5",
+     "name": "Harmless"
+    },
+    {
+     "num": "#6",
+     "name": "Deserter"
+    },
+    {
+     "num": "#7",
+     "name": "Green Eyes"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-13-0.jpg"
+   ]
+  },
+  {
+   "era": "A Rush of Blood to the Head",
+   "name": "A Rush of Blood to the Head",
+   "date": "2002.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for A Rush Of Blood To The Head.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Politik"
+    },
+    {
+     "num": "#2",
+     "name": "In My Place"
+    },
+    {
+     "num": "#3",
+     "name": "God Put A Smile Upon Your Face"
+    },
+    {
+     "num": "#4",
+     "name": "The Scientist"
+    },
+    {
+     "num": "#5",
+     "name": "Clocks"
+    },
+    {
+     "num": "#6",
+     "name": "Daylight"
+    },
+    {
+     "num": "#7",
+     "name": "Green Eyes"
+    },
+    {
+     "num": "#8",
+     "name": "Warning Sign"
+    },
+    {
+     "num": "#9",
+     "name": "A Whisper"
+    },
+    {
+     "num": "#10",
+     "name": "A Rush Of Blood To The Head"
+    },
+    {
+     "num": "#11",
+     "name": "Amsterdam"
+    }
+   ]
+  },
+  {
+   "era": "X&Y",
+   "name": "Zero Theory",
+   "date": "2003.0",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Rumoured early tracklist of Coldplay's third album, at the time called Zero Theory. Theorized to be from 2003 leaking in 2004 partially",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Square/1 (Square One)"
+    },
+    {
+     "num": "#2",
+     "name": "Talk"
+    },
+    {
+     "num": "#3",
+     "name": "Something Ain't Right"
+    },
+    {
+     "num": "#4",
+     "name": "Fury"
+    },
+    {
+     "num": "#5",
+     "name": "Till Kingdom Come (Til Kingdom Come)"
+    },
+    {
+     "num": "#6",
+     "name": "Blasphemy"
+    },
+    {
+     "num": "#7",
+     "name": "What If"
+    },
+    {
+     "num": "#8",
+     "name": "Echo My Name (I Can't Believe You're Gone)"
+    },
+    {
+     "num": "#9",
+     "name": "X&Y"
+    },
+    {
+     "num": "#10",
+     "name": "The Hardest Part"
+    },
+    {
+     "num": "#11",
+     "name": "Deja Vu"
+    }
+   ]
+  },
+  {
+   "era": "X&Y",
+   "name": "Zero Theory",
+   "date": "2003/2004",
+   "quality": "N/A",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Theorized late-Zero Theory tracklist. Not in any order. Due to the tracklist missing certain songs and nothing new being found",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Square/1 (Square One)"
+    },
+    {
+     "num": "#2",
+     "name": "Fury"
+    },
+    {
+     "num": "#3",
+     "name": "Talk"
+    },
+    {
+     "num": "#4",
+     "name": "Echo my name (I Can't Believe You're Gone)"
+    },
+    {
+     "num": "#5",
+     "name": "Deja vu"
+    },
+    {
+     "num": "#6",
+     "name": "What if"
+    },
+    {
+     "num": "#7",
+     "name": "White Shadow's"
+    },
+    {
+     "num": "#8",
+     "name": "Something aint right"
+    },
+    {
+     "num": "#9",
+     "name": "Pour Me"
+    },
+    {
+     "num": "#10",
+     "name": "Til kingdom come"
+    },
+    {
+     "num": "#11",
+     "name": "The Hardest part"
+    },
+    {
+     "num": "#12",
+     "name": "Until The Water Flows Over/Solid ground"
+    },
+    {
+     "num": "#13",
+     "name": "X&Y"
+    },
+    {
+     "num": "#14",
+     "name": "Zurich"
+    },
+    {
+     "num": "#15",
+     "name": "In isolation"
+    },
+    {
+     "num": "#16",
+     "name": "Leonardo"
+    },
+    {
+     "num": "#17",
+     "name": "Ladder to the sun"
+    },
+    {
+     "num": "#18",
+     "name": "Proof"
+    },
+    {
+     "num": "#19",
+     "name": "The World Turns Upside Down/Turn Your World Around"
+    },
+    {
+     "num": "#20",
+     "name": "Fix you/Lights will guide you home"
+    }
+   ]
+  },
+  {
+   "era": "X&Y",
+   "name": "X&Y",
+   "date": "2004.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "mid 2004 tracklist of the album, from AHFOD Doc. Not in any order\n\nX",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "X&Y"
+    },
+    {
+     "num": "#2",
+     "name": "Talk"
+    },
+    {
+     "num": "#3",
+     "name": "Things i dont understand"
+    },
+    {
+     "num": "#4",
+     "name": "The Speed of Sound"
+    },
+    {
+     "num": "#5",
+     "name": "Til Kingdom Come"
+    },
+    {
+     "num": "#6",
+     "name": "Square one"
+    },
+    {
+     "num": "#7",
+     "name": "Fix you"
+    },
+    {
+     "num": "#8",
+     "name": "The Hardest Part"
+    },
+    {
+     "num": "#9",
+     "name": "Swallowed in the sea"
+    },
+    {
+     "num": "#10",
+     "name": "How we see the world"
+    },
+    {
+     "num": "#11",
+     "name": "Low"
+    },
+    {
+     "num": "#11",
+     "name": "In isolation"
+    },
+    {
+     "num": "#12",
+     "name": "Leonardo"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-17-0.jpg"
+   ]
+  },
+  {
+   "era": "X&Y",
+   "name": "X&Y",
+   "date": "2005.0",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Supposed early tracklist of the album, from a promo CD. \n\nX",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Talk"
+    },
+    {
+     "num": "#2",
+     "name": "Low"
+    },
+    {
+     "num": "#3",
+     "name": "The Hardest Part"
+    },
+    {
+     "num": "#4",
+     "name": "Speed Of Sound"
+    },
+    {
+     "num": "#5",
+     "name": "What If"
+    },
+    {
+     "num": "#6",
+     "name": "X&Y"
+    },
+    {
+     "num": "#1",
+     "name": "Square One"
+    },
+    {
+     "num": "#2",
+     "name": "White Shadows"
+    },
+    {
+     "num": "#3",
+     "name": "Fix You"
+    },
+    {
+     "num": "#4",
+     "name": "A Message"
+    },
+    {
+     "num": "#5",
+     "name": "Twisted Logic"
+    },
+    {
+     "num": "#6",
+     "name": "Swallowed In The Sea"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-19-0.jpg"
+   ]
+  },
+  {
+   "era": "X&Y",
+   "name": "X&Y",
+   "date": "2005.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for X&Y.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Square One"
+    },
+    {
+     "num": "#2",
+     "name": "What If"
+    },
+    {
+     "num": "#3",
+     "name": "White Shadows"
+    },
+    {
+     "num": "#4",
+     "name": "Fix You"
+    },
+    {
+     "num": "#5",
+     "name": "Talk"
+    },
+    {
+     "num": "#6",
+     "name": "X&Y"
+    },
+    {
+     "num": "#7",
+     "name": "Speed of Sound"
+    },
+    {
+     "num": "#8",
+     "name": "A Message"
+    },
+    {
+     "num": "#9",
+     "name": "Low"
+    },
+    {
+     "num": "#10",
+     "name": "The Hardest Part"
+    },
+    {
+     "num": "#11",
+     "name": "Swallowed In The Sea"
+    },
+    {
+     "num": "#12",
+     "name": "Twisted Logic"
+    },
+    {
+     "num": "#13",
+     "name": "Til Kingdom Come"
+    }
+   ]
+  },
+  {
+   "era": "Viva la Vida",
+   "name": "LeftrightLeftRightleft",
+   "date": "Sep 5, 2007",
+   "quality": "N/A",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist for Viva la Vida without both of its titular songs. Back when the album was called LeftrightLeftRightleft",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Lost!"
+    },
+    {
+     "num": "#2",
+     "name": "Cemeteries of London"
+    },
+    {
+     "num": "#3",
+     "name": "Violet Hill"
+    },
+    {
+     "num": "#4",
+     "name": "Poppyfields"
+    },
+    {
+     "num": "#5",
+     "name": "42"
+    },
+    {
+     "num": "#6",
+     "name": "Yes!"
+    },
+    {
+     "num": "#7",
+     "name": "Leftrightleftrightleft"
+    },
+    {
+     "num": "#8",
+     "name": "Rainy Day"
+    }
+   ]
+  },
+  {
+   "era": "Viva la Vida",
+   "name": "Viva la Vida or Death and All His Friends",
+   "date": "2007",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist for Viva la Vida without one of its titular songs.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Life in Technicolor"
+    },
+    {
+     "num": "#2",
+     "name": "Cemeteries of London"
+    },
+    {
+     "num": "#3",
+     "name": "Lost!"
+    },
+    {
+     "num": "#4",
+     "name": "Prospekt's March"
+    },
+    {
+     "num": "#5",
+     "name": "Lovers in Japan"
+    },
+    {
+     "num": "#6",
+     "name": "Yes"
+    },
+    {
+     "num": "#7",
+     "name": "Chinese Sleep Chant"
+    },
+    {
+     "num": "#8",
+     "name": "Reign of Love"
+    },
+    {
+     "num": "#9",
+     "name": "Death and All His Friends"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-22-0.jpg"
+   ]
+  },
+  {
+   "era": "Viva la Vida",
+   "name": "Viva la Vida or Death and All His Friends",
+   "date": "",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Rough tracklist for Viva la Vida that also includes songs that were later postponed to Prospekt's March. Written on a CD of VLV-era demos given to Debs Wild.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Life in Technicolor (instrumental) (Life in Technicolor)"
+    },
+    {
+     "num": "#2",
+     "name": "Cemeteries of London"
+    },
+    {
+     "num": "#3",
+     "name": "Lost!"
+    },
+    {
+     "num": "#4",
+     "name": "42"
+    },
+    {
+     "num": "#5",
+     "name": "Lovers in Japan"
+    },
+    {
+     "num": "#6",
+     "name": "School / Death and All His Friends"
+    },
+    {
+     "num": "#7",
+     "name": "Reign of Love"
+    },
+    {
+     "num": "#8",
+     "name": "Yes"
+    },
+    {
+     "num": "#9",
+     "name": "Chinese Sleep Chant"
+    },
+    {
+     "num": "#10",
+     "name": "Viva la Vida"
+    },
+    {
+     "num": "#11",
+     "name": "Strawberry Swing"
+    },
+    {
+     "num": "#12",
+     "name": "Life in Technicolor (Life in Technicolor ii)"
+    },
+    {
+     "num": "#13",
+     "name": "The Escapist"
+    },
+    {
+     "num": "#14",
+     "name": "Violet Hill"
+    },
+    {
+     "num": "#15",
+     "name": "Postcards from Far Away / Glass of Water"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-23-0.jpg"
+   ]
+  },
+  {
+   "era": "Viva la Vida",
+   "name": "Viva la Vida or Death and All His Friends",
+   "date": "",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist for ¡Viva la Vida!. The written tracklist includes additional writing at the top - it is impossible to make out what it says and is likely not an extra track name due the the same tracklist being shown elsewhere.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "42"
+    },
+    {
+     "num": "#2",
+     "name": "Glass Of Water"
+    },
+    {
+     "num": "#3",
+     "name": "Lost!"
+    },
+    {
+     "num": "#4",
+     "name": "Postcards From Far Away / Chinese Sleep Chant"
+    },
+    {
+     "num": "#5",
+     "name": "Prospekt's March / Poppy Fields"
+    },
+    {
+     "num": "#6",
+     "name": "Yes"
+    },
+    {
+     "num": "#7",
+     "name": "Death And All His Friends"
+    },
+    {
+     "num": "#8",
+     "name": "Cemeteries Of London"
+    },
+    {
+     "num": "#9",
+     "name": "Rainy Day"
+    },
+    {
+     "num": "#10",
+     "name": "¡Viva la Vida!"
+    },
+    {
+     "num": "#11",
+     "name": "The Escapist"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-24-0.jpg"
+   ]
+  },
+  {
+   "era": "Viva la Vida",
+   "name": "Prospekt's March E.P. (?)",
+   "date": "2007",
+   "quality": "Blurry",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Unknown VLV-era tracklist.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Life in Technicolour"
+    },
+    {
+     "num": "#2",
+     "name": "Prospekt's March"
+    },
+    {
+     "num": "#3",
+     "name": "Lukas"
+    },
+    {
+     "num": "#4",
+     "name": "Chinese U.F.O. / Chinese Dreams"
+    },
+    {
+     "num": "#5",
+     "name": "Lhuna"
+    },
+    {
+     "num": "#6",
+     "name": "The Goldrush"
+    },
+    {
+     "num": "#7",
+     "name": "Rainy Day"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-25-0.jpg"
+   ]
+  },
+  {
+   "era": "Viva la Vida",
+   "name": "Viva la Vida or Death And All His Friends",
+   "date": "2008.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Viva La Vida or Death and All His Friends.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Life in Technicolor"
+    },
+    {
+     "num": "#2",
+     "name": "Cemeteries Of London"
+    },
+    {
+     "num": "#3",
+     "name": "Lost!"
+    },
+    {
+     "num": "#4",
+     "name": "42"
+    },
+    {
+     "num": "#5",
+     "name": "Lovers in Japan / Reign Of Love"
+    },
+    {
+     "num": "#6",
+     "name": "Yes"
+    },
+    {
+     "num": "#7",
+     "name": "Viva La Vida"
+    },
+    {
+     "num": "#8",
+     "name": "Violet Hill"
+    },
+    {
+     "num": "#9",
+     "name": "Strawberry Swing"
+    },
+    {
+     "num": "#10",
+     "name": "Death And All His Friends"
+    }
+   ]
+  },
+  {
+   "era": "Viva la Vida",
+   "name": "Prospekt's March E.P.",
+   "date": "2008.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Prospekt's March.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Life in Technicolor ii"
+    },
+    {
+     "num": "#2",
+     "name": "Postcards From Far Away"
+    },
+    {
+     "num": "#3",
+     "name": "Glass Of Water"
+    },
+    {
+     "num": "#4",
+     "name": "Rainy Day"
+    },
+    {
+     "num": "#5",
+     "name": "Prospekt's March / Poppyfields"
+    },
+    {
+     "num": "#6",
+     "name": "Lost+"
+    },
+    {
+     "num": "#7",
+     "name": "Lovers in Japan (Osaka Sun Mix)"
+    },
+    {
+     "num": "#8",
+     "name": "Now My Feet Won't Touch The Ground"
+    }
+   ]
+  },
+  {
+   "era": "The Wedding Album",
+   "name": "The Wedding Album",
+   "date": "2009.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist for The Wedding Album. Written on a whiteboard seen on Coldplay's episode of the South Bank Show.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Wedding Bells"
+    },
+    {
+     "num": "#2",
+     "name": "Love In A Lethal Dose"
+    },
+    {
+     "num": "#3",
+     "name": "Drunks & Guns"
+    },
+    {
+     "num": "#4",
+     "name": "Cartoon Heart (Charlie Brown)"
+    },
+    {
+     "num": "#5",
+     "name": "1000-1 (Ballad Of St. John) (Bani Adam)"
+    },
+    {
+     "num": "#6",
+     "name": "Gardeners On The Frontline"
+    },
+    {
+     "num": "#7",
+     "name": "Famous Old Painters"
+    },
+    {
+     "num": "#8",
+     "name": "Cartoon Head"
+    },
+    {
+     "num": "#9",
+     "name": "Spanish Rain"
+    },
+    {
+     "num": "#10",
+     "name": "Christmas Lights"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-28-0.jpg"
+   ]
+  },
+  {
+   "era": "The Wedding Album",
+   "name": "The Wedding Album",
+   "date": "",
+   "quality": "N/A",
+   "source": "Secondary",
+   "links": [],
+   "description": "(Allegedly) finished tracklist for The Wedding Album. Not in order.\n\nSmall World\nWedding Bells\nCartoon Heart (Charlie Brown)\nWeirdo\nDon Quixote/ Spanish Rain\nArabesque\nCartoon Head\nRescue Street\nChristmas Lights",
+   "tracks": []
+  },
+  {
+   "era": "Mylo Xyloto",
+   "name": "Mylo Xyloto",
+   "date": "2010-06-16",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist seen in the MX Notebook.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Great Expectations (U.F.O., Mylo Xyloto)"
+    },
+    {
+     "num": "#2",
+     "name": "Charlie Brown"
+    },
+    {
+     "num": "#3",
+     "name": "Paradise"
+    },
+    {
+     "num": "#4",
+     "name": "W (Weirdo)"
+    },
+    {
+     "num": "#5",
+     "name": "Hurts Like Heaven"
+    },
+    {
+     "num": "#6",
+     "name": "M.M.I.X."
+    },
+    {
+     "num": "#7",
+     "name": "Major Minus"
+    },
+    {
+     "num": "#8",
+     "name": "Moving To Mars"
+    },
+    {
+     "num": "#9",
+     "name": "Car Kids"
+    },
+    {
+     "num": "#10",
+     "name": "A Hopeful Transmission"
+    },
+    {
+     "num": "#11",
+     "name": "Every Teardrop Is A Waterfall"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-30-0.jpg"
+   ]
+  },
+  {
+   "era": "Mylo Xyloto",
+   "name": "Mylo Xyloto",
+   "date": "2010.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist seen in the MX Notebook.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Mylo Xyloto/Great Expectations"
+    },
+    {
+     "num": "#2",
+     "name": "Hurts Like Heaven",
+     "color": "#8E7CC3",
+     "colorLabel": "Full Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Paradise"
+    },
+    {
+     "num": "#4",
+     "name": "Charlie Brown"
+    },
+    {
+     "num": "#5",
+     "name": "Up With The Birds"
+    },
+    {
+     "num": "#6",
+     "name": "Us Against The World"
+    },
+    {
+     "num": "#7",
+     "name": "Princess Of China"
+    },
+    {
+     "num": "#8",
+     "name": "A Hopeful Transmission"
+    },
+    {
+     "num": "#9",
+     "name": "Car Kids"
+    },
+    {
+     "num": "#10",
+     "name": "Moving To Mars"
+    },
+    {
+     "num": "#11",
+     "name": "Every Teardrop Is A Waterfall"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-31-0.jpg"
+   ]
+  },
+  {
+   "era": "Mylo Xyloto",
+   "name": "Mylo Xyloto",
+   "date": "2010.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist seen in the MX Notebook.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Mylo Xyloto"
+    },
+    {
+     "num": "#2",
+     "name": "Hurts Like Heaven"
+    },
+    {
+     "num": "#3",
+     "name": "Princess of China"
+    },
+    {
+     "num": "#4",
+     "name": "Charlie Brown"
+    },
+    {
+     "num": "#5",
+     "name": "Paradise"
+    },
+    {
+     "num": "#6",
+     "name": "Us Against The World"
+    },
+    {
+     "num": "#7",
+     "name": "Major Minus"
+    },
+    {
+     "num": "#8",
+     "name": "Up With The Birds"
+    },
+    {
+     "num": "#9",
+     "name": "UFO"
+    },
+    {
+     "num": "#10",
+     "name": "Every Teardrop Is A Waterfall"
+    }
+   ]
+  },
+  {
+   "era": "Mylo Xyloto",
+   "name": "Mylo Xyloto",
+   "date": "2010.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist seen in the MX Notebook.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Mylo Xyloto"
+    },
+    {
+     "num": "#2",
+     "name": "Hurts Like Heaven"
+    },
+    {
+     "num": "#3",
+     "name": "Paradise"
+    },
+    {
+     "num": "#4",
+     "name": "Charlie Brown"
+    },
+    {
+     "num": "#5",
+     "name": "Car Kids"
+    },
+    {
+     "num": "#6",
+     "name": "Moving To Mars"
+    },
+    {
+     "num": "#7",
+     "name": "Every Teardrop Is A Waterfall"
+    },
+    {
+     "num": "#8",
+     "name": "Major Minus"
+    },
+    {
+     "num": "#9",
+     "name": "Rescue St."
+    },
+    {
+     "num": "#10",
+     "name": "UFO"
+    },
+    {
+     "num": "#11",
+     "name": "A Hopeful Transmission"
+    },
+    {
+     "num": "#12",
+     "name": "Us Against The World"
+    },
+    {
+     "num": "#13",
+     "name": "Up With The Birds"
+    },
+    {
+     "num": "#14",
+     "name": "Princess Of China"
+    }
+   ]
+  },
+  {
+   "era": "Mylo Xyloto",
+   "name": "Mylo Xyloto",
+   "date": "?",
+   "quality": "Blurry",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Seemingly later tracklist. Identical to the released tracklist but with Car Kids replacing Charlie Brown.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Mylo Xyloto"
+    },
+    {
+     "num": "#2",
+     "name": "Hurts Like Heaven"
+    },
+    {
+     "num": "#3",
+     "name": "Paradise"
+    },
+    {
+     "num": "#4",
+     "name": "Car Kids"
+    },
+    {
+     "num": "#5",
+     "name": "Us Against the World"
+    },
+    {
+     "num": "#6",
+     "name": "M.M.I.X."
+    },
+    {
+     "num": "#7",
+     "name": "Every Teardrop is a Waterfall"
+    },
+    {
+     "num": "#8",
+     "name": "Major Minus"
+    },
+    {
+     "num": "#9",
+     "name": "U.F.O."
+    },
+    {
+     "num": "#10",
+     "name": "Princess of China"
+    },
+    {
+     "num": "#11",
+     "name": "Up in Flames"
+    },
+    {
+     "num": "#12",
+     "name": "A Hopeful Transmission"
+    },
+    {
+     "num": "#13",
+     "name": "Don’t Let It Break Your Heart"
+    },
+    {
+     "num": "#14",
+     "name": "Up with the Birds"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-34-0.jpg"
+   ]
+  },
+  {
+   "era": "Mylo Xyloto",
+   "name": "Mylo Xyloto",
+   "date": "2011.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Mylo Xyloto.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Mylo Xyloto"
+    },
+    {
+     "num": "#2",
+     "name": "Hurts Like Heaven"
+    },
+    {
+     "num": "#3",
+     "name": "Paradise"
+    },
+    {
+     "num": "#4",
+     "name": "Charlie Brown"
+    },
+    {
+     "num": "#5",
+     "name": "Us Against The World"
+    },
+    {
+     "num": "#6",
+     "name": "M.M.I.X."
+    },
+    {
+     "num": "#7",
+     "name": "Every Teardrop Is a Waterfall"
+    },
+    {
+     "num": "#8",
+     "name": "Major Minus"
+    },
+    {
+     "num": "#9",
+     "name": "U.F.O."
+    },
+    {
+     "num": "#10",
+     "name": "Princess of China"
+    },
+    {
+     "num": "#11",
+     "name": "Up in Flames"
+    },
+    {
+     "num": "#12",
+     "name": "A Hopeful Transmission"
+    },
+    {
+     "num": "#13",
+     "name": "Don't Let It Break Your Heart"
+    },
+    {
+     "num": "#14",
+     "name": "Up With The Birds"
+    }
+   ]
+  },
+  {
+   "era": "Ghost Stories",
+   "name": "Ghost Stories",
+   "date": "2013.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist seen in 'The Making Of Ghost Stories'.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "O"
+    },
+    {
+     "num": "#2",
+     "name": "The Race"
+    },
+    {
+     "num": "#3",
+     "name": "Another's Arms"
+    },
+    {
+     "num": "#4",
+     "name": "Atlas"
+    },
+    {
+     "num": "#6",
+     "name": "Ghost Stories (Ghost Story)"
+    },
+    {
+     "num": "#7",
+     "name": "Oceans"
+    },
+    {
+     "num": "#8",
+     "name": "Tomorrow World Without You"
+    },
+    {
+     "num": "#9",
+     "name": "Fly On"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-36-0.jpg"
+   ]
+  },
+  {
+   "era": "Ghost Stories",
+   "name": "Ghost Stories",
+   "date": "2014.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Ghost Stories.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Always In My Head"
+    },
+    {
+     "num": "#2",
+     "name": "Magic"
+    },
+    {
+     "num": "#3",
+     "name": "Ink"
+    },
+    {
+     "num": "#4",
+     "name": "True Love"
+    },
+    {
+     "num": "#5",
+     "name": "Midnight"
+    },
+    {
+     "num": "#6",
+     "name": "Another's Arms"
+    },
+    {
+     "num": "#7",
+     "name": "Oceans"
+    },
+    {
+     "num": "#8",
+     "name": "A Sky Full Of Stars"
+    },
+    {
+     "num": "#9",
+     "name": "O"
+    }
+   ]
+  },
+  {
+   "era": "A Head Full of Dreams",
+   "name": "A Head Full of Dreams",
+   "date": "2015.0",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklisting from July 2015. Not in order.\n\nA Head Full Of Dreams\nAdventure Of A Lifetime\nAmazing Day\nArmy of One\nBirds\nEverglow\nForever, Whatever\nFun\nHymn for the Weekend\nKaleidoscope\nUp&Up",
+   "tracks": []
+  },
+  {
+   "era": "A Head Full of Dreams",
+   "name": "A Head Full of Dreams",
+   "date": "2015.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for A Head Full Of Dreams.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "A Head Full Of Dreams"
+    },
+    {
+     "num": "#2",
+     "name": "Birds"
+    },
+    {
+     "num": "#3",
+     "name": "Hymn For The Weekend"
+    },
+    {
+     "num": "#4",
+     "name": "Everglow"
+    },
+    {
+     "num": "#5",
+     "name": "Adventure Of A Lifetime"
+    },
+    {
+     "num": "#6",
+     "name": "Fun"
+    },
+    {
+     "num": "#7",
+     "name": "Kaleidoscope"
+    },
+    {
+     "num": "#8",
+     "name": "Army Of One"
+    },
+    {
+     "num": "#9",
+     "name": "Amazing Day"
+    },
+    {
+     "num": "#10",
+     "name": "Colour Spectrum"
+    },
+    {
+     "num": "#11",
+     "name": "Up&Up"
+    }
+   ]
+  },
+  {
+   "era": "A Head Full of Dreams",
+   "name": "Kaleidoscope E.P.",
+   "date": "2017.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Kaleidoscope.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "All I Can Think About Is You"
+    },
+    {
+     "num": "#2",
+     "name": "Miracles (Someone Special)"
+    },
+    {
+     "num": "#3",
+     "name": "A L I E N S"
+    },
+    {
+     "num": "#4",
+     "name": "Something Just Like This (Tokyo Remix)"
+    },
+    {
+     "num": "#5",
+     "name": "Hypnotised (EP Mix)"
+    }
+   ]
+  },
+  {
+   "era": "Everyday Life",
+   "name": "The Lovers",
+   "date": "2019.0",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist for an early version of Everyday Life. Not in order & incomplete.\n\nWedding Bells\nChurch\nBroken\nBiutyful\nChampion Of The World\nLove Is A Mighty River\nOld Friends\nOrphans\nWeirdo\nWhen I Need A Friend",
+   "tracks": []
+  },
+  {
+   "era": "Everyday Life",
+   "name": "Everyday Life",
+   "date": "2019.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Everyday Life.\n\nSunrise\n\n1.Sunrise",
+   "tracks": [
+    {
+     "num": "#2",
+     "name": "Church"
+    },
+    {
+     "num": "#3",
+     "name": "Trouble in Town"
+    },
+    {
+     "num": "#4",
+     "name": "BrokEn"
+    },
+    {
+     "num": "#5",
+     "name": "Daddy"
+    },
+    {
+     "num": "#6",
+     "name": "WOTW / POTP"
+    },
+    {
+     "num": "#7",
+     "name": "Arabesque"
+    },
+    {
+     "num": "#8",
+     "name": "When I Need a Friend"
+    },
+    {
+     "num": "#1",
+     "name": "Guns"
+    },
+    {
+     "num": "#2",
+     "name": "Orphans"
+    },
+    {
+     "num": "#3",
+     "name": "Èkó"
+    },
+    {
+     "num": "#5",
+     "name": "Old Friends"
+    },
+    {
+     "num": "#6",
+     "name": "Bani Adam"
+    },
+    {
+     "num": "#7",
+     "name": "Champion Of The World"
+    },
+    {
+     "num": "#8",
+     "name": "Everyday Life"
+    }
+   ]
+  },
+  {
+   "era": "Music of the Spheres",
+   "name": "Music of the Spheres",
+   "date": "2020-12-16",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Early tracklist for Music Of The Spheres, featuring Blessed, which was the lead single before Higher Power was made. (Exact number of tracks is unknown but assumed to be similar to the final release.)",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "---"
+    },
+    {
+     "num": "#2",
+     "name": "---"
+    },
+    {
+     "num": "#3",
+     "name": "Blessed"
+    },
+    {
+     "num": "#4",
+     "name": "---"
+    },
+    {
+     "num": "#5",
+     "name": "---"
+    },
+    {
+     "num": "#6",
+     "name": "---"
+    },
+    {
+     "num": "#7",
+     "name": "---"
+    },
+    {
+     "num": "#8",
+     "name": "Biutyful"
+    },
+    {
+     "num": "#9",
+     "name": "---"
+    },
+    {
+     "num": "#10",
+     "name": "Infinity Sign"
+    },
+    {
+     "num": "#11",
+     "name": "---"
+    },
+    {
+     "num": "#12",
+     "name": "---"
+    }
+   ]
+  },
+  {
+   "era": "Music of the Spheres",
+   "name": "Music of the Spheres",
+   "date": "2021.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Music Of The Spheres.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Music Of The Spheres"
+    },
+    {
+     "num": "#2",
+     "name": "Higher Power"
+    },
+    {
+     "num": "#3",
+     "name": "Humankind"
+    },
+    {
+     "num": "#4",
+     "name": "Alien Choir"
+    },
+    {
+     "num": "#5",
+     "name": "Let Somebody Go"
+    },
+    {
+     "num": "#6",
+     "name": "Human Heart"
+    },
+    {
+     "num": "#7",
+     "name": "People Of The Pride"
+    },
+    {
+     "num": "#8",
+     "name": "Biutyful"
+    },
+    {
+     "num": "#9",
+     "name": "Music Of The Spheres ii"
+    },
+    {
+     "num": "#10",
+     "name": "My Universe"
+    },
+    {
+     "num": "#11",
+     "name": "Infinity Sign"
+    },
+    {
+     "num": "#12",
+     "name": "Coloratura"
+    }
+   ]
+  },
+  {
+   "era": "Moon Music",
+   "name": "Moon Music",
+   "date": "2023.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklists seen in the Moon Music Notebook. Almost all the same.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "MOON MUSiC"
+    },
+    {
+     "num": "#2",
+     "name": "JUPiTER🌈"
+    },
+    {
+     "num": "#3",
+     "name": "feelslikeimfallinginlove"
+    },
+    {
+     "num": "#4",
+     "name": "GOOD FEELiNGS"
+    },
+    {
+     "num": "#5",
+     "name": "ALL MY LOVE"
+    },
+    {
+     "num": "#6",
+     "name": "MOON MUSiiC (ALiEN HiTS / ALiEN RADiO)"
+    },
+    {
+     "num": "#7",
+     "name": "FRNDZ (Man In The Moon)"
+    },
+    {
+     "num": "#8",
+     "name": "MOON MUSiiiC (Earthling)"
+    },
+    {
+     "num": "#9",
+     "name": "One World"
+    }
+   ]
+  },
+  {
+   "era": "Moon Music",
+   "name": "Moon Music",
+   "date": "2023-12-01",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Early tracklist seen in a Tiktok with Nile Rodgers and a YouTube video of Ayra Starr",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "MOON MUSiC"
+    },
+    {
+     "num": "#2",
+     "name": "Man in The Moon"
+    },
+    {
+     "num": "#3",
+     "name": "JUPiTER"
+    },
+    {
+     "num": "#4",
+     "name": "GOOD FEELiNGS"
+    },
+    {
+     "num": "#5",
+     "name": "ALL MY LOVE"
+    },
+    {
+     "num": "#6",
+     "name": "🌈 (NEON FOREST)"
+    },
+    {
+     "num": "#7",
+     "name": "WE PRAY"
+    },
+    {
+     "num": "#8",
+     "name": "feelslikeimfallinginlove"
+    },
+    {
+     "num": "#9",
+     "name": "ONE WORLD"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-46-0.jpg"
+   ]
+  },
+  {
+   "era": "Moon Music",
+   "name": "Moon Music",
+   "date": "2024-02-01",
+   "quality": "Blurry",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Early tracklist seen in a picture of Elyanna and Chris in (presumably) his home studio in Malibu. (?)",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "MOON MUSiC"
+    },
+    {
+     "num": "#2",
+     "name": "feelslikeimfallinginlove"
+    },
+    {
+     "num": "#3",
+     "name": "JUPiTER"
+    },
+    {
+     "num": "#4",
+     "name": "GOOD FEELiNGS"
+    },
+    {
+     "num": "#5",
+     "name": "m.u.s.i.c. (🌈 | ALiEN HiTS / ALiEN RADiO)"
+    },
+    {
+     "num": "#6",
+     "name": "🌈 (ALiEN HiTS / ALiEN RADiO)"
+    },
+    {
+     "num": "#7",
+     "name": "WE PRAY"
+    },
+    {
+     "num": "#8",
+     "name": "AETERNA / m.u.s.i.c."
+    },
+    {
+     "num": "#9",
+     "name": "feelslikeimfallinginlove pt. 2 LUNA"
+    },
+    {
+     "num": "#10",
+     "name": "ALL MY LOVE"
+    },
+    {
+     "num": "#11",
+     "name": "ONE WORLD (1🌍)"
+    }
+   ],
+   "images": [
+    "/coldplaygold/art/tl-47-0.jpg"
+   ]
+  },
+  {
+   "era": "Moon Music",
+   "name": "Moon Music",
+   "date": "2024.0",
+   "quality": "Clear",
+   "source": "Coldplay",
+   "links": [],
+   "description": "Officially released tracklist for Moon Music.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "MOON MUSiC"
+    },
+    {
+     "num": "#2",
+     "name": "feelslikeimfallinginlove"
+    },
+    {
+     "num": "#3",
+     "name": "WE PRAY"
+    },
+    {
+     "num": "#4",
+     "name": "JUPiTER"
+    },
+    {
+     "num": "#5",
+     "name": "GOOD FEELiNGS"
+    },
+    {
+     "num": "#6",
+     "name": "ALiEN HiTS / ALiEN RADiO"
+    },
+    {
+     "num": "#7",
+     "name": "iAAM"
+    },
+    {
+     "num": "#8",
+     "name": "AETERNA"
+    },
+    {
+     "num": "#9",
+     "name": "ALL MY LOVE"
+    },
+    {
+     "num": "#10",
+     "name": "ONE WORLD"
+    }
+   ]
+  },
+  {
+   "era": "Alphabetica",
+   "name": "Alphabetica (2022)",
+   "date": "2022",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Early concept for Alphabetica. Consists of demos from 2019 - 2022. May be fake.\n\nAll My Friends Are Aliens\nbROKeN Blues\nColores\nDay 'n' Nite\nESP Emoticon emoticon endless emotions (Live)\nFamous Old Painters\nGREAT SCOTT, MARTY (LIALD)\nHazy sun quiet (Daydream)\nIzzy's Prayer (Blessed)\nJupiter\nKiss On The Lips\nLove Is A Mighty River\nMy Heart\nNeon Trees / Neon Forest\nO The Only One\npirates Treasure\nq a r b e s u a e (Arabesque Act ii)\nR The Race\nSnow (falling, on Christmas Day)\nTwo Aliens\nUFO Pt 2\nVitamins\nWedding Bells\nX.T.C aeterna\nYou're The One For Me\nZimbabwe (Until The Water Flows Over)",
+   "tracks": [],
+   "images": [
+    "/coldplaygold/art/tl-49-0.jpg"
+   ]
+  }
+ ]
+}

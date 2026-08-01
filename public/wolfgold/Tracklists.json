@@ -1,484 +1,4087 @@
-[
+{
+ "legend": [
   {
-    "era": "Dreams In 3-D",
-    "name": "Dreams In 3-D",
-    "date": "Mar 21, 2006",
-    "quality": "",
-    "source": "",
-    "links": [],
-    "tracks": [
-      {
-        "num": "01.",
-        "name": "We Dream In 3-D"
-      },
-      {
-        "num": "02.",
-        "name": "Slurpee"
-      },
-      {
-        "num": "03.",
-        "name": "Puppy Love"
-      },
-      {
-        "num": "04.",
-        "name": "Air Balloon"
-      },
-      {
-        "num": "05.",
-        "name": "Pink + Blue (Purple X Toys)"
-      },
-      {
-        "num": "06.",
-        "name": "Toys & Blox!"
-      },
-      {
-        "num": "07.",
-        "name": "La La Land..."
-      },
-      {
-        "num": "08.",
-        "name": "I Dream"
-      },
-      {
-        "num": "09.",
-        "name": "Lounges And Blox (Lounges X Blox)"
-      },
-      {
-        "num": "10.",
-        "name": "XoXo"
-      },
-      {
-        "num": "11.",
-        "name": "Music X Shows"
-      },
-      {
-        "num": "12.",
-        "name": "Retail Price"
-      },
-      {
-        "num": "13.",
-        "name": "Happy Holidays"
-      },
-      {
-        "num": "14.",
-        "name": "MusiC LoVe"
-      },
-      {
-        "num": "15.",
-        "name": "Wind It Up"
-      },
-      {
-        "num": "16.",
-        "name": "I Keep Toys"
-      },
-      {
-        "num": "17.",
-        "name": "Imagination"
-      },
-      {
-        "num": "18.",
-        "name": "3-D"
-      }
-    ]
+   "label": "Completely Unheard",
+   "color": "#E06666"
   },
   {
-    "era": "At Your Own Risk [V1]",
-    "name": "At Your Own Risk [V1]",
-    "date": "Mar 7, 2007",
-    "quality": "",
-    "source": "",
-    "links": [],
-    "tracks": [
-      {
-        "num": "01.",
-        "name": "At Your Own Risk (Intro)"
-      },
-      {
-        "num": "02.",
-        "name": "Air Balloon (feat. Pharrell)"
-      },
-      {
-        "num": "03.",
-        "name": "L.O.L."
-      },
-      {
-        "num": "04.",
-        "name": "I Dream (Chad Hugo Version)"
-      },
-      {
-        "num": "05.",
-        "name": "Lounges X Blox (Lounges And Blox)"
-      },
-      {
-        "num": "06.",
-        "name": "Get Fresh (feat. Mr. Burtono)"
-      },
-      {
-        "num": "07.",
-        "name": "Soon (feat. MF DOOM)"
-      },
-      {
-        "num": "08.",
-        "name": "Hello (feat. Prince)"
-      },
-      {
-        "num": "09.",
-        "name": "Waffles (feat. Kelis)"
-      },
-      {
-        "num": "10.",
-        "name": "Return of Saturn (feat. Nasir Jones)"
-      },
-      {
-        "num": "11.",
-        "name": "Retail Price"
-      },
-      {
-        "num": "12.",
-        "name": "Run Away"
-      },
-      {
-        "num": "13.",
-        "name": "Sorry (feat. Andre 3000) (Sorry....)"
-      },
-      {
-        "num": "14.",
-        "name": "Purple X Toys"
-      },
-      {
-        "num": "15.",
-        "name": "7-Up Girl (feat. John Legend)"
-      },
-      {
-        "num": "16.",
-        "name": "Speakerboxx (feat. Wale)"
-      },
-      {
-        "num": "17.",
-        "name": "Extacy"
-      },
-      {
-        "num": "18.",
-        "name": "Imagination (Outro) (Live Version with Jamiroquai)"
-      }
-    ]
+   "label": "Snippet / Partial / Recording Available",
+   "color": "#F6B26B"
   },
   {
-    "era": "At Your Own Risk [V1]",
-    "name": "At Your Own Risk [V1]",
-    "date": "Mar 18, 2007",
-    "quality": "",
-    "source": "",
-    "links": [],
-    "tracks": [
-      {
-        "num": "01.",
-        "name": "At Your Own Risk"
-      },
-      {
-        "num": "02.",
-        "name": "Air Balloon (feat. Pharrell)"
-      },
-      {
-        "num": "03.",
-        "name": "L.O.L."
-      },
-      {
-        "num": "04.",
-        "name": "I Dream"
-      },
-      {
-        "num": "05.",
-        "name": "Lounges And Blox (Lounges X Blox)"
-      },
-      {
-        "num": "06.",
-        "name": "Get Fresh (feat. Burtono)"
-      },
-      {
-        "num": "07.",
-        "name": "12:01 (feat. MP)"
-      },
-      {
-        "num": "08.",
-        "name": "Soon (feat. MF DOOM)"
-      },
-      {
-        "num": "09.",
-        "name": "Waffles (feat. Prince)"
-      },
-      {
-        "num": "10.",
-        "name": "Return of Saturn (feat. Nas)"
-      },
-      {
-        "num": "11.",
-        "name": "Retail Price"
-      },
-      {
-        "num": "12.",
-        "name": "Run Away"
-      },
-      {
-        "num": "13.",
-        "name": "Sorry.... (Sorry)"
-      },
-      {
-        "num": "14.",
-        "name": "Purple X Toys (feat. Andre 3000)"
-      },
-      {
-        "num": "15.",
-        "name": "7-Up Girl (feat. John Legend)"
-      },
-      {
-        "num": "16.",
-        "name": "Speakerboxx (feat. Wale & JAY-Z)"
-      },
-      {
-        "num": "17.",
-        "name": "Extacy"
-      },
-      {
-        "num": "18.",
-        "name": "Imagination (Outro)"
-      },
-      {
-        "num": "19.",
-        "name": "*3-D (feat. Chad Hugo & Jamiroquai)"
-      }
-    ]
+   "label": "Alternate Version Available",
+   "color": "#8E7CC3"
   },
   {
-    "era": "Stereo-Type",
-    "name": "Stereo-Type (Tracklist 1)",
-    "date": "Oct 12, 2007",
-    "quality": "",
-    "source": "",
-    "links": [],
-    "tracks": [
-      {
-        "num": "01.",
-        "name": "Gloomy Radio"
-      },
-      {
-        "num": "02.",
-        "name": "Supreme"
-      },
-      {
-        "num": "03.",
-        "name": "I Dream"
-      },
-      {
-        "num": "04.",
-        "name": "Lounges X Blox (Lounges And Blox)"
-      },
-      {
-        "num": "05.",
-        "name": "Odd Toddlers"
-      },
-      {
-        "num": "06.",
-        "name": "Handsome Sounds"
-      },
-      {
-        "num": "07.",
-        "name": "Secret Garden"
-      },
-      {
-        "num": "08.",
-        "name": "Fat Girls X Robots"
-      },
-      {
-        "num": "09.",
-        "name": "Odd Future Pt. 2"
-      },
-      {
-        "num": "10.",
-        "name": "Retail Price"
-      },
-      {
-        "num": "11.",
-        "name": "Speakerboxx"
-      },
-      {
-        "num": "12.",
-        "name": "Promo (Pancakes)"
-      },
-      {
-        "num": "13.",
-        "name": "7-Up"
-      },
-      {
-        "num": "14.",
-        "name": "12:01"
-      },
-      {
-        "num": "15.",
-        "name": "Rockys Revenge"
-      }
-    ]
-  },
-  {
-    "era": "Stereo-Type",
-    "name": "Stereo-Type (Tracklist 2)",
-    "date": "",
-    "quality": "",
-    "source": "",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1-8.",
-        "name": "???"
-      },
-      {
-        "num": "09.",
-        "name": "Waffles"
-      },
-      {
-        "num": "10-15.",
-        "name": "???"
-      },
-      {
-        "num": "16.",
-        "name": "Rockys Revenge"
-      }
-    ]
-  },
-  {
-    "era": "Eargasm",
-    "name": "Eargasm (Tracklist 1)",
-    "date": "",
-    "quality": "",
-    "source": "",
-    "links": [],
-    "tracks": [
-      {
-        "num": "1-7.",
-        "name": "???"
-      },
-      {
-        "num": "08.",
-        "name": "Cloud High"
-      },
-      {
-        "num": "09.",
-        "name": "???"
-      },
-      {
-        "num": "10.",
-        "name": "Late... Again"
-      },
-      {
-        "num": "11-?.",
-        "name": "???"
-      }
-    ]
-  },
-  {
-    "era": "Eargasm",
-    "name": "Eargasm (Tracklist 2)",
-    "date": "",
-    "quality": "",
-    "source": "",
-    "links": [],
-    "tracks": [
-      {
-        "num": "01.",
-        "name": "Eargasm"
-      },
-      {
-        "num": "02.",
-        "name": "Nosecandy"
-      },
-      {
-        "num": "03.",
-        "name": "Slurpee"
-      },
-      {
-        "num": "04.",
-        "name": "Deam"
-      },
-      {
-        "num": "05.",
-        "name": "Annie"
-      },
-      {
-        "num": "06.",
-        "name": "Non"
-      },
-      {
-        "num": "07.",
-        "name": "Sound On Acid"
-      },
-      {
-        "num": "08.",
-        "name": "Beauty"
-      },
-      {
-        "num": "09.",
-        "name": "Eureka"
-      },
-      {
-        "num": "10.",
-        "name": "April Fools"
-      },
-      {
-        "num": "11.",
-        "name": "Bounce"
-      },
-      {
-        "num": "12.",
-        "name": "Herpes and Cupcakes"
-      },
-      {
-        "num": "13.",
-        "name": "Crikle"
-      },
-      {
-        "num": "14.",
-        "name": "Sea"
-      },
-      {
-        "num": "15.",
-        "name": "June"
-      },
-      {
-        "num": "16.",
-        "name": "Clouds"
-      },
-      {
-        "num": "17.",
-        "name": "Kiss"
-      },
-      {
-        "num": "18.",
-        "name": "Hang Up"
-      },
-      {
-        "num": "19.",
-        "name": "808s & Cupcakes"
-      },
-      {
-        "num": "20.",
-        "name": "7-Up"
-      },
-      {
-        "num": "21.",
-        "name": "Rocky Revenge"
-      },
-      {
-        "num": "22.",
-        "name": "Prototype"
-      },
-      {
-        "num": "23.",
-        "name": "Herpes On My Lip"
-      },
-      {
-        "num": "24.",
-        "name": "Sorry.... (Sorry)"
-      }
-    ]
+   "label": "Confirmed Version Available",
+   "color": "#93C47D"
   }
-]
+ ],
+ "albums": [
+  {
+   "era": "Dreams In 3-D",
+   "name": "Dreams In 3-D",
+   "date": "2006-03-21",
+   "quality": "Full",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist for Dreams In 3-D, dated March 21st, 2006.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "We Dream In 3-D"
+    },
+    {
+     "num": "#2",
+     "name": "Slurpee"
+    },
+    {
+     "num": "#3",
+     "name": "Puppy Love"
+    },
+    {
+     "num": "#4",
+     "name": "Air Balloon"
+    },
+    {
+     "num": "#5",
+     "name": "Pink + Blue (Purple X Toys)"
+    },
+    {
+     "num": "#6",
+     "name": "Toys & Blox!"
+    },
+    {
+     "num": "#7",
+     "name": "La La Land..."
+    },
+    {
+     "num": "#8",
+     "name": "I Dream"
+    },
+    {
+     "num": "#9",
+     "name": "Lounges And Blox (Lounges X Blox)"
+    },
+    {
+     "num": "#10",
+     "name": "XoXo"
+    },
+    {
+     "num": "#11",
+     "name": "Music X Shows"
+    },
+    {
+     "num": "#12",
+     "name": "Retail Price"
+    },
+    {
+     "num": "#13",
+     "name": "Happy Holidays"
+    },
+    {
+     "num": "#14",
+     "name": "MusiC LoVe"
+    },
+    {
+     "num": "#15",
+     "name": "Wind It Up"
+    },
+    {
+     "num": "#16",
+     "name": "I Keep Toys"
+    },
+    {
+     "num": "#17",
+     "name": "Imagination"
+    },
+    {
+     "num": "#18",
+     "name": "3-D"
+    }
+   ]
+  },
+  {
+   "era": "At Your Own Risk",
+   "name": "At Your Own Risk [V1]",
+   "date": "2007-03-07",
+   "quality": "Full",
+   "source": "Secondary",
+   "links": [],
+   "description": "First tracklist for At Your Own Risk, dated March 7th, 2007. This tracklist comes from Tyler's Photobucket. The ones crossed out indicate that they're only considered for the project.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "At Your Own Risk (Intro)"
+    },
+    {
+     "num": "#2",
+     "name": "Air Balloon (feat. Pharrell)"
+    },
+    {
+     "num": "#3",
+     "name": "L.O.L."
+    },
+    {
+     "num": "#4",
+     "name": "I Dream (Chad Hugo Version)"
+    },
+    {
+     "num": "#5",
+     "name": "Lounges X Blox (Lounges And Blox)"
+    },
+    {
+     "num": "#6",
+     "name": "Get Fresh (feat. Mr. Burtono)"
+    },
+    {
+     "num": "#7",
+     "name": "Soon (feat. MF DOOM)"
+    },
+    {
+     "num": "#8",
+     "name": "Hello (feat. Prince)"
+    },
+    {
+     "num": "#9",
+     "name": "Waffles (feat. Kelis)"
+    },
+    {
+     "num": "#10",
+     "name": "Return of Saturn (feat. Nasir Jones)"
+    },
+    {
+     "num": "#11",
+     "name": "Retail Price"
+    },
+    {
+     "num": "#12",
+     "name": "Run Away"
+    },
+    {
+     "num": "#13",
+     "name": "Sorry (feat. Andre 3000) (Sorry....)"
+    },
+    {
+     "num": "#14",
+     "name": "Purple X Toys"
+    },
+    {
+     "num": "#15",
+     "name": "7-Up Girl (feat. John Legend)"
+    },
+    {
+     "num": "#16",
+     "name": "Speakerboxx (feat. Wale)"
+    },
+    {
+     "num": "#17",
+     "name": "Extacy"
+    },
+    {
+     "num": "#18",
+     "name": "Imagination (Outro) (Live Version with Jamiroquai)"
+    }
+   ],
+   "images": [
+    "/wolfgold/art/tl-4-0.jpg"
+   ]
+  },
+  {
+   "era": "At Your Own Risk",
+   "name": "At Your Own Risk [V1]",
+   "date": "2007-03-18",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Second tracklist for At Your Own Risk, dated March 18th, 2007.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "At Your Own Risk"
+    },
+    {
+     "num": "#2",
+     "name": "Air Balloon (feat. Pharrell)"
+    },
+    {
+     "num": "#3",
+     "name": "L.O.L."
+    },
+    {
+     "num": "#4",
+     "name": "I Dream"
+    },
+    {
+     "num": "#5",
+     "name": "Lounges And Blox (Lounges X Blox)"
+    },
+    {
+     "num": "#6",
+     "name": "Get Fresh (feat. Burtono)"
+    },
+    {
+     "num": "#7",
+     "name": "12:01 (feat. MP)"
+    },
+    {
+     "num": "#8",
+     "name": "Soon (feat. MF DOOM)"
+    },
+    {
+     "num": "#9",
+     "name": "Waffles (feat. Prince)"
+    },
+    {
+     "num": "#10",
+     "name": "Return of Saturn (feat. Nas)"
+    },
+    {
+     "num": "#11",
+     "name": "Retail Price"
+    },
+    {
+     "num": "#12",
+     "name": "Run Away"
+    },
+    {
+     "num": "#13",
+     "name": "Sorry.... (Sorry)"
+    },
+    {
+     "num": "#14",
+     "name": "Purple X Toys (feat. Andre 3000)"
+    },
+    {
+     "num": "#15",
+     "name": "7-Up Girl (feat. John Legend)"
+    },
+    {
+     "num": "#16",
+     "name": "Speakerboxx (feat. Wale & JAY-Z)"
+    },
+    {
+     "num": "#17",
+     "name": "Extacy"
+    },
+    {
+     "num": "#18",
+     "name": "Imagination (Outro)"
+    },
+    {
+     "num": "#19",
+     "name": "*3-D (feat. Chad Hugo & Jamiroquai)"
+    }
+   ],
+   "images": [
+    "/wolfgold/art/tl-5-0.jpg"
+   ]
+  },
+  {
+   "era": "At Your Own Risk",
+   "name": "At Your Own Risk [V2]",
+   "date": "",
+   "quality": "Full",
+   "source": "Leaked",
+   "links": [],
+   "description": "Third tracklist for At Your Own Risk, looks to be the same as the one above.\n\n1-9. ???",
+   "tracks": [
+    {
+     "num": "#10",
+     "name": "Return of Saturn"
+    },
+    {
+     "num": "#11",
+     "name": "???"
+    },
+    {
+     "num": "#12",
+     "name": "Run Away"
+    },
+    {
+     "num": "#?",
+     "name": "3-D"
+    }
+   ]
+  },
+  {
+   "era": "Stereo-Type",
+   "name": "Stereo-Type (Tracklist 1)",
+   "date": "2007-10-12",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Technically not a Stereo-Type tracklist, and only a list of songs that were planned to be on the project. The way Tyler words the next sentence, however, would make you believe it's a tracklist. Dated October 12th, 2007.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Gloomy Radio"
+    },
+    {
+     "num": "#2",
+     "name": "Supreme"
+    },
+    {
+     "num": "#3",
+     "name": "I Dream"
+    },
+    {
+     "num": "#4",
+     "name": "Lounges X Blox (Lounges And Blox)"
+    },
+    {
+     "num": "#5",
+     "name": "Odd Toddlers"
+    },
+    {
+     "num": "#6",
+     "name": "Handsome Sounds"
+    },
+    {
+     "num": "#7",
+     "name": "Secret Garden"
+    },
+    {
+     "num": "#8",
+     "name": "Fat Girls X Robots"
+    },
+    {
+     "num": "#9",
+     "name": "Odd Future Pt. 2"
+    },
+    {
+     "num": "#10",
+     "name": "Retail Price"
+    },
+    {
+     "num": "#11",
+     "name": "Speakerboxx"
+    },
+    {
+     "num": "#12",
+     "name": "Promo (Pancakes)"
+    },
+    {
+     "num": "#13",
+     "name": "7-Up"
+    },
+    {
+     "num": "#14",
+     "name": "12:01"
+    },
+    {
+     "num": "#15",
+     "name": "Rockys Revenge"
+    }
+   ],
+   "images": [
+    "/wolfgold/art/tl-7-0.jpg"
+   ]
+  },
+  {
+   "era": "Stereo-Type",
+   "name": "Stereo-Type (Tracklist 2)",
+   "date": "",
+   "quality": "Partial",
+   "source": "Tyler + Leaked",
+   "links": [],
+   "description": "Tracklist for Stero-Type.\n\n1-8. ???",
+   "tracks": [
+    {
+     "num": "#9",
+     "name": "Waffles"
+    },
+    {
+     "num": "#16",
+     "name": "Rockys Revenge"
+    }
+   ]
+  },
+  {
+   "era": "Eargasm",
+   "name": "Eargasm (Tracklist 1)",
+   "date": "",
+   "quality": "Partial",
+   "source": "Leaked",
+   "links": [],
+   "description": "First tracklist for Eargasm, it's likely that Team Blox is on this.\n\n1-7. ???",
+   "tracks": [
+    {
+     "num": "#8",
+     "name": "Cloud High"
+    },
+    {
+     "num": "#9",
+     "name": "???"
+    },
+    {
+     "num": "#10",
+     "name": "Late... Again"
+    }
+   ]
+  },
+  {
+   "era": "Eargasm",
+   "name": "Eargasm (Tracklist 2)",
+   "date": "",
+   "quality": "Full",
+   "source": "Leaked",
+   "links": [],
+   "description": "Second tracklist for Eargasm.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Eargasm"
+    },
+    {
+     "num": "#2",
+     "name": "Nosecandy"
+    },
+    {
+     "num": "#3",
+     "name": "Slurpee"
+    },
+    {
+     "num": "#4",
+     "name": "Deam"
+    },
+    {
+     "num": "#5",
+     "name": "Annie"
+    },
+    {
+     "num": "#6",
+     "name": "Non"
+    },
+    {
+     "num": "#7",
+     "name": "Sound On Acid"
+    },
+    {
+     "num": "#8",
+     "name": "Beauty"
+    },
+    {
+     "num": "#9",
+     "name": "Eureka"
+    },
+    {
+     "num": "#10",
+     "name": "April Fools"
+    },
+    {
+     "num": "#11",
+     "name": "Bounce"
+    },
+    {
+     "num": "#12",
+     "name": "Herpes and Cupcakes"
+    },
+    {
+     "num": "#13",
+     "name": "Crikle"
+    },
+    {
+     "num": "#14",
+     "name": "Sea"
+    },
+    {
+     "num": "#15",
+     "name": "June"
+    },
+    {
+     "num": "#16",
+     "name": "Clouds"
+    },
+    {
+     "num": "#17",
+     "name": "Kiss"
+    },
+    {
+     "num": "#18",
+     "name": "Hang Up"
+    },
+    {
+     "num": "#19",
+     "name": "808s & Cupcakes"
+    },
+    {
+     "num": "#20",
+     "name": "7-Up"
+    },
+    {
+     "num": "#21",
+     "name": "Rocky Revenge"
+    },
+    {
+     "num": "#22",
+     "name": "Prototype"
+    },
+    {
+     "num": "#23",
+     "name": "Herpes On My Lip"
+    },
+    {
+     "num": "#24",
+     "name": "Sorry.... (Sorry)"
+    }
+   ]
+  },
+  {
+   "era": "Radio Arcade",
+   "name": "Radio Arcade",
+   "date": "",
+   "quality": "Partial",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist for Radio Arcade.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro"
+    }
+   ]
+  },
+  {
+   "era": "Soundz On Acid",
+   "name": "Soundz On Acid",
+   "date": "",
+   "quality": "Partial",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist for Soundz On Acid.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "For The Club"
+    }
+   ]
+  },
+  {
+   "era": "Bodega",
+   "name": "Bodega",
+   "date": "2008-05-13",
+   "quality": "Full",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist for Bodega, dated May 13th, 2008.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bodega"
+    },
+    {
+     "num": "#2",
+     "name": "CV"
+    },
+    {
+     "num": "#3",
+     "name": "Taffy"
+    },
+    {
+     "num": "#4",
+     "name": "Spring"
+    },
+    {
+     "num": "#5",
+     "name": "Blow"
+    },
+    {
+     "num": "#6",
+     "name": "Stars"
+    },
+    {
+     "num": "#7",
+     "name": "Yum!"
+    },
+    {
+     "num": "#8",
+     "name": "Tulips"
+    },
+    {
+     "num": "#9",
+     "name": "Hearts"
+    },
+    {
+     "num": "#10",
+     "name": "Confetti"
+    },
+    {
+     "num": "#11",
+     "name": "DNC"
+    },
+    {
+     "num": "#12",
+     "name": "Sci-Fi"
+    },
+    {
+     "num": "#13",
+     "name": "1234"
+    },
+    {
+     "num": "#14",
+     "name": "Crab"
+    },
+    {
+     "num": "#15",
+     "name": "Coral"
+    },
+    {
+     "num": "#16",
+     "name": "Outro"
+    }
+   ]
+  },
+  {
+   "era": "The Blair Bitch Project",
+   "name": "The Blair Bitch Project",
+   "date": "",
+   "quality": "Partial",
+   "source": "Leaked",
+   "links": [],
+   "description": "This tracklist does not contain \"Tyler Is Black\"\n1 - 3. ???",
+   "tracks": [
+    {
+     "num": "#4",
+     "name": "Hokus"
+    }
+   ]
+  },
+  {
+   "era": "PinkGold SquarePixals",
+   "name": "PinkGoldSquarePixals",
+   "date": "",
+   "quality": "Partial",
+   "source": "Secondary",
+   "links": [],
+   "description": "Tracklist for PinkGoldSquarePixals, only one track is confirmed at this point.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Pink Gold"
+    }
+   ]
+  },
+  {
+   "era": "SuperDuper SteezMonster",
+   "name": "SuperDuperSteezMonster",
+   "date": "",
+   "quality": "Partial",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist for SuperDuperSteezMonster.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SuperDuperSteezMonster"
+    },
+    {
+     "num": "#2",
+     "name": "???"
+    },
+    {
+     "num": "#3",
+     "name": "Gabba"
+    },
+    {
+     "num": "#4",
+     "name": "Fast and Furious"
+    },
+    {
+     "num": "#5",
+     "name": "Hero vs. Villians"
+    },
+    {
+     "num": "#6",
+     "name": "???"
+    },
+    {
+     "num": "#7",
+     "name": "Caprisun"
+    },
+    {
+     "num": "#8",
+     "name": "Trimm"
+    },
+    {
+     "num": "#9",
+     "name": "LGK"
+    }
+   ]
+  },
+  {
+   "era": "The OF Tape Vol. 1",
+   "name": "The FUCKING Tape",
+   "date": "2008-09-17",
+   "quality": "Full",
+   "source": "Secondary",
+   "links": [],
+   "description": "Supposed tracklist for The Odd Future Tape, dated September 17th, 2008.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro (The Tape Intro)"
+    },
+    {
+     "num": "#2",
+     "name": "Tyler, The Creator - Odd Toddlers (feat. Casey Veggies)"
+    },
+    {
+     "num": "#3",
+     "name": "Hodgy Beats - Laxin (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#4",
+     "name": "Casey Veggies - Back For Another One (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#5",
+     "name": "Hodgy Beats - Bubble Gum (feat. Casey Veggies & Tyler, The Creator)"
+    },
+    {
+     "num": "#6",
+     "name": "brandUn DeShay - Fly A Kite (feat. Casey Veggies)"
+    },
+    {
+     "num": "#7",
+     "name": "MellowHype - Pimp Slap (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#8",
+     "name": "Tyler, The Creator - Bitches Brewin'"
+    },
+    {
+     "num": "#9",
+     "name": "Super 3 - Money Talk (feat. Casey Veggies & Hodgy Beats)"
+    },
+    {
+     "num": "#10",
+     "name": "Hodgy Beats - Our Story"
+    },
+    {
+     "num": "#11",
+     "name": "Tyler, The Creator - Raw (What Ya Life Like, The Life Like)"
+    },
+    {
+     "num": "#12",
+     "name": "Left Brain - McDonalds (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#13",
+     "name": "Tyler, The Creator - Slow It Down (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#14",
+     "name": "A Millie"
+    },
+    {
+     "num": "#15",
+     "name": "Hodgy Beats - Malaya"
+    },
+    {
+     "num": "#16",
+     "name": "I Smell Panties - Lisa"
+    },
+    {
+     "num": "#17",
+     "name": "Hang Ups"
+    },
+    {
+     "num": "#18",
+     "name": "Ace - Outro (Fin)"
+    }
+   ]
+  },
+  {
+   "era": "The OF Tape Vol. 1",
+   "name": "The Odd Future Tape",
+   "date": "2008-11-19",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for The Odd Future Tape.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Ace - The Tape Intro"
+    },
+    {
+     "num": "#2",
+     "name": "Ace Creator - Odd Toddlers (feat. Casey Veggies)"
+    },
+    {
+     "num": "#3",
+     "name": "Super 3 - Laxin (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#4",
+     "name": "Casey Veggies - Back For Another One (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#5",
+     "name": "Hodgy Beats - Bubble Gum (feat. Casey Veggies & Tyler, The Creator)"
+    },
+    {
+     "num": "#6",
+     "name": "Ace - Fucking Lame"
+    },
+    {
+     "num": "#7",
+     "name": "Left Brain - Pimp Slap (feat. Ace & Hodgy Beats)"
+    },
+    {
+     "num": "#8",
+     "name": "Ace Creator - Bitches Brewin'"
+    },
+    {
+     "num": "#9",
+     "name": "Super 3 - Money Talk (feat. Casey Veggies & Hodgy Beats)"
+    },
+    {
+     "num": "#10",
+     "name": "Hodgy Beats - Our Story"
+    },
+    {
+     "num": "#11",
+     "name": "Casey Veggies - The Life Like"
+    },
+    {
+     "num": "#12",
+     "name": "Left Brain - Mc.Donalds (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#13",
+     "name": "Tyler, The Creator - Slow It Down (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#14",
+     "name": "Casey Veggies - Remember Me (feat. Ace Creator)"
+    },
+    {
+     "num": "#15",
+     "name": "Hodgy Beats - Malaya"
+    },
+    {
+     "num": "#16",
+     "name": "I Smell Panties - Lisa"
+    },
+    {
+     "num": "#17",
+     "name": "Ace - Fin"
+    },
+    {
+     "num": "#18",
+     "name": "Ace Creator - Commercial (feat. Casey Veggies)"
+    },
+    {
+     "num": "#19",
+     "name": "Ace - Dracula."
+    }
+   ]
+  },
+  {
+   "era": "Dinosaur",
+   "name": "Dinosaur",
+   "date": "",
+   "quality": "Partial",
+   "source": "Secondary",
+   "links": [],
+   "description": "Tracklist for Dinosaur, only one track is confirmed at this point.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Midnight Funkathon"
+    }
+   ]
+  },
+  {
+   "era": "Bastard",
+   "name": "Bastard",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Early tracklist for Bastard, posted onto Instagram on December 25th, 2019 for the project's 10 year anniversary. Track 9 is unreadable, it's likely to just be AssMilk but it has been speculated to be Nightmare or another unheard song. Everything is listed with their comments.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro (\"What would you tell him?\") (Bastard)"
+    },
+    {
+     "num": "#2",
+     "name": "Seven (Cut the 4-Bar loop) Turn treble down"
+    },
+    {
+     "num": "#3",
+     "name": "Odd Toddlers"
+    },
+    {
+     "num": "#4",
+     "name": "French (\"So Are You Dating?\", Add the other 8 Bar)"
+    },
+    {
+     "num": "#5",
+     "name": "Blow (Hook)"
+    },
+    {
+     "num": "#6",
+     "name": "Pigs Fly (Begin with \"You talk about your motor alot\")"
+    },
+    {
+     "num": "#7",
+     "name": "Parade (End with \"I'm hyper, but I can slow it down\")"
+    },
+    {
+     "num": "#8",
+     "name": "S.I.D Turn It Up (Slow It Down)"
+    },
+    {
+     "num": "#9",
+     "name": "???"
+    },
+    {
+     "num": "#10",
+     "name": "VCR / Wheels (End with \"So you do drugs\")"
+    },
+    {
+     "num": "#11",
+     "name": "Session (Get Brandon on it)"
+    },
+    {
+     "num": "#12",
+     "name": "Sarah (Begin with Prom? \"You love her\")"
+    },
+    {
+     "num": "#13",
+     "name": "Jack N The Beanstalk / Hunter"
+    },
+    {
+     "num": "#14",
+     "name": "Tina (Begin with \"Me & my niggas do ignorant shit, diva\")"
+    },
+    {
+     "num": "#15",
+     "name": "Inglorious (Begin with \"Is there anything u want to tell-\")"
+    },
+    {
+     "num": "#16",
+     "name": "Llama (Flowers)"
+    }
+   ],
+   "images": [
+    "/wolfgold/art/tl-20-0.jpg"
+   ]
+  },
+  {
+   "era": "Bastard",
+   "name": "Bastard",
+   "date": "2009-12-25",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for Bastard.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bastard"
+    },
+    {
+     "num": "#2",
+     "name": "Seven"
+    },
+    {
+     "num": "#3",
+     "name": "Odd Toddlers"
+    },
+    {
+     "num": "#4",
+     "name": "French! (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#5",
+     "name": "Blow"
+    },
+    {
+     "num": "#6",
+     "name": "Pigs Fly (feat. Domo Genesis)"
+    },
+    {
+     "num": "#7",
+     "name": "Parade"
+    },
+    {
+     "num": "#8",
+     "name": "Slow It Down (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#9",
+     "name": "AssMilk (feat. Earl Sweatshirt)"
+    },
+    {
+     "num": "#10",
+     "name": "VCR/Wheels"
+    },
+    {
+     "num": "#11",
+     "name": "Session (feat. Hodgy Beats & brandUn DeShay)"
+    },
+    {
+     "num": "#12",
+     "name": "Sarah"
+    },
+    {
+     "num": "#13",
+     "name": "Jack & The Beanstalk"
+    },
+    {
+     "num": "#14",
+     "name": "Tina (feat. Jasper Dolphin & Taco)"
+    },
+    {
+     "num": "#15",
+     "name": "Inglorious"
+    }
+   ]
+  },
+  {
+   "era": "Bastard",
+   "name": "Bastard",
+   "date": "2010-12-25",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for the 2010 reissue of Bastard, VCR / Wheels no longer has a slash between the two tracks & Mike G replaces brandUn DeShay on this version.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Bastard"
+    },
+    {
+     "num": "#2",
+     "name": "Seven"
+    },
+    {
+     "num": "#3",
+     "name": "Odd Toddlers"
+    },
+    {
+     "num": "#4",
+     "name": "French! (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#5",
+     "name": "Blow"
+    },
+    {
+     "num": "#6",
+     "name": "Pigs Fly (feat. Domo Genesis)"
+    },
+    {
+     "num": "#7",
+     "name": "Parade"
+    },
+    {
+     "num": "#8",
+     "name": "Slow It Down (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#9",
+     "name": "AssMilk (feat. Earl Sweatshirt)"
+    },
+    {
+     "num": "#10",
+     "name": "VCR Wheels"
+    },
+    {
+     "num": "#11",
+     "name": "Session (feat. Hodgy Beats & Mike G)"
+    },
+    {
+     "num": "#12",
+     "name": "Sarah"
+    },
+    {
+     "num": "#13",
+     "name": "Jack & The Beanstalk"
+    },
+    {
+     "num": "#14",
+     "name": "Tina (feat. Jasper Dolphin & Taco)"
+    },
+    {
+     "num": "#15",
+     "name": "Inglorious"
+    }
+   ]
+  },
+  {
+   "era": "Radical",
+   "name": "Radical",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for Radical.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#2",
+     "name": "Splatter (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#3",
+     "name": "Turnt Down (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#4",
+     "name": "Drop (feat. Earl Sweatshirt)"
+    },
+    {
+     "num": "#5",
+     "name": "Salute (feat. Domo Genesis)"
+    },
+    {
+     "num": "#6",
+     "name": "Everything That's Yours (feat. Mike G)"
+    },
+    {
+     "num": "#7",
+     "name": "Blade (feat. Earl Sweatshirt)"
+    },
+    {
+     "num": "#8",
+     "name": "Double Cheeseburger (feat. Domo Genesis, Jasper Dolphin & Tyler, The Creator)"
+    },
+    {
+     "num": "#9",
+     "name": "Round and Round (feat. Hodgy Beats, Jasper Dolphin & Mike G)"
+    },
+    {
+     "num": "#10",
+     "name": "Ugly Girls (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#11",
+     "name": "Orange Juice (feat. EarlWolf)"
+    },
+    {
+     "num": "#12",
+     "name": "Cool (feat. Earl Sweatshirt & Mike G)"
+    },
+    {
+     "num": "#13",
+     "name": "Oblivion (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#14",
+     "name": "Alright (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#15",
+     "name": "Leather Head (feat. Tyler, The Creator)"
+    },
+    {
+     "num": "#16",
+     "name": "Up (feat. Domo Genesis, Hodgy Beats & Tyler, The Creator)"
+    },
+    {
+     "num": "#17",
+     "name": "Swag Me Out (feat. Earl Sweatshirt, Hodgy, Jasper Dolphin, Left Brain, Mike G, Syd, Travis Bennett & Tyler, The Creator)"
+    }
+   ]
+  },
+  {
+   "era": "WOLF [V1]",
+   "name": "WOLF",
+   "date": "",
+   "quality": "Partial",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for WOLF, taken from info on the Formspring archive. Supposedly Adams Family was to be used as an intro, but this idea was scrapped. Tron Cat is a confirmed WOLF song. This album was said to have roughly 20-23 tracks.\n\n1-5. ???",
+   "tracks": [
+    {
+     "num": "#6",
+     "name": "Half/Half (Half N Half)"
+    },
+    {
+     "num": "#7",
+     "name": "Berlin"
+    },
+    {
+     "num": "#10",
+     "name": "Secret Garden [V2]"
+    },
+    {
+     "num": "#?",
+     "name": "Tron Cat"
+    },
+    {
+     "num": "#?",
+     "name": "Supersonic"
+    }
+   ]
+  },
+  {
+   "era": "WOLF [V1]",
+   "name": "WOLF",
+   "date": "",
+   "quality": "Lost",
+   "source": "N/A",
+   "links": [],
+   "description": "Supposedly, multiple tracklists exist for this project. This is only here as a filler.",
+   "tracks": []
+  },
+  {
+   "era": "Goblin",
+   "name": "Goblin",
+   "date": "2011-05-10",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for Goblin.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Goblin"
+    },
+    {
+     "num": "#2",
+     "name": "Yonkers"
+    },
+    {
+     "num": "#3",
+     "name": "Radicals"
+    },
+    {
+     "num": "#4",
+     "name": "She (feat. Frank Ocean)"
+    },
+    {
+     "num": "#5",
+     "name": "Transylvania"
+    },
+    {
+     "num": "#6",
+     "name": "Nightmare"
+    },
+    {
+     "num": "#7",
+     "name": "Tron Cat"
+    },
+    {
+     "num": "#8",
+     "name": "Her"
+    },
+    {
+     "num": "#9",
+     "name": "Sandwitches (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#10",
+     "name": "Fish (Boppin' Bitch)"
+    },
+    {
+     "num": "#11",
+     "name": "Analog (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#12",
+     "name": "B.S.D. (feat. Jasper Dolphin & Taco) (Bitch Suck Dick)"
+    },
+    {
+     "num": "#13",
+     "name": "Window (feat. Domo Genesis, Frank Ocean, Hodgy Beats & Mike G)"
+    },
+    {
+     "num": "#14",
+     "name": "AU79"
+    },
+    {
+     "num": "#15",
+     "name": "Golden"
+    }
+   ]
+  },
+  {
+   "era": "Goblin",
+   "name": "Goblin (Deluxe Edition)",
+   "date": "2011-05-10",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for the deluxe edition of Goblin.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Goblin"
+    },
+    {
+     "num": "#2",
+     "name": "Yonkers"
+    },
+    {
+     "num": "#3",
+     "name": "Radicals"
+    },
+    {
+     "num": "#4",
+     "name": "She (feat. Frank Ocean)"
+    },
+    {
+     "num": "#5",
+     "name": "Transylvania"
+    },
+    {
+     "num": "#6",
+     "name": "Nightmare"
+    },
+    {
+     "num": "#7",
+     "name": "Tron Cat"
+    },
+    {
+     "num": "#8",
+     "name": "Her"
+    },
+    {
+     "num": "#9",
+     "name": "Sandwitches (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#10",
+     "name": "Fish (Boppin' Bitch)"
+    },
+    {
+     "num": "#11",
+     "name": "Analog (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#12",
+     "name": "B.S.D. (feat. Jasper Dolphin & Taco) (Bitch Suck Dick)"
+    },
+    {
+     "num": "#13",
+     "name": "Window (feat. Domo Genesis, Frank Ocean, Hodgy Beats & Mike G)"
+    },
+    {
+     "num": "#14",
+     "name": "AU79"
+    },
+    {
+     "num": "#15",
+     "name": "Golden"
+    },
+    {
+     "num": "#16",
+     "name": "Burger (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#17",
+     "name": "Untitled 63 (Jazz 63)"
+    },
+    {
+     "num": "#18",
+     "name": "Steak Sauce"
+    }
+   ]
+  },
+  {
+   "era": "The OF Tape Vol. 2",
+   "name": "The OF Tape Vol. 2",
+   "date": "2012-03-20",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "L-Boy - Hi.",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Domo Genesis & Hodgy Beats - Bitches",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Hodgy Beats & Tyler, The Creator - NY (Ned Flander)",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "The Internet - Ya Know",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Mike G - Forest Green",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "Hodgy Beats & Domo Genesis - Lean",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Tyler, The Creator, Frank Ocean & Syd - Analog 2 (Wheels 2)",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "MellowHype - 50",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Hodgy Beats & Frank Ocean - Snow White",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "Hodgy Beats, Domo Genesis & Tyler, The Creator - Rella",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "MellowHype & Taco - Real Bitch",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "Hodgy Beats & Tyler, The Creator - P",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "Frank Ocean - White",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "Domo Genesis, Hodgy Beats & Tyler, The Creator - Hcapd",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "Domo Genesis & Tyler, The Creator - Sam (Is Dead)",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "Domo Genesis - Doms",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "Tyler, The Creator, Taco & Jasper Dolphin - We Got Bitches",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "Odd Future - Oldie",
+     "color": "#93C47D",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "Nilbog",
+   "name": "Nilbog",
+   "date": "",
+   "quality": "Partial",
+   "source": "Tyler",
+   "links": [],
+   "description": "First tracklist for Nilbog, shown to have 37 tracks but only the timestamps are visible. If we do go by timestamps, only a few tracks that have leaked from Nilbog are actually on the project.",
+   "tracks": [],
+   "images": [
+    "/wolfgold/art/tl-29-0.jpg"
+   ]
+  },
+  {
+   "era": "Nilbog",
+   "name": "Nilbog",
+   "date": "",
+   "quality": "Lost",
+   "source": "N/A",
+   "links": [],
+   "description": "Second tracklist for Nilbog, has yet to be found & leaked.",
+   "tracks": []
+  },
+  {
+   "era": "The Dead Sams",
+   "name": "The Dead Sams",
+   "date": "",
+   "quality": "Partial",
+   "source": "Tyler + Leaked",
+   "links": [],
+   "description": "Tracklist for The Dead Sams, only three songs are known at this point.\n\n1-3. ???",
+   "tracks": [
+    {
+     "num": "#4",
+     "name": "Ferris Wheel"
+    },
+    {
+     "num": "#8",
+     "name": "Salem"
+    },
+    {
+     "num": "#9",
+     "name": "Head On My Arm"
+    }
+   ]
+  },
+  {
+   "era": "WOLF [V2]",
+   "name": "WOLF",
+   "date": "2012-08-14",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the WOLF tracklists that were posted to the freeperm account, dated August 14th, 2012.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Shitface"
+    },
+    {
+     "num": "#2",
+     "name": "Bedfur"
+    },
+    {
+     "num": "#3",
+     "name": "PartyIsntOver"
+    },
+    {
+     "num": "#4",
+     "name": "48"
+    },
+    {
+     "num": "#5",
+     "name": "Awkward"
+    },
+    {
+     "num": "#6",
+     "name": "Slater"
+    },
+    {
+     "num": "#7",
+     "name": "Good Morning"
+    },
+    {
+     "num": "#8",
+     "name": "Cowboy"
+    },
+    {
+     "num": "#9",
+     "name": "Jamba"
+    },
+    {
+     "num": "#10",
+     "name": "Half N Half (Half/Half)"
+    }
+   ]
+  },
+  {
+   "era": "WOLF [V3]",
+   "name": "WOLF",
+   "date": "",
+   "quality": "Lost",
+   "source": "N/A",
+   "links": [],
+   "description": "Tyler stated on the freeperm archive that atleast 40 tracklists were made for WOLF.",
+   "tracks": []
+  },
+  {
+   "era": "WOLF [V3]",
+   "name": "WOLF",
+   "date": "2012-09-11",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the WOLF tracklists that were posted to the freeperm account, dated September 11th, 2012. Tyler caused 9/11.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "PartyIsntOver"
+    },
+    {
+     "num": "#2",
+     "name": "Slater"
+    },
+    {
+     "num": "#3",
+     "name": "You (IFHY)"
+    },
+    {
+     "num": "#4",
+     "name": "Awkward"
+    },
+    {
+     "num": "#5",
+     "name": "48"
+    },
+    {
+     "num": "#6",
+     "name": "Jamba"
+    },
+    {
+     "num": "#7",
+     "name": "Treehome (Treehome95)"
+    },
+    {
+     "num": "#8",
+     "name": "Meatloaf"
+    },
+    {
+     "num": "#9",
+     "name": "Campfire"
+    },
+    {
+     "num": "#10",
+     "name": "Sweetheart"
+    },
+    {
+     "num": "#11",
+     "name": "Good Morning"
+    }
+   ]
+  },
+  {
+   "era": "WOLF [V3]",
+   "name": "WOLF",
+   "date": "2012-11-06",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the WOLF tracklists that were posted to the freeperm account, dated November 6th, 2012.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Jamba"
+    },
+    {
+     "num": "#2",
+     "name": "I Fucking Hate You (IFHY)"
+    },
+    {
+     "num": "#3",
+     "name": "Lone"
+    },
+    {
+     "num": "#4",
+     "name": "Answer"
+    },
+    {
+     "num": "#5",
+     "name": "48"
+    },
+    {
+     "num": "#6",
+     "name": "Awkward"
+    },
+    {
+     "num": "#7",
+     "name": "Slater"
+    },
+    {
+     "num": "#8",
+     "name": "PartyIsntOver"
+    },
+    {
+     "num": "#9",
+     "name": "Colossus"
+    },
+    {
+     "num": "#10",
+     "name": "Meatloaf"
+    },
+    {
+     "num": "#11",
+     "name": "Pigs"
+    },
+    {
+     "num": "#12",
+     "name": "Smores (Campfire)"
+    },
+    {
+     "num": "#13",
+     "name": "Wolf"
+    },
+    {
+     "num": "#14",
+     "name": "Cowboy"
+    },
+    {
+     "num": "#15",
+     "name": "Treehome (Treehome95)"
+    },
+    {
+     "num": "#16",
+     "name": "Parking Lot"
+    },
+    {
+     "num": "#17",
+     "name": "Half N Half (Half/Half)"
+    },
+    {
+     "num": "#18",
+     "name": "Good Morning"
+    },
+    {
+     "num": "#19",
+     "name": "Trashwang"
+    }
+   ]
+  },
+  {
+   "era": "WOLF [V3]",
+   "name": "WOLF",
+   "date": "2012-12-17",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the WOLF tracklists that were posted to the freeperm account, dated December 17th, 2012.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Jamba"
+    },
+    {
+     "num": "#2",
+     "name": "IFHY"
+    },
+    {
+     "num": "#3",
+     "name": "Answer"
+    },
+    {
+     "num": "#4",
+     "name": "Awkward"
+    },
+    {
+     "num": "#5",
+     "name": "Slater"
+    },
+    {
+     "num": "#6",
+     "name": "PartyIsntOver"
+    },
+    {
+     "num": "#7",
+     "name": "48"
+    },
+    {
+     "num": "#8",
+     "name": "Rusty"
+    },
+    {
+     "num": "#9",
+     "name": "Trashwang"
+    },
+    {
+     "num": "#10",
+     "name": "Pigs"
+    },
+    {
+     "num": "#11",
+     "name": "Cowboy"
+    },
+    {
+     "num": "#12",
+     "name": "Bimmer"
+    },
+    {
+     "num": "#13",
+     "name": "Smores (Campfire)"
+    },
+    {
+     "num": "#14",
+     "name": "Treehome (Treehome95)"
+    },
+    {
+     "num": "#15",
+     "name": "Jornada (Lone)"
+    },
+    {
+     "num": "#16",
+     "name": "Lost Weekend (Colossus)"
+    },
+    {
+     "num": "#17",
+     "name": "Domo23"
+    },
+    {
+     "num": "#18",
+     "name": "Parking Lot"
+    }
+   ]
+  },
+  {
+   "era": "WOLF [V3]",
+   "name": "WOLF",
+   "date": "",
+   "quality": "Full",
+   "source": "Secondary",
+   "links": [],
+   "description": "Almost final tracklist for WOLF, seen at the very end of the Wolf documentary. Basically the final version without Tamale & with the alternate name for Colossus.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Wolf"
+    },
+    {
+     "num": "#2",
+     "name": "Jamba"
+    },
+    {
+     "num": "#3",
+     "name": "Cowboy"
+    },
+    {
+     "num": "#4",
+     "name": "Awkward"
+    },
+    {
+     "num": "#5",
+     "name": "Domo23"
+    },
+    {
+     "num": "#6",
+     "name": "Answer"
+    },
+    {
+     "num": "#7",
+     "name": "Slater"
+    },
+    {
+     "num": "#8",
+     "name": "48"
+    },
+    {
+     "num": "#9",
+     "name": "Lost Weekend (Colossus)"
+    },
+    {
+     "num": "#10",
+     "name": "PartyIsntOver / Campfire / Bimmer"
+    },
+    {
+     "num": "#11",
+     "name": "IFHY"
+    },
+    {
+     "num": "#12",
+     "name": "Pigs"
+    },
+    {
+     "num": "#13",
+     "name": "Parking Lot"
+    },
+    {
+     "num": "#14",
+     "name": "Rusty"
+    },
+    {
+     "num": "#15",
+     "name": "Trashwang"
+    },
+    {
+     "num": "#16",
+     "name": "Treehome95"
+    },
+    {
+     "num": "#17",
+     "name": "Lone"
+    }
+   ]
+  },
+  {
+   "era": "WOLF [V3]",
+   "name": "WOLF",
+   "date": "2013-04-01",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for WOLF.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "WOLF"
+    },
+    {
+     "num": "#2",
+     "name": "Jamba (feat. Hodgy Beats)"
+    },
+    {
+     "num": "#3",
+     "name": "Cowboy"
+    },
+    {
+     "num": "#4",
+     "name": "Awkward"
+    },
+    {
+     "num": "#5",
+     "name": "Domo23"
+    },
+    {
+     "num": "#6",
+     "name": "Answer"
+    },
+    {
+     "num": "#7",
+     "name": "Slater (feat. Frank Ocean)"
+    },
+    {
+     "num": "#8",
+     "name": "48"
+    },
+    {
+     "num": "#9",
+     "name": "Colossus"
+    },
+    {
+     "num": "#10",
+     "name": "PartyIsntOver / Campfire / Bimmer (feat. Frank Ocean & Laetitia Sadier)"
+    },
+    {
+     "num": "#11",
+     "name": "IFHY (feat. Pharrell)"
+    },
+    {
+     "num": "#12",
+     "name": "Pigs"
+    },
+    {
+     "num": "#13",
+     "name": "Parking Lot (feat. Casey Veggies & Mike G)"
+    },
+    {
+     "num": "#14",
+     "name": "Rusty (feat. Domo Genesis & Earl Sweatshirt)"
+    },
+    {
+     "num": "#15",
+     "name": "Trashwang (feat. Na-Kel Smith, Jasper Dolphin, Lucas, L-Boy, Taco, Left Brain & Lee Spielman)"
+    },
+    {
+     "num": "#16",
+     "name": "Treehome95 (feat. Coco O. & Erykah Badu)"
+    },
+    {
+     "num": "#17",
+     "name": "Tamale"
+    },
+    {
+     "num": "#18",
+     "name": "Lone"
+    }
+   ]
+  },
+  {
+   "era": "Cherry Bomb",
+   "name": "Cherry Bomb",
+   "date": "2014-04-16",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Cherry Bomb tracklists that were posted to the freeperm account, dated April 16, 2014.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "48Whore2"
+    },
+    {
+     "num": "#2",
+     "name": "Fucking Young (FUCKING YOUNG / PERFECT)"
+    },
+    {
+     "num": "#3",
+     "name": "482 (BUFFALO)"
+    },
+    {
+     "num": "#4",
+     "name": "Cockboy"
+    },
+    {
+     "num": "#5",
+     "name": "Tony"
+    },
+    {
+     "num": "#6",
+     "name": "Run"
+    },
+    {
+     "num": "#7",
+     "name": "Pizza"
+    },
+    {
+     "num": "#8",
+     "name": "Debarge"
+    },
+    {
+     "num": "#9",
+     "name": "YEAHNIGGA"
+    },
+    {
+     "num": "#10",
+     "name": "Keep Da O's"
+    },
+    {
+     "num": "#11",
+     "name": "Smuckers"
+    }
+   ]
+  },
+  {
+   "era": "Cherry Bomb",
+   "name": "Cherry Bomb",
+   "date": "2014-05-20",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Cherry Bomb tracklists that were posted to the freeperm account, dated May 20, 2014.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Pizza"
+    },
+    {
+     "num": "#2",
+     "name": "Fucking Young (FUCKING YOUNG / PERFECT)"
+    },
+    {
+     "num": "#3",
+     "name": "Ayers (FIND YOUR WINGS)"
+    },
+    {
+     "num": "#4",
+     "name": "48Whore2"
+    },
+    {
+     "num": "#5",
+     "name": "482 (BUFFALO)"
+    },
+    {
+     "num": "#6",
+     "name": "Cockboy"
+    },
+    {
+     "num": "#7",
+     "name": "Smuckers"
+    },
+    {
+     "num": "#8",
+     "name": "Run"
+    },
+    {
+     "num": "#9",
+     "name": "Debarge"
+    },
+    {
+     "num": "#10",
+     "name": "Wilder"
+    },
+    {
+     "num": "#11",
+     "name": "Keep Da O's"
+    }
+   ]
+  },
+  {
+   "era": "Cherry Bomb",
+   "name": "Cherry Bomb",
+   "date": "2014-08-29",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "482 (BUFFALO)"
+    },
+    {
+     "num": "#2",
+     "name": "Blow My Load"
+    },
+    {
+     "num": "#3",
+     "name": "Wilder"
+    },
+    {
+     "num": "#4",
+     "name": "Ayers (FIND YOUR WINGS)"
+    },
+    {
+     "num": "#5",
+     "name": "Keep Da O's"
+    },
+    {
+     "num": "#6",
+     "name": "Pizza"
+    },
+    {
+     "num": "#7",
+     "name": "Smuckers"
+    },
+    {
+     "num": "#8",
+     "name": "48Whore2"
+    },
+    {
+     "num": "#9",
+     "name": "Run"
+    },
+    {
+     "num": "#10",
+     "name": "Cockboy"
+    },
+    {
+     "num": "#11",
+     "name": "Pilot"
+    },
+    {
+     "num": "#12",
+     "name": "Fucking Young"
+    },
+    {
+     "num": "#13",
+     "name": "2Seater"
+    }
+   ]
+  },
+  {
+   "era": "Cherry Bomb",
+   "name": "Cherry Bomb",
+   "date": "",
+   "quality": "Full",
+   "source": "Secondary",
+   "links": [],
+   "description": "Tracklist seen on the Cherry Bomb documentary, pretty similar to the release version. Found at 36:45 in the video.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "INTRO"
+    },
+    {
+     "num": "#2",
+     "name": "482 (BUFFALO)"
+    },
+    {
+     "num": "#3",
+     "name": "PILOT"
+    },
+    {
+     "num": "#4",
+     "name": "RUN"
+    },
+    {
+     "num": "#5",
+     "name": "ROY512 (FIND YOUR WINGS)"
+    },
+    {
+     "num": "#6",
+     "name": "CHERRY (CHERRY BOMB)"
+    },
+    {
+     "num": "#7",
+     "name": "BLOW MY LOAD"
+    },
+    {
+     "num": "#8",
+     "name": "CHUR"
+    },
+    {
+     "num": "#9",
+     "name": "2SEATER"
+    },
+    {
+     "num": "#10",
+     "name": "ON (THE BROWN STAINS OF DARKEESE LATIFAH PART 6-12 (REMIX)?)"
+    },
+    {
+     "num": "#11",
+     "name": "FY (FUCKING YOUNG)"
+    },
+    {
+     "num": "#12",
+     "name": "PERFECT"
+    },
+    {
+     "num": "#13",
+     "name": "SMUCKERS"
+    },
+    {
+     "num": "#14",
+     "name": "KEEP DA O'S"
+    },
+    {
+     "num": "#15",
+     "name": "OKAGA (OKAGA, CA)"
+    },
+    {
+     "num": "#16",
+     "name": "DEATHCAMP"
+    }
+   ],
+   "images": [
+    "/wolfgold/art/tl-42-0.jpg"
+   ]
+  },
+  {
+   "era": "Cherry Bomb",
+   "name": "Cherry Bomb",
+   "date": "2015-04-11",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist shown on GOLF MEDIA, dated April 11, 2015.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "DEATHCAMP"
+    },
+    {
+     "num": "#2",
+     "name": "BUFFALO"
+    },
+    {
+     "num": "#3",
+     "name": "PILOT"
+    },
+    {
+     "num": "#4",
+     "name": "RUN"
+    },
+    {
+     "num": "#5",
+     "name": "FIND YOUR WINGS"
+    },
+    {
+     "num": "#6",
+     "name": "CHERRY BOMB"
+    },
+    {
+     "num": "#7",
+     "name": "BLOW MY LOAD"
+    },
+    {
+     "num": "#8",
+     "name": "2SEATER"
+    },
+    {
+     "num": "#9",
+     "name": "THE BROWN STAINS (THE BROWN STAINS OF DARKEESE LATIFAH PART 6-12 (REMIX))"
+    },
+    {
+     "num": "#10",
+     "name": "FUCKING YOUNG (FUCKING YOUNG / PERFECT)"
+    },
+    {
+     "num": "#11",
+     "name": "SMUCKERS"
+    },
+    {
+     "num": "#12",
+     "name": "KEEP DA O'S"
+    },
+    {
+     "num": "#13",
+     "name": "OKAGA, CA"
+    }
+   ],
+   "images": [
+    "/wolfgold/art/tl-43-0.jpg"
+   ]
+  },
+  {
+   "era": "Cherry Bomb",
+   "name": "Cherry Bomb",
+   "date": "2015-04-13",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for Cherry Bomb.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "DEATHCAMP (feat. Cole Alexander)"
+    },
+    {
+     "num": "#2",
+     "name": "BUFFALO (feat. Shane Powers)"
+    },
+    {
+     "num": "#3",
+     "name": "PILOT (feat. Sydney Bennett)"
+    },
+    {
+     "num": "#4",
+     "name": "RUN (feat. Chaz Bundick & ScHoolboy Q)"
+    },
+    {
+     "num": "#5",
+     "name": "FIND YOUR WINGS (feat. Roy Ayers, Sydney Bennett & Kali Uchis)"
+    },
+    {
+     "num": "#6",
+     "name": "CHERRY BOMB"
+    },
+    {
+     "num": "#7",
+     "name": "BLOW MY LOAD (feat. Wanya Morris, DāM-FunK, Austin Feinstein & Sydney Bennett)"
+    },
+    {
+     "num": "#8",
+     "name": "2SEATER (feat. Aaron Shaw, Samantha Nelson & Austin Feinstein)"
+    },
+    {
+     "num": "#9",
+     "name": "THE BROWN STAINS OF DARKEESE LATIFAH PART 6-12 (REMIX) (feat. ScHoolboy Q)"
+    },
+    {
+     "num": "#10",
+     "name": "FUCKING YOUNG / PERFECT (feat. Charlie Wilson, Chaz Bundick, Sydney Bennett & Kali Uchis)"
+    },
+    {
+     "num": "#11",
+     "name": "SMUCKERS (feat. Lil Wayne & Kanye West)"
+    },
+    {
+     "num": "#12",
+     "name": "KEEP DA O'S (feat. Pharell Williams & Coco O.)"
+    },
+    {
+     "num": "#13",
+     "name": "OKAGA, CA (feat. Alice Smith, Leon Ware & Clem Creevy)"
+    }
+   ]
+  },
+  {
+   "era": "Cherry Bomb",
+   "name": "Cherry Bomb [Physical Copies]",
+   "date": "2015-04-13",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for the physical copies of Cherry Bomb, contains two bonus tracks SPECIAL and YELLOW.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "DEATHCAMP (feat. Cole Alexander)"
+    },
+    {
+     "num": "#2",
+     "name": "BUFFALO (feat. Shane Powers)"
+    },
+    {
+     "num": "#3",
+     "name": "PILOT (feat. Sydney Bennett)"
+    },
+    {
+     "num": "#4",
+     "name": "RUN (feat. Chaz Bundick & ScHoolboy Q)"
+    },
+    {
+     "num": "#5",
+     "name": "FIND YOUR WINGS (feat. Roy Ayers, Sydney Bennett & Kali Uchis)"
+    },
+    {
+     "num": "#6",
+     "name": "CHERRY BOMB"
+    },
+    {
+     "num": "#7",
+     "name": "BLOW MY LOAD (feat. Wanya Morris, DāM-FunK, Austin Feinstein & Sydney Bennett)"
+    },
+    {
+     "num": "#8",
+     "name": "2SEATER (feat. Aaron Shaw, Samantha Nelson & Austin Feinstein)"
+    },
+    {
+     "num": "#9",
+     "name": "THE BROWN STAINS OF DARKEESE LATIFAH PART 6-12 (REMIX) / SPECIAL (feat. ScHoolboy Q)"
+    },
+    {
+     "num": "#10",
+     "name": "FUCKING YOUNG / PERFECT (feat. Charlie Wilson, Chaz Bundick, Sydney Bennett & Kali Uchis)"
+    },
+    {
+     "num": "#11",
+     "name": "SMUCKERS (feat. Lil Wayne & Kanye West)"
+    },
+    {
+     "num": "#12",
+     "name": "KEEP DA O'S (feat. Pharell Williams & Coco O.)"
+    },
+    {
+     "num": "#13",
+     "name": "OKAGA, CA (feat. Alice Smith, Leon Ware & Clem Creevy)"
+    },
+    {
+     "num": "#14",
+     "name": "YELLOW (feat. Kali Uchis)"
+    }
+   ]
+  },
+  {
+   "era": "Scum Fuck Flower Boy",
+   "name": "Scum Fuck Flower Boy",
+   "date": "2016-01-09",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Flower Boy tracklists that were posted to the freeperm account, dated Jan 9, 2016. Some titles may be placeholders or inspirations, evidenced by his reference to Portishead's \"Deep Water\" two posts later.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Love Without Sound"
+    },
+    {
+     "num": "#2",
+     "name": "Deep Water"
+    },
+    {
+     "num": "#3",
+     "name": "Spoon (Foreward)"
+    },
+    {
+     "num": "#4",
+     "name": "Tell em"
+    },
+    {
+     "num": "#5",
+     "name": "Pothole"
+    },
+    {
+     "num": "#6",
+     "name": "Sneakysnake"
+    },
+    {
+     "num": "#7",
+     "name": "Garden"
+    },
+    {
+     "num": "#8",
+     "name": "Band"
+    },
+    {
+     "num": "#9",
+     "name": "WOW (Enjoy Right Now, Today)"
+    },
+    {
+     "num": "#10",
+     "name": "Cruise (Droppin' Seeds)"
+    },
+    {
+     "num": "#11",
+     "name": "Bean (Beanbag)"
+    }
+   ]
+  },
+  {
+   "era": "Scum Fuck Flower Boy",
+   "name": "Scum Fuck Flower Boy",
+   "date": "2016-02-16",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Flower Boy tracklists that were posted to the freeperm account, dated Februrary 16th, 2016.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Snake"
+    },
+    {
+     "num": "#2",
+     "name": "3000"
+    },
+    {
+     "num": "#3",
+     "name": "Pothole"
+    },
+    {
+     "num": "#4",
+     "name": "Tellem"
+    },
+    {
+     "num": "#5",
+     "name": "Power"
+    },
+    {
+     "num": "#6",
+     "name": "Fallin'"
+    },
+    {
+     "num": "#7",
+     "name": "Beanbag"
+    },
+    {
+     "num": "#8",
+     "name": "Spoon (Foreward)"
+    },
+    {
+     "num": "#9",
+     "name": "Garden"
+    },
+    {
+     "num": "#10",
+     "name": "WOW (Enjoy Right Now, Today)"
+    },
+    {
+     "num": "#11",
+     "name": "Cruising (feat. Lil Wayne) (Droppin' Seeds)"
+    }
+   ]
+  },
+  {
+   "era": "Scum Fuck Flower Boy",
+   "name": "Scum Fuck Flower Boy",
+   "date": "2016-03-05",
+   "quality": "Partial",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Flower Boy tracklists that were posted to the freeperm account, dated March 5th, 2016 where Tyler stated these were 'forsures'.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Snake"
+    },
+    {
+     "num": "#?",
+     "name": "3000"
+    },
+    {
+     "num": "#?",
+     "name": "Pothole"
+    },
+    {
+     "num": "#?",
+     "name": "Tellem"
+    },
+    {
+     "num": "#?",
+     "name": "Power"
+    },
+    {
+     "num": "#?",
+     "name": "Beanbag"
+    },
+    {
+     "num": "#?",
+     "name": "WOW (Enjoy Right Now, Today)"
+    }
+   ]
+  },
+  {
+   "era": "Scum Fuck Flower Boy",
+   "name": "Scum Fuck Flower Boy",
+   "date": "2016-03-18",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Flower Boy tracklists that were posted to the freeperm account, dated March 18th 2016.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Snake"
+    },
+    {
+     "num": "#2",
+     "name": "3000"
+    },
+    {
+     "num": "#3",
+     "name": "Pothole"
+    },
+    {
+     "num": "#4",
+     "name": "Tellem"
+    },
+    {
+     "num": "#5",
+     "name": "Power"
+    },
+    {
+     "num": "#6",
+     "name": "Fallin'"
+    },
+    {
+     "num": "#7",
+     "name": "Beanbag"
+    },
+    {
+     "num": "#8",
+     "name": "Spoon (Foreward)"
+    },
+    {
+     "num": "#9",
+     "name": "Garden"
+    },
+    {
+     "num": "#10",
+     "name": "WOW (Enjoy Right Now, Today)"
+    },
+    {
+     "num": "#11",
+     "name": "Cruising (feat. Lil Wayne) (Droppin' Seeds)"
+    }
+   ]
+  },
+  {
+   "era": "Scum Fuck Flower Boy",
+   "name": "Scum Fuck Flower Boy",
+   "date": "2016-05-11",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Flower Boy tracklists posted to the freeperm account, dated May 11, 2016. List of songs Tyler needed to finish ASAP.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Spoon (Foreword)"
+    },
+    {
+     "num": "#2",
+     "name": "Bloom (Whoville)"
+    },
+    {
+     "num": "#3",
+     "name": "Beanbag"
+    },
+    {
+     "num": "#4",
+     "name": "Firework (Glitter)"
+    },
+    {
+     "num": "#5",
+     "name": "Who Dat Boy"
+    },
+    {
+     "num": "#6",
+     "name": "3000"
+    },
+    {
+     "num": "#7",
+     "name": "Pothole"
+    },
+    {
+     "num": "#8",
+     "name": "Mr. Lonely"
+    },
+    {
+     "num": "#9",
+     "name": "WOW (Enjoy Right Now, Today)"
+    },
+    {
+     "num": "#10",
+     "name": "DeathValley"
+    },
+    {
+     "num": "#11",
+     "name": "IWasWondering"
+    },
+    {
+     "num": "#12",
+     "name": "Lips"
+    },
+    {
+     "num": "#13",
+     "name": "Ckboy (Cockboy)"
+    },
+    {
+     "num": "#14",
+     "name": "Garden (Garden Shed)"
+    },
+    {
+     "num": "#15",
+     "name": "Cruising (feat. Lil Wayne) (Droppin' Seeds)"
+    }
+   ]
+  },
+  {
+   "era": "Scum Fuck Flower Boy",
+   "name": "Scum Fuck Flower Boy",
+   "date": "2016-04-13",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Flower Boy tracklists that were posted to the freeperm account, dated April 13th, 2016.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Spoon (Foreward)"
+    },
+    {
+     "num": "#2",
+     "name": "3000"
+    },
+    {
+     "num": "#3",
+     "name": "Beanbag"
+    },
+    {
+     "num": "#4",
+     "name": "June"
+    },
+    {
+     "num": "#5",
+     "name": "Who That Boy (Who Dat Boy)"
+    },
+    {
+     "num": "#6",
+     "name": "Suga (Sugar)"
+    },
+    {
+     "num": "#7",
+     "name": "Pothole"
+    },
+    {
+     "num": "#8",
+     "name": "I Ain't Got Time"
+    },
+    {
+     "num": "#9",
+     "name": "IWasWondering"
+    },
+    {
+     "num": "#10",
+     "name": "Mr. Lonely"
+    },
+    {
+     "num": "#11",
+     "name": "Sneakysnake"
+    },
+    {
+     "num": "#12",
+     "name": "Ckboy (Cockboy)"
+    },
+    {
+     "num": "#13",
+     "name": "Stripeshirt"
+    },
+    {
+     "num": "#14",
+     "name": "WOW (Enjoy Right Now Today)"
+    },
+    {
+     "num": "#15",
+     "name": "T2"
+    },
+    {
+     "num": "#16",
+     "name": "Clouds"
+    }
+   ]
+  },
+  {
+   "era": "Scum Fuck Flower Boy",
+   "name": "Scum Fuck Flower Boy",
+   "date": "2016-08-08",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Flower Boy tracklists that were posted to the freeperm account, dated August 8th, 2016.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Glitter"
+    },
+    {
+     "num": "#2",
+     "name": "Beanbag"
+    },
+    {
+     "num": "#3",
+     "name": "Who That Boy (Who Dat Boy)"
+    },
+    {
+     "num": "#4",
+     "name": "Cruising (feat. Lil Wayne) (Droppin' Seeds)"
+    },
+    {
+     "num": "#5",
+     "name": "Pumpbreaks"
+    },
+    {
+     "num": "#6",
+     "name": "Suga"
+    },
+    {
+     "num": "#7",
+     "name": "Spoon (Foreword)"
+    },
+    {
+     "num": "#8",
+     "name": "Garcon"
+    },
+    {
+     "num": "#9",
+     "name": "IWasWondering"
+    },
+    {
+     "num": "#10",
+     "name": "Mr. Lonely"
+    },
+    {
+     "num": "#11",
+     "name": "Sneakysnake"
+    },
+    {
+     "num": "#12",
+     "name": "Ckboy (Cockboy)"
+    },
+    {
+     "num": "#13",
+     "name": "Stripeshirt"
+    },
+    {
+     "num": "#14",
+     "name": "WOW (Enjoy Right Now Today)"
+    },
+    {
+     "num": "#15",
+     "name": "T2"
+    },
+    {
+     "num": "#16",
+     "name": "Clouds"
+    }
+   ]
+  },
+  {
+   "era": "Scum Fuck Flower Boy",
+   "name": "Scum Fuck Flower Boy",
+   "date": "2016-08-22",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "One of the Flower Boy tracklists that were posted to the freeperm account, dated August 22nd, 2016.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Glitter"
+    },
+    {
+     "num": "#2",
+     "name": "Beanbag"
+    },
+    {
+     "num": "#3",
+     "name": "WhoThatBoy (Who Dat Boy)"
+    },
+    {
+     "num": "#4",
+     "name": "Cruising (feat. Lil Wayne) (Droppin' Seeds)"
+    },
+    {
+     "num": "#5",
+     "name": "Pumpbreaks"
+    },
+    {
+     "num": "#6",
+     "name": "Suga"
+    },
+    {
+     "num": "#7",
+     "name": "Spoon (Foreword)"
+    },
+    {
+     "num": "#8",
+     "name": "Garcon"
+    },
+    {
+     "num": "#9",
+     "name": "Pothole"
+    },
+    {
+     "num": "#10",
+     "name": "Boredom"
+    },
+    {
+     "num": "#11",
+     "name": "IWasWondering"
+    },
+    {
+     "num": "#12",
+     "name": "GotTime (I Ain't Got Time)"
+    },
+    {
+     "num": "#14",
+     "name": "WOW (Enjoy Right Now Today)"
+    }
+   ]
+  },
+  {
+   "era": "Flower Boy",
+   "name": "Flower Boy [Leaked Copy]",
+   "date": "2017-07-14",
+   "quality": "Full",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist for the leaked copy of Flower Boy. Same as release.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Foreword (feat. Rex Orange County)"
+    },
+    {
+     "num": "#2",
+     "name": "Where This Flower Blooms (feat. Frank Ocean)"
+    },
+    {
+     "num": "#3",
+     "name": "Sometimes..."
+    },
+    {
+     "num": "#4",
+     "name": "See You Again (feat. Kali Uchis)"
+    },
+    {
+     "num": "#5",
+     "name": "Who Dat Boy (feat. A$AP Rocky)"
+    },
+    {
+     "num": "#6",
+     "name": "Pothole (feat. Jaden Smith)"
+    },
+    {
+     "num": "#7",
+     "name": "Garden Shed (feat. Estelle)"
+    },
+    {
+     "num": "#8",
+     "name": "Boredom (feat. Rex Orange County & Anna of the North)"
+    },
+    {
+     "num": "#9",
+     "name": "I Ain't Got Time!"
+    },
+    {
+     "num": "#10",
+     "name": "911 / Mr. Lonely (feat. Frank Ocean & Steve Lacy)"
+    },
+    {
+     "num": "#11",
+     "name": "Droppin' Seeds (feat. Lil' Wayne)"
+    },
+    {
+     "num": "#12",
+     "name": "November"
+    },
+    {
+     "num": "#13",
+     "name": "Glitter"
+    },
+    {
+     "num": "#14",
+     "name": "Enjoy Right Now, Today"
+    }
+   ]
+  },
+  {
+   "era": "Flower Boy",
+   "name": "Flower Boy",
+   "date": "2017-07-21",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for the release copy of Flower Boy.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Foreword (feat. Rex Orange County)"
+    },
+    {
+     "num": "#2",
+     "name": "Where This Flower Blooms (feat. Frank Ocean)"
+    },
+    {
+     "num": "#3",
+     "name": "Sometimes..."
+    },
+    {
+     "num": "#4",
+     "name": "See You Again (feat. Kali Uchis)"
+    },
+    {
+     "num": "#5",
+     "name": "Who Dat Boy (feat. A$AP Rocky)"
+    },
+    {
+     "num": "#6",
+     "name": "Pothole (feat. Jaden Smith)"
+    },
+    {
+     "num": "#7",
+     "name": "Garden Shed (feat. Estelle)"
+    },
+    {
+     "num": "#8",
+     "name": "Boredom (feat. Rex Orange County & Anna of the North)"
+    },
+    {
+     "num": "#9",
+     "name": "I Ain't Got Time!"
+    },
+    {
+     "num": "#10",
+     "name": "911 / Mr. Lonely (feat. Frank Ocean & Steve Lacy)"
+    },
+    {
+     "num": "#11",
+     "name": "Droppin' Seeds (feat. Lil' Wayne)"
+    },
+    {
+     "num": "#12",
+     "name": "November"
+    },
+    {
+     "num": "#13",
+     "name": "Glitter"
+    },
+    {
+     "num": "#14",
+     "name": "Enjoy Right Now, Today"
+    }
+   ]
+  },
+  {
+   "era": "Grinch EP",
+   "name": "Music Inspired by Illumination & Dr. Seuss' The Grinch",
+   "date": "2018-11-16",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for Grinch EP",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Whoville"
+    },
+    {
+     "num": "#2",
+     "name": "Lights On (Feat. Ryan Beatty & Santigold)"
+    },
+    {
+     "num": "#3",
+     "name": "Hot Chocolate (Feat. Jerry Paper)"
+    },
+    {
+     "num": "#4",
+     "name": "Big Bag"
+    },
+    {
+     "num": "#5",
+     "name": "When Gloves Come Off (Feat. Ryan Beatty)"
+    },
+    {
+     "num": "#6",
+     "name": "Cindy Lou's Wish"
+    }
+   ]
+  },
+  {
+   "era": "IGOR",
+   "name": "IGOR",
+   "date": "2019-05-17",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for IGOR.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "IGOR'S THEME"
+    },
+    {
+     "num": "#2",
+     "name": "EARFQUAKE"
+    },
+    {
+     "num": "#3",
+     "name": "I THINK"
+    },
+    {
+     "num": "#4",
+     "name": "EXACTLY WHAT YOU RUN FROM YOU END UP CHASING"
+    },
+    {
+     "num": "#5",
+     "name": "RUNNING OUT OF TIME"
+    },
+    {
+     "num": "#6",
+     "name": "NEW MAGIC WANG"
+    },
+    {
+     "num": "#7",
+     "name": "A BOY IS A GUN*"
+    },
+    {
+     "num": "#8",
+     "name": "PUPPET"
+    },
+    {
+     "num": "#9",
+     "name": "WHAT'S GOOD"
+    },
+    {
+     "num": "#10",
+     "name": "GONE, GONE / THANK YOU"
+    },
+    {
+     "num": "#11",
+     "name": "I DON'T LOVE YOU ANYMORE"
+    },
+    {
+     "num": "#12",
+     "name": "ARE WE STILL FRIENDS?"
+    }
+   ]
+  },
+  {
+   "era": "IGOR",
+   "name": "IGOR [Physical Copies]",
+   "date": "2019-05-17",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for the physical copies of IGOR. EXACTLY WHAT YOU RUN FROM YOU END UP CHASING is replaced by BOYFRIEND.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "IGOR'S THEME"
+    },
+    {
+     "num": "#2",
+     "name": "EARFQUAKE"
+    },
+    {
+     "num": "#3",
+     "name": "I THINK"
+    },
+    {
+     "num": "#4",
+     "name": "BOYFRIEND"
+    },
+    {
+     "num": "#5",
+     "name": "RUNNING OUT OF TIME"
+    },
+    {
+     "num": "#6",
+     "name": "NEW MAGIC WANG"
+    },
+    {
+     "num": "#7",
+     "name": "A BOY IS A GUN*"
+    },
+    {
+     "num": "#8",
+     "name": "PUPPET"
+    },
+    {
+     "num": "#9",
+     "name": "WHAT'S GOOD"
+    },
+    {
+     "num": "#10",
+     "name": "GONE, GONE / THANK YOU"
+    },
+    {
+     "num": "#11",
+     "name": "I DON'T LOVE YOU ANYMORE"
+    },
+    {
+     "num": "#12",
+     "name": "ARE WE STILL FRIENDS?"
+    }
+   ]
+  },
+  {
+   "era": "CALL ME IF YOU GET LOST",
+   "name": "CALL ME IF YOU GET LOST",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for CALL ME IF YOU GET LOST.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SIR BAUDELAIRE (feat. DJ Drama)"
+    },
+    {
+     "num": "#2",
+     "name": "CORSO"
+    },
+    {
+     "num": "#3",
+     "name": "LEMONHEAD (feat. 42 Dugg)"
+    },
+    {
+     "num": "#4",
+     "name": "WUSYANAME (feat. NBA Youngboy & Ty"
+    },
+    {
+     "num": "#5",
+     "name": "LUMBERJACK"
+    },
+    {
+     "num": "#6",
+     "name": "HOT WIND BLOWS (feat. Lil Wayne)"
+    },
+    {
+     "num": "#7",
+     "name": "MASSA"
+    },
+    {
+     "num": "#8",
+     "name": "RUNITUP (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#9",
+     "name": "MANIFESTO (feat. Domo Genesis)"
+    },
+    {
+     "num": "#10",
+     "name": "SWEET / I THOUGHT YOU WANTED"
+    },
+    {
+     "num": "#11",
+     "name": "MOMMA TALK"
+    },
+    {
+     "num": "#12",
+     "name": "RISE! (feat. Daisy World)"
+    },
+    {
+     "num": "#13",
+     "name": "BLESSED"
+    },
+    {
+     "num": "#14",
+     "name": "JUGGERNAUT (feat. Lil Uzi Vert &"
+    },
+    {
+     "num": "#15",
+     "name": "WILSHIRE"
+    },
+    {
+     "num": "#16",
+     "name": "SAFARI"
+    }
+   ]
+  },
+  {
+   "era": "CALL ME IF YOU GET LOST",
+   "name": "CALL ME IF YOU GET LOST [Physical Copies]",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for CALL ME IF YOU GET LOST physical copies. SAFARI is replaced by FISHTAIL",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SIR BAUDELAIRE (feat. DJ Drama)"
+    },
+    {
+     "num": "#2",
+     "name": "CORSO"
+    },
+    {
+     "num": "#3",
+     "name": "LEMONHEAD (feat. 42 Dugg)"
+    },
+    {
+     "num": "#4",
+     "name": "WUSYANAME (feat. NBA Youngboy & Ty"
+    },
+    {
+     "num": "#5",
+     "name": "LUMBERJACK"
+    },
+    {
+     "num": "#6",
+     "name": "HOT WIND BLOWS (feat. Lil Wayne)"
+    },
+    {
+     "num": "#7",
+     "name": "MASSA"
+    },
+    {
+     "num": "#8",
+     "name": "RUNITUP (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#9",
+     "name": "MANIFESTO (feat. Domo Genesis)"
+    },
+    {
+     "num": "#10",
+     "name": "SWEET / I THOUGHT YOU WANTED"
+    },
+    {
+     "num": "#11",
+     "name": "MOMMA TALK"
+    },
+    {
+     "num": "#12",
+     "name": "RISE! (feat. Daisy World)"
+    },
+    {
+     "num": "#13",
+     "name": "BLESSED"
+    },
+    {
+     "num": "#14",
+     "name": "JUGGERNAUT (feat. Lil Uzi Vert &"
+    },
+    {
+     "num": "#15",
+     "name": "WILSHIRE"
+    },
+    {
+     "num": "#16",
+     "name": "FISHTAIL"
+    }
+   ]
+  },
+  {
+   "era": "CALL ME IF YOU GET LOST",
+   "name": "CALL ME IF YOU GET LOST : The Estate Sale",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for CALL ME IF YOU GET LOST : The Estate Sale\n\nDISC 1 :",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SIR BAUDELAIRE (feat. DJ Drama)"
+    },
+    {
+     "num": "#2",
+     "name": "CORSO"
+    },
+    {
+     "num": "#3",
+     "name": "LEMONHEAD (feat. 42 Dugg)"
+    },
+    {
+     "num": "#4",
+     "name": "WUSYANAME (feat. NBA Youngboy & Ty"
+    },
+    {
+     "num": "#5",
+     "name": "LUMBERJACK"
+    },
+    {
+     "num": "#6",
+     "name": "HOT WIND BLOWS (feat. Lil Wayne)"
+    },
+    {
+     "num": "#7",
+     "name": "MASSA"
+    },
+    {
+     "num": "#8",
+     "name": "RUNITUP (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#9",
+     "name": "MANIFESTO (feat. Domo Genesis)"
+    },
+    {
+     "num": "#10",
+     "name": "SWEET / I THOUGHT YOU WANTED"
+    },
+    {
+     "num": "#11",
+     "name": "MOMMA TALK"
+    },
+    {
+     "num": "#12",
+     "name": "RISE! (feat. Daisy World)"
+    },
+    {
+     "num": "#13",
+     "name": "BLESSED"
+    },
+    {
+     "num": "#14",
+     "name": "JUGGERNAUT (feat. Lil Uzi Vert &"
+    },
+    {
+     "num": "#15",
+     "name": "WILSHIRE"
+    },
+    {
+     "num": "#16",
+     "name": "SAFARI"
+    },
+    {
+     "num": "#1",
+     "name": "EVERYTHING MUST GO"
+    },
+    {
+     "num": "#2",
+     "name": "STUNTMAN"
+    },
+    {
+     "num": "#3",
+     "name": "WHAT A DAY"
+    },
+    {
+     "num": "#4",
+     "name": "WHARF TALK"
+    },
+    {
+     "num": "#5",
+     "name": "DOGTOOTH"
+    },
+    {
+     "num": "#6",
+     "name": "HEAVEN TO ME"
+    },
+    {
+     "num": "#7",
+     "name": "BOYFRIEND, GIRLFRIEND"
+    },
+    {
+     "num": "#8",
+     "name": "SORRY NOT SORRY"
+    }
+   ]
+  },
+  {
+   "era": "CALL ME IF YOU GET LOST",
+   "name": "CALL ME IF YOU GET LOST : The Estate Sale\n[Physical Copies]",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for CALL ME IF YOU GET LOST : The Estate Sale physical copies, SAFARI is replaced by FISHTAIL\n\nDISC 1 :",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SIR BAUDELAIRE (feat. DJ Drama)"
+    },
+    {
+     "num": "#2",
+     "name": "CORSO"
+    },
+    {
+     "num": "#3",
+     "name": "LEMONHEAD (feat. 42 Dugg)"
+    },
+    {
+     "num": "#4",
+     "name": "WUSYANAME (feat. NBA Youngboy & Ty"
+    },
+    {
+     "num": "#5",
+     "name": "LUMBERJACK"
+    },
+    {
+     "num": "#6",
+     "name": "HOT WIND BLOWS (feat. Lil Wayne)"
+    },
+    {
+     "num": "#7",
+     "name": "MASSA"
+    },
+    {
+     "num": "#8",
+     "name": "RUNITUP (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#9",
+     "name": "MANIFESTO (feat. Domo Genesis)"
+    },
+    {
+     "num": "#10",
+     "name": "SWEET / I THOUGHT YOU WANTED"
+    },
+    {
+     "num": "#11",
+     "name": "MOMMA TALK"
+    },
+    {
+     "num": "#12",
+     "name": "RISE! (feat. Daisy World)"
+    },
+    {
+     "num": "#13",
+     "name": "BLESSED"
+    },
+    {
+     "num": "#14",
+     "name": "JUGGERNAUT (feat. Lil Uzi Vert &"
+    },
+    {
+     "num": "#15",
+     "name": "WILSHIRE"
+    },
+    {
+     "num": "#16",
+     "name": "FISHTAIL"
+    },
+    {
+     "num": "#1",
+     "name": "EVERYTHING MUST GO"
+    },
+    {
+     "num": "#2",
+     "name": "STUNTMAN"
+    },
+    {
+     "num": "#3",
+     "name": "WHAT A DAY"
+    },
+    {
+     "num": "#4",
+     "name": "WHARF TALK"
+    },
+    {
+     "num": "#5",
+     "name": "DOGTOOTH"
+    },
+    {
+     "num": "#6",
+     "name": "HEAVEN TO ME"
+    },
+    {
+     "num": "#7",
+     "name": "BOYFRIEND, GIRLFRIEND"
+    },
+    {
+     "num": "#8",
+     "name": "SORRY NOT SORRY"
+    }
+   ]
+  },
+  {
+   "era": "CHROMAKOPIA",
+   "name": "CHROMAKOPIA",
+   "date": "",
+   "quality": "Full",
+   "source": "Secondary",
+   "links": [],
+   "description": "Tracklist for CHROMAKOPIA that details if a song is fully mixed or not, dated hours before release.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "INTRO (St. Chroma)"
+    },
+    {
+     "num": "#2",
+     "name": "RAHTAHTAH"
+    },
+    {
+     "num": "#3",
+     "name": "NOID"
+    },
+    {
+     "num": "#4",
+     "name": "DARLING (Darling, I)"
+    },
+    {
+     "num": "#5",
+     "name": "JANE (Hey Jane)"
+    },
+    {
+     "num": "#6",
+     "name": "KILLED YOU (I Killed You)"
+    },
+    {
+     "num": "#7",
+     "name": "JUDY (Judge Judy)"
+    },
+    {
+     "num": "#8",
+     "name": "STICKY"
+    },
+    {
+     "num": "#9",
+     "name": "MASK (Take Off Your Mask)"
+    },
+    {
+     "num": "#10",
+     "name": "TOMORROW (Fine)"
+    },
+    {
+     "num": "#11",
+     "name": "DEAD (Thought I Was Dead)"
+    },
+    {
+     "num": "#12",
+     "name": "LIKE HIM"
+    },
+    {
+     "num": "#13",
+     "name": "I HOPE YOU FIND YOUR WAY HOME"
+    },
+    {
+     "num": "#14",
+     "name": "BALLOON"
+    },
+    {
+     "num": "#15",
+     "name": "STICKY"
+    }
+   ],
+   "images": [
+    "/wolfgold/art/tl-63-0.jpg"
+   ]
+  },
+  {
+   "era": "CHROMAKOPIA",
+   "name": "CHROMAKOPIA",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for the test pressing mix of CHROMAKOPIA.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro (St. Chroma)"
+    },
+    {
+     "num": "#2",
+     "name": "Rahtahtah"
+    },
+    {
+     "num": "#3",
+     "name": "Noid"
+    },
+    {
+     "num": "#4",
+     "name": "Darling (Darling, I)"
+    },
+    {
+     "num": "#5",
+     "name": "Hey Jane"
+    },
+    {
+     "num": "#6",
+     "name": "Killed You (I Killed You)"
+    },
+    {
+     "num": "#7",
+     "name": "Judge Judy"
+    },
+    {
+     "num": "#8",
+     "name": "Sticky"
+    },
+    {
+     "num": "#9",
+     "name": "Mask (Take Your Mask Off)"
+    },
+    {
+     "num": "#10",
+     "name": "Tomorrow"
+    },
+    {
+     "num": "#11",
+     "name": "Mother"
+    },
+    {
+     "num": "#12",
+     "name": "Dead (Thought I Was Dead)"
+    },
+    {
+     "num": "#13",
+     "name": "Like Him"
+    },
+    {
+     "num": "#14",
+     "name": "Home (I Hope You Find Your Way Home)"
+    }
+   ]
+  },
+  {
+   "era": "CHROMAKOPIA",
+   "name": "CHROMAKOPIA",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for CHROMAKOPIA, features were originally hidden until maybe a week after this project's release.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "St. Chroma (feat. Daniel Caesar)"
+    },
+    {
+     "num": "#2",
+     "name": "Rah Tah Tah"
+    },
+    {
+     "num": "#3",
+     "name": "Noid"
+    },
+    {
+     "num": "#4",
+     "name": "Darling, I (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#5",
+     "name": "Hey Jane"
+    },
+    {
+     "num": "#6",
+     "name": "I Killed You"
+    },
+    {
+     "num": "#7",
+     "name": "Judge Judy"
+    },
+    {
+     "num": "#8",
+     "name": "Sticky (feat. GloRilla, Sexyy Red & Lil Wayne)"
+    },
+    {
+     "num": "#9",
+     "name": "Take Your Mask Off (feat. Daniel Caesar & LaToiya Williams)"
+    },
+    {
+     "num": "#10",
+     "name": "Tomorrow"
+    },
+    {
+     "num": "#11",
+     "name": "Thought I Was Dead (feat. ScHoolboy Q & Santigold)"
+    },
+    {
+     "num": "#12",
+     "name": "Like Him"
+    },
+    {
+     "num": "#13",
+     "name": "Balloon (feat. Doechii)"
+    },
+    {
+     "num": "#14",
+     "name": "I Hope You Find Your Way Home"
+    }
+   ]
+  },
+  {
+   "era": "CHROMAKOPIA",
+   "name": "CHROMAKOPIA +",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for CHROMAKOPIA +.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "St. Chroma (feat. Daniel Caesar)"
+    },
+    {
+     "num": "#2",
+     "name": "Rah Tah Tah"
+    },
+    {
+     "num": "#3",
+     "name": "Noid"
+    },
+    {
+     "num": "#4",
+     "name": "Darling, I (feat. Teezo Touchdown)"
+    },
+    {
+     "num": "#5",
+     "name": "Hey Jane"
+    },
+    {
+     "num": "#6",
+     "name": "I Killed You"
+    },
+    {
+     "num": "#7",
+     "name": "Judge Judy"
+    },
+    {
+     "num": "#8",
+     "name": "Sticky (feat. GloRilla, Sexyy Red & Lil Wayne)"
+    },
+    {
+     "num": "#9",
+     "name": "Take Your Mask Off (feat. Daniel Caesar & LaToiya Williams)"
+    },
+    {
+     "num": "#10",
+     "name": "Tomorrow"
+    },
+    {
+     "num": "#11",
+     "name": "Thought I Was Dead (feat. ScHoolboy Q & Santigold)"
+    },
+    {
+     "num": "#12",
+     "name": "Mother"
+    },
+    {
+     "num": "#13",
+     "name": "Like Him (feat. Lola Young)"
+    },
+    {
+     "num": "#14",
+     "name": "Balloon (feat. Doechii)"
+    },
+    {
+     "num": "#15",
+     "name": "I Hope You Find Your Way Home"
+    }
+   ]
+  },
+  {
+   "era": "DON'T TAP THE GLASS",
+   "name": "DON'T TAP THE GLASS",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for the test pressing mix of DON'T TAP THE GLASS. Contains a new song.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Big Poe (feat. Sk8brd)"
+    },
+    {
+     "num": "#2",
+     "name": "Sugar On My Tongue"
+    },
+    {
+     "num": "#3",
+     "name": "Sucka Free"
+    },
+    {
+     "num": "#4",
+     "name": "Mommanem"
+    },
+    {
+     "num": "#5",
+     "name": "Stop Playing With Me"
+    },
+    {
+     "num": "#6",
+     "name": "Ring Ring Ring"
+    },
+    {
+     "num": "#7",
+     "name": "Don't Tap That Glass / Tweakin'"
+    },
+    {
+     "num": "#8",
+     "name": "Don't You Worry Baby (feat. Maddison McFerrin)"
+    },
+    {
+     "num": "#9",
+     "name": "I'll Take Care Of You (feat.Yebba)"
+    },
+    {
+     "num": "#10",
+     "name": "???"
+    },
+    {
+     "num": "#11",
+     "name": "Tell Me What It Is"
+    }
+   ]
+  },
+  {
+   "era": "DON'T TAP THE GLASS",
+   "name": "DON'T TAP THE GLASS",
+   "date": "",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Tracklist for DON'T TAP THE GLASS.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Big Poe (feat. Sk8brd)"
+    },
+    {
+     "num": "#2",
+     "name": "Sugar On My Tongue"
+    },
+    {
+     "num": "#3",
+     "name": "Sucka Free"
+    },
+    {
+     "num": "#4",
+     "name": "Mommanem"
+    },
+    {
+     "num": "#5",
+     "name": "Stop Playing With Me"
+    },
+    {
+     "num": "#6",
+     "name": "Ring Ring Ring"
+    },
+    {
+     "num": "#7",
+     "name": "Don't Tap That Glass / Tweakin'"
+    },
+    {
+     "num": "#8",
+     "name": "Don't You Worry Baby (feat. Maddison McFerrin)"
+    },
+    {
+     "num": "#9",
+     "name": "I'll Take Care Of You (feat. Yebba)"
+    },
+    {
+     "num": "#10",
+     "name": "Tell Me What It Is"
+    }
+   ]
+  },
+  {
+   "era": "DON'T TAP THE GLASS",
+   "name": "Camp Flog Gnaw 2025",
+   "date": "2025-11-22",
+   "quality": "Full",
+   "source": "Tyler",
+   "links": [],
+   "description": "Setlist for Tyler's show for Camp Flog Gnaw (with changes)",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Big Poe (Alternate Intro & Outro)"
+    },
+    {
+     "num": "#2",
+     "name": "Sugar On My Tongue (Freak Mix)"
+    },
+    {
+     "num": "#3",
+     "name": "St. Chroma"
+    },
+    {
+     "num": "#4",
+     "name": "Noid (Without Second Half)"
+    },
+    {
+     "num": "#5",
+     "name": "Darling, I (New Verse & Breakdown)"
+    },
+    {
+     "num": "#6",
+     "name": "Sticky"
+    },
+    {
+     "num": "#7",
+     "name": "Tomorrow (Alternate Intro & Outro)"
+    },
+    {
+     "num": "#8",
+     "name": "Sucka Free (Alternate Outro)"
+    },
+    {
+     "num": "#9",
+     "name": "THAT GUY (Alternate Outro)"
+    },
+    {
+     "num": "#10",
+     "name": "Intermission (Fake Crash)"
+    },
+    {
+     "num": "#11",
+     "name": "EARFQUAKE"
+    },
+    {
+     "num": "#12",
+     "name": "ARE WE STILL FRIENDS? (Cut Short)"
+    },
+    {
+     "num": "#13",
+     "name": "Stop Playing With Me (Alternate Intro)"
+    },
+    {
+     "num": "#14",
+     "name": "Don't You Worry Baby"
+    },
+    {
+     "num": "#15",
+     "name": "Don't Tap That Glass"
+    },
+    {
+     "num": "#16",
+     "name": "Ring Ring Ring (Alternate Intro & Outro)"
+    },
+    {
+     "num": "#17",
+     "name": "WUSYANAME"
+    },
+    {
+     "num": "#18",
+     "name": "Thought I Was Dead (No ScHoolboy Q)"
+    },
+    {
+     "num": "#19",
+     "name": "Mother (Alternate Intro & No Second Verse)"
+    },
+    {
+     "num": "#20",
+     "name": "Like Him"
+    },
+    {
+     "num": "#21",
+     "name": "Intermission"
+    },
+    {
+     "num": "#22",
+     "name": "See You Again (Alternate Outro)"
+    },
+    {
+     "num": "#23",
+     "name": "NEW MAGIC WAND (OOH AHH)"
+    },
+    {
+     "num": "#24",
+     "name": "I'll Take Care Of You"
+    },
+    {
+     "num": "#25",
+     "name": "Tell Me What It Is (Cut Early)"
+    }
+   ]
+  }
+ ]
+}

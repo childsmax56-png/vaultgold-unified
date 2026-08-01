@@ -1,168 +1,704 @@
-[
+{
+ "legend": [
   {
-    "era": "Keep Doin It",
-    "name": "Keep Doin It",
-    "date": "2015",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [
-      "https://temp.imgur.gg/f/lWpRNFk"
-    ],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Alleged leaked 2015 tracklist from vlone.[Incomplete section]1. Politics2. This Sunday3. Like It Bubbly4. Gimme Mine5. Pressure Freestyle6. Mentally Screwed7. Loyalty Don't Exist8. Mediterranean"
-      }
-    ]
+   "label": "Unknown",
+   "color": "#999999"
   },
   {
-    "era": "Super Future / Fire Marshal Future",
-    "name": "Super Future",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [
-      "https://temp.imgur.gg/f/BlqxT8v"
-    ],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Alleged leaked tracklist from vlone.[Incomplete section]1. Still Stuntin2. In My Pocket3. Hell n Back4. Do the Most5. A Lot Going On6. Married the Money7. What Is It8. Please Don't Do That9. Lifestyle10. Hater Proof11. I'm Confused (feat. Gucci Mane)12. All Day13. Crosses14. It Do Mean a Thing15. Ain't Nothing Regular Bout Me (feat. ?????????)16. ?????17. Blame the Streets"
-      }
-    ]
+   "label": "Completely Unheard",
+   "color": "#E06666"
   },
   {
-    "era": "DS2(Dirty Sprite 2)",
-    "name": "DS2",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [
-      "https://temp.imgur.gg/f/1xCL3CY"
-    ],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Alleged leaked tracklist from vlone. Includes early iterations songs from Monster & What A Time To Be Alive.[Incomplete section]1. Thought It Was a Drought2. Move That Dope3. Same Damn Time4. Karate Chop5. Monster6. My Savages7. Peacoat8. Lay Up9. WYA10. I Serve the Bass11. Blood on the Money12. Stick Talk13. Freak Hoes14. Blow a Bag15. Rotation16. Slave Master17. -5 Min Intermission-18. Real Sisters19. Percocet and Stripper Joint20. Trap Niggas21. Fuck Up Some Commas22. Diamonds Dancin23. Jersey24. I'm the Plug25. Jumpman26. March Madness"
-      }
-    ]
+   "label": "Snippet / Partial / Beat / Recording Available",
+   "color": "#F6B26B"
   },
   {
-    "era": "HOMIE from the FUTURE",
-    "name": "HOMIE from the FUTURE",
-    "date": "2016",
-    "quality": "Clear",
-    "source": "Secondary",
-    "links": [
-      "https://x.com/djprettyboytank/status/1498809993625284615"
-    ],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Outside of folder posted by DJ Pretty Boy Tank on Twitter on March 1, 2022. Full folder contents later posted by Rich Homie Dre on January 7, 2024. Said by him to be dated around 2016. Unordered, as it is in alphabetical order. ?. champagne shower RHQ_03 (Champagne Shower)?. everything RHQ (Everything)?. jimmy choo_04 (Jimmy Choo)?. love dont cost a thing RHQ FUTE_07 (Love Don't Cost A Thing)?. no neighbors RHQ_01 (No Neighbors)?. stars in the ceiling fute RHQ idea01_01 (Stars In The Ceiling)?. upgrade (hook)_01 (Upgrade)?. we the future RHQ_04-01 (We The Future)?. you the one RHQ 01-01 (You The One)"
-      }
-    ]
+   "label": "Available",
+   "color": "#93C47D"
   },
   {
-    "era": "WRLD On Drugs",
-    "name": "WRLD ON DRUGS",
-    "date": "",
-    "quality": "Clear",
-    "source": "Juice WRLD",
-    "links": [],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Posted by Juice WRLD on Instagram. Only song unheard is Turn Into Boss.1. Jet Lag2. Astronauts3. Fine China 4. Red Bentley5. Make It Back6. Oxy7. 7 AM (7 AM Freestyle)8. Different9. Shorty 10. Realer n Realer11. No Issue12. WRLD on Drugs13. Afterlife14. Ain't Livin Right15. Transformer16. Turn Into Bosses17. Hard Work Pays Off"
-      }
-    ]
-  },
-  {
-    "era": "WATTBA",
-    "name": "N/A",
-    "date": "2015",
-    "quality": "Clear",
-    "source": "Drake",
-    "links": [],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Posted by Drake on his finsta. Do Me Dirty (Interlude) is almost certainly the Diamonds Dancing outro, and Paris Morton Music 3 is likely 30 For 30 Freestyle. Likely ordered.1. Digital Dash2. Chain Cost A House3. Live From The Gutter4. Diamonds Dancing5. Do Me Dirty (Interlude)6. Scholarships7. Plastic Bag8. I'm The Pluggg (I'm The Plug)9. Change Locations-                         -              #?. Paris Morton Music 3"
-      }
-    ]
-  },
-  {
-    "era": "WATTBA2",
-    "name": "FUT X DRA [ATLJACOB]",
-    "date": "",
-    "quality": "Clear",
-    "source": "ATL Jacob",
-    "links": [],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Posted and quickly deleted by ATL Jacob on his IG. 9 unnamed songs with Future and Drake are visible at the bottom, and there are likely more after. Could be just beats, but it's likely that they're recorded on because Drake is mentioned in the filenames, and ATL Jacob doesn't work with him often (unlike Future).FUT X DRA 1 [ATLJACOB]FUT X DRA 2 [ATLJACOB]FUT X DRA 3 [ATLJACOB]FUT X DRA 4 [ATLJACOB]FUT X DRA 5  [ATLJACOB]FUT X DRA 6 [ATLJACOB]FUT X DRA 7 [ATLJACOB]FUT X DRA 8 [ATLJACOB]FUT X DRA 9 [ATLJACOB]"
-      }
-    ]
-  },
-  {
-    "era": "Donda 2",
-    "name": "Donda II: 4 The Kids",
-    "date": "Jan 2022",
-    "quality": "Clear",
-    "source": "Secondary",
-    "links": [
-      "https://ibb.co/R3RR6GV"
-    ],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Posted by DJ Sky High Baby as a throwback to Donda 2. Likely an earlier version of the January 31st tracklist. Likely the closest leaked Donda 2 Tracklist to when it was a Future collab, due to half the songs having Future on them and it being from before January 31 (88-Keys confirmed a Ye x Future collab album in January). All other Donda 2 tracklists can be found on the Ye Tracker. Later tracklists have songs with Future made later on for Donda 2.1. LONG TIME (First Time In A Long Time)2. KEEP IT BURNING3. MR. MIYAGI4. PABLO5. 5 30 (Dear Summer) (The Cars Missing)6. FOR THE CHILDREN7. ALL DAY X AT (Suzy?)"
-      }
-    ]
-  },
-  {
-    "era": "I NEVER LIKED YOU",
-    "name": "I NEVER LIKED YOU",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Future",
-    "links": [
-      "https://temp.imgur.gg/f/PFknilw"
-    ],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Posted on Future's instagram story[Incomplete]1. Unstoppable2. Cheap Motel3. Cars Bring Me Out4. Chickens"
-      }
-    ]
-  },
-  {
-    "era": "Lil Durk Collab",
-    "name": "Collaboration with Lil Durk",
-    "date": "2023",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Tracklist leaked by Pop on leaked.cx on June 8, 2024, and said by him to be mostly produced by ATL Jacob. Later said by him to be in order.1. Swing Thru2. Sippin' and Tussin'3. Solitary Choker4. Spoiled5. Never Imagined6. Daytona7. Never Took The Stand8. Hit My Line9. Millionaire10. GTA11. Wake Up Go Up12. Go Yard13. Finding Shit In My Closet / Try It Out14. Do For My Image15. Code Of Silence"
-      }
-    ]
-  },
-  {
-    "era": "WE (STILL) DON'T TRUST YOU",
-    "name": "We Still Don't Trust You",
-    "date": "2024",
-    "quality": "Blocked",
-    "source": "Metro",
-    "links": [],
-    "tracks": [
-      {
-        "num": "",
-        "name": "Likely in order. This Sunday is the only one with a star visible. This could be because it was already finished before they brought it back, so it could be the only one finished at this point and the star could be indicating that. 14th track is unseen in both pictures.1. We Still Don't Trust You2. Nights Like This3. Bounce4. This Sunday5. Beat It6. Out Of My Hands7. Right For You (Right 4 You)8. Third World9. One Big Family10. Evil World11. Amazing (Interlude)12. Before You Go13. (Mile High) Memories14. ???15. (Drink N D)ance16. Jealous17. That's My Turn#?. Red Leather"
-      }
-    ]
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
   }
-]
+ ],
+ "albums": [
+  {
+   "era": "Keep Doin It",
+   "name": "Keep Doin It",
+   "date": "2015.0",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Alleged leaked 2015 tracklist from vlone.\n[Incomplete section]",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Politics"
+    },
+    {
+     "num": "#2",
+     "name": "This Sunday"
+    },
+    {
+     "num": "#3",
+     "name": "Like It Bubbly"
+    },
+    {
+     "num": "#4",
+     "name": "Gimme Mine"
+    },
+    {
+     "num": "#5",
+     "name": "Pressure Freestyle"
+    },
+    {
+     "num": "#6",
+     "name": "Mentally Screwed"
+    },
+    {
+     "num": "#7",
+     "name": "Loyalty Don't Exist"
+    },
+    {
+     "num": "#8",
+     "name": "Mediterranean"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-3-0.jpg"
+   ]
+  },
+  {
+   "era": "Super Future / Fire Marshal Future",
+   "name": "Super Future",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Alleged leaked tracklist from vlone.\n[Incomplete section]",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Still Stuntin"
+    },
+    {
+     "num": "#2",
+     "name": "In My Pocket"
+    },
+    {
+     "num": "#3",
+     "name": "Hell n Back"
+    },
+    {
+     "num": "#4",
+     "name": "Do the Most"
+    },
+    {
+     "num": "#5",
+     "name": "A Lot Going On"
+    },
+    {
+     "num": "#6",
+     "name": "Married the Money"
+    },
+    {
+     "num": "#7",
+     "name": "What Is It"
+    },
+    {
+     "num": "#8",
+     "name": "Please Don't Do That"
+    },
+    {
+     "num": "#9",
+     "name": "Lifestyle"
+    },
+    {
+     "num": "#10",
+     "name": "Hater Proof"
+    },
+    {
+     "num": "#11",
+     "name": "I'm Confused (feat. Gucci Mane)"
+    },
+    {
+     "num": "#12",
+     "name": "All Day"
+    },
+    {
+     "num": "#13",
+     "name": "Crosses"
+    },
+    {
+     "num": "#14",
+     "name": "It Do Mean a Thing"
+    },
+    {
+     "num": "#15",
+     "name": "Ain't Nothing Regular Bout Me (feat. ?????????)"
+    },
+    {
+     "num": "#16",
+     "name": "?????"
+    },
+    {
+     "num": "#17",
+     "name": "Blame the Streets"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-4-0.jpg"
+   ]
+  },
+  {
+   "era": "DS2\n(Dirty Sprite 2)",
+   "name": "DS2",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Alleged leaked tracklist from vlone. Includes early iterations songs from Monster & What A Time To Be Alive.\n[Incomplete section]",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Thought It Was a Drought"
+    },
+    {
+     "num": "#2",
+     "name": "Move That Dope"
+    },
+    {
+     "num": "#3",
+     "name": "Same Damn Time"
+    },
+    {
+     "num": "#4",
+     "name": "Karate Chop"
+    },
+    {
+     "num": "#5",
+     "name": "Monster"
+    },
+    {
+     "num": "#6",
+     "name": "My Savages"
+    },
+    {
+     "num": "#7",
+     "name": "Peacoat"
+    },
+    {
+     "num": "#8",
+     "name": "Lay Up"
+    },
+    {
+     "num": "#9",
+     "name": "WYA"
+    },
+    {
+     "num": "#10",
+     "name": "I Serve the Bass"
+    },
+    {
+     "num": "#11",
+     "name": "Blood on the Money"
+    },
+    {
+     "num": "#12",
+     "name": "Stick Talk"
+    },
+    {
+     "num": "#13",
+     "name": "Freak Hoes"
+    },
+    {
+     "num": "#14",
+     "name": "Blow a Bag"
+    },
+    {
+     "num": "#15",
+     "name": "Rotation"
+    },
+    {
+     "num": "#16",
+     "name": "Slave Master"
+    },
+    {
+     "num": "#17",
+     "name": "-5 Min Intermission-"
+    },
+    {
+     "num": "#18",
+     "name": "Real Sisters"
+    },
+    {
+     "num": "#19",
+     "name": "Percocet and Stripper Joint"
+    },
+    {
+     "num": "#20",
+     "name": "Trap Niggas"
+    },
+    {
+     "num": "#21",
+     "name": "Fuck Up Some Commas"
+    },
+    {
+     "num": "#22",
+     "name": "Diamonds Dancin"
+    },
+    {
+     "num": "#23",
+     "name": "Jersey"
+    },
+    {
+     "num": "#24",
+     "name": "I'm the Plug"
+    },
+    {
+     "num": "#25",
+     "name": "Jumpman"
+    },
+    {
+     "num": "#26",
+     "name": "March Madness"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-5-0.jpg"
+   ]
+  },
+  {
+   "era": "HOMIE from the FUTURE",
+   "name": "HOMIE from the FUTURE",
+   "date": "2016.0",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Outside of folder posted by DJ Pretty Boy Tank on Twitter on March 1, 2022. Full folder contents later posted by Rich Homie Dre on January 7, 2024. Said by him to be dated around 2016. Unordered, as it is in alphabetical order.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "champagne shower RHQ_03 (Champagne Shower)"
+    },
+    {
+     "num": "#?",
+     "name": "everything RHQ (Everything)"
+    },
+    {
+     "num": "#?",
+     "name": "jimmy choo_04 (Jimmy Choo)"
+    },
+    {
+     "num": "#?",
+     "name": "love dont cost a thing RHQ FUTE_07 (Love Don't Cost A Thing)"
+    },
+    {
+     "num": "#?",
+     "name": "no neighbors RHQ_01 (No Neighbors)"
+    },
+    {
+     "num": "#?",
+     "name": "stars in the ceiling fute RHQ idea01_01 (Stars In The Ceiling)"
+    },
+    {
+     "num": "#?",
+     "name": "upgrade (hook)_01 (Upgrade)"
+    },
+    {
+     "num": "#?",
+     "name": "we the future RHQ_04-01 (We The Future)"
+    },
+    {
+     "num": "#?",
+     "name": "you the one RHQ 01-01 (You The One)"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-6-0.jpg"
+   ]
+  },
+  {
+   "era": "WRLD On Drugs",
+   "name": "WRLD ON DRUGS",
+   "date": "",
+   "quality": "Clear",
+   "source": "Juice WRLD",
+   "links": [],
+   "description": "Posted by Juice WRLD on Instagram. Only song unheard is Turn Into Boss.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Jet Lag"
+    },
+    {
+     "num": "#2",
+     "name": "Astronauts"
+    },
+    {
+     "num": "#3",
+     "name": "Fine China"
+    },
+    {
+     "num": "#4",
+     "name": "Red Bentley"
+    },
+    {
+     "num": "#5",
+     "name": "Make It Back"
+    },
+    {
+     "num": "#6",
+     "name": "Oxy"
+    },
+    {
+     "num": "#7",
+     "name": "7 AM (7 AM Freestyle)"
+    },
+    {
+     "num": "#8",
+     "name": "Different"
+    },
+    {
+     "num": "#9",
+     "name": "Shorty"
+    },
+    {
+     "num": "#10",
+     "name": "Realer n Realer"
+    },
+    {
+     "num": "#11",
+     "name": "No Issue"
+    },
+    {
+     "num": "#12",
+     "name": "WRLD on Drugs"
+    },
+    {
+     "num": "#13",
+     "name": "Afterlife"
+    },
+    {
+     "num": "#14",
+     "name": "Ain't Livin Right"
+    },
+    {
+     "num": "#15",
+     "name": "Transformer"
+    },
+    {
+     "num": "#16",
+     "name": "Turn Into Bosses"
+    },
+    {
+     "num": "#17",
+     "name": "Hard Work Pays Off"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-7-0.jpg"
+   ]
+  },
+  {
+   "era": "WATTBA",
+   "name": "N/A",
+   "date": "2015.0",
+   "quality": "Clear",
+   "source": "Drake",
+   "links": [],
+   "description": "Posted by Drake on his finsta. Do Me Dirty (Interlude) is almost certainly the Diamonds Dancing outro, and Paris Morton Music 3 is likely 30 For 30 Freestyle. Likely ordered.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Digital Dash"
+    },
+    {
+     "num": "#2",
+     "name": "Chain Cost A House"
+    },
+    {
+     "num": "#3",
+     "name": "Live From The Gutter"
+    },
+    {
+     "num": "#4",
+     "name": "Diamonds Dancing"
+    },
+    {
+     "num": "#5",
+     "name": "Do Me Dirty (Interlude)"
+    },
+    {
+     "num": "#6",
+     "name": "Scholarships"
+    },
+    {
+     "num": "#7",
+     "name": "Plastic Bag"
+    },
+    {
+     "num": "#8",
+     "name": "I'm The Pluggg (I'm The Plug)"
+    },
+    {
+     "num": "#9",
+     "name": "Change Locations"
+    },
+    {
+     "num": "#?",
+     "name": "Paris Morton Music 3"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-8-0.jpg"
+   ]
+  },
+  {
+   "era": "WATTBA2",
+   "name": "FUT X DRA [ATLJACOB]",
+   "date": "",
+   "quality": "Clear",
+   "source": "ATL Jacob",
+   "links": [],
+   "description": "Posted and quickly deleted by ATL Jacob on his IG. 9 unnamed songs with Future and Drake are visible at the bottom, and there are likely more after. Could be just beats, but it's likely that they're recorded on because Drake is mentioned in the filenames, and ATL Jacob doesn't work with him often (unlike Future).\n\nFUT X DRA 1 [ATLJACOB]\nFUT X DRA 2 [ATLJACOB]\nFUT X DRA 3 [ATLJACOB]\nFUT X DRA 4 [ATLJACOB]\nFUT X DRA 5  [ATLJACOB]\nFUT X DRA 6 [ATLJACOB]\nFUT X DRA 7 [ATLJACOB]\nFUT X DRA 8 [ATLJACOB]\nFUT X DRA 9 [ATLJACOB]",
+   "tracks": [],
+   "images": [
+    "/futuregold/art/tl-9-0.jpg"
+   ]
+  },
+  {
+   "era": "Donda 2",
+   "name": "Donda II: 4 The Kids",
+   "date": "Jan 2022",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Posted by DJ Sky High Baby as a throwback to Donda 2. Likely an earlier version of the January 31st tracklist. Likely the closest leaked Donda 2 Tracklist to when it was a Future collab, due to half the songs having Future on them and it being from before January 31 (88-Keys confirmed a Ye x Future collab album in January). All other Donda 2 tracklists can be found on the Ye Tracker. Later tracklists have songs with Future made later on for Donda 2.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "LONG TIME (First Time In A Long Time)"
+    },
+    {
+     "num": "#2",
+     "name": "KEEP IT BURNING"
+    },
+    {
+     "num": "#3",
+     "name": "MR. MIYAGI"
+    },
+    {
+     "num": "#4",
+     "name": "PABLO"
+    },
+    {
+     "num": "#5",
+     "name": "5 30 (Dear Summer) (The Cars Missing)"
+    },
+    {
+     "num": "#6",
+     "name": "FOR THE CHILDREN"
+    },
+    {
+     "num": "#7",
+     "name": "ALL DAY X AT (Suzy?)"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-10-0.jpg"
+   ]
+  },
+  {
+   "era": "I NEVER LIKED YOU",
+   "name": "I NEVER LIKED YOU",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Future",
+   "links": [],
+   "description": "Posted on Future's instagram story\n[Incomplete]",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Unstoppable"
+    },
+    {
+     "num": "#2",
+     "name": "Cheap Motel"
+    },
+    {
+     "num": "#3",
+     "name": "Cars Bring Me Out"
+    },
+    {
+     "num": "#4",
+     "name": "Chickens"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-11-0.jpg"
+   ]
+  },
+  {
+   "era": "Lil Durk Collab",
+   "name": "Collaboration with Lil Durk",
+   "date": "2023.0",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Tracklist leaked by Pop on leaked.cx on June 8, 2024, and said by him to be mostly produced by ATL Jacob. Later said by him to be in order.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Swing Thru"
+    },
+    {
+     "num": "#2",
+     "name": "Sippin' and Tussin'"
+    },
+    {
+     "num": "#3",
+     "name": "Solitary Choker"
+    },
+    {
+     "num": "#4",
+     "name": "Spoiled"
+    },
+    {
+     "num": "#5",
+     "name": "Never Imagined"
+    },
+    {
+     "num": "#6",
+     "name": "Daytona"
+    },
+    {
+     "num": "#7",
+     "name": "Never Took The Stand"
+    },
+    {
+     "num": "#8",
+     "name": "Hit My Line"
+    },
+    {
+     "num": "#9",
+     "name": "Millionaire"
+    },
+    {
+     "num": "#10",
+     "name": "GTA"
+    },
+    {
+     "num": "#11",
+     "name": "Wake Up Go Up"
+    },
+    {
+     "num": "#12",
+     "name": "Go Yard"
+    },
+    {
+     "num": "#13",
+     "name": "Finding Shit In My Closet / Try It Out"
+    },
+    {
+     "num": "#14",
+     "name": "Do For My Image"
+    },
+    {
+     "num": "#15",
+     "name": "Code Of Silence"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-12-0.jpg"
+   ]
+  },
+  {
+   "era": "WE (STILL) DON'T TRUST YOU",
+   "name": "We Still Don't Trust You",
+   "date": "2024.0",
+   "quality": "Blocked",
+   "source": "Metro",
+   "links": [],
+   "description": "Likely in order. This Sunday is the only one with a star visible. This could be because it was already finished before they brought it back, so it could be the only one finished at this point and the star could be indicating that. 14th track is unseen in both pictures.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "We Still Don't Trust You"
+    },
+    {
+     "num": "#2",
+     "name": "Nights Like This"
+    },
+    {
+     "num": "#3",
+     "name": "Bounce"
+    },
+    {
+     "num": "#4",
+     "name": "This Sunday"
+    },
+    {
+     "num": "#5",
+     "name": "Beat It"
+    },
+    {
+     "num": "#6",
+     "name": "Out Of My Hands"
+    },
+    {
+     "num": "#7",
+     "name": "Right For You (Right 4 You)"
+    },
+    {
+     "num": "#8",
+     "name": "Third World"
+    },
+    {
+     "num": "#9",
+     "name": "One Big Family"
+    },
+    {
+     "num": "#10",
+     "name": "Evil World"
+    },
+    {
+     "num": "#11",
+     "name": "Amazing (Interlude)"
+    },
+    {
+     "num": "#12",
+     "name": "Before You Go"
+    },
+    {
+     "num": "#13",
+     "name": "(Mile High) Memories"
+    },
+    {
+     "num": "#14",
+     "name": "???"
+    },
+    {
+     "num": "#15",
+     "name": "(Drink N D)ance"
+    },
+    {
+     "num": "#16",
+     "name": "Jealous"
+    },
+    {
+     "num": "#17",
+     "name": "That's My Turn"
+    },
+    {
+     "num": "#?",
+     "name": "Red Leather"
+    }
+   ],
+   "images": [
+    "/futuregold/art/tl-13-0.jpg",
+    "/futuregold/art/tl-13-1.jpg"
+   ]
+  }
+ ]
+}

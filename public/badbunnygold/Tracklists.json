@@ -1,1140 +1,1216 @@
-[
- {
-  "era": "X 100PRE",
-  "name": "X 100PRE",
-  "date": "2018",
-  "quality": "N/A",
-  "source": "Bad",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "X 100PRE",
-  "name": "X 100PRE",
-  "date": "Dec 24, 2018",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "NI BIEN NI MAL"
-   },
-   {
-    "num": "#2",
-    "name": "200 Mph (Feat. Diplo)"
-   },
-   {
-    "num": "#3",
-    "name": "¿Quien Tu Eres?"
-   },
-   {
-    "num": "#4",
-    "name": "Caro"
-   },
-   {
-    "num": "#5",
-    "name": "Tenemos Que Hablar"
-   },
-   {
-    "num": "#6",
-    "name": "Otra Noche En Miami"
-   },
-   {
-    "num": "#7",
-    "name": "Ser Bichote"
-   },
-   {
-    "num": "#8",
-    "name": "Si Estuviésemos Juntos"
-   },
-   {
-    "num": "#9",
-    "name": "Solo de Mi"
-   },
-   {
-    "num": "#10",
-    "name": "Cuando Perriabas"
-   },
-   {
-    "num": "#11",
-    "name": "La Romana (feat. El Alfa)"
-   },
-   {
-    "num": "#12",
-    "name": "Como Antes"
-   },
-   {
-    "num": "#13",
-    "name": "RLDNT"
-   },
-   {
-    "num": "#14",
-    "name": "Estamos Bien"
-   },
-   {
-    "num": "#15",
-    "name": "MIA (feat. Drake)"
-   }
-  ]
- },
- {
-  "era": "OASIS",
-  "name": "OASIS",
-  "date": "Jun 28, 2019",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "MOJAITA"
-   },
-   {
-    "num": "#2",
-    "name": "YO LE LLEGO"
-   },
-   {
-    "num": "#3",
-    "name": "CUIDAO POR AHÍ"
-   },
-   {
-    "num": "#4",
-    "name": "QUE PRETENDES"
-   },
-   {
-    "num": "#5",
-    "name": "LA CANCIÓN"
-   },
-   {
-    "num": "#6",
-    "name": "UN PESO (feat. Marciano Cantero)"
-   },
-   {
-    "num": "#7",
-    "name": "ODIO"
-   },
-   {
-    "num": "#8",
-    "name": "COMO UN BEBÉ (feat. Mr Eazi)"
-   }
-  ]
- },
- {
-  "era": "YHLQMDLG",
-  "name": "Up Next (Live From Apple Piazza Liberty)",
-  "date": "Aug 30, 2019",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "NI BIEN NI MAL (Live)"
-   },
-   {
-    "num": "#2",
-    "name": "200 Mph (Live)"
-   },
-   {
-    "num": "#3",
-    "name": "Caro (Live)"
-   },
-   {
-    "num": "#4",
-    "name": "Solo De Mi (Live)"
-   },
-   {
-    "num": "#5",
-    "name": "La Romana (Live)"
-   },
-   {
-    "num": "#6",
-    "name": "Si Estuviésemos Juntos (Live)"
-   },
-   {
-    "num": "#7",
-    "name": "Estamos Bien (Live)"
-   }
-  ]
- },
- {
-  "era": "YHLQMDLG",
-  "name": "YHLQMDLG",
-  "date": "",
-  "quality": "N/A",
-  "source": "Leaked",
-  "links": [],
-  "tracks": []
- },
- {
-  "era": "YHLQMDLG",
-  "name": "YHLQMDLG",
-  "date": "Feb 29, 2020",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Si Veo A Tu Mamá"
-   },
-   {
-    "num": "#2",
-    "name": "La Difícil"
-   },
-   {
-    "num": "#3",
-    "name": "Pero Ya No"
-   },
-   {
-    "num": "#4",
-    "name": "La Santa (feat. Daddy Yankee)"
-   },
-   {
-    "num": "#5",
-    "name": "Yo Perreo Sola"
-   },
-   {
-    "num": "#6",
-    "name": "Bichiyal (feat. Yaviah)"
-   },
-   {
-    "num": "#7",
-    "name": "Soliá"
-   },
-   {
-    "num": "#8",
-    "name": "La Zona"
-   },
-   {
-    "num": "#9",
-    "name": "Que Malo (feat. Ñengo Flow)"
-   },
-   {
-    "num": "#10",
-    "name": "Vete"
-   },
-   {
-    "num": "#11",
-    "name": "Ignorantes (feat. Sech)"
-   },
-   {
-    "num": "#12",
-    "name": "A Tu Merced"
-   },
-   {
-    "num": "#13",
-    "name": "Una Vez (feat. Mora)"
-   },
-   {
-    "num": "#14",
-    "name": "Safaera (feat. Jowell & Randy & Ñengo Flow)"
-   },
-   {
-    "num": "#15",
-    "name": "25/8"
-   },
-   {
-    "num": "#16",
-    "name": "Está Cabrón Ser Yo (feat. Anuel AA)"
-   },
-   {
-    "num": "#17",
-    "name": "Puesto Pa' Guerrial (feat. Myke Towers)"
-   },
-   {
-    "num": "#18",
-    "name": "P FKN R (feat. Kendo Kaponi & Arcángel)"
-   },
-   {
-    "num": "#19",
-    "name": "Hablamos Mañana (feat. Duki & Pablo Chill-E)"
-   },
-   {
-    "num": "#20",
-    "name": "<3"
-   }
-  ]
- },
- {
-  "era": "EL ÚLTIMO TOUR DEL MUNDO",
-  "name": "May 3rd, 2020 Livestream",
-  "date": "May 3, 2020",
-  "quality": "N/A",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "SI ELLA SALE"
-   },
-   {
-    "num": "#2",
-    "name": "HACIENDO QUE ME AMAS"
-   },
-   {
-    "num": "#3",
-    "name": "Tu Me Gustas*"
-   },
-   {
-    "num": "#4",
-    "name": "BYE ME FUI"
-   },
-   {
-    "num": "#5",
-    "name": "???"
-   },
-   {
-    "num": "#5",
-    "name": "Árcangel - Gucci En mis Espejuelos (feat. Bad Bunny)"
-   },
-   {
-    "num": "#6",
-    "name": "BENDICIONES"
-   },
-   {
-    "num": "#7",
-    "name": "MÁS DE UNA CITA (feat Zion & Lennox)"
-   },
-   {
-    "num": "#8",
-    "name": "???"
-   },
-   {
-    "num": "#9",
-    "name": "MÁS DE UNA CITA (feat Zion & Lennox)"
-   },
-   {
-    "num": "#10",
-    "name": "???"
-   },
-   {
-    "num": "#11",
-    "name": "No Prometo Nada"
-   },
-   {
-    "num": "#12",
-    "name": "No Voy A Cambiar"
-   },
-   {
-    "num": "#13",
-    "name": "CYNH2"
-   },
-   {
-    "num": "#14",
-    "name": "BENDICIONES"
-   },
-   {
-    "num": "#15",
-    "name": "Matemos Las Ganas*"
-   },
-   {
-    "num": "#16",
-    "name": "Anuel AA - Así Soy Yo (feat. Bad Bunny)"
-   },
-   {
-    "num": "#17",
-    "name": "Tiempo Perdido*"
-   },
-   {
-    "num": "#18",
-    "name": "PA' ROMPERLA [V1]"
-   },
-   {
-    "num": "#19",
-    "name": "random whatsapp voice note (🏆)"
-   },
-   {
-    "num": "#20",
-    "name": "MÁS DE UNA CITA (feat Zion & Lennox)"
-   },
-   {
-    "num": "#21",
-    "name": "BENDICIONES"
-   },
-   {
-    "num": "#22",
-    "name": "Árcangel - Gucci En mis Espejuelos (feat. Bad Bunny)"
-   },
-   {
-    "num": "#23",
-    "name": "Anuel AA - Así Soy Yo (feat. Bad Bunny)"
-   }
-  ]
- },
- {
-  "era": "EL ÚLTIMO TOUR DEL MUNDO",
-  "name": "LAS QUE NO IBAN A SALIR",
-  "date": "May 10, 2020",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "SI ELLA SALE"
-   },
-   {
-    "num": "#2",
-    "name": "MÁS DE UNA CITA (Feat. Zion & Lennox)"
-   },
-   {
-    "num": "#3",
-    "name": "BYE ME FUI"
-   },
-   {
-    "num": "#4",
-    "name": "Yandel - CANCIÓN CON YANDEL (feat. Bad Bunny)"
-   },
-   {
-    "num": "#5",
-    "name": "PA' ROMPERLA (feat. Don Omar)"
-   },
-   {
-    "num": "#6",
-    "name": "BAD CON NICKY (feat. Nicky Jam)"
-   },
-   {
-    "num": "#7",
-    "name": "BENDICIONES"
-   },
-   {
-    "num": "#8",
-    "name": "JHAYCO - COMO SE SIENTE - Remix (feat. Bad Bunny)"
-   },
-   {
-    "num": "#9",
-    "name": "RONCA FREESTYLE"
-   },
-   {
-    "num": "#10",
-    "name": "EN CASITA (feat. Gabriela)"
-   }
-  ]
- },
- {
-  "era": "EL ÚLTIMO TOUR DEL MUNDO",
-  "name": "EL ÚLTIMO TOUR DEL MUNDO",
-  "date": "Nov 27, 2020",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "EL MUNDO ES MÍO"
-   },
-   {
-    "num": "#2",
-    "name": "TE MUDASTE"
-   },
-   {
-    "num": "#3",
-    "name": "HOY COBRÉ"
-   },
-   {
-    "num": "#4",
-    "name": "MALDITA POBREZA"
-   },
-   {
-    "num": "#5",
-    "name": "LA NOCHE DE ANOCHE (feat. ROSALÍA)"
-   },
-   {
-    "num": "#6",
-    "name": "TE DESEO LO MEJOR"
-   },
-   {
-    "num": "#7",
-    "name": "YO VISTO ASÍ"
-   },
-   {
-    "num": "#8",
-    "name": "HACIENDO QUE ME AMAS"
-   },
-   {
-    "num": "#9",
-    "name": "BOOKER T"
-   },
-   {
-    "num": "#10",
-    "name": "LA DROGA"
-   },
-   {
-    "num": "#11",
-    "name": "DÁKITI (feat. JHAYCO)"
-   },
-   {
-    "num": "#12",
-    "name": "TRELLAS"
-   },
-   {
-    "num": "#13",
-    "name": "SORRY PAPI (feat. ABRA)"
-   },
-   {
-    "num": "#14",
-    "name": "120"
-   },
-   {
-    "num": "#15",
-    "name": "ANTES QUE SE ACABE"
-   },
-   {
-    "num": "#16",
-    "name": "Trio Vegabajeño - CANTARES DE NAVIDAD"
-   }
-  ]
- },
- {
-  "era": "Un Verano Sin Ti",
-  "name": "Un Verano Sin Ti",
-  "date": "May 6, 2022",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Moscow Mule"
-   },
-   {
-    "num": "#2",
-    "name": "Después de la Playa"
-   },
-   {
-    "num": "#3",
-    "name": "Me Porto Bonito (feat. Chencho Corleone)"
-   },
-   {
-    "num": "#4",
-    "name": "Tití Me Preguntó"
-   },
-   {
-    "num": "#5",
-    "name": "Un Ratito"
-   },
-   {
-    "num": "#6",
-    "name": "Yo No Soy Celoso"
-   },
-   {
-    "num": "#7",
-    "name": "Tarot (feat. JHAYCO)"
-   },
-   {
-    "num": "#8",
-    "name": "Neverita"
-   },
-   {
-    "num": "#9",
-    "name": "La Corriente (feat. Tony Dize)"
-   },
-   {
-    "num": "#10",
-    "name": "Efecto"
-   },
-   {
-    "num": "#11",
-    "name": "Party (feat. Rauw Alejandro)"
-   },
-   {
-    "num": "#12",
-    "name": "Aguacero"
-   },
-   {
-    "num": "#13",
-    "name": "Enséñame a Bailar"
-   },
-   {
-    "num": "#14",
-    "name": "Ojitos Lindos (feat. Bomba Estéreo)"
-   },
-   {
-    "num": "#15",
-    "name": "Dos Mil 16"
-   },
-   {
-    "num": "#16",
-    "name": "El Apagón"
-   },
-   {
-    "num": "#17",
-    "name": "Otro Atardecer (feat. The Marías)"
-   },
-   {
-    "num": "#18",
-    "name": "Un Coco"
-   },
-   {
-    "num": "#19",
-    "name": "Cam'ron - Takeover Freestyle"
-   },
-   {
-    "num": "#20",
-    "name": "Me Fui de Vacaciones"
-   },
-   {
-    "num": "#21",
-    "name": "Un Verano Sin Ti"
-   },
-   {
-    "num": "#22",
-    "name": "Agosto"
-   },
-   {
-    "num": "#23",
-    "name": "Callaita (with. Tainy)"
-   }
-  ]
- },
- {
-  "era": "nadie sabe lo que va a pasar mañana",
-  "name": "nadie sabe lo que va a pasar mañana",
-  "date": "Oct 13, 2023",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#7",
-    "name": "Cybertruck (CYBERTRUCK)"
-   },
-   {
-    "num": "#8",
-    "name": "SEDA"
-   },
-   {
-    "num": "#9",
-    "name": "Gracias x nada (GRACIAS POR NADA)"
-   },
-   {
-    "num": "#10",
-    "name": "Telefono nuevo (TELEFONO NUEVO)"
-   },
-   {
-    "num": "#11",
-    "name": "B... N... (BABY NUEVA*) (not shown in screenshot)"
-   }
-  ]
- },
- {
-  "era": "nadie sabe lo que va a pasar mañana",
-  "name": "???",
-  "date": "Oct 7, 2023",
-  "quality": "Clear",
-  "source": "Secondary",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#2",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#3",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#4",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#5",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#6",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#7",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#8",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#9",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#10",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#11",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#12",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#13",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#14",
-    "name": "FIRE🔥"
-   },
-   {
-    "num": "#15",
-    "name": "FIRE🔥"
-   }
-  ]
- },
- {
-  "era": "nadie sabe lo que va a pasar mañana",
-  "name": "nadie sabe lo que va a pasar mañana [V1]",
-  "date": "Oct 13, 2023",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "NADIE SABE"
-   },
-   {
-    "num": "#2",
-    "name": "MONACO"
-   },
-   {
-    "num": "#3",
-    "name": "FINA (feat. Young Miko)"
-   },
-   {
-    "num": "#4",
-    "name": "HIBIKI (feat. Mora)"
-   },
-   {
-    "num": "#5",
-    "name": "MR. OCTOBER"
-   },
-   {
-    "num": "#6",
-    "name": "CYBERTRUCK"
-   },
-   {
-    "num": "#7",
-    "name": "VOU 787"
-   },
-   {
-    "num": "#8",
-    "name": "SEDA (feat. Bryant Myers)"
-   },
-   {
-    "num": "#9",
-    "name": "GRACIAS POR NADA"
-   },
-   {
-    "num": "#10",
-    "name": "TELEFONO NUEVO (feat. Luar La L)"
-   },
-   {
-    "num": "#11",
-    "name": "BABY NUEVA"
-   },
-   {
-    "num": "#12",
-    "name": "MERCEDES CAROTA (feat. YOVNGCHIMI)"
-   },
-   {
-    "num": "#13",
-    "name": "LOS PITS"
-   },
-   {
-    "num": "#14",
-    "name": "VUELVE CANDY B"
-   },
-   {
-    "num": "#15",
-    "name": "BATICANO"
-   },
-   {
-    "num": "#16",
-    "name": "NO ME QUIERO CASAR"
-   },
-   {
-    "num": "#17",
-    "name": "WHERE SHE GOES"
-   },
-   {
-    "num": "#18",
-    "name": "THUNDER Y LIGHTNING (feat. Eladio Carrión)"
-   },
-   {
-    "num": "#19",
-    "name": "PERRO NEGRO (feat. Feid)"
-   },
-   {
-    "num": "#20",
-    "name": "EUROPA :("
-   },
-   {
-    "num": "#21",
-    "name": "ACHO PR (feat. Arcángel, De La Ghetto & Ñengo Flow)"
-   },
-   {
-    "num": "#22",
-    "name": "UN PREVIEW"
-   }
-  ]
- },
- {
-  "era": "DeBÍ TiRAR MáS FOToS",
-  "name": "DeBÍ TiRAR MáS FOToS",
-  "date": "Jan 5, 2025",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "NUEVAYoL"
-   },
-   {
-    "num": "#2",
-    "name": "VOY A LLeVARTE PA PR"
-   },
-   {
-    "num": "#3",
-    "name": "BAILE INoLVIDABLE"
-   },
-   {
-    "num": "#4",
-    "name": "PERFuMITO NUEVO (feat. RaiNao)"
-   },
-   {
-    "num": "#5",
-    "name": "WELTiTA (feat. Chuwi)"
-   },
-   {
-    "num": "#6",
-    "name": "VeLDÁ (feat. Omar Courtz & Dei V)"
-   },
-   {
-    "num": "#7",
-    "name": "EL CLúB"
-   },
-   {
-    "num": "#8",
-    "name": "KETU TeCRÉ"
-   },
-   {
-    "num": "#9",
-    "name": "BOKeTE"
-   },
-   {
-    "num": "#10",
-    "name": "KLOuFRENS"
-   },
-   {
-    "num": "#11",
-    "name": "TURiSTA"
-   },
-   {
-    "num": "#12",
-    "name": "CAFé CON RON (feat. Los Pleneros de la Cresta)"
-   },
-   {
-    "num": "#13",
-    "name": "PIToRRO DE COCO"
-   },
-   {
-    "num": "#14",
-    "name": "LO QUE LE PASÓ A HAWAii"
-   },
-   {
-    "num": "#15",
-    "name": "EoO"
-   },
-   {
-    "num": "#16",
-    "name": "DtMF"
-   },
-   {
-    "num": "#17",
-    "name": "LA MuDANZA"
-   }
-  ]
- },
- {
-  "era": "DeBÍ TiRAR MáS FOToS",
-  "name": "DeBÍ TiRAR MáS FOToS (Vinyl Release)",
-  "date": "Jan 5, 2025",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "NUEVAYoL"
-   },
-   {
-    "num": "#2",
-    "name": "VOY A LLeVARTE PA PR"
-   },
-   {
-    "num": "#3",
-    "name": "BAILE INoLVIDABLE"
-   },
-   {
-    "num": "#4",
-    "name": "PERFuMITO NUEVO (feat. RaiNao)"
-   },
-   {
-    "num": "#5",
-    "name": "WELTiTA (feat. Chuwi)"
-   },
-   {
-    "num": "#6",
-    "name": "VeLDÁ (feat. Omar Courtz & Dei V)"
-   },
-   {
-    "num": "#7",
-    "name": "EL CLúB"
-   },
-   {
-    "num": "#8",
-    "name": "KETU TeCRÉ"
-   },
-   {
-    "num": "#9",
-    "name": "BOKeTE"
-   },
-   {
-    "num": "#10",
-    "name": "KLOuFRENS"
-   },
-   {
-    "num": "#11",
-    "name": "TURiSTA"
-   },
-   {
-    "num": "#12",
-    "name": "CAFé CON RON (feat. Los Pleneros de la Cresta)"
-   },
-   {
-    "num": "#13",
-    "name": "PIToRRO DE COCO"
-   },
-   {
-    "num": "#14",
-    "name": "LO QUE LE PASÓ A HAWAii"
-   },
-   {
-    "num": "#15",
-    "name": "EoO"
-   },
-   {
-    "num": "#16",
-    "name": "DtMF"
-   },
-   {
-    "num": "#17",
-    "name": "LA MuDANZA"
-   },
-   {
-    "num": "#18",
-    "name": "ALAMBRE PúA"
-   }
-  ]
- },
- {
-  "era": "Ongoing",
-  "name": "Tiny Desk Concert",
-  "date": "April 7, 2025",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "PIToRRO DE COCO"
-   },
-   {
-    "num": "#2",
-    "name": "VOY A LLeVARTE PA PR"
-   },
-   {
-    "num": "#3",
-    "name": "KLOuFRENS"
-   },
-   {
-    "num": "#4",
-    "name": "LO QUE LE PASÓ A HAWAii"
-   },
-   {
-    "num": "#5",
-    "name": "LA MuDANZA"
-   },
-   {
-    "num": "#6",
-    "name": "DtMF"
-   }
-  ]
- },
- {
-  "era": "Ongoing",
-  "name": "nadie sabe lo que va a pasar mañana [V2]",
-  "date": "April 29, 2025",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "NADIE SABE"
-   },
-   {
-    "num": "#2",
-    "name": "MONACO"
-   },
-   {
-    "num": "#3",
-    "name": "FINA (feat. Young Miko)"
-   },
-   {
-    "num": "#4",
-    "name": "HIBIKI (feat. Mora)"
-   },
-   {
-    "num": "#5",
-    "name": "MR. OCTOBER"
-   },
-   {
-    "num": "#6",
-    "name": "CYBERTRUCK"
-   },
-   {
-    "num": "#7",
-    "name": "VOU 787"
-   },
-   {
-    "num": "#8",
-    "name": "SEDA (feat. Bryant Myers)"
-   },
-   {
-    "num": "#9",
-    "name": "GRACIAS POR NADA"
-   },
-   {
-    "num": "#10",
-    "name": "TELEFONO NUEVO (feat. Luar La L)"
-   },
-   {
-    "num": "#11",
-    "name": "BABY NUEVA"
-   },
-   {
-    "num": "#12",
-    "name": "MERCEDES CAROTA (feat. YOVNGCHIMI)"
-   },
-   {
-    "num": "#13",
-    "name": "LOS PITS"
-   },
-   {
-    "num": "#14",
-    "name": "VUELVE CANDY B"
-   },
-   {
-    "num": "#15",
-    "name": "BATICANO"
-   },
-   {
-    "num": "#16",
-    "name": "NO ME QUIERO CASAR"
-   },
-   {
-    "num": "#17",
-    "name": "WHERE SHE GOES"
-   },
-   {
-    "num": "#18",
-    "name": "THUNDER Y LIGHTNING (feat. Eladio Carrión)"
-   },
-   {
-    "num": "#19",
-    "name": "PERRO NEGRO (feat. Feid)"
-   },
-   {
-    "num": "#20",
-    "name": "EUROPA :)"
-   },
-   {
-    "num": "#21",
-    "name": "ACHO PR (feat. Arcángel, De La Ghetto & Ñengo Flow)"
-   },
-   {
-    "num": "#22",
-    "name": "UN PREVIEW"
-   }
-  ]
- },
- {
-  "era": "Ongoing",
-  "name": "Super Bowl LX Halftime Show",
-  "date": "April 7, 2025",
-  "quality": "Clear",
-  "source": "Bad",
-  "links": [],
-  "tracks": [
-   {
-    "num": "#1",
-    "name": "Tití Me Preguntó"
-   },
-   {
-    "num": "#2",
-    "name": "Yo Perreo Sola / Safaera"
-   },
-   {
-    "num": "#3",
-    "name": "Party / VOY A LLeVARTE PA PR"
-   },
-   {
-    "num": "#4",
-    "name": "Pa Que Retozen / Dale Don Dale / Noche de Travesuras / Gasolina (Intermission)"
-   },
-   {
-    "num": "#5",
-    "name": "EoO"
-   },
-   {
-    "num": "#6",
-    "name": "MONACO"
-   },
-   {
-    "num": "#7",
-    "name": "Lady Gaga - Die With A Salsa (with Los Sobrinos)"
-   },
-   {
-    "num": "#8",
-    "name": "BAILE INoLVIDABLE"
-   },
-   {
-    "num": "#9",
-    "name": "NUEVAYoL"
-   },
-   {
-    "num": "#10",
-    "name": "Ricky Martin - LO QUE LE PASÓ A HAWAii"
-   },
-   {
-    "num": "#11",
-    "name": "El Apagón / CAFé CON RON"
-   },
-   {
-    "num": "#12",
-    "name": "DtMF"
-   }
-  ]
- }
-]
+{
+ "legend": [
+  {
+   "label": "Unknown",
+   "color": "#999999"
+  },
+  {
+   "label": "Completely Unheard",
+   "color": "#E06666"
+  },
+  {
+   "label": "Snippet / Partial / Beat / Recording Available",
+   "color": "#F6B26B"
+  },
+  {
+   "label": "Alternate Version Available",
+   "color": "#93C47D"
+  },
+  {
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
+  }
+ ],
+ "albums": [
+  {
+   "era": "X 100PRE",
+   "name": "X 100PRE",
+   "date": "2018",
+   "quality": "N/A",
+   "source": "Bad",
+   "links": [],
+   "description": "Bad said on the snippet IG Live that there was an early X 100PRE tracklist with 3 scrapped tracks,Tu Me Gustas, No Prometo Nada and another unheard song.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "No Prometo Nada"
+    },
+    {
+     "num": "#?",
+     "name": "Tu Me Gustas*"
+    },
+    {
+     "num": "#?",
+     "name": "???"
+    }
+   ]
+  },
+  {
+   "era": "X 100PRE",
+   "name": "X 100PRE",
+   "date": "Dec 24, 2018",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for X 100PRE.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "NI BIEN NI MAL"
+    },
+    {
+     "num": "#2",
+     "name": "200 Mph (Feat. Diplo)"
+    },
+    {
+     "num": "#3",
+     "name": "¿Quien Tu Eres?"
+    },
+    {
+     "num": "#4",
+     "name": "Caro"
+    },
+    {
+     "num": "#5",
+     "name": "Tenemos Que Hablar"
+    },
+    {
+     "num": "#6",
+     "name": "Otra Noche En Miami"
+    },
+    {
+     "num": "#7",
+     "name": "Ser Bichote"
+    },
+    {
+     "num": "#8",
+     "name": "Si Estuviésemos Juntos"
+    },
+    {
+     "num": "#9",
+     "name": "Solo de Mi"
+    },
+    {
+     "num": "#10",
+     "name": "Cuando Perriabas"
+    },
+    {
+     "num": "#11",
+     "name": "La Romana (feat. El Alfa)"
+    },
+    {
+     "num": "#12",
+     "name": "Como Antes"
+    },
+    {
+     "num": "#13",
+     "name": "RLDNT"
+    },
+    {
+     "num": "#14",
+     "name": "Estamos Bien"
+    },
+    {
+     "num": "#15",
+     "name": "MIA (feat. Drake)"
+    }
+   ]
+  },
+  {
+   "era": "OASIS",
+   "name": "OASIS",
+   "date": "Jun 28, 2019",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for OASIS.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "MOJAITA"
+    },
+    {
+     "num": "#2",
+     "name": "YO LE LLEGO"
+    },
+    {
+     "num": "#3",
+     "name": "CUIDAO POR AHÍ"
+    },
+    {
+     "num": "#4",
+     "name": "QUE PRETENDES"
+    },
+    {
+     "num": "#5",
+     "name": "LA CANCIÓN"
+    },
+    {
+     "num": "#6",
+     "name": "UN PESO (feat. Marciano Cantero)"
+    },
+    {
+     "num": "#7",
+     "name": "ODIO"
+    },
+    {
+     "num": "#8",
+     "name": "COMO UN BEBÉ (feat. Mr Eazi)"
+    }
+   ]
+  },
+  {
+   "era": "YHLQMDLG",
+   "name": "Up Next (Live From Apple Piazza Liberty)",
+   "date": "Aug 30, 2019",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for Up Next (Live From Apple Piazza Liberty).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "NI BIEN NI MAL (Live)"
+    },
+    {
+     "num": "#2",
+     "name": "200 Mph (Live)"
+    },
+    {
+     "num": "#3",
+     "name": "Caro (Live)"
+    },
+    {
+     "num": "#4",
+     "name": "Solo De Mi (Live)"
+    },
+    {
+     "num": "#5",
+     "name": "La Romana (Live)"
+    },
+    {
+     "num": "#6",
+     "name": "Si Estuviésemos Juntos (Live)"
+    },
+    {
+     "num": "#7",
+     "name": "Estamos Bien (Live)"
+    }
+   ]
+  },
+  {
+   "era": "YHLQMDLG",
+   "name": "YHLQMDLG",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "Chavos, Prendas, Drogas, Putas was said to be on a YHLQMDLG, this is likely to be true due to it being registered on ASCAP. Nothing else is known about this copy of the album",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "No Voy A Cambiar"
+    }
+   ]
+  },
+  {
+   "era": "YHLQMDLG",
+   "name": "YHLQMDLG",
+   "date": "Feb 29, 2020",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for YHLQMDLG.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Si Veo A Tu Mamá"
+    },
+    {
+     "num": "#2",
+     "name": "La Difícil"
+    },
+    {
+     "num": "#3",
+     "name": "Pero Ya No"
+    },
+    {
+     "num": "#4",
+     "name": "La Santa (feat. Daddy Yankee)"
+    },
+    {
+     "num": "#5",
+     "name": "Yo Perreo Sola"
+    },
+    {
+     "num": "#6",
+     "name": "Bichiyal (feat. Yaviah)"
+    },
+    {
+     "num": "#7",
+     "name": "Soliá"
+    },
+    {
+     "num": "#8",
+     "name": "La Zona"
+    },
+    {
+     "num": "#9",
+     "name": "Que Malo (feat. Ñengo Flow)"
+    },
+    {
+     "num": "#10",
+     "name": "Vete"
+    },
+    {
+     "num": "#11",
+     "name": "Ignorantes (feat. Sech)"
+    },
+    {
+     "num": "#12",
+     "name": "A Tu Merced"
+    },
+    {
+     "num": "#13",
+     "name": "Una Vez (feat. Mora)"
+    },
+    {
+     "num": "#14",
+     "name": "Safaera (feat. Jowell & Randy & Ñengo Flow)"
+    },
+    {
+     "num": "#15",
+     "name": "25/8"
+    },
+    {
+     "num": "#16",
+     "name": "Está Cabrón Ser Yo (feat. Anuel AA)"
+    },
+    {
+     "num": "#17",
+     "name": "Puesto Pa' Guerrial (feat. Myke Towers)"
+    },
+    {
+     "num": "#18",
+     "name": "P FKN R (feat. Kendo Kaponi & Arcángel)"
+    },
+    {
+     "num": "#19",
+     "name": "Hablamos Mañana (feat. Duki & Pablo Chill-E)"
+    },
+    {
+     "num": "#20",
+     "name": "<3"
+    }
+   ]
+  },
+  {
+   "era": "EL ÚLTIMO TOUR DEL MUNDO",
+   "name": "May 3rd, 2020 Livestream",
+   "date": "May 3, 2020",
+   "quality": "N/A",
+   "source": "Bad",
+   "links": [],
+   "description": "In a livestream on IG Live. Bad previewed numerous songs, most of these would end up releasing on LAS QUE NO IBAN A SALIR or EL ÚLTIMO TOUR DEL MUNDO",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SI ELLA SALE"
+    },
+    {
+     "num": "#2",
+     "name": "HACIENDO QUE ME AMAS"
+    },
+    {
+     "num": "#3",
+     "name": "Tu Me Gustas*"
+    },
+    {
+     "num": "#4",
+     "name": "BYE ME FUI"
+    },
+    {
+     "num": "#5",
+     "name": "???"
+    },
+    {
+     "num": "#5",
+     "name": "Árcangel - Gucci En mis Espejuelos (feat. Bad Bunny)"
+    },
+    {
+     "num": "#6",
+     "name": "BENDICIONES"
+    },
+    {
+     "num": "#7",
+     "name": "MÁS DE UNA CITA (feat Zion & Lennox)"
+    },
+    {
+     "num": "#8",
+     "name": "???"
+    },
+    {
+     "num": "#9",
+     "name": "MÁS DE UNA CITA (feat Zion & Lennox)"
+    },
+    {
+     "num": "#10",
+     "name": "???"
+    },
+    {
+     "num": "#11",
+     "name": "No Prometo Nada"
+    },
+    {
+     "num": "#12",
+     "name": "No Voy A Cambiar"
+    },
+    {
+     "num": "#13",
+     "name": "CYNH2"
+    },
+    {
+     "num": "#14",
+     "name": "BENDICIONES"
+    },
+    {
+     "num": "#15",
+     "name": "Matemos Las Ganas*"
+    },
+    {
+     "num": "#16",
+     "name": "Anuel AA - Así Soy Yo (feat. Bad Bunny)"
+    },
+    {
+     "num": "#17",
+     "name": "Tiempo Perdido*"
+    },
+    {
+     "num": "#18",
+     "name": "PA' ROMPERLA [V1]"
+    },
+    {
+     "num": "#19",
+     "name": "random whatsapp voice note (🏆)"
+    },
+    {
+     "num": "#20",
+     "name": "MÁS DE UNA CITA (feat Zion & Lennox)"
+    },
+    {
+     "num": "#21",
+     "name": "BENDICIONES"
+    },
+    {
+     "num": "#22",
+     "name": "Árcangel - Gucci En mis Espejuelos (feat. Bad Bunny)"
+    },
+    {
+     "num": "#23",
+     "name": "Anuel AA - Así Soy Yo (feat. Bad Bunny)"
+    }
+   ]
+  },
+  {
+   "era": "EL ÚLTIMO TOUR DEL MUNDO",
+   "name": "LAS QUE NO IBAN A SALIR",
+   "date": "May 10, 2020",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for LAS QUE NO IBAN A SALIR.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "SI ELLA SALE"
+    },
+    {
+     "num": "#2",
+     "name": "MÁS DE UNA CITA (Feat. Zion & Lennox)"
+    },
+    {
+     "num": "#3",
+     "name": "BYE ME FUI"
+    },
+    {
+     "num": "#4",
+     "name": "Yandel - CANCIÓN CON YANDEL (feat. Bad Bunny)"
+    },
+    {
+     "num": "#5",
+     "name": "PA' ROMPERLA (feat. Don Omar)"
+    },
+    {
+     "num": "#6",
+     "name": "BAD CON NICKY (feat. Nicky Jam)"
+    },
+    {
+     "num": "#7",
+     "name": "BENDICIONES"
+    },
+    {
+     "num": "#8",
+     "name": "JHAYCO - COMO SE SIENTE - Remix (feat. Bad Bunny)"
+    },
+    {
+     "num": "#9",
+     "name": "RONCA FREESTYLE"
+    },
+    {
+     "num": "#10",
+     "name": "EN CASITA (feat. Gabriela)"
+    }
+   ]
+  },
+  {
+   "era": "EL ÚLTIMO TOUR DEL MUNDO",
+   "name": "EL ÚLTIMO TOUR DEL MUNDO",
+   "date": "Nov 27, 2020",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for EL ÚLTIMO TOUR DEL MUNDO.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "EL MUNDO ES MÍO"
+    },
+    {
+     "num": "#2",
+     "name": "TE MUDASTE"
+    },
+    {
+     "num": "#3",
+     "name": "HOY COBRÉ"
+    },
+    {
+     "num": "#4",
+     "name": "MALDITA POBREZA"
+    },
+    {
+     "num": "#5",
+     "name": "LA NOCHE DE ANOCHE (feat. ROSALÍA)"
+    },
+    {
+     "num": "#6",
+     "name": "TE DESEO LO MEJOR"
+    },
+    {
+     "num": "#7",
+     "name": "YO VISTO ASÍ"
+    },
+    {
+     "num": "#8",
+     "name": "HACIENDO QUE ME AMAS"
+    },
+    {
+     "num": "#9",
+     "name": "BOOKER T"
+    },
+    {
+     "num": "#10",
+     "name": "LA DROGA"
+    },
+    {
+     "num": "#11",
+     "name": "DÁKITI (feat. JHAYCO)"
+    },
+    {
+     "num": "#12",
+     "name": "TRELLAS"
+    },
+    {
+     "num": "#13",
+     "name": "SORRY PAPI (feat. ABRA)"
+    },
+    {
+     "num": "#14",
+     "name": "120"
+    },
+    {
+     "num": "#15",
+     "name": "ANTES QUE SE ACABE"
+    },
+    {
+     "num": "#16",
+     "name": "Trio Vegabajeño - CANTARES DE NAVIDAD"
+    }
+   ]
+  },
+  {
+   "era": "Un Verano Sin Ti",
+   "name": "Un Verano Sin Ti",
+   "date": "May 6, 2022",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for Un Verano Sin Ti.\n\nSide A",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Moscow Mule"
+    },
+    {
+     "num": "#2",
+     "name": "Después de la Playa"
+    },
+    {
+     "num": "#3",
+     "name": "Me Porto Bonito (feat. Chencho Corleone)"
+    },
+    {
+     "num": "#4",
+     "name": "Tití Me Preguntó"
+    },
+    {
+     "num": "#5",
+     "name": "Un Ratito"
+    },
+    {
+     "num": "#6",
+     "name": "Yo No Soy Celoso"
+    },
+    {
+     "num": "#7",
+     "name": "Tarot (feat. JHAYCO)"
+    },
+    {
+     "num": "#8",
+     "name": "Neverita"
+    },
+    {
+     "num": "#9",
+     "name": "La Corriente (feat. Tony Dize)"
+    },
+    {
+     "num": "#10",
+     "name": "Efecto"
+    },
+    {
+     "num": "#11",
+     "name": "Party (feat. Rauw Alejandro)"
+    },
+    {
+     "num": "#12",
+     "name": "Aguacero"
+    },
+    {
+     "num": "#13",
+     "name": "Enséñame a Bailar"
+    },
+    {
+     "num": "#14",
+     "name": "Ojitos Lindos (feat. Bomba Estéreo)"
+    },
+    {
+     "num": "#15",
+     "name": "Dos Mil 16"
+    },
+    {
+     "num": "#16",
+     "name": "El Apagón"
+    },
+    {
+     "num": "#17",
+     "name": "Otro Atardecer (feat. The Marías)"
+    },
+    {
+     "num": "#18",
+     "name": "Un Coco"
+    },
+    {
+     "num": "#19",
+     "name": "Cam'ron - Takeover Freestyle",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "Me Fui de Vacaciones",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "Un Verano Sin Ti",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#22",
+     "name": "Agosto",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#23",
+     "name": "Callaita (with. Tainy)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ]
+  },
+  {
+   "era": "nadie sabe lo que va a pasar mañana",
+   "name": "nadie sabe lo que va a pasar mañana",
+   "date": "Oct 13, 2023",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Early nadie sabe lo que va a pasar mañana tracklist shown during the ACHO PR music video.",
+   "tracks": [
+    {
+     "num": "#7",
+     "name": "Cybertruck (CYBERTRUCK)"
+    },
+    {
+     "num": "#8",
+     "name": "SEDA"
+    },
+    {
+     "num": "#9",
+     "name": "Gracias x nada (GRACIAS POR NADA)"
+    },
+    {
+     "num": "#10",
+     "name": "Telefono nuevo (TELEFONO NUEVO)"
+    },
+    {
+     "num": "#11",
+     "name": "B... N... (BABY NUEVA*) (not shown in screenshot)"
+    }
+   ],
+   "images": [
+    "/badbunnygold/art/tl-13-0.jpg"
+   ]
+  },
+  {
+   "era": "nadie sabe lo que va a pasar mañana",
+   "name": "???",
+   "date": "Oct 7, 2023",
+   "quality": "Clear",
+   "source": "Secondary",
+   "links": [],
+   "description": "Tracklist posted by Spotify on Instagram. Was theorized to have something to do with DeBÍ TiRAR MáS FOToS.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#2",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#3",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#4",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#5",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#6",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#7",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#8",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#9",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#10",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#11",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#12",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#13",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#14",
+     "name": "FIRE🔥"
+    },
+    {
+     "num": "#15",
+     "name": "FIRE🔥"
+    }
+   ],
+   "images": [
+    "/badbunnygold/art/tl-14-0.jpg"
+   ]
+  },
+  {
+   "era": "nadie sabe lo que va a pasar mañana",
+   "name": "nadie sabe lo que va a pasar mañana [V1]",
+   "date": "Oct 13, 2023",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for nadie sabe lo que va a pasar mañana.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "NADIE SABE"
+    },
+    {
+     "num": "#2",
+     "name": "MONACO"
+    },
+    {
+     "num": "#3",
+     "name": "FINA (feat. Young Miko)"
+    },
+    {
+     "num": "#4",
+     "name": "HIBIKI (feat. Mora)"
+    },
+    {
+     "num": "#5",
+     "name": "MR. OCTOBER"
+    },
+    {
+     "num": "#6",
+     "name": "CYBERTRUCK"
+    },
+    {
+     "num": "#7",
+     "name": "VOU 787"
+    },
+    {
+     "num": "#8",
+     "name": "SEDA (feat. Bryant Myers)"
+    },
+    {
+     "num": "#9",
+     "name": "GRACIAS POR NADA"
+    },
+    {
+     "num": "#10",
+     "name": "TELEFONO NUEVO (feat. Luar La L)"
+    },
+    {
+     "num": "#11",
+     "name": "BABY NUEVA"
+    },
+    {
+     "num": "#12",
+     "name": "MERCEDES CAROTA (feat. YOVNGCHIMI)"
+    },
+    {
+     "num": "#13",
+     "name": "LOS PITS"
+    },
+    {
+     "num": "#14",
+     "name": "VUELVE CANDY B"
+    },
+    {
+     "num": "#15",
+     "name": "BATICANO"
+    },
+    {
+     "num": "#16",
+     "name": "NO ME QUIERO CASAR"
+    },
+    {
+     "num": "#17",
+     "name": "WHERE SHE GOES"
+    },
+    {
+     "num": "#18",
+     "name": "THUNDER Y LIGHTNING (feat. Eladio Carrión)"
+    },
+    {
+     "num": "#19",
+     "name": "PERRO NEGRO (feat. Feid)"
+    },
+    {
+     "num": "#20",
+     "name": "EUROPA :("
+    },
+    {
+     "num": "#21",
+     "name": "ACHO PR (feat. Arcángel, De La Ghetto & Ñengo Flow)"
+    },
+    {
+     "num": "#22",
+     "name": "UN PREVIEW"
+    }
+   ]
+  },
+  {
+   "era": "DeBÍ TiRAR MáS FOToS",
+   "name": "DeBÍ TiRAR MáS FOToS",
+   "date": "Jan 5, 2025",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for DeBÍ TiRAR MáS FOToS.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "NUEVAYoL"
+    },
+    {
+     "num": "#2",
+     "name": "VOY A LLeVARTE PA PR"
+    },
+    {
+     "num": "#3",
+     "name": "BAILE INoLVIDABLE"
+    },
+    {
+     "num": "#4",
+     "name": "PERFuMITO NUEVO (feat. RaiNao)"
+    },
+    {
+     "num": "#5",
+     "name": "WELTiTA (feat. Chuwi)"
+    },
+    {
+     "num": "#6",
+     "name": "VeLDÁ (feat. Omar Courtz & Dei V)"
+    },
+    {
+     "num": "#7",
+     "name": "EL CLúB"
+    },
+    {
+     "num": "#8",
+     "name": "KETU TeCRÉ"
+    },
+    {
+     "num": "#9",
+     "name": "BOKeTE"
+    },
+    {
+     "num": "#10",
+     "name": "KLOuFRENS"
+    },
+    {
+     "num": "#11",
+     "name": "TURiSTA"
+    },
+    {
+     "num": "#12",
+     "name": "CAFé CON RON (feat. Los Pleneros de la Cresta)"
+    },
+    {
+     "num": "#13",
+     "name": "PIToRRO DE COCO"
+    },
+    {
+     "num": "#14",
+     "name": "LO QUE LE PASÓ A HAWAii"
+    },
+    {
+     "num": "#15",
+     "name": "EoO"
+    },
+    {
+     "num": "#16",
+     "name": "DtMF"
+    },
+    {
+     "num": "#17",
+     "name": "LA MuDANZA"
+    }
+   ]
+  },
+  {
+   "era": "DeBÍ TiRAR MáS FOToS",
+   "name": "DeBÍ TiRAR MáS FOToS (Vinyl Release)",
+   "date": "Jan 5, 2025",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Officially released tracklist for the vinyl version of DeBÍ TiRAR MáS FOToS. Adds ALAMBRE PúA as a secret song at the end.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "NUEVAYoL"
+    },
+    {
+     "num": "#2",
+     "name": "VOY A LLeVARTE PA PR"
+    },
+    {
+     "num": "#3",
+     "name": "BAILE INoLVIDABLE"
+    },
+    {
+     "num": "#4",
+     "name": "PERFuMITO NUEVO (feat. RaiNao)"
+    },
+    {
+     "num": "#5",
+     "name": "WELTiTA (feat. Chuwi)"
+    },
+    {
+     "num": "#6",
+     "name": "VeLDÁ (feat. Omar Courtz & Dei V)"
+    },
+    {
+     "num": "#7",
+     "name": "EL CLúB"
+    },
+    {
+     "num": "#8",
+     "name": "KETU TeCRÉ"
+    },
+    {
+     "num": "#9",
+     "name": "BOKeTE"
+    },
+    {
+     "num": "#10",
+     "name": "KLOuFRENS"
+    },
+    {
+     "num": "#11",
+     "name": "TURiSTA"
+    },
+    {
+     "num": "#12",
+     "name": "CAFé CON RON (feat. Los Pleneros de la Cresta)"
+    },
+    {
+     "num": "#13",
+     "name": "PIToRRO DE COCO"
+    },
+    {
+     "num": "#14",
+     "name": "LO QUE LE PASÓ A HAWAii"
+    },
+    {
+     "num": "#15",
+     "name": "EoO"
+    },
+    {
+     "num": "#16",
+     "name": "DtMF"
+    },
+    {
+     "num": "#17",
+     "name": "LA MuDANZA"
+    },
+    {
+     "num": "#18",
+     "name": "ALAMBRE PúA"
+    }
+   ]
+  },
+  {
+   "era": "Ongoing",
+   "name": "Tiny Desk Concert",
+   "date": "April 7, 2025",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Official tracklist for Bad Bunny: Tiny Desk Concert.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "PIToRRO DE COCO"
+    },
+    {
+     "num": "#2",
+     "name": "VOY A LLeVARTE PA PR"
+    },
+    {
+     "num": "#3",
+     "name": "KLOuFRENS"
+    },
+    {
+     "num": "#4",
+     "name": "LO QUE LE PASÓ A HAWAii"
+    },
+    {
+     "num": "#5",
+     "name": "LA MuDANZA"
+    },
+    {
+     "num": "#6",
+     "name": "DtMF"
+    }
+   ]
+  },
+  {
+   "era": "Ongoing",
+   "name": "nadie sabe lo que va a pasar mañana [V2]",
+   "date": "April 29, 2025",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Updated tracklist for nadie sabe lo que va a pasar mañana changing 'EUROPA :(' to 'EUROPA :)'.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "NADIE SABE"
+    },
+    {
+     "num": "#2",
+     "name": "MONACO"
+    },
+    {
+     "num": "#3",
+     "name": "FINA (feat. Young Miko)"
+    },
+    {
+     "num": "#4",
+     "name": "HIBIKI (feat. Mora)"
+    },
+    {
+     "num": "#5",
+     "name": "MR. OCTOBER"
+    },
+    {
+     "num": "#6",
+     "name": "CYBERTRUCK"
+    },
+    {
+     "num": "#7",
+     "name": "VOU 787"
+    },
+    {
+     "num": "#8",
+     "name": "SEDA (feat. Bryant Myers)"
+    },
+    {
+     "num": "#9",
+     "name": "GRACIAS POR NADA"
+    },
+    {
+     "num": "#10",
+     "name": "TELEFONO NUEVO (feat. Luar La L)"
+    },
+    {
+     "num": "#11",
+     "name": "BABY NUEVA"
+    },
+    {
+     "num": "#12",
+     "name": "MERCEDES CAROTA (feat. YOVNGCHIMI)"
+    },
+    {
+     "num": "#13",
+     "name": "LOS PITS"
+    },
+    {
+     "num": "#14",
+     "name": "VUELVE CANDY B"
+    },
+    {
+     "num": "#15",
+     "name": "BATICANO"
+    },
+    {
+     "num": "#16",
+     "name": "NO ME QUIERO CASAR"
+    },
+    {
+     "num": "#17",
+     "name": "WHERE SHE GOES"
+    },
+    {
+     "num": "#18",
+     "name": "THUNDER Y LIGHTNING (feat. Eladio Carrión)"
+    },
+    {
+     "num": "#19",
+     "name": "PERRO NEGRO (feat. Feid)"
+    },
+    {
+     "num": "#20",
+     "name": "EUROPA :)"
+    },
+    {
+     "num": "#21",
+     "name": "ACHO PR (feat. Arcángel, De La Ghetto & Ñengo Flow)"
+    },
+    {
+     "num": "#22",
+     "name": "UN PREVIEW"
+    }
+   ]
+  },
+  {
+   "era": "Ongoing",
+   "name": "Super Bowl LX Halftime Show",
+   "date": "April 7, 2025",
+   "quality": "Clear",
+   "source": "Bad",
+   "links": [],
+   "description": "Final setlist for Bad Bunny's Super Bowl LX Halftime Show.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Tití Me Preguntó"
+    },
+    {
+     "num": "#2",
+     "name": "Yo Perreo Sola / Safaera"
+    },
+    {
+     "num": "#3",
+     "name": "Party / VOY A LLeVARTE PA PR"
+    },
+    {
+     "num": "#4",
+     "name": "Pa Que Retozen / Dale Don Dale / Noche de Travesuras / Gasolina (Intermission)"
+    },
+    {
+     "num": "#5",
+     "name": "EoO"
+    },
+    {
+     "num": "#6",
+     "name": "MONACO"
+    },
+    {
+     "num": "#7",
+     "name": "Lady Gaga - Die With A Salsa (with Los Sobrinos)"
+    },
+    {
+     "num": "#8",
+     "name": "BAILE INoLVIDABLE"
+    },
+    {
+     "num": "#9",
+     "name": "NUEVAYoL"
+    },
+    {
+     "num": "#10",
+     "name": "Ricky Martin - LO QUE LE PASÓ A HAWAii"
+    },
+    {
+     "num": "#11",
+     "name": "El Apagón / CAFé CON RON"
+    },
+    {
+     "num": "#12",
+     "name": "DtMF"
+    }
+   ]
+  }
+ ]
+}
