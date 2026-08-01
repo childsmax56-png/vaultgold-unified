@@ -12,7 +12,7 @@ export const jayzgoldConfig: ArtistConfig = {
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
   accentColor: '#1a1a1a',
-  artistLabel: 'Jay-Z',
+  artistLabel: 'Jaÿ-Z',
   cardLetter: 'J',
   logoUrl: '/logos/jayzgold.webp',
   artistPhotoUrl: '/artists/jayz.jpg',

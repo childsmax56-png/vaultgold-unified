@@ -14,7 +14,7 @@ export const twizzygoldConfig: ArtistConfig = {
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1FUzAZyTCgFTVxQ--qbCAS2bUk4dsAw6ASxwjURPHbyI/export?format=csv&gid=1823522157',
   accentColor: '#a8e63d',
-  artistLabel: 'YEAT',
+  artistLabel: 'Yeat',
   cardLetter: 'YT',
   logoUrl: '/logos/twizzygold.png',
   artistPhotoUrl: '/artists/yeat.jpg',
