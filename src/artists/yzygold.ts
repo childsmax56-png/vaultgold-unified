@@ -19,7 +19,7 @@ export const yzygoldConfig: ArtistConfig = {
   artistLabel: 'Ye',
   cardLetter: 'YZY',
   logoUrl: '/logos/yzygold.png',
-  artistPhotoUrl: '/artists/kanye.png',
+  artistPhotoUrl: '/artists/kanye.jpg',
   navLogoUrl: '/yzygold/logo.png',
 
   getArtistName(eraName) {
