@@ -6,3 +6,7 @@ release/
 *.local
 .wrangler/
 .vite/
+
+# Python
+__pycache__/
+*.pyc
