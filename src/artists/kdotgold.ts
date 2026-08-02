@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const kdotgoldConfig: ArtistConfig = {
   slug: 'kdotgold',
+  hasGroupbuysTab: true,
   hasAlbumCopiesTab: true,
   SITE_NAME: 'KDOTgold',
   SITE_DESCRIPTION: 'The Best Kendrick Lamar Tracker In The World!',

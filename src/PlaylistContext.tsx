@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
 import { UserPlaylist, PlaylistSong } from './types';
-
-const STORAGE_KEY = 'yzygold_playlists';
+import { activeConfig } from './artists/activeConfig';
+import { scheduleDataPush } from './dataSync';
 
 interface PlaylistContextValue {
   playlists: UserPlaylist[];
@@ -17,29 +17,37 @@ interface PlaylistContextValue {
 const PlaylistContext = createContext<PlaylistContextValue | null>(null);
 
 export function PlaylistProvider({ children }: { children: ReactNode }) {
+  // Per-artist key: the provider remounts on artist change (key={slug}), so
+  // activeConfig points at the active tracker for this mount.
+  const storageKey = `${activeConfig.STORAGE_PREFIX}playlists`;
+
   const [playlists, setPlaylists] = useState<UserPlaylist[]>(() => {
     try {
-      const s = localStorage.getItem(STORAGE_KEY);
+      const s = localStorage.getItem(storageKey);
       return s ? JSON.parse(s) : [];
     } catch {
       return [];
     }
   });
 
+  // Skip the mount write so we don't push before the initial cloud pull lands.
+  const mountedRef = useRef(false);
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(playlists));
-  }, [playlists]);
+    localStorage.setItem(storageKey, JSON.stringify(playlists));
+    if (mountedRef.current) scheduleDataPush();
+    else mountedRef.current = true;
+  }, [playlists, storageKey]);
 
   useEffect(() => {
     const handler = () => {
       try {
-        const s = localStorage.getItem(STORAGE_KEY);
+        const s = localStorage.getItem(storageKey);
         if (s) setPlaylists(JSON.parse(s));
       } catch {}
     };
     window.addEventListener('vg-data-synced', handler);
     return () => window.removeEventListener('vg-data-synced', handler);
-  }, []);
+  }, [storageKey]);
 
   const createPlaylist = (name: string): string => {
     const id = Math.random().toString(36).slice(2, 10);

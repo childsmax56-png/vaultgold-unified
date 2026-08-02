@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const lonelygoldConfig: ArtistConfig = {
   slug: 'lonelygold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'LONELYGOLD',
   SITE_DESCRIPTION: 'The Best Destroy Lonely Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/lonelygold/',

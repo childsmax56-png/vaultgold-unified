@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const drizzygoldConfig: ArtistConfig = {
   slug: 'drizzygold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'DRIZZYGOLD',
   SITE_DESCRIPTION: 'The Best Drake Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/drizzygold/',

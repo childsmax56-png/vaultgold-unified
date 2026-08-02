@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const macgoldConfig: ArtistConfig = {
   slug: 'macgold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'MACGOLD',
   SITE_DESCRIPTION: 'The Best Mac Miller Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/macgold/',

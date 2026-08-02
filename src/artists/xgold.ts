@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const xgoldConfig: ArtistConfig = {
   slug: 'xgold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'XGOLD',
   SITE_DESCRIPTION: 'The Best XXXTENTACION Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/xgold/',
