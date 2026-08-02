@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const aapgoldConfig: ArtistConfig = {
   slug: 'aapgold',
+  hasGroupbuysTab: true,
   hasAlbumCopiesTab: true,
   SITE_NAME: 'A$APGOLD',
   SITE_DESCRIPTION: 'The Best A$AP Rocky Tracker In The World!',

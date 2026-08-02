@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const twizzygoldConfig: ArtistConfig = {
   slug: 'twizzygold',
+  hasGroupbuysTab: true,
   hasAlbumCopiesTab: true,
   SITE_NAME: 'TWIZZYgold',
   SITE_DESCRIPTION: 'The Best YEAT Tracker In The World!',

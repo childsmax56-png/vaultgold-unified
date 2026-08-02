@@ -50,6 +50,7 @@ export interface ArtistConfig {
   miscLabel?: string; // override the "Misc" tab label
   hasTracklistsTab?: boolean; // set false to force-hide the Tracklists tab regardless of data
   hasAlbumCopiesTab?: boolean; // set true to enable the Album Copies tab (data from data/album-copies.csv)
+  hasGroupbuysTab?: boolean; // set true to enable the Groupbuys tab (data from data/groupbuys.csv)
   SHEET_URL_RECENT_PRODUCTION?: string; // CSV export URL for a second recent tab (production projects)
   productionFirst?: boolean; // show Production Projects before Music in navbar
   productionSecond?: boolean; // show Production Projects second (right after Music) in navbar
