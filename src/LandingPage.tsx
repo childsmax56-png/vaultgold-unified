@@ -1433,6 +1433,15 @@ export function LandingPage() {
           watermark="MTR"
         />
         <BigLinkCard
+          href="/community"
+          accent="#22C55E"
+          badge="New"
+          titleMain="BUILD A"
+          titleAccent="TRACKER"
+          subtitle="Create your own & browse community trackers"
+          watermark="CT"
+        />
+        <BigLinkCard
           href="/yeditsgold"
           accent="#FFD700"
           badge="Edits"

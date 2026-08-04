@@ -1,3 +1,5 @@
+import { getCommunityTrackerCsv } from './_community';
+
 // Live Google Sheet fallback for trackers that don't ship committed CSVs.
 //
 // Most trackers store their data as static CSVs under public/<slug>/data/*.csv
@@ -45,13 +47,18 @@ export function sheetCsvUrl(artist: string, tab: string): string | null {
 // return index.html with status 200 — detect real CSV text by its leading char.
 const isCsvText = (t: string): boolean => !t.trimStart().startsWith('<');
 
-// Resolve a tracker tab's CSV text: committed static file first, live Google
-// Sheet export as a fallback. Returns null when neither source yields CSV.
+// Resolve a tracker tab's CSV text: DB-backed community tracker first, then the
+// committed static file, then a live Google Sheet export. Returns null when no
+// source yields CSV. `db` is optional so official trackers work unchanged.
 export async function fetchTrackerCsv(
   origin: string,
   artist: string,
   tab: string,
+  db?: D1Database,
 ): Promise<string | null> {
+  const community = await getCommunityTrackerCsv(db, artist, tab);
+  if (community !== null) return community;
+
   try {
     const res = await fetch(`${origin}/${artist}/data/${tab}.csv`);
     if (res.ok) {

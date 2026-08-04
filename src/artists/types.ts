@@ -87,4 +87,10 @@ export interface ArtistConfig {
 
   // Artist-specific loading screens (overrides the default set)
   loadingScreens?: { id: string; label: string; type: 'none' | 'gif' | 'video'; url?: string }[];
+
+  // Community trackers — user-built trackers resolved at runtime from D1 rather
+  // than the static registry. `community` marks the tracker as user-made (used to
+  // hide official-only UI like the source-sheet link); `createdBy` is the author.
+  community?: boolean;
+  createdBy?: string;
 }
