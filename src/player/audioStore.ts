@@ -444,3 +444,15 @@ export function usePlayerField<K extends keyof AudioState>(key: K): [AudioState[
 export function useAudioState(): AudioState {
   return useSyncExternalStore(subscribe, getState, getState);
 }
+
+// Lightweight selector: true when the persistent HTML5-audio mini player is
+// showing a track. Unlike useAudioState this only re-renders when that fact
+// flips, not on every currentTime tick — so pages can reserve bottom space for
+// the mini player without re-rendering their whole tree during playback.
+export function useHasActiveAudio(): boolean {
+  return useSyncExternalStore(
+    subscribe,
+    () => state.activePlayer === 'audio' && !!state.currentSong,
+    () => false,
+  );
+}
