@@ -6,6 +6,7 @@ import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
 import { useSettings, LOADING_SCREENS } from './SettingsContext';
 import { retryImageOnError } from './utils';
+import { useHasActiveAudio } from './player/audioStore';
 
 // Handles the Spotify PKCE OAuth callback that redirects back to unvaulted.cc/?code=...
 // Exchanges the code for tokens and forwards them back to whichever tracker initiated the flow.
@@ -1060,6 +1061,10 @@ export function LandingPage() {
   const { user, signInWithGoogle, signOut } = useVGAuth();
   const { favorites, toggleFavorite } = useFavoriteArtists();
   const isFavorite = (slug: string) => favorites.includes(slug);
+  // When the persistent mini player is on screen, reserve enough bottom space
+  // that the last artist cards aren't hidden behind it (the player is taller on
+  // mobile than the default 48px pad allows).
+  const hasActivePlayer = useHasActiveAudio();
 
   const query = searchQuery.trim().toLowerCase();
   const matchesQuery = (c: ArtistConfig) =>
@@ -1092,6 +1097,9 @@ export function LandingPage() {
       fontFamily: "'Inter', system-ui, sans-serif",
       WebkitFontSmoothing: 'antialiased',
       padding: '16px 24px 48px',
+      paddingBottom: hasActivePlayer
+        ? 'calc(176px + env(safe-area-inset-bottom))'
+        : '48px',
       // iOS PWA (standalone) renders behind the status bar / Dynamic Island because of
       // viewport-fit=cover + apple-mobile-web-app-status-bar-style=black-translucent.
       // Offset the top so the header (logo, gear, "The Heist") stays reachable.
