@@ -21,6 +21,7 @@ export const coldplaygoldConfig: ArtistConfig = {
 
   accentColor: '#eab308',
   artistLabel: 'Coldplay',
+  sheetCreator: 'Walterhwit',
   cardLetter: 'C',
   logoUrl: '',
   artistPhotoUrl: '/artists/coldplaygold.jpg',

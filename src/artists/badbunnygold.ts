@@ -21,6 +21,7 @@ export const badbunnygoldConfig: ArtistConfig = {
 
   accentColor: '#16a34a',
   artistLabel: 'Bad Bunny',
+  sheetCreator: 'valent, scarfvass',
   cardLetter: 'B',
   logoUrl: '',
   artistPhotoUrl: '/artists/badbunnygold.jpg',

@@ -13,6 +13,7 @@ export const colegoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1hjMtB-acUEpXYkR6TWQVeVoUzSLrAVIdy1lMoM6aFFw/gviz/tq?tqx=out:csv&sheet=Recent',
   accentColor: '#dc2626',
   artistLabel: 'J. Cole',
+  sheetCreator: 'Mr. Chedda, slothsavedearth, a_native_person',
   cardLetter: 'COLE',
   logoUrl: '/logos/colegold.png',
   artistPhotoUrl: '/artists/jcole.webp',

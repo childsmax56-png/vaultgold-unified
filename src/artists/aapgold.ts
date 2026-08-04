@@ -15,6 +15,7 @@ export const aapgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1rbt_VyQyHEfVRv_XmVBNrwMyF0uMx7FF-1T8-N0wf0E/export?format=csv&gid=575509772',
   accentColor: '#7c3aed',
   artistLabel: 'A$AP Rocky',
+  sheetCreator: 'KILLRITE, geroerg, Digital Hendryk',
   cardLetter: 'ASAP',
   logoUrl: '/logos/aapgold.png',
   artistPhotoUrl: '/artists/asaprocky-v2.jpg',

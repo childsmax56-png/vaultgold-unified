@@ -13,6 +13,7 @@ export const cactigoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#ff4500',
   artistLabel: 'Travis Scott',
+  sheetCreator: 'lxns',
   cardLetter: 'CCT',
   logoUrl: '/logos/cactigold.png',
   artistPhotoUrl: '/artists/travis.jpg',

@@ -30,6 +30,7 @@ export const frankgoldConfig: ArtistConfig = {
 
   accentColor: '#e8622c',
   artistLabel: 'Frank Ocean',
+  sheetCreator: 'Infisreal, ComplexCandle, LegoshiTracker, mannnyyyy, Edideaur',
   cardLetter: 'F',
   logoUrl: '',
   artistPhotoUrl: '/artists/frankocean.jpg',

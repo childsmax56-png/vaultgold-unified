@@ -21,6 +21,7 @@ export const daftpunkgoldConfig: ArtistConfig = {
 
   accentColor: '#f97316',
   artistLabel: 'Daft Punk',
+  sheetCreator: 'aj834',
   cardLetter: 'D',
   logoUrl: '',
   artistPhotoUrl: '/artists/daftpunkgold.jpg',

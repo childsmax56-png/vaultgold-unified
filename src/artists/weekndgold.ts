@@ -21,6 +21,7 @@ export const weekndgoldConfig: ArtistConfig = {
 
   accentColor: '#b91c1c',
   artistLabel: 'The Weeknd',
+  sheetCreator: 'KrackerZ, Dr Wolf, shri, raymeta12, hannahandevelyn, jae, DxG51, indeed, FADED',
   cardLetter: 'W',
   logoUrl: '',
   artistPhotoUrl: '/artists/weekndgold.jpg',

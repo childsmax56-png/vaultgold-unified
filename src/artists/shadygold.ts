@@ -14,6 +14,7 @@ export const shadygoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#e53e3e',
   artistLabel: 'Eminem',
+  sheetCreator: 'JAYDAHEATER!, GrimR3xx, Emball, John Banana, Days Dissolve, G-Man Junior, Panda, Kaisersaurus, Franki8000, HighSpeedChase',
   cardLetter: 'SHY',
   logoUrl: '/logos/shadygold.png',
   artistPhotoUrl: '/artists/eminem.jpg',

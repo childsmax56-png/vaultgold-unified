@@ -21,6 +21,7 @@ export const nasgoldConfig: ArtistConfig = {
 
   accentColor: '#991b1b',
   artistLabel: 'Nas',
+  sheetCreator: 'troabroa, yeezus528',
   cardLetter: 'N',
   logoUrl: '',
   artistPhotoUrl: '/artists/nasgold.jpg',

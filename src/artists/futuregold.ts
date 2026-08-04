@@ -13,6 +13,7 @@ export const futuregoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1OGAthACjwPcq3vHIVTAoaT8blFXjyBLtVcP0m5u80-U/export?format=csv&gid=1932564138',
   accentColor: '#f97316',
   artistLabel: 'Future',
+  sheetCreator: 'yuruze, fourth.dimension, waytoomuchcash, ayq0, choppapillow, millsmax',
   cardLetter: 'F',
   logoUrl: '/logos/futuregold.webp',
   artistPhotoUrl: '/artists/future.jpeg',

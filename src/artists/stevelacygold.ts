@@ -21,6 +21,7 @@ export const stevelacygoldConfig: ArtistConfig = {
 
   accentColor: '#059669',
   artistLabel: 'Steve Lacy',
+  sheetCreator: 'manick, andygump211, ColbyJackChedda, yatta',
   cardLetter: 'S',
   logoUrl: '',
   artistPhotoUrl: '/artists/stevelacygold.jpg',

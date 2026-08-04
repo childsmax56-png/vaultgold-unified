@@ -15,6 +15,7 @@ export const kdotgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: `https://docs.google.com/spreadsheets/d/1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI/gviz/tq?tqx=out:csv&sheet=🆕 Recent`,
   accentColor: '#1e3a5f',
   artistLabel: 'Kendrick Lamar',
+  sheetCreator: 'Infisrael, aeolowl, hunnnter, sixsensenella, osunn, dollnora',
   cardLetter: 'KDT',
   logoUrl: '/logos/kdotgold.png',
   artistPhotoUrl: '/artists/kendrick.jpg',

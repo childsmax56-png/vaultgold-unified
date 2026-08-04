@@ -17,6 +17,7 @@ export const yzygoldConfig: ArtistConfig = {
   hasCompsTab: false,
   accentColor: '#C9A224',
   artistLabel: 'Ye',
+  sheetCreator: 'nicole, scarfvass',
   cardLetter: 'YZY',
   logoUrl: '/logos/yzygold.png',
   artistPhotoUrl: '/artists/kanye.jpg',

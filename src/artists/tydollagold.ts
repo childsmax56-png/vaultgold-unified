@@ -21,6 +21,7 @@ export const tydollagoldConfig: ArtistConfig = {
 
   accentColor: '#9333ea',
   artistLabel: 'Ty Dolla $ign',
+  sheetCreator: 'emilyineed2pee, dyln, PRODYSGROUP, slothsavedearth, yungtron, m3lt, Shadow, noa, Ricky, Sophie, felipe',
   cardLetter: 'T',
   logoUrl: '',
   artistPhotoUrl: '/artists/tydollagold.jpg',

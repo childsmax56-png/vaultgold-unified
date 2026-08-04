@@ -21,6 +21,7 @@ export const doechiigoldConfig: ArtistConfig = {
 
   accentColor: '#a16207',
   artistLabel: 'Doechii',
+  sheetCreator: 'RunAw, dankuul, Brimcoole',
   cardLetter: 'D',
   logoUrl: '',
   artistPhotoUrl: '/artists/doechiigold.jpg',

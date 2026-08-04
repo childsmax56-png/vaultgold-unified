@@ -21,6 +21,7 @@ export const wutanggoldConfig: ArtistConfig = {
 
   accentColor: '#facc15',
   artistLabel: 'Wu-Tang Clan',
+  sheetCreator: 'TK, kill, dxg51',
   cardLetter: 'W',
   logoUrl: '',
   artistPhotoUrl: '/artists/wutanggold.jpg',

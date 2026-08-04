@@ -13,6 +13,7 @@ export const gorillazgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#14b8a6',
   artistLabel: 'Gorillaz',
+  sheetCreator: 'vertie, deka, The Invisible Man II',
   cardLetter: 'GZ',
   logoUrl: '/logos/gorillazgold.webp',
   artistPhotoUrl: '/artists/gorillaz.jpg',

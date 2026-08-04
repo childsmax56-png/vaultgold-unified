@@ -31,6 +31,7 @@ export const kengoldConfig: ArtistConfig = {
 
   accentColor: '#d61f26',
   artistLabel: 'Ken Carson',
+  sheetCreator: 'raiden_xdd, truboat, ballzach, deka',
   cardLetter: 'K',
   logoUrl: '',
   artistPhotoUrl: '/artists/kengold.jpg',

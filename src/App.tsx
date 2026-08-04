@@ -3301,6 +3301,9 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
             </AnimatePresence>
           </div>
 
+          {(() => {
+            const sheetHref = activeConfig.sheetUrl || (activeConfig.HARDCODED_SHEET_ID ? `https://docs.google.com/spreadsheets/d/${activeConfig.HARDCODED_SHEET_ID}/` : '');
+            return (
           <div className="mt-auto px-6 py-8 text-center border-t border-white/5">
             <p className="text-[10px] text-white/30 leading-relaxed">
               UNVAULTED does not host or hold any illegal files. All links are external and provided as-is for educational and archival purposes only.
@@ -3308,14 +3311,21 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
             <p className="text-[10px] text-white/30 leading-relaxed">
               UNVAULTED 2026 © · v2.1
             </p>
+            {activeConfig.sheetCreator && (
+              <p className="text-[10px] text-white/30 leading-relaxed mt-1">
+                This website parses the {activeConfig.artistLabel} Google Sheet made by {activeConfig.sheetCreator}.
+                {sheetHref && (
+                  <> Their original sheet is{' '}
+                    <a href={sheetHref} target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">right here</a>.</>
+                )}
+              </p>
+            )}
             <p className="text-[10px] text-white/30 leading-relaxed mt-1 space-x-3">
               <a href="https://discord.gg/ZE5gHFYYGy" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
-              <span>·</span>
-              <a href="https://docs.google.com/document/d/1b8aidNuSLLHfzgzrJ0uGdWHPuo-uNk6wI21Vscwzid4/edit?tab=t.0#heading=h.coxp3mvb86xr" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Changelog</a>
-              <span>·</span>
-              <a href={activeConfig.sheetUrl || `https://docs.google.com/spreadsheets/d/${activeConfig.HARDCODED_SHEET_ID}/`} target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Link For The Sheet</a>
             </p>
           </div>
+            );
+          })()}
         </main>
       </div>
 

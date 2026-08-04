@@ -21,6 +21,7 @@ export const antclemonsgoldConfig: ArtistConfig = {
 
   accentColor: '#0ea5e9',
   artistLabel: 'Ant Clemons',
+  sheetCreator: 'V3 Grailer',
   cardLetter: 'A',
   logoUrl: '',
   artistPhotoUrl: '/artists/antclemonsgold.jpg',

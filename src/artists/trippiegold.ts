@@ -21,6 +21,7 @@ export const trippiegoldConfig: ArtistConfig = {
 
   accentColor: '#e11d48',
   artistLabel: 'Trippie Redd',
+  sheetCreator: 'raiden, snakeyyy',
   cardLetter: 'T',
   logoUrl: '',
   artistPhotoUrl: '/artists/trippiegold.jpg',

@@ -14,6 +14,7 @@ export const uzigoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1zqqdIds1iwnx4lh29iF1IlraeuqfGhxH9qLNlWOnryo/export?format=csv&gid=1339726772',
   accentColor: '#e8621a',
   artistLabel: 'Lil Uzi Vert',
+  sheetCreator: 'dragonplagues, acservices, Marin, Froste, heroinfather, moze, athrilu, clapper',
   cardLetter: 'UZI',
   logoUrl: '/logos/uzigold.png',
   artistPhotoUrl: '/artists/uzi.webp',

@@ -21,6 +21,7 @@ export const ushergoldConfig: ArtistConfig = {
 
   accentColor: '#1d4ed8',
   artistLabel: 'Usher',
+  sheetCreator: 'Wselenamoment',
   cardLetter: 'U',
   logoUrl: '',
   artistPhotoUrl: '/artists/ushergold.jpg',

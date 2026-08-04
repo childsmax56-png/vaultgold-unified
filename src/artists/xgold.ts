@@ -14,6 +14,7 @@ export const xgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#4a0e8f',
   artistLabel: 'XXXTENTACION',
+  sheetCreator: 'Zanthin, fart, goon, Mockingbird, justasoul, Bountry, Vlone, hcaor',
   cardLetter: 'XXX',
   logoUrl: '/logos/xgold.png',
   artistPhotoUrl: '/artists/xxx.webp',

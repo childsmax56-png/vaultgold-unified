@@ -21,6 +21,7 @@ export const jamesblakegoldConfig: ArtistConfig = {
 
   accentColor: '#475569',
   artistLabel: 'James Blake',
+  sheetCreator: 'misuse._, x3mili, graceisfriend',
   cardLetter: 'J',
   logoUrl: '',
   artistPhotoUrl: '/artists/jamesblakegold.jpg',

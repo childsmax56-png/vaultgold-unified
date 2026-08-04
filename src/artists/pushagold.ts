@@ -14,6 +14,7 @@ export const pushagoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/gviz/tq?tqx=out:csv&sheet=Recent',
   accentColor: '#e88fa0',
   artistLabel: 'Pusha T / Clipse',
+  sheetCreator: 'Yousef, The Creator',
   cardLetter: 'PSH',
   logoUrl: '/logos/pushagold.png',
   artistPhotoUrl: '/artists/clipse.jpg',

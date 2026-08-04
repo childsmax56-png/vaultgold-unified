@@ -32,6 +32,7 @@ export const vampgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: `https://docs.google.com/spreadsheets/d/1Irtfvymu26CShYowLMMfD-rM0o9CJqE6-BBSlYsAaF4/export?format=csv&gid=1962169030`,
   accentColor: '#8b0000',
   artistLabel: 'Playboi Carti',
+  sheetCreator: 'RunAw, Homebrewed, justamz, Marin, Brimcoole, Yash, xscapee, ColbyJackChedda, fitz, heroinfather, moze, Froste, slothsavedearth, and many more',
   cardLetter: 'VMP',
   logoUrl: '/logos/vampgold.png',
   artistPhotoUrl: '/artists/carti.jpg',

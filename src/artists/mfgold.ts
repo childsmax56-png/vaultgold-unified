@@ -13,6 +13,7 @@ export const mfgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1zEbzMVXFXzuY4wLdPvdQA23lb3RwCSOKqWtHsllXNk8/export?format=csv&gid=1476766908',
   accentColor: '#16a34a',
   artistLabel: 'MF DOOM',
+  sheetCreator: 'madvilliany, HeyImTy',
   cardLetter: 'DOOM',
   logoUrl: '/logos/mfgold.png',
   artistPhotoUrl: '/artists/mfdoom.jpg',

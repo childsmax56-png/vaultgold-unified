@@ -21,6 +21,7 @@ export const aaliyahgoldConfig: ArtistConfig = {
 
   accentColor: '#b91c1c',
   artistLabel: 'Aaliyah',
+  sheetCreator: 'tonixander, looserap, magik2338',
   cardLetter: 'A',
   logoUrl: '',
   artistPhotoUrl: '/artists/aaliyahgold.jpg',

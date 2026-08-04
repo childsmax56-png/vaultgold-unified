@@ -21,6 +21,7 @@ export const chancegoldConfig: ArtistConfig = {
 
   accentColor: '#f59e0b',
   artistLabel: 'Chance the Rapper',
+  sheetCreator: 'x3mili, chanoguide, king.dar1us., slothsavedearth',
   cardLetter: 'C',
   logoUrl: '',
   artistPhotoUrl: '/artists/chancegold.jpg',

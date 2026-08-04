@@ -21,6 +21,7 @@ export const gambinogoldConfig: ArtistConfig = {
 
   accentColor: '#dc2626',
   artistLabel: 'Childish Gambino',
+  sheetCreator: 'shri, mouse man, Dr. Wolf, Buddy, p4, comptonrapper, Commandtechno, Plague Doctress, slothsavedearth',
   cardLetter: 'C',
   logoUrl: '',
   artistPhotoUrl: '/artists/gambinogold.jpg',

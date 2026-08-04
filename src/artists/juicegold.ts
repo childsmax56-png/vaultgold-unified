@@ -21,6 +21,7 @@ export const juicegoldConfig: ArtistConfig = {
 
   accentColor: '#e53e3e',
   artistLabel: 'Juice WRLD',
+  sheetCreator: 'deka, will, Slemns, exodvs, Infisrael',
   cardLetter: 'JCE',
   logoUrl: '/logos/juicegold.png',
   artistPhotoUrl: '/artists/juice.webp',

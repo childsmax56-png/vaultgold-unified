@@ -21,6 +21,7 @@ export const dannybrowngoldConfig: ArtistConfig = {
 
   accentColor: '#84cc16',
   artistLabel: 'Danny Brown',
+  sheetCreator: 'madvilliany',
   cardLetter: 'D',
   logoUrl: '',
   artistPhotoUrl: '/artists/dannybrowngold.jpg',

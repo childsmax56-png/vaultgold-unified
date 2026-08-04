@@ -13,6 +13,7 @@ export const jayzgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#1a1a1a',
   artistLabel: 'Jaÿ-Z',
+  sheetCreator: 'yeezus528, troabroa, slothsavedearth, Johnny Crimson, bsterthegawd, cool_gamez, colbyjackchedda',
   cardLetter: 'J',
   logoUrl: '/logos/jayzgold.webp',
   artistPhotoUrl: '/artists/jayz.jpg',

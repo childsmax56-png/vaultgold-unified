@@ -21,6 +21,7 @@ export const gunnagoldConfig: ArtistConfig = {
 
   accentColor: '#c026d3',
   artistLabel: 'Gunna',
+  sheetCreator: 'raglord, fishybusiness, CST',
   cardLetter: 'G',
   logoUrl: '',
   artistPhotoUrl: '/artists/gunnagold.jpg',

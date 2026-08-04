@@ -21,6 +21,7 @@ export const gibbsgoldConfig: ArtistConfig = {
 
   accentColor: '#7c2d12',
   artistLabel: 'Freddie Gibbs',
+  sheetCreator: 'madvilliany, vexlcx',
   cardLetter: 'F',
   logoUrl: '',
   artistPhotoUrl: '/artists/gibbsgold.jpg',

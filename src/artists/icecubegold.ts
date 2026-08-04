@@ -21,6 +21,7 @@ export const icecubegoldConfig: ArtistConfig = {
 
   accentColor: '#0891b2',
   artistLabel: 'Ice Cube',
+  sheetCreator: 'iaon',
   cardLetter: 'I',
   logoUrl: '',
   artistPhotoUrl: '/artists/icecubegold.jpg',

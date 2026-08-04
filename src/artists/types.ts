@@ -15,6 +15,10 @@ export interface ArtistConfig {
   // "Link For The Sheet". Overrides the docs.google.com URL built from
   // HARDCODED_SHEET_ID (used by trackers whose source isn't a plain Google Sheet).
   sheetUrl?: string;
+  // Community members credited as the source sheet's creators/maintainers,
+  // shown in the in-tracker footer ("...made by ..."). Sourced from the
+  // TrackerHub credits sheet.
+  sheetCreator?: string;
   SHEET_URL_UNRELEASED: string;
   SHEET_URL_RECENT: string;
 

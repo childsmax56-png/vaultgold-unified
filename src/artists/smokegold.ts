@@ -13,6 +13,7 @@ export const smokegoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1-Kd8molYeR1WpmWR81DqmSCGng3g-AVmZfgd752kh3M/export?format=csv&gid=1507357362',
   accentColor: '#1a1a2e',
   artistLabel: 'Pop Smoke',
+  sheetCreator: 'raglord, FinalxNinja, slothsavedearth, Pop, DarkStakerz, zestysyrup',
   cardLetter: 'P',
   logoUrl: '/logos/smokegold.webp',
   artistPhotoUrl: '/artists/popsmoke.webp',

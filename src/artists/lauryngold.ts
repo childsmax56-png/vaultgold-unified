@@ -21,6 +21,7 @@ export const lauryngoldConfig: ArtistConfig = {
 
   accentColor: '#ca8a04',
   artistLabel: 'Lauryn Hill',
+  sheetCreator: 'grace, The Invisible Man II, emily, faiowne',
   cardLetter: 'L',
   logoUrl: '',
   artistPhotoUrl: '/artists/lauryngold.jpg',

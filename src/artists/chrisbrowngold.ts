@@ -21,6 +21,7 @@ export const chrisbrowngoldConfig: ArtistConfig = {
 
   accentColor: '#2563eb',
   artistLabel: 'Chris Brown',
+  sheetCreator: 'GrimR3xx & Reggie',
   cardLetter: 'C',
   logoUrl: '',
   artistPhotoUrl: '/artists/chrisbrowngold.jpg',

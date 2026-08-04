@@ -21,6 +21,7 @@ export const szagoldConfig: ArtistConfig = {
 
   accentColor: '#7c3aed',
   artistLabel: 'SZA',
+  sheetCreator: 'netta',
   cardLetter: 'S',
   logoUrl: '',
   artistPhotoUrl: '/artists/szagold.jpg',

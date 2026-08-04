@@ -36,6 +36,7 @@ export const d4vdgoldConfig: ArtistConfig = {
 
   accentColor: '#b3122b',
   artistLabel: 'd4vd',
+  sheetCreator: 'makingfriendsiseasy, feelnoway',
   cardLetter: 'D',
   logoUrl: '',
   artistPhotoUrl: '/artists/d4vd.png',

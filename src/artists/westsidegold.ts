@@ -21,6 +21,7 @@ export const westsidegoldConfig: ArtistConfig = {
 
   accentColor: '#525252',
   artistLabel: 'Westside Gunn',
+  sheetCreator: 'slothsavedearth',
   cardLetter: 'W',
   logoUrl: '',
   artistPhotoUrl: '/artists/westsidegold.jpg',
