@@ -49,14 +49,16 @@ const isCsvText = (t: string): boolean => !t.trimStart().startsWith('<');
 
 // Resolve a tracker tab's CSV text: DB-backed community tracker first, then the
 // committed static file, then a live Google Sheet export. Returns null when no
-// source yields CSV. `db` is optional so official trackers work unchanged.
+// source yields CSV. `env`/`request` are optional so official trackers work
+// unchanged; `request` lets the creator/admin preview an unapproved tracker.
 export async function fetchTrackerCsv(
   origin: string,
   artist: string,
   tab: string,
-  db?: D1Database,
+  env?: Env,
+  request?: Request,
 ): Promise<string | null> {
-  const community = await getCommunityTrackerCsv(db, artist, tab);
+  const community = await getCommunityTrackerCsv(env, artist, tab, request);
   if (community !== null) return community;
 
   try {

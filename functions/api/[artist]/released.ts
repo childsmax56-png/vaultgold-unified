@@ -7,7 +7,7 @@ export const onRequestGet: PagesFunction = async (context) => {
   const url = new URL(context.request.url);
   const artist = (context.params as Record<string, string>).artist ?? "yzygold";
 
-  const text = await fetchTrackerCsv(url.origin, artist, 'released', (context.env as Env).DB);
+  const text = await fetchTrackerCsv(url.origin, artist, 'released', context.env as Env, context.request);
   if (text === null) return new Response('CSV not found', { status: 404 });
 
   const rows = parseCSV(text);

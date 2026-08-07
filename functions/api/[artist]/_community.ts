@@ -1,14 +1,16 @@
 // Bridge that lets the existing /api/{slug}/* tracker endpoints serve
 // community-created trackers straight from D1, in the exact shapes the tracker
 // view already consumes. Official trackers are unaffected — these helpers return
-// null when the slug is not an approved community tracker, and callers fall
+// null when the slug is not a resolvable community tracker, and callers fall
 // through to their normal static-CSV / Google-Sheet path.
+import { getAuthUser, isYeditsAdmin } from '../_yedits-auth';
 
 interface CommunityTracker {
   id: string;
   slug: string;
   name: string;
   status: string;
+  user_id?: string;
 }
 
 interface EraRow {
@@ -43,13 +45,46 @@ export async function getCommunityTracker(db: D1Database | undefined, slug: stri
   if (!db) return null;
   try {
     return (await db
-      .prepare(`SELECT id, slug, name, status FROM community_trackers WHERE slug = ? AND status = 'approved'`)
+      .prepare(`SELECT id, slug, name, status, user_id FROM community_trackers WHERE slug = ? AND status = 'approved'`)
       .bind(slug)
       .first()) as CommunityTracker | null;
   } catch {
     // Table may not exist yet (no community trackers created) — treat as "not community".
     return null;
   }
+}
+
+// Like getCommunityTracker, but also resolves a draft/pending/rejected tracker
+// when the request carries a bearer token belonging to its creator or a
+// moderator — this is what makes the builder's "Preview" work before approval.
+export async function resolveCommunityTracker(
+  env: Env | undefined,
+  slug: string,
+  request?: Request,
+): Promise<CommunityTracker | null> {
+  const db = env?.DB;
+  if (!db) return null;
+  let row: CommunityTracker | null;
+  try {
+    row = (await db
+      .prepare(`SELECT id, slug, name, status, user_id FROM community_trackers WHERE slug = ?`)
+      .bind(slug)
+      .first()) as CommunityTracker | null;
+  } catch {
+    return null;
+  }
+  if (!row) return null;
+  if (row.status === 'approved') return row;
+
+  // Unapproved — require a creator/admin token to preview.
+  const auth = request?.headers.get('Authorization') || '';
+  const m = auth.match(/^Bearer\s+(.+)$/i);
+  if (!m) return null;
+  const user = await getAuthUser(m[1].trim());
+  if (!user) return null;
+  if (user.id === row.user_id) return row;
+  if (await isYeditsAdmin(db, user.id, user.email)) return row;
+  return null;
 }
 
 // Build the { name, tabs, current_tab, eras } payload for /api/{slug}/a from the
@@ -108,14 +143,17 @@ function csvEscape(v: string): string {
 const VALID_RELEASED_TYPES = new Set(['Feature', 'Production', 'Single', 'Album Track', 'Mixtape Track', 'EP Track', 'Other']);
 
 // Produce CSV text (same headers the [artist] parsers expect) for a non-unreleased
-// tab of a community tracker, or null when the slug isn't an approved community
+// tab of a community tracker, or null when the slug isn't a resolvable community
 // tracker. The /a endpoint builds its eras JSON directly and never calls this.
+// `request` enables the creator/admin to preview an unapproved tracker's tabs.
 export async function getCommunityTrackerCsv(
-  db: D1Database | undefined,
+  env: Env | undefined,
   slug: string,
   tab: string,
+  request?: Request,
 ): Promise<string | null> {
-  const tracker = await getCommunityTracker(db, slug);
+  const db = env?.DB;
+  const tracker = await resolveCommunityTracker(env, slug, request);
   if (!tracker || !db) return null;
 
   const eras = ((await db.prepare(

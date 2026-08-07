@@ -1,6 +1,6 @@
 import { parseCSV, csvResponse } from './_csvParser';
 import { fetchTrackerCsv } from './_sheets';
-import { getCommunityTracker, buildCommunityTrackerData } from './_community';
+import { resolveCommunityTracker, buildCommunityTrackerData } from './_community';
 
 // Extract the URL from a Google Sheets HYPERLINK formula: =HYPERLINK("url","text") → url
 function extractHyperlinkUrl(cell: string): string {
@@ -374,11 +374,13 @@ export const onRequestGet: PagesFunction = async (context) => {
   try {
     const url = new URL(context.request.url);
     const artist = (context.params as Record<string, string>).artist ?? "yzygold";
-    const db = (context.env as Env).DB;
+    const env = context.env as Env;
+    const db = env.DB;
 
     // Community trackers are DB-backed: build their eras JSON directly and skip
-    // the CSV path entirely.
-    const communityTracker = await getCommunityTracker(db, artist);
+    // the CSV path entirely. Pass the request so the creator/admin can preview
+    // an unapproved tracker.
+    const communityTracker = await resolveCommunityTracker(env, artist, context.request);
     if (communityTracker) {
       return csvResponse(await buildCommunityTrackerData(db, communityTracker));
     }
@@ -389,7 +391,7 @@ export const onRequestGet: PagesFunction = async (context) => {
 
     // Committed unreleased.csv (or live sheet) first, then the unreleased-main.csv
     // variant (e.g. dregold).
-    let text = await fetchTrackerCsv(url.origin, artist, 'unreleased', db);
+    let text = await fetchTrackerCsv(url.origin, artist, 'unreleased', env, context.request);
     if (text === null) {
       const fallbackRes = await fetch(`${url.origin}/${artist}/data/unreleased-main.csv`);
       if (!fallbackRes.ok) return new Response('CSV not found', { status: 404 });

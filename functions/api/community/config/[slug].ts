@@ -28,6 +28,13 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     'SELECT * FROM community_eras WHERE tracker_id = ? ORDER BY sort_order, name'
   ).bind(tracker.id).all()).results ?? []) as CommunityEraRow[];
 
+  // Which content tabs actually have entries — drives which tabs the frontend
+  // config enables (so an empty Art/Stems tab never shows).
+  const tabRows = ((await env.DB.prepare(
+    'SELECT DISTINCT tab FROM community_songs WHERE tracker_id = ?'
+  ).bind(tracker.id).all()).results ?? []) as { tab: string }[];
+  const contentTabs = tabRows.map((r) => r.tab);
+
   const ALBUM_RELEASE_DATES: Record<string, string> = {};
   const CUSTOM_IMAGES: Record<string, string> = {};
   const ALBUM_DESCRIPTIONS: Record<string, string> = {};
@@ -55,6 +62,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     ALBUM_ORDER,
     CUSTOM_IMAGES,
     ALBUM_DESCRIPTIONS,
+    contentTabs,
   };
 
   return new Response(JSON.stringify(payload), {

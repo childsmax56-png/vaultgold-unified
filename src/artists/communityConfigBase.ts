@@ -17,6 +17,7 @@ export interface CommunityConfigPayload {
   ALBUM_ORDER?: string[];
   CUSTOM_IMAGES?: Record<string, string>;
   ALBUM_DESCRIPTIONS?: Record<string, string>;
+  contentTabs?: string[];
 }
 
 // Build a complete runtime ArtistConfig from a community-tracker payload. Fills
@@ -25,6 +26,7 @@ export interface CommunityConfigPayload {
 // official-only data sources (Google Sheets, extra tabs).
 export function buildCommunityConfig(p: CommunityConfigPayload): ArtistConfig {
   const name = p.SITE_NAME || p.slug;
+  const tabs = p.contentTabs || [];
   return {
     slug: p.slug,
     SITE_NAME: name,
@@ -53,17 +55,20 @@ export function buildCommunityConfig(p: CommunityConfigPayload): ArtistConfig {
     TAG_TOOLTIP_MAP: {},
     ERA_THEMES: {},
 
-    // No official-only tabs — a community tracker is Music-only for now.
+    // Community trackers support Music (unreleased), plus Art / Stems / Released
+    // when the creator has added that content. Art and Stems are data-driven, so
+    // enable them only when present to avoid an empty tab; Released always shows
+    // (matching official trackers). All other official-only tabs stay off.
     hasProductionTab: false,
     hasYeditsTab: false,
     hasRecentTab: false,
     hasCompsTab: false,
     hasConcertsTab: false,
     hasSubAlbumsTab: false,
-    hasArtTab: false,
+    hasArtTab: tabs.includes('art'),
     hasVideosTab: false,
     hasMiscTab: false,
-    hasStemsTab: false,
+    hasStemsTab: tabs.includes('stems'),
     hasTracklistsTab: false,
     hasAlbumCopiesTab: false,
     hasGroupbuysTab: false,

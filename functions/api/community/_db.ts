@@ -55,8 +55,9 @@ export interface CommunitySongRow {
   sort_order: number;
 }
 
-// Which tabs a song can live under. 'unreleased' is the default (Music tab).
-export const SONG_TABS = ['unreleased', 'released', 'art', 'stems', 'music-videos', 'misc'] as const;
+// Content types an entry can live under. 'unreleased' is the default (Music tab);
+// 'released' takes a streaming link, 'stems' an audio link, 'art' an image.
+export const SONG_TABS = ['unreleased', 'released', 'stems', 'art'] as const;
 
 export async function ensureCommunityTables(db: D1Database): Promise<void> {
   await db.batch([
@@ -149,32 +150,82 @@ export async function isSlugAvailable(db: D1Database, slug: string): Promise<{ o
   return { ok: true };
 }
 
-// Hosts allowed for audio/art links. Users host audio elsewhere (pillowcase,
-// imgur, pixeldrain) and link it — we never store files.
-const ALLOWED_LINK_HOST_RE = [
+// Hosts allowed for downloadable audio (unreleased music + stems). Users host
+// the audio elsewhere and link it — we never store audio files.
+const AUDIO_HOST_RE = [
   /(^|\.)pillowcase\.su$/i,
   /(^|\.)pillows\.su$/i,
   /(^|\.)pixeldrain\.com$/i,
   /(^|\.)pixeldrain\.net$/i,
   /(^|\.)imgur\.com$/i,
-  /(^|\.)i\.ibb\.co$/i,
-  /(^|\.)ibb\.co$/i,
   /(^|\.)krakenfiles\.com$/i,
   /(^|\.)music\.froste\.lol$/i,
 ];
 
-// Returns true if the URL points at an allowed host (or is empty — links are optional).
-export function isAllowedLink(raw: string | null | undefined): boolean {
+// Streaming platforms allowed for the Released tab.
+const STREAMING_HOST_RE = [
+  /(^|\.)spotify\.com$/i,
+  /(^|\.)youtube\.com$/i,
+  /(^|\.)youtu\.be$/i,
+  /(^|\.)music\.apple\.com$/i,
+  /(^|\.)apple\.co$/i,
+  /(^|\.)soundcloud\.com$/i,
+  /(^|\.)tidal\.com$/i,
+  /(^|\.)deezer\.com$/i,
+  /(^|\.)audiomack\.com$/i,
+  /(^|\.)bandcamp\.com$/i,
+];
+
+// Image hosts allowed for covers/logos/art (in addition to our own uploads).
+const IMAGE_HOST_RE = [
+  /(^|\.)imgur\.com$/i,
+  /(^|\.)i\.ibb\.co$/i,
+  /(^|\.)ibb\.co$/i,
+  /(^|\.)pixeldrain\.com$/i,
+];
+
+function hostOf(url: string): string | null {
+  try { return new URL(url).hostname; } catch { return null; }
+}
+
+// Images may also be our own hosted uploads (relative /api/community/image URL).
+function isOwnHostedImage(url: string): boolean {
+  return url.startsWith('/api/community/image');
+}
+
+// Each validator treats an empty value as valid — links are optional.
+export function isAllowedImage(raw: string | null | undefined): boolean {
   const url = (raw ?? '').trim();
   if (!url) return true;
-  let host: string;
-  try {
-    host = new URL(url).hostname;
-  } catch {
-    return false;
-  }
-  return ALLOWED_LINK_HOST_RE.some((re) => re.test(host));
+  if (isOwnHostedImage(url)) return true;
+  const host = hostOf(url);
+  return !!host && IMAGE_HOST_RE.some((re) => re.test(host));
 }
+
+export function isAllowedAudio(raw: string | null | undefined): boolean {
+  const url = (raw ?? '').trim();
+  if (!url) return true;
+  const host = hostOf(url);
+  return !!host && AUDIO_HOST_RE.some((re) => re.test(host));
+}
+
+export function isAllowedStreaming(raw: string | null | undefined): boolean {
+  const url = (raw ?? '').trim();
+  if (!url) return true;
+  const host = hostOf(url);
+  return !!host && STREAMING_HOST_RE.some((re) => re.test(host));
+}
+
+// Validate a song's link against the content type of its tab: art wants an
+// image, released wants a streaming link, unreleased/stems want audio.
+export function isAllowedSongLink(raw: string | null | undefined, tab: string): boolean {
+  if (tab === 'art') return isAllowedImage(raw);
+  if (tab === 'released') return isAllowedStreaming(raw);
+  return isAllowedAudio(raw);
+}
+
+// Backwards-compatible alias — image/cover fields validate as images.
+export const isAllowedLink = isAllowedImage;
 
 export function genId(): string {
   return crypto.randomUUID();

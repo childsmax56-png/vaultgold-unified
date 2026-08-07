@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 
 // The account/auth service. Community data endpoints are same-origin (/api/community/*),
@@ -32,18 +32,43 @@ interface SongRow {
   tab: string; sort_order: number;
 }
 
-const SONG_TABS = ['unreleased', 'released', 'art', 'stems', 'music-videos', 'misc'];
-
-// Client mirror of the server's allowed-host rule (functions/api/community/_db.ts).
-const ALLOWED_HOST_RE = [
-  /(^|\.)pillowcase\.su$/i, /(^|\.)pillows\.su$/i, /(^|\.)pixeldrain\.com$/i,
-  /(^|\.)pixeldrain\.net$/i, /(^|\.)imgur\.com$/i, /(^|\.)i\.ibb\.co$/i,
-  /(^|\.)ibb\.co$/i, /(^|\.)krakenfiles\.com$/i, /(^|\.)music\.froste\.lol$/i,
+// Content sections a song can live under (mirrors SONG_TABS in _db.ts).
+const SONG_TABS = [
+  { key: 'unreleased', label: 'Unreleased (Music)' },
+  { key: 'released', label: 'Released (streaming)' },
+  { key: 'stems', label: 'Stems' },
+  { key: 'art', label: 'Art (image)' },
 ];
-function isAllowedLink(raw: string): boolean {
+
+// Dropdown option sets — mirror the regular trackers' filters (FilterMenu.tsx).
+const QUALITY_OPTIONS = ['Lossless', 'CD Quality', 'High Quality', 'Low Quality', 'Recording', 'Not Available'];
+const AVAILABILITY_OPTIONS = ['Snippet', 'Partial', 'Beat Only', 'Tagged', 'Stem Bounce', 'Full', 'OG File', 'Confirmed', 'Rumored', 'Conflicting Sources'];
+
+// Client mirrors of the server host rules (functions/api/community/_db.ts).
+const AUDIO_HOST_RE = [
+  /(^|\.)pillowcase\.su$/i, /(^|\.)pillows\.su$/i, /(^|\.)pixeldrain\.com$/i,
+  /(^|\.)pixeldrain\.net$/i, /(^|\.)imgur\.com$/i, /(^|\.)krakenfiles\.com$/i, /(^|\.)music\.froste\.lol$/i,
+];
+const STREAMING_HOST_RE = [
+  /(^|\.)spotify\.com$/i, /(^|\.)youtube\.com$/i, /(^|\.)youtu\.be$/i, /(^|\.)music\.apple\.com$/i,
+  /(^|\.)apple\.co$/i, /(^|\.)soundcloud\.com$/i, /(^|\.)tidal\.com$/i, /(^|\.)deezer\.com$/i,
+  /(^|\.)audiomack\.com$/i, /(^|\.)bandcamp\.com$/i,
+];
+const IMAGE_HOST_RE = [/(^|\.)imgur\.com$/i, /(^|\.)i\.ibb\.co$/i, /(^|\.)ibb\.co$/i, /(^|\.)pixeldrain\.com$/i];
+
+const hostMatches = (raw: string, res: RegExp[]) => {
   const url = raw.trim();
   if (!url) return true;
-  try { return ALLOWED_HOST_RE.some((re) => re.test(new URL(url).hostname)); } catch { return false; }
+  try { return res.some((re) => re.test(new URL(url).hostname)); } catch { return false; }
+};
+const isOwnHostedImage = (url: string) => url.trim().startsWith('/api/community/image');
+const isAllowedImage = (raw: string) => (raw.trim() ? isOwnHostedImage(raw) || hostMatches(raw, IMAGE_HOST_RE) : true);
+const isAllowedAudio = (raw: string) => hostMatches(raw, AUDIO_HOST_RE);
+const isAllowedStreaming = (raw: string) => hostMatches(raw, STREAMING_HOST_RE);
+function isAllowedSongLink(raw: string, tab: string): boolean {
+  if (tab === 'art') return isAllowedImage(raw);
+  if (tab === 'released') return isAllowedStreaming(raw);
+  return isAllowedAudio(raw);
 }
 
 async function api(path: string, method: string, body?: unknown): Promise<Response> {
@@ -54,6 +79,18 @@ async function api(path: string, method: string, body?: unknown): Promise<Respon
   });
 }
 
+// Upload a device image to R2 via the Worker, returning a hosted /api/community/image URL.
+async function uploadImage(file: File): Promise<string> {
+  const res = await fetch('/api/community/upload-image', {
+    method: 'POST',
+    headers: { 'Content-Type': file.type || 'application/octet-stream', Authorization: `Bearer ${getToken()}` },
+    body: file,
+  });
+  const d = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(d.error || 'Upload failed');
+  return d.url as string;
+}
+
 // ── Styles ──────────────────────────────────────────────────────────
 const card: React.CSSProperties = { background: '#111827', border: '1px solid #1f2937', borderRadius: 14, padding: 20, marginBottom: 18 };
 const label: React.CSSProperties = { display: 'block', fontSize: 12, color: '#94a3b8', marginBottom: 4, fontWeight: 600 };
@@ -61,6 +98,53 @@ const input: React.CSSProperties = { width: '100%', background: '#0b1220', borde
 const btn: React.CSSProperties = { background: '#2563eb', color: '#fff', border: 'none', borderRadius: 8, padding: '9px 16px', fontWeight: 600, cursor: 'pointer', fontSize: 14 };
 const btnGhost: React.CSSProperties = { ...btn, background: 'transparent', border: '1px solid #334155', color: '#cbd5e1' };
 const btnDanger: React.CSSProperties = { ...btnGhost, borderColor: '#7f1d1d', color: '#fca5a5' };
+
+// Image picker: always supports device upload; when `allowLink` is set (the Art
+// tab) it also accepts a pasted image URL. `value` is whatever will be stored
+// (an uploaded /api/community/image URL or a pasted link).
+function ImageInput({ value, onChange, allowLink, placeholder }: {
+  value: string; onChange: (url: string) => void; allowLink?: boolean; placeholder?: string;
+}) {
+  const [uploading, setUploading] = useState(false);
+  const [err, setErr] = useState('');
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const pick = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (fileRef.current) fileRef.current.value = '';
+    if (!file) return;
+    setErr(''); setUploading(true);
+    try { onChange(await uploadImage(file)); }
+    catch (ex) { setErr((ex as Error).message); }
+    finally { setUploading(false); }
+  };
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+        <div style={{ width: 56, height: 56, borderRadius: 8, background: '#0b1220', border: '1px solid #263041', overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {value ? <img src={value} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ color: '#334155', fontSize: 20 }}>🖼</span>}
+        </div>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={pick} />
+          <button style={{ ...btnGhost, padding: '7px 13px', fontSize: 13 }} disabled={uploading} onClick={() => fileRef.current?.click()}>
+            {uploading ? 'Uploading…' : value ? 'Replace image' : 'Upload from device'}
+          </button>
+          {value && <button style={{ ...btnDanger, padding: '7px 11px', fontSize: 13 }} onClick={() => onChange('')}>Remove</button>}
+        </div>
+      </div>
+      {allowLink && (
+        <input
+          style={{ ...input, marginTop: 8 }}
+          value={isOwnHostedImage(value) ? '' : value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder || '…or paste an image link (imgur, ibb)'}
+        />
+      )}
+      {err && <p style={{ color: '#f87171', fontSize: 13, marginTop: 6 }}>{err}</p>}
+    </div>
+  );
+}
 
 export function CreateTrackerPage() {
   const { id } = useParams<{ id: string }>();
@@ -138,7 +222,7 @@ function NewTrackerForm({ onCreated }: { onCreated: (id: string) => void }) {
   const submit = async () => {
     setError('');
     if (!name.trim()) { setError('Tracker name is required'); return; }
-    if (logoUrl && !isAllowedLink(logoUrl)) { setError('Logo link must be imgur, ibb, pillowcase or pixeldrain'); return; }
+    if (logoUrl && !isAllowedImage(logoUrl)) { setError('Cover image is invalid'); return; }
     setBusy(true);
     const res = await api('/create', 'POST', { name, slug, description, accentColor, logoUrl });
     setBusy(false);
@@ -172,14 +256,14 @@ function NewTrackerForm({ onCreated }: { onCreated: (id: string) => void }) {
           <label style={label}>Description</label>
           <input style={input} value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Short blurb about the tracker" />
         </div>
-        <div style={{ display: 'flex', gap: 14, marginBottom: 14 }}>
+        <div style={{ display: 'flex', gap: 14, marginBottom: 14, flexWrap: 'wrap' }}>
           <div style={{ width: 120 }}>
             <label style={label}>Accent color</label>
             <input type="color" style={{ ...input, height: 40, padding: 4 }} value={accentColor} onChange={(e) => setAccentColor(e.target.value)} />
           </div>
-          <div style={{ flex: 1 }}>
-            <label style={label}>Cover / logo link (imgur, ibb…)</label>
-            <input style={input} value={logoUrl} onChange={(e) => setLogoUrl(e.target.value)} placeholder="https://i.ibb.co/…" />
+          <div style={{ flex: '1 1 220px' }}>
+            <label style={label}>Cover / logo</label>
+            <ImageInput value={logoUrl} onChange={setLogoUrl} />
           </div>
         </div>
         {error && <p style={{ color: '#f87171', fontSize: 13 }}>{error}</p>}
@@ -296,7 +380,7 @@ function MetaEditor({ meta, trackerId, onSaved }: { meta: TrackerMeta; trackerId
 
   const save = async () => {
     setErr('');
-    if (logoUrl && !isAllowedLink(logoUrl)) { setErr('Logo link host not allowed'); return; }
+    if (logoUrl && !isAllowedImage(logoUrl)) { setErr('Cover image is invalid'); return; }
     const res = await api(`/tracker/${trackerId}`, 'PUT', { name, description, accentColor, logoUrl });
     if (!res.ok) { const d = await res.json().catch(() => ({})); setErr(d.error || 'Save failed'); return; }
     onSaved({ ...meta, name, description, accent_color: accentColor, logo_url: logoUrl });
@@ -319,8 +403,8 @@ function MetaEditor({ meta, trackerId, onSaved }: { meta: TrackerMeta; trackerId
         <input style={input} value={description} onChange={(e) => setDescription(e.target.value)} />
       </div>
       <div style={{ marginBottom: 12 }}>
-        <label style={label}>Cover / logo link</label>
-        <input style={input} value={logoUrl} onChange={(e) => setLogoUrl(e.target.value)} placeholder="https://i.ibb.co/…" />
+        <label style={label}>Cover / logo</label>
+        <ImageInput value={logoUrl} onChange={setLogoUrl} />
       </div>
       {err && <p style={{ color: '#f87171', fontSize: 13 }}>{err}</p>}
       <button style={btnGhost} onClick={save}>Save details</button>
@@ -397,7 +481,7 @@ function EraForm({ trackerId, eraId, initial, submitLabel, onDone, onCancel }: {
   const submit = async () => {
     setErr('');
     if (!f.name.trim()) { setErr('Era name required'); return; }
-    if (f.image && !isAllowedLink(f.image)) { setErr('Cover link host not allowed'); return; }
+    if (f.image && !isAllowedImage(f.image)) { setErr('Cover image is invalid'); return; }
     setBusy(true);
     const res = eraId
       ? await api(`/tracker/${trackerId}/era`, 'PUT', { eraId, ...f })
@@ -421,8 +505,8 @@ function EraForm({ trackerId, eraId, initial, submitLabel, onDone, onCancel }: {
         </div>
       </div>
       <div style={{ marginBottom: 10 }}>
-        <label style={label}>Cover link</label>
-        <input style={input} value={f.image} onChange={(e) => set('image', e.target.value)} placeholder="https://i.ibb.co/…" />
+        <label style={label}>Cover image</label>
+        <ImageInput value={f.image} onChange={(v) => set('image', v)} />
       </div>
       <div style={{ marginBottom: 10 }}>
         <label style={label}>Description</label>
@@ -478,10 +562,18 @@ function SongForm({ trackerId, eraId, songId, initial, submitLabel, onDone, onCa
   const [busy, setBusy] = useState(false);
   const set = (k: keyof SongFormValues, v: string) => setF((p) => ({ ...p, [k]: v }));
 
+  const isArt = f.tab === 'art';
+  const isReleased = f.tab === 'released';
+
   const submit = async () => {
     setErr('');
-    if (!f.name.trim()) { setErr('Song name required'); return; }
-    if (f.url && !isAllowedLink(f.url)) { setErr('Audio link must be pillowcase, pixeldrain, imgur or krakenfiles'); return; }
+    if (!f.name.trim()) { setErr(isArt ? 'Title required' : 'Song name required'); return; }
+    if (f.url && !isAllowedSongLink(f.url, f.tab)) {
+      setErr(isArt ? 'Art must be an image link or uploaded image'
+        : isReleased ? 'Released needs a streaming link (Spotify, YouTube, Apple Music…)'
+        : 'Audio link must be pillowcase, pixeldrain, imgur or krakenfiles');
+      return;
+    }
     setBusy(true);
     const res = songId
       ? await api(`/tracker/${trackerId}/song`, 'PUT', { songId, eraId, ...f })
@@ -498,37 +590,69 @@ function SongForm({ trackerId, eraId, songId, initial, submitLabel, onDone, onCa
       <input style={input} value={f[key]} onChange={(e) => set(key, e.target.value)} placeholder={placeholder} />
     </div>
   );
+  const selectField = (key: keyof SongFormValues, lbl: string, options: string[]) => (
+    <div style={{ flex: '1 1 150px' }}>
+      <label style={label}>{lbl}</label>
+      <select style={input} value={f[key]} onChange={(e) => set(key, e.target.value)}>
+        <option value="">—</option>
+        {options.map((o) => <option key={o} value={o}>{o}</option>)}
+      </select>
+    </div>
+  );
 
   return (
     <div style={{ ...card, borderStyle: 'dashed', marginTop: 8, marginBottom: 8 }}>
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 10 }}>
-        {field('name', 'Song name *')}
-        {field('extra', 'Subtitle / alt name')}
-        {field('credited', 'Credited people', 'prod. …, feat. …')}
-      </div>
-      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 10 }}>
-        {field('quality', 'Quality', 'CDQ / 320…')}
-        {field('availableLength', 'Availability', 'Full / Snippet…')}
-        {field('trackLength', 'Track length', '3:24')}
-      </div>
-      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 10 }}>
-        {field('leakDate', 'Leak date')}
-        {field('fileDate', 'File date')}
         <div style={{ flex: '1 1 150px' }}>
-          <label style={label}>Tab</label>
+          <label style={label}>Section</label>
           <select style={input} value={f.tab} onChange={(e) => set('tab', e.target.value)}>
-            {SONG_TABS.map((t) => <option key={t} value={t}>{t}</option>)}
+            {SONG_TABS.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
           </select>
         </div>
+        {field('name', isArt ? 'Title *' : 'Song name *')}
+        {!isArt && field('credited', 'Credited people', 'prod. …, feat. …')}
       </div>
+
+      {!isArt && (
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 10 }}>
+          {field('extra', 'Subtitle / alt name')}
+          {!isReleased && selectField('quality', 'Quality', QUALITY_OPTIONS)}
+          {!isReleased && selectField('availableLength', 'Availability', AVAILABILITY_OPTIONS)}
+        </div>
+      )}
+
+      {f.tab === 'unreleased' && (
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 10 }}>
+          {field('trackLength', 'Track length', '3:24')}
+          {field('leakDate', 'Leak date')}
+          {field('fileDate', 'File date')}
+        </div>
+      )}
+
       <div style={{ marginBottom: 10 }}>
         <label style={label}>Notes</label>
         <input style={input} value={f.notes} onChange={(e) => set('notes', e.target.value)} />
       </div>
-      <div style={{ marginBottom: 10 }}>
-        <label style={label}>Audio link (pillowcase / pixeldrain / imgur)</label>
-        <input style={input} value={f.url} onChange={(e) => set('url', e.target.value)} placeholder="https://pillowcase.su/f/…" />
-      </div>
+
+      {isArt ? (
+        <div style={{ marginBottom: 10 }}>
+          <label style={label}>Image (upload from device or paste a link)</label>
+          <ImageInput value={f.url} onChange={(v) => set('url', v)} allowLink />
+        </div>
+      ) : (
+        <div style={{ marginBottom: 10 }}>
+          <label style={label}>
+            {isReleased ? 'Streaming link (Spotify / YouTube / Apple Music…)' : 'Audio link (pillowcase / pixeldrain / imgur)'}
+          </label>
+          <input
+            style={input}
+            value={f.url}
+            onChange={(e) => set('url', e.target.value)}
+            placeholder={isReleased ? 'https://open.spotify.com/track/…' : 'https://pillowcase.su/f/…'}
+          />
+        </div>
+      )}
+
       {err && <p style={{ color: '#f87171', fontSize: 13 }}>{err}</p>}
       <div style={{ display: 'flex', gap: 8 }}>
         <button style={{ ...btn, opacity: busy ? 0.6 : 1 }} disabled={busy} onClick={submit}>{busy ? 'Saving…' : submitLabel}</button>

@@ -1,5 +1,5 @@
 import {
-  ensureCommunityTables, json, resolveUser, canEditTracker, isAllowedLink, genId, nowIso,
+  ensureCommunityTables, json, resolveUser, canEditTracker, isAllowedSongLink, genId, nowIso,
   SONG_TABS, type CommunityTrackerRow,
 } from '../../_db';
 
@@ -40,6 +40,12 @@ function touch(env: Env, trackerId: string) {
   return env.DB.prepare('UPDATE community_trackers SET updated_at = ? WHERE id = ?').bind(nowIso(), trackerId).run();
 }
 
+function linkError(tab: string): string {
+  if (tab === 'art') return 'Art links must be an image (imgur / ibb) or an uploaded image';
+  if (tab === 'released') return 'Released links must be a streaming URL (Spotify, YouTube, Apple Music, SoundCloud…)';
+  return 'Audio links must be a pillowcase, pixeldrain, imgur or krakenfiles URL';
+}
+
 // POST /api/community/tracker/:id/song — add a song to an era.
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const g = await guard(context);
@@ -53,10 +59,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const name = (body.name || '').trim();
   if (!name) return json({ error: 'Song name is required' }, 400);
   if (!body.eraId) return json({ error: 'eraId required' }, 400);
-  if (!isAllowedLink(body.url)) {
-    return json({ error: 'Audio links must be a pillowcase, pixeldrain, imgur or krakenfiles URL' }, 400);
-  }
   const tab = SONG_TABS.includes((body.tab || 'unreleased') as typeof SONG_TABS[number]) ? body.tab! : 'unreleased';
+  if (!isAllowedSongLink(body.url, tab)) {
+    return json({ error: linkError(tab) }, 400);
+  }
 
   // Confirm the era belongs to this tracker.
   const era = await env.DB.prepare('SELECT id FROM community_eras WHERE id = ? AND tracker_id = ?')
@@ -92,10 +98,10 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
   try { body = await request.json(); } catch { return json({ error: 'Invalid body' }, 400); }
   if (!body.songId) return json({ error: 'songId required' }, 400);
   if (body.name !== undefined && !body.name.trim()) return json({ error: 'Song name cannot be empty' }, 400);
-  if (!isAllowedLink(body.url)) {
-    return json({ error: 'Audio links must be a pillowcase, pixeldrain, imgur or krakenfiles URL' }, 400);
-  }
   const tab = body.tab && SONG_TABS.includes(body.tab as typeof SONG_TABS[number]) ? body.tab : null;
+  if (!isAllowedSongLink(body.url, tab || 'unreleased')) {
+    return json({ error: linkError(tab || 'unreleased') }, 400);
+  }
 
   await env.DB.prepare(
     `UPDATE community_songs

@@ -152,6 +152,20 @@ import { initDataSync, scheduleDataPush } from './dataSync';
 import { recordListeningHistory } from './history';
 import { activeConfig } from './artists/activeConfig';
 
+// When viewing a community (user-built) tracker, attach the signed-in account's
+// token to our own /api/ data requests. This lets the creator/admin preview a
+// draft/pending tracker before it's approved; official trackers are unaffected.
+axios.interceptors.request.use((config) => {
+  const url = config.url || '';
+  if (activeConfig.community && url.startsWith('/api/')) {
+    const token = localStorage.getItem('vg_token');
+    if (token && config.headers) {
+      (config.headers as unknown as Record<string, string>).Authorization = `Bearer ${token}`;
+    }
+  }
+  return config;
+});
+
 export default function App() {
   // Read artist config at component render time (after setActiveConfig was called by ArtistRoute)
   const { STORAGE_PREFIX, HARDCODED_SHEET_ID, HARDCODED_SHEET_GID, SHEET_URL_UNRELEASED, SHEET_URL_RECENT, SHEET_URL_RECENT_PRODUCTION, ERA_MAPPINGS, CUSTOM_ALBUM_INFO, slug: ARTIST_SLUG } = activeConfig;
