@@ -16,6 +16,7 @@
 import axios from 'axios';
 import { useCallback, useSyncExternalStore } from 'react';
 import type { Song, Era } from '../types';
+import { parseArtistFromSong } from '../lastfm';
 
 export type ActivePlayer = 'audio' | 'spotify' | 'youtube' | 'soundcloud';
 
@@ -81,6 +82,12 @@ export function getState(): AudioState {
 export function setState(patch: Partial<AudioState>) {
   state = { ...state, ...patch };
   emit();
+  // Whenever the queue position changes (from App's direct playback path or the
+  // store's own), invalidate + rebuild the next-track prefetch so a locked-screen
+  // `ended` can advance synchronously. See advancePrefetchedSync / handleEnded.
+  if ('currentSongIndex' in patch || 'playlist' in patch || 'isShuffle' in patch || 'shuffledQueue' in patch) {
+    schedulePreloadNext();
+  }
 }
 
 // --- Persistent <audio> element -------------------------------------------
@@ -320,9 +327,11 @@ export function playAudioStream(opts: {
   playlist: Song[];
   index: number;
   autoPlay?: boolean;
+  artwork?: string;
+  artistLabel?: string;
 }) {
   const autoPlay = opts.autoPlay ?? true;
-  setState({
+  const patch: Partial<AudioState> = {
     activePlayer: 'audio',
     currentSong: opts.song,
     currentEra: opts.era,
@@ -330,7 +339,10 @@ export function playAudioStream(opts: {
     currentSongIndex: opts.index,
     hasLoopedOnce: false,
     isPlaying: autoPlay,
-  });
+  };
+  if (opts.artwork !== undefined) patch.currentArtwork = opts.artwork;
+  if (opts.artistLabel !== undefined) patch.currentArtistLabel = opts.artistLabel;
+  setState(patch);
   const a = getAudioEl();
   if (a) {
     a.src = opts.streamUrl;
@@ -338,6 +350,86 @@ export function playAudioStream(opts: {
     a.volume = state.volume;
     if (autoPlay) playSafe(a);
   }
+  updateMediaSession();
+  // The setState above already scheduled a next-track prefetch (queue position
+  // changed); no explicit call needed here.
+}
+
+// Play an arbitrary list of songs through the global engine, resolving the
+// first stream URL. Used by the homepage Playlists page (where the per-artist
+// <App> is not mounted) so a globally-mixed playlist plays cross-tracker.
+// Each song should carry `.image`/`.artist`/`.realEra` so artwork, the artist
+// label, and next/prev advancement resolve without that tracker being loaded.
+export async function playSongList(songs: Song[], startIndex: number, era: Era): Promise<void> {
+  const song = songs[startIndex];
+  if (!song) return;
+  const rawUrl = song.url || (song.urls && song.urls[0]) || '';
+  if (!rawUrl) return;
+  const streamUrl = await resolveStreamUrl(rawUrl);
+  if (!streamUrl) return;
+  const realEra = (song as any).realEra || era;
+  playAudioStream({
+    song,
+    era: realEra,
+    streamUrl,
+    playlist: songs,
+    index: startIndex,
+    autoPlay: true,
+    artwork: (song as any).image || song.image || realEra?.image || '',
+    artistLabel: (song as any).artist || parseArtistFromSong(song.name, song.extra, realEra?.name),
+  });
+}
+
+// --- Next-track prefetch (mobile background continuity) ---------------------
+// iOS suspends JS when the screen locks; only the <audio> element + media
+// session keep running. If advancing on `ended` had to `await` a URL resolve
+// before calling play(), iOS blocks it and playback dies on lock. So we resolve
+// the upcoming track ahead of time and swap it in synchronously in handleEnded.
+let nextResolved: { index: number; url: string } | null = null;
+let preloadTimer: ReturnType<typeof setTimeout> | null = null;
+
+function schedulePreloadNext(): void {
+  nextResolved = null;
+  if (preloadTimer) clearTimeout(preloadTimer);
+  preloadTimer = setTimeout(() => { preloadTimer = null; void preloadNext(); }, 400);
+}
+
+async function preloadNext(): Promise<void> {
+  const idx = computeAdjacentIndex(1);
+  if (idx === null) return;
+  const song = state.playlist[idx];
+  if (!song) return;
+  const rawUrl = song.url || (song.urls && song.urls[0]) || '';
+  if (!rawUrl || !isDirectlyPlayableAudio(rawUrl)) return;
+  try {
+    const url = await resolveStreamUrl(rawUrl);
+    if (url) nextResolved = { index: idx, url };
+  } catch { /* best-effort */ }
+}
+
+function metaArtwork(song: Song, era: Era | null): string {
+  return state.currentArtwork || (song as any).image || song.image || era?.image || '';
+}
+
+function updateMediaSession(): void {
+  if (typeof navigator === 'undefined' || !('mediaSession' in navigator)) return;
+  const song = state.currentSong;
+  if (!song) return;
+  const era = state.currentEra;
+  const eraName = (song as any).realEra?.name || era?.name || '';
+  const cover = metaArtwork(song, era);
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: song.name.includes(' - ') ? song.name.substring(song.name.indexOf(' - ') + 3) : song.name,
+      artist: state.currentArtistLabel || parseArtistFromSong(song.name, song.extra, eraName),
+      album: eraName,
+      artwork: cover ? [{ src: cover, sizes: '512x512' }, { src: cover, sizes: '256x256' }] : [],
+    });
+    navigator.mediaSession.setActionHandler('play', () => play());
+    navigator.mediaSession.setActionHandler('pause', () => pause());
+    navigator.mediaSession.setActionHandler('nexttrack', () => playNext());
+    navigator.mediaSession.setActionHandler('previoustrack', () => playPrev());
+  } catch { /* unsupported action */ }
 }
 
 function computeAdjacentIndex(direction: 1 | -1): number | null {
@@ -393,6 +485,36 @@ export function playPrev() {
   advanceAudioOnly(-1);
 }
 
+// Advance to the prefetched next track synchronously (no await), so playback
+// continues even when the screen is locked / the tab is backgrounded on mobile.
+// Returns false if there's no usable prefetch (caller falls back to playNext).
+function advancePrefetchedSync(): boolean {
+  const idx = computeAdjacentIndex(1);
+  if (idx === null || !nextResolved || nextResolved.index !== idx) return false;
+  const song = state.playlist[idx];
+  if (!song) return false;
+  const era = (song as any).realEra || state.currentEra;
+  const a = getAudioEl();
+  if (!a) return false;
+  a.src = nextResolved.url;
+  a.load();
+  a.volume = state.volume;
+  playSafe(a);
+  setState({
+    currentSong: song,
+    currentEra: era,
+    currentSongIndex: idx,
+    hasLoopedOnce: false,
+    isPlaying: true,
+    currentArtwork: (song as any).image || song.image || era?.image || '',
+    currentArtistLabel: (song as any).artist || parseArtistFromSong(song.name, song.extra, era?.name),
+  });
+  updateMediaSession();
+  nextResolved = null;
+  void preloadNext();
+  return true;
+}
+
 function handleEnded() {
   const { loopMode, hasLoopedOnce } = state;
   const a = getAudioEl();
@@ -417,7 +539,9 @@ function handleEnded() {
     setState({ hasLoopedOnce: false });
   }
 
-  playNext();
+  // Prefer the synchronous prefetched advance (survives a locked screen); only
+  // fall back to the host/async path when no prefetch is ready.
+  if (!advancePrefetchedSync()) playNext();
 }
 
 // --- React bindings ---------------------------------------------------------

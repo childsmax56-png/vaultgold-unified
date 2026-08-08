@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Plus, Check, ListMusic } from 'lucide-react';
-import { usePlaylists } from '../PlaylistContext';
-import { Song } from '../types';
+import { useGlobalPlaylists } from '../GlobalPlaylistContext';
+import { activeConfig } from '../artists/activeConfig';
+import { Song, PlaylistSong } from '../types';
 
 interface Props {
   song: Song;
@@ -11,8 +12,24 @@ interface Props {
 }
 
 export function AddToPlaylistButton({ song, eraName, url, isCurrentlyPlaying }: Props) {
-  const { playlists, addToPlaylist, createPlaylist } = usePlaylists();
+  const { playlists, addToPlaylist, createPlaylist } = useGlobalPlaylists();
   const [open, setOpen] = useState(false);
+
+  // Capture the source tracker + display artwork/artist so this song is
+  // playable/renderable from the global (cross-tracker) playlist.
+  const buildEntry = (): PlaylistSong => {
+    const cleanSong = { ...song };
+    delete (cleanSong as any).realEra;
+    return {
+      songName: song.name,
+      eraName,
+      url,
+      song: cleanSong,
+      tracker: activeConfig.slug,
+      image: song.image || activeConfig.logoUrl,
+      artist: activeConfig.getArtistName(eraName),
+    };
+  };
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
@@ -37,25 +54,24 @@ export function AddToPlaylistButton({ song, eraName, url, isCurrentlyPlaying }: 
 
   const handleAdd = (e: React.MouseEvent, playlistId: string) => {
     e.stopPropagation();
-    const cleanSong = { ...song };
-    delete (cleanSong as any).realEra;
-    addToPlaylist(playlistId, { songName: song.name, eraName, url, song: cleanSong });
+    addToPlaylist(playlistId, buildEntry());
     setOpen(false);
   };
 
   const handleCreate = (e: React.MouseEvent | React.KeyboardEvent) => {
     e.stopPropagation();
     if (!newName.trim()) return;
-    const cleanSong = { ...song };
-    delete (cleanSong as any).realEra;
     const id = createPlaylist(newName.trim());
-    addToPlaylist(id, { songName: song.name, eraName, url, song: cleanSong });
+    addToPlaylist(id, buildEntry());
     setNewName('');
     setCreating(false);
     setOpen(false);
   };
 
-  const isInAnyPlaylist = playlists.some(p => p.songs.some(s => s.songName === song.name && s.url === url));
+  // The Favorites list is read-only (managed by the heart button) — exclude it
+  // from the "add to playlist" menu.
+  const targetPlaylists = playlists.filter(p => !p.readonly);
+  const isInAnyPlaylist = targetPlaylists.some(p => p.songs.some(s => s.songName === song.name && s.url === url));
 
   return (
     <div className="relative" ref={menuRef}>
@@ -77,10 +93,10 @@ export function AddToPlaylistButton({ song, eraName, url, isCurrentlyPlaying }: 
         <>
           <div className="fixed inset-0 z-40" onClick={(e) => { e.stopPropagation(); setOpen(false); setCreating(false); setNewName(''); }} />
           <div className="absolute right-0 top-full mt-1 z-50 bg-[#1a1a1a] border border-white/10 rounded-lg shadow-2xl min-w-[200px] overflow-hidden">
-            {playlists.length === 0 && !creating && (
+            {targetPlaylists.length === 0 && !creating && (
               <div className="px-4 py-2 text-xs text-white/40">No playlists yet</div>
             )}
-            {playlists.map(p => {
+            {targetPlaylists.map(p => {
               const inPlaylist = p.songs.some(s => s.songName === song.name && s.url === url);
               return (
                 <button
@@ -124,7 +140,7 @@ export function AddToPlaylistButton({ song, eraName, url, isCurrentlyPlaying }: 
             ) : (
               <button
                 onClick={(e) => { e.stopPropagation(); setCreating(true); }}
-                className={`w-full flex items-center gap-2 px-4 py-2 text-sm text-left text-white/50 hover:text-white hover:bg-white/5 transition-colors ${playlists.length > 0 ? 'border-t border-white/10' : ''}`}
+                className={`w-full flex items-center gap-2 px-4 py-2 text-sm text-left text-white/50 hover:text-white hover:bg-white/5 transition-colors ${targetPlaylists.length > 0 ? 'border-t border-white/10' : ''}`}
               >
                 <Plus className="w-3.5 h-3.5" />
                 New playlist...

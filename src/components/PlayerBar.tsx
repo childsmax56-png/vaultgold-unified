@@ -9,6 +9,7 @@ import { handleShareSilent } from './EraDetail';
 import { LyricsModal } from './LyricsModal';
 import { useSettings } from '../SettingsContext';
 import { usePlaylists } from '../PlaylistContext';
+import { activeConfig } from '../artists/activeConfig';
 
 function formatTime(seconds: number) {
   if (isNaN(seconds)) return '0:00';
@@ -183,19 +184,29 @@ export function PlayerBar({
 
   const playlistEraName = (currentSong as any).realEra?.name || era?.name || '';
 
-  const handleAddToPlaylist = (playlistId: string) => {
+  const buildPlaylistEntry = () => {
     const cleanSong = { ...currentSong };
     delete (cleanSong as any).realEra;
-    addToPlaylist(playlistId, { songName: currentSong.name, eraName: playlistEraName, url: rawUrl, song: cleanSong });
+    return {
+      songName: currentSong.name,
+      eraName: playlistEraName,
+      url: rawUrl,
+      song: cleanSong,
+      tracker: activeConfig.slug,
+      image: currentSong.image || activeConfig.logoUrl,
+      artist: activeConfig.getArtistName(playlistEraName),
+    };
+  };
+
+  const handleAddToPlaylist = (playlistId: string) => {
+    addToPlaylist(playlistId, buildPlaylistEntry());
     setShowPlaylistMenu(false);
   };
 
   const handleCreatePlaylist = () => {
     if (!newPlaylistName.trim()) return;
-    const cleanSong = { ...currentSong };
-    delete (cleanSong as any).realEra;
     const id = createPlaylist(newPlaylistName.trim());
-    addToPlaylist(id, { songName: currentSong.name, eraName: playlistEraName, url: rawUrl, song: cleanSong });
+    addToPlaylist(id, buildPlaylistEntry());
     setNewPlaylistName('');
     setCreatingPlaylist(false);
     setShowPlaylistMenu(false);

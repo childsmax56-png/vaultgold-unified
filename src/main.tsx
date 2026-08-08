@@ -22,13 +22,15 @@ import { PrivacyPage } from './PrivacyPage.tsx';
 import { DownloadPage } from './DownloadPage.tsx';
 import { CreateTrackerPage } from './CreateTrackerPage.tsx';
 import { CommunityPage } from './CommunityPage.tsx';
+import { PlaylistsPage } from './PlaylistsPage.tsx';
+import { GlobalPlaylistProvider } from './GlobalPlaylistContext.tsx';
 import { GlobalMiniPlayer } from './player/GlobalMiniPlayer.tsx';
 
 // Top-level path segments that are app routes, not trackers. Anything else is a
 // tracker slug (official registry first, then the community fallback).
 const RESERVED_TOP_SEGMENTS = new Set([
   'my-tracker', 'game', 'yeditsgold', 'listening', 'tierlist',
-  'terms', 'privacy', 'download', 'create-tracker', 'community',
+  'terms', 'privacy', 'download', 'create-tracker', 'community', 'playlists',
 ]);
 
 // Renders the persistent mini player on any route where the per-artist <App>
@@ -109,6 +111,7 @@ function ArtistRoute() {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <DownloadManagerProvider>
+      <GlobalPlaylistProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
@@ -121,12 +124,14 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/download" element={<DownloadPage />} />
           <Route path="/community" element={<SettingsProvider><CommunityPage /></SettingsProvider>} />
+          <Route path="/playlists" element={<SettingsProvider><PlaylistsPage /></SettingsProvider>} />
           <Route path="/create-tracker" element={<SettingsProvider><CreateTrackerPage /></SettingsProvider>} />
           <Route path="/create-tracker/:id" element={<SettingsProvider><CreateTrackerPage /></SettingsProvider>} />
           <Route path="/:artist/*" element={<ArtistRoute />} />
         </Routes>
         <GlobalPlayerMount />
       </BrowserRouter>
+      </GlobalPlaylistProvider>
       <DownloadProgressWidget />
     </DownloadManagerProvider>
   </StrictMode>,

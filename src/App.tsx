@@ -143,7 +143,6 @@ import { ReleasedView, ReleasedEntry } from './components/ReleasedView';
 import { VideosView, VideoRawEntry } from './components/VideosView';
 import { SubAlbumsView, SubAlbumEntry } from './components/SubAlbumsView';
 import { ChatBubble } from './components/ChatBubble';
-import { PlaylistsView } from './components/PlaylistsView';
 import { TimelineView } from './components/TimelineView';
 import { ImportPlaylistModal } from './components/ImportPlaylistModal';
 import { useSettings, LOADING_SCREENS, LoadingScreenId } from './SettingsContext';
@@ -364,8 +363,11 @@ export default function App() {
     }
     // Mirror the change to the user's account. Skip the mount write so we don't
     // push before the initial cloud pull has populated local state.
-    if (favMountedRef.current) scheduleDataPush();
-    else favMountedRef.current = true;
+    if (favMountedRef.current) {
+      scheduleDataPush();
+      // Let the global Favorites playlist (GlobalPlaylistContext) rebuild.
+      window.dispatchEvent(new CustomEvent('vg-favorites-changed'));
+    } else favMountedRef.current = true;
   }, [favoriteKeys]);
 
   // Pull this tracker's cloud favorites/playlists once on load (and on artist
@@ -3240,15 +3242,6 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                     setActiveCategory(isHidden ? 'related' : 'music');
                   }}
                 />
-              ) : activeCategory === 'playlists' ? (
-                <PlaylistsView
-                  key="playlists"
-                  eras={[...erasArray, ...relatedErasArray]}
-                  artData={artData}
-                  searchQuery={searchQuery}
-                  onPlaySong={handlePlaySong}
-                  onToast={showToast}
-                />
               ) : activeCategory === 'concerts' ? (
                 <ConcertsView
                   key="concerts"
@@ -3773,7 +3766,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
           url.searchParams.delete('playlist');
           window.history.replaceState({}, '', url.toString());
         }}
-        onNavigatePlaylists={() => setActiveCategory('playlists')}
+        onNavigatePlaylists={() => { window.location.href = '/playlists'; }}
       />
     )}
     </PlaylistProvider>

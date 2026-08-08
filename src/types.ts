@@ -45,6 +45,12 @@ export interface PlaylistSong {
   eraName: string;
   url: string;
   song?: Song;
+  // Global playlists mix songs from many trackers, so each entry remembers its
+  // source tracker slug + display artwork/artist so it can be played and shown
+  // without that tracker's full data being loaded.
+  tracker?: string;
+  image?: string;
+  artist?: string;
 }
 
 export interface UserPlaylist {
@@ -52,6 +58,9 @@ export interface UserPlaylist {
   name: string;
   cover?: string;
   songs: PlaylistSong[];
+  // Reserved auto-playlists (e.g. the derived "Favorites" list) are not stored
+  // or user-editable song-wise; they are rebuilt from other state.
+  readonly?: boolean;
 }
 
 export interface SearchFilters {

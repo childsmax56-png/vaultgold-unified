@@ -1451,6 +1451,15 @@ export function LandingPage() {
           watermark="YE"
         />
         <BigLinkCard
+          href="/playlists"
+          accent="#F43F5E"
+          badge="Music"
+          titleMain="YOUR"
+          titleAccent="PLAYLISTS"
+          subtitle="Favorites & custom playlists from every tracker"
+          watermark="PL"
+        />
+        <BigLinkCard
           href="/tierlist"
           accent="#FF5C8A"
           badge="Rank"

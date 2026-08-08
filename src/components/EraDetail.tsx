@@ -494,7 +494,8 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
       const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
       const cleanSong = { ...song };
       delete (cleanSong as any).realEra;
-      addToPlaylist(playlistId, { songName: song.name, eraName: (song as any).realEra?.name || era.name, url: rawUrl, song: cleanSong });
+      const entryEra = (song as any).realEra?.name || era.name;
+      addToPlaylist(playlistId, { songName: song.name, eraName: entryEra, url: rawUrl, song: cleanSong, tracker: activeConfig.slug, image: song.image || activeConfig.logoUrl, artist: activeConfig.getArtistName(entryEra) });
     });
     setToastMessage(`Added ${toAdd.length} song${toAdd.length !== 1 ? 's' : ''} to playlist`);
     setTimeout(() => setToastMessage(null), 3000);

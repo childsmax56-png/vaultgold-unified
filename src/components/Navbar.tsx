@@ -51,7 +51,6 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'yedits', label: 'Yedit Affiliates' },
   { key: 'comps', label: 'Comps' },
   { key: 'videos', label: 'Videos' },
-  { key: 'playlists', label: 'Playlists' },
   { key: 'subalbums', label: 'Sub Albums' },
   { key: 'concerts', label: 'Concerts' },
   { key: 'production', label: 'Production Projects' },

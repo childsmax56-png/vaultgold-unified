@@ -1,105 +1,24 @@
-import { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
-import { UserPlaylist, PlaylistSong } from './types';
-import { activeConfig } from './artists/activeConfig';
-import { scheduleDataPush } from './dataSync';
+// Compatibility shim.
+//
+// Playlists used to be per-tracker and lived here. They are now global and live
+// in GlobalPlaylistContext (mounted once at the app root in main.tsx). This shim
+// keeps the old `usePlaylists()` / `<PlaylistProvider>` API working for existing
+// call sites (PlayerBar, EraDetail, ImportPlaylistModal, YEditsGoldPage) while
+// pointing them at the single global store.
+//
+// New code should import from './GlobalPlaylistContext' directly.
+import { ReactNode } from 'react';
+import { useGlobalPlaylists } from './GlobalPlaylistContext';
 
-interface PlaylistContextValue {
-  playlists: UserPlaylist[];
-  createPlaylist: (name: string) => string;
-  renamePlaylist: (id: string, name: string) => void;
-  deletePlaylist: (id: string) => void;
-  addToPlaylist: (playlistId: string, entry: PlaylistSong) => void;
-  removeFromPlaylist: (playlistId: string, url: string, songName: string) => void;
-  moveSong: (playlistId: string, from: number, to: number) => void;
-  setCover: (id: string, cover: string) => void;
-}
-
-const PlaylistContext = createContext<PlaylistContextValue | null>(null);
-
+// The global provider is already mounted at the root, so this is a passthrough.
 export function PlaylistProvider({ children }: { children: ReactNode }) {
-  // Per-artist key: the provider remounts on artist change (key={slug}), so
-  // activeConfig points at the active tracker for this mount.
-  const storageKey = `${activeConfig.STORAGE_PREFIX}playlists`;
-
-  const [playlists, setPlaylists] = useState<UserPlaylist[]>(() => {
-    try {
-      const s = localStorage.getItem(storageKey);
-      return s ? JSON.parse(s) : [];
-    } catch {
-      return [];
-    }
-  });
-
-  // Skip the mount write so we don't push before the initial cloud pull lands.
-  const mountedRef = useRef(false);
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(playlists));
-    if (mountedRef.current) scheduleDataPush();
-    else mountedRef.current = true;
-  }, [playlists, storageKey]);
-
-  useEffect(() => {
-    const handler = () => {
-      try {
-        const s = localStorage.getItem(storageKey);
-        if (s) setPlaylists(JSON.parse(s));
-      } catch {}
-    };
-    window.addEventListener('vg-data-synced', handler);
-    return () => window.removeEventListener('vg-data-synced', handler);
-  }, [storageKey]);
-
-  const createPlaylist = (name: string): string => {
-    const id = Math.random().toString(36).slice(2, 10);
-    setPlaylists(prev => [...prev, { id, name, songs: [] }]);
-    return id;
-  };
-
-  const renamePlaylist = (id: string, name: string) => {
-    setPlaylists(prev => prev.map(p => p.id === id ? { ...p, name } : p));
-  };
-
-  const deletePlaylist = (id: string) => {
-    setPlaylists(prev => prev.filter(p => p.id !== id));
-  };
-
-  const addToPlaylist = (playlistId: string, entry: PlaylistSong) => {
-    setPlaylists(prev => prev.map(p => {
-      if (p.id !== playlistId) return p;
-      if (p.songs.some(s => s.songName === entry.songName && s.url === entry.url)) return p;
-      return { ...p, songs: [...p.songs, entry] };
-    }));
-  };
-
-  const removeFromPlaylist = (playlistId: string, url: string, songName: string) => {
-    setPlaylists(prev => prev.map(p =>
-      p.id !== playlistId ? p : { ...p, songs: p.songs.filter(s => !(s.songName === songName && s.url === url)) }
-    ));
-  };
-
-  const setCover = (id: string, cover: string) => {
-    setPlaylists(prev => prev.map(p => p.id === id ? { ...p, cover } : p));
-  };
-
-  const moveSong = (playlistId: string, from: number, to: number) => {
-    setPlaylists(prev => prev.map(p => {
-      if (p.id !== playlistId) return p;
-      const songs = [...p.songs];
-      const [item] = songs.splice(from, 1);
-      songs.splice(to, 0, item);
-      return { ...p, songs };
-    }));
-  };
-
-  return (
-    <PlaylistContext.Provider value={{ playlists, createPlaylist, renamePlaylist, deletePlaylist, addToPlaylist, removeFromPlaylist, moveSong, setCover }}>
-      {children}
-    </PlaylistContext.Provider>
-  );
+  return <>{children}</>;
 }
 
+// Legacy consumers expect only user-created playlists in their "add to playlist"
+// menus (there was no Favorites playlist before). Hide the derived read-only
+// Favorites list from them; everything else is the global store unchanged.
 export function usePlaylists() {
-  const ctx = useContext(PlaylistContext);
-  if (!ctx) throw new Error('usePlaylists must be used within PlaylistProvider');
-  return ctx;
+  const ctx = useGlobalPlaylists();
+  return { ...ctx, playlists: ctx.playlists.filter(p => !p.readonly) };
 }
