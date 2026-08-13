@@ -7,6 +7,7 @@ import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
 import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, ERA_DISCLAIMERS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , retryImageOnError, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { activeConfig } from '../artists/activeConfig';
+import { eraArtwork } from '../eraArtwork';
 import { addItemsToGlobalTierList, readGlobalTierLists } from '../tierListStore';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
@@ -495,7 +496,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
       const cleanSong = { ...song };
       delete (cleanSong as any).realEra;
       const entryEra = (song as any).realEra?.name || era.name;
-      addToPlaylist(playlistId, { songName: song.name, eraName: entryEra, url: rawUrl, song: cleanSong, tracker: activeConfig.slug, image: song.image || activeConfig.logoUrl, artist: activeConfig.getArtistName(entryEra) });
+      addToPlaylist(playlistId, { songName: song.name, eraName: entryEra, url: rawUrl, song: cleanSong, tracker: activeConfig.slug, image: eraArtwork(activeConfig.slug, entryEra) || (song as any).realEra?.image || era.image || song.image || activeConfig.logoUrl, artist: activeConfig.getArtistName(entryEra) });
     });
     setToastMessage(`Added ${toAdd.length} song${toAdd.length !== 1 ? 's' : ''} to playlist`);
     setTimeout(() => setToastMessage(null), 3000);

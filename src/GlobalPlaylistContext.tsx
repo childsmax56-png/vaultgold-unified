@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, useRef, useCallback, ReactNode } from 'react';
 import { UserPlaylist, PlaylistSong } from './types';
 import { ARTIST_LIST } from './artists/registry';
+import { eraArtwork } from './eraArtwork';
 import {
   GLOBAL_PLAYLISTS_KEY,
   scheduleGlobalPlaylistPush,
@@ -73,7 +74,7 @@ async function fetchCloudLegacyPlaylists(): Promise<UserPlaylist[]> {
             eraName: s.eraName,
             url: s.url ?? '',
             tracker: config.slug,
-            image: config.logoUrl,
+            image: eraArtwork(config.slug, s.eraName) || config.logoUrl,
             artist: config.getArtistName(s.eraName),
           })),
         });
@@ -110,7 +111,7 @@ function readLegacyLocalPlaylists(): UserPlaylist[] {
           url: s.url ?? s.song?.url ?? '',
           song: s.song,
           tracker: config.slug,
-          image: s.song?.image || config.logoUrl,
+          image: eraArtwork(config.slug, s.eraName) || s.song?.image || config.logoUrl,
           artist: config.getArtistName(s.eraName),
         })),
       });
@@ -141,7 +142,7 @@ function buildLocalFavorites(): PlaylistSong[] {
         url,
         tracker: config.slug,
         artist: config.getArtistName(f.eraName),
-        image: f.song?.image || config.logoUrl,
+        image: eraArtwork(config.slug, f.eraName) || f.song?.image || config.logoUrl,
         song: f.song,
       });
     }
@@ -179,7 +180,7 @@ export function GlobalPlaylistProvider({ children }: { children: ReactNode }) {
                 url: f.url,
                 tracker: slug,
                 artist: config.getArtistName(f.eraName),
-                image: config.logoUrl,
+                image: eraArtwork(slug, f.eraName) || config.logoUrl,
               });
             }
           }

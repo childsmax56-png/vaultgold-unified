@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Plus, Check, ListMusic } from 'lucide-react';
 import { useGlobalPlaylists } from '../GlobalPlaylistContext';
 import { activeConfig } from '../artists/activeConfig';
+import { eraArtwork } from '../eraArtwork';
 import { Song, PlaylistSong } from '../types';
 
 interface Props {
@@ -26,7 +27,7 @@ export function AddToPlaylistButton({ song, eraName, url, isCurrentlyPlaying }: 
       url,
       song: cleanSong,
       tracker: activeConfig.slug,
-      image: song.image || activeConfig.logoUrl,
+      image: eraArtwork(activeConfig.slug, eraName) || song.image || activeConfig.logoUrl,
       artist: activeConfig.getArtistName(eraName),
     };
   };

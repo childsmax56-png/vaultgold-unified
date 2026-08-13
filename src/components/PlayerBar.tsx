@@ -10,6 +10,7 @@ import { LyricsModal } from './LyricsModal';
 import { useSettings } from '../SettingsContext';
 import { usePlaylists } from '../PlaylistContext';
 import { activeConfig } from '../artists/activeConfig';
+import { eraArtwork } from '../eraArtwork';
 
 function formatTime(seconds: number) {
   if (isNaN(seconds)) return '0:00';
@@ -193,7 +194,7 @@ export function PlayerBar({
       url: rawUrl,
       song: cleanSong,
       tracker: activeConfig.slug,
-      image: currentSong.image || activeConfig.logoUrl,
+      image: eraArtwork(activeConfig.slug, playlistEraName) || currentSong.image || activeConfig.logoUrl,
       artist: activeConfig.getArtistName(playlistEraName),
     };
   };

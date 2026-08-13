@@ -7,7 +7,14 @@ import { saveAs } from 'file-saver';
 import { useGlobalPlaylists, FAVORITES_ID } from './GlobalPlaylistContext';
 import { UserPlaylist, PlaylistSong, Song, Era } from './types';
 import { ArtImage } from './components/ArtGallery';
+import { eraArtwork } from './eraArtwork';
 import * as audioStore from './player/audioStore';
+
+// Prefer the song's real era cover (bundled per tracker) over whatever was
+// stored (older entries stored the tracker logo). Falls back to the stored image.
+function songArtwork(entry: PlaylistSong): string | undefined {
+  return eraArtwork(entry.tracker, entry.eraName) || entry.image;
+}
 
 const ACCENT = '#C9A224';
 
@@ -40,11 +47,12 @@ function fileToCover(file: File): Promise<string> {
 // Build a playable Song (with a synthetic Era) from a stored playlist entry so a
 // globally-mixed playlist plays cross-tracker without loading that tracker.
 function entryToSong(entry: PlaylistSong): Song {
-  const era: Era = { name: entry.eraName || '', image: entry.image, data: {} };
+  const art = songArtwork(entry);
+  const era: Era = { name: entry.eraName || '', image: art, data: {} };
   const s: any = { ...(entry.song || {}) };
   s.name = entry.songName;
   s.url = entry.url || entry.song?.url || '';
-  s.image = entry.image || entry.song?.image;
+  s.image = art || entry.song?.image;
   s.extra = s.extra || entry.eraName;
   s.realEra = era;
   s.artist = entry.artist;
@@ -336,7 +344,7 @@ export function PlaylistsPage() {
                       <div key={`${entry.tracker}-${entry.url}-${i}`} className="group flex items-center px-4 md:px-6 py-2.5 hover:bg-white/5 transition-colors cursor-pointer" onClick={() => playEntries(selected.songs, i, false)}>
                         <span className="w-8 text-xs font-mono text-white/30 group-hover:text-white/60 shrink-0">{i + 1}</span>
                         <div className="w-9 h-9 rounded overflow-hidden shrink-0 bg-white/5 mr-3">
-                          {entry.image && <ArtImage url={entry.image} alt={entry.songName} />}
+                          {songArtwork(entry) && <ArtImage url={songArtwork(entry)!} alt={entry.songName} />}
                         </div>
                         <div className="flex-1 min-w-0 pr-4">
                           <div className="text-sm font-medium truncate">{entry.songName}</div>
