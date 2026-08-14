@@ -16,6 +16,7 @@ import { MyTrackerPage } from './MyTrackerPage.tsx';
 import { GamePage } from './GamePage.tsx';
 import { YEditsGoldPage } from './YEditsGoldPage.tsx';
 import { ListeningStatsPage } from './ListeningStatsPage.tsx';
+import { ForYouPage } from './ForYouPage.tsx';
 import { TierListPage } from './TierListPage.tsx';
 import { TermsPage } from './TermsPage.tsx';
 import { PrivacyPage } from './PrivacyPage.tsx';
@@ -31,6 +32,7 @@ import { GlobalMiniPlayer } from './player/GlobalMiniPlayer.tsx';
 const RESERVED_TOP_SEGMENTS = new Set([
   'my-tracker', 'game', 'yeditsgold', 'listening', 'tierlist',
   'terms', 'privacy', 'download', 'create-tracker', 'community', 'playlists',
+  'foryou',
 ]);
 
 // Renders the persistent mini player on any route where the per-artist <App>
@@ -119,6 +121,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/game" element={<GamePage />} />
           <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
           <Route path="/listening" element={<SettingsProvider><ListeningStatsPage /></SettingsProvider>} />
+          <Route path="/foryou" element={<SettingsProvider><ForYouPage /></SettingsProvider>} />
           <Route path="/tierlist" element={<SettingsProvider><TierListPage /></SettingsProvider>} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />

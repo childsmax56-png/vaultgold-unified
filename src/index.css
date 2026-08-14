@@ -52,6 +52,17 @@
   }
 }
 
+/* Hide the scrollbar entirely (used by the full-screen For You feed). */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
 @layer utilities {
   .glass-panel {
     background-color: var(--panel-bg);

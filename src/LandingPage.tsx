@@ -1469,6 +1469,15 @@ export function LandingPage() {
           watermark="TL"
         />
         <BigLinkCard
+          href="/foryou"
+          accent="#7C5CFF"
+          badge="New"
+          titleMain="FOR"
+          titleAccent="YOU"
+          subtitle="A feed picked from what you play"
+          watermark="FY"
+        />
+        <BigLinkCard
           href="/listening"
           accent="#7C5CFF"
           badge="Stats"
