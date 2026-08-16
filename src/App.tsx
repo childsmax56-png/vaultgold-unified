@@ -30,6 +30,20 @@ import * as audioStore from './player/audioStore';
 // Normalize multiline column headers (e.g. "Name\n(Check out the Tracker website!)") to
 // plain column names so views can access item.Name, item.Notes, etc.
 // Also maps music-videos-specific headers to the standard field names.
+// Reduce a song's credits line (the "(feat. …) (prod. …)" text) to an
+// order-independent key so that the same song listed with its producers/features
+// in a different order — common between the committed CSV and the live sheet —
+// is recognised as a duplicate rather than appended as a second entry.
+function normalizeCredits(extra: string | undefined | null): string {
+  return (extra || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ') // drop parens, commas, &, $, punctuation
+    .split(' ')
+    .filter(Boolean)
+    .sort()
+    .join(' ');
+}
+
 function normalizeParsedRows(rows: Record<string, string>[]): Record<string, string>[] {
   if (rows.length === 0) return rows;
   const keys = Object.keys(rows[0]);
@@ -757,13 +771,18 @@ export default function App() {
 
       const categories = targetJson.eras[eraName].data || {};
 
-      // Skip if a song with the same name and credits already exists in the era
+      // Skip if a song with the same name and credits already exists in the era.
+      // Credits (the parenthetical feat./prod. line) are compared order-independently:
+      // the committed CSV and the live sheet often list the same producers in a
+      // different order, and an exact string match would let that slip through as a
+      // duplicate entry. normalizeCredits() reduces the line to a sorted token set so
+      // "prod. A, B, C" and "prod. C, A, B" collapse to the same key.
       const nameNorm = songName.toLowerCase().trim();
-      const extraNorm = (extra || '').toLowerCase().trim();
+      const extraNorm = normalizeCredits(extra);
       const alreadyExists = Object.values(categories).some((list: any) =>
         (list as Song[]).some(s =>
           s.name?.toLowerCase().trim() === nameNorm &&
-          (s.extra || '').toLowerCase().trim() === extraNorm
+          normalizeCredits(s.extra) === extraNorm
         )
       );
       if (alreadyExists) return;
