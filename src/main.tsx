@@ -14,6 +14,7 @@ import { getArtistConfig } from './artists/registry.ts';
 import { buildCommunityConfig } from './artists/communityConfigBase.ts';
 import { MyTrackerPage } from './MyTrackerPage.tsx';
 import { GamePage } from './GamePage.tsx';
+import { SnippetGamePage } from './SnippetGamePage.tsx';
 import { YEditsGoldPage } from './YEditsGoldPage.tsx';
 import { ListeningStatsPage } from './ListeningStatsPage.tsx';
 import { ForYouPage } from './ForYouPage.tsx';
@@ -30,7 +31,7 @@ import { GlobalMiniPlayer } from './player/GlobalMiniPlayer.tsx';
 // Top-level path segments that are app routes, not trackers. Anything else is a
 // tracker slug (official registry first, then the community fallback).
 const RESERVED_TOP_SEGMENTS = new Set([
-  'my-tracker', 'game', 'yeditsgold', 'listening', 'tierlist',
+  'my-tracker', 'game', 'guess', 'yeditsgold', 'listening', 'tierlist',
   'terms', 'privacy', 'download', 'create-tracker', 'community', 'playlists',
   'foryou',
 ]);
@@ -119,6 +120,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
           <Route path="/my-tracker" element={<SettingsProvider><MyTrackerPage /></SettingsProvider>} />
           <Route path="/game" element={<GamePage />} />
+          <Route path="/guess" element={<SnippetGamePage />} />
           <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
           <Route path="/listening" element={<SettingsProvider><ListeningStatsPage /></SettingsProvider>} />
           <Route path="/foryou" element={<SettingsProvider><ForYouPage /></SettingsProvider>} />
