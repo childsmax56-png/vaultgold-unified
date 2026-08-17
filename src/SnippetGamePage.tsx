@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createSlug } from './utils';
 import { ARTIST_LIST, getArtistConfig } from './artists/registry';
+import type { ArtistConfig } from './artists/types';
 import { useSnippetAudio } from './useSnippetAudio';
 import { buildPool, norm, shuffle, type GameSong } from './snippetGameData';
 import { DailyChallenge } from './DailyChallenge';
@@ -193,7 +194,7 @@ export function SnippetGamePage() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 8 }}>
                 {artists.map(c => (
                   <button key={c.slug} onClick={() => pickArtist(c.slug)} style={{ textAlign: 'left', cursor: 'pointer', padding: 12, borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div style={{ width: 38, height: 38, borderRadius: 9, background: c.accentColor, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 12, flexShrink: 0, color: '#111' }}>{c.cardLetter}</div>
+                    <ArtistTile config={c} />
                     <div style={{ overflow: 'hidden' }}>
                       <div style={{ fontSize: 13, fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.getArtistName(undefined)}</div>
                       <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{c.artistLabel}</div>
@@ -306,6 +307,16 @@ function Cover({ url, accent, size }: { url?: string; accent: string; size: numb
   const [ok, setOk] = useState(true);
   if (url && ok) return <img src={url} onError={() => setOk(false)} style={{ width: size, height: size, borderRadius: 8, objectFit: 'cover', flexShrink: 0, border: '1px solid rgba(255,255,255,0.15)' }} />;
   return <div style={{ width: size, height: size, borderRadius: 8, background: accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>♪</div>;
+}
+
+// ---- artist picker tile: real photo, falling back to the accent letter -----
+function ArtistTile({ config, size = 40 }: { config: ArtistConfig; size?: number }) {
+  const [ok, setOk] = useState(true);
+  if (config.artistPhotoUrl && ok) {
+    return <img src={config.artistPhotoUrl} onError={() => setOk(false)} alt=""
+      style={{ width: size, height: size, borderRadius: 9, objectFit: 'cover', objectPosition: config.photoObjectPosition ?? 'top center', flexShrink: 0, border: '1px solid rgba(255,255,255,0.12)' }} />;
+  }
+  return <div style={{ width: size, height: size, borderRadius: 9, background: config.accentColor, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 12, flexShrink: 0, color: '#111' }}>{config.cardLetter}</div>;
 }
 
 const backBtn: React.CSSProperties = { background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '7px 14px', cursor: 'pointer', fontSize: 13 };
