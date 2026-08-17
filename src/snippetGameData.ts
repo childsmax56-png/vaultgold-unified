@@ -52,6 +52,20 @@ function parseVersionTag(title: string): string | undefined {
   return m ? m[1].trim() : undefined;
 }
 
+// The "extra" line mixes real credits with the song's alternate titles, e.g.
+// "(prod. Wax Motif) (BACK 2 ME, Cheesecake)". Keep only the credit groups
+// (prod./feat./with/…) and drop the alt-name groups — those give the answer away.
+const CREDIT_RE = /\b(prod|produced|production|feat|ft|featuring|with|co-?prod|remix|remixed|mix|mixed|master|mastered|engineer|vocals?|sample[ds]?)\b/i;
+function extractCredits(raw?: string): string | undefined {
+  if (!raw) return undefined;
+  const cleaned = raw
+    .replace(/\(([^)]*)\)/g, (m, inner) => (CREDIT_RE.test(inner) ? m : '')) // drop non-credit parens
+    .replace(/\s+/g, ' ')
+    .trim();
+  // Require an actual credit keyword so bare alt-name text isn't shown.
+  return cleaned && CREDIT_RE.test(cleaned) ? cleaned : undefined;
+}
+
 interface Catalog {
   eras?: Record<string, { image?: string; data?: Record<string, any[]> }>;
 }
@@ -82,7 +96,7 @@ export async function buildPool(slug: string): Promise<GameSong[]> {
           version: parseVersionTag(title),
           fileDate: (song.file_date ?? '').trim() || undefined,
           leakDate: (song.leak_date ?? '').trim() || undefined,
-          credits: (song.extra ?? '').trim() || undefined,
+          credits: extractCredits(song.extra),
           notes: (song.description ?? '').trim() || undefined,
         });
       }

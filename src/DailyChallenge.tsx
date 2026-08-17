@@ -136,7 +136,7 @@ export function DailyChallenge({ slug, onExit }: { slug: string; onExit: () => v
     { label: 'Version / tag', value: target.version || 'No version tag' },
     { label: 'Date', value: dateHint(target) },
     { label: 'Era', value: target.era },
-    { label: 'Worked on it', value: trunc(target.credits || target.notes || 'Unknown') },
+    { label: 'Worked on it', value: trunc(target.credits || 'Unknown') },
   ] : [];
 
   function shareText(): string {
