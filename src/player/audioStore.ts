@@ -222,7 +222,7 @@ export async function resolveStreamUrl(rawUrl: string): Promise<string> {
     const host = new URL(rawUrl).host;
     const res = await axios.get(`https://${host}/api/file/${id}`);
     return res.data?.cdnUrl ?? rawUrl;
-  } else if (rawUrl.includes('pillows.su/f/')) {
+  } else if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('pillowcase.su/f/')) {
     const id = rawUrl.split('/f/')[1];
     return `https://api.pillows.su/api/get/${id}`;
   } else if (rawUrl.includes('pixeldrain.com/u/')) {
@@ -241,6 +241,7 @@ export async function resolveStreamUrl(rawUrl: string): Promise<string> {
 function isDirectlyPlayableAudio(rawUrl: string): boolean {
   return (
     rawUrl.includes('pillows.su/f/') ||
+    rawUrl.includes('pillowcase.su/f/') ||
     rawUrl.includes('imgur.gg/f/') ||
     rawUrl.includes('drive.google.com') ||
     rawUrl.includes('i.imgur.com') ||
