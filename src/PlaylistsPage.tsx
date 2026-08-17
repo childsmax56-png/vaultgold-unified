@@ -1,7 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Play, Trash2, Pencil, Check, X, ChevronUp, ChevronDown, ChevronLeft, ListMusic, Shuffle, ImagePlus, Download, Home, Heart } from 'lucide-react';
+import { Plus, Play, Trash2, Pencil, Check, X, ChevronUp, ChevronDown, ChevronLeft, ListMusic, Shuffle, ImagePlus, Download, Home, Heart, Share2 } from 'lucide-react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { useGlobalPlaylists, FAVORITES_ID } from './GlobalPlaylistContext';
@@ -76,6 +76,31 @@ function playEntries(entries: PlaylistSong[], startIndex: number, shuffle = fals
   void audioStore.playSongList(songs, start, songs[start].realEra as Era);
 }
 
+interface SharedPlaylist { name: string; cover?: string; songs: PlaylistSong[] }
+
+// Encode a playlist into a shareable link. Custom-uploaded (data:) covers are
+// dropped so the URL stays a sane length; http(s) covers are kept.
+function encodeShareLink(playlist: UserPlaylist): string {
+  const data: SharedPlaylist = {
+    name: playlist.name,
+    cover: playlist.cover && !playlist.cover.startsWith('data:') ? playlist.cover : undefined,
+    songs: playlist.songs.map(s => ({
+      songName: s.songName, eraName: s.eraName, url: s.url,
+      tracker: s.tracker, image: s.image, artist: s.artist,
+    })),
+  };
+  const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+  return `${window.location.origin}/playlists?shared=${encodeURIComponent(encoded)}`;
+}
+
+function decodeShared(encoded: string): SharedPlaylist | null {
+  try {
+    const data = JSON.parse(decodeURIComponent(atob(decodeURIComponent(encoded))));
+    if (data && typeof data.name === 'string' && Array.isArray(data.songs)) return data as SharedPlaylist;
+  } catch { /* malformed link */ }
+  return null;
+}
+
 function isDirectlyDownloadable(url: string): boolean {
   return url.includes('pillows.su/f/') || url.includes('pillowcase.su/f/') || url.includes('imgur.gg/f/') || url.includes('i.imgur.com') || url.includes('krakenfiles.com/view/') || url.includes('pixeldrain.com/u/');
 }
@@ -103,7 +128,7 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
 export function PlaylistsPage() {
   const navigate = useNavigate();
   const {
-    playlists, createPlaylist, renamePlaylist, deletePlaylist,
+    playlists, createPlaylist, addToPlaylist, renamePlaylist, deletePlaylist,
     removeFromPlaylist, moveSong, setCover, refreshFavorites,
   } = useGlobalPlaylists();
 
@@ -114,9 +139,41 @@ export function PlaylistsPage() {
   const [newName, setNewName] = useState('');
   const [downloading, setDownloading] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [pendingShare, setPendingShare] = useState<SharedPlaylist | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const showToast = (msg: string) => { setToast(msg); setTimeout(() => setToast(null), 2600); };
+
+  // Detect a shared-playlist link (?shared=… , or legacy ?playlist=…) and offer
+  // to import it. Strips the param from the URL either way.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get('shared') || params.get('playlist');
+    if (!raw) return;
+    const decoded = decodeShared(raw);
+    if (decoded) setPendingShare(decoded);
+    params.delete('shared');
+    params.delete('playlist');
+    const qs = params.toString();
+    window.history.replaceState({}, '', `/playlists${qs ? `?${qs}` : ''}`);
+  }, []);
+
+  const sharePlaylist = (playlist: UserPlaylist) => {
+    const link = encodeShareLink(playlist);
+    navigator.clipboard.writeText(link)
+      .then(() => showToast('Share link copied!'))
+      .catch(() => showToast('Couldn’t copy link'));
+  };
+
+  const importShared = () => {
+    if (!pendingShare) return;
+    const id = createPlaylist(pendingShare.name);
+    for (const s of pendingShare.songs) addToPlaylist(id, s);
+    if (pendingShare.cover) setCover(id, pendingShare.cover);
+    setPendingShare(null);
+    setSelectedId(id);
+    showToast('Playlist added');
+  };
 
   const selected = playlists.find(p => p.id === selectedId) ?? null;
 
@@ -321,6 +378,9 @@ export function PlaylistsPage() {
                         <button onClick={() => downloadZip(selected)} disabled={downloading} className="p-2 rounded text-white/30 hover:text-white hover:bg-white/10 transition-colors cursor-pointer disabled:opacity-40" title="Download as zip">
                           <Download className={`w-4 h-4 ${downloading ? 'animate-pulse' : ''}`} />
                         </button>
+                        <button onClick={() => sharePlaylist(selected)} className="p-2 rounded text-white/30 hover:text-white hover:bg-white/10 transition-colors cursor-pointer" title="Copy share link">
+                          <Share2 className="w-4 h-4" />
+                        </button>
                       </>
                     )}
                     {!isFav(selected) && (
@@ -371,6 +431,26 @@ export function PlaylistsPage() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Import shared playlist */}
+      <AnimatePresence>
+        {pendingShare && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[10200] bg-black/70 flex items-center justify-center p-4" onClick={() => setPendingShare(null)}>
+            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="bg-[#111] border border-white/10 rounded-xl max-w-sm w-full p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
+              <h2 className="text-lg font-bold text-white mb-1">Import Playlist</h2>
+              <p className="text-white/50 text-sm mb-4">Someone shared a playlist with you.</p>
+              <div className="bg-white/5 rounded-lg px-4 py-3 mb-6">
+                <div className="text-white font-semibold truncate">{pendingShare.name}</div>
+                <div className="text-white/40 text-xs mt-0.5">{pendingShare.songs.length} song{pendingShare.songs.length !== 1 ? 's' : ''}</div>
+              </div>
+              <div className="flex gap-3">
+                <button onClick={importShared} className="flex-1 py-2.5 rounded-lg text-sm font-semibold cursor-pointer" style={{ background: `${ACCENT}22`, color: ACCENT }}>Add to My Playlists</button>
+                <button onClick={() => setPendingShare(null)} className="flex-1 py-2.5 rounded-lg bg-white/5 text-white/50 text-sm font-semibold hover:bg-white/10 transition-colors cursor-pointer">Dismiss</button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Toast */}
       <AnimatePresence>
