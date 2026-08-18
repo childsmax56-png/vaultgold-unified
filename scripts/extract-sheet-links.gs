@@ -25,6 +25,11 @@ function extractLinks() {
   for (var s = 0; s < sheets.length; s++) {
     var sheet = sheets[s];
     var tabName = sheet.getName();
+    // Skip non-grid tabs (chart/object sheets); grid methods throw on them.
+    if (sheet.getType() !== SpreadsheetApp.SheetType.GRID) {
+      Logger.log('Skipping non-grid sheet: ' + tabName);
+      continue;
+    }
     var lastRow = sheet.getLastRow();
     var lastCol = sheet.getLastColumn();
     if (lastRow < 2 || lastCol < 1) continue;
