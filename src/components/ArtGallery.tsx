@@ -5,6 +5,9 @@ import { ArrowLeft, ExternalLink, Image as ImageIcon, X, Link as LinkIcon, Share
 import { Era, SearchFilters } from '../types';
 import { formatTextWithTags, ALBUM_RELEASE_DATES, createSlug, matchesFilters, CUSTOM_IMAGES, handleDownloadFile , retryImageOnError} from '../utils';
 import { useSettings } from '../SettingsContext';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface ArtEntry {
   Era: string;
@@ -461,6 +464,14 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
                       >
                         <Share2 className="w-5 h-5 md:w-6 md:h-6 p-0.5" />
                       </button>
+                      <div className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-colors flex items-center">
+                        <CommentButton
+                          tracker={activeConfig.slug}
+                          entryKey={makeEntryKey('Art', zoomedArt.Era || selectedEra?.name || '', zoomedArt.Name.split('\n')[0])}
+                          entryLabel={zoomedArt.Name.split('\n')[0]}
+                          entryType="Art"
+                        />
+                      </div>
                       <button
                         className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-colors"
                         onClick={() => setZoomedArt(null)}

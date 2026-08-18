@@ -5,6 +5,9 @@ import { ArrowLeft, ExternalLink, ChevronDown, ChevronUp, Film, Maximize2, Minim
 import { Era } from '../types';
 import { createSlug, CUSTOM_IMAGES , retryImageOnError, relPath, absPath, pixeldrainProxyBase} from '../utils';
 import { useSettings } from '../SettingsContext';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface VideoRawEntry {
   Era: string;
@@ -514,6 +517,12 @@ function VideoRow({ entry, miniPlayerMode, activeMiniEntry, onOpenMiniPlayer, on
           {entry.links.length > 0 && !expanded && !miniPlayerMode && (
             <ExternalLink className="w-3.5 h-3.5 text-white/30" />
           )}
+          <CommentButton
+            tracker={activeConfig.slug}
+            entryKey={makeEntryKey('Videos', entry.era, entry.name)}
+            entryLabel={entry.name}
+            entryType="Videos"
+          />
         </div>
       </div>
 

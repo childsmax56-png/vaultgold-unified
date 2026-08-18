@@ -17,6 +17,8 @@ import { isLastfmLoggedIn } from '../lastfm';
 import { SiLastdotfm } from 'react-icons/si';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
 import { usePlaylists } from '../PlaylistContext';
 import { useIsClamped } from '../hooks/useIsClamped';
 
@@ -1094,6 +1096,18 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                                 song={song}
                                 eraName={eraNameForPlaylist}
                                 url={songUrl}
+                                isCurrentlyPlaying={isCurrentlyPlaying}
+                              />
+                            );
+                          })()}
+                          {(() => {
+                            const commentEra = (song as any).realEra?.name || era.name;
+                            return (
+                              <CommentButton
+                                tracker={activeConfig.slug}
+                                entryKey={makeEntryKey(category, commentEra, song.name)}
+                                entryLabel={song.name}
+                                entryType={category}
                                 isCurrentlyPlaying={isCurrentlyPlaying}
                               />
                             );

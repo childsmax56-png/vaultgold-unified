@@ -11,6 +11,9 @@ import { useSettings } from '../SettingsContext';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { findMvsForSong, findRemixesForSong, findSamplesForSong } from './EraDetail';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface StemEntry {
   Era: string;
@@ -659,6 +662,13 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
                               <Share2 className="w-3.5 h-3.5 text-white/50 hover:text-white" />
                             </button>
                           )}
+                          <CommentButton
+                            tracker={activeConfig.slug}
+                            entryKey={makeEntryKey('Stems', selectedEraData?.eraName || catName, song.name)}
+                            entryLabel={song.name}
+                            entryType="Stems"
+                            isCurrentlyPlaying={isCurrentlyPlaying}
+                          />
                         </div>
                       </div>
                     );

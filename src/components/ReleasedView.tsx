@@ -13,6 +13,9 @@ import { Era, Song } from '../types';
 import { CUSTOM_IMAGES, ALBUM_DESCRIPTIONS , retryImageOnError} from '../utils';
 import { useIsClamped } from '../hooks/useIsClamped';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface ReleasedEntry {
   Era: string;
@@ -430,17 +433,23 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
                     })}
                   </div>
 
-                  {/* add to playlist */}
-                  {links.length > 0 && (
-                    <div className="w-8 shrink-0 hidden sm:flex items-center justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+                  {/* add to playlist + comments */}
+                  <div className="shrink-0 hidden sm:flex items-center justify-end gap-1 pl-1">
+                    {links.length > 0 && (
                       <AddToPlaylistButton
                         song={{ name: mainName, url: links[0].url, track_length: track.Length } as unknown as Song}
                         eraName={selectedGroup.eraName}
                         url={links[0].url}
                         isCurrentlyPlaying={false}
                       />
-                    </div>
-                  )}
+                    )}
+                    <CommentButton
+                      tracker={activeConfig.slug}
+                      entryKey={makeEntryKey('Released', selectedGroup.eraName, mainName)}
+                      entryLabel={mainName}
+                      entryType="Released"
+                    />
+                  </div>
                 </div>
 
                 {/* inline embed accordion */}

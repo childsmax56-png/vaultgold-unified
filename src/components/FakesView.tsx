@@ -7,6 +7,9 @@ import { formatTextWithTags, getCleanSongNameWithTags, createSlug, isSongNotAvai
 import { SongTitle } from './SongTitle';
 import { FakesEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 interface FakesViewProps {
   eras: Era[];
@@ -389,7 +392,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
                            )}
                         </div>
 
-                        <div className="w-16 shrink-0 hidden sm:flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="w-16 shrink-0 hidden sm:flex items-center justify-end gap-2">
                           {isPlayable && (
                             <AddToPlaylistButton
                               song={song}
@@ -398,6 +401,13 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
                               isCurrentlyPlaying={!!isCurrentlyPlaying}
                             />
                           )}
+                          <CommentButton
+                            tracker={activeConfig.slug}
+                            entryKey={makeEntryKey('Fakes', selectedEraData?.eraName || '', song.name)}
+                            entryLabel={song.name}
+                            entryType="Fakes"
+                            isCurrentlyPlaying={!!isCurrentlyPlaying}
+                          />
                         </div>
                      </div>
                   );

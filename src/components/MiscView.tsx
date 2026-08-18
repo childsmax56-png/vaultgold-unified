@@ -11,6 +11,9 @@ import { useSettings } from '../SettingsContext';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { findMvsForSong, findRemixesForSong, findSamplesForSong } from './EraDetail';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface MiscEntry {
   Era: string;
@@ -555,6 +558,13 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
                             <Share2 className="w-3.5 h-3.5 text-white/50 hover:text-white" />
                           </button>
                         )}
+                        <CommentButton
+                          tracker={activeConfig.slug}
+                          entryKey={makeEntryKey('Misc', selectedEra || '', song.name)}
+                          entryLabel={song.name}
+                          entryType="Misc"
+                          isCurrentlyPlaying={isCurrentlyPlaying}
+                        />
                       </div>
                     </div>
                   );
