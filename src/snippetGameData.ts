@@ -26,6 +26,10 @@ export const norm = (s: string) =>
 // Mirror of audioStore.isDirectlyPlayableAudio (module-private there). A song is
 // game-eligible only if we can actually stream it in the browser.
 export function isPlayable(rawUrl: string): boolean {
+  // Reject archives up front — a pack/stems .zip behind a link the audio element
+  // can't decode. (Opaque pillowcase links to zips can't be caught here; those
+  // are handled at play time by skipping on the audio error event.)
+  if (/\.(zip|rar|7z|tar|gz)(\?|$)/i.test(rawUrl)) return false;
   return (
     rawUrl.includes('pillows.su/f/') ||
     rawUrl.includes('pillowcase.su/f/') ||
@@ -134,10 +138,18 @@ export function yesterdayStr(dateStr: string): string {
   return todayStr(dt);
 }
 
-// Same song + snippet start for everyone, for a given artist on a given day.
-export function dailyTarget(pool: GameSong[], slug: string, dateStr: string): { song: GameSong; startFraction: number } {
-  const sorted = [...pool].sort((a, b) => (norm(a.title) < norm(b.title) ? -1 : norm(a.title) > norm(b.title) ? 1 : 0));
-  const idx = Math.floor(mulberry32(hashStr(`${dateStr}|${slug}`))() * sorted.length);
-  const startFraction = mulberry32(hashStr(`${dateStr}|${slug}|start`))();
-  return { song: sorted[Math.min(idx, sorted.length - 1)], startFraction };
+// Deterministic play order for everyone, for a given artist on a given day.
+// The daily target is the first entry; if it won't load (a zip, a dead/blocked
+// file), the game walks down this list — since a broken source fails for every
+// user, everyone converges on the same first playable song.
+export function dailySequence(pool: GameSong[], slug: string, dateStr: string): GameSong[] {
+  const seq = [...pool].sort((a, b) => (norm(a.title) < norm(b.title) ? -1 : norm(a.title) > norm(b.title) ? 1 : 0));
+  const rng = mulberry32(hashStr(`${dateStr}|${slug}`));
+  for (let i = seq.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [seq[i], seq[j]] = [seq[j], seq[i]]; }
+  return seq;
+}
+
+// Deterministic snippet start (0..1) for a given song on a given day.
+export function startFractionFor(slug: string, dateStr: string, title: string): number {
+  return mulberry32(hashStr(`${dateStr}|${slug}|${title}|start`))();
 }

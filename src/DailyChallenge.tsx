@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createSlug } from './utils';
 import { getArtistConfig } from './artists/registry';
 import { useSnippetAudio } from './useSnippetAudio';
-import { buildPool, dailyTarget, norm, todayStr, yesterdayStr, type GameSong } from './snippetGameData';
+import { buildPool, dailySequence, startFractionFor, norm, todayStr, yesterdayStr, type GameSong } from './snippetGameData';
 
 // ---------------------------------------------------------------------------
 // VAULT HEARDLE — the daily puzzle.
@@ -17,9 +17,12 @@ const DAILY_KEY = 'vaultgold_daily_v1';
 const MAX_TRIES = 5;
 // Seconds of audio available at attempt index 0..4 (grows on each miss).
 const DAILY_CLIP = [1, 2, 4, 8, 14];
+// How many unplayable songs (zips, dead/blocked files) we'll skip past before
+// giving up on today's puzzle for this artist.
+const MAX_SKIP = 15;
 
 interface Attempt { skip: boolean; title?: string; correct?: boolean }
-interface DayState { guesses: Attempt[]; solved: boolean; done: boolean }
+interface DayState { guesses: Attempt[]; solved: boolean; done: boolean; offset?: number }
 interface Streak { streak: number; max: number; last: string }
 interface DailyStore { day: string; artists: Record<string, DayState>; streaks: Record<string, Streak> }
 
@@ -57,38 +60,63 @@ export function DailyChallenge({ slug, onExit }: { slug: string; onExit: () => v
   const artistName = cfg?.getArtistName(undefined) || slug;
   const day = useMemo(() => todayStr(), []);
 
-  const { clipPlaying, buffering, loadClip, playLen, stopClip } = useSnippetAudio();
-
   const [pool, setPool] = useState<GameSong[] | null>(null);
   const [err, setErr] = useState('');
-  const [target, setTarget] = useState<GameSong | null>(null);
+  const [offset, setOffset] = useState(0); // index into the deterministic daily sequence
   const [store, setStore] = useState<DailyStore>(() => loadStore(day));
   const [query, setQuery] = useState('');
   const [copied, setCopied] = useState(false);
+  const skipsRef = useRef(0);
 
   const state: DayState = store.artists[slug] || { guesses: [], solved: false, done: false };
   const attemptsUsed = state.guesses.length;
   const clipLen = state.done ? DAILY_CLIP[MAX_TRIES - 1] : DAILY_CLIP[Math.min(attemptsUsed, MAX_TRIES - 1)];
 
-  // Load the tracker's songs, then resolve today's deterministic target + clip.
+  const seq = useMemo(() => (pool ? dailySequence(pool, slug, day) : []), [pool, slug, day]);
+  const target: GameSong | null = seq[offset] ?? null;
+
+  // A clip that won't load (a zip behind an opaque link, a dead/blocked file) is
+  // broken for everyone, so we deterministically walk down today's sequence until
+  // one plays. Only skip while the puzzle is still fresh — never swap the song out
+  // from under a guess that's already been made.
+  const onAudioError = () => {
+    if (state.done || attemptsUsed > 0) return;
+    if (skipsRef.current >= MAX_SKIP || offset + 1 >= seq.length) {
+      setErr("Couldn't load today's audio for this artist. Try another one.");
+      return;
+    }
+    skipsRef.current += 1;
+    setOffset(o => o + 1);
+  };
+  const { clipPlaying, buffering, loadClip, playLen, stopClip } = useSnippetAudio(onAudioError);
+
+  // Fetch the tracker's songs; reset the sequence position (restoring a locked
+  // offset if this artist's puzzle was already resolved earlier today).
   useEffect(() => {
     let alive = true;
-    setPool(null); setErr(''); setTarget(null);
+    setPool(null); setErr(''); skipsRef.current = 0;
+    setOffset(loadStore(day).artists[slug]?.offset ?? 0);
     buildPool(slug)
       .then(p => {
         if (!alive) return;
         if (p.length < 1) { setErr('No playable songs on this tracker yet. Try another artist.'); return; }
         setPool(p);
-        const { song, startFraction } = dailyTarget(p, slug, day);
-        setTarget(song);
-        const s = loadStore(day).artists[slug];
-        const alreadyDone = s?.done;
-        loadClip(song.url, { startFraction, autoPlayLen: alreadyDone ? undefined : DAILY_CLIP[Math.min(s?.guesses.length ?? 0, MAX_TRIES - 1)] });
       })
       .catch(() => { if (alive) setErr("Couldn't load this tracker. Try again or pick another artist."); });
     return () => { alive = false; stopClip(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, day]);
+
+  // (Re)load the clip whenever the resolved target changes (initial + on skip).
+  useEffect(() => {
+    if (!target) return;
+    const s = loadStore(day).artists[slug];
+    loadClip(target.url, {
+      startFraction: startFractionFor(slug, day, target.title),
+      autoPlayLen: s?.done ? undefined : DAILY_CLIP[Math.min(s?.guesses.length ?? 0, MAX_TRIES - 1)],
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [target?.url]);
 
   const suggestions = useMemo(() => {
     if (!pool || !query.trim()) return [];
@@ -120,7 +148,9 @@ export function DailyChallenge({ slug, onExit }: { slug: string; onExit: () => v
     const guesses = [...state.guesses, a];
     const solved = !!a.correct;
     const done = solved || guesses.length >= MAX_TRIES;
-    commit({ guesses, solved, done });
+    // Persist the resolved sequence offset so a reload lands on the same song we
+    // skipped to, instead of re-deriving from the top of the sequence.
+    commit({ guesses, solved, done, offset });
     setQuery('');
     // Reveal the freshly-unlocked clip length (this runs inside a click gesture).
     const nextLen = done ? DAILY_CLIP[MAX_TRIES - 1] : DAILY_CLIP[Math.min(guesses.length, MAX_TRIES - 1)];
