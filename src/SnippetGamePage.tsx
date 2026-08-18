@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createSlug } from './utils';
 import { ARTIST_LIST, getArtistConfig } from './artists/registry';
@@ -65,7 +65,17 @@ export function SnippetGamePage() {
   const [runBestStreak, setRunBestStreak] = useState(0); // longest streak this run (survives the reset on a wrong guess)
   const [best, setBest] = useState<Best>(loadBest);
 
-  const { clipPlaying, buffering, loadClip, playLen, stopClip } = useSnippetAudio();
+  // Refs let the audio error handler reach the current round + nextRound, which
+  // are declared below (the audio hook has to be created before them).
+  const roundRef = useRef<Round | null>(null);
+  const nextRoundRef = useRef<() => void>(() => {});
+
+  // If a round's clip can't be played (a zip behind an opaque link, a dead
+  // file), roll a fresh round rather than leave the player guessing in silence.
+  const { clipPlaying, buffering, loadClip, playLen, stopClip } = useSnippetAudio(() => {
+    const r = roundRef.current;
+    if (r && !r.picked) nextRoundRef.current();
+  });
 
   // ---- endless flow --------------------------------------------------------
   const loadRoundClip = useCallback((r: Round) => { loadClip(r.target.url, { autoPlayLen: REVEAL_SECONDS[0] }); }, [loadClip]);
@@ -95,6 +105,10 @@ export function SnippetGamePage() {
     setRound(r);
     loadRoundClip(r);
   }, [pool, loadRoundClip]);
+
+  // Keep the audio-error handler pointed at the latest round + nextRound.
+  roundRef.current = round;
+  nextRoundRef.current = nextRound;
 
   const pick = useCallback((choice: GameSong) => {
     setRound(prev => {
