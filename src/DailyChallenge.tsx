@@ -178,7 +178,7 @@ export function DailyChallenge({ slug, onExit }: { slug: string; onExit: () => v
     const scoreLabel = state.solved ? `${state.guesses.length}/${MAX_TRIES}` : `X/${MAX_TRIES}`;
     const st = store.streaks[slug];
     const streakLine = st && st.streak > 1 ? `\n🔥 ${st.streak} day streak` : '';
-    return `🎧 Name That Leak — ${artistName}\n${prettyDate(day)} · ${scoreLabel}\n${row}${streakLine}\nunvaulted.cc/guess`;
+    return `🎧 Leakle — ${artistName}\n${prettyDate(day)} · ${scoreLabel}\n${row}${streakLine}\nunvaulted.cc/guess`;
   }
   function share() {
     const text = shareText();

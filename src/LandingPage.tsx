@@ -1272,7 +1272,7 @@ export function LandingPage() {
             </a>
             <a
               href="/guess"
-              title="Play Name That Leak"
+              title="Play Leakle"
               style={{
                 background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
                 borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
@@ -1282,7 +1282,7 @@ export function LandingPage() {
               onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
             >
-              🎧 <span className="game-btn-label">Name That Leak</span>
+              🎧 <span className="game-btn-label">Leakle</span>
             </a>
           </div>
           <button

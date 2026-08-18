@@ -8,7 +8,7 @@ import { buildPool, norm, shuffle, type GameSong } from './snippetGameData';
 import { DailyChallenge } from './DailyChallenge';
 
 // ---------------------------------------------------------------------------
-// NAME THAT LEAK
+// LEAKLE
 // Two modes off one entry:
 //  • Daily   — a Wordle-style puzzle (see DailyChallenge): one deterministic
 //              snippet per artist per day, 5 tries, a hint each miss, shareable.
@@ -171,8 +171,9 @@ export function SnippetGamePage() {
       )}
 
       <div style={{ textAlign: 'center', marginBottom: 16 }}>
-        <h1 style={{ margin: 0, fontSize: 30, fontWeight: 900, letterSpacing: 1, color: GOLD, textShadow: '0 0 24px rgba(255,215,0,0.35)' }}>NAME THAT LEAK</h1>
-        <p style={{ margin: '4px 0 0', color: 'rgba(255,255,255,0.55)', fontSize: 14 }}>Hear a snippet. Guess the track.</p>
+        <img src="/leakle.png" alt="Leakle"
+          style={{ height: 'clamp(44px, 12vw, 60px)', width: 'auto', display: 'block', margin: '0 auto', borderRadius: 14, boxShadow: '0 6px 24px rgba(0,0,0,0.45)' }} />
+        <p style={{ margin: '10px 0 0', color: 'rgba(255,255,255,0.55)', fontSize: 14 }}>Hear a snippet. Guess the track.</p>
       </div>
 
       {/* DAILY puzzle takes over the body once an artist is chosen. */}

@@ -1,4 +1,4 @@
-// Shared data layer for the snippet games (endless "Name That Leak" + the daily
+// Shared data layer for the snippet games (endless "Leakle" + the daily
 // "Vault Heardle"). Pulls a tracker's playable songs from the same /api/{slug}/a
 // catalog the rest of the site uses, and provides the deterministic per-day
 // puzzle picker (so every user gets the same song for an artist on a given day
