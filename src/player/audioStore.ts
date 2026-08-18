@@ -17,6 +17,7 @@ import axios from 'axios';
 import { useCallback, useSyncExternalStore } from 'react';
 import type { Song, Era } from '../types';
 import { parseArtistFromSong } from '../lastfm';
+import { pixeldrainProxyBase } from '../utils';
 
 export type ActivePlayer = 'audio' | 'spotify' | 'youtube' | 'soundcloud';
 
@@ -227,8 +228,11 @@ export async function resolveStreamUrl(rawUrl: string): Promise<string> {
     return `https://api.pillows.su/api/get/${id}`;
   } else if (rawUrl.includes('pixeldrain.com/u/')) {
     const id = rawUrl.split('/u/')[1]?.split('?')[0];
-    const proxyBase = (import.meta.env.VITE_PIXELDRAIN_PROXY_URL ?? '').replace(/\/$/, '');
-    return proxyBase ? `${proxyBase}/api/${id}` : `https://pixeldrain.com/api/file/${id}`;
+    // Pixeldrain blocks Cloudflare egress + hotlinks, so route through the same
+    // non-Cloudflare proxy the main App player uses. pixeldrainProxyBase() ships
+    // a hard-coded default, so this works even when VITE_PIXELDRAIN_PROXY_URL is
+    // unset (previously we fell back to the raw, blocked pixeldrain URL here).
+    return `${pixeldrainProxyBase()}/api/${id}`;
   } else if (rawUrl.includes('drive.google.com')) {
     const m = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
     if (m) return `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`;
