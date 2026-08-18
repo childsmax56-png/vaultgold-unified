@@ -1,7 +1,7 @@
-// Sheet Link Extractor (Google Apps Script) — saves a links CSV to your Drive.
+// Sheet Link Extractor (Google Apps Script) - saves a links CSV to your Drive.
 //
 // The public CSV/gviz export of a sheet only keeps the DISPLAY TEXT of each
-// hyperlink (e.g. "Pixeldrain", "Download") — never the real href. This reads
+// hyperlink (e.g. "Pixeldrain", "Download") - never the real href. This reads
 // the sheet's rich-text link URLs directly and writes them to a CSV in your
 // Google Drive. (scripts/extract-sheet-links.py is the local-Python equivalent;
 // it writes the same CSV to your computer instead of Drive.)
@@ -11,7 +11,7 @@
 // 2. Click Run -> extractLinks, approve permissions when asked.
 // 3. Find "sheet-links.csv" in your Google Drive (root), download it.
 //
-// You do NOT need edit access — anonymous "anyone with the link" view is enough.
+// You do NOT need edit access - anonymous "anyone with the link" view is enough.
 // This walks EVERY tab automatically, so there are no gids to configure.
 
 var SHEET_ID = '1a8_li_D3rG0iDLqT9AGZsRVojlEyhO_nb735cRpyUvE';
