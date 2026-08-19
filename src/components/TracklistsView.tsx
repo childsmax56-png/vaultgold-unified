@@ -6,6 +6,9 @@ import { Era, Song } from '../types';
 import { isSongNotAvailable, embedID3Tags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 import { useSettings } from '../SettingsContext';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface TracklistTrack {
   num: string;
@@ -327,6 +330,12 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
               ? <span className="text-[10px] font-mono tabular-nums">{dlProgress}</span>
               : <Download className="w-3.5 h-3.5" />}
           </button>
+          <CommentButton
+            tracker={activeConfig.slug}
+            entryKey={makeEntryKey('Tracklist', album.era, album.name)}
+            entryLabel={album.name}
+            entryType="Tracklist"
+          />
           {open ? <ChevronUp className="w-4 h-4 text-white/30" /> : <ChevronDown className="w-4 h-4 text-white/30" />}
         </div>
       </button>

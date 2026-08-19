@@ -3,6 +3,9 @@ import { useMemo } from 'react';
 import { ExternalLink, CircleDollarSign, CheckCircle2, Clock } from 'lucide-react';
 import { formatTextWithTags } from '../utils';
 import { SongTitle } from './SongTitle';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface Groupbuy {
   era: string;
@@ -181,9 +184,17 @@ export function GroupbuysView({ data, searchQuery }: GroupbuysViewProps) {
                             <div className="text-white/40 text-xs mt-1">{formatTextWithTags(era)}</div>
                           )}
                         </div>
-                        {price && (
-                          <div className="shrink-0 text-emerald-400 font-bold text-base md:text-lg">{price}</div>
-                        )}
+                        <div className="shrink-0 flex items-center gap-2">
+                          {price && (
+                            <div className="text-emerald-400 font-bold text-base md:text-lg">{price}</div>
+                          )}
+                          <CommentButton
+                            tracker={activeConfig.slug}
+                            entryKey={makeEntryKey('Groupbuy', era, buy.name)}
+                            entryLabel={buy.name}
+                            entryType="Groupbuy"
+                          />
+                        </div>
                       </div>
 
                       {(when || type || status) && (
