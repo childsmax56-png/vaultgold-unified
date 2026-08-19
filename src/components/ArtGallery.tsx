@@ -3,7 +3,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, Image as ImageIcon, X, Link as LinkIcon, Share2, Check, Download, Loader2 } from 'lucide-react';
 import { Era, SearchFilters } from '../types';
-import { formatTextWithTags, ALBUM_RELEASE_DATES, createSlug, matchesFilters, CUSTOM_IMAGES, handleDownloadFile , retryImageOnError} from '../utils';
+import { formatTextWithTags, ALBUM_RELEASE_DATES, createSlug, matchesFilters, CUSTOM_IMAGES, handleDownloadFile , Img} from '../utils';
 import { useSettings } from '../SettingsContext';
 import { CommentButton } from './CommentButton';
 import { makeEntryKey } from '../comments';
@@ -145,12 +145,10 @@ export function ArtImage({ url, alt, contain = false }: { url: string; alt: stri
   }
 
   return (
-    <img onError={retryImageOnError}
+    <Img w={500}
       src={imgSrc}
       alt={alt}
       className={`w-full h-full group-hover:scale-105 transition-transform duration-500 bg-white/5 ${contain ? 'object-contain' : 'object-cover'}`}
-      loading="lazy"
-      referrerPolicy="no-referrer"
     />
   );
 }
@@ -311,11 +309,10 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
 
           <div className="group relative w-full aspect-square rounded-lg md:rounded-xl overflow-hidden shadow-2xl mb-6 md:mb-8 bg-white/5 border border-white/10">
             {eraImageSrc ? (
-              <img onError={retryImageOnError}
+              <Img w={600} eager
                 src={eraImageSrc}
                 alt={selectedEra.name}
                 className="w-full h-full object-cover opacity-90 transition-opacity"
-                referrerPolicy="no-referrer"
               />
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-white/20">
@@ -575,7 +572,7 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
           >
             <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
               {imageSrc ? (
-                <img onError={retryImageOnError} src={imageSrc} alt={era.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
+                <Img w={300} src={imageSrc} alt={era.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-white/5 text-white/20 font-bold text-2xl text-center p-4">
                   {era.name}

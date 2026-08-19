@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Img } from './utils';
 
 interface CommunityTracker {
   slug: string;
@@ -61,7 +62,7 @@ export function CommunityPage() {
               >
                 <div style={{ aspectRatio: '1 / 1', background: t.accent_color || '#1e293b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {t.logo_url || t.artist_photo_url ? (
-                    <img src={t.logo_url || t.artist_photo_url || ''} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <Img w={200} src={t.logo_url || t.artist_photo_url || ''} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
                     <span style={{ fontSize: 44, fontWeight: 800, color: '#fff', opacity: 0.85 }}>{t.name[0]?.toUpperCase()}</span>
                   )}

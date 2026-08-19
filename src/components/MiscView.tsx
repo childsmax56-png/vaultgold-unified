@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Star } from 'lucide-react';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, createSlug, getSongSlug, ALBUM_RELEASE_DATES, matchesFilters, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError, relPath, absPath, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, createSlug, getSongSlug, ALBUM_RELEASE_DATES, matchesFilters, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , Img, relPath, absPath, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 import { SongTitle } from './SongTitle';
 import { saveAs } from 'file-saver';
@@ -388,7 +388,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
                 onClick={() => setZoomedImage(false)}
                 className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
               >
-                <img onError={retryImageOnError} src={selectedEraData.image} alt={selectedEraData.eraName} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" referrerPolicy="no-referrer" />
+                <Img w={1200} eager src={selectedEraData.image} alt={selectedEraData.eraName} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" />
               </motion.div>
             )}
           </AnimatePresence>,
@@ -412,7 +412,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
               title={selectedEraData.image ? "Click to zoom" : undefined}
             >
               {selectedEraData.image ? (
-                <img onError={retryImageOnError} src={selectedEraData.image} alt={selectedEraData.eraName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <Img w={400} src={selectedEraData.image} alt={selectedEraData.eraName} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">{selectedEraData.eraName}</div>
               )}
@@ -614,7 +614,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
         >
           <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
             {era.image ? (
-              <img onError={retryImageOnError} src={era.image} alt={era.eraName} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
+              <Img w={300} src={era.image} alt={era.eraName} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-white/5 text-white/20 font-bold text-2xl text-center p-4">
                 {era.eraName}

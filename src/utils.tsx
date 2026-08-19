@@ -50,17 +50,66 @@ export async function runWithConcurrencyLimit<T>(
   await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, () => runNext()));
 }
 
+// Cover art and photos are stored as full-resolution originals on slow, free
+// hosts (i.ibb.co accounts for 400+ of them). Loading those originals for a
+// 48px thumbnail is the main reason images crawl in. Route remote images
+// through Cloudflare Image Transformations so they're resized to roughly the
+// size we display and cached on Cloudflare's edge instead of hammering the
+// origin host on every view. The feature is only enabled on the production
+// zone; on local dev and *.pages.dev previews we serve the original untouched
+// (and retryImageOnError below falls back to the original if a transform ever
+// fails, so enabling/disabling the feature can never blank an image).
+export function optimizedImage(src: string | undefined | null, width = 400): string | undefined {
+  if (!src) return src ?? undefined;
+  if (src.startsWith('data:') || src.startsWith('blob:')) return src; // inline / object URLs
+  if (!/^https?:\/\//i.test(src)) return src;                         // app-hosted relative asset
+  if (src.includes('/cdn-cgi/image/')) return src;                    // already transformed
+  if (typeof window === 'undefined') return src;
+  if (!window.location.hostname.endsWith('unvaulted.cc')) return src; // feature only on prod zone
+  const opts = `width=${Math.round(width)},quality=82,format=auto,fit=cover`;
+  return `/cdn-cgi/image/${opts}/${src}`;
+}
+
 // Browsers occasionally cache a broken/incomplete response for an image
 // (e.g. a request interrupted by navigation) and keep serving it from disk
 // cache, leaving the <img> blank until the user hard-refreshes. Retrying
 // once with a cache-busting query param re-fetches past that bad cache entry.
 export function retryImageOnError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
   const img = e.currentTarget;
+  // If a Cloudflare-transformed URL failed (transform error, or the feature is
+  // off on this host), fall back to the untransformed original once.
+  if (img.src.includes('/cdn-cgi/image/') && !img.dataset.origFallback) {
+    img.dataset.origFallback = '1';
+    const orig = img.src.replace(/^https?:\/\/[^/]+\/cdn-cgi\/image\/[^/]+\//, '');
+    if (orig && orig !== img.src) { img.src = orig; return; }
+  }
   if (img.dataset.retried) return;
   img.dataset.retried = '1';
   const url = new URL(img.src, window.location.href);
   url.searchParams.set('_r', Date.now().toString());
   img.src = url.toString();
+}
+
+// Shared image element for remote cover art / photos. Bakes in lazy loading,
+// async decoding, the no-referrer policy (hosts like i.ibb.co block hotlinks
+// otherwise), the broken-cache retry, and Cloudflare resizing via `w`. Use this
+// instead of a raw <img> for any remote src so a page full of covers doesn't
+// fire dozens of full-size requests at once. Pass eager for above-the-fold art.
+export function Img({ src, w, eager, ...rest }: Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src'> & {
+  src: string | undefined | null;
+  w?: number;
+  eager?: boolean;
+}) {
+  return (
+    <img
+      src={optimizedImage(src, w)}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      referrerPolicy="no-referrer"
+      onError={retryImageOnError}
+      {...rest}
+    />
+  );
 }
 
 // When running under /:artist/ prefix on a unified host (e.g. unvaulted.cc/cactigold/),

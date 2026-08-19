@@ -5,7 +5,7 @@ import { RefreshCw, LogIn, LogOut, User, X } from 'lucide-react';
 import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
 import { useSettings, LOADING_SCREENS } from './SettingsContext';
-import { retryImageOnError } from './utils';
+import { Img } from './utils';
 import { SOCIALS_DATA, hasSocials, type SocialEntry } from './socialsData';
 
 // Handles the Spotify PKCE OAuth callback that redirects back to unvaulted.cc/?code=...
@@ -678,7 +678,7 @@ function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleF
           transition: 'border-color 0.2s, transform 0.15s',
         }}
       >
-        <img onError={retryImageOnError}
+        <Img w={400}
           src={photoUrl}
           alt={config.artistLabel}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: config.photoObjectPosition ?? 'top center' }}
@@ -747,7 +747,7 @@ function ExternalSmallCard({ href, label, logoSrc, logoAlt, accent, photoSrc, va
           transition: 'border-color 0.2s, transform 0.15s',
         }}
       >
-        <img onError={retryImageOnError} src={photoSrc} alt={label} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
+        <Img w={400} src={photoSrc} alt={label} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
         <div style={{ position: 'absolute', top: 10, right: 10, width: 7, height: 7, borderRadius: '50%', background: accent }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '14px 10px 8px' }}>

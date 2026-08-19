@@ -3,8 +3,11 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, Download, X, Share2, Disc3 } from 'lucide-react';
 import { useState, useMemo, useEffect } from 'react';
 import { Era } from '../types';
-import { formatTextWithTags, createSlug, CUSTOM_IMAGES, retryImageOnError } from '../utils';
+import { formatTextWithTags, createSlug, CUSTOM_IMAGES, Img } from '../utils';
 import { SongTitle } from './SongTitle';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface AlbumCopy {
   name: string;
@@ -175,7 +178,7 @@ export function AlbumCopiesView({ eras, albumCopiesData, searchQuery }: AlbumCop
                 onClick={() => setZoomedImage(false)}
                 className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
               >
-                <img onError={retryImageOnError} src={selectedEraData.image} alt={selectedEraData.name} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" referrerPolicy="no-referrer" />
+                <Img w={1200} eager src={selectedEraData.image} alt={selectedEraData.name} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" />
               </motion.div>
             )}
             {toastMessage && (
@@ -209,7 +212,7 @@ export function AlbumCopiesView({ eras, albumCopiesData, searchQuery }: AlbumCop
               title={selectedEraData.image ? 'Click to zoom' : undefined}
             >
               {selectedEraData.image ? (
-                <img onError={retryImageOnError} src={selectedEraData.image} alt={selectedEraData.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <Img w={400} src={selectedEraData.image} alt={selectedEraData.name} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">{selectedEraData.name}</div>
               )}
@@ -264,23 +267,31 @@ export function AlbumCopiesView({ eras, albumCopiesData, searchQuery }: AlbumCop
                           <div className="text-white/40 text-xs mt-1 pl-6">{formatTextWithTags(copy.extra)}</div>
                         )}
                       </div>
-                      {dl ? (
-                        <a
-                          href={dl.href}
-                          {...(dl.direct
-                            ? { download: sanitizeFilename(copy.name) }
-                            : { target: '_blank', rel: 'noopener noreferrer' })}
-                          className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--theme-color)]/15 hover:bg-[var(--theme-color)]/25 text-[var(--theme-color)] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
-                          title={dl.direct ? 'Download zip' : 'Open download page'}
-                        >
-                          {dl.direct ? <Download className="w-3.5 h-3.5" /> : <ExternalLink className="w-3.5 h-3.5" />}
-                          {dl.direct ? 'Download' : 'Open Page'}
-                        </a>
-                      ) : (
-                        <span className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 text-white/30 text-xs font-bold uppercase tracking-wider">
-                          <X className="w-3.5 h-3.5" /> No Link
-                        </span>
-                      )}
+                      <div className="shrink-0 flex items-center gap-2">
+                        {dl ? (
+                          <a
+                            href={dl.href}
+                            {...(dl.direct
+                              ? { download: sanitizeFilename(copy.name) }
+                              : { target: '_blank', rel: 'noopener noreferrer' })}
+                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--theme-color)]/15 hover:bg-[var(--theme-color)]/25 text-[var(--theme-color)] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                            title={dl.direct ? 'Download zip' : 'Open download page'}
+                          >
+                            {dl.direct ? <Download className="w-3.5 h-3.5" /> : <ExternalLink className="w-3.5 h-3.5" />}
+                            {dl.direct ? 'Download' : 'Open Page'}
+                          </a>
+                        ) : (
+                          <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 text-white/30 text-xs font-bold uppercase tracking-wider">
+                            <X className="w-3.5 h-3.5" /> No Link
+                          </span>
+                        )}
+                        <CommentButton
+                          tracker={activeConfig.slug}
+                          entryKey={makeEntryKey('AlbumCopy', selectedEraData.name, copy.name)}
+                          entryLabel={copy.name}
+                          entryType="AlbumCopy"
+                        />
+                      </div>
                     </div>
 
                     {(copy.copy_length || copy.quality || copy.available_length || copy.type || copy.date) && (
@@ -331,7 +342,7 @@ export function AlbumCopiesView({ eras, albumCopiesData, searchQuery }: AlbumCop
         >
           <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
             {era.image ? (
-              <img onError={retryImageOnError} src={era.image} alt={era.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
+              <Img w={300} src={era.image} alt={era.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-white/5 text-white/20 font-bold text-2xl text-center p-4">
                 {era.name}

@@ -13,6 +13,7 @@ import { Home, Play, Pause, ChevronDown, RefreshCw, Sparkles, ExternalLink, Musi
 import * as audioStore from './player/audioStore';
 import { buildRecommendations, RecSong } from './recommendations';
 import { isListeningLoggedIn } from './listening';
+import { Img } from './utils';
 
 const ACCENT = '#7C5CFF';
 
@@ -212,7 +213,7 @@ export function ForYouPage() {
                   aria-label={playing ? 'Pause' : 'Play'}
                 >
                   {song.image
-                    ? <img src={song.image} alt={song.name} className="w-full h-full object-cover" draggable={false} />
+                    ? <Img w={500} src={song.image} alt={song.name} className="w-full h-full object-cover" draggable={false} />
                     : <div className="w-full h-full flex items-center justify-center bg-white/5"><Music2 className="w-16 h-16 text-white/20" /></div>}
                   <div className={`absolute inset-0 flex items-center justify-center transition-opacity ${playing ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`} style={{ background: 'rgba(0,0,0,0.28)' }}>
                     <div className="w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-md" style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.25)' }}>
