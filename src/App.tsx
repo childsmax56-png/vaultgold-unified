@@ -1801,8 +1801,18 @@ export default function App() {
     audioStore.setState({ currentArtwork: artwork, currentArtistLabel: artistLabel });
   };
 
+  // Stop every playback source except the one that's about to take over. Each
+  // source lives in its own hidden element/iframe, so switching sources without
+  // this leaves the previous one (e.g. a YouTube video) playing in the background.
+  const stopOtherPlayers = (keep: audioStore.ActivePlayer) => {
+    if (keep !== 'spotify') spotifyControls.pause();
+    if (keep !== 'youtube') youtubeControls.pause();
+    if (keep !== 'soundcloud') soundcloudControls.pause();
+    if (keep !== 'audio' && audioRef.current) audioRef.current.pause();
+  };
+
   const handlePlaySong = async (song: Song, era: Era, contextTracks?: Song[], resetShuffleHistory = true, autoPlay = true, isRandomSelection = false) => {
-    if (activePlayer === 'spotify') spotifyControls.pause();
+    stopOtherPlayers('audio');
     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
     const isNotAvailable = isSongNotAvailable(song, rawUrl);
     
@@ -2391,10 +2401,8 @@ export default function App() {
     if (!spotifyState.isReady) { showToast('Spotify player is still connecting — try again in a moment'); return; }
     const ok = await spotifyControls.playUri(uri);
     if (!ok) { showToast('Spotify playback failed. Make sure you have Spotify Premium.'); return; }
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+    stopOtherPlayers('spotify');
+    setIsPlaying(false);
     setActivePlayer('spotify');
     setIsPlayerClosed(false);
   };
@@ -2407,11 +2415,8 @@ export default function App() {
 
   const handlePlayYoutubeTrack = (videoId: string, title?: string) => {
     if (!youtubeState.isReady) return;
-    if (activePlayer === 'spotify') spotifyControls.pause();
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+    stopOtherPlayers('youtube');
+    setIsPlaying(false);
     setActivePlayer('youtube');
     setIsPlayerClosed(false);
     youtubeControls.playVideoId(videoId, title);
@@ -2419,11 +2424,8 @@ export default function App() {
 
   const handlePlaySoundCloudTrack = (url: string) => {
     if (!soundcloudState.isReady) return;
-    if (activePlayer === 'spotify') spotifyControls.pause();
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+    stopOtherPlayers('soundcloud');
+    setIsPlaying(false);
     setActivePlayer('soundcloud');
     setIsPlayerClosed(false);
     soundcloudControls.playUrl(url);
