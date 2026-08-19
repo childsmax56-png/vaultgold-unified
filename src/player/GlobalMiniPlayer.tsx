@@ -13,6 +13,7 @@ import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Repeat1, Volume2, 
 import * as audioStore from './audioStore';
 import { parseArtistFromSong } from '../lastfm';
 import { CUSTOM_IMAGES, formatTextWithTags, retryImageOnError } from '../utils';
+import { CommentButton } from '../components/CommentButton';
 
 function formatTime(seconds: number) {
   if (!seconds || isNaN(seconds)) return '0:00';
@@ -133,6 +134,15 @@ export function GlobalMiniPlayer() {
           </div>
 
           <div className="flex items-center justify-end gap-3 md:gap-4 col-start-2 col-end-3 row-start-1 md:flex-1">
+            {currentSong.commentKey && currentSong.commentTracker && (
+              <CommentButton
+                tracker={currentSong.commentTracker}
+                entryKey={currentSong.commentKey}
+                entryLabel={currentSong.commentLabel || titleDisplay}
+                entryType="song"
+                className="!p-0 w-8 h-8 justify-center text-white/50 hover:text-white"
+              />
+            )}
             <div className="hidden md:flex items-center gap-2">
               <Volume2 className="w-4 h-4 text-white/50" />
               <input

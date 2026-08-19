@@ -8,7 +8,7 @@ import { SongTitle } from './SongTitle';
 import { FakesEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey } from '../comments';
+import { makeEntryKey, stampSongComment } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 interface FakesViewProps {
@@ -198,7 +198,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
        if (f["Made By"]) desc += `Made By: ${f["Made By"]}\n`;
        if (f.Notes) desc += f.Notes;
 
-       return {
+       const song: Song = {
          name: `${f.Name} [Fake Leak]`,
          extra: f.FeatureExtra,
          extra2: f.Era,
@@ -210,8 +210,9 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
          fakesType: f.Type,
          fakesLength: f["Available Length"] === 'Not Available' ? '' : f["Available Length"],
        };
+       return stampSongComment(song, { tracker: activeConfig.slug, type: 'Fakes', era: selectedEraData?.eraName || '' });
      });
-  }, [filteredFakes]);
+  }, [filteredFakes, selectedEraData]);
 
   const allPlayableFakes = useMemo(() => {
     return fakesAsSongs.filter(s => {

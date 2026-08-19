@@ -18,7 +18,7 @@ import { SiLastdotfm } from 'react-icons/si';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey } from '../comments';
+import { makeEntryKey, stampSongComment } from '../comments';
 import { usePlaylists } from '../PlaylistContext';
 import { useIsClamped } from '../hooks/useIsClamped';
 
@@ -632,7 +632,10 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
         processedSongs = [...noVersion, ...versioned];
       }
 
-      return { category, songs: processedSongs };
+      const stamped = processedSongs.map(s =>
+        stampSongComment(s, { tracker: activeConfig.slug, type: category, era: (s as any).realEra?.name || era.name })
+      );
+      return { category, songs: stamped };
     }).filter(c => c.songs.length > 0);
   }, [era.data, filters, searchQuery, showLatestOnly, showFirstOnly]);
 

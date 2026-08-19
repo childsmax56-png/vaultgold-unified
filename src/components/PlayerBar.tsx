@@ -11,6 +11,8 @@ import { useSettings } from '../SettingsContext';
 import { usePlaylists } from '../PlaylistContext';
 import { activeConfig } from '../artists/activeConfig';
 import { eraArtwork } from '../eraArtwork';
+import { CommentsModal } from './CommentsModal';
+import { MessageCircle } from 'lucide-react';
 
 function formatTime(seconds: number) {
   if (isNaN(seconds)) return '0:00';
@@ -40,6 +42,7 @@ export function PlayerBar({
   const { playlists, addToPlaylist, createPlaylist } = usePlaylists();
   const [showMenu, setShowMenu] = useState(false);
   const [showLyrics, setShowLyrics] = useState(false);
+  const [showComments, setShowComments] = useState(false);
   const [showPlaylistMenu, setShowPlaylistMenu] = useState(false);
   const [creatingPlaylist, setCreatingPlaylist] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState('');
@@ -348,6 +351,16 @@ export function PlayerBar({
             );
           })()}
 
+          {currentSong.commentKey && currentSong.commentTracker && (
+            <button
+              onClick={() => setShowComments(true)}
+              className="hidden md:flex items-center justify-center text-white/40 hover:text-white transition-colors cursor-pointer"
+              title="Comments"
+            >
+              <MessageCircle className="w-4 h-4" />
+            </button>
+          )}
+
           <div
             className="hidden lg:flex items-center gap-2 w-24 group relative"
             title={`${Math.round(volume * 100)}%`}
@@ -443,6 +456,14 @@ export function PlayerBar({
                         >
                           <Mic2 className="w-4 h-4" /> {tooltipText}
                         </button>
+                        {currentSong.commentKey && currentSong.commentTracker && (
+                          <button
+                            onClick={() => { setShowComments(true); setShowMenu(false); }}
+                            className="w-full flex items-center gap-3 px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                          >
+                            <MessageCircle className="w-4 h-4" /> Comments
+                          </button>
+                        )}
                         {toggleFavorite &&
                           currentSong.name !== "Alright but the beat is Father Stretch My Hands Pt. 1" &&
                           !currentSong.name.endsWith('[Fake Leak]') &&
@@ -538,6 +559,17 @@ export function PlayerBar({
         currentTime={currentTime}
         onSeek={onSeek}
       />
+
+      {currentSong.commentKey && currentSong.commentTracker && (
+        <CommentsModal
+          isOpen={showComments}
+          onClose={() => setShowComments(false)}
+          tracker={currentSong.commentTracker}
+          entryKey={currentSong.commentKey}
+          entryLabel={currentSong.commentLabel || currentSong.name}
+          entryType="song"
+        />
+      )}
 
       <AnimatePresence>
         {shareToast && (

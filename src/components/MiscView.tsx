@@ -12,7 +12,7 @@ import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { findMvsForSong, findRemixesForSong, findSamplesForSong } from './EraDetail';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey } from '../comments';
+import { makeEntryKey, stampSongComment } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 export interface MiscEntry {
@@ -255,8 +255,8 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
       const rawUrl = s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(s, rawUrl);
       return rawUrl && rawUrl.includes('pillows.su/f/') && !isNotAvailable;
-    });
-  }, [filteredSongs]);
+    }).map(s => stampSongComment(s, { tracker: activeConfig.slug, type: 'Misc', era: selectedEra || '' }));
+  }, [filteredSongs, selectedEra]);
 
   const handleShare = (song: Song, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -478,7 +478,7 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
                   return (
                     <div
                       key={i}
-                      onClick={() => !isEmpty && onPlaySong(song, dummyEra, allPlayableSongs)}
+                      onClick={() => !isEmpty && onPlaySong(stampSongComment(song, { tracker: activeConfig.slug, type: 'Misc', era: selectedEra || '' }), dummyEra, allPlayableSongs)}
                       className={`group flex items-center px-4 py-2.5 rounded-md transition-colors ${isEmpty ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/5 cursor-pointer'} ${isCurrentlyPlaying ? 'bg-white/5' : ''}`}
                     >
                       <div className={`w-8 text-sm font-mono flex items-center ${isCurrentlyPlaying ? 'text-[var(--theme-color)]' : 'text-white/40 group-hover:text-white'}`}>

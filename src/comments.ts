@@ -6,6 +6,7 @@
 // entry is shown. Counts are fetched in batches (one request per animation
 // frame) so a list of rows doesn't fan out into an N+1.
 import { useEffect, useState } from 'react';
+import type { Song } from './types';
 
 const TOKEN_KEY = 'vg_token';
 const USER_KEY = 'vg_user';
@@ -38,6 +39,18 @@ export function isLoggedIn(): boolean {
 export function makeEntryKey(entryType: string, eraName: string | undefined, name: string): string {
   const norm = (s: string) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim().replace(/\|/g, '/');
   return [norm(entryType), norm(eraName || ''), norm(name)].join('::');
+}
+
+// Return a copy of `song` carrying the comment-thread context for the entry it
+// was played from, so the mini player can open the exact same thread the row
+// would. Stamped on the whole playable list so queue auto-advance keeps it.
+export function stampSongComment(song: Song, opts: { tracker: string; type: string; era: string }): Song {
+  return {
+    ...song,
+    commentTracker: opts.tracker,
+    commentKey: makeEntryKey(opts.type, opts.era, song.name),
+    commentLabel: song.name,
+  };
 }
 
 // ---- Thread CRUD -----------------------------------------------------------
