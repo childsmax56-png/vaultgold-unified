@@ -17,6 +17,7 @@ export interface CommentNode {
   id: string;
   username: string;
   userId: string;
+  avatarUrl?: string | null;
   body: string;
   createdAt: number;
   replies: CommentNode[];

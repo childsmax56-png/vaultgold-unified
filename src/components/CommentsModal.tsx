@@ -84,9 +84,19 @@ export function CommentsModal({ isOpen, onClose, tracker, entryKey, entryLabel, 
   const renderComment = (c: CommentNode, isReply = false) => (
     <div key={c.id} className={isReply ? 'pl-4 border-l border-white/10' : ''}>
       <div className="flex items-start gap-2 py-2">
-        <div className="w-7 h-7 rounded-full bg-[var(--theme-color)]/20 text-[var(--theme-color)] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-          {(c.username || '?').charAt(0).toUpperCase()}
-        </div>
+        {c.avatarUrl ? (
+          <img
+            src={c.avatarUrl}
+            alt={c.username}
+            className="w-7 h-7 rounded-full object-cover shrink-0 mt-0.5 bg-white/5"
+            loading="lazy"
+            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+          />
+        ) : (
+          <div className="w-7 h-7 rounded-full bg-[var(--theme-color)]/20 text-[var(--theme-color)] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+            {(c.username || '?').charAt(0).toUpperCase()}
+          </div>
+        )}
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2 flex-wrap">
             <span className="text-sm font-semibold text-white">{c.username}</span>

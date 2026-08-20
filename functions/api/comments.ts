@@ -13,6 +13,7 @@
 import { json, options, getSession, generateId } from './_auth';
 import { isYeditsAdmin } from './_yedits-auth';
 import { ensureCommentTables, normTracker } from './comments/_schema';
+import { ensureProfileColumns } from './auth/_profile-schema';
 
 export const onRequestOptions = options;
 
@@ -26,12 +27,14 @@ interface Row {
   username: string;
   body: string;
   created_at: number;
+  avatar_url: string | null;
 }
 
 interface CommentNode {
   id: string;
   username: string;
   userId: string;
+  avatarUrl: string | null;
   body: string;
   createdAt: number;
   replies: CommentNode[];
@@ -39,16 +42,21 @@ interface CommentNode {
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   await ensureCommentTables(env.DB);
+  await ensureProfileColumns(env.DB);
   const url = new URL(request.url);
   const tracker = normTracker(url.searchParams.get('tracker') || '');
   const entry = (url.searchParams.get('entry') || '').slice(0, MAX_KEY);
   if (!tracker || !entry) return json({ error: 'Missing tracker or entry' }, 400);
 
+  // avatar_url is joined live from users so an updated profile picture shows on
+  // every past comment, rather than the value at post time.
   const { results } = await env.DB.prepare(
-    `SELECT id, parent_id, user_id, username, body, created_at
-       FROM entry_comments
-      WHERE tracker_id = ? AND entry_key = ? AND deleted = 0
-      ORDER BY created_at ASC`
+    `SELECT ec.id, ec.parent_id, ec.user_id, ec.username, ec.body, ec.created_at,
+            u.avatar_url
+       FROM entry_comments ec
+       LEFT JOIN users u ON u.id = ec.user_id
+      WHERE ec.tracker_id = ? AND ec.entry_key = ? AND ec.deleted = 0
+      ORDER BY ec.created_at ASC`
   ).bind(tracker, entry).all<Row>();
 
   // Build a one-level thread: top-level comments in post order, replies nested.
@@ -57,6 +65,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   for (const r of results) {
     byId.set(r.id, {
       id: r.id, username: r.username, userId: r.user_id,
+      avatarUrl: r.avatar_url ?? null,
       body: r.body, createdAt: r.created_at, replies: [],
     });
   }
@@ -114,7 +123,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
   return json({
     comment: {
-      id, username: session.username, userId: session.user_id,
+      id, username: session.username, userId: session.user_id, avatarUrl: null,
       body, createdAt: now, parentId, replies: [],
     },
   });
