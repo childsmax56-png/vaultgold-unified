@@ -8,7 +8,7 @@ import { SongTitle } from './SongTitle';
 import { FakesEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey, stampSongComment } from '../comments';
+import { makeEntryKey, makeEraKey, baseEraName, stampSongComment } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 interface FakesViewProps {
@@ -320,8 +320,15 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
                 </span>
               </div>
               <p className="text-white/50 text-sm mb-4">Rumors, Fake Leaks, Edits, and Compilations</p>
-              
+
               <div className="flex items-center gap-2 mt-auto">
+                <CommentButton
+                  tracker={activeConfig.slug}
+                  entryKey={makeEraKey(selectedEraData.eraName)}
+                  entryLabel={baseEraName(selectedEraData.eraName)}
+                  entryType="Era"
+                  variant="pill"
+                />
               </div>
             </div>
           </div>

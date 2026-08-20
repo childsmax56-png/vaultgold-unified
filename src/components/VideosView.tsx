@@ -6,7 +6,7 @@ import { Era } from '../types';
 import { createSlug, CUSTOM_IMAGES , Img, relPath, absPath, pixeldrainProxyBase} from '../utils';
 import { useSettings } from '../SettingsContext';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey } from '../comments';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 export interface VideoRawEntry {
@@ -659,6 +659,13 @@ function EraDetailView({ eraGroup, onBack, searchQuery, miniPlayerMode, activeMi
             <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20">
               Music Videos
             </span>
+            <CommentButton
+              tracker={activeConfig.slug}
+              entryKey={makeEraKey(eraGroup.name)}
+              entryLabel={baseEraName(eraGroup.name)}
+              entryType="Era"
+              variant="pill"
+            />
           </div>
           <p className="text-white/50 text-sm">
             {eraGroup.unreleased.length} unreleased · {eraGroup.released.length} released

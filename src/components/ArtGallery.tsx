@@ -6,7 +6,7 @@ import { Era, SearchFilters } from '../types';
 import { formatTextWithTags, ALBUM_RELEASE_DATES, createSlug, matchesFilters, CUSTOM_IMAGES, handleDownloadFile , Img} from '../utils';
 import { useSettings } from '../SettingsContext';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey } from '../comments';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 export interface ArtEntry {
@@ -353,6 +353,13 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
                 >
                   <Share2 className="w-4 h-4" />
                 </button>
+                <CommentButton
+                  tracker={activeConfig.slug}
+                  entryKey={makeEraKey(selectedEra.name)}
+                  entryLabel={baseEraName(selectedEra.name)}
+                  entryType="Era"
+                  variant="pill"
+                />
               </div>
             </div>
           </div>

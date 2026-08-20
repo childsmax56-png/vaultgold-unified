@@ -14,7 +14,7 @@ import { CUSTOM_IMAGES, ALBUM_DESCRIPTIONS , Img} from '../utils';
 import { useIsClamped } from '../hooks/useIsClamped';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey } from '../comments';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 export interface ReleasedEntry {
@@ -294,6 +294,13 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
               <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">
                 Released
               </span>
+              <CommentButton
+                tracker={activeConfig.slug}
+                entryKey={makeEraKey(selectedGroup.eraName)}
+                entryLabel={baseEraName(selectedGroup.eraName)}
+                entryType="Era"
+                variant="pill"
+              />
             </div>
             <p className="text-white/50 text-sm">
               {selectedGroup.tracks.length} track{selectedGroup.tracks.length !== 1 ? 's' : ''}

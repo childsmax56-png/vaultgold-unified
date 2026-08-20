@@ -6,7 +6,7 @@ import { Era } from '../types';
 import { formatTextWithTags, createSlug, CUSTOM_IMAGES, Img } from '../utils';
 import { SongTitle } from './SongTitle';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey } from '../comments';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 export interface AlbumCopy {
@@ -239,6 +239,13 @@ export function AlbumCopiesView({ eras, albumCopiesData, searchQuery }: AlbumCop
                 >
                   <Share2 className="w-3.5 h-3.5" /> Share
                 </button>
+                <CommentButton
+                  tracker={activeConfig.slug}
+                  entryKey={makeEraKey(selectedEraData.name)}
+                  entryLabel={baseEraName(selectedEraData.name)}
+                  entryType="Era"
+                  variant="pill"
+                />
               </div>
             </div>
           </div>

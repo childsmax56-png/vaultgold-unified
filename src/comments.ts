@@ -41,6 +41,21 @@ export function makeEntryKey(entryType: string, eraName: string | undefined, nam
   return [norm(entryType), norm(eraName || ''), norm(name)].join('::');
 }
 
+// Canonical base name for an era, so the SAME era read from any tab maps to one
+// comment thread. Stems/Misc/Fakes suffix the era name (e.g. "Graduation [Stems
+// Album]"); those tab suffixes are stripped, but version tags like "[V1]" that
+// genuinely distinguish eras are kept.
+export function baseEraName(eraName: string): string {
+  return (eraName || '')
+    .replace(/\s*\[(stems album|misc album|fake leaks?|stems|misc|fake)\]\s*$/i, '')
+    .trim();
+}
+
+// Tab-independent comment key for a whole era (shared across every tab).
+export function makeEraKey(eraName: string): string {
+  return makeEntryKey('era', '', baseEraName(eraName));
+}
+
 // Return a copy of `song` carrying the comment-thread context for the entry it
 // was played from, so the mini player can open the exact same thread the row
 // would. Stamped on the whole playable list so queue auto-advance keeps it.

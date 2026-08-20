@@ -12,7 +12,7 @@ import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { findMvsForSong, findRemixesForSong, findSamplesForSong } from './EraDetail';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey, stampSongComment } from '../comments';
+import { makeEntryKey, makeEraKey, baseEraName, stampSongComment } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 export interface MiscEntry {
@@ -448,6 +448,13 @@ export function MiscView({ eras, miscData, searchQuery, filters, onPlaySong, cur
                   >
                     <Share2 className="w-4 h-4" />
                   </button>
+                  <CommentButton
+                    tracker={activeConfig.slug}
+                    entryKey={makeEraKey(selectedEraData.eraName)}
+                    entryLabel={baseEraName(selectedEraData.eraName)}
+                    entryType="Era"
+                    variant="pill"
+                  />
                 </div>
               </div>
               <p className="text-white/50 text-sm">Album Copies, Alternate Versions & More</p>

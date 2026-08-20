@@ -7,7 +7,7 @@ import { isSongNotAvailable, embedID3Tags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, b
 import { useDownloadManager } from '../DownloadManagerContext';
 import { useSettings } from '../SettingsContext';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey } from '../comments';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
 import { activeConfig } from '../artists/activeConfig';
 
 export interface TracklistTrack {
@@ -565,9 +565,20 @@ export function TracklistsView({ data, legend = [], searchQuery, eras, onPlaySon
       )}
 
       <div className="mb-6">
-        <h2 className="text-white font-display font-bold text-xl tracking-tight">
-          {era ? era.name : 'Album Copies'}
-        </h2>
+        <div className="flex items-center gap-3 flex-wrap">
+          <h2 className="text-white font-display font-bold text-xl tracking-tight">
+            {era ? era.name : 'Album Copies'}
+          </h2>
+          {era && (
+            <CommentButton
+              tracker={activeConfig.slug}
+              entryKey={makeEraKey(era.name)}
+              entryLabel={baseEraName(era.name)}
+              entryType="Era"
+              variant="pill"
+            />
+          )}
+        </div>
         <p className="text-white/40 text-xs mt-1">
           {filtered.length} album{filtered.length !== 1 ? 's' : ''} ·{' '}
           {filtered.reduce((s, { album }) => s + album.tracks.length, 0).toLocaleString()} tracks ·{' '}
