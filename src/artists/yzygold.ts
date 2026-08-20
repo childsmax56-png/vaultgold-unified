@@ -292,6 +292,12 @@ export const yzygoldConfig: ArtistConfig = {
       miniPlayer: "/yzygold/MiniPlayerTCD.png",
       fullPicturePlayer: "/yzygold/FullPicturePlayerTCD.png",
     },
+    "Late Registration": {
+      topBanner: "/yzygold/TopBannerLateRegistration.png",
+      bottomBanner: "/yzygold/BottomBannerLateRegistration.png",
+      miniPlayer: "/yzygold/MiniPlayerLateRegistration.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerLateRegistration.png",
+    },
     "Graduation": {
       topBanner: "/yzygold/TopBannerGraduation.png",
       bottomBanner: "/yzygold/BottomBannerGraduation.png",
@@ -333,6 +339,13 @@ export const yzygoldConfig: ArtistConfig = {
       bottomBanner: "/yzygold/BottomBannerYeezus2.png",
       miniPlayer: "/yzygold/MiniPlayerYeezus2.png",
       fullPicturePlayer: "/yzygold/FullPicturePlayerYeezus2.png",
+    },
+    "The Life Of Pablo": {
+      topBanner: "/yzygold/TopBannerTLOP.png",
+      bottomBanner: "/yzygold/BottomBannerTLOP.png",
+      bottomBannerRepeat: true,
+      miniPlayer: "/yzygold/MiniPlayerTLOP.png",
+      fullPicturePlayer: "/yzygold/FullPicturePlayerTLOP.png",
     },
   },
 

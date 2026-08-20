@@ -18,7 +18,7 @@ import { SiLastdotfm } from 'react-icons/si';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
 import { CommentButton } from './CommentButton';
-import { makeEntryKey, stampSongComment } from '../comments';
+import { makeEntryKey, makeEraKey, baseEraName, stampSongComment } from '../comments';
 import { usePlaylists } from '../PlaylistContext';
 import { useIsClamped } from '../hooks/useIsClamped';
 
@@ -706,6 +706,15 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                     <Share2 className="w-4 h-4" />
                   </button>
                 )}
+                {era.name !== 'Favorites' && era.name !== 'Recent Leaks' && (
+                  <CommentButton
+                    tracker={activeConfig.slug}
+                    entryKey={makeEraKey(era.name)}
+                    entryLabel={baseEraName(era.name)}
+                    entryType="Era"
+                    variant="pill"
+                  />
+                )}
 
                 {era.name !== 'Recent Leaks' && (
                   showLatestOnly ? (
@@ -910,11 +919,18 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
 
         <div
           className="flex-1"
-          style={!settings.disableEraThemes && ERA_THEMES[era.name]?.bottomBanner ? {
-            backgroundImage: `url(${ERA_THEMES[era.name].bottomBanner})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          } : undefined}
+          style={!settings.disableEraThemes && ERA_THEMES[era.name]?.bottomBanner ? (
+            ERA_THEMES[era.name].bottomBannerRepeat ? {
+              backgroundImage: `url(${ERA_THEMES[era.name].bottomBanner})`,
+              backgroundSize: '100% auto',
+              backgroundRepeat: 'repeat-y',
+              backgroundPosition: 'top center',
+            } : {
+              backgroundImage: `url(${ERA_THEMES[era.name].bottomBanner})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }
+          ) : undefined}
         >
         <div className={`px-6 md:px-8 pt-8 max-w-6xl mx-auto${!settings.disableEraThemes && ERA_THEMES[era.name]?.bottomBanner ? ' drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : ''}`}>
           {processedCategories.map(({ category, songs: processedSongs }) => {
