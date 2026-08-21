@@ -6,8 +6,9 @@ const ACCENT = '#FFD700';
 
 // Shared "under maintenance" screen with a password gate. Public visitors see
 // the maintenance notice; entering the access password reveals the real page.
-// The unlock is remembered in localStorage (shared across gated pages) so
-// authorized people don't have to re-enter it.
+// The unlock is remembered in localStorage under a per-page storageKey (so
+// unlocking one gated page does not unlock the others) and authorized people
+// don't have to re-enter it on that page.
 //
 // NOTE: this is a client-side gate — the password lives in the shipped bundle,
 // so it keeps casual visitors out but is not a real security boundary. It's the
@@ -16,17 +17,21 @@ const ACCENT = '#FFD700';
 export const MAINTENANCE_PASSWORD = 'Sophiachiconruiz';
 export const MAINTENANCE_STORAGE_KEY = 'vg_maintenance_unlocked';
 
-export function isMaintenanceUnlocked(): boolean {
-  try { return localStorage.getItem(MAINTENANCE_STORAGE_KEY) === '1'; } catch { return false; }
+// Each gated page passes its own storageKey so unlocking one page does NOT
+// unlock the others (they're independent maintenance screens).
+export function isMaintenanceUnlocked(storageKey: string = MAINTENANCE_STORAGE_KEY): boolean {
+  try { return localStorage.getItem(storageKey) === '1'; } catch { return false; }
 }
 
 export function MaintenanceGate({
   title,
   message = "We're doing some work behind the scenes. This will be back and open to the public soon — thanks for your patience.",
+  storageKey = MAINTENANCE_STORAGE_KEY,
   onUnlock,
 }: {
   title: React.ReactNode;
   message?: string;
+  storageKey?: string;
   onUnlock: () => void;
 }) {
   const navigate = useNavigate();
@@ -35,7 +40,7 @@ export function MaintenanceGate({
 
   const submit = () => {
     if (password === MAINTENANCE_PASSWORD) {
-      try { localStorage.setItem(MAINTENANCE_STORAGE_KEY, '1'); } catch {}
+      try { localStorage.setItem(storageKey, '1'); } catch {}
       onUnlock();
     } else {
       setError(true);

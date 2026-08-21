@@ -150,7 +150,7 @@ function ImageInput({ value, onChange, allowLink, placeholder }: {
 export function CreateTrackerPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [unlocked, setUnlocked] = useState(isMaintenanceUnlocked);
+  const [unlocked, setUnlocked] = useState(() => isMaintenanceUnlocked('buildtracker_maintenance_unlocked'));
   const [user, setUser] = useState<VGUser | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
 
@@ -171,6 +171,7 @@ export function CreateTrackerPage() {
       <MaintenanceGate
         title="Build a Tracker is under maintenance"
         message="We're doing some work behind the scenes. Tracker building will be back and open to the public soon — thanks for your patience."
+        storageKey="buildtracker_maintenance_unlocked"
         onUnlock={() => setUnlocked(true)}
       />
     );
