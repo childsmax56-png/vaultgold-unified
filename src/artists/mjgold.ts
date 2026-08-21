@@ -13,6 +13,7 @@ export const mjgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1i59TKrIZ1OvFFPJFuOMw1VXlvyzaVOH0Wb0vVJp9BTw/export?format=csv&gid=180906153',
   accentColor: '#facc15',
   artistLabel: 'Michael Jackson',
+  sheetCreator: 'coolwaves',
   cardLetter: 'MJ',
   logoUrl: '/logos/mjgold.jpg',
   artistPhotoUrl: '/artists/michaeljackson-v2.jpg',

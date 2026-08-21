@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const drizzygoldConfig: ArtistConfig = {
   slug: 'drizzygold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'DRIZZYGOLD',
   SITE_DESCRIPTION: 'The Best Drake Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/drizzygold/',
@@ -13,6 +14,7 @@ export const drizzygoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: `https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/export?format=csv&gid=494030977`,
   accentColor: '#b8860b',
   artistLabel: 'Drake',
+  sheetCreator: 'slothsavedearth, takaTyphoon, Luna, FinalxNinja, PhilMcG, Franki8000, raglord, Soulsby, futurefan41, frezling, graceisfriend, Brimcoole',
   cardLetter: 'OVO',
   logoUrl: '/logos/drizzygold.png',
   artistPhotoUrl: '/artists/drake.jpg',

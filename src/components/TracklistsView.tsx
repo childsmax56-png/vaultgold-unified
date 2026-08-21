@@ -1,11 +1,21 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, ChevronDown, ChevronUp, Download, ExternalLink, Play, Pause } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Download, ExternalLink, Play, Pause, Image as ImageIcon, X } from 'lucide-react';
 import { saveAs } from 'file-saver';
 import { Era, Song } from '../types';
 import { isSongNotAvailable, embedID3Tags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 import { useSettings } from '../SettingsContext';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
+
+export interface TracklistTrack {
+  num: string;
+  name: string;
+  color?: string;      // availability swatch, when the sheet colours this track
+  colorLabel?: string; // legend label for that swatch
+}
 
 export interface TracklistAlbum {
   era: string;
@@ -14,11 +24,22 @@ export interface TracklistAlbum {
   quality: string;
   source: string;
   links: string[];
-  tracks: { num: string; name: string }[];
+  tracks: TracklistTrack[];
+  description?: string;   // prose that precedes the numbered tracklist
+  availability?: string;  // free-text availability/status from the sheet
+  availColor?: string;    // per-album availability swatch (hex)
+  availLabel?: string;    // legend label for that swatch
+  images?: string[];      // backup tracklist screenshots pulled from the sheet
+}
+
+export interface TracklistLegendItem {
+  label: string;
+  color: string; // hex, may be '' when the sheet didn't expose a colour
 }
 
 interface TracklistsViewProps {
   data: TracklistAlbum[];
+  legend?: TracklistLegendItem[];
   searchQuery: string;
   eras: Era[];
   onPlaySong: (song: Song, era: Era, contextTracks?: Song[]) => void;
@@ -160,6 +181,7 @@ interface AlbumCardProps {
   onPlaySong: (song: Song, era: Era, contextTracks?: Song[]) => void;
   currentSong?: Song | null;
   isPlaying?: boolean;
+  onOpenImage: (url: string) => void;
 }
 
 async function resolveAudioUrl(rawUrl: string): Promise<string> {
@@ -172,8 +194,7 @@ async function resolveAudioUrl(rawUrl: string): Promise<string> {
   }
   if (rawUrl.includes('pillows.su/f/')) {
     const id = rawUrl.split('/f/')[1];
-    // Pillowcase blocks direct cross-site hotlinks; proxy server-side.
-    return `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/get/${id}`)}`;
+    return `https://api.pillows.su/api/get/${id}`;
   }
   if (rawUrl.includes('krakenfiles.com/view/')) {
     return `/api/kraken-proxy?url=${encodeURIComponent(rawUrl)}`;
@@ -181,7 +202,7 @@ async function resolveAudioUrl(rawUrl: string): Promise<string> {
   return rawUrl;
 }
 
-function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPlaying }: AlbumCardProps) {
+function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPlaying, onOpenImage }: AlbumCardProps) {
   const [open, setOpen] = useState(defaultOpen);
   const [dlProgress, setDlProgress] = useState<string | null>(null);
   const { settings } = useSettings();
@@ -265,9 +286,26 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
-          <span className={`text-[11px] font-medium hidden sm:inline ${qualityColor(album.quality)}`}>
-            {album.quality || '—'}
-          </span>
+          {album.availColor ? (
+            <span
+              className="text-[11px] font-medium hidden sm:inline-flex items-center gap-1.5"
+              style={{ color: album.availColor }}
+              title={album.availLabel || album.availability}
+            >
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: album.availColor }} />
+              {album.availability || album.availLabel || album.quality || '—'}
+            </span>
+          ) : (
+            <span className={`text-[11px] font-medium hidden sm:inline ${qualityColor(album.availability || album.quality)}`}>
+              {album.availability || album.quality || '—'}
+            </span>
+          )}
+          {album.images && album.images.length > 0 && (
+            <span className="text-white/30 hidden sm:inline-flex items-center gap-0.5" title={`${album.images.length} backup image${album.images.length > 1 ? 's' : ''}`}>
+              <ImageIcon className="w-3.5 h-3.5" />
+              {album.images.length > 1 && <span className="text-[10px]">{album.images.length}</span>}
+            </span>
+          )}
           <span className="text-white/30 text-xs hidden md:inline">
             {playableSongs.length}/{album.tracks.length}
           </span>
@@ -292,6 +330,12 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
               ? <span className="text-[10px] font-mono tabular-nums">{dlProgress}</span>
               : <Download className="w-3.5 h-3.5" />}
           </button>
+          <CommentButton
+            tracker={activeConfig.slug}
+            entryKey={makeEntryKey('Tracklist', album.era, album.name)}
+            entryLabel={album.name}
+            entryType="Tracklist"
+          />
           {open ? <ChevronUp className="w-4 h-4 text-white/30" /> : <ChevronDown className="w-4 h-4 text-white/30" />}
         </div>
       </button>
@@ -306,9 +350,41 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
             transition={{ duration: 0.18, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="border-t border-white/[0.05] divide-y divide-white/[0.04]">
+            <div className="border-t border-white/[0.05]">
+              {(album.description || (album.images && album.images.length > 0)) && (
+                <div className="px-4 py-3 space-y-3 border-b border-white/[0.05]">
+                  {album.description && (
+                    <p className="text-white/55 text-xs leading-relaxed whitespace-pre-line">
+                      {album.description}
+                    </p>
+                  )}
+                  {album.images && album.images.length > 0 && (
+                    <div className="flex gap-2 flex-wrap">
+                      {album.images.map((src, ii) => (
+                        <button
+                          key={ii}
+                          onClick={e => { e.stopPropagation(); onOpenImage(src); }}
+                          className="group/img relative rounded-lg overflow-hidden border border-white/10 hover:border-[var(--theme-color)]/50 transition-colors cursor-zoom-in"
+                          title="View backup tracklist image"
+                        >
+                          <img
+                            src={src}
+                            loading="lazy"
+                            alt="Backup tracklist"
+                            className="h-24 w-auto object-cover block"
+                          />
+                          <span className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+              <div className="divide-y divide-white/[0.04]">
               {album.tracks.length === 0 ? (
-                <p className="px-4 py-3 text-xs text-white/30 italic">No parsed tracks</p>
+                <p className="px-4 py-3 text-xs text-white/30 italic">
+                  {album.description ? 'Tracklist not itemised — see description above.' : 'No parsed tracks'}
+                </p>
               ) : album.tracks.map((t, i) => {
                 const match = matches[i] ?? null;
                 const rawUrl = match ? (match.song.url || match.song.urls?.[0] || '') : '';
@@ -352,6 +428,14 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
                       {t.name}
                     </span>
 
+                    {t.color && (
+                      <span
+                        className="w-2 h-2 rounded-full shrink-0"
+                        style={{ backgroundColor: t.color }}
+                        title={t.colorLabel}
+                      />
+                    )}
+
                     {match && match.era.name !== album.era && (
                       <span className="text-[10px] text-white/20 hidden md:inline truncate max-w-[120px]">
                         {match.era.name}
@@ -360,6 +444,7 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
                   </div>
                 );
               })}
+              </div>
             </div>
           </motion.div>
         )}
@@ -372,8 +457,25 @@ function AlbumCard({ album, matches, defaultOpen, onPlaySong, currentSong, isPla
 
 const PAGE_SIZE = 30;
 
-export function TracklistsView({ data, searchQuery, eras, onPlaySong, currentSong, isPlaying, era, onBack }: TracklistsViewProps) {
+export function TracklistsView({ data, legend = [], searchQuery, eras, onPlaySong, currentSong, isPlaying, era, onBack }: TracklistsViewProps) {
   const q = searchQuery.toLowerCase().trim();
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
+  // Only show the colour key when the sheet actually exposed swatch colours and
+  // at least one album/track is coloured with them.
+  const colouredLegend = useMemo(() => legend.filter(l => l.color), [legend]);
+  const hasColouredData = useMemo(
+    () => data.some(a => a.availColor || a.tracks.some(t => t.color)),
+    [data]
+  );
+
+  // Close the lightbox on Escape.
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [lightbox]);
 
   // Build indexes once when eras are ready
   const idx = useMemo(() => buildIndexes(eras), [eras]);
@@ -463,15 +565,38 @@ export function TracklistsView({ data, searchQuery, eras, onPlaySong, currentSon
       )}
 
       <div className="mb-6">
-        <h2 className="text-white font-display font-bold text-xl tracking-tight">
-          {era ? era.name : 'Album Copies'}
-        </h2>
+        <div className="flex items-center gap-3 flex-wrap">
+          <h2 className="text-white font-display font-bold text-xl tracking-tight">
+            {era ? era.name : 'Album Copies'}
+          </h2>
+          {era && (
+            <CommentButton
+              tracker={activeConfig.slug}
+              entryKey={makeEraKey(era.name)}
+              entryLabel={baseEraName(era.name)}
+              entryType="Era"
+              variant="pill"
+            />
+          )}
+        </div>
         <p className="text-white/40 text-xs mt-1">
           {filtered.length} album{filtered.length !== 1 ? 's' : ''} ·{' '}
           {filtered.reduce((s, { album }) => s + album.tracks.length, 0).toLocaleString()} tracks ·{' '}
           <span className="text-[var(--theme-color)]/70">{totalPlayable.toLocaleString()} playable</span>
         </p>
       </div>
+
+      {colouredLegend.length > 0 && hasColouredData && (
+        <div className="mb-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-lg bg-white/[0.02] border border-white/[0.06] px-3 py-2">
+          <span className="text-white/40 text-[10px] font-semibold uppercase tracking-widest">Availability</span>
+          {colouredLegend.map(l => (
+            <span key={l.label} className="flex items-center gap-1.5 text-[11px] text-white/60">
+              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: l.color }} />
+              {l.label}
+            </span>
+          ))}
+        </div>
+      )}
 
       {filtered.length === 0 ? (
         <div className="text-center py-20 text-white/30 text-sm">No results for "{searchQuery}"</div>
@@ -494,12 +619,39 @@ export function TracklistsView({ data, searchQuery, eras, onPlaySong, currentSon
                 onPlaySong={onPlaySong}
                 currentSong={currentSong}
                 isPlaying={isPlaying}
+                onOpenImage={setLightbox}
               />
             )
           )}
           <div ref={loaderRef} className="h-4" />
         </div>
       )}
+
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 cursor-zoom-out"
+            onClick={() => setLightbox(null)}
+          >
+            <button
+              onClick={() => setLightbox(null)}
+              className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors cursor-pointer"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img
+              src={lightbox}
+              alt="Backup tracklist"
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onClick={e => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const wolfgoldConfig: ArtistConfig = {
   slug: 'wolfgold',
+  hasGroupbuysTab: true,
   hasAlbumCopiesTab: true,
   SITE_NAME: 'WOLFgold',
   SITE_DESCRIPTION: 'The Best Tyler, The Creator Tracker In The World!',
@@ -14,6 +15,7 @@ export const wolfgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#f59e0b',
   artistLabel: 'Tyler, The Creator',
+  sheetCreator: 'ColbyJackChedda, thainglorious, Marin, Zulsk, Akuma, Uncles Make Freaks, y7, BrokenStone, royalty',
   cardLetter: 'WLF',
   logoUrl: '/logos/wolfgold.png',
   artistPhotoUrl: '/artists/tyler.jpg',

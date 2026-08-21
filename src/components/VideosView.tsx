@@ -3,8 +3,11 @@ import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, ChevronDown, ChevronUp, Film, Maximize2, Minimize2, X } from 'lucide-react';
 import { Era } from '../types';
-import { createSlug, CUSTOM_IMAGES , retryImageOnError, relPath, absPath, pixeldrainProxyBase} from '../utils';
+import { createSlug, CUSTOM_IMAGES , Img, relPath, absPath, pixeldrainProxyBase} from '../utils';
 import { useSettings } from '../SettingsContext';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface VideoRawEntry {
   Era: string;
@@ -514,6 +517,12 @@ function VideoRow({ entry, miniPlayerMode, activeMiniEntry, onOpenMiniPlayer, on
           {entry.links.length > 0 && !expanded && !miniPlayerMode && (
             <ExternalLink className="w-3.5 h-3.5 text-white/30" />
           )}
+          <CommentButton
+            tracker={activeConfig.slug}
+            entryKey={makeEntryKey('Videos', entry.era, entry.name)}
+            entryLabel={entry.name}
+            entryType="Videos"
+          />
         </div>
       </div>
 
@@ -630,11 +639,10 @@ function EraDetailView({ eraGroup, onBack, searchQuery, miniPlayerMode, activeMi
 
         <div className="w-32 h-32 md:w-48 md:h-48 rounded-md overflow-hidden bg-white/5 shrink-0 shadow-xl">
           {eraGroup.image ? (
-            <img onError={retryImageOnError}
+            <Img w={400} eager
               src={eraGroup.image}
               alt={eraGroup.name}
               className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
@@ -651,6 +659,13 @@ function EraDetailView({ eraGroup, onBack, searchQuery, miniPlayerMode, activeMi
             <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20">
               Music Videos
             </span>
+            <CommentButton
+              tracker={activeConfig.slug}
+              entryKey={makeEraKey(eraGroup.name)}
+              entryLabel={baseEraName(eraGroup.name)}
+              entryType="Era"
+              variant="pill"
+            />
           </div>
           <p className="text-white/50 text-sm">
             {eraGroup.unreleased.length} unreleased · {eraGroup.released.length} released
@@ -830,11 +845,10 @@ export function VideosView({ eras, videosData, searchQuery, onVideoPlay }: Video
             >
               <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
                 {group.image ? (
-                  <img onError={retryImageOnError}
+                  <Img w={300}
                     src={group.image}
                     alt={group.name}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                    referrerPolicy="no-referrer"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-white/5">

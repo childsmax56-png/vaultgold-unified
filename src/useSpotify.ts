@@ -103,7 +103,7 @@ export function useSpotify(enabled: boolean): { state: SpotifyState; controls: S
       } catch { setState(s => ({ ...s, error: 'Could not verify Spotify account.' })); return; }
 
       const player = new window.Spotify.Player({
-        name: 'YZYGOLD',
+        name: 'UNVAULTED',
         getOAuthToken: async (cb) => {
           const t = await getSpotifyToken();
           if (t) cb(t);

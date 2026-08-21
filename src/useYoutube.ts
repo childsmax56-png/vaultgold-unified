@@ -53,6 +53,7 @@ export interface YouTubeState {
 export interface YouTubeControls {
   playVideoId: (id: string, title?: string) => void;
   togglePlay: () => void;
+  pause: () => void;
   seek: (seconds: number) => void;
   setVolume: (pct: number) => void; // 0-1
 }
@@ -179,6 +180,10 @@ export function useYoutube(): { state: YouTubeState; controls: YouTubeControls }
       } else {
         playerRef.current.playVideo();
       }
+    }, []),
+
+    pause: useCallback(() => {
+      playerRef.current?.pauseVideo();
     }, []),
 
     seek: useCallback((seconds: number) => {

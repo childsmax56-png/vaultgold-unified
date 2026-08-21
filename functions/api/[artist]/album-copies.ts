@@ -1,4 +1,5 @@
 import { parseCSV, csvResponse } from './_csvParser';
+import { fetchTrackerCsv } from './_sheets';
 
 // Split a "Name\n(subtitle)" cell into its display name and optional extra line.
 function firstLine(raw: string): { name: string; extra?: string } {
@@ -39,14 +40,9 @@ export const onRequestGet: PagesFunction = async (context) => {
   try {
     const url = new URL(context.request.url);
     const artist = (context.params as Record<string, string>).artist ?? 'yzygold';
-    const csvUrl = `${url.origin}/${artist}/data/album-copies.csv`;
 
-    const res = await fetch(csvUrl);
-    if (!res.ok) return csvResponse({ eras: [] });
-
-    let text = await res.text();
-    // The SPA catch-all returns index.html (status 200) for missing static files.
-    if (text.trimStart().startsWith('<')) return csvResponse({ eras: [] });
+    let text = await fetchTrackerCsv(url.origin, artist, 'album-copies');
+    if (text === null) return csvResponse({ eras: [] });
 
     // Strip any disclaimer/preamble lines before the real "Era," header row.
     const lines = text.split('\n');

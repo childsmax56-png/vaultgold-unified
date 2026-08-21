@@ -94,20 +94,8 @@ function FeedRow({ item }: { item: FeedItem }) {
         el.style.background = '#0f0f0f';
       }}
     >
-      {config.logoUrl ? (
-        <img
-          src={config.logoUrl}
-          alt={config.SITE_NAME}
-          style={{ width: 34, height: 34, borderRadius: 8, objectFit: 'contain', background: '#000', padding: 4, flexShrink: 0 }}
-          onError={e => {
-            const img = e.currentTarget;
-            img.style.display = 'none';
-            (img.nextElementSibling as HTMLElement).style.display = 'flex';
-          }}
-        />
-      ) : null}
       <div style={{
-        display: config.logoUrl ? 'none' : 'flex', width: 34, height: 34, borderRadius: 8, flexShrink: 0,
+        display: 'flex', width: 34, height: 34, borderRadius: 8, flexShrink: 0,
         alignItems: 'center', justifyContent: 'center', background: `${accent}22`,
         color: accent, fontWeight: 900, fontSize: 15,
       }}>{config.cardLetter}</div>

@@ -10,9 +10,12 @@ import {
   SiBandcamp,
 } from 'react-icons/si';
 import { Era, Song } from '../types';
-import { CUSTOM_IMAGES, ALBUM_DESCRIPTIONS , retryImageOnError} from '../utils';
+import { CUSTOM_IMAGES, ALBUM_DESCRIPTIONS , Img} from '../utils';
 import { useIsClamped } from '../hooks/useIsClamped';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface ReleasedEntry {
   Era: string;
@@ -275,7 +278,7 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
 
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-md overflow-hidden bg-white/5 shrink-0 shadow-xl">
             {selectedGroup.image ? (
-              <img onError={retryImageOnError} src={selectedGroup.image} alt={selectedGroup.eraName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <Img w={400} eager src={selectedGroup.image} alt={selectedGroup.eraName} className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">
                 {selectedGroup.eraName}
@@ -291,6 +294,13 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
               <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">
                 Released
               </span>
+              <CommentButton
+                tracker={activeConfig.slug}
+                entryKey={makeEraKey(selectedGroup.eraName)}
+                entryLabel={baseEraName(selectedGroup.eraName)}
+                entryType="Era"
+                variant="pill"
+              />
             </div>
             <p className="text-white/50 text-sm">
               {selectedGroup.tracks.length} track{selectedGroup.tracks.length !== 1 ? 's' : ''}
@@ -430,17 +440,23 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
                     })}
                   </div>
 
-                  {/* add to playlist */}
-                  {links.length > 0 && (
-                    <div className="w-8 shrink-0 hidden sm:flex items-center justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+                  {/* add to playlist + comments */}
+                  <div className="shrink-0 hidden sm:flex items-center justify-end gap-1 pl-1">
+                    {links.length > 0 && (
                       <AddToPlaylistButton
                         song={{ name: mainName, url: links[0].url, track_length: track.Length } as unknown as Song}
                         eraName={selectedGroup.eraName}
                         url={links[0].url}
                         isCurrentlyPlaying={false}
                       />
-                    </div>
-                  )}
+                    )}
+                    <CommentButton
+                      tracker={activeConfig.slug}
+                      entryKey={makeEntryKey('Released', selectedGroup.eraName, mainName)}
+                      entryLabel={mainName}
+                      entryType="Released"
+                    />
+                  </div>
                 </div>
 
                 {/* inline embed accordion */}
@@ -504,11 +520,10 @@ export function ReleasedView({ eras, releasedData, searchQuery, spotifyLoggedIn,
         >
           <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
             {group.image ? (
-              <img onError={retryImageOnError}
+              <Img w={300}
                 src={group.image}
                 alt={group.eraName}
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                referrerPolicy="no-referrer"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-white/5 text-white/20 font-bold text-2xl text-center p-4">

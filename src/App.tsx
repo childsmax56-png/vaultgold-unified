@@ -12,7 +12,7 @@ import { FullScreenPlayer } from './components/FullScreenPlayer';
 import { ArtGallery, ArtEntry } from './components/ArtGallery';
 import { StemsView, StemEntry } from './components/StemsView';
 import { MiscView, MiscEntry } from './components/MiscView';
-import { TracklistsView, TracklistAlbum } from './components/TracklistsView';
+import { TracklistsView, TracklistAlbum, TracklistLegendItem } from './components/TracklistsView';
 import { QueueModal } from './components/QueueModal';
 import { handleShareSilent } from './components/EraDetail';
 
@@ -21,6 +21,7 @@ import { ContributorContext } from './ContributorContext';
 import { ContributorView } from './components/ContributorView';
 import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, ERA_DISCLAIMERS, getArtistName, buildArtistTag, handleDownloadFile, pixeldrainProxyBase } from './utils';
 import { isLastfmLoggedIn, saveLastfmSession, clearLastfmSession, scrobbleTrack, updateNowPlaying, cleanTrackName, parseArtistFromSong, cleanAlbumName } from './lastfm';
+import { logListen, isListeningLoggedIn } from './listening';
 import { isSpotifyLoggedIn, clearSpotifySession, startSpotifyAuth, handleSpotifyCallback } from './spotify';
 import { useSpotify, SpotifyTrack } from './useSpotify';
 import { useYoutube } from './useYoutube';
@@ -148,6 +149,7 @@ import { SettingsView } from './components/SettingsView';
 import { HistoryView } from './components/HistoryView';
 import { FakesView } from './components/FakesView';
 import { AlbumCopiesView, AlbumCopyEra } from './components/AlbumCopiesView';
+import { GroupbuysView, GroupbuysData } from './components/GroupbuysView';
 import { CompsView } from './components/CompsView';
 import { ConcertsView } from './components/ConcertsView';
 import { YEditsView } from './components/YEditsView';
@@ -155,13 +157,27 @@ import { ReleasedView, ReleasedEntry } from './components/ReleasedView';
 import { VideosView, VideoRawEntry } from './components/VideosView';
 import { SubAlbumsView, SubAlbumEntry } from './components/SubAlbumsView';
 import { ChatBubble } from './components/ChatBubble';
-import { PlaylistsView } from './components/PlaylistsView';
 import { TimelineView } from './components/TimelineView';
 import { ImportPlaylistModal } from './components/ImportPlaylistModal';
 import { useSettings, LOADING_SCREENS, LoadingScreenId } from './SettingsContext';
 import { PlaylistProvider } from './PlaylistContext';
+import { initDataSync, scheduleDataPush } from './dataSync';
 import { recordListeningHistory } from './history';
 import { activeConfig } from './artists/activeConfig';
+
+// When viewing a community (user-built) tracker, attach the signed-in account's
+// token to our own /api/ data requests. This lets the creator/admin preview a
+// draft/pending tracker before it's approved; official trackers are unaffected.
+axios.interceptors.request.use((config) => {
+  const url = config.url || '';
+  if (activeConfig.community && url.startsWith('/api/')) {
+    const token = localStorage.getItem('vg_token');
+    if (token && config.headers) {
+      (config.headers as unknown as Record<string, string>).Authorization = `Bearer ${token}`;
+    }
+  }
+  return config;
+});
 
 export default function App() {
   // Read artist config at component render time (after setActiveConfig was called by ArtistRoute)
@@ -203,8 +219,10 @@ export default function App() {
   const [miscData, setMiscData] = useState<MiscEntry[]>([]);
   const [fakesData, setFakesData] = useState<FakesEntry[]>([]);
   const [albumCopiesData, setAlbumCopiesData] = useState<AlbumCopyEra[]>([]);
+  const [groupbuysData, setGroupbuysData] = useState<GroupbuysData>({ years: [], grandTotal: '' });
   const [productionData, setProductionData] = useState<TrackerData | null>(null);
   const [tracklistsData, setTracklistsData] = useState<TracklistAlbum[]>([]);
+  const [tracklistsLegend, setTracklistsLegend] = useState<TracklistLegendItem[]>([]);
   const [releasedData, setReleasedData] = useState<ReleasedEntry[]>([]);
   const [videosData, setVideosData] = useState<VideoRawEntry[]>([]);
   const [subAlbumsData, setSubAlbumsData] = useState<SubAlbumEntry[]>([]);
@@ -238,6 +256,7 @@ export default function App() {
     if (path.startsWith('/misc')) return 'misc';
     if (path.startsWith('/fakes')) return 'fakes';
     if (path.startsWith('/albumcopies')) return 'albumcopies';
+    if (path.startsWith('/groupbuys')) return 'groupbuys';
     if (path.startsWith('/released')) return 'released';
     if (path.startsWith('/related')) return 'related';
     if (path.startsWith('/recent-production')) return 'recent-production';
@@ -351,11 +370,26 @@ export default function App() {
     return [];
   });
 
+  const favMountedRef = useRef(false);
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(`${STORAGE_PREFIX}favorite_keys`, JSON.stringify(favoriteKeys));
     }
+    // Mirror the change to the user's account. Skip the mount write so we don't
+    // push before the initial cloud pull has populated local state.
+    if (favMountedRef.current) {
+      scheduleDataPush();
+      // Let the global Favorites playlist (GlobalPlaylistContext) rebuild.
+      window.dispatchEvent(new CustomEvent('vg-favorites-changed'));
+    } else favMountedRef.current = true;
   }, [favoriteKeys]);
+
+  // Pull this tracker's cloud favorites/playlists once on load (and on artist
+  // change) so a signed-in user sees them on any device. Guarded per-tracker
+  // inside initDataSync so navigation doesn't re-pull.
+  useEffect(() => {
+    void initDataSync();
+  }, [ARTIST_SLUG]);
 
   const [showDiscordModal, setShowDiscordModal] = useState(false);
 
@@ -534,6 +568,9 @@ export default function App() {
   const { state: youtubeState, controls: youtubeControls } = useYoutube();
   const { state: soundcloudState, controls: soundcloudControls } = useSoundCloud();
   const scrobbledRef = useRef(false);
+  // Independent of scrobbledRef so personal listening capture fires for every
+  // signed-in user, not only those who linked Last.fm.
+  const listenLoggedRef = useRef(false);
   const songStartTimeRef = useRef<number>(0);
 
   // Points at the persistent, session-scoped <audio> element in the store so
@@ -1106,6 +1143,8 @@ export default function App() {
           setActiveCategory('fakes');
         } else if (path.startsWith('/albumcopies')) {
           setActiveCategory('albumcopies');
+        } else if (path.startsWith('/groupbuys')) {
+          setActiveCategory('groupbuys');
         } else if (path.startsWith('/released')) {
           setActiveCategory('released');
         } else if (path.startsWith('/recent-production')) {
@@ -1222,14 +1261,12 @@ export default function App() {
         setFetchedTabs(prev => new Set([...prev, 'art']));
       });
 
-    fetch(`/${ARTIST_SLUG}/data/stems.csv`)
+    // Stems come through the API endpoint (committed CSV or live sheet fallback),
+    // matching the art/videos/released tabs.
+    axios.get(`/api/${ARTIST_SLUG}/stems`)
       .then(res => {
-        if (!res.ok || !(res.headers.get('content-type') || '').includes('csv')) return '';
-        return res.text();
-      })
-      .then(text => {
         try {
-          const rows = normalizeParsedRows(parseCSVText(text));
+          const rows = normalizeParsedRows(res.data as Record<string, string>[]);
           const stems = normalizeEraField(rows) as StemEntry[];
           setStemsData(stems);
           setFetchedTabs(prev => new Set([...prev, 'stems']));
@@ -1274,14 +1311,11 @@ export default function App() {
         console.error("Failed to fetch Released data:", err);
       });
 
-    fetch(`/${ARTIST_SLUG}/data/fakes.csv`)
+    // Fakes come through the API endpoint (committed CSV or live sheet fallback).
+    axios.get(`/api/${ARTIST_SLUG}/fakes`)
       .then(res => {
-        if (!res.ok || !(res.headers.get('content-type') || '').includes('csv')) return '';
-        return res.text();
-      })
-      .then(text => {
         try {
-        const rawFakes = normalizeEraField(normalizeParsedRows(parseCSVText(text))) as any[];
+        const rawFakes = normalizeEraField(normalizeParsedRows(res.data as Record<string, string>[])) as any[];
         const mappedFakes = rawFakes.map(item => {
           let name = item.Name || '';
           let featureExtra = undefined;
@@ -1336,6 +1370,20 @@ export default function App() {
         });
     }
 
+    if (activeConfig.hasGroupbuysTab) {
+      axios.get(`/api/${ARTIST_SLUG}/groupbuys`)
+        .then(res => {
+          const gb = (res.data ?? { years: [], grandTotal: '' }) as GroupbuysData;
+          setGroupbuysData(gb);
+          setFetchedTabs(prev => new Set([...prev, 'groupbuys']));
+          if ((gb.years?.length ?? 0) > 0) setTabsWithData(prev => new Set([...prev, 'groupbuys']));
+        })
+        .catch(err => {
+          console.error("Failed to fetch Groupbuys data:", err);
+          setFetchedTabs(prev => new Set([...prev, 'groupbuys']));
+        });
+    }
+
     Promise.resolve({ data: [] })
       .then(res => {
         setSamplesData(res.data as SampleEntry[]);
@@ -1346,8 +1394,12 @@ export default function App() {
 
     axios.get(`/${ARTIST_SLUG}/Tracklists.json`)
       .then(res => {
-        const tl = res.data as TracklistAlbum[];
+        // Newer builds ship { legend, albums }; older ones a bare album array.
+        const raw = res.data;
+        const tl = (Array.isArray(raw) ? raw : raw?.albums ?? []) as TracklistAlbum[];
+        const legend = (Array.isArray(raw) ? [] : raw?.legend ?? []) as TracklistLegendItem[];
         setTracklistsData(tl);
+        setTracklistsLegend(legend);
         setFetchedTabs(prev => new Set([...prev, 'tracklists']));
         if (tl.length > 0) setTabsWithData(prev => new Set([...prev, 'tracklists']));
       })
@@ -1515,6 +1567,10 @@ export default function App() {
       if (!currentPath.startsWith('/albumcopies')) {
         window.history.pushState({ category: 'albumcopies' }, '', absPath('/albumcopies'));
       }
+    } else if (activeCategory === 'groupbuys') {
+      if (!currentPath.startsWith('/groupbuys')) {
+        window.history.pushState({ category: 'groupbuys' }, '', absPath('/groupbuys'));
+      }
     } else if (activeCategory === 'released') {
       if (!currentPath.startsWith('/released')) {
         window.history.pushState({ category: 'released' }, '', absPath('/released'));
@@ -1653,6 +1709,8 @@ export default function App() {
         setActiveCategory('misc');
       } else if (path.startsWith('/albumcopies')) {
         setActiveCategory('albumcopies');
+      } else if (path.startsWith('/groupbuys')) {
+        setActiveCategory('groupbuys');
       } else if (path.startsWith('/released')) {
         setActiveCategory('released');
       } else if (path.startsWith('/recent-production')) {
@@ -1702,7 +1760,7 @@ export default function App() {
     return Object.values(era.data || {}).flat().filter(s => {
       const rawUrl = s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(s, rawUrl);
-      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
+      return rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('pillowcase.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
     });
   };
 
@@ -1712,13 +1770,9 @@ export default function App() {
       const host = new URL(rawUrl).host;
       const res = await axios.get(`https://${host}/api/file/${id}`);
       return res.data?.cdnUrl ?? rawUrl;
-    } else if (rawUrl.includes('pillows.su/f/')) {
+    } else if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('pillowcase.su/f/')) {
       const id = rawUrl.split('/f/')[1];
-      // Pillowcase now blocks cross-site hotlinking of api.pillows.su, so a
-      // direct browser request fails even though the file is still up. Route
-      // through the same-origin proxy (server-side fetch strips the hotlink
-      // headers), matching the Google Drive path below.
-      return `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/get/${id}`)}`;
+      return `https://api.pillows.su/api/get/${id}`;
     } else if (rawUrl.includes('pixeldrain.com/u/')) {
       const id = rawUrl.split('/u/')[1]?.split('?')[0];
       // Pixeldrain blocks cross-site hotlinking (Sec-Fetch-Site) and Cloudflare
@@ -1747,8 +1801,18 @@ export default function App() {
     audioStore.setState({ currentArtwork: artwork, currentArtistLabel: artistLabel });
   };
 
+  // Stop every playback source except the one that's about to take over. Each
+  // source lives in its own hidden element/iframe, so switching sources without
+  // this leaves the previous one (e.g. a YouTube video) playing in the background.
+  const stopOtherPlayers = (keep: audioStore.ActivePlayer) => {
+    if (keep !== 'spotify') spotifyControls.pause();
+    if (keep !== 'youtube') youtubeControls.pause();
+    if (keep !== 'soundcloud') soundcloudControls.pause();
+    if (keep !== 'audio' && audioRef.current) audioRef.current.pause();
+  };
+
   const handlePlaySong = async (song: Song, era: Era, contextTracks?: Song[], resetShuffleHistory = true, autoPlay = true, isRandomSelection = false) => {
-    if (activePlayer === 'spotify') spotifyControls.pause();
+    stopOtherPlayers('audio');
     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
     const isNotAvailable = isSongNotAvailable(song, rawUrl);
     
@@ -1766,7 +1830,7 @@ export default function App() {
        return;
     }
 
-    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) {
+    if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('pillowcase.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) {
       let streamUrl = '';
       let isPlayable = true;
 
@@ -1791,10 +1855,9 @@ export default function App() {
               isPlayable = false;
             }
           }
-        } else if (rawUrl.includes('pillows.su/f/')) {
+        } else if (rawUrl.includes('pillows.su/f/') || rawUrl.includes('pillowcase.su/f/')) {
           const id = rawUrl.split('/f/')[1];
-          // Proxy server-side: Pillowcase blocks direct cross-site hotlinks.
-          streamUrl = `/api/audio-proxy?url=${encodeURIComponent(`https://api.pillows.su/api/get/${id}`)}`;
+          streamUrl = `https://api.pillows.su/api/get/${id}`;
         } else if (rawUrl.includes('pixeldrain.com/u/')) {
           const id = rawUrl.split('/u/')[1]?.split('?')[0];
           streamUrl = `${pixeldrainProxyBase()}/api/${id}`;
@@ -1848,6 +1911,7 @@ export default function App() {
       setIsPlaying(autoPlay);
       setIsPlayerClosed(false);
       scrobbledRef.current = false;
+      listenLoggedRef.current = false;
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
 
       if (audioRef.current) {
@@ -1900,6 +1964,7 @@ export default function App() {
       setIsPlaying(autoPlay);
       setIsPlayerClosed(false);
       scrobbledRef.current = false;
+      listenLoggedRef.current = false;
       songStartTimeRef.current = Math.floor(Date.now() / 1000);
       if (audioRef.current) {
         audioRef.current.src = rawUrl;
@@ -2071,7 +2136,7 @@ export default function App() {
 
       if (settings.discordRPC) {
         const rawSongUrl = currentSong.url || (currentSong.urls && currentSong.urls.length > 0 ? currentSong.urls[0] : '');
-        const directLink = rawSongUrl.includes('pillows.su/f/')
+        const directLink = (rawSongUrl.includes('pillows.su/f/') || rawSongUrl.includes('pillowcase.su/f/'))
           ? `https://api.pillows.su/api/download/${rawSongUrl.split('/f/')[1]}`
           : rawSongUrl.includes('pixeldrain.com/u/')
             ? (() => { const id = rawSongUrl.split('/u/')[1]?.split('?')[0]; return `${pixeldrainProxyBase()}/api/${id}`; })()
@@ -2243,6 +2308,30 @@ export default function App() {
   // mounted (see the effect that calls audioStore.registerHost below).
   const handleTimeUpdate = () => {
     if (audioRef.current) {
+      // Personal listening capture — records the play for any signed-in
+      // UNVAULTED user, independent of Last.fm, at the same "counts as a listen"
+      // threshold (past halfway, or 4 minutes in).
+      if (isListeningLoggedIn() && currentSong && currentEra && !listenLoggedRef.current) {
+        const dur = audioRef.current.duration;
+        const cur = audioRef.current.currentTime;
+        if (dur > 30 && (cur > dur / 2 || cur > 240)) {
+          listenLoggedRef.current = true;
+          const actualEraName = (currentSong as any).realEra?.name || currentEra.name;
+          const cleanRealTrackName = currentSong.name.replace(/ \[Fake\]$/i, '');
+          const logTrack = cleanTrackName(cleanRealTrackName, currentSong.extra, settings.lastfmShowVersion, settings.lastfmShowTags, settings.lastfmShowFeats);
+          const logArtist = parseArtistFromSong(cleanRealTrackName, currentSong.extra, actualEraName);
+          logListen({
+            track: logTrack,
+            artist: logArtist,
+            album: cleanAlbumName(actualEraName).replace(/ \[Fake\]$/i, ''),
+            eraName: actualEraName,
+            artistSlug: ARTIST_SLUG,
+            songUrl: currentSong.url || (currentSong.urls && currentSong.urls[0]) || '',
+            durationSec: Math.floor(dur),
+            playedAt: songStartTimeRef.current,
+          });
+        }
+      }
       if (lastfmLoggedIn && currentSong && currentEra && !scrobbledRef.current) {
         const dur = audioRef.current.duration;
         const cur = audioRef.current.currentTime;
@@ -2312,10 +2401,8 @@ export default function App() {
     if (!spotifyState.isReady) { showToast('Spotify player is still connecting — try again in a moment'); return; }
     const ok = await spotifyControls.playUri(uri);
     if (!ok) { showToast('Spotify playback failed. Make sure you have Spotify Premium.'); return; }
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+    stopOtherPlayers('spotify');
+    setIsPlaying(false);
     setActivePlayer('spotify');
     setIsPlayerClosed(false);
   };
@@ -2328,11 +2415,8 @@ export default function App() {
 
   const handlePlayYoutubeTrack = (videoId: string, title?: string) => {
     if (!youtubeState.isReady) return;
-    if (activePlayer === 'spotify') spotifyControls.pause();
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+    stopOtherPlayers('youtube');
+    setIsPlaying(false);
     setActivePlayer('youtube');
     setIsPlayerClosed(false);
     youtubeControls.playVideoId(videoId, title);
@@ -2340,11 +2424,8 @@ export default function App() {
 
   const handlePlaySoundCloudTrack = (url: string) => {
     if (!soundcloudState.isReady) return;
-    if (activePlayer === 'spotify') spotifyControls.pause();
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+    stopOtherPlayers('soundcloud');
+    setIsPlaying(false);
     setActivePlayer('soundcloud');
     setIsPlayerClosed(false);
     soundcloudControls.playUrl(url);
@@ -2831,7 +2912,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
         Object.values(era.data).flat().forEach(song => {
           const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
           const isNotAvailable = isSongNotAvailable(song, rawUrl);
-          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
+          const isPlayable = rawUrl && (rawUrl.includes('pillows.su/f/') || rawUrl.includes('pillowcase.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('drive.google.com') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
           
           if (isPlayable) {
              allMusicSongs.push({ ...song, realEra: era });
@@ -3033,6 +3114,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                 <TracklistsView
                   key={`tracklists-${selectedAlbum.name}`}
                   data={tracklistsData.filter(t => t.era.toLowerCase() === selectedAlbum.name.toLowerCase())}
+                  legend={tracklistsLegend}
                   searchQuery={searchQuery}
                   eras={[...erasArray, ...relatedErasArray]}
                   onPlaySong={handlePlaySong}
@@ -3061,6 +3143,12 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                   key="albumcopies"
                   eras={erasArray}
                   albumCopiesData={albumCopiesData}
+                  searchQuery={searchQuery}
+                />
+              ) : activeCategory === 'groupbuys' ? (
+                <GroupbuysView
+                  key="groupbuys"
+                  data={groupbuysData}
                   searchQuery={searchQuery}
                 />
               ) : activeCategory === 'videos' ? (
@@ -3175,15 +3263,6 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
                     setActiveCategory(isHidden ? 'related' : 'music');
                   }}
                 />
-              ) : activeCategory === 'playlists' ? (
-                <PlaylistsView
-                  key="playlists"
-                  eras={[...erasArray, ...relatedErasArray]}
-                  artData={artData}
-                  searchQuery={searchQuery}
-                  onPlaySong={handlePlaySong}
-                  onToast={showToast}
-                />
               ) : activeCategory === 'concerts' ? (
                 <ConcertsView
                   key="concerts"
@@ -3250,24 +3329,31 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
             </AnimatePresence>
           </div>
 
+          {(() => {
+            const sheetHref = activeConfig.sheetUrl || (activeConfig.HARDCODED_SHEET_ID ? `https://docs.google.com/spreadsheets/d/${activeConfig.HARDCODED_SHEET_ID}/` : '');
+            return (
           <div className="mt-auto px-6 py-8 text-center border-t border-white/5">
             <p className="text-[10px] text-white/30 leading-relaxed">
-              YZYGOLD does not host or hold any illegal files. All links are external and provided as-is for educational and archival purposes only.
+              UNVAULTED does not host or hold any illegal files. All links are external and provided as-is for educational and archival purposes only.
             </p>
             <p className="text-[10px] text-white/30 leading-relaxed">
-              YZYGOLD 2026 © · v2.1
+              UNVAULTED 2026 © · v2.1
             </p>
-            <p className="text-[10px] text-white/30 leading-relaxed mt-1">
-              Logo created by Nr7th on discord
-            </p>
+            {activeConfig.sheetCreator && (
+              <p className="text-[10px] text-white/30 leading-relaxed mt-1">
+                This website parses the {activeConfig.artistLabel} Google Sheet made by {activeConfig.sheetCreator}.
+                {sheetHref && (
+                  <> Their original sheet is{' '}
+                    <a href={sheetHref} target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">right here</a>.</>
+                )}
+              </p>
+            )}
             <p className="text-[10px] text-white/30 leading-relaxed mt-1 space-x-3">
               <a href="https://discord.gg/ZE5gHFYYGy" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Discord</a>
-              <span>·</span>
-              <a href="https://docs.google.com/document/d/1b8aidNuSLLHfzgzrJ0uGdWHPuo-uNk6wI21Vscwzid4/edit?tab=t.0#heading=h.coxp3mvb86xr" target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Changelog</a>
-              <span>·</span>
-              <a href={`https://docs.google.com/spreadsheets/d/${activeConfig.HARDCODED_SHEET_ID}/`} target="_blank" rel="noopener noreferrer" className="text-[var(--theme-color)]/50 hover:text-[var(--theme-color)] transition-colors underline">Link For The Sheet</a>
             </p>
           </div>
+            );
+          })()}
         </main>
       </div>
 
@@ -3437,7 +3523,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
               
               <div className="space-y-4 mb-8 text-sm text-white/70 leading-relaxed font-medium">
                 <p>
-                  Vercel (The Hosting of yzygold) had a data breach, including my last.fm api keys! I needed to reset the keys, and now the old last.fm api key that you are using is not working!
+                  Vercel (The Hosting of UNVAULTED) had a data breach, including my last.fm api keys! I needed to reset the keys, and now the old last.fm api key that you are using is not working!
                 </p>
                 <p>
                   dont worry, you are not infected, and the site is not infected. Passwords from last.fm are protected.
@@ -3701,7 +3787,7 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
           url.searchParams.delete('playlist');
           window.history.replaceState({}, '', url.toString());
         }}
-        onNavigatePlaylists={() => setActiveCategory('playlists')}
+        onNavigatePlaylists={() => { window.location.href = '/playlists'; }}
       />
     )}
     </PlaylistProvider>

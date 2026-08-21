@@ -13,6 +13,7 @@ export const rihannagoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#dc2626',
   artistLabel: 'Rihanna',
+  sheetCreator: 'Jeen & noa',
   cardLetter: 'RIH',
   logoUrl: '/logos/rihannagold.webp',
   artistPhotoUrl: '/artists/rihanna.jpeg',

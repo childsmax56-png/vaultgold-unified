@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Star } from 'lucide-react';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , retryImageOnError, relPath, absPath, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , Img, relPath, absPath, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
@@ -11,6 +11,9 @@ import { useSettings } from '../SettingsContext';
 import { MvEntry, RemixEntry, SampleEntry } from '../App';
 import { findMvsForSong, findRemixesForSong, findSamplesForSong } from './EraDetail';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey, makeEraKey, baseEraName, stampSongComment } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface StemEntry {
   Era: string;
@@ -341,8 +344,8 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
       const rawUrl = s.url || (s.urls && s.urls.length > 0 ? s.urls[0] : '');
       const isNotAvailable = isSongNotAvailable(s, rawUrl);
       return rawUrl && rawUrl.includes('pillows.su/f/') && !isNotAvailable;
-    });
-  }, [filteredCategories]);
+    }).map(s => stampSongComment(s, { tracker: activeConfig.slug, type: 'Stems', era: selectedEraData?.eraName || '' }));
+  }, [filteredCategories, selectedEraData]);
 
   const handleShare = (song: Song, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -475,7 +478,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
                 onClick={() => setZoomedImage(false)}
                 className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
               >
-                <img onError={retryImageOnError} src={selectedEraData.image} alt={selectedEraData.eraName} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" referrerPolicy="no-referrer" />
+                <Img w={1200} eager src={selectedEraData.image} alt={selectedEraData.eraName} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" />
               </motion.div>
             )}
           </AnimatePresence>,
@@ -499,7 +502,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
               title={selectedEraData.image ? "Click to zoom" : undefined}
             >
               {selectedEraData.image ? (
-                <img onError={retryImageOnError} src={selectedEraData.image} alt={selectedEraData.eraName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <Img w={400} src={selectedEraData.image} alt={selectedEraData.eraName} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">{selectedEraData.eraName}</div>
               )}
@@ -535,6 +538,13 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
                   >
                     <Share2 className="w-4 h-4" />
                   </button>
+                  <CommentButton
+                    tracker={activeConfig.slug}
+                    entryKey={makeEraKey(selectedEraData.eraName)}
+                    entryLabel={baseEraName(selectedEraData.eraName)}
+                    entryType="Era"
+                    variant="pill"
+                  />
                 </div>
               </div>
               <p className="text-white/50 text-sm">Instrumentals, Sessions, Acapellas & Studio Stems</p>
@@ -571,7 +581,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
                     return (
                       <div
                         key={i}
-                        onClick={() => !isEmpty && onPlaySong(song, dummyEra, allPlayableSongs)}
+                        onClick={() => !isEmpty && onPlaySong(stampSongComment(song, { tracker: activeConfig.slug, type: 'Stems', era: selectedEraData?.eraName || catName }), dummyEra, allPlayableSongs)}
                         className={`group flex items-center px-4 py-2.5 rounded-md transition-colors ${isEmpty ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/5 cursor-pointer'} ${isCurrentlyPlaying ? 'bg-white/5' : ''}`}
                       >
                         <div className={`w-8 text-sm font-mono flex items-center ${isCurrentlyPlaying ? 'text-[var(--theme-color)]' : 'text-white/40 group-hover:text-white'}`}>
@@ -659,6 +669,13 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
                               <Share2 className="w-3.5 h-3.5 text-white/50 hover:text-white" />
                             </button>
                           )}
+                          <CommentButton
+                            tracker={activeConfig.slug}
+                            entryKey={makeEntryKey('Stems', selectedEraData?.eraName || catName, song.name)}
+                            entryLabel={song.name}
+                            entryType="Stems"
+                            isCurrentlyPlaying={isCurrentlyPlaying}
+                          />
                         </div>
                       </div>
                     );
@@ -712,7 +729,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
           >
             <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
               {era.image ? (
-                <img onError={retryImageOnError} src={era.image} alt={era.eraName} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
+                <Img w={300} src={era.image} alt={era.eraName} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-white/5 text-white/20 font-bold text-2xl text-center p-4">
                   {era.eraName}

@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const lonelygoldConfig: ArtistConfig = {
   slug: 'lonelygold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'LONELYGOLD',
   SITE_DESCRIPTION: 'The Best Destroy Lonely Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/lonelygold/',
@@ -13,6 +14,7 @@ export const lonelygoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1J16EyxHqZD4m0VZ6g6SoY_1GC21TU7P2kk9FeteSKvE/export?format=csv&gid=1413127973',
   accentColor: '#7209b7',
   artistLabel: 'Destroy Lonely',
+  sheetCreator: 'raiden_xdd, quixotic, privatebuys, fly, exodvs, alldamnday, truboat, dosa, fitz, sway, ethereal, isawyou, y3, JS10, noresidence, nasca, pano',
   cardLetter: 'DL',
   logoUrl: '/logos/lonelygold.webp',
   artistPhotoUrl: '/artists/destroylonely.jpg',

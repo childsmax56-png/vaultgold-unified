@@ -14,7 +14,7 @@ export function TermsPage() {
       <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', marginBottom: 36 }}>Last updated: June 17, 2026</p>
 
       <Section title="1. Acceptance">
-        By creating an account or using Unvaulted / VaultGold ("the Service"), you agree to these Terms. If you do not agree, do not use the Service.
+        By creating an account or using Unvaulted ("the Service"), you agree to these Terms. If you do not agree, do not use the Service.
       </Section>
 
       <Section title="2. Eligibility">

@@ -8,7 +8,8 @@ export const onRequestDelete: PagesFunction<Env> = async ({ request, env, params
 
   const url = new URL(request.url);
   const service = url.searchParams.get('service');
-  if (service !== 'spotify' && service !== 'lastfm') return json({ error: 'Invalid service' }, 400);
+  const KNOWN = ['spotify', 'lastfm', 'discord', 'reddit'];
+  if (!service || !KNOWN.includes(service)) return json({ error: 'Invalid service' }, 400);
 
   await env.DB.prepare(
     'DELETE FROM linked_services WHERE user_id = ? AND service = ?'

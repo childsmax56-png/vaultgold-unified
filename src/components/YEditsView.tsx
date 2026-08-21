@@ -6,7 +6,7 @@ import JSZip from 'jszip';
 import { Song, Era } from '../types';
 import { ARTIST_LIST } from '../artists/registry';
 import { LABEL_GROUPS, LABEL_NAME, ALBUMS as LABEL_ALBUMS } from '../labelContent';
-import { retryImageOnError, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
+import { Img, sanitizeFilename, runWithConcurrencyLimit } from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 
 interface VGUser { id: string; username: string; email: string; }
@@ -25,7 +25,7 @@ const IMAGE_EXTS = /\.(png|jpe?g|gif|webp)$/i;
 const BACK_COVER_FILE = /back\s*cover/i;
 
 // Creator profile that is always pinned first in the Creators row and given a
-// persistent blue glow. Matched exactly (case-sensitive) so the "Unvaulted
+// persistent gold glow. Matched exactly (case-sensitive) so the "Unvaulted
 // Records" profile is pinned and the all-caps "UNVAULTED Records" label is not.
 const PINNED_CREATOR = 'Unvaulted Records';
 const isPinnedCreator = (name: string) => name === PINNED_CREATOR;
@@ -198,7 +198,7 @@ function ArtistSelect({ value, onChange, disabled }: ArtistSelectProps) {
         disabled={disabled}
       >
         <option value="">None / Original</option>
-        {ARTIST_LIST.map(a => (
+        {ARTIST_LIST.filter(a => !a.hidden).map(a => (
           <option key={a.slug} value={a.artistLabel}>{a.artistLabel}</option>
         ))}
         <option value="__other__">Other…</option>
@@ -1220,7 +1220,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 onClick={() => setZoomedImage(false)}
                 className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
               >
-                <img onError={retryImageOnError} src={activeCoverUrl} alt={selectedGroup.displayName}
+                <Img w={1200} eager src={activeCoverUrl} alt={selectedGroup.displayName}
                   className="max-w-full max-h-full object-contain shadow-2xl rounded-md" />
               </motion.div>
             )}
@@ -1251,7 +1251,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 title={activeCoverUrl ? 'Click to zoom' : undefined}
               >
                 {activeCoverUrl ? (
-                  <img onError={retryImageOnError} src={activeCoverUrl} alt={selectedGroup.displayName} className="w-full h-full object-cover" />
+                  <Img w={500} eager src={activeCoverUrl} alt={selectedGroup.displayName} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">
                     {selectedGroup.displayName}
@@ -2127,10 +2127,10 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                   onClick={() => setSelectedCreator(isActive ? null : creator.name)}
-                  style={isLabel ? { boxShadow: '0 0 0 1px rgba(36,143,245,0.5), 0 0 12px 2px rgba(36,143,245,0.45)' } : undefined}
+                  style={isLabel ? { boxShadow: '0 0 0 1px rgba(255,215,0,0.5), 0 0 12px 2px rgba(255,215,0,0.45)' } : undefined}
                   className={`flex items-center gap-3 pl-1 pr-4 py-1 rounded-full border transition-all cursor-pointer ${
                     isLabel
-                      ? 'bg-[#248ff5]/10 border-[#248ff5]/50 text-white'
+                      ? 'bg-[#FFD700]/10 border-[#FFD700]/50 text-white'
                       : isActive
                       ? 'bg-[var(--theme-color)]/15 border-[var(--theme-color)]/40 text-white'
                       : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:text-white hover:border-white/20'
@@ -2138,7 +2138,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
                 >
                   <div className="w-8 h-8 rounded-full overflow-hidden bg-white/10 shrink-0">
                     {creator.previewImage ? (
-                      <img onError={retryImageOnError} src={creator.previewImage} alt={creator.name} className="w-full h-full object-cover" />
+                      <Img w={200} src={creator.previewImage} alt={creator.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-[10px] font-bold text-white/30">
                         {creator.name[0]}
@@ -2189,7 +2189,7 @@ export function YEditsView({ searchQuery, onPlaySong, currentSong, isPlaying, cl
           >
             <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
               {group.imageUrl ? (
-                <img onError={retryImageOnError}
+                <Img w={300}
                   src={group.imageUrl}
                   alt={group.displayName}
                   className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"

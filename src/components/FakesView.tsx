@@ -3,10 +3,13 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, Play, Volume2, X, Star, Share2, Download } from 'lucide-react';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, createSlug, isSongNotAvailable, matchesFilters, CUSTOM_IMAGES, parseNoteDescription , retryImageOnError} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, createSlug, isSongNotAvailable, matchesFilters, CUSTOM_IMAGES, parseNoteDescription , Img} from '../utils';
 import { SongTitle } from './SongTitle';
 import { FakesEntry } from '../App';
 import { AddToPlaylistButton } from './AddToPlaylistButton';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey, makeEraKey, baseEraName, stampSongComment } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 interface FakesViewProps {
   eras: Era[];
@@ -195,7 +198,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
        if (f["Made By"]) desc += `Made By: ${f["Made By"]}\n`;
        if (f.Notes) desc += f.Notes;
 
-       return {
+       const song: Song = {
          name: `${f.Name} [Fake Leak]`,
          extra: f.FeatureExtra,
          extra2: f.Era,
@@ -207,8 +210,9 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
          fakesType: f.Type,
          fakesLength: f["Available Length"] === 'Not Available' ? '' : f["Available Length"],
        };
+       return stampSongComment(song, { tracker: activeConfig.slug, type: 'Fakes', era: selectedEraData?.eraName || '' });
      });
-  }, [filteredFakes]);
+  }, [filteredFakes, selectedEraData]);
 
   const allPlayableFakes = useMemo(() => {
     return fakesAsSongs.filter(s => {
@@ -266,7 +270,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
                 onClick={() => setZoomedImage(false)}
                 className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
               >
-                <img onError={retryImageOnError} src={selectedEraData.image} alt={selectedEraData.eraName} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" referrerPolicy="no-referrer" />
+                <Img w={1200} eager src={selectedEraData.image} alt={selectedEraData.eraName} className="max-w-full max-h-full object-contain shadow-2xl rounded-md" />
               </motion.div>
             )}
             {toastMessage && (
@@ -300,7 +304,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
               title={selectedEraData.image ? "Click to zoom" : undefined}
             >
               {selectedEraData.image ? (
-                <img onError={retryImageOnError} src={selectedEraData.image} alt={selectedEraData.eraName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <Img w={400} src={selectedEraData.image} alt={selectedEraData.eraName} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white/20 text-center p-4">{selectedEraData.eraName}</div>
               )}
@@ -316,8 +320,15 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
                 </span>
               </div>
               <p className="text-white/50 text-sm mb-4">Rumors, Fake Leaks, Edits, and Compilations</p>
-              
+
               <div className="flex items-center gap-2 mt-auto">
+                <CommentButton
+                  tracker={activeConfig.slug}
+                  entryKey={makeEraKey(selectedEraData.eraName)}
+                  entryLabel={baseEraName(selectedEraData.eraName)}
+                  entryType="Era"
+                  variant="pill"
+                />
               </div>
             </div>
           </div>
@@ -389,7 +400,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
                            )}
                         </div>
 
-                        <div className="w-16 shrink-0 hidden sm:flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="w-16 shrink-0 hidden sm:flex items-center justify-end gap-2">
                           {isPlayable && (
                             <AddToPlaylistButton
                               song={song}
@@ -398,6 +409,13 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
                               isCurrentlyPlaying={!!isCurrentlyPlaying}
                             />
                           )}
+                          <CommentButton
+                            tracker={activeConfig.slug}
+                            entryKey={makeEntryKey('Fakes', selectedEraData?.eraName || '', song.name)}
+                            entryLabel={song.name}
+                            entryType="Fakes"
+                            isCurrentlyPlaying={!!isCurrentlyPlaying}
+                          />
                         </div>
                      </div>
                   );
@@ -430,7 +448,7 @@ export function FakesView({ eras, fakesData, searchQuery, filters, onPlaySong, c
         >
           <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
             {era.image ? (
-              <img onError={retryImageOnError} src={era.image} alt={era.eraName} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
+              <Img w={300} src={era.image} alt={era.eraName} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-white/5 text-white/20 font-bold text-2xl text-center p-4">
                 {era.eraName}

@@ -85,6 +85,12 @@
     .service-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .service-icon.spotify { background: rgba(29,185,84,0.15); }
     .service-icon.lastfm { background: rgba(210,0,0,0.15); }
+    .service-icon.discord { background: rgba(88,101,242,0.15); }
+    .service-icon.reddit { background: rgba(255,69,0,0.15); }
+    .service-icon.small-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+    .reddit-input-row { display: flex; gap: 8px; margin-top: 8px; }
+    .reddit-input-row input { margin: 0; flex: 1; }
+    .reddit-input-row .btn-sm { flex-shrink: 0; }
     .service-info { flex: 1; }
     .service-name { font-size: 14px; font-weight: 600; }
     .service-status { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -98,7 +104,12 @@
     .btn-sm.disconnect { background: rgba(255,255,255,0.07); color: var(--muted); border: 1px solid rgba(255,255,255,0.1); }
 
     .user-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-    .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gold-dim); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: var(--gold); flex-shrink: 0; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gold-dim); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: var(--gold); flex-shrink: 0; overflow: hidden; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+    .avatar-lg { width: 72px; height: 72px; font-size: 28px; }
+    .avatar-edit { display: flex; align-items: center; gap: 16px; }
+    .avatar-actions { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .avatar-hint { color: var(--muted); font-size: 13px; margin-top: 12px; }
     .user-name { font-size: 18px; font-weight: 800; }
     .user-email { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
@@ -183,6 +194,20 @@
     </div>
 
     <div class="card">
+      <h2>Profile <span>Picture</span></h2>
+      <div class="avatar-edit">
+        <div class="avatar avatar-lg" id="profile-avatar">?</div>
+        <div class="avatar-actions">
+          <button class="btn-sm connect" id="avatar-upload-btn" onclick="document.getElementById('avatar-file').click()">Upload photo</button>
+          <button class="btn-sm disconnect" id="avatar-remove-btn" onclick="removeAvatar()" style="display:none">Remove</button>
+          <div class="service-status" id="avatar-msg"></div>
+        </div>
+        <input type="file" id="avatar-file" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none" onchange="uploadAvatar(this.files[0])" />
+      </div>
+      <p class="avatar-hint">Shown next to your comments across UNVAULTED. JPEG, PNG, WebP, or GIF up to 5&nbsp;MB.</p>
+    </div>
+
+    <div class="card">
       <h2>Connected <span>Services</span></h2>
 
       <div class="service-row">
@@ -205,6 +230,32 @@
           <div class="service-status" id="lastfm-status">Not connected</div>
         </div>
         <button class="btn-sm connect" id="lastfm-btn" onclick="connectLastfm()">Connect</button>
+      </div>
+
+      <div class="service-row">
+        <div class="service-icon discord" id="discord-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#5865F2"><path d="M20.317 4.369a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.1 13.1 0 01-1.872-.892.077.077 0 01-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.099.246.197.373.291a.077.077 0 01-.006.127 12.3 12.3 0 01-1.873.893.076.076 0 00-.04.106c.36.699.772 1.363 1.225 1.993a.076.076 0 00.084.029 19.84 19.84 0 006.002-3.03.077.077 0 00.032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.028zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </div>
+        <div class="service-info">
+          <div class="service-name">Discord</div>
+          <div class="service-status" id="discord-status">Not connected</div>
+        </div>
+        <button class="btn-sm connect" id="discord-btn" onclick="connectDiscord()">Connect</button>
+      </div>
+
+      <div class="service-row" style="flex-wrap:wrap">
+        <div class="service-icon reddit" id="reddit-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 01-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 01.042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 014.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 01.14-.197.35.35 0 01.238-.042l2.906.617a1.214 1.214 0 011.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.561-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 00-.231.094.33.33 0 000 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 00.029-.463.33.33 0 00-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 00-.232-.095z"/></svg>
+        </div>
+        <div class="service-info">
+          <div class="service-name">Reddit</div>
+          <div class="service-status" id="reddit-status">Not connected</div>
+        </div>
+        <button class="btn-sm disconnect" id="reddit-remove-btn" onclick="unlinkService('reddit')" style="display:none">Remove</button>
+        <div class="reddit-input-row" style="flex-basis:100%" id="reddit-input-wrap">
+          <input type="text" id="reddit-username" placeholder="your Reddit username" autocomplete="off" />
+          <button class="btn-sm connect" onclick="linkReddit()">Save</button>
+        </div>
       </div>
     </div>
   </div>
@@ -301,7 +352,65 @@
     document.getElementById('view-account').style.display = 'block';
     document.getElementById('user-name').textContent = user.username;
     document.getElementById('user-email').textContent = user.email;
-    document.getElementById('user-avatar').textContent = user.username[0].toUpperCase();
+    renderAvatar(user.avatarUrl, user.username);
+  }
+
+  // Paint both the header avatar and the larger profile-picture avatar. `url`
+  // may be a relative /api path (served from the same origin as this page).
+  function renderAvatar(url, username) {
+    var letter = (username && username[0]) ? username[0].toUpperCase() : '?';
+    var full = url && url.charAt(0) === '/' ? API + url : url;
+    ['user-avatar', 'profile-avatar'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (full) {
+        el.innerHTML = '<img src="' + full + '" alt="' + letter + '" onerror="this.parentNode.textContent=\'' + letter + '\'" />';
+      } else {
+        el.textContent = letter;
+      }
+    });
+    var removeBtn = document.getElementById('avatar-remove-btn');
+    if (removeBtn) removeBtn.style.display = url ? '' : 'none';
+  }
+
+  async function uploadAvatar(file) {
+    if (!file) return;
+    var token = getToken();
+    if (!token) return;
+    var msg = document.getElementById('avatar-msg');
+    msg.textContent = 'Uploading…'; msg.className = 'service-status';
+    try {
+      var presign = await fetch(API + '/api/auth/avatar-presign', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+        body: JSON.stringify({ name: file.name, type: file.type, size: file.size }),
+      });
+      var pdata = await presign.json();
+      if (!presign.ok) throw new Error(pdata.error || 'Upload failed');
+      var put = await fetch(pdata.uploadUrl, { method: 'PUT', headers: { 'Content-Type': file.type }, body: file });
+      if (!put.ok) throw new Error('Upload to storage failed');
+      var commit = await fetch(API + '/api/auth/avatar', {
+        method: 'POST', headers: { Authorization: 'Bearer ' + token },
+      });
+      var cdata = await commit.json();
+      if (!commit.ok) throw new Error(cdata.error || 'Save failed');
+      var user = getUser() || {};
+      renderAvatar(cdata.avatarUrl, user.username);
+      msg.textContent = 'Saved'; msg.className = 'service-status linked';
+    } catch (err) {
+      msg.textContent = (err && err.message) || 'Upload failed'; msg.className = 'service-status';
+    } finally {
+      document.getElementById('avatar-file').value = '';
+    }
+  }
+
+  async function removeAvatar() {
+    var token = getToken();
+    if (!token) return;
+    await fetch(API + '/api/auth/avatar', { method: 'DELETE', headers: { Authorization: 'Bearer ' + token } });
+    var user = getUser() || {};
+    renderAvatar(null, user.username);
+    document.getElementById('avatar-msg').textContent = '';
   }
 
   async function loadLinked() {
@@ -311,6 +420,8 @@
     var res = await fetch(API + '/api/auth/me', { headers: { Authorization: 'Bearer ' + token } });
     if (!res.ok) return;
     var data = await res.json();
+
+    if (data.user) renderAvatar(data.user.avatarUrl, data.user.username);
 
     if (data.linked.spotify) {
       var u = data.linked.spotify.username;
@@ -329,6 +440,37 @@
       document.getElementById('lastfm-btn').className = 'btn-sm disconnect';
       document.getElementById('lastfm-btn').onclick = function() { unlinkService('lastfm'); };
     }
+
+    if (data.linked.discord) {
+      var u3 = data.linked.discord.username;
+      document.getElementById('discord-status').textContent = 'Connected' + (u3 ? ' as ' + u3 : '');
+      document.getElementById('discord-status').className = 'service-status linked';
+      document.getElementById('discord-btn').textContent = 'Disconnect';
+      document.getElementById('discord-btn').className = 'btn-sm disconnect';
+      document.getElementById('discord-btn').onclick = function() { unlinkService('discord'); };
+    }
+
+    setRedditUI(data.linked.reddit || null);
+  }
+
+  // Reddit has no OAuth popup — it toggles between a username input (unlinked)
+  // and a "Connected as … / Remove" state (linked).
+  function setRedditUI(reddit) {
+    var status = document.getElementById('reddit-status');
+    var wrap = document.getElementById('reddit-input-wrap');
+    var removeBtn = document.getElementById('reddit-remove-btn');
+    if (reddit && reddit.username) {
+      status.textContent = 'Connected as u/' + reddit.username + ' (unverified)';
+      status.className = 'service-status linked';
+      wrap.style.display = 'none';
+      removeBtn.style.display = '';
+    } else {
+      status.textContent = 'Not connected';
+      status.className = 'service-status';
+      wrap.style.display = '';
+      removeBtn.style.display = 'none';
+      document.getElementById('reddit-username').value = '';
+    }
   }
 
   function connectSpotify() {
@@ -343,6 +485,39 @@
     window.open(url, 'lastfm-connect', 'width=600,height=700');
   }
 
+  function connectDiscord() {
+    var token = getToken();
+    var url = API + '/api/auth/discord/connect?token=' + encodeURIComponent(token) + '&return_to=' + encodeURIComponent(window.location.href);
+    window.open(url, 'discord-connect', 'width=500,height=800');
+  }
+
+  async function linkReddit() {
+    var token = getToken();
+    if (!token) return;
+    var input = document.getElementById('reddit-username');
+    var username = (input.value || '').trim();
+    if (!username) return;
+    var status = document.getElementById('reddit-status');
+    status.textContent = 'Checking…'; status.className = 'service-status';
+    try {
+      var res = await fetch(API + '/api/auth/reddit-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+        body: JSON.stringify({ username: username }),
+      });
+      var data = await res.json();
+      if (!res.ok) { status.textContent = data.error || 'Could not link'; status.className = 'service-status'; return; }
+      setRedditUI({ username: data.username });
+      if (data.warning) { status.textContent = data.warning; }
+      // Reflect an inherited avatar immediately if the account had none.
+      loadLinked();
+    } catch (err) {
+      status.textContent = 'Could not link right now'; status.className = 'service-status';
+    }
+  }
+
+  var CONNECT_FNS = { spotify: connectSpotify, lastfm: connectLastfm, discord: connectDiscord };
+
   async function unlinkService(service) {
     var token = getToken();
     if (!token) return;
@@ -350,14 +525,15 @@
       method: 'DELETE',
       headers: { Authorization: 'Bearer ' + token },
     });
-    // reset UI
+    if (service === 'reddit') { setRedditUI(null); return; }
+    // reset UI for popup-based services (spotify/lastfm/discord)
     var statusEl = document.getElementById(service + '-status');
     var btnEl = document.getElementById(service + '-btn');
     statusEl.textContent = 'Not connected';
     statusEl.className = 'service-status';
     btnEl.textContent = 'Connect';
     btnEl.className = 'btn-sm connect';
-    btnEl.onclick = service === 'spotify' ? connectSpotify : connectLastfm;
+    btnEl.onclick = CONNECT_FNS[service];
   }
 
   // Listen for popup messages (service linked)
@@ -367,7 +543,7 @@
       setSession(e.data.token, e.data.user);
       showAccountView(e.data.user);
       loadLinked();
-    } else if (e.data.vaultgold === 'spotify_linked' || e.data.vaultgold === 'lastfm_linked') {
+    } else if (/_linked$/.test(e.data.vaultgold)) {
       loadLinked();
     }
   });

@@ -5,20 +5,6 @@ import type { YEditsGroup } from './components/YEditsView';
 
 export const LABEL_NAME = 'UNVAULTED Records';
 
-export const ARTISTS = [
-  { name: 'Alexias',        letter: 'A', accent: '#7C6FCD', description: 'Hip-Hop' },
-  { name: 'ciatanner',      letter: 'C', accent: '#4EA8C9', description: 'Hip-Hop' },
-  { name: 'Don Juan',       letter: 'D', accent: '#C9A224', description: 'Hip-Hop' },
-  { name: 'Big Poppa Perc',        letter: 'P', accent: '#E05C5C', description: 'Hip-Hop' },
-  { name: 'Lux',            letter: 'L', accent: '#F0A500', description: 'Hip-Hop' },
-  { name: 'unvaulted',  letter: 'M', accent: '#5CC9A8', description: 'Hip-Hop' },
-  { name: 'Nr7th',          letter: 'N', accent: '#B57BFF', description: 'Hip-Hop' },
-  { name: 'Buffet West',            letter: 'B', accent: '#E8734A', description: 'Hip-Hop' },
-  { name: 'MilesYe',        letter: 'M', accent: '#7C6FCD', description: 'Hip-Hop' },
-  { name: 'biancagold',        letter: 'B', accent: '#7C6FCD', description: 'Hip-Hop' },
-  { name: 'YZYgold',        letter: 'Y', accent: '#7C6FCD', description: 'Hip-Hop' },
-];
-
 export const ALBUMS = [
   {
     title: 'Don Juan - THE EARGRAPE COLLECTION',

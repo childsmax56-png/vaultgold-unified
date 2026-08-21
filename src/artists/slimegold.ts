@@ -13,6 +13,7 @@ export const slimegoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/12zc2reK5y8XP6SQhv1ujQtiG9VpJy7yDWwDuE-S-wpc/export?format=csv&gid=1507357362',
   accentColor: '#ec4899',
   artistLabel: 'Young Thug',
+  sheetCreator: 'raglord, againstscammers, sloth, shadow1235, moist, ricky, monki, Masaki Mirusaki',
   cardLetter: 'THUG',
   logoUrl: '/logos/slimegold.png',
   artistPhotoUrl: '/artists/youngthug-v2.jpg',

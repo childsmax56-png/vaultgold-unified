@@ -13,6 +13,7 @@ export const teccagoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#22d3ee',
   artistLabel: 'Lil Tecca',
+  sheetCreator: 'Brimcoole, ColbyJackChedda, bxpolar, Alex',
   cardLetter: 'LT',
   logoUrl: '/logos/teccagold.webp',
   artistPhotoUrl: '/artists/liltecca.webp',
