@@ -85,7 +85,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 
 async function uniqueUsername(base: string, db: D1Database): Promise<string> {
   let username = base.slice(0, 28).toLowerCase() || 'user';
-  const existing = await db.prepare('SELECT id FROM users WHERE username = ?').bind(username).first();
+  const existing = await db.prepare('SELECT id FROM users WHERE LOWER(username) = ?').bind(username.toLowerCase()).first();
   if (!existing) return username;
   username = username + Math.floor(Math.random() * 9000 + 1000);
   return username;

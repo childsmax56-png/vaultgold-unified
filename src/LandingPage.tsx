@@ -425,13 +425,18 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {authTab === 'register' && (
-                <input
-                  placeholder="Username"
-                  value={username}
-                  onChange={e => setUsername(e.target.value)}
-                  autoComplete="username"
-                  style={{ width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '10px 12px', color: '#fff', fontSize: 13, outline: 'none' }}
-                />
+                <div>
+                  <input
+                    placeholder="Choose a username"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
+                    autoComplete="username"
+                    style={{ width: '100%', boxSizing: 'border-box', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '10px 12px', color: '#fff', fontSize: 13, outline: 'none' }}
+                  />
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 4 }}>
+                    Your custom display name — 3–32 characters, letters, numbers, _ . -
+                  </div>
+                </div>
               )}
               {authTab === 'register' && (
                 <input
