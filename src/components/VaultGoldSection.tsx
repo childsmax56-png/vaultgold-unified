@@ -435,13 +435,18 @@ export function VaultGoldSection({ matchesSearch }: { matchesSearch: (s: string)
               </div>
             ) : (
               <div className="space-y-3">
-                <input
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
-                  placeholder="Username"
-                  value={username}
-                  onChange={e => setUsername(e.target.value)}
-                  autoComplete="username"
-                />
+                <div>
+                  <input
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
+                    placeholder="Choose a username"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
+                    autoComplete="username"
+                  />
+                  <p className="text-[11px] text-white/40 mt-1">
+                    Your custom display name — 3–32 characters, letters, numbers, _ . -
+                  </p>
+                </div>
                 <input
                   type="email"
                   className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[var(--theme-color)] transition-colors"
