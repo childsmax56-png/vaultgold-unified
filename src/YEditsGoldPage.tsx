@@ -484,7 +484,7 @@ function AdminPanel({ onClose, onRefreshClaims, isOwner }: { onClose: () => void
 
 export function YEditsGoldPage() {
   const navigate = useNavigate();
-  const [unlocked, setUnlocked] = useState(isMaintenanceUnlocked);
+  const [unlocked, setUnlocked] = useState(() => isMaintenanceUnlocked('yeditsgold_maintenance_unlocked'));
   const [searchQuery, setSearchQuery] = useState('');
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
   const [currentEra, setCurrentEra] = useState<Era | null>(null);
@@ -623,6 +623,7 @@ export function YEditsGoldPage() {
       <MaintenanceGate
         title={<>yedits<span style={{ color: ACCENT }}>gold</span> is under maintenance</>}
         message="We're doing some work behind the scenes. yeditsgold will be back and open to the public soon — thanks for your patience."
+        storageKey="yeditsgold_maintenance_unlocked"
         onUnlock={() => setUnlocked(true)}
       />
     );
