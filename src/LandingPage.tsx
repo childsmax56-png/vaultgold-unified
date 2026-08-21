@@ -929,7 +929,7 @@ function ShareButton({ url, accent }: { url: string; accent?: string }) {
         color: copied ? color : 'rgba(255,255,255,0.45)',
         fontSize: 11, fontWeight: 600, letterSpacing: '0.04em',
         cursor: 'pointer', transition: 'background 0.15s, color 0.15s, border-color 0.15s',
-        flex: 1,
+        flex: 1, minWidth: 0, overflow: 'hidden', whiteSpace: 'nowrap',
       }}
       onMouseEnter={e => {
         if (copied) return;
@@ -975,6 +975,7 @@ function SheetButton({ href, accent }: { href: string; accent?: string }) {
         background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
         color: 'rgba(255,255,255,0.45)', fontSize: 11, fontWeight: 600,
         letterSpacing: '0.04em', textDecoration: 'none', flex: 1,
+        minWidth: 0, overflow: 'hidden', whiteSpace: 'nowrap',
         transition: 'background 0.15s, color 0.15s, border-color 0.15s',
       }}
       onMouseEnter={e => {
