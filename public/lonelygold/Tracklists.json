@@ -1,869 +1,3767 @@
-[
+{
+ "legend": [
   {
-    "era": "Tundra Boy Lonely",
-    "name": "Lonelys Flexed Up Slow Jams",
-    "date": "",
-    "quality": "N/A",
-    "source": "Destroy Lonely",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "TOKYO DRIFT [VRY FYE VRY MUMBLE]" },
-      { "num": "2.", "name": "???" },
-      { "num": "3.", "name": "???" }
-    ]
+   "label": "Unknown",
+   "color": "#999999"
   },
   {
-    "era": "Destroy",
-    "name": "Destroy",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "Lifestyle (2017)" },
-      { "num": "2.", "name": "ForNothin'" },
-      { "num": "3.", "name": "FoF (Freestyle)" },
-      { "num": "4.", "name": "Destroy" },
-      { "num": "5.", "name": "Gotham, Pt2" },
-      { "num": "6.", "name": "HiTech" },
-      { "num": "7.", "name": "Lies" }
-    ]
+   "label": "Completely Unheard",
+   "color": "#E06666"
   },
   {
-    "era": "NezzusDestroyed",
-    "name": "NezzusDestroyed",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "Intro" },
-      { "num": "2.", "name": "Global" },
-      { "num": "3.", "name": "SmashBros (feat. Lil Candy Paint)" },
-      { "num": "4.", "name": "No Hook" },
-      { "num": "5.", "name": "Addy" },
-      { "num": "6.", "name": "Add It Up" },
-      { "num": "7.", "name": "Wild" }
-    ]
+   "label": "Snippet / Partial / Recording / LQ Available",
+   "color": "#F6B26B"
   },
   {
-    "era": "NezzusDestroyed 2",
-    "name": "NezzusDestroyed 2",
-    "date": "",
-    "quality": "N/A",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      { "num": "?.", "name": "Fenderbender" },
-      { "num": "?.", "name": "NDR (feat. Nezzus & Roman Reloaded)" },
-      { "num": "?.", "name": "GS! (feat. Nezzus & Slimesito)" },
-      { "num": "?.", "name": "Revenge (feat. Nezzus)" }
-    ]
+   "label": "Alt / Unconfirmed Version Available",
+   "color": "#93C47D"
   },
   {
-    "era": "Darkhorse",
-    "name": "Darkhorse",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "eazy" },
-      { "num": "2.", "name": "place" },
-      { "num": "3.", "name": "different drugz" },
-      { "num": "4.", "name": "4 seasons" },
-      { "num": "5.", "name": "guap, glock, nd sticks" },
-      { "num": "6.", "name": "trapped on marz (feat. Nezzus)" },
-      { "num": "7.", "name": "vvs valentine" },
-      { "num": "8.", "name": "frank lucas" }
-    ]
+   "label": "Confirmed Version Available",
+   "color": "#8E7CC3"
   },
   {
-    "era": "Sometimes U Lose..",
-    "name": "Sometimes U Lose..",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "ya dig freestyle" },
-      { "num": "2.", "name": "molly mileage (interlude)" },
-      { "num": "3.", "name": "M.I.S" },
-      { "num": "4.", "name": "alone" }
-    ]
-  },
-  {
-    "era": "Forever Alive",
-    "name": "Forever Alive",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "Texaco Intro" },
-      { "num": "2.", "name": "Crushin" },
-      { "num": "3.", "name": "Mud" },
-      { "num": "4.", "name": "London Tipton" },
-      { "num": "5.", "name": "Hi Water" },
-      { "num": "6.", "name": "yao ming" }
-    ]
-  },
-  {
-    "era": "Forever, ILY",
-    "name": "Forever, ILY. [V1]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "mollywrld" },
-      { "num": "2.", "name": "traphousemansion (Interlude)" },
-      { "num": "3.", "name": "mud" },
-      { "num": "4.", "name": "usual" },
-      { "num": "5.", "name": "bane" }
-    ]
-  },
-  {
-    "era": "Forever, ILY",
-    "name": "Forever, ILY.",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "usual" },
-      { "num": "2.", "name": "mollywrld" },
-      { "num": "3.", "name": "luna" },
-      { "num": "4.", "name": "traphousemansion (Interlude)" },
-      { "num": "5.", "name": "mud" },
-      { "num": "6.", "name": "cutie" }
-    ]
-  },
-  {
-    "era": "Underworld.",
-    "name": "Underworld. [V1]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "online" },
-      { "num": "2.", "name": "margiela man" },
-      { "num": "3.", "name": "loot" },
-      { "num": "4.", "name": "expiration date" },
-      { "num": "5.", "name": "ma" },
-      { "num": "6.", "name": "nobody" },
-      { "num": "7.", "name": "kool" },
-      { "num": "8.", "name": "mochiato" },
-      { "num": "9.", "name": "snot nose (feat. BigSmokeChapo)" }
-    ]
-  },
-  {
-    "era": "Underworld.",
-    "name": "Underworld. [Alt Tracklist]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Destroy Lonely",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "online" },
-      { "num": "2.", "name": "margiela man" },
-      { "num": "3.", "name": "loot" },
-      { "num": "4.", "name": "expiration date" },
-      { "num": "5.", "name": "mochiato" },
-      { "num": "6.", "name": "nobody" },
-      { "num": "7.", "name": "kool" },
-      { "num": "8.", "name": "snot nose (feat. BigSmokeChapo)" }
-    ]
-  },
-  {
-    "era": "Underworld.",
-    "name": "Underworld.",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "online" },
-      { "num": "2.", "name": "margiela man" },
-      { "num": "3.", "name": "loot" },
-      { "num": "4.", "name": "expiration date" },
-      { "num": "5.", "name": "ma" },
-      { "num": "6.", "name": "nobody" },
-      { "num": "7.", "name": "kool" }
-    ]
-  },
-  {
-    "era": "ECSTASY",
-    "name": "ECSTASY",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "INTO IT" },
-      { "num": "2.", "name": "HIGH AF" }
-    ]
-  },
-  {
-    "era": "LORD",
-    "name": "LORD",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "seasons" },
-      { "num": "2.", "name": "which 1 / klueless" },
-      { "num": "3.", "name": "layover" },
-      { "num": "4.", "name": "devil wears prada" }
-    ]
-  },
-  {
-    "era": "addicted to money",
-    "name": "addicted to money",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "4am" },
-      { "num": "2.", "name": "motion" },
-      { "num": "3.", "name": "code" },
-      { "num": "4.", "name": "koma" },
-      { "num": "5.", "name": "going up (atm)" }
-    ]
-  },
-  {
-    "era": "ULTRA",
-    "name": "Ultra",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "WTF" },
-      { "num": "2.", "name": "$ & X ($ and X)" },
-      { "num": "3.", "name": "Go Where I Go" },
-      { "num": "4.", "name": "Which Way (Wich Way)" },
-      { "num": "5.", "name": "Trance" }
-    ]
-  },
-  {
-    "era": "</3",
-    "name": "</3",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "Pop Shit / Xtra" },
-      { "num": "2.", "name": "Miley Cyrus" },
-      { "num": "3.", "name": "F.U.N" },
-      { "num": "4.", "name": "Ya Ight" },
-      { "num": "5.", "name": "Tokyo Mission Impossible" },
-      { "num": "6.", "name": "Okay Bae" },
-      { "num": "7.", "name": "Take A Pic (Interlude)" },
-      { "num": "8.", "name": "Movie" },
-      { "num": "9.", "name": "Comin' Back" },
-      { "num": "10.", "name": "Diamonds & Foreigns" }
-    ]
-  },
-  {
-    "era": "</3",
-    "name": "ᐸ/3²",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "Top Floor Boss" },
-      { "num": "2.", "name": "Oh Yeah" },
-      { "num": "3.", "name": "Pop Shit / Xtra" },
-      { "num": "4.", "name": "Miley Cyrus" },
-      { "num": "5.", "name": "F.U.N" },
-      { "num": "6.", "name": "Ya Ight" },
-      { "num": "7.", "name": "Dover Street Market" },
-      { "num": "8.", "name": "Tokyo Mission Impossible" },
-      { "num": "9.", "name": "Ok Bae" },
-      { "num": "10.", "name": "Take A Pic (Interlude)" },
-      { "num": "11.", "name": "Movie" },
-      { "num": "12.", "name": "Groupie Bitch" },
-      { "num": "13.", "name": "Do Or Die" },
-      { "num": "14.", "name": "Komin' Back" },
-      { "num": "15.", "name": "CDG" },
-      { "num": "16.", "name": "Diamonds & Foreigns" }
-    ]
-  },
-  {
-    "era": "Top Floor Vampires",
-    "name": "top floor vampires",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "geek no sleep" },
-      { "num": "2.", "name": "high dosage (feat. Nezzus)" }
-    ]
-  },
-  {
-    "era": "Overseas",
-    "name": "overseas",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "1017 alyx" },
-      { "num": "2.", "name": "messy freestyle" },
-      { "num": "3.", "name": "siamese" },
-      { "num": "4.", "name": "everyday" },
-      { "num": "5.", "name": "lit btchs" },
-      { "num": "6.", "name": "rch ngga / bD btch" },
-      { "num": "7.", "name": "cdg 2" }
-    ]
-  },
-  {
-    "era": "XO",
-    "name": "XO",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "tokyoto" },
-      { "num": "2.", "name": "i got em" },
-      { "num": "3.", "name": "okay ya!" },
-      { "num": "4.", "name": "do the most ..." },
-      { "num": "5.", "name": "ok / what i do" }
-    ]
-  },
-  {
-    "era": "NO STYLIST [V3]",
-    "name": "NO STYLIST [OG]",
-    "date": "",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "LONELY (LNLY)" },
-      { "num": "2.", "name": "PRESSURE (PRSSURE)" },
-      { "num": "3.", "name": "DOWN" },
-      { "num": "4.", "name": "GONE" },
-      { "num": "5.", "name": "MISSING ME" },
-      { "num": "6.", "name": "SAVING ME" },
-      { "num": "7.", "name": "SUICIDE MISSION" },
-      { "num": "8.", "name": "GIVENCHY HOE" }
-    ]
-  },
-  {
-    "era": "NO STYLIST [V3]",
-    "name": "Dark Lord [EP]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      { "num": "?.", "name": "Suicide Mission" },
-      { "num": "?.", "name": "Teen Knight Poem" },
-      { "num": "?.", "name": "A Minute" }
-    ]
-  },
-  {
-    "era": "NO STYLIST [V3]",
-    "name": "NO STYLIST",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "JETLGGD" },
-      { "num": "2.", "name": "BERGDORF" },
-      { "num": "3.", "name": "<3MYGNG" },
-      { "num": "4.", "name": "VTMNTSCOAT" },
-      { "num": "5.", "name": "NOSTYLIST" },
-      { "num": "6.", "name": "FAKENGGAS" },
-      { "num": "7.", "name": "SOARIN" },
-      { "num": "8.", "name": "TURNINUP" },
-      { "num": "9.", "name": "LNLY" },
-      { "num": "10.", "name": "PRSSURE" },
-      { "num": "11.", "name": "ONTHETABLE" },
-      { "num": "12.", "name": "SWGSKOOL" },
-      { "num": "13.", "name": "CRYSTLCSTLES" },
-      { "num": "14.", "name": "DANGEROUS" },
-      { "num": "15.", "name": "MKEITSTOP" },
-      { "num": "16.", "name": "ONTHEFLOOR" },
-      { "num": "17.", "name": "PASSAROUND" },
-      { "num": "18.", "name": "OTW" },
-      { "num": "19.", "name": "VETERAN (feat. Ken Carson)" }
-    ]
-  },
-  {
-    "era": "NO STYLIST [V3]",
-    "name": "NS+ (ULTRA)",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "JETLGGD" },
-      { "num": "2.", "name": "BERGDORF" },
-      { "num": "3.", "name": "<3MYGNG" },
-      { "num": "4.", "name": "VTMNTSCOAT" },
-      { "num": "5.", "name": "NOSTYLIST" },
-      { "num": "6.", "name": "FAKENGGAS" },
-      { "num": "7.", "name": "BLITZ" },
-      { "num": "8.", "name": "SOARIN" },
-      { "num": "9.", "name": "TURNINUP" },
-      { "num": "10.", "name": "LNLY" },
-      { "num": "11.", "name": "PRSSURE" },
-      { "num": "12.", "name": "ONTHETABLE" },
-      { "num": "13.", "name": "HAVINMYWAY" },
-      { "num": "14.", "name": "ALLURE" },
-      { "num": "15.", "name": "SWGSKOOL" },
-      { "num": "16.", "name": "CRYSTLCSTLES" },
-      { "num": "17.", "name": "DANGEROUS" },
-      { "num": "18.", "name": "MKEITSTOP" },
-      { "num": "19.", "name": "ONTHEFLOOR" },
-      { "num": "20.", "name": "LOUVRE" },
-      { "num": "21.", "name": "PASSAROUND" },
-      { "num": "22.", "name": "OTW" },
-      { "num": "23.", "name": "VETERAN (feat. Ken Carson)" },
-      { "num": "24.", "name": "NEVEREVER" }
-    ]
-  },
-  {
-    "era": "If Looks Could Kill",
-    "name": "If Looks Could Kill",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "how u feel?" },
-      { "num": "2.", "name": "if looks could kill" },
-      { "num": "3.", "name": "fly sht" },
-      { "num": "4.", "name": "which one" },
-      { "num": "5.", "name": "raver" },
-      { "num": "6.", "name": "came in wit" },
-      { "num": "7.", "name": "by the pound" },
-      { "num": "8.", "name": "all the time" },
-      { "num": "9.", "name": "biggest problem" },
-      { "num": "10.", "name": "chris paul" },
-      { "num": "11.", "name": "superstar" },
-      { "num": "12.", "name": "new new" },
-      { "num": "13.", "name": "right now" },
-      { "num": "14.", "name": "which way" },
-      { "num": "15.", "name": "wagwan" },
-      { "num": "16.", "name": "moment of silence" },
-      { "num": "17.", "name": "brazy girls" },
-      { "num": "18.", "name": "goin up" },
-      { "num": "19.", "name": "passenger" },
-      { "num": "20.", "name": "promo" },
-      { "num": "21.", "name": "worth it" },
-      { "num": "22.", "name": "redlight" },
-      { "num": "23.", "name": "make sum work" },
-      { "num": "24.", "name": "safety (interlude)" },
-      { "num": "25.", "name": "your eyes" },
-      { "num": "26.", "name": "money & sex (with Ken Carson)" }
-    ]
-  },
-  {
-    "era": "If Looks Could Kill",
-    "name": "If Looks Could Kill (Directors Cut)",
-    "date": "",
-    "quality": "Clear",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "how u feel?" },
-      { "num": "2.", "name": "if looks could kill" },
-      { "num": "3.", "name": "fly sht" },
-      { "num": "4.", "name": "which one" },
-      { "num": "5.", "name": "raver" },
-      { "num": "6.", "name": "came in wit" },
-      { "num": "7.", "name": "by the pound" },
-      { "num": "8.", "name": "all the time" },
-      { "num": "9.", "name": "biggest problem" },
-      { "num": "10.", "name": "chris paul" },
-      { "num": "11.", "name": "catch a kill" },
-      { "num": "12.", "name": "thats my" },
-      { "num": "13.", "name": "superstar" },
-      { "num": "14.", "name": "new new" },
-      { "num": "15.", "name": "right now" },
-      { "num": "16.", "name": "which way" },
-      { "num": "17.", "name": "wagwan" },
-      { "num": "18.", "name": "moment of silence" },
-      { "num": "19.", "name": "brazy girls" },
-      { "num": "20.", "name": "goin up" },
-      { "num": "21.", "name": "passenger" },
-      { "num": "22.", "name": "promo" },
-      { "num": "23.", "name": "worth it" },
-      { "num": "24.", "name": "redlight" },
-      { "num": "25.", "name": "make sum work" },
-      { "num": "26.", "name": "safety (interlude)" },
-      { "num": "27.", "name": "your eyes" },
-      { "num": "28.", "name": "money & sex (with Ken Carson)" },
-      { "num": "29.", "name": "too damn rich" },
-      { "num": "30.", "name": "spillin" },
-      { "num": "31.", "name": "check the fleet" },
-      { "num": "32.", "name": "back sippin" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V1]",
-    "name": "???",
-    "date": "",
-    "quality": "Blocked",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      { "num": "?.", "name": "Dress It Up" },
-      { "num": "?.", "name": "Watch" },
-      { "num": "?.", "name": "Can't Go Back" },
-      { "num": "?.", "name": "???" },
-      { "num": "?.", "name": "???" },
-      { "num": "?.", "name": "Where You Been" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V2]",
-    "name": "BLAK AMERIKA PRESENTS #LLF",
-    "date": "",
-    "quality": "Blurry",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "FOREVER / ???" },
-      { "num": "2.", "name": "LUV4YA" },
-      { "num": "3.", "name": "PIMP TALK" },
-      { "num": "4.", "name": "TAKE A TRIP" },
-      { "num": "5.", "name": "HONESTLY" },
-      { "num": "6.", "name": "6042" },
-      { "num": "7.", "name": "CRYSTAL CLEAR" },
-      { "num": "8.", "name": "MOLLY" },
-      { "num": "9.", "name": "MOTIVATIONAL" },
-      { "num": "10.", "name": "TOGETHER (feat. Don Toliver)" },
-      { "num": "12.", "name": "PUCCI (feat. Don Toliver)" },
-      { "num": "14.", "name": "PASS ME THE KEYS" },
-      { "num": "18.", "name": "NO WORRIES (BONUS)" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V2]",
-    "name": "BLAK AMERIKA PRESENTS #LLF [REVISED]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Destroy Lonely",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "FOREVER" },
-      { "num": "2.", "name": "LUV4YA" },
-      { "num": "3.", "name": "PIMP TALK" },
-      { "num": "4.", "name": "TAKE A TRIP" },
-      { "num": "5.", "name": "HONESTLY" },
-      { "num": "6.", "name": "6042" },
-      { "num": "7.", "name": "CRYSTAL CLEAR" },
-      { "num": "8.", "name": "MOLLY" },
-      { "num": "9.", "name": "MOTIVATIONAL" },
-      { "num": "12.", "name": "PUCCI (feat. Don Toliver)" },
-      { "num": "14.", "name": "PASS ME THE KEYS" },
-      { "num": "18.", "name": "NO WORRIES (BONUS)" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V2]",
-    "name": "LOVE LASTS FOREVER",
-    "date": "",
-    "quality": "Full",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "FOREVER" },
-      { "num": "2.", "name": "LOVE HURTS (with Lil Uzi Vert)" },
-      { "num": "3.", "name": "LUV 4 YA" },
-      { "num": "4.", "name": "CRYSTAL CLEAR" },
-      { "num": "5.", "name": "BABY MONEY" },
-      { "num": "6.", "name": "SAY THAT" },
-      { "num": "7.", "name": "PIMP TALK" },
-      { "num": "8.", "name": "CADILLAC" },
-      { "num": "9.", "name": "SYRUP SIPPIN'" },
-      { "num": "10.", "name": "LOCK IN" },
-      { "num": "11.", "name": "DOUBT IT" },
-      { "num": "12.", "name": "WISH YOU WELL" },
-      { "num": "13.", "name": "SHIP HER OFF" },
-      { "num": "14.", "name": "HONESTLY" },
-      { "num": "15.", "name": "TAKE A TRIP" },
-      { "num": "16.", "name": "EXTRA HIGH" },
-      { "num": "17.", "name": "AMERIKA" },
-      { "num": "18.", "name": "THRILL (with Ken Carson)" },
-      { "num": "19.", "name": "ABOUT MONEY (BONUS)" },
-      { "num": "20.", "name": "NO WORRIES (BONUS)" },
-      { "num": "21.", "name": "PASS ME THE KEYS (BONUS)" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V2]",
-    "name": "LOVE LASTS FOREVER [DELUXE]",
-    "date": "",
-    "quality": "N/A",
-    "source": "Destroy Lonely",
-    "links": [],
-    "tracks": [
-      { "num": "?.", "name": "HOLDING IT DOWN" },
-      { "num": "?.", "name": "YOU DON'T EVEN KNOW" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V2]",
-    "name": "LOVE LASTS FOREVER [CD RELEASE]",
-    "date": "",
-    "quality": "Full",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "FOREVER" },
-      { "num": "2.", "name": "LOVE HURTS (feat. Lil Uzi Vert)" },
-      { "num": "3.", "name": "LUV 4 YA" },
-      { "num": "4.", "name": "CRYSTAL CLEAR" },
-      { "num": "5.", "name": "BANGAZ (with Don Toliver)" },
-      { "num": "6.", "name": "BABY MONEY" },
-      { "num": "7.", "name": "SAY THAT" },
-      { "num": "8.", "name": "PIMP TALK" },
-      { "num": "9.", "name": "CADILLAC" },
-      { "num": "10.", "name": "SYRUP SIPPIN'" },
-      { "num": "11.", "name": "TIGHTEN UP (feat. Quavo & Ken Carson)" },
-      { "num": "12.", "name": "DOUBT IT" },
-      { "num": "13.", "name": "WISH YOU WELL" },
-      { "num": "14.", "name": "SHIP HER OFF" },
-      { "num": "15.", "name": "HONESTLY" },
-      { "num": "16.", "name": "TAKE A TRIP" },
-      { "num": "17.", "name": "EXTRA HIGH" },
-      { "num": "18.", "name": "AMERIKA" },
-      { "num": "19.", "name": "ABOUT MONEY" },
-      { "num": "20.", "name": "NO WORRIES" },
-      { "num": "21.", "name": "PASS ME THE KEYS" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V2]",
-    "name": "LOVE LASTS FOREVER [V2]",
-    "date": "",
-    "quality": "Full",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "FOREVER" },
-      { "num": "2.", "name": "LOVE HURTS (with Lil Uzi Vert)" },
-      { "num": "3.", "name": "LUV 4 YA" },
-      { "num": "4.", "name": "CRYSTAL CLEAR" },
-      { "num": "5.", "name": "BABY MONEY" },
-      { "num": "6.", "name": "SAY THAT" },
-      { "num": "7.", "name": "PIMP TALK" },
-      { "num": "8.", "name": "CADILLAC" },
-      { "num": "9.", "name": "SYRUP SIPPIN'" },
-      { "num": "10.", "name": "LOCK IN" },
-      { "num": "11.", "name": "DOUBT IT" },
-      { "num": "12.", "name": "WISH YOU WELL" },
-      { "num": "13.", "name": "SHIP HER OFF" },
-      { "num": "14.", "name": "HONESTLY" },
-      { "num": "15.", "name": "TAKE A TRIP" },
-      { "num": "16.", "name": "EXTRA HIGH" },
-      { "num": "17.", "name": "AMERIKA" },
-      { "num": "18.", "name": "THRILL (with Ken Carson)" },
-      { "num": "19.", "name": "ABOUT MONEY (BONUS)" },
-      { "num": "20.", "name": "NO WORRIES (BONUS)" },
-      { "num": "21.", "name": "PASS ME THE KEYS (BONUS)" },
-      { "num": "22.", "name": "THE BOUNCE" },
-      { "num": "23.", "name": "MAKE A SOUND" },
-      { "num": "24.", "name": "SEE YOU TOMORROW" },
-      { "num": "25.", "name": "MEET THE BOSS" },
-      { "num": "26.", "name": "BLING" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V2]",
-    "name": "LOVE LASTS FOREVER [V2.5]",
-    "date": "",
-    "quality": "Full",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "FOREVER" },
-      { "num": "2.", "name": "LOVE HURTS (with Lil Uzi Vert)" },
-      { "num": "3.", "name": "LUV 4 YA" },
-      { "num": "4.", "name": "CRYSTAL CLEAR" },
-      { "num": "5.", "name": "BABY MONEY" },
-      { "num": "6.", "name": "SAY THAT" },
-      { "num": "7.", "name": "PIMP TALK" },
-      { "num": "8.", "name": "CADILLAC" },
-      { "num": "9.", "name": "SYRUP SIPPIN'" },
-      { "num": "10.", "name": "LOCK IN" },
-      { "num": "11.", "name": "DOUBT IT" },
-      { "num": "12.", "name": "WISH YOU WELL" },
-      { "num": "13.", "name": "SHIP HER OFF" },
-      { "num": "14.", "name": "HONESTLY" },
-      { "num": "15.", "name": "TAKE A TRIP" },
-      { "num": "16.", "name": "EXTRA HIGH" },
-      { "num": "17.", "name": "AMERIKA" },
-      { "num": "18.", "name": "THRILL (with Ken Carson)" },
-      { "num": "19.", "name": "ABOUT MONEY (BONUS)" },
-      { "num": "20.", "name": "NO WORRIES (BONUS)" },
-      { "num": "21.", "name": "PASS ME THE KEYS (BONUS)" },
-      { "num": "22.", "name": "SMOKING" },
-      { "num": "23.", "name": "HEALING" },
-      { "num": "24.", "name": "FORGOT MY NAME" },
-      { "num": "25.", "name": "LSD" },
-      { "num": "26.", "name": "MONEY ANTHEM" }
-    ]
-  },
-  {
-    "era": "LOVE LASTS FOREVER [V2]",
-    "name": "LOVE LASTS FOREVER: PRESENTED BY BLAKAMERIKA",
-    "date": "",
-    "quality": "Full",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "FOREVER" },
-      { "num": "2.", "name": "LOVE HURTS (with Lil Uzi Vert)" },
-      { "num": "3.", "name": "LUV 4 YA" },
-      { "num": "4.", "name": "GET RIGHT" },
-      { "num": "5.", "name": "CRYSTAL CLEAR" },
-      { "num": "6.", "name": "BABY MONEY" },
-      { "num": "7.", "name": "SAY THAT" },
-      { "num": "8.", "name": "PIMP TALK" },
-      { "num": "9.", "name": "CADILLAC" },
-      { "num": "10.", "name": "SYRUP SIPPIN'" },
-      { "num": "11.", "name": "LOCK IN" },
-      { "num": "12.", "name": "DOUBT IT" },
-      { "num": "13.", "name": "WISH YOU WELL" },
-      { "num": "14.", "name": "SHIP HER OFF" },
-      { "num": "15.", "name": "HONESTLY" },
-      { "num": "16.", "name": "TAKE A TRIP" },
-      { "num": "17.", "name": "EXTRA HIGH" },
-      { "num": "18.", "name": "AMERIKA" },
-      { "num": "19.", "name": "THRILL (with Ken Carson)" },
-      { "num": "20.", "name": "ABOUT MONEY (BONUS)" },
-      { "num": "21.", "name": "NO WORRIES (BONUS)" },
-      { "num": "22.", "name": "PASS ME THE KEYS (BONUS)" },
-      { "num": "23.", "name": "PRETTIEST ONE" }
-    ]
-  },
-  {
-    "era": "</3³",
-    "name": "see u soon </3",
-    "date": "",
-    "quality": "Full",
-    "source": "Released",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "NYLON" },
-      { "num": "2.", "name": "SDP" },
-      { "num": "3.", "name": "SEE UR FACE" },
-      { "num": "4.", "name": "SUPER SERUM" },
-      { "num": "5.", "name": "SRTBBL (with Ken Carson)" }
-    ]
-  },
-  {
-    "era": "</3³",
-    "name": "</3³ [9.18.25]",
-    "date": "",
-    "quality": "Full",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "ain't hard" },
-      { "num": "2.", "name": "blowin smoke" },
-      { "num": "3.", "name": "kansas" },
-      { "num": "4.", "name": "kool on ya" },
-      { "num": "5.", "name": "whats it gon take? (Let Me Know)" },
-      { "num": "6.", "name": "jumanji" },
-      { "num": "8.", "name": "leave u out 2 dry" },
-      { "num": "9.", "name": "not the mayor" },
-      { "num": "10.", "name": "no pressure" },
-      { "num": "11.", "name": "risk" },
-      { "num": "12.", "name": "screwed up" },
-      { "num": "13.", "name": "see no evil" },
-      { "num": "14.", "name": "show u how" },
-      { "num": "15.", "name": "soooo high" },
-      { "num": "16.", "name": "stfu" },
-      { "num": "17.", "name": "top flo" },
-      { "num": "18.", "name": "party n get high" },
-      { "num": "19.", "name": "open it up (feat. Ken Carson)" }
-    ]
-  },
-  {
-    "era": "</3³",
-    "name": "</3³ [9.19.25]",
-    "date": "",
-    "quality": "Full",
-    "source": "Destroy Lonely",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "aint hard" },
-      { "num": "2.", "name": "risk" },
-      { "num": "3.", "name": "see no evil" },
-      { "num": "4.", "name": "no pressure" },
-      { "num": "5.", "name": "stfu" },
-      { "num": "6.", "name": "show u how" },
-      { "num": "7.", "name": "top flo" },
-      { "num": "8.", "name": "kansas" },
-      { "num": "9.", "name": "screwed up" },
-      { "num": "10.", "name": "party n get high (interlude)" },
-      { "num": "11.", "name": "leash" },
-      { "num": "12.", "name": "jumanji" },
-      { "num": "13.", "name": "not the mayor" },
-      { "num": "14.", "name": "blowin smoke" },
-      { "num": "15.", "name": "kool on ya" },
-      { "num": "16.", "name": "soooo high" },
-      { "num": "17.", "name": "open it up (feat. Ken Carson)" },
-      { "num": "18.", "name": "leave u out 2 dry" }
-    ]
-  },
-  {
-    "era": "</3³",
-    "name": "</3³ [Final Updates]",
-    "date": "",
-    "quality": "Full",
-    "source": "Destroy Lonely",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "aint hard" },
-      { "num": "2.", "name": "risk" },
-      { "num": "3.", "name": "see no evil" },
-      { "num": "4.", "name": "no pressure" },
-      { "num": "5.", "name": "stfu" },
-      { "num": "6.", "name": "show u how" },
-      { "num": "7.", "name": "top flo" },
-      { "num": "8.", "name": "what's it gon take?" },
-      { "num": "9.", "name": "kansas" },
-      { "num": "10.", "name": "screwed up" },
-      { "num": "11.", "name": "party n get high (interlude)" },
-      { "num": "12.", "name": "leash" },
-      { "num": "13.", "name": "jumanji" },
-      { "num": "14.", "name": "not the mayor" },
-      { "num": "15.", "name": "blowin smoke" },
-      { "num": "16.", "name": "kool on ya" },
-      { "num": "17.", "name": "soooo high" },
-      { "num": "18.", "name": "open it up (feat. Ken Carson)" },
-      { "num": "19.", "name": "leave u out 2 dry" }
-    ]
-  },
-  {
-    "era": "Drop Dead Gorgeous",
-    "name": "??? [EP]",
-    "date": "",
-    "quality": "Full",
-    "source": "Destroy Lonely",
-    "links": [],
-    "tracks": [
-      { "num": "1.", "name": "with my bitch" },
-      { "num": "2.", "name": "sipped too much" },
-      { "num": "3.", "name": "hide it" },
-      { "num": "4.", "name": "exorcist" },
-      { "num": "5.", "name": "rose gold ice" }
-    ]
+   "label": "Lost",
+   "color": "#CC4125"
   }
-]
+ ],
+ "albums": [
+  {
+   "era": "Tundra Boy Lonely",
+   "name": "Lonelys Flexed Up Slow Jams",
+   "date": "",
+   "quality": "N/A",
+   "source": "Destroy Lonely",
+   "links": [],
+   "description": "Supposedly was Lones very first EP, was mentioned by him in an interview in April 2024. Unknown if it released or not.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "TOKYO DRIFT [VRY FYE VRY MUMBLE]"
+    },
+    {
+     "num": "#2",
+     "name": "???",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#3",
+     "name": "???",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "Destroy",
+   "name": "Destroy",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'Destroy'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Lifestyle (2017)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "ForNothin'",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "FoF (Freestyle)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Destroy",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "HiTech",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Lies",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "NezzusDestroyed",
+   "name": "NezzusDestroyed",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'NezzusDestroyed'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Global",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "SmashBros (feat. Lil Candy Paint)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "No Hook",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Addy",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "Add It Up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Wild",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "NezzusDestroyed 2",
+   "name": "NezzusDestroyed 2",
+   "date": "",
+   "quality": "N/A",
+   "source": "Secondary",
+   "links": [],
+   "description": "Supposedly, there were songs uploaded that were meant for a planned sequel to NezzusDestroyed. Fenderbender is confirmed to have been the first lead single for the album.\nConfirmed:",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Fenderbender",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "NDR (feat. Nezzus & Roman Reloaded)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "GS! (feat. Nezzus & Slimesito)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Revenge (feat. Nezzus)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Few Songs Confirmed"
+  },
+  {
+   "era": "Darkhorse",
+   "name": "Darkhorse",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'Darkhorse'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "eazy",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "place",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "different drugz",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "4 seasons",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "guap, glock, nd sticks",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "trapped on marz (feat. Nezzus)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "vvs valentine",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "frank lucas",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "Sometimes U Lose..",
+   "name": "Sometimes U Lose..",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'Sometimes U Lose..'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "ya dig freestyle",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "molly mileage (interlude)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "M.I.S",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "alone",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "Forever Alive",
+   "name": "Forever Alive",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Leaked tracklist for the scrapped 'Forever Alive' EP.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Texaco Intro",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Crushin",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Mud",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "London Tipton",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Hi Water",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "yao ming",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full",
+   "images": [
+    "/lonelygold/art/tl-9-0.jpg"
+   ]
+  },
+  {
+   "era": "Forever, ILY",
+   "name": "Forever, ILY. [V1]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Original tracklist for Forever, ILY. Leaked on Aug 28, 2025",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "mollywrld",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "traphousemansion (Interlude)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "mud",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "usual",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "bane",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full",
+   "images": [
+    "/lonelygold/art/tl-10-0.jpg"
+   ]
+  },
+  {
+   "era": "Forever, ILY",
+   "name": "Forever, ILY.",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'Forever, ILY.'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "usual",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "mollywrld",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "luna",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "traphousemansion (Interlude)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "mud",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "cutie",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "Underworld.",
+   "name": "Underworld. [V1]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Original tracklist for 'Underworld.' which featured 2 extra songs that were later taken off.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "online",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "margiela man",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "loot",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "expiration date",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "ma",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "nobody",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "kool",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "mochiato",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "snot nose (feat. BigSmokeChapo)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "Underworld.",
+   "name": "Underworld. [Alt Tracklist]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Destroy Lonely",
+   "links": [],
+   "description": "\"Unofficial' streaming version of Underworld linked on Lones alt twitter which had an alternate tracklist (macchiato instead of real life interlude and an extra track).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "online",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "margiela man",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "loot",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "expiration date",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "mochiato",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "nobody",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "kool",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "snot nose (feat. BigSmokeChapo)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full",
+   "images": [
+    "/lonelygold/art/tl-13-0.jpg"
+   ]
+  },
+  {
+   "era": "Underworld.",
+   "name": "Underworld.",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'Underworld.'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "online",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "margiela man",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "loot",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "expiration date",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "ma",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "nobody",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "kool",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "ECSTASY",
+   "name": "ECSTASY",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "2 song collab EP with producer XTCY.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "INTO IT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "HIGH AF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "LORD",
+   "name": "LORD",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'LORD'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "seasons",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "which 1 / klueless",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "layover",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "devil wears prada",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "addicted to money",
+   "name": "addicted to money",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'addicted to money'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "4am",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "motion",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "code",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "koma",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "going up (atm)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "ULTRA",
+   "name": "Ultra",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Leaked tracklist for the scrapped Ultra EP.\n1 - WTF\n2 - $ & X ($ and X)\n3 - Go Where I Go \n4 - Which Way (Wich Way)\n5 - Trance",
+   "tracks": [],
+   "availability": "Full",
+   "images": [
+    "/lonelygold/art/tl-18-0.jpg"
+   ]
+  },
+  {
+   "era": "</3",
+   "name": "</3",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'Broken Hearts'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Pop Shit / Xtra",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Miley Cyrus",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "F.U.N",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Ya Ight",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "Tokyo Mission Impossible",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "Okay Bae",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Take A Pic (Interlude)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Movie",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Comin' Back",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "Diamonds & Foreigns",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "</3",
+   "name": "ᐸ/3²",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for the deluxe to Broken Hearts (</3).",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Top Floor Boss",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "Oh Yeah",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "Pop Shit / Xtra",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "Miley Cyrus",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "F.U.N",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "Ya Ight",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "Dover Street Market",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "Tokyo Mission Impossible",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "Ok Bae",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "Take A Pic (Interlude)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "Movie",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "Groupie Bitch",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "Do Or Die",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "Komin' Back",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "CDG",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "Diamonds & Foreigns",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "Top Floor Vampires",
+   "name": "top floor vampires",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "2 song collaboration EP with lifelessgarments.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "geek no sleep",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "high dosage (feat. Nezzus)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "Overseas",
+   "name": "overseas",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'overseas'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "1017 alyx",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "messy freestyle",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "siamese",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "everyday",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "lit btchs",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "rch ngga / bD btch",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "cdg 2",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "XO",
+   "name": "XO",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'XO'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "tokyoto",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "i got em",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "okay ya!",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "do the most ...",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "ok / what i do",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "NO STYLIST [V2]",
+   "name": "NO STYLIST [2021]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "Possible songs that could have been on a summer 2021 copy of NO STYLIST.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Krash Out",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "FUCK IT UP [PACK A PUNCH]",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Euros",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Vivid",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "ZOMBIE (LNLY)",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    }
+   ],
+   "availability": "Few Songs Confirmed"
+  },
+  {
+   "era": "NO STYLIST [V3]",
+   "name": "???",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Older tracklist, very likely to be for a late 2021 version of NO STYLIST but could be for something different. Found in Propker's personal iTunes",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "LONELY (LNLY)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "PRESSURE (PRSSURE)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "DOWN",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "GONE",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "MISSING ME",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "SAVING ME"
+    },
+    {
+     "num": "#7",
+     "name": "SUICIDE MISSION",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "GIVENCHY HOE",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "NO STYLIST [V3]",
+   "name": "Dark Lord [EP]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "It is said an EP titled 'Dark Lord' was meant to be released sometime in 2021 with various songs on it. As of now, there are two songs we know of that were on it. Was probably scrapped pretty early on since there was never a cover art made for it",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Suicide Mission",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Teen Knight Poem",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "A Minute",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Few Songs Confirmed"
+  },
+  {
+   "era": "NO STYLIST [V3]",
+   "name": "NO STYLIST",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for NO STYLIST",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "JETLGGD",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "BERGDORF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "<3MYGNG",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "VTMNTSCOAT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "NOSTYLIST",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "FAKENGGAS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "SOARIN",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "TURNINUP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "LNLY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "PRSSURE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "ONTHETABLE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "SWGSKOOL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "CRYSTLCSTLES",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "DANGEROUS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "MKEITSTOP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "ONTHEFLOOR",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "PASSAROUND",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "OTW",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "VETERAN (feat. Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "NO STYLIST [V3]",
+   "name": "NS+ (ULTRA)",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for the deluxe to NO STYLIST, 'NS+ (ULTRA)'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "JETLGGD",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "BERGDORF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "<3MYGNG",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "VTMNTSCOAT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "NOSTYLIST",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "FAKENGGAS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "BLITZ",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "SOARIN",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "TURNINUP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "LNLY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "PRSSURE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "ONTHETABLE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "HAVINMYWAY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "ALLURE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "SWGSKOOL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "CRYSTLCSTLES",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "DANGEROUS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "MKEITSTOP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "ONTHEFLOOR",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "LOUVRE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "PASSAROUND",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#22",
+     "name": "OTW",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#23",
+     "name": "VETERAN (feat. Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#24",
+     "name": "NEVEREVER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "NO STYLIST [V3]",
+   "name": "NS+ (ULTRA) [Considered Songs]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Leaked",
+   "links": [],
+   "description": "Gone & Main Thing both were re-bounced after their original recording dates (Gone in Sep 2022 & Main Thing in Nov 2022), likely because they were being considered for NS+ (ULTRA).",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Main Thing",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Gone",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    }
+   ],
+   "availability": "Few Songs Confirmed"
+  },
+  {
+   "era": "If Looks Could Kill",
+   "name": "If Looks Could Kill (Directors Cut)",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for the deluxe to If Looks Could Kill",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "how u feel?",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "if looks could kill",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "fly sht",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "which one",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "raver",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "came in wit",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "by the pound",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "all the time",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "biggest problem",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "chris paul",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "catch a kill",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "thats my",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "superstar",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "new new",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "right now",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "which way",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "wagwan",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "moment of silence",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "brazy girls",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "goin up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "passenger",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#22",
+     "name": "promo",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#23",
+     "name": "worth it",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#24",
+     "name": "redlight",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#25",
+     "name": "make sum work",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#26",
+     "name": "safety (interlude)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#27",
+     "name": "your eyes",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#28",
+     "name": "money & sex (with Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#29",
+     "name": "too damn rich",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#30",
+     "name": "spillin",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#31",
+     "name": "check the fleet",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#32",
+     "name": "back sippin",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V1]",
+   "name": "???",
+   "date": "",
+   "quality": "Blocked",
+   "source": "Secondary",
+   "links": [],
+   "description": "Apparent tracklist for a early copy of LOVE LASTS FOREVER posted to Ayisha Maes story on August 17th, 2023. Most of the songs here are unconfirmed, especially since some of them seem to be If Looks Could Kill era songs (this could very possibly be an older If Looks Could Kill tracklist or maybe a list of files considered for ILCK Deluxe???). Could also just be a random ass list of files that Ayisha had but at the same time it says \"new album\" at the top so honestly nobody know what this is",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Dress It Up",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "Watch",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "Can't Go Back",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "Where You Been",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "...WITH..???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "...AY???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "...K???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    }
+   ],
+   "availability": "Partial",
+   "images": [
+    "/lonelygold/art/tl-31-0.jpg"
+   ]
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "BLAK AMERIKA PRESENTS #LLF",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Secondary",
+   "links": [],
+   "description": "June 2024 tracklist shown in the Taurus LLF vlogs. This is likely the version meant to release before Ayisha accused Lone of domestic violence. Possibly the March 2024 copy seen in a list of files posted on Lones burner account as they have the same name. Unknown if the TOGETHER & MOTIVATIONAL on this tracklist is the 'new beat' version & it's not known if MOTIVATIONAL is the same song as MOTIVATION.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FOREVER / ???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#2",
+     "name": "LUV4YA"
+    },
+    {
+     "num": "#3",
+     "name": "PIMP TALK"
+    },
+    {
+     "num": "#4",
+     "name": "TAKE A TRIP"
+    },
+    {
+     "num": "#5",
+     "name": "HONESTLY"
+    },
+    {
+     "num": "#6",
+     "name": "6042",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#7",
+     "name": "CRYSTAL CLEAR"
+    },
+    {
+     "num": "#8",
+     "name": "MOLLY",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Recording / LQ Available"
+    },
+    {
+     "num": "#9",
+     "name": "MOTIVATIONAL (MOTIVATION(?))",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "TOGETHER (feat. Don Toliver)",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#12",
+     "name": "PUCCI (feat. Don Toliver)",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#14",
+     "name": "PASS ME THE KEYS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#16",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#17",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#18",
+     "name": "NO WORRIES (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Partial",
+   "images": [
+    "/lonelygold/art/tl-32-0.jpg"
+   ]
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "BLAK AMERIKA PRESENTS #LLF [REVISED]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Destroy Lonely",
+   "links": [],
+   "description": "Lone can be seen erasing TOGETHER off the tracklist in the vlog because \"it will be a hit\", it is unknown what it was replaced with.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FOREVER / ???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#2",
+     "name": "LUV4YA"
+    },
+    {
+     "num": "#3",
+     "name": "PIMP TALK"
+    },
+    {
+     "num": "#4",
+     "name": "TAKE A TRIP"
+    },
+    {
+     "num": "#5",
+     "name": "HONESTLY"
+    },
+    {
+     "num": "#6",
+     "name": "6042",
+     "color": "#E06666",
+     "colorLabel": "Completely Unheard"
+    },
+    {
+     "num": "#7",
+     "name": "CRYSTAL CLEAR"
+    },
+    {
+     "num": "#8",
+     "name": "MOLLY",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Recording / LQ Available"
+    },
+    {
+     "num": "#9",
+     "name": "MOTIVATIONAL (MOTIVATION)",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#11",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#12",
+     "name": "PUCCI (feat. Don Toliver)",
+     "color": "#93C47D",
+     "colorLabel": "Alt / Unconfirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#14",
+     "name": "PASS ME THE KEYS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#16",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#17",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#18",
+     "name": "NO WORRIES (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Partial"
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "LOVE LASTS FOREVER",
+   "date": "",
+   "quality": "Full",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'LOVE LASTS FOREVER'",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FOREVER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "LOVE HURTS (with Lil Uzi Vert)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "LUV 4 YA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "CRYSTAL CLEAR",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "BABY MONEY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "SAY THAT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "PIMP TALK",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "CADILLAC",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "SYRUP SIPPIN'",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "LOCK IN",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "DOUBT IT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "WISH YOU WELL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "SHIP HER OFF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "HONESTLY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "TAKE A TRIP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "EXTRA HIGH",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "AMERIKA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "THRILL (with Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "ABOUT MONEY (BONUS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "NO WORRIES (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "PASS ME THE KEYS (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "LOVE LASTS FOREVER [CD RELEASE]",
+   "date": "",
+   "quality": "Full",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for the CD version of LOVE LASTS FOREVER. Has some differences, does not have THRILL and contains BANGAZ and TIGHTEN UP, which were both taken off the official tracklist days before release. However, CDs had already been made by that time, hence why they were on it.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FOREVER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "LOVE HURTS (feat. Lil Uzi Vert)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "LUV 4 YA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "CRYSTAL CLEAR",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "BANGAZ (with Don Toliver)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "BABY MONEY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "SAY THAT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "PIMP TALK",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "CADILLAC",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "SYRUP SIPPIN'",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "TIGHTEN UP (feat. Quavo & Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "DOUBT IT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "WISH YOU WELL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "SHIP HER OFF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "HONESTLY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "TAKE A TRIP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "EXTRA HIGH",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "AMERIKA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "ABOUT MONEY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "NO WORRIES",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "PASS ME THE KEYS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Clear",
+   "images": [
+    "/lonelygold/art/tl-35-0.jpg"
+   ]
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "LOVE LASTS FOREVER [V2] [EARLY]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Destroy Lonely",
+   "links": [],
+   "description": "A few days after LOVE LASTS FOREVER dropped, Lone announced that he was dropping these songs on the [V2], however \"YOU DONT EVEN KNOW\" didn't end up releasing",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "MAKE A SOUND",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "SEE YOU TOMORROW",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "BLING",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "YOU DONT EVEN KNOW (POSTED)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "HEALING",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "LSD",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "FORGOT MY NAME",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "SMOKING",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "THE BOUNCE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "MONEY ANTHEM",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full",
+   "images": [
+    "/lonelygold/art/tl-36-0.jpg"
+   ]
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "LOVE LASTS FOREVER [V2]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "First deluxe to LOVE LASTS FOREVER.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FOREVER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "LOVE HURTS (with Lil Uzi Vert)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "LUV 4 YA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "CRYSTAL CLEAR",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "BABY MONEY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "SAY THAT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "PIMP TALK",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "CADILLAC",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "SYRUP SIPPIN'",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "LOCK IN",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "DOUBT IT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "WISH YOU WELL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "SHIP HER OFF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "HONESTLY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "TAKE A TRIP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "EXTRA HIGH",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "AMERIKA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "THRILL (with Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "ABOUT MONEY (BONUS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "NO WORRIES (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "PASS ME THE KEYS (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#22",
+     "name": "THE BOUNCE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#23",
+     "name": "MAKE A SOUND",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#24",
+     "name": "SEE YOU TOMORROW",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#25",
+     "name": "MEET THE BOSS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#26",
+     "name": "BLING",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "LOVE LASTS FOREVER [V2.5] [EARLY]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Destroy Lonely",
+   "links": [],
+   "description": "Lone said that HOLDING IT DOWN would be on one of the LLF deluxes. It's unknown which one, however it's almost guaranteeingly V2.5 (or, although unlikely, V2 although even if it was for V2 it would have ended up releasing on V2.5 anyways) because those were the only 2 deluxes that released inbetween Starboy agreeing to clear the song for release & the song leaking.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FOREVER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "LOVE HURTS (with Lil Uzi Vert)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "LUV 4 YA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "CRYSTAL CLEAR",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "BABY MONEY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "SAY THAT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "PIMP TALK",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "CADILLAC",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "SYRUP SIPPIN'",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "LOCK IN",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "DOUBT IT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "WISH YOU WELL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "SHIP HER OFF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "HONESTLY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "TAKE A TRIP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "EXTRA HIGH",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "AMERIKA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "THRILL (with Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "ABOUT MONEY (BONUS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "NO WORRIES (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "PASS ME THE KEYS (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#22",
+     "name": "SMOKING",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#23",
+     "name": "HEALING",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#24",
+     "name": "FORGOT MY NAME",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#25",
+     "name": "LSD",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#26",
+     "name": "MONEY ANTHEM",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "HOLDING IT DOWN",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "LOVE LASTS FOREVER [V2.5]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Second and main deluxe to LOVE LASTS FOREVER.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FOREVER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "LOVE HURTS (with Lil Uzi Vert)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "LUV 4 YA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "CRYSTAL CLEAR",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "BABY MONEY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "SAY THAT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "PIMP TALK",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "CADILLAC",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "SYRUP SIPPIN'",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "LOCK IN",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "DOUBT IT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "WISH YOU WELL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "SHIP HER OFF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "HONESTLY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "TAKE A TRIP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "EXTRA HIGH",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "AMERIKA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "THRILL (with Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "ABOUT MONEY (BONUS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "NO WORRIES (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "PASS ME THE KEYS (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#22",
+     "name": "SMOKING",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#23",
+     "name": "HEALING",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#24",
+     "name": "FORGOT MY NAME",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#25",
+     "name": "LSD",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#26",
+     "name": "MONEY ANTHEM",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "LOVE LASTS FOREVER [V2]",
+   "name": "LOVE LASTS FOREVER: PRESENTED BY BLAKAMERIKA",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Third and final deluxe to LOVE LASTS FOREVER.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "FOREVER",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "LOVE HURTS (with Lil Uzi Vert)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "LUV 4 YA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "GET RIGHT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "CRYSTAL CLEAR",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "BABY MONEY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "SAY THAT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "PIMP TALK",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "CADILLAC",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "SYRUP SIPPIN'",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "LOCK IN",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "DOUBT IT",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "WISH YOU WELL",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "SHIP HER OFF",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "HONESTLY",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "TAKE A TRIP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "EXTRA HIGH",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "AMERIKA",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "THRILL (with Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#20",
+     "name": "ABOUT MONEY (BONUS",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#21",
+     "name": "NO WORRIES (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#22",
+     "name": "PASS ME THE KEYS (BONUS)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#23",
+     "name": "PRETTIEST ONE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "</3³",
+   "name": "see u soon </3",
+   "date": "",
+   "quality": "Clear",
+   "source": "Released",
+   "links": [],
+   "description": "Tracklist for 'see u soon </3'.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "NYLON",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "SDP",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "SEE UR FACE",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "SUPER SERUM",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "SRTBBL (with Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "</3³",
+   "name": "</3³ [V3]",
+   "date": "",
+   "quality": "Blurry",
+   "source": "Secondary",
+   "links": [],
+   "description": "3rd version tracklist for Broken Hearts 3 from April 2025, I counted around 25 tracks but it could be more or less. Photo is extremely poor quality and pretty much unintelligble.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    },
+    {
+     "num": "#?",
+     "name": "???",
+     "color": "#999999",
+     "colorLabel": "Unknown"
+    }
+   ],
+   "availability": "Full",
+   "images": [
+    "/lonelygold/art/tl-42-0.jpg"
+   ]
+  },
+  {
+   "era": "</3³",
+   "name": "</3³ [Sep 2025?]",
+   "date": "",
+   "quality": "N/A",
+   "source": "Other",
+   "links": [],
+   "description": "Assumed tracklist based off info we have earlier than the Sep 18 version that purplematter4 leaked but still likely close to release day (almost guaranteeingly after the release date for 9.19.25 was announced & more than likely within the same week as release). This tracklist could be incorrect & have different songs on it than whats listed here so take with a grain of salt, it's also pure assumption that open it up was the original outro based off later BH3 tracklists & previous Lone albums where Ken has always been on the outro track.\n\nConfirmed track order:",
+   "tracks": [
+    {
+     "num": "#5",
+     "name": "rose gold ice",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "kansas",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "ain't hard",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "blowin smoke",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "switched up",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Recording / LQ Available"
+    },
+    {
+     "num": "#?",
+     "name": "kool on ya",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "leave u out 2 dry",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "not the mayor",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "no pressure",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "risk",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "screwed up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "see no evil",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "show u how",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "soooo high",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "stfu",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "top flo",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "party n get high",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#?",
+     "name": "whats it gon take?",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "N/A"
+  },
+  {
+   "era": "</3³",
+   "name": "</3³ [9.18.25]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Leaked",
+   "links": [],
+   "description": "Original tracklist from hours before release. Has different ordering & includes comm grail Let Me Know which was scrapped due to sample issues, but was dropped shortly after the album on Lones twitter.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "ain't hard",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "blowin smoke",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "kansas",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "kool on ya",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "whats it gon take? (Let Me Know)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "jumanji",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "leave u out 2 dry",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "not the mayor",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "no pressure",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "risk",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "screwed up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "see no evil",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "show u how",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "soooo high",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "stfu",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "top flo",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "party n get high",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "open it up (feat. Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full",
+   "images": [
+    "/lonelygold/art/tl-44-0.jpg"
+   ]
+  },
+  {
+   "era": "</3³",
+   "name": "</3³ [9.19.25]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Destroy Lonely",
+   "links": [],
+   "description": "Original release tracklist for Broken Hearts 3.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "aint hard",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "risk",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "see no evil",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "no pressure",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "stfu",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "show u how",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "top flo",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "kansas",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "screwed up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "party n get high (interlude)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "leash",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "jumanji",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "not the mayor",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "blowin smoke",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "kool on ya",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "soooo high",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "open it up (feat. Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "leave u out 2 dry",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "</3³",
+   "name": "</3³ [Final Updates]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Destroy Lonely",
+   "links": [],
+   "description": "Final tracklist for Broken Hearts 3.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "aint hard",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "risk",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "see no evil",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "no pressure",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "stfu",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#6",
+     "name": "show u how",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#7",
+     "name": "top flo",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#8",
+     "name": "what's it gon take?",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#9",
+     "name": "kansas",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#10",
+     "name": "screwed up",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#11",
+     "name": "party n get high (interlude)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#12",
+     "name": "leash",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#13",
+     "name": "jumanji",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#14",
+     "name": "not the mayor",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#15",
+     "name": "blowin smoke",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#16",
+     "name": "kool on ya",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#17",
+     "name": "soooo high",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#18",
+     "name": "open it up (feat. Ken Carson)",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#19",
+     "name": "leave u out 2 dry",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "Drop Dead Gorgeous",
+   "name": "??? [EP]",
+   "date": "",
+   "quality": "Clear",
+   "source": "Destroy Lonely",
+   "links": [],
+   "description": "On September 28th, 2025, Lone dropped 5 songs on his Twitter (and later SoundCloud). It's presumed that this is an EP, since they all dropped at once and used the same 'cover', but there's no real way to know because they were dropped seperately instead of under one album like how 'see u soon </3' was.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "with my bitch",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#2",
+     "name": "sipped too much",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#3",
+     "name": "hide it",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#4",
+     "name": "exorcist",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    },
+    {
+     "num": "#5",
+     "name": "rose gold ice",
+     "color": "#8E7CC3",
+     "colorLabel": "Confirmed Version Available"
+    }
+   ],
+   "availability": "Full"
+  },
+  {
+   "era": "00Twinz [V2]",
+   "name": "00Twinz",
+   "date": "",
+   "quality": "N/A",
+   "source": "Secondary",
+   "links": [],
+   "description": "Tracks expected to appear on the tape based off teasing from Ken & Lone + fanpages that have been in contact with them. Lone said in an interview a while back that the tape was gonna feature a lot of fan favorite snippets.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Game Over (extremely likely to appear)",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Recording / LQ Available"
+    },
+    {
+     "num": "#?",
+     "name": "Take Your Life",
+     "color": "#F6B26B",
+     "colorLabel": "Snippet / Partial / Recording / LQ Available"
+    }
+   ],
+   "availability": "Few Songs Confirmed"
+  }
+ ]
+}

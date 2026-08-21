@@ -13,6 +13,7 @@ export const denzelgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1Pyi72FNT6KWuQE3g4BmIDCV26HMfKFcE650Duyia43o/export?format=csv&gid=70327685',
   accentColor: '#c026d3',
   artistLabel: 'Denzel Curry',
+  sheetCreator: 'Tereyağız, hbesok!, ScalderM',
   cardLetter: 'DC',
   logoUrl: '/logos/denzelgold.webp',
   artistPhotoUrl: '/artists/denzelcurry.jpg',

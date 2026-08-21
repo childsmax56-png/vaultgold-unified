@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const macgoldConfig: ArtistConfig = {
   slug: 'macgold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'MACGOLD',
   SITE_DESCRIPTION: 'The Best Mac Miller Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/macgold/',
@@ -13,6 +14,7 @@ export const macgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/17TycQCSpIm-6DyWId4ve8fVaM7Ewg3lgV1DDNRwauh0/export?format=csv&gid=336463588',
   accentColor: '#ca8a04',
   artistLabel: 'Mac Miller',
+  sheetCreator: 'inertia, wanders, ScalderM, manick',
   cardLetter: 'M',
   logoUrl: '',
   artistPhotoUrl: '/artists/macmiller-v2.jpg',

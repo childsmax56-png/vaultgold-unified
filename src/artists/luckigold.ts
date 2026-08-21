@@ -13,6 +13,7 @@ export const luckigoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1zoRNpy7Lvr-JzPqtQLLWRVVDbgKygpBaDf4cC-Lt6k4/export?format=csv&gid=1422898255',
   accentColor: '#6f42c1',
   artistLabel: 'Lucki',
+  sheetCreator: 'Zedroz',
   cardLetter: 'LKI',
   logoUrl: '/logos/luckigold.png',
   artistPhotoUrl: '/artists/lucki-v2.jpg',

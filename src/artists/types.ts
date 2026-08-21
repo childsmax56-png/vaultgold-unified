@@ -10,6 +10,15 @@ export interface ArtistConfig {
   // Google Sheets sync
   HARDCODED_SHEET_ID: string;
   HARDCODED_SHEET_GID: string;
+
+  // Public link to the source spreadsheet/tracker, shown as the in-tracker
+  // "Link For The Sheet". Overrides the docs.google.com URL built from
+  // HARDCODED_SHEET_ID (used by trackers whose source isn't a plain Google Sheet).
+  sheetUrl?: string;
+  // Community members credited as the source sheet's creators/maintainers,
+  // shown in the in-tracker footer ("...made by ..."). Sourced from the
+  // TrackerHub credits sheet.
+  sheetCreator?: string;
   SHEET_URL_UNRELEASED: string;
   SHEET_URL_RECENT: string;
 
@@ -34,7 +43,7 @@ export interface ArtistConfig {
   TAG_TOOLTIP_MAP: Record<string, string>;
 
   // Themes
-  ERA_THEMES: Record<string, { topBanner?: string; bottomBanner?: string; miniPlayer?: string; fullPicturePlayer?: string }>;
+  ERA_THEMES: Record<string, { topBanner?: string; bottomBanner?: string; bottomBannerRepeat?: boolean; miniPlayer?: string; fullPicturePlayer?: string }>;
 
   // Optional tabs
   hasProductionTab?: boolean;
@@ -50,6 +59,7 @@ export interface ArtistConfig {
   miscLabel?: string; // override the "Misc" tab label
   hasTracklistsTab?: boolean; // set false to force-hide the Tracklists tab regardless of data
   hasAlbumCopiesTab?: boolean; // set true to enable the Album Copies tab (data from data/album-copies.csv)
+  hasGroupbuysTab?: boolean; // set true to enable the Groupbuys tab (data from data/groupbuys.csv)
   SHEET_URL_RECENT_PRODUCTION?: string; // CSV export URL for a second recent tab (production projects)
   productionFirst?: boolean; // show Production Projects before Music in navbar
   productionSecond?: boolean; // show Production Projects second (right after Music) in navbar
@@ -59,6 +69,12 @@ export interface ArtistConfig {
 
   // Albums that appear only in the Art tab (not in Music/Related listings)
   ART_ONLY_ALBUMS?: string[];
+
+  // Easter-egg: keep this artist off the landing-page grid. It stays reachable
+  // by URL. A hidden artist does NOT match its own name/slug in search — it only
+  // appears when the query contains one of its secret `searchAliases` passphrases.
+  hidden?: boolean;
+  searchAliases?: string[];
 
   // Landing page card
   accentColor: string;
@@ -71,4 +87,10 @@ export interface ArtistConfig {
 
   // Artist-specific loading screens (overrides the default set)
   loadingScreens?: { id: string; label: string; type: 'none' | 'gif' | 'video'; url?: string }[];
+
+  // Community trackers — user-built trackers resolved at runtime from D1 rather
+  // than the static registry. `community` marks the tracker as user-made (used to
+  // hide official-only UI like the source-sheet link); `createdBy` is the author.
+  community?: boolean;
+  createdBy?: string;
 }

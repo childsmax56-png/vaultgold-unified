@@ -2,6 +2,7 @@ import type { ArtistConfig } from './types';
 
 export const xgoldConfig: ArtistConfig = {
   slug: 'xgold',
+  hasGroupbuysTab: true,
   SITE_NAME: 'XGOLD',
   SITE_DESCRIPTION: 'The Best XXXTENTACION Tracker In The World!',
   SITE_URL: 'https://unvaulted.cc/xgold/',
@@ -13,6 +14,7 @@ export const xgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#4a0e8f',
   artistLabel: 'XXXTENTACION',
+  sheetCreator: 'Zanthin, fart, goon, Mockingbird, justasoul, Bountry, Vlone, hcaor',
   cardLetter: 'XXX',
   logoUrl: '/logos/xgold.png',
   artistPhotoUrl: '/artists/xxx.webp',

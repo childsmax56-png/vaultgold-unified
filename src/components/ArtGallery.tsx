@@ -3,8 +3,11 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, Image as ImageIcon, X, Link as LinkIcon, Share2, Check, Download, Loader2 } from 'lucide-react';
 import { Era, SearchFilters } from '../types';
-import { formatTextWithTags, ALBUM_RELEASE_DATES, createSlug, matchesFilters, CUSTOM_IMAGES, handleDownloadFile , retryImageOnError} from '../utils';
+import { formatTextWithTags, ALBUM_RELEASE_DATES, createSlug, matchesFilters, CUSTOM_IMAGES, handleDownloadFile , Img} from '../utils';
 import { useSettings } from '../SettingsContext';
+import { CommentButton } from './CommentButton';
+import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
+import { activeConfig } from '../artists/activeConfig';
 
 export interface ArtEntry {
   Era: string;
@@ -72,6 +75,24 @@ async function resolveImbbUrl(url: string): Promise<string | null> {
 
 export { resolveImbbUrl };
 
+const RENDERABLE_DOMAINS = [
+  'i.scdn.co', 'mzstatic.com', 't2.genius.com', 'images.genius.com',
+  'i.postimg.cc', 'i.discogs.com', 'pbs.twimg.com', 'lh3.googleusercontent.com',
+  'lh4.googleusercontent.com', 'lh5.googleusercontent.com', 'lh6.googleusercontent.com',
+  'm.media-amazon.com', 'payload.cargocollective.com', 'media.giphy.com',
+];
+
+export function isLinkRenderable(link: string | undefined | null): boolean {
+  if (!link) return false;
+  const lc = link.toLowerCase();
+  if (link.includes('ibb.co') || link.includes('pillows.su/f/')) return true;
+  if (lc.endsWith('.png') || lc.endsWith('.jpg') || lc.endsWith('.jpeg') || lc.endsWith('.gif') || lc.endsWith('.webp')) return true;
+  try {
+    const { hostname } = new URL(link);
+    return RENDERABLE_DOMAINS.some(d => hostname === d || hostname.endsWith('.' + d));
+  } catch { return false; }
+}
+
 export function ArtImage({ url, alt, contain = false }: { url: string; alt: string; contain?: boolean }) {
   const [imgSrc, setImgSrc] = useState<string | null>(() => {
     // Synchronously return cached value if available
@@ -124,12 +145,10 @@ export function ArtImage({ url, alt, contain = false }: { url: string; alt: stri
   }
 
   return (
-    <img onError={retryImageOnError}
+    <Img w={500}
       src={imgSrc}
       alt={alt}
       className={`w-full h-full group-hover:scale-105 transition-transform duration-500 bg-white/5 ${contain ? 'object-contain' : 'object-cover'}`}
-      loading="lazy"
-      referrerPolicy="no-referrer"
     />
   );
 }
@@ -256,8 +275,7 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
     for (let i = 0; i < eraItems.length; i++) {
         const item = eraItems[i];
         const link = item['Link(s)']?.split('\n')[0]?.trim();
-        const lcLink = link?.toLowerCase();
-        const isRenderable = link && (link.includes('ibb.co') || link.includes('pillows.su/f/') || lcLink?.endsWith('.png') || lcLink?.endsWith('.jpg') || lcLink?.endsWith('.jpeg') || link.startsWith('https://i.scdn.co/'));
+        const isRenderable = isLinkRenderable(link);
         if (link && isRenderable) {
            await handleDownloadFile(link, `${item.Name.split('\n')[0]}`, settings.tagsAsEmojis);
            await new Promise(res => setTimeout(res, 800));
@@ -291,11 +309,10 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
 
           <div className="group relative w-full aspect-square rounded-lg md:rounded-xl overflow-hidden shadow-2xl mb-6 md:mb-8 bg-white/5 border border-white/10">
             {eraImageSrc ? (
-              <img onError={retryImageOnError}
+              <Img w={600} eager
                 src={eraImageSrc}
                 alt={selectedEra.name}
                 className="w-full h-full object-cover opacity-90 transition-opacity"
-                referrerPolicy="no-referrer"
               />
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-white/20">
@@ -336,6 +353,13 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
                 >
                   <Share2 className="w-4 h-4" />
                 </button>
+                <CommentButton
+                  tracker={activeConfig.slug}
+                  entryKey={makeEraKey(selectedEra.name)}
+                  entryLabel={baseEraName(selectedEra.name)}
+                  entryType="Era"
+                  variant="pill"
+                />
               </div>
             </div>
           </div>
@@ -346,8 +370,7 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
             <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {eraItems.map((item, i) => {
                 const link = item['Link(s)']?.split('\n')[0]?.trim();
-                const lcLink = link?.toLowerCase();
-                const isRenderable = link?.includes('ibb.co') || link?.includes('pillows.su/f/') || lcLink?.endsWith('.png') || lcLink?.endsWith('.jpg') || lcLink?.endsWith('.jpeg') || link?.startsWith('https://i.scdn.co/');
+                const isRenderable = isLinkRenderable(link);
 
                 return (
                   <motion.div
@@ -445,6 +468,14 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
                       >
                         <Share2 className="w-5 h-5 md:w-6 md:h-6 p-0.5" />
                       </button>
+                      <div className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-colors flex items-center">
+                        <CommentButton
+                          tracker={activeConfig.slug}
+                          entryKey={makeEntryKey('Art', zoomedArt.Era || selectedEra?.name || '', zoomedArt.Name.split('\n')[0])}
+                          entryLabel={zoomedArt.Name.split('\n')[0]}
+                          entryType="Art"
+                        />
+                      </div>
                       <button
                         className="p-2 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-colors"
                         onClick={() => setZoomedArt(null)}
@@ -548,7 +579,7 @@ export function ArtGallery({ eras, artData, searchQuery, filters }: ArtGalleryPr
           >
             <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
               {imageSrc ? (
-                <img onError={retryImageOnError} src={imageSrc} alt={era.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
+                <Img w={300} src={imageSrc} alt={era.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-white/5 text-white/20 font-bold text-2xl text-center p-4">
                   {era.name}

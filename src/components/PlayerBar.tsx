@@ -4,11 +4,15 @@ import { Play, Pause, Volume2, Maximize2, MoreHorizontal, Download, X, SkipBack,
 import { parseArtistFromSong } from '../lastfm';
 import { Song, Era } from '../types';
 import { useState, useRef, useEffect } from 'react';
-import { formatTextWithTags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag, handleDownloadFile, ERA_THEMES , retryImageOnError} from '../utils';
+import { formatTextWithTags, CUSTOM_IMAGES, ALBUM_RELEASE_DATES, buildArtistTag, handleDownloadFile, ERA_THEMES , Img} from '../utils';
 import { handleShareSilent } from './EraDetail';
 import { LyricsModal } from './LyricsModal';
 import { useSettings } from '../SettingsContext';
 import { usePlaylists } from '../PlaylistContext';
+import { activeConfig } from '../artists/activeConfig';
+import { eraArtwork } from '../eraArtwork';
+import { CommentsModal } from './CommentsModal';
+import { MessageCircle } from 'lucide-react';
 
 function formatTime(seconds: number) {
   if (isNaN(seconds)) return '0:00';
@@ -38,6 +42,7 @@ export function PlayerBar({
   const { playlists, addToPlaylist, createPlaylist } = usePlaylists();
   const [showMenu, setShowMenu] = useState(false);
   const [showLyrics, setShowLyrics] = useState(false);
+  const [showComments, setShowComments] = useState(false);
   const [showPlaylistMenu, setShowPlaylistMenu] = useState(false);
   const [creatingPlaylist, setCreatingPlaylist] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState('');
@@ -183,19 +188,29 @@ export function PlayerBar({
 
   const playlistEraName = (currentSong as any).realEra?.name || era?.name || '';
 
-  const handleAddToPlaylist = (playlistId: string) => {
+  const buildPlaylistEntry = () => {
     const cleanSong = { ...currentSong };
     delete (cleanSong as any).realEra;
-    addToPlaylist(playlistId, { songName: currentSong.name, eraName: playlistEraName, url: rawUrl, song: cleanSong });
+    return {
+      songName: currentSong.name,
+      eraName: playlistEraName,
+      url: rawUrl,
+      song: cleanSong,
+      tracker: activeConfig.slug,
+      image: eraArtwork(activeConfig.slug, playlistEraName) || currentSong.image || activeConfig.logoUrl,
+      artist: activeConfig.getArtistName(playlistEraName),
+    };
+  };
+
+  const handleAddToPlaylist = (playlistId: string) => {
+    addToPlaylist(playlistId, buildPlaylistEntry());
     setShowPlaylistMenu(false);
   };
 
   const handleCreatePlaylist = () => {
     if (!newPlaylistName.trim()) return;
-    const cleanSong = { ...currentSong };
-    delete (cleanSong as any).realEra;
     const id = createPlaylist(newPlaylistName.trim());
-    addToPlaylist(id, { songName: currentSong.name, eraName: playlistEraName, url: rawUrl, song: cleanSong });
+    addToPlaylist(id, buildPlaylistEntry());
     setNewPlaylistName('');
     setCreatingPlaylist(false);
     setShowPlaylistMenu(false);
@@ -235,7 +250,7 @@ export function PlayerBar({
             const imgUrl = artworkOverride || currentSong.image || CUSTOM_IMAGES[actualEraName] || (currentSong as any).realEra?.image || era?.image;
             return (
               <div className="w-14 h-14 rounded-md overflow-hidden shrink-0 bg-white/10 relative group shadow-lg">
-                {imgUrl && <img onError={retryImageOnError} src={imgUrl} alt="Cover" className={`w-full h-full object-cover ${allowFullScreen ? 'cursor-pointer' : ''}`} referrerPolicy="no-referrer" onClick={allowFullScreen ? onFullScreen : undefined} />}
+                {imgUrl && <Img w={200} eager src={imgUrl} alt="Cover" className={`w-full h-full object-cover ${allowFullScreen ? 'cursor-pointer' : ''}`} onClick={allowFullScreen ? onFullScreen : undefined} />}
                 {toggleFavorite && 
                currentSong.name !== "Alright but the beat is Father Stretch My Hands Pt. 1" && 
                !currentSong.name.endsWith('[Fake Leak]') && 
@@ -336,6 +351,16 @@ export function PlayerBar({
             );
           })()}
 
+          {currentSong.commentKey && currentSong.commentTracker && (
+            <button
+              onClick={() => setShowComments(true)}
+              className="hidden md:flex items-center justify-center text-white/40 hover:text-white transition-colors cursor-pointer"
+              title="Comments"
+            >
+              <MessageCircle className="w-4 h-4" />
+            </button>
+          )}
+
           <div
             className="hidden lg:flex items-center gap-2 w-24 group relative"
             title={`${Math.round(volume * 100)}%`}
@@ -431,6 +456,14 @@ export function PlayerBar({
                         >
                           <Mic2 className="w-4 h-4" /> {tooltipText}
                         </button>
+                        {currentSong.commentKey && currentSong.commentTracker && (
+                          <button
+                            onClick={() => { setShowComments(true); setShowMenu(false); }}
+                            className="w-full flex items-center gap-3 px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                          >
+                            <MessageCircle className="w-4 h-4" /> Comments
+                          </button>
+                        )}
                         {toggleFavorite &&
                           currentSong.name !== "Alright but the beat is Father Stretch My Hands Pt. 1" &&
                           !currentSong.name.endsWith('[Fake Leak]') &&
@@ -526,6 +559,17 @@ export function PlayerBar({
         currentTime={currentTime}
         onSeek={onSeek}
       />
+
+      {currentSong.commentKey && currentSong.commentTracker && (
+        <CommentsModal
+          isOpen={showComments}
+          onClose={() => setShowComments(false)}
+          tracker={currentSong.commentTracker}
+          entryKey={currentSong.commentKey}
+          entryLabel={currentSong.commentLabel || currentSong.name}
+          entryType="song"
+        />
+      )}
 
       <AnimatePresence>
         {shareToast && (

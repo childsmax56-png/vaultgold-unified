@@ -5,7 +5,7 @@ import { Song, Era } from '../types';
 import { createPortal } from 'react-dom';
 import { useLyrics } from '../useLyrics';
 import type { Annotation } from '../useLyrics';
-import { retryImageOnError } from '../utils';
+import { Img } from '../utils';
 
 interface LyricsModalProps {
   isOpen: boolean;
@@ -128,7 +128,7 @@ export function LyricsModal({ isOpen, onClose, currentSong, era, currentTime = 0
         >
           {bgImage && settings.showMiniLyricsArt && (
             <div className="absolute inset-0 z-0">
-              <img onError={retryImageOnError} src={bgImage} alt="Background" className="w-full h-full object-cover opacity-30 blur-xl scale-110" referrerPolicy="no-referrer" />
+              <Img w={400} eager src={bgImage} alt="Background" className="w-full h-full object-cover opacity-30 blur-xl scale-110" />
               <div className="absolute inset-0 bg-black/60" />
             </div>
           )}

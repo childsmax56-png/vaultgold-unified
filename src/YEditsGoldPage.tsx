@@ -152,11 +152,18 @@ interface KeyRow {
 }
 interface AdminRow { user_id: string; username: string; email: string; granted_at: string; }
 
+interface CommunityTrackerRow {
+  id: string; slug: string; name: string; description?: string;
+  username: string; logo_url?: string; submitted_at?: string; reviewed_at?: string;
+}
+
 function AdminPanel({ onClose, onRefreshClaims, isOwner }: { onClose: () => void; onRefreshClaims: () => void; isOwner: boolean }) {
-  const [tab, setTab] = useState<'claims' | 'keys'>('claims');
+  const [tab, setTab] = useState<'claims' | 'keys' | 'trackers'>('claims');
   const [claims, setClaims] = useState<ClaimRow[]>([]);
   const [keys, setKeys] = useState<KeyRow[]>([]);
   const [admins, setAdmins] = useState<AdminRow[]>([]);
+  const [ctPending, setCtPending] = useState<CommunityTrackerRow[]>([]);
+  const [ctApproved, setCtApproved] = useState<CommunityTrackerRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [newKeyLabel, setNewKeyLabel] = useState('');
@@ -168,9 +175,10 @@ function AdminPanel({ onClose, onRefreshClaims, isOwner }: { onClose: () => void
     if (!token) return;
     setLoading(true);
     try {
-      const [claimsRes, keysRes] = await Promise.all([
+      const [claimsRes, keysRes, ctRes] = await Promise.all([
         fetch('/api/yeditsgold-admin-claims', { headers: { Authorization: `Bearer ${token}` } }),
         isOwner ? fetch('/api/yeditsgold-admin-keys', { headers: { Authorization: `Bearer ${token}` } }) : Promise.resolve(null),
+        fetch('/api/community/admin/queue', { headers: { Authorization: `Bearer ${token}` } }),
       ]);
       const claimsData = await claimsRes.json() as { claims?: ClaimRow[] };
       setClaims(claimsData.claims ?? []);
@@ -178,6 +186,11 @@ function AdminPanel({ onClose, onRefreshClaims, isOwner }: { onClose: () => void
         const keysData = await keysRes.json() as { keys?: KeyRow[]; admins?: AdminRow[] };
         setKeys(keysData.keys ?? []);
         setAdmins(keysData.admins ?? []);
+      }
+      if (ctRes.ok) {
+        const ctData = await ctRes.json() as { pending?: CommunityTrackerRow[]; approved?: CommunityTrackerRow[] };
+        setCtPending(ctData.pending ?? []);
+        setCtApproved(ctData.approved ?? []);
       }
     } finally {
       setLoading(false);
@@ -234,6 +247,21 @@ function AdminPanel({ onClose, onRefreshClaims, isOwner }: { onClose: () => void
     navigator.clipboard.writeText(key).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000); });
   };
 
+  const reviewTracker = async (id: string, action: 'approve' | 'reject' | 'remove') => {
+    const token = getVGToken();
+    if (!token) return;
+    if (action === 'remove' && !confirm('Take this community tracker down? It will stop resolving publicly.')) return;
+    setActionLoading(id + action);
+    try {
+      await fetch('/api/community/admin/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ id, action }),
+      });
+      await fetchAll();
+    } finally { setActionLoading(null); }
+  };
+
   const pending = claims.filter(c => c.status === 'pending');
   const reviewed = claims.filter(c => c.status !== 'pending');
 
@@ -257,12 +285,13 @@ function AdminPanel({ onClose, onRefreshClaims, isOwner }: { onClose: () => void
         </div>
 
         {/* Tabs — keys tab only visible to owner */}
-        {isOwner && (
-          <div style={{ display: 'flex', gap: 4, marginBottom: 20, background: 'rgba(255,255,255,0.04)', borderRadius: 10, padding: 4 }}>
-            <button style={tabStyle('claims')} onClick={() => setTab('claims')}>Claims</button>
-            <button style={tabStyle('keys')} onClick={() => setTab('keys')}>Admin Keys</button>
-          </div>
-        )}
+        <div style={{ display: 'flex', gap: 4, marginBottom: 20, background: 'rgba(255,255,255,0.04)', borderRadius: 10, padding: 4 }}>
+          <button style={tabStyle('claims')} onClick={() => setTab('claims')}>Claims</button>
+          <button style={tabStyle('trackers')} onClick={() => setTab('trackers')}>
+            Community{ctPending.length > 0 ? ` (${ctPending.length})` : ''}
+          </button>
+          {isOwner && <button style={tabStyle('keys')} onClick={() => setTab('keys')}>Admin Keys</button>}
+        </div>
 
         {loading && <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>Loading…</p>}
 
@@ -304,6 +333,55 @@ function AdminPanel({ onClose, onRefreshClaims, isOwner }: { onClose: () => void
                         <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginLeft: 8 }}>@{c.username}</span>
                       </div>
                       <span style={{ fontSize: 11, fontWeight: 600, padding: '2px 8px', borderRadius: 4, background: c.status === 'approved' ? 'rgba(74,222,128,0.1)' : 'rgba(248,113,113,0.1)', color: c.status === 'approved' ? '#4ade80' : '#f87171' }}>{c.status}</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </>
+        )}
+
+        {/* ── Community Trackers tab ── */}
+        {!loading && tab === 'trackers' && (
+          <>
+            {ctPending.length === 0 && <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: 13, marginBottom: 16 }}>No trackers awaiting review.</p>}
+            {ctPending.length > 0 && (
+              <>
+                <p style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.35)', marginBottom: 12 }}>Awaiting review</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
+                  {ctPending.map(t => (
+                    <div key={t.id} style={{ background: '#161616', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                      {t.logo_url && <img src={t.logo_url} alt="" style={{ width: 40, height: 40, borderRadius: 8, objectFit: 'cover' }} />}
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <a href={`/${t.slug}/`} target="_blank" rel="noreferrer" style={{ fontSize: 14, fontWeight: 600, color: '#fff', textDecoration: 'none' }}>{t.name} ↗</a>
+                        <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>/{t.slug} · @{t.username}{t.submitted_at ? ` · ${new Date(t.submitted_at).toLocaleDateString()}` : ''}</div>
+                      </div>
+                      <div style={{ display: 'flex', gap: 8 }}>
+                        <button onClick={() => reviewTracker(t.id, 'approve')} disabled={!!actionLoading} style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '7px 14px', borderRadius: 8, border: 'none', cursor: 'pointer', background: 'rgba(74,222,128,0.15)', color: '#4ade80', fontSize: 12, fontWeight: 600 }}>
+                          <Check size={13} /> {actionLoading === t.id + 'approve' ? '…' : 'Approve'}
+                        </button>
+                        <button onClick={() => reviewTracker(t.id, 'reject')} disabled={!!actionLoading} style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '7px 14px', borderRadius: 8, border: 'none', cursor: 'pointer', background: 'rgba(248,113,113,0.12)', color: '#f87171', fontSize: 12, fontWeight: 600 }}>
+                          <X size={13} /> {actionLoading === t.id + 'reject' ? '…' : 'Reject'}
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+            {ctApproved.length > 0 && (
+              <>
+                <p style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.35)', marginBottom: 12 }}>Live trackers</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {ctApproved.map(t => (
+                    <div key={t.id} style={{ background: '#111', borderRadius: 8, padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <a href={`/${t.slug}/`} target="_blank" rel="noreferrer" style={{ fontSize: 13, fontWeight: 600, color: '#fff', textDecoration: 'none' }}>{t.name}</a>
+                        <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginLeft: 8 }}>/{t.slug} · @{t.username}</span>
+                      </div>
+                      <button onClick={() => reviewTracker(t.id, 'remove')} disabled={!!actionLoading} style={{ padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(248,113,113,0.4)', cursor: 'pointer', background: 'transparent', color: '#f87171', fontSize: 12, fontWeight: 600 }}>
+                        {actionLoading === t.id + 'remove' ? '…' : 'Remove'}
+                      </button>
                     </div>
                   ))}
                 </div>
