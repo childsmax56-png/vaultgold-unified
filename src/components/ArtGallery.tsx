@@ -52,18 +52,39 @@ function persistCache(cache: Map<string, string>) {
 const resolvedCache: Map<string, string> = loadPersistedCache();
 const inFlight: Map<string, Promise<string | null>> = new Map();
 
+// Resolve an ibb.co page URL to its direct image URL. Prefer our own
+// same-origin, edge-cached resolver (/api/ibb-resolve) so a slow or down
+// third-party host can't stall a whole page of covers; fall back to the
+// public imgbb resolver only if ours fails to return a link.
+async function fetchDirectLink(url: string): Promise<string | null> {
+  const sources = [
+    `/api/ibb-resolve?url=${encodeURIComponent(url)}`,
+    `https://imgbb-file-get-api.vercel.app/api?url=${url}`,
+  ];
+  for (const endpoint of sources) {
+    try {
+      const res = await fetch(endpoint);
+      if (!res.ok) continue;
+      const data = await res.json().catch(() => null);
+      if (data?.direct_link) return data.direct_link as string;
+    } catch {
+      // try next source
+    }
+  }
+  return null;
+}
+
 async function resolveImbbUrl(url: string): Promise<string | null> {
   if (resolvedCache.has(url)) return resolvedCache.get(url)!;
   if (inFlight.has(url)) return inFlight.get(url)!;
 
-  const promise = fetch(`https://imgbb-file-get-api.vercel.app/api?url=${url}`)
-    .then(res => res.ok ? res.json() : null)
-    .then((data): string | null => {
+  const promise = fetchDirectLink(url)
+    .then((direct): string | null => {
       inFlight.delete(url);
-      if (data?.direct_link) {
-        resolvedCache.set(url, data.direct_link);
+      if (direct) {
+        resolvedCache.set(url, direct);
         persistCache(resolvedCache);
-        return data.direct_link;
+        return direct;
       }
       return null;
     })

@@ -1079,10 +1079,17 @@ export async function resolveUrl(url: string): Promise<{ fetchUrl: string; isIma
     if (m) return { fetchUrl: `/api/audio-proxy?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${m[1]}`)}`, isImage: false };
   }
   if (url.includes('ibb.co')) {
-    const apiRes = await fetch(`https://imgbb-file-get-api.vercel.app/api?url=${url}`).catch(() => null);
-    if (apiRes && apiRes.ok) {
-      const apiData = await apiRes.json().catch(() => null);
-      if (apiData?.direct_link) return { fetchUrl: apiData.direct_link, isImage: true };
+    // Prefer our own edge-cached resolver, falling back to the public imgbb API.
+    const endpoints = [
+      `/api/ibb-resolve?url=${encodeURIComponent(url)}`,
+      `https://imgbb-file-get-api.vercel.app/api?url=${url}`,
+    ];
+    for (const endpoint of endpoints) {
+      const apiRes = await fetch(endpoint).catch(() => null);
+      if (apiRes && apiRes.ok) {
+        const apiData = await apiRes.json().catch(() => null);
+        if (apiData?.direct_link) return { fetchUrl: apiData.direct_link, isImage: true };
+      }
     }
     return { fetchUrl: url, isImage: true };
   }
