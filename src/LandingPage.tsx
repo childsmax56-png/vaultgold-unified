@@ -7,6 +7,7 @@ import type { ArtistConfig } from './artists/types';
 import { useSettings, LOADING_SCREENS } from './SettingsContext';
 import { Img } from './utils';
 import { SOCIALS_DATA, hasSocials, type SocialEntry } from './socialsData';
+import { useHasActiveAudio } from './player/audioStore';
 
 // Handles the Spotify PKCE OAuth callback that redirects back to unvaulted.cc/?code=...
 // Exchanges the code for tokens and forwards them back to whichever tracker initiated the flow.
@@ -684,7 +685,6 @@ function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleF
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: config.photoObjectPosition ?? 'top center' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
-        <div style={{ position: 'absolute', top: 10, right: 10, width: 7, height: 7, borderRadius: '50%', background: accent }} />
         {onToggleFavorite && <FavoriteButton active={!!isFavorite} onToggle={handleToggleFavorite} />}
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: CARD_PADDING[variant] }}>
           {variant === 'featured' && (
@@ -749,7 +749,6 @@ function ExternalSmallCard({ href, label, logoSrc, logoAlt, accent, photoSrc, va
       >
         <Img w={400} src={photoSrc} alt={label} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
-        <div style={{ position: 'absolute', top: 10, right: 10, width: 7, height: 7, borderRadius: '50%', background: accent }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '14px 10px 8px' }}>
           <div style={{ fontSize: 11, fontWeight: 800, color: '#fff', lineHeight: 1.1 }}>{label}</div>
           <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{logoAlt}</div>
@@ -1198,6 +1197,10 @@ export function LandingPage() {
   const { user, signInWithGoogle, signOut } = useVGAuth();
   const { favorites, toggleFavorite } = useFavoriteArtists();
   const isFavorite = (slug: string) => favorites.includes(slug);
+  // When the persistent mini player is on screen, reserve enough bottom space
+  // that the last artist cards aren't hidden behind it (the player is taller on
+  // mobile than the default 48px pad allows).
+  const hasActivePlayer = useHasActiveAudio();
 
   const query = searchQuery.trim().toLowerCase();
   const matchesQuery = (c: ArtistConfig) => {
@@ -1241,6 +1244,9 @@ export function LandingPage() {
       fontFamily: "'Inter', system-ui, sans-serif",
       WebkitFontSmoothing: 'antialiased',
       padding: '16px 24px 48px',
+      paddingBottom: hasActivePlayer
+        ? 'calc(176px + env(safe-area-inset-bottom))'
+        : '48px',
       // iOS PWA (standalone) renders behind the status bar / Dynamic Island because of
       // viewport-fit=cover + apple-mobile-web-app-status-bar-style=black-translucent.
       // Offset the top so the header (logo, gear, "The Heist") stays reachable.
