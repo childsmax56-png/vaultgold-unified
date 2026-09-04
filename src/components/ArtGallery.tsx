@@ -3,7 +3,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ExternalLink, Image as ImageIcon, X, Link as LinkIcon, Share2, Check, Download, Loader2 } from 'lucide-react';
 import { Era, SearchFilters } from '../types';
-import { formatTextWithTags, ALBUM_RELEASE_DATES, createSlug, matchesFilters, CUSTOM_IMAGES, handleDownloadFile , Img} from '../utils';
+import { formatTextWithTags, ALBUM_RELEASE_DATES, createSlug, matchesFilters, CUSTOM_IMAGES, handleDownloadFile , Img, resolveImbbUrl, peekImbbCache} from '../utils';
 import { useSettings } from '../SettingsContext';
 import { CommentButton } from './CommentButton';
 import { makeEntryKey, makeEraKey, baseEraName } from '../comments';
@@ -31,69 +31,9 @@ function getUseBadgeColor(_use: string) {
   return 'border-white/10 text-white/50 bg-white/5';
 }
 
-const IMBB_CACHE_KEY = 'imbb_url_cache_v1';
-
-// Persistent localStorage cache: url -> direct_link
-function loadPersistedCache(): Map<string, string> {
-  try {
-    const raw = localStorage.getItem(IMBB_CACHE_KEY);
-    if (raw) return new Map(JSON.parse(raw));
-  } catch {}
-  return new Map();
-}
-
-function persistCache(cache: Map<string, string>) {
-  try {
-    localStorage.setItem(IMBB_CACHE_KEY, JSON.stringify([...cache]));
-  } catch {}
-}
-
-// Module-level caches shared across all ArtImage instances
-const resolvedCache: Map<string, string> = loadPersistedCache();
-const inFlight: Map<string, Promise<string | null>> = new Map();
-
-// Resolve an ibb.co page URL to its direct image URL. Prefer our own
-// same-origin, edge-cached resolver (/api/ibb-resolve) so a slow or down
-// third-party host can't stall a whole page of covers; fall back to the
-// public imgbb resolver only if ours fails to return a link.
-async function fetchDirectLink(url: string): Promise<string | null> {
-  const sources = [
-    `/api/ibb-resolve?url=${encodeURIComponent(url)}`,
-    `https://imgbb-file-get-api.vercel.app/api?url=${url}`,
-  ];
-  for (const endpoint of sources) {
-    try {
-      const res = await fetch(endpoint);
-      if (!res.ok) continue;
-      const data = await res.json().catch(() => null);
-      if (data?.direct_link) return data.direct_link as string;
-    } catch {
-      // try next source
-    }
-  }
-  return null;
-}
-
-async function resolveImbbUrl(url: string): Promise<string | null> {
-  if (resolvedCache.has(url)) return resolvedCache.get(url)!;
-  if (inFlight.has(url)) return inFlight.get(url)!;
-
-  const promise = fetchDirectLink(url)
-    .then((direct): string | null => {
-      inFlight.delete(url);
-      if (direct) {
-        resolvedCache.set(url, direct);
-        persistCache(resolvedCache);
-        return direct;
-      }
-      return null;
-    })
-    .catch((): null => { inFlight.delete(url); return null; });
-
-  inFlight.set(url, promise);
-  return promise;
-}
-
+// ibb.co page-URL resolution (with its shared in-memory + localStorage cache)
+// now lives in utils.tsx so every Img across the app resolves covers the same
+// way. Re-exported here for existing importers (e.g. CoverPickerModal).
 export { resolveImbbUrl };
 
 const RENDERABLE_DOMAINS = [
@@ -118,7 +58,7 @@ export function ArtImage({ url, alt, contain = false }: { url: string; alt: stri
   const [imgSrc, setImgSrc] = useState<string | null>(() => {
     // Synchronously return cached value if available
     if (url.includes('ibb.co') && !url.includes('i.ibb.co')) {
-      return resolvedCache.get(url) ?? null;
+      return peekImbbCache(url) ?? null;
     }
     if (url.includes('pillows.su/f/')) {
       const hash = url.split('/f/')[1]?.split('/')[0]?.split('?')[0];
@@ -131,7 +71,7 @@ export function ArtImage({ url, alt, contain = false }: { url: string; alt: stri
   useEffect(() => {
     setError(false);
     if (url.includes('ibb.co') && !url.includes('i.ibb.co')) {
-      const cached = resolvedCache.get(url);
+      const cached = peekImbbCache(url);
       if (cached) { setImgSrc(cached); return; }
       setImgSrc(null);
       let mounted = true;

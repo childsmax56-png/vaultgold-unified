@@ -90,19 +90,123 @@ export function retryImageOnError(e: React.SyntheticEvent<HTMLImageElement, Even
   img.src = url.toString();
 }
 
+// Many cover-art links are stored as ibb.co *page* URLs (ibb.co/<id>), not
+// direct i.ibb.co images. An <img> pointed at a page URL never loads, so those
+// must be resolved to their direct image URL first. Resolution goes through our
+// own edge-cached endpoint (/api/ibb-resolve), falling back to the public imgbb
+// API. Results are cached in-memory and in localStorage so a given page URL is
+// resolved once across the whole app (mini player, full-screen player, gallery,
+// cover picker) instead of per-component.
+const IMBB_CACHE_KEY = 'imbb_url_cache_v1';
+
+function loadImbbCache(): Map<string, string> {
+  try {
+    const raw = localStorage.getItem(IMBB_CACHE_KEY);
+    if (raw) return new Map(JSON.parse(raw));
+  } catch {}
+  return new Map();
+}
+
+function persistImbbCache(cache: Map<string, string>) {
+  try {
+    localStorage.setItem(IMBB_CACHE_KEY, JSON.stringify([...cache]));
+  } catch {}
+}
+
+const imbbResolvedCache: Map<string, string> = loadImbbCache();
+const imbbInFlight: Map<string, Promise<string | null>> = new Map();
+
+async function fetchImbbDirectLink(url: string): Promise<string | null> {
+  const sources = [
+    `/api/ibb-resolve?url=${encodeURIComponent(url)}`,
+    `https://imgbb-file-get-api.vercel.app/api?url=${url}`,
+  ];
+  for (const endpoint of sources) {
+    try {
+      const res = await fetch(endpoint);
+      if (!res.ok) continue;
+      const data = await res.json().catch(() => null);
+      if (data?.direct_link) return data.direct_link as string;
+    } catch {
+      // try next source
+    }
+  }
+  return null;
+}
+
+// Synchronous peek at the resolved-URL cache, for callers that want to seed
+// initial render state without waiting on the promise.
+export function peekImbbCache(url: string): string | undefined {
+  return imbbResolvedCache.get(url);
+}
+
+export async function resolveImbbUrl(url: string): Promise<string | null> {
+  if (imbbResolvedCache.has(url)) return imbbResolvedCache.get(url)!;
+  if (imbbInFlight.has(url)) return imbbInFlight.get(url)!;
+
+  const promise = fetchImbbDirectLink(url)
+    .then((direct): string | null => {
+      imbbInFlight.delete(url);
+      if (direct) {
+        imbbResolvedCache.set(url, direct);
+        persistImbbCache(imbbResolvedCache);
+        return direct;
+      }
+      return null;
+    })
+    .catch((): null => { imbbInFlight.delete(url); return null; });
+
+  imbbInFlight.set(url, promise);
+  return promise;
+}
+
+// An ibb.co page URL (not already a direct i.ibb.co image) must be resolved
+// before it can render.
+function needsImbbResolve(src: string | undefined | null): src is string {
+  return typeof src === 'string' && src.includes('ibb.co') && !src.includes('i.ibb.co');
+}
+
 // Shared image element for remote cover art / photos. Bakes in lazy loading,
 // async decoding, the no-referrer policy (hosts like i.ibb.co block hotlinks
 // otherwise), the broken-cache retry, and Cloudflare resizing via `w`. Use this
 // instead of a raw <img> for any remote src so a page full of covers doesn't
 // fire dozens of full-size requests at once. Pass eager for above-the-fold art.
+//
+// Also resolves ibb.co *page* URLs to their direct image URL on the fly, so a
+// cover stored as a page link (common for community/DB-backed songs) shows up
+// everywhere Img is used instead of rendering a broken-image icon.
 export function Img({ src, w, eager, ...rest }: Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src'> & {
   src: string | undefined | null;
   w?: number;
   eager?: boolean;
 }) {
+  const mustResolve = needsImbbResolve(src);
+  const [resolvedSrc, setResolvedSrc] = useState<string | null | undefined>(
+    () => (mustResolve ? (imbbResolvedCache.get(src) ?? null) : src),
+  );
+
+  useEffect(() => {
+    if (!needsImbbResolve(src)) { setResolvedSrc(src); return; }
+    const cached = imbbResolvedCache.get(src);
+    if (cached) { setResolvedSrc(cached); return; }
+    setResolvedSrc(null);
+    let mounted = true;
+    resolveImbbUrl(src).then(direct => {
+      if (!mounted) return;
+      // On resolution failure fall back to the original URL so the onError
+      // retry still gets a chance rather than leaving a permanent blank.
+      setResolvedSrc(direct ?? src);
+    });
+    return () => { mounted = false; };
+  }, [src]);
+
+  // Still resolving a page URL — render nothing so the container's own
+  // background shows through instead of a broken-image icon.
+  if (mustResolve && resolvedSrc == null) return null;
+
   return (
     <img
-      src={optimizedImage(src, w)}
+      src={optimizedImage(resolvedSrc, w)}
       loading={eager ? 'eager' : 'lazy'}
       decoding="async"
       referrerPolicy="no-referrer"
