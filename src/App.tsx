@@ -65,10 +65,15 @@ function stripVersionTags(name: string | undefined | null): string {
 function normalizeParsedRows(rows: Record<string, string>[]): Record<string, string>[] {
   if (rows.length === 0) return rows;
   const keys = Object.keys(rows[0]);
+  const hasEra = keys.some(k => k === 'Era');
   const buildMap = (): Record<string, string> => {
     const map: Record<string, string> = {};
     for (const k of keys) {
       if (k === 'Name' || k === 'Notes') continue; // already clean
+      // Some live sheet tabs (e.g. yzygold's Art tab) leave the first/era column header
+      // blank; the committed CSV snapshots renamed it to "Era". Map a blank first-column
+      // header to "Era" so era grouping works — but only when there's no real Era column.
+      if (!hasEra && k === keys[0] && k.trim() === '') { map[k] = 'Era'; continue; }
       if (k.startsWith('Name')) { map[k] = 'Name'; continue; }
       if (k.startsWith('Notes')) { map[k] = 'Notes'; continue; }
       // music-videos: "Media \nLength" → "Length", "Release\nDate" → "Date Made",
