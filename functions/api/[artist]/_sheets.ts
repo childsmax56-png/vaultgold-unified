@@ -16,6 +16,10 @@ interface SheetSource {
   gids: Record<string, string>;
 }
 
+// gids are enumerated from a sheet's public /htmlview by scripts/build-sheet-tabs.mjs.
+// Only add a tracker here after confirming its live export preserves working links
+// (some trackers merge links from a separate source into their committed CSV and the
+// live sheet stores them differently — those must stay committed-CSV-only).
 const SHEET_SOURCES: Record<string, SheetSource> = {
   frankgold: {
     sheetId: '1wlztKH_bwoTDtMZFm8-lYqzZWLCGf-XqE-gea-nGR0Y',
@@ -29,6 +33,33 @@ const SHEET_SOURCES: Record<string, SheetSource> = {
       'music-videos': '1257792866',
       fakes: '510511701',
       art: '1257812670',
+    },
+  },
+  yzygold: {
+    sheetId: '12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM',
+    gids: {
+      unreleased: '199908479',
+      released: '1295931150',
+      recent: '1385926980',
+      stems: '495336364',
+      'album-copies': '1297512832',
+      art: '1659647236',
+      'music-videos': '1115193942',
+      misc: '70063278',
+      tracklists: '1372270223',
+      fakes: '61838480',
+    },
+  },
+  pushagold: {
+    sheetId: '19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA',
+    gids: {
+      unreleased: '1932839414',
+      released: '1139120082',
+      recent: '2120181808',
+      'album-copies': '2137086150',
+      stems: '1685079869',
+      art: '1413541492',
+      tracklists: '425932540',
     },
   },
 };
@@ -48,9 +79,15 @@ export function sheetCsvUrl(artist: string, tab: string): string | null {
 const isCsvText = (t: string): boolean => !t.trimStart().startsWith('<');
 
 // Resolve a tracker tab's CSV text: DB-backed community tracker first, then the
-// committed static file, then a live Google Sheet export. Returns null when no
-// source yields CSV. `env`/`request` are optional so official trackers work
-// unchanged; `request` lets the creator/admin preview an unapproved tracker.
+// live Google Sheet export (when a gid is configured for the tab), then the committed
+// static file. Returns null when no source yields CSV. `env`/`request` are optional so
+// official trackers work unchanged; `request` lets the creator/admin preview an
+// unapproved tracker.
+//
+// The live sheet is tried BEFORE the committed CSV so editors' edits (new songs,
+// renames, moved tabs) show up without re-running a build/commit — the committed CSV
+// is a snapshot fallback used only when the sheet fetch fails or isn't configured.
+// Responses are edge-cached 5 min (see csvResponse), so this doesn't hammer Google.
 export async function fetchTrackerCsv(
   origin: string,
   artist: string,
@@ -61,6 +98,21 @@ export async function fetchTrackerCsv(
   const community = await getCommunityTrackerCsv(env, artist, tab, request);
   if (community !== null) return community;
 
+  // Live Google Sheet first, when this tab has a configured gid.
+  const remote = sheetCsvUrl(artist, tab);
+  if (remote) {
+    try {
+      const res = await fetch(remote, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+      if (res.ok) {
+        const text = await res.text();
+        if (isCsvText(text)) return text;
+      }
+    } catch {
+      // fall through to the committed snapshot
+    }
+  }
+
+  // Committed static CSV snapshot (fallback, or the sole source for unconfigured tabs).
   try {
     const res = await fetch(`${origin}/${artist}/data/${tab}.csv`);
     if (res.ok) {
@@ -68,17 +120,8 @@ export async function fetchTrackerCsv(
       if (isCsvText(text)) return text;
     }
   } catch {
-    // fall through to the live sheet
+    // no committed CSV either
   }
 
-  const remote = sheetCsvUrl(artist, tab);
-  if (!remote) return null;
-  try {
-    const res = await fetch(remote, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    if (!res.ok) return null;
-    const text = await res.text();
-    return isCsvText(text) ? text : null;
-  } catch {
-    return null;
-  }
+  return null;
 }

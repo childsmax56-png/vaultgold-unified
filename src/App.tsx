@@ -45,6 +45,23 @@ function normalizeCredits(extra: string | undefined | null): string {
     .join(' ');
 }
 
+// Reduce a song title to a version-insensitive key so a "[V7]" → "[V8]" edit in the
+// live sheet is recognised as the SAME song as the committed-CSV snapshot entry.
+// Only NUMBERED version tags are stripped ([V1], (V2), bare "v3") — descriptive tags
+// like [Remix], [OG] or [Original] are preserved so genuinely different variants are
+// never collapsed together.
+function stripVersionTags(name: string | undefined | null): string {
+  return (name || '')
+    .toLowerCase()
+    .replace(/\[\s*v\s*\d+\s*\]/g, ' ') // [V1], [ V2 ]
+    .replace(/\(\s*v\s*\d+\s*\)/g, ' ') // (V1)
+    .replace(/\bv\d+\b/g, ' ')          // bare v3
+    .replace(/[^a-z0-9]+/g, ' ')
+    .split(' ')
+    .filter(Boolean)
+    .join(' ');
+}
+
 function normalizeParsedRows(rows: Record<string, string>[]): Record<string, string>[] {
   if (rows.length === 0) return rows;
   const keys = Object.keys(rows[0]);
@@ -808,21 +825,55 @@ export default function App() {
 
       const categories = targetJson.eras[eraName].data || {};
 
-      // Skip if a song with the same name and credits already exists in the era.
-      // Credits (the parenthetical feat./prod. line) are compared order-independently:
-      // the committed CSV and the live sheet often list the same producers in a
-      // different order, and an exact string match would let that slip through as a
-      // duplicate entry. normalizeCredits() reduces the line to a sorted token set so
-      // "prod. A, B, C" and "prod. C, A, B" collapse to the same key.
+      // De-duplicate the live-sheet row against songs already present from the committed
+      // CSV snapshot. The snapshot is a periodic export of this same sheet, so when an
+      // editor edits a row after the snapshot was taken (a version bump "[V7]" → "[V8]",
+      // a fixed title typo, or reordered producer credits) the row no longer matches the
+      // snapshot entry by exact name and would otherwise be appended as a DUPLICATE.
+      // With no stable per-song id, match on the most reliable signals available and
+      // UPDATE the snapshot entry in place (the live sheet is newer, so it wins):
+      //   1. a shared audio link — survives ANY title/credit edit, so it's tried first;
+      //   2. exact title + order-independent credits (normalizeCredits sorts the tokens
+      //      so "prod. A, B" and "prod. B, A" collapse);
+      //   3. version-insensitive title + credits, but only when it's unambiguous (a
+      //      single candidate) so two legitimately-distinct numbered versions are never
+      //      merged into one.
       const nameNorm = songName.toLowerCase().trim();
       const extraNorm = normalizeCredits(extra);
-      const alreadyExists = Object.values(categories).some((list: any) =>
-        (list as Song[]).some(s =>
-          s.name?.toLowerCase().trim() === nameNorm &&
-          normalizeCredits(s.extra) === extraNorm
-        )
-      );
-      if (alreadyExists) return;
+      const baseName = stripVersionTags(songName);
+      const newUrls = (newSong.urls || []).map(u => (u || '').trim()).filter(Boolean);
+
+      const sameByUrl = (s: Song) => {
+        const sUrls = (s.urls || []).map(u => (u || '').trim()).filter(Boolean);
+        return newUrls.length > 0 && sUrls.some(u => newUrls.includes(u));
+      };
+      const sameByExactName = (s: Song) =>
+        (s.name || '').toLowerCase().trim() === nameNorm && normalizeCredits(s.extra) === extraNorm;
+      const sameByBaseName = (s: Song) =>
+        !!baseName && stripVersionTags(s.name) === baseName && normalizeCredits(s.extra) === extraNorm;
+
+      // Try each strategy in turn; replace the first matching entry in place.
+      let replaced = false;
+      for (const match of [sameByUrl, sameByExactName]) {
+        for (const list of Object.values(categories) as Song[][]) {
+          const idx = list.findIndex(match);
+          if (idx !== -1) { list[idx] = newSong; replaced = true; break; }
+        }
+        if (replaced) break;
+      }
+      if (!replaced) {
+        // Version-insensitive fallback — only merge when exactly one candidate matches
+        // across the whole era, to avoid collapsing distinct versions.
+        const candidates: { list: Song[]; idx: number }[] = [];
+        for (const list of Object.values(categories) as Song[][]) {
+          list.forEach((s, idx) => { if (sameByBaseName(s)) candidates.push({ list, idx }); });
+        }
+        if (candidates.length === 1) {
+          candidates[0].list[candidates[0].idx] = newSong;
+          replaced = true;
+        }
+      }
+      if (replaced) return;
 
       const catKey = avLenToCategory(item['Available Length'] || '', categories);
       if (catKey) {
