@@ -5,7 +5,6 @@ import { YEditsView, type ClaimInfo } from './components/YEditsView';
 import { PlayerBar } from './components/PlayerBar';
 import { FullScreenPlayer } from './components/FullScreenPlayer';
 import { PlaylistProvider } from './PlaylistContext';
-import { MaintenanceGate, isMaintenanceUnlocked } from './MaintenanceGate';
 import type { Song, Era } from './types';
 
 const ACCENT = '#FFD700';
@@ -484,7 +483,6 @@ function AdminPanel({ onClose, onRefreshClaims, isOwner }: { onClose: () => void
 
 export function YEditsGoldPage() {
   const navigate = useNavigate();
-  const [unlocked, setUnlocked] = useState(() => isMaintenanceUnlocked('yeditsgold_maintenance_unlocked'));
   const [searchQuery, setSearchQuery] = useState('');
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
   const [currentEra, setCurrentEra] = useState<Era | null>(null);
@@ -615,19 +613,6 @@ export function YEditsGoldPage() {
     if (audioRef.current) audioRef.current.volume = v;
     setVolume(v);
   };
-
-  // Public visitors hit the maintenance gate first; the real page only renders
-  // once the access password has been entered (and remembered).
-  if (!unlocked) {
-    return (
-      <MaintenanceGate
-        title={<>yedits<span style={{ color: ACCENT }}>gold</span> is under maintenance</>}
-        message="We're doing some work behind the scenes. yeditsgold will be back and open to the public soon — thanks for your patience."
-        storageKey="yeditsgold_maintenance_unlocked"
-        onUnlock={() => setUnlocked(true)}
-      />
-    );
-  }
 
   return (
     <PlaylistProvider>
