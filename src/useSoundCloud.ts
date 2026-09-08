@@ -63,6 +63,7 @@ export interface SoundCloudState {
 export interface SoundCloudControls {
   playUrl: (url: string) => void;
   togglePlay: () => void;
+  pause: () => void;
   seek: (seconds: number) => void;
   setVolume: (pct: number) => void; // 0-1
 }
@@ -185,6 +186,10 @@ export function useSoundCloud(): { state: SoundCloudState; controls: SoundCloudC
 
     togglePlay: useCallback(() => {
       widgetRef.current?.toggle();
+    }, []),
+
+    pause: useCallback(() => {
+      widgetRef.current?.pause();
     }, []),
 
     seek: useCallback((seconds: number) => {

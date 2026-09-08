@@ -13,6 +13,7 @@ export const fiftygoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#1d4ed8',
   artistLabel: '50 Cent',
+  sheetCreator: 'G-Man Junior, Franki8000, Kali Kush, GrimR3xx, HighSpeedChase, OnlyTwentyCharacters, Loony, B4CON, Iceman & Ares',
   cardLetter: '50',
   logoUrl: '/logos/fiftygold.webp',
   artistPhotoUrl: '/artists/50cent.jpg',

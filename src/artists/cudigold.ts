@@ -13,6 +13,7 @@ export const cudigoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#6366f1',
   artistLabel: 'Kid Cudi',
+  sheetCreator: 'deka, retroshaffer, colbyjackchedda, yanviktor, Zach3656, tysonnn',
   cardLetter: 'CUDI',
   logoUrl: '/logos/cudigold.webp',
   artistPhotoUrl: '/artists/kidcudi-v2.jpg',

@@ -13,6 +13,7 @@ export const jojigoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1FPlWbXnx94y5FODJ2qniLf0BzViNSAmj6Xdfw1ZNwQ4/export?format=csv&gid=583378522',
   accentColor: '#9f1239',
   artistLabel: 'Joji',
+  sheetCreator: 'justjaelyn',
   cardLetter: 'J',
   logoUrl: '/logos/jojigold.webp',
   artistPhotoUrl: '/artists/joji.jpg',

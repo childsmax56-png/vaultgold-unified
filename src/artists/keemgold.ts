@@ -13,6 +13,7 @@ export const keemgoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1_SNZQS-AAXVleukgKlraegaozkLOu8WMHbUwmPm61hc/export?format=csv&gid=464931598',
   accentColor: '#84cc16',
   artistLabel: 'Baby Keem',
+  sheetCreator: 'Reardon, Infisrael, Techno, DaysDissolve, Jeen, aeolowl, Jake Gylenhaal',
   cardLetter: 'BK',
   logoUrl: '/logos/keemgold.webp',
   artistPhotoUrl: '/artists/babykeem.webp',

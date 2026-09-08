@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowLeft, ExternalLink, Star } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
-import { CUSTOM_IMAGES , retryImageOnError} from '../utils';
+import { CUSTOM_IMAGES , Img} from '../utils';
 import { Era } from '../types';
 import { useSettings } from '../SettingsContext';
 
@@ -141,11 +141,10 @@ export function CompsView({ eras, searchQuery, onNavigateToYedits }: CompsViewPr
 
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-md overflow-hidden bg-white/5 shrink-0 shadow-xl">
             {selectedGroup.image ? (
-              <img onError={retryImageOnError}
+              <Img w={400} eager
                 src={selectedGroup.image}
                 alt={selectedGroup.eraName}
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-white/20 font-bold text-xl text-center p-4">
@@ -251,7 +250,7 @@ export function CompsView({ eras, searchQuery, onNavigateToYedits }: CompsViewPr
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className="p-6 md:p-8 pb-32"
     >
-      {settings.yzyGoldMode && onNavigateToYedits && (
+      {settings.YZYGOLDMode && onNavigateToYedits && (
         <button
           onClick={onNavigateToYedits}
           className="w-full mb-8 relative overflow-hidden rounded-2xl border border-[var(--theme-color)]/30 bg-gradient-to-r from-black via-[#1a1400] to-black hover:border-[var(--theme-color)]/60 transition-all duration-300 group"
@@ -282,11 +281,10 @@ export function CompsView({ eras, searchQuery, onNavigateToYedits }: CompsViewPr
         >
           <div className="relative aspect-square rounded-md overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
             {group.image ? (
-              <img onError={retryImageOnError}
+              <Img w={300}
                 src={group.image}
                 alt={group.eraName}
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                referrerPolicy="no-referrer"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-white/20 font-bold text-lg text-center p-4">

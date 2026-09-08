@@ -5,7 +5,8 @@ import { RefreshCw, LogIn, LogOut, User, X } from 'lucide-react';
 import { ARTIST_LIST } from './artists/registry';
 import type { ArtistConfig } from './artists/types';
 import { useSettings, LOADING_SCREENS } from './SettingsContext';
-import { retryImageOnError } from './utils';
+import { Img } from './utils';
+import { SOCIALS_DATA, hasSocials, type SocialEntry } from './socialsData';
 import { useHasActiveAudio } from './player/audioStore';
 
 // Handles the Spotify PKCE OAuth callback that redirects back to unvaulted.cc/?code=...
@@ -278,14 +279,6 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
         </div>
 
         <div style={row}>
-          <div>
-            <div style={label}>Artist Photos</div>
-            <div style={sublabel}>Show artist photos on cards</div>
-          </div>
-          <Toggle on={settings.landingArtistPhotos} onToggle={() => updateSettings({ landingArtistPhotos: !settings.landingArtistPhotos })} />
-        </div>
-
-        <div style={row}>
           <div style={label}>Tags as Emojis</div>
           <Toggle on={settings.tagsAsEmojis} onToggle={() => updateSettings({ tagsAsEmojis: !settings.tagsAsEmojis })} />
         </div>
@@ -360,7 +353,7 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
           <div style={{ ...row, flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
             <div>
               <div style={label}>Sync Spotify & Last.fm</div>
-              <div style={sublabel}>In order to gain access to Spotify and Last.fm, sign into your VaultGold account here.</div>
+              <div style={sublabel}>In order to gain access to Spotify and Last.fm, sign into your UNVAULTED account here.</div>
             </div>
             <button
               onClick={() => setShowSignIn(true)}
@@ -370,7 +363,7 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
                 cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
               }}
             >
-              <LogIn size={14} /> Sign in to VaultGold
+              <LogIn size={14} /> Sign in to UNVAULTED
             </button>
           </div>
         )}
@@ -405,7 +398,7 @@ function LandingSettingsPanel({ onClose }: { onClose: () => void }) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-              <span style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>VaultGold Account</span>
+              <span style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>UNVAULTED Account</span>
               <button
                 onClick={() => setShowSignIn(false)}
                 style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)' }}
@@ -686,7 +679,7 @@ function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleF
           transition: 'border-color 0.2s, transform 0.15s',
         }}
       >
-        <img onError={retryImageOnError}
+        <Img w={400}
           src={photoUrl}
           alt={config.artistLabel}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: config.photoObjectPosition ?? 'top center' }}
@@ -698,13 +691,12 @@ function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleF
             <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', background: 'rgba(201,162,36,0.25)', color: '#C9A224', padding: '2px 7px', borderRadius: 4, marginBottom: 6 }}>Featured</div>
           )}
           <div style={{ fontSize: NAME_SIZE[variant], fontWeight: 800, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.1 }}>{config.artistLabel}</div>
-          <div style={{ fontSize: ARTIST_SIZE[variant], color: 'rgba(255,255,255,0.5)', marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{config.SITE_NAME}</div>
         </div>
       </div>
     );
   }
 
-  // Logo / text mode
+  // Text-only fallback (no photo)
   const baseBorder = variant === 'featured' ? `${accent}30` : 'rgba(255,255,255,0.07)';
   return (
     <div
@@ -725,26 +717,8 @@ function EditorialArtistCard({ config, showPhoto, variant, isFavorite, onToggleF
         {variant === 'featured' && (
           <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', background: `${accent}20`, color: accent, padding: '2px 7px', borderRadius: 4, marginBottom: 10 }}>Featured</div>
         )}
-        {config.logoUrl ? (
-          <>
-            <img
-              src={config.logoUrl}
-              alt={config.SITE_NAME}
-              style={{ display: 'block', height: LOGO_HEIGHT[variant], width: 'auto', maxWidth: '100%', objectFit: 'contain', objectPosition: 'left center' }}
-              onError={e => {
-                const img = e.currentTarget;
-                img.style.display = 'none';
-                const fb = img.nextElementSibling as HTMLElement;
-                if (fb) fb.style.display = 'block';
-              }}
-            />
-            <div style={{ display: 'none', fontSize: NAME_SIZE[variant], fontWeight: 900, color: accent, letterSpacing: '-0.02em' }}>{config.SITE_NAME}</div>
-          </>
-        ) : (
-          <div style={{ fontSize: NAME_SIZE[variant], fontWeight: 900, color: accent, letterSpacing: '-0.02em' }}>{config.SITE_NAME}</div>
-        )}
+        <div style={{ fontSize: NAME_SIZE[variant], fontWeight: 900, color: accent, letterSpacing: '-0.02em' }}>{config.artistLabel}</div>
       </div>
-      <div style={{ fontSize: 9, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: `${accent}aa` }}>{config.artistLabel}</div>
     </div>
   );
 }
@@ -773,7 +747,7 @@ function ExternalSmallCard({ href, label, logoSrc, logoAlt, accent, photoSrc, va
           transition: 'border-color 0.2s, transform 0.15s',
         }}
       >
-        <img onError={retryImageOnError} src={photoSrc} alt={label} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
+        <Img w={400} src={photoSrc} alt={label} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%)' }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '14px 10px 8px' }}>
           <div style={{ fontSize: 11, fontWeight: 800, color: '#fff', lineHeight: 1.1 }}>{label}</div>
@@ -867,6 +841,7 @@ const SHEET_URLS: Record<string, string> = {
   vampgold:   'https://docs.google.com/spreadsheets/d/1Irtfvymu26CShYowLMMfD-rM0o9CJqE6-BBSlYsAaF4/edit?gid=0#gid=0',
   wolfgold:   'https://docs.google.com/spreadsheets/d/19GJTNp7PxK1OtyVBmGelZSMm5i8Fy82EGtcFdIkBpsY/edit?gid=1246511510#gid=1246511510',
   drizzygold: 'https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/edit?gid=755606328#gid=755606328',
+  frankgold:  'https://franktracker.net/',
   xgold:      'https://docs.google.com/spreadsheets/d/1wKq7lSERmXYutRFxipNbFFc-DUdqhVXWWlFnqkzwRFA/edit?usp=sharing',
   cactigold:  'https://docs.google.com/spreadsheets/d/1gJqbQrb3dIWF-PLMsKkNUrftpQb8zxsZFDAIpSvT5Fo/edit?gid=846204501#gid=846204501',
   kdotgold:   'https://docs.google.com/spreadsheets/d/1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI/edit?gid=1169728352#gid=1169728352',
@@ -897,6 +872,32 @@ const SHEET_URLS: Record<string, string> = {
   cudigold:   'https://docs.google.com/spreadsheets/d/1fj9HcbyLbu5NGwJzbl1lExQud3FNKv-JUU6NY4OKM9Y/edit',
   rihannagold: 'https://docs.google.com/spreadsheets/d/1DKf6MBZ6KcKoKFH5Vnl1qc3CrPIiHey-EgOrpKpLZQo/edit',
   jayzgold:   'https://docs.google.com/spreadsheets/d/18GwItf2M92QimNMAbUCfFsxCkiHlkf8DPJPLWHAcoxQ/edit?gid=1202580443#gid=1202580443',
+  kengold:    'https://docs.google.com/spreadsheets/d/1OARID98xCqRaBr8gyQCvI3aD4jKQDGgtedyRaiP_pyo/edit?gid=1367980602#gid=1367980602',
+  szagold:        'https://docs.google.com/spreadsheets/d/1mPq6ZvoQ1_kWqIH9JS8I2VbBb8WboFYyeMP2yqjtz7s/edit',
+  ushergold:      'https://docs.google.com/spreadsheets/d/10b5EFPYc5Qhn3A7arsruyeVOYdU4Ab9TuQqELV9joa8/edit',
+  wutanggold:     'https://docs.google.com/spreadsheets/d/1dA2h1kQffOmUUeCy6YMu8IYdGGqnhnWuabKdK7emyyU/edit?gid=1275210512#gid=1275210512',
+  aaliyahgold:    'https://docs.google.com/spreadsheets/d/1QJR4Ku4Si5kLUL1P_vi9hCkkjDQvDWqafWiYc1v_Z8E/edit',
+  antclemonsgold: 'https://docs.google.com/spreadsheets/d/11Ta0gixhRv9uUq-_O9nID_rjUf3oembw57f2sblMP3k/edit?gid=1295931150#gid=1295931150',
+  badbunnygold:   'https://docs.google.com/spreadsheets/d/1O5RFNuOF4-K7xWCYMRQXy3Y_WkYOWu6o9zClsw8lPi4/edit?gid=1545615123#gid=1545615123',
+  chancegold:     'https://docs.google.com/spreadsheets/d/1GdfybfLFKseuArE_Mz9iO4AatmAYWIKahn_vwGR-nTc/edit?gid=997745212#gid=997745212',
+  gambinogold:    'https://docs.google.com/spreadsheets/d/1eyBjj7qPxIT_P93RaSPZf5hTJemGi5jMqSJF777OsdE/edit?gid=1792554832#gid=1792554832',
+  chrisbrowngold: 'https://docs.google.com/spreadsheets/d/1o2M9juqyzh7EUCHm0ApKx0XSnGda6ZiM1kGrOp0EfMM/edit?gid=883120125#gid=883120125',
+  coldplaygold:   'https://docs.google.com/spreadsheets/d/1i4xfiqtONMps_FL9n_2O5UmpKKio6HUCh5y6zQniyPk/edit',
+  daftpunkgold:   'https://docs.google.com/spreadsheets/d/1ua9PA27-_LdSddNcU5i4PsvrzI7NMLalsOsXlDTsjuw/edit',
+  dannybrowngold: 'https://docs.google.com/spreadsheets/d/1ybtg3wbiB63eHKGv8_ZFek3qQIoRbB8DUYAWObfeDZI/edit',
+  doechiigold:    'https://docs.google.com/spreadsheets/d/1P2inSuDEuS_kp45qDAXJpb_hmj__Lj409bytyp4xiw8/edit',
+  gibbsgold:      'https://docs.google.com/spreadsheets/d/1CCe1DI9VIp0J4MQyTsdMuOriZ9ucmCVMw6nS9j8e4N0/edit',
+  gunnagold:      'https://docs.google.com/spreadsheets/d/1P_BA-CIy05lDl9j1H06awxNqvXYJcD-KeBPVdgTO7Eo/edit?gid=1630289126#gid=1630289126',
+  icecubegold:    'https://docs.google.com/spreadsheets/d/1bsNrVejh4H27uafX6jpnllbAuiVqRnDUMegKdTYAFQA/edit?gid=1360798347#gid=1360798347',
+  jamesblakegold: 'https://docs.google.com/spreadsheets/d/1_bPMUWLNzeMY0CtVEE3PHkuCsZL80wnA-6joAUfx7p4/edit?gid=2092886681#gid=2092886681',
+  lauryngold:     'https://docs.google.com/spreadsheets/d/1mq4kMsy_ntvh-yI3i2YsriW_PgFRXeaJWg5nS1v-5mU/edit?gid=1520634709#gid=1520634709',
+  nasgold:        'https://docs.google.com/spreadsheets/d/1TnALmkQdRX_spdUMLLamizAZYD3rERO_iGGzCqD-A6M/edit',
+  stevelacygold:  'https://docs.google.com/spreadsheets/d/1xqnIw0wymufIjKfoaXGDC-KAVuF81S5quMCCX7lYQyc/edit?gid=944094987#gid=944094987',
+  trippiegold:    'https://docs.google.com/spreadsheets/d/1hZdGFBZmukWGH4IlnH0NJvphwEct2XEMJT_moTFhTvc/edit?gid=1555572772#gid=1555572772',
+  weekndgold:     'https://docs.google.com/spreadsheets/d/1luU-KL_vKt72goUpSO2F0qMvXyqaT_q8VwYNjPeLgTg/edit?gid=766670282#gid=766670282',
+  westsidegold:   'https://docs.google.com/spreadsheets/d/1_dFPF4tSdIuwRUj_UXUFz5qeNVJm-9lCl3zhIGXt0wI/edit?gid=514066493#gid=514066493',
+  tydollagold:    'https://docs.google.com/spreadsheets/d/11Kk3Mi8iiFmXEFV8vzcmTrnjcMkfgImABCavXhC4D48/edit?gid=2000110692#gid=2000110692',
+  d4vdgold:       'https://docs.google.com/spreadsheets/d/1N6_EyCC6AM_cpFkIJivCN0kWzEwJRev7vQCmFAChnjk/edit?gid=1194098099#gid=1194098099',
 };
 
 function ShareButton({ url, accent }: { url: string; accent?: string }) {
@@ -991,6 +992,140 @@ function SheetButton({ href, accent }: { href: string; accent?: string }) {
   );
 }
 
+function SocialsButton({ accent, onOpen }: { accent?: string; onOpen: () => void }) {
+  const color = accent ?? 'rgba(255,255,255,0.4)';
+  return (
+    <button
+      onClick={e => { e.stopPropagation(); onOpen(); }}
+      title="Socials & links"
+      aria-label="Socials & links"
+      style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '7px 9px', borderRadius: 8,
+        background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
+        color: 'rgba(255,255,255,0.45)', cursor: 'pointer', flex: '0 0 auto',
+        transition: 'background 0.15s, color 0.15s, border-color 0.15s',
+      }}
+      onMouseEnter={e => {
+        const el = e.currentTarget;
+        el.style.background = `${color}18`;
+        el.style.borderColor = `${color}44`;
+        el.style.color = color;
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget;
+        el.style.background = 'rgba(255,255,255,0.04)';
+        el.style.borderColor = 'rgba(255,255,255,0.08)';
+        el.style.color = 'rgba(255,255,255,0.45)';
+      }}
+    >
+      {/* @-mention / socials glyph */}
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-3.5 7.1" />
+      </svg>
+    </button>
+  );
+}
+
+function SocialsModal({ config, onClose }: { config: ArtistConfig; onClose: () => void }) {
+  const [q, setQ] = useState('');
+  const accent = config.accentColor;
+  const entries = SOCIALS_DATA[config.slug] ?? [];
+
+  const query = q.trim().toLowerCase();
+  const filtered = query
+    ? entries.filter(e =>
+        e.platform.toLowerCase().includes(query) ||
+        e.handle.toLowerCase().includes(query) ||
+        e.notes.toLowerCase().includes(query) ||
+        e.type.toLowerCase().includes(query))
+    : entries;
+
+  // Group by Type, preserving first-seen order.
+  const groups: { type: string; items: SocialEntry[] }[] = [];
+  const byType: Record<string, SocialEntry[]> = {};
+  for (const e of filtered) {
+    const t = e.type || 'Other';
+    if (!byType[t]) { byType[t] = []; groups.push({ type: t, items: byType[t] }); }
+    byType[t].push(e);
+  }
+
+  return (
+    <div onClick={onClose}
+      style={{ position: 'fixed', inset: 0, zIndex: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(6px)', padding: 16 }}>
+      <div onClick={e => e.stopPropagation()}
+        style={{ position: 'relative', background: 'rgba(16,16,18,0.98)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 18, width: 'min(560px, 100%)', maxHeight: '82vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        <div style={{ padding: '18px 20px 12px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <button onClick={onClose}
+            style={{ position: 'absolute', top: 14, right: 14, background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', fontSize: 20, lineHeight: 1 }}>✕</button>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', color: accent, textTransform: 'uppercase' }}>Socials & Links</div>
+          <div style={{ fontSize: 18, fontWeight: 800, color: '#fff', marginTop: 2 }}>{config.artistLabel}</div>
+          <input
+            type="text"
+            value={q}
+            onChange={e => setQ(e.target.value)}
+            placeholder="Filter platforms, handles, notes…"
+            style={{ width: '100%', marginTop: 12, padding: '9px 12px', borderRadius: 9, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: 13, fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box' }}
+          />
+        </div>
+
+        <div style={{ overflowY: 'auto', padding: '8px 12px 16px' }}>
+          {filtered.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '32px 0', fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>No matches</div>
+          ) : groups.map(g => (
+            <div key={g.type} style={{ marginTop: 12 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', padding: '0 8px 6px' }}>{g.type}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                {g.items.map((e, i) => <SocialRow key={g.type + i} entry={e} accent={accent} />)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SocialRow({ entry, accent }: { entry: SocialEntry; accent: string }) {
+  const inactive = entry.status === 'Inactive';
+  const inner = (
+    <>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+          <span style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>{entry.platform}</span>
+          {entry.handle && <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{entry.handle}</span>}
+          {entry.status && (
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', padding: '1px 6px', borderRadius: 4,
+              background: inactive ? 'rgba(255,255,255,0.06)' : `${accent}20`,
+              color: inactive ? 'rgba(255,255,255,0.4)' : accent }}>{entry.status}</span>
+          )}
+        </div>
+        {entry.notes && <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 3, lineHeight: 1.4 }}>{entry.notes}</div>}
+      </div>
+      {entry.link && (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 3 }}>
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+      )}
+    </>
+  );
+  const baseStyle: React.CSSProperties = {
+    display: 'flex', alignItems: 'flex-start', gap: 10, padding: '9px 8px', borderRadius: 9,
+    textDecoration: 'none', opacity: inactive && !entry.link ? 0.7 : 1,
+  };
+  if (entry.link) {
+    return (
+      <a href={entry.link} target="_blank" rel="noopener noreferrer"
+        style={{ ...baseStyle, cursor: 'pointer', transition: 'background 0.15s' }}
+        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+      >{inner}</a>
+    );
+  }
+  return <div style={baseStyle}>{inner}</div>;
+}
+
 // ─── Main page ────────────────────────────────────────────────────────────────
 
 function ConsentModal({ onAccept, onClose }: { onAccept: () => void; onClose: () => void }) {
@@ -1055,9 +1190,10 @@ export function LandingPage() {
   const [showAll, setShowAll] = useState(false);
   const [showConsent, setShowConsent] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
+  const [socialsFor, setSocialsFor] = useState<ArtistConfig | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const { settings } = useSettings();
-  const showPhotos = settings.landingArtistPhotos;
+  const showPhotos = true;
   const { user, signInWithGoogle, signOut } = useVGAuth();
   const { favorites, toggleFavorite } = useFavoriteArtists();
   const isFavorite = (slug: string) => favorites.includes(slug);
@@ -1067,22 +1203,33 @@ export function LandingPage() {
   const hasActivePlayer = useHasActiveAudio();
 
   const query = searchQuery.trim().toLowerCase();
-  const matchesQuery = (c: ArtistConfig) =>
-    !query ||
-    c.artistLabel.toLowerCase().includes(query) ||
-    c.SITE_NAME.toLowerCase().includes(query) ||
-    c.slug.toLowerCase().includes(query);
+  const matchesQuery = (c: ArtistConfig) => {
+    if (!query) return true;
+    // Hidden (easter-egg) artists never match their own name/slug — they only
+    // surface when the typed query contains one of their secret passphrases.
+    if (c.hidden)
+      return (c.searchAliases ?? []).some(a => query.includes(a.toLowerCase()));
+    return (
+      c.artistLabel.toLowerCase().includes(query) ||
+      c.SITE_NAME.toLowerCase().includes(query) ||
+      c.slug.toLowerCase().includes(query)
+    );
+  };
 
+  // Search includes hidden (easter-egg) artists so typing "d4vd" surfaces them;
+  // the grid below is built from the visible-only list.
   const searchResults = query
     ? ARTIST_LIST.filter(matchesQuery).sort((a, b) => Number(isFavorite(b.slug)) - Number(isFavorite(a.slug)))
     : null;
 
-  const favoriteConfigs = ARTIST_LIST.filter(c => isFavorite(c.slug));
+  const gridList = ARTIST_LIST.filter(c => !c.hidden);
 
-  const featured = ARTIST_LIST[0];
+  const favoriteConfigs = gridList.filter(c => isFavorite(c.slug));
+
+  const featured = gridList[0];
   // Pinned 2×2 next to the featured card: Carti, Tyler, A$AP Rocky, Drake
-  const topRight = ARTIST_LIST.slice(1, 5);
-  const smallArtists = ARTIST_LIST.slice(5);
+  const topRight = gridList.slice(1, 5);
+  const smallArtists = gridList.slice(5);
   const allSmall = smallArtists.map(c => ({ type: 'artist' as const, config: c }));
   const INITIAL_SMALL = 4;
   const visibleSmall = showAll ? allSmall : allSmall.slice(0, INITIAL_SMALL);
@@ -1110,23 +1257,40 @@ export function LandingPage() {
     }}>
       {showSettings && <LandingSettingsPanel onClose={() => setShowSettings(false)} />}
       {showConsent && <ConsentModal onAccept={signInWithGoogle} onClose={() => setShowConsent(false)} />}
+      {socialsFor && <SocialsModal config={socialsFor} onClose={() => setSocialsFor(null)} />}
 
       <header style={{ textAlign: 'center', marginBottom: 40, width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', gap: 8 }}>
-          <a
-            href="/game"
-            title="Play The Heist"
-            style={{
-              background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
-              borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
-              display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700,
-              textDecoration: 'none', transition: 'background 0.15s', flexShrink: 0,
-            }}
-            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
-          >
-            🎮 <span className="game-btn-label">The Heist</span>
-          </a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+            <a
+              href="/game"
+              title="Play The Heist"
+              style={{
+                background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
+                borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
+                display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700,
+                textDecoration: 'none', transition: 'background 0.15s', flexShrink: 0,
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
+            >
+              🎮 <span className="game-btn-label">The Heist</span>
+            </a>
+            <a
+              href="/guess"
+              title="Play Leakle"
+              style={{
+                background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
+                borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
+                display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700,
+                textDecoration: 'none', transition: 'background 0.15s', flexShrink: 0,
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
+            >
+              🎧 <span className="game-btn-label">Leakle</span>
+            </a>
+          </div>
           <button
             onClick={() => setShowSettings(true)}
             style={{
@@ -1177,6 +1341,7 @@ export function LandingPage() {
                   <EditorialArtistCard config={config} showPhoto={showPhotos} variant="small" isFavorite={isFavorite(config.slug)} onToggleFavorite={toggleFavorite} />
                   <div style={{ display: 'flex', gap: 6 }}>
                     {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
+                    {hasSocials(config.slug) && <SocialsButton accent={config.accentColor} onOpen={() => setSocialsFor(config)} />}
                     <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
                   </div>
                 </div>
@@ -1195,6 +1360,7 @@ export function LandingPage() {
                   <EditorialArtistCard config={config} showPhoto={showPhotos} variant="small" isFavorite={isFavorite(config.slug)} onToggleFavorite={toggleFavorite} />
                   <div style={{ display: 'flex', gap: 6 }}>
                     {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
+                    {hasSocials(config.slug) && <SocialsButton accent={config.accentColor} onOpen={() => setSocialsFor(config)} />}
                     <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
                   </div>
                 </div>
@@ -1209,6 +1375,7 @@ export function LandingPage() {
                 <EditorialArtistCard config={featured} showPhoto={showPhotos} variant="featured" isFavorite={isFavorite(featured.slug)} onToggleFavorite={toggleFavorite} />
                 <div style={{ display: 'flex', gap: 6 }}>
                   {SHEET_URLS[featured.slug] && <SheetButton href={SHEET_URLS[featured.slug]} accent={featured.accentColor} />}
+                  {hasSocials(featured.slug) && <SocialsButton accent={featured.accentColor} onOpen={() => setSocialsFor(featured)} />}
                   <ShareButton url={`${window.location.origin}/${featured.slug}`} accent={featured.accentColor} />
                 </div>
               </div>
@@ -1218,6 +1385,7 @@ export function LandingPage() {
                     <EditorialArtistCard config={config} showPhoto={showPhotos} variant="medium" isFavorite={isFavorite(config.slug)} onToggleFavorite={toggleFavorite} />
                     <div style={{ display: 'flex', gap: 6 }}>
                       {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
+                      {hasSocials(config.slug) && <SocialsButton accent={config.accentColor} onOpen={() => setSocialsFor(config)} />}
                       <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
                     </div>
                   </div>
@@ -1233,6 +1401,7 @@ export function LandingPage() {
                     <EditorialArtistCard config={item.config} showPhoto={showPhotos} variant="small" isFavorite={isFavorite(item.config.slug)} onToggleFavorite={toggleFavorite} />
                     <div style={{ display: 'flex', gap: 6 }}>
                       {SHEET_URLS[item.config.slug] && <SheetButton href={SHEET_URLS[item.config.slug]} accent={item.config.accentColor} />}
+                      {hasSocials(item.config.slug) && <SocialsButton accent={item.config.accentColor} onOpen={() => setSocialsFor(item.config)} />}
                       <ShareButton url={`${window.location.origin}/${item.config.slug}`} accent={item.config.accentColor} />
                     </div>
                   </div>
@@ -1286,6 +1455,15 @@ export function LandingPage() {
           watermark="MTR"
         />
         <BigLinkCard
+          href="/community"
+          accent="#22C55E"
+          badge="New"
+          titleMain="BUILD A"
+          titleAccent="TRACKER"
+          subtitle="Create your own & browse community trackers"
+          watermark="CT"
+        />
+        <BigLinkCard
           href="/yeditsgold"
           accent="#FFD700"
           badge="Edits"
@@ -1293,6 +1471,42 @@ export function LandingPage() {
           titleAccent="GOLD"
           subtitle="Browse fan edits"
           watermark="YE"
+        />
+        <BigLinkCard
+          href="/playlists"
+          accent="#F43F5E"
+          badge="Music"
+          titleMain="YOUR"
+          titleAccent="PLAYLISTS"
+          subtitle="Favorites & custom playlists from every tracker"
+          watermark="PL"
+        />
+        <BigLinkCard
+          href="/tierlist"
+          accent="#FF5C8A"
+          badge="Rank"
+          titleMain="TIER"
+          titleAccent="LIST"
+          subtitle="Rank songs from any artist"
+          watermark="TL"
+        />
+        <BigLinkCard
+          href="/foryou"
+          accent="#7C5CFF"
+          badge="New"
+          titleMain="FOR"
+          titleAccent="YOU"
+          subtitle="A feed picked from what you play"
+          watermark="FY"
+        />
+        <BigLinkCard
+          href="/listening"
+          accent="#7C5CFF"
+          badge="Stats"
+          titleMain="YOUR"
+          titleAccent="LISTENING"
+          subtitle="See your play stats"
+          watermark="ST"
         />
         <BigLinkCard
           href="/download"
@@ -1361,31 +1575,29 @@ export function LandingPage() {
         <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
           © 2026 UNVAULTED
         </span>
-        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.15)' }}>
-          Logos created by YZYsam &amp; north on Discord
-        </span>
       </footer>
 
       <style>{`
         .grid-top {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 8px;
         }
         .grid-pinned {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 8px;
         }
         .grid-small {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 8px;
         }
         @media (max-width: 600px) {
-          .grid-top { grid-template-columns: 1fr 1fr; }
+          .grid-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
           .grid-top > *:first-child { grid-column: 1 / -1; }
-          .grid-small { grid-template-columns: repeat(2, 1fr); }
+          .grid-top > *:last-child { grid-column: 1 / -1; }
+          .grid-small { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
       `}</style>

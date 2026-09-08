@@ -14,6 +14,7 @@ export const dregoldConfig: ArtistConfig = {
   SHEET_URL_RECENT_PRODUCTION: 'https://docs.google.com/spreadsheets/d/10_QK8xP-WCdrfO6RaIkhdDtYUXaM966e6D1xWD__iIo/export?format=csv&gid=1876275343',
   accentColor: '#e53e3e',
   artistLabel: 'Dr. Dre',
+  sheetCreator: 'G-Man Junior, Franki8000, Kali Kush, GrimR3xx, HighSpeedChase, OnlyTwentyCharacters, Loony',
   cardLetter: 'DRE',
   logoUrl: '/logos/dregold.png',
   artistPhotoUrl: '/artists/drdre.jpg',

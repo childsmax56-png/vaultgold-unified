@@ -12,7 +12,8 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Repeat1, Volume2, X } from 'lucide-react';
 import * as audioStore from './audioStore';
 import { parseArtistFromSong } from '../lastfm';
-import { CUSTOM_IMAGES, formatTextWithTags, retryImageOnError } from '../utils';
+import { CUSTOM_IMAGES, formatTextWithTags, Img } from '../utils';
+import { CommentButton } from '../components/CommentButton';
 
 function formatTime(seconds: number) {
   if (!seconds || isNaN(seconds)) return '0:00';
@@ -80,7 +81,7 @@ export function GlobalMiniPlayer() {
           <div className="flex items-center gap-4 min-w-0 md:flex-1 col-start-1 col-end-2 row-start-1 pr-4 md:pr-0">
             <div className="w-14 h-14 rounded-md overflow-hidden shrink-0 bg-white/10 relative shadow-lg">
               {imgUrl && (
-                <img onError={retryImageOnError} src={imgUrl} alt="Cover" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <Img w={120} eager src={imgUrl} alt="Cover" className="w-full h-full object-cover" />
               )}
             </div>
             <div className="min-w-0">
@@ -133,6 +134,15 @@ export function GlobalMiniPlayer() {
           </div>
 
           <div className="flex items-center justify-end gap-3 md:gap-4 col-start-2 col-end-3 row-start-1 md:flex-1">
+            {currentSong.commentKey && currentSong.commentTracker && (
+              <CommentButton
+                tracker={currentSong.commentTracker}
+                entryKey={currentSong.commentKey}
+                entryLabel={currentSong.commentLabel || titleDisplay}
+                entryType="song"
+                className="!p-0 w-8 h-8 justify-center text-white/50 hover:text-white"
+              />
+            )}
             <div className="hidden md:flex items-center gap-2">
               <Volume2 className="w-4 h-4 text-white/50" />
               <input

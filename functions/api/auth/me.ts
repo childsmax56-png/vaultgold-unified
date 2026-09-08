@@ -1,16 +1,18 @@
 import { json, options, getSession } from '../_auth';
+import { ensureProfileColumns } from './_profile-schema';
 
 export const onRequestOptions = options;
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   const session = await getSession(request, env.DB);
   if (!session) return json({ error: 'Unauthorized' }, 401);
+  await ensureProfileColumns(env.DB);
 
   const services = await env.DB.prepare(
-    'SELECT service, access_token, refresh_token, expires_at, service_username FROM linked_services WHERE user_id = ?'
+    'SELECT service, access_token, refresh_token, expires_at, service_username, avatar_url FROM linked_services WHERE user_id = ?'
   ).bind(session.user_id).all<{
     service: string; access_token: string | null; refresh_token: string | null;
-    expires_at: number | null; service_username: string | null;
+    expires_at: number | null; service_username: string | null; avatar_url: string | null;
   }>();
 
   const linked: Record<string, unknown> = {};
@@ -33,15 +35,22 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
       linked.spotify = { access_token, refresh_token: row.refresh_token, expires_at, username: row.service_username };
     } else if (row.service === 'lastfm') {
       linked.lastfm = { session_key: row.access_token, username: row.service_username };
+    } else if (row.service === 'discord') {
+      linked.discord = { username: row.service_username, avatarUrl: row.avatar_url };
+    } else if (row.service === 'reddit') {
+      linked.reddit = { username: row.service_username, avatarUrl: row.avatar_url };
     }
   }
 
-  const userRow = await env.DB.prepare('SELECT custom_tracker_url FROM users WHERE id = ?')
+  const userRow = await env.DB.prepare('SELECT custom_tracker_url, avatar_url FROM users WHERE id = ?')
     .bind(session.user_id)
-    .first<{ custom_tracker_url: string | null }>();
+    .first<{ custom_tracker_url: string | null; avatar_url: string | null }>();
 
   return json({
-    user: { id: session.user_id, username: session.username, email: session.email },
+    user: {
+      id: session.user_id, username: session.username, email: session.email,
+      avatarUrl: userRow?.avatar_url ?? null,
+    },
     linked,
     customTrackerUrl: userRow?.custom_tracker_url ?? null,
   });

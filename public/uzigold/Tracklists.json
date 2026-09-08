@@ -1,3276 +1,3384 @@
-[
+{
+ "legend": [
   {
-    "era": "Purple Thoughtz",
-    "name": "Purple Thoughtz",
-    "date": "Jan 19, 2014",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "GG (Intro)"
-      },
-      {
-        "num": "#2",
-        "name": "White Shirt"
-      },
-      {
-        "num": "#3",
-        "name": "Don't Stop"
-      },
-      {
-        "num": "#4",
-        "name": "Puff"
-      },
-      {
-        "num": "#5",
-        "name": "We Workin"
-      },
-      {
-        "num": "#6",
-        "name": "I Got Bandz"
-      },
-      {
-        "num": "#7",
-        "name": "Cartel"
-      },
-      {
-        "num": "#8",
-        "name": "Did It On My Own"
-      }
-    ]
+   "label": "Unknown",
+   "color": ""
   },
   {
-    "era": "Home Economic$",
-    "name": "Home Economic$ (feat. Reese LaFlare)",
-    "date": "",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Servin (feat. KEY!)"
-      },
-      {
-        "num": "#2",
-        "name": "400 Degrees"
-      },
-      {
-        "num": "#3",
-        "name": "Woe"
-      },
-      {
-        "num": "#4",
-        "name": "Uzi"
-      },
-      {
-        "num": "#5",
-        "name": "Faded"
-      },
-      {
-        "num": "#6",
-        "name": "Pretty Boy Anthem (feat. Lil B)"
-      }
-    ]
+   "label": "Completely Unheard",
+   "color": ""
   },
   {
-    "era": "The Real Uzi",
-    "name": "The Real Uzi",
-    "date": "",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Uzi Intro"
-      },
-      {
-        "num": "#2",
-        "name": "Uzi"
-      },
-      {
-        "num": "#3",
-        "name": "We On It"
-      },
-      {
-        "num": "#4",
-        "name": "Understand"
-      },
-      {
-        "num": "#5",
-        "name": "Trunk Got Birdies"
-      },
-      {
-        "num": "#6",
-        "name": "Whippin"
-      },
-      {
-        "num": "#7",
-        "name": "Decapacitator"
-      },
-      {
-        "num": "#8",
-        "name": "Senor Guapo"
-      },
-      {
-        "num": "#9",
-        "name": "What You Off"
-      },
-      {
-        "num": "#10",
-        "name": "Tropics"
-      },
-      {
-        "num": "#11",
-        "name": "Dumber"
-      },
-      {
-        "num": "#12",
-        "name": "I'm Sorry"
-      },
-      {
-        "num": "#13",
-        "name": "As!an Chicks"
-      },
-      {
-        "num": "#14",
-        "name": "I Don't Know Nuffin"
-      },
-      {
-        "num": "#15",
-        "name": "Plugged In"
-      },
-      {
-        "num": "#16",
-        "name": "Like 50"
-      },
-      {
-        "num": "#17",
-        "name": "Trappin Work"
-      }
-    ]
+   "label": "Snippet Available",
+   "color": ""
   },
   {
-    "era": "Luv Is Rage",
-    "name": "Luv Is Rage",
-    "date": "",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Intro"
-      }
-    ]
+   "label": "Version Available",
+   "color": ""
   },
   {
-    "era": "Luv Is Rage",
-    "name": "Luv Is Rage (Soundcloud Release)",
-    "date": "",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Safe House"
-      },
-      {
-        "num": "#2",
-        "name": "Banned from TV"
-      },
-      {
-        "num": "#3",
-        "name": "Super Saiyan"
-      },
-      {
-        "num": "#4",
-        "name": "7AM"
-      },
-      {
-        "num": "#5",
-        "name": "Yamborghini Dream"
-      },
-      {
-        "num": "#6",
-        "name": "Right Now"
-      },
-      {
-        "num": "#7",
-        "name": "Moist"
-      },
-      {
-        "num": "#8",
-        "name": "Top"
-      },
-      {
-        "num": "#9",
-        "name": "Queso"
-      },
-      {
-        "num": "#10",
-        "name": "All My Chains"
-      },
-      {
-        "num": "#11",
-        "name": "Belly"
-      },
-      {
-        "num": "#12",
-        "name": "Wit My Crew X 1987"
-      },
-      {
-        "num": "#13",
-        "name": "Nuyork Nights at 21"
-      },
-      {
-        "num": "#14",
-        "name": "Enemies"
-      },
-      {
-        "num": "#15",
-        "name": "Ballin"
-      },
-      {
-        "num": "#16",
-        "name": "Paradise"
-      }
-    ]
-  },
-  {
-    "era": "Luv Is Rage",
-    "name": "Luv Is Rage (Streaming Release)",
-    "date": "",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Safe House"
-      },
-      {
-        "num": "#2",
-        "name": "Banned from TV"
-      },
-      {
-        "num": "#3",
-        "name": "Super Saiyan"
-      },
-      {
-        "num": "#4",
-        "name": "7AM"
-      },
-      {
-        "num": "#5",
-        "name": "Yamborghini Dream"
-      },
-      {
-        "num": "#6",
-        "name": "Right Now"
-      },
-      {
-        "num": "#7",
-        "name": "Top"
-      },
-      {
-        "num": "#8",
-        "name": "All My Chains"
-      },
-      {
-        "num": "#9",
-        "name": "Belly"
-      },
-      {
-        "num": "#10",
-        "name": "Enemies"
-      },
-      {
-        "num": "#11",
-        "name": "Ballin"
-      },
-      {
-        "num": "#12",
-        "name": "Paradise"
-      }
-    ]
-  },
-  {
-    "era": "Lil Uzi Vert vs. The World",
-    "name": "Lil Uzi Vert vs. The World",
-    "date": "",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Canadian Goose"
-      },
-      {
-        "num": "#2",
-        "name": "Hi Roller"
-      },
-      {
-        "num": "#3",
-        "name": "Money Longer"
-      },
-      {
-        "num": "#4",
-        "name": "Grab the Wheel"
-      },
-      {
-        "num": "#5",
-        "name": "You Was Right"
-      },
-      {
-        "num": "#6",
-        "name": "Baby Are You Home"
-      },
-      {
-        "num": "#7",
-        "name": "Ps & Qs"
-      },
-      {
-        "num": "#8",
-        "name": "Team Rocket"
-      },
-      {
-        "num": "#9",
-        "name": "Scott and Ramona"
-      }
-    ]
-  },
-  {
-    "era": "The Perfect LUV Tape",
-    "name": "The Perfect LUV Tape",
-    "date": "July 2016",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Do What I Want"
-      },
-      {
-        "num": "#2",
-        "name": "Of Course We Ghetto Flowers"
-      },
-      {
-        "num": "#3",
-        "name": "Original Uzi (4 of Us)"
-      },
-      {
-        "num": "#4",
-        "name": "Money Mitch"
-      },
-      {
-        "num": "#5",
-        "name": "SideLine Watching (Hold Up)"
-      },
-      {
-        "num": "#6",
-        "name": "I Can Drive"
-      },
-      {
-        "num": "#7",
-        "name": "You're Lost"
-      },
-      {
-        "num": "#8",
-        "name": "Erase Your Social"
-      },
-      {
-        "num": "#9",
-        "name": "Ronda (Winners)"
-      },
-      {
-        "num": "#10",
-        "name": "Seven Million"
-      }
-    ]
-  },
-  {
-    "era": "1017 vs. The World",
-    "name": "1017 vs. the World (w/ Gucci Mane)",
-    "date": "November 2016",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Changed My Phone"
-      },
-      {
-        "num": "#2",
-        "name": "Today"
-      },
-      {
-        "num": "#3",
-        "name": "Blonde Brigitte"
-      },
-      {
-        "num": "#4",
-        "name": "Threesome"
-      },
-      {
-        "num": "#5",
-        "name": "Fresh"
-      },
-      {
-        "num": "#6",
-        "name": "In O4"
-      },
-      {
-        "num": "#7",
-        "name": "Secure The Bag"
-      }
-    ]
-  },
-  {
-    "era": "Luv Is Rage 1.5",
-    "name": "Luv Is Rage 1.5",
-    "date": "February 2017",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Boring Shit"
-      },
-      {
-        "num": "#2",
-        "name": "Luv Scars K.o 1600"
-      },
-      {
-        "num": "#3",
-        "name": "XO TOUR Llif3"
-      },
-      {
-        "num": "#4",
-        "name": "YSL"
-      }
-    ]
-  },
-  {
-    "era": "Luv Is Rage [V2]",
-    "name": "Luv Is Rage 2",
-    "date": "Early 2017",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Stay This Way (Flex Up)"
-      },
-      {
-        "num": "#?",
-        "name": "Ain't Enough"
-      },
-      {
-        "num": "#?",
-        "name": "Come This Way"
-      }
-    ]
-  },
-  {
-    "era": "2 Luv Is 2 Rage",
-    "name": "2 Luv Is 2 Rage",
-    "date": "July 2017",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Like This (Alone Time)"
-      },
-      {
-        "num": "#2",
-        "name": "Bag"
-      },
-      {
-        "num": "#3",
-        "name": "Let You Know (Pretty Mami)"
-      },
-      {
-        "num": "#4",
-        "name": "Loaded"
-      },
-      {
-        "num": "#5",
-        "name": "Pet"
-      },
-      {
-        "num": "#6",
-        "name": "Walking Around With A Bank"
-      },
-      {
-        "num": "#7",
-        "name": "Repercussions"
-      }
-    ]
-  },
-  {
-    "era": "Luv Is Rage [V2]",
-    "name": "Luv Is Rage 2",
-    "date": "Mid 2017",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "20 Minutes"
-      },
-      {
-        "num": "#2",
-        "name": "Flex By Mistake"
-      },
-      {
-        "num": "#3",
-        "name": "Let U Know"
-      },
-      {
-        "num": "#4",
-        "name": "This That"
-      },
-      {
-        "num": "#5",
-        "name": "Wolf Moon (Moon Relate)"
-      },
-      {
-        "num": "#6",
-        "name": "Sauce It Up"
-      },
-      {
-        "num": "#7",
-        "name": "For Real"
-      },
-      {
-        "num": "#8",
-        "name": "Half Baked (Early 20 Rager)"
-      },
-      {
-        "num": "#9",
-        "name": "Leonardo"
-      },
-      {
-        "num": "#10",
-        "name": "Break The Bank"
-      },
-      {
-        "num": "#11",
-        "name": "Die Today"
-      },
-      {
-        "num": "#12",
-        "name": "Loaded"
-      },
-      {
-        "num": "#13",
-        "name": "Wondergurl (Automatic)"
-      },
-      {
-        "num": "#14",
-        "name": "Xo Tour Llif3 Remix feat. The Weeknd"
-      }
-    ]
-  },
-  {
-    "era": "Luv Is Rage [V2]",
-    "name": "Luv Is Rage 2",
-    "date": "August 2017",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Two®"
-      },
-      {
-        "num": "#2",
-        "name": "444+222"
-      },
-      {
-        "num": "#3",
-        "name": "Sauce It Up"
-      },
-      {
-        "num": "#4",
-        "name": "No Sleep Leak"
-      },
-      {
-        "num": "#5",
-        "name": "The Way Life Goes"
-      },
-      {
-        "num": "#6",
-        "name": "For Real"
-      },
-      {
-        "num": "#7",
-        "name": "Feelings Mutual"
-      },
-      {
-        "num": "#8",
-        "name": "Neon Guts"
-      },
-      {
-        "num": "#9",
-        "name": "Early 20 Rager"
-      },
-      {
-        "num": "#10",
-        "name": "UnFazed"
-      },
-      {
-        "num": "#11",
-        "name": "Pretty Mami"
-      },
-      {
-        "num": "#12",
-        "name": "How To Talk"
-      },
-      {
-        "num": "#13",
-        "name": "X"
-      },
-      {
-        "num": "#14",
-        "name": "Malfunction"
-      },
-      {
-        "num": "#15",
-        "name": "Dark Queen"
-      },
-      {
-        "num": "#16",
-        "name": "XO Tour Llif3"
-      }
-    ]
-  },
-  {
-    "era": "Luv Is Rage [V2]",
-    "name": "Luv Is Rage 2 (Deluxe)",
-    "date": "November 2017",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Two®"
-      },
-      {
-        "num": "#2",
-        "name": "444+222"
-      },
-      {
-        "num": "#3",
-        "name": "Sauce It Up"
-      },
-      {
-        "num": "#4",
-        "name": "No Sleep Leak"
-      },
-      {
-        "num": "#5",
-        "name": "The Way Life Goes"
-      },
-      {
-        "num": "#6",
-        "name": "For Real"
-      },
-      {
-        "num": "#7",
-        "name": "Feelings Mutual"
-      },
-      {
-        "num": "#8",
-        "name": "Neon Guts"
-      },
-      {
-        "num": "#9",
-        "name": "Early 20 Rager"
-      },
-      {
-        "num": "#10",
-        "name": "UnFazed"
-      },
-      {
-        "num": "#11",
-        "name": "Pretty Mami"
-      },
-      {
-        "num": "#12",
-        "name": "How To Talk"
-      },
-      {
-        "num": "#13",
-        "name": "X"
-      },
-      {
-        "num": "#14",
-        "name": "Malfunction"
-      },
-      {
-        "num": "#15",
-        "name": "Dark Queen"
-      },
-      {
-        "num": "#16",
-        "name": "XO Tour Llif3"
-      },
-      {
-        "num": "#17",
-        "name": "Skir Skirr"
-      },
-      {
-        "num": "#18",
-        "name": "Loaded"
-      },
-      {
-        "num": "#19",
-        "name": "Diamonds All on My Wrist"
-      },
-      {
-        "num": "#20",
-        "name": "20 Min"
-      }
-    ]
-  },
-  {
-    "era": "Luv Is Rage [V2]",
-    "name": "''Album Ideas'' Folder - Luv Is Rage 2 (Deluxe)",
-    "date": "November 2017",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Luv Is Rage [V2]",
-    "name": "Luv Is Rage 2 (Japanese Release)",
-    "date": "December 2017",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Two®"
-      },
-      {
-        "num": "#2",
-        "name": "444+222"
-      },
-      {
-        "num": "#3",
-        "name": "Sauce It Up"
-      },
-      {
-        "num": "#4",
-        "name": "No Sleep Leak"
-      },
-      {
-        "num": "#5",
-        "name": "The Way Life Goes"
-      },
-      {
-        "num": "#6",
-        "name": "For Real"
-      },
-      {
-        "num": "#7",
-        "name": "Feelings Mutual"
-      },
-      {
-        "num": "#8",
-        "name": "Neon Guts"
-      },
-      {
-        "num": "#9",
-        "name": "Early 20 Rager"
-      },
-      {
-        "num": "#10",
-        "name": "UnFazed"
-      },
-      {
-        "num": "#11",
-        "name": "Pretty Mami"
-      },
-      {
-        "num": "#12",
-        "name": "How To Talk"
-      },
-      {
-        "num": "#13",
-        "name": "X"
-      },
-      {
-        "num": "#14",
-        "name": "Malfunction"
-      },
-      {
-        "num": "#15",
-        "name": "Dark Queen"
-      },
-      {
-        "num": "#16",
-        "name": "XO Tour Llif3"
-      },
-      {
-        "num": "#17",
-        "name": "Skir Skirr"
-      },
-      {
-        "num": "#18",
-        "name": "Loaded"
-      },
-      {
-        "num": "#19",
-        "name": "Diamonds All on My Wrist"
-      },
-      {
-        "num": "#20",
-        "name": "20 Min"
-      },
-      {
-        "num": "#21",
-        "name": "Money Longer"
-      },
-      {
-        "num": "#22",
-        "name": "Do What I Want"
-      }
-    ]
-  },
-  {
-    "era": "Lil Uzi Vert vs. The World 2 [V1]",
-    "name": "Lil Uzi Vert vs. the World 2",
-    "date": "2017",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Zoom"
-      }
-    ]
-  },
-  {
-    "era": "Lil Uzi Vert vs. The World 2 [V1]",
-    "name": "Lil Uzi Vert vs. the World 2",
-    "date": "December 2017",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "1600"
-      },
-      {
-        "num": "#?",
-        "name": "Diamonds In My Cartis"
-      },
-      {
-        "num": "#?",
-        "name": "Doin' The Most"
-      },
-      {
-        "num": "#?",
-        "name": "I Live It"
-      },
-      {
-        "num": "#?",
-        "name": "I'm Livin'"
-      },
-      {
-        "num": "#?",
-        "name": "Jamaican Flow"
-      },
-      {
-        "num": "#?",
-        "name": "More Hundreds"
-      },
-      {
-        "num": "#?",
-        "name": "Philly"
-      },
-      {
-        "num": "#?",
-        "name": "Run It Up"
-      },
-      {
-        "num": "#?",
-        "name": "Slatt"
-      },
-      {
-        "num": "#?",
-        "name": "Target"
-      },
-      {
-        "num": "#?",
-        "name": "This Way"
-      },
-      {
-        "num": "#?",
-        "name": "U A Winner"
-      },
-      {
-        "num": "#?",
-        "name": "With Your Girl"
-      },
-      {
-        "num": "#?",
-        "name": "Won't Let Me In"
-      },
-      {
-        "num": "#?",
-        "name": "Zoom"
-      }
-    ]
-  },
-  {
-    "era": "Tsunami Island",
-    "name": "Tsunami Island -  Lil Uzi Paramount StudioA 010218",
-    "date": "January 2018",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Sleep Walk"
-      },
-      {
-        "num": "#2",
-        "name": "Hurt Too (Don't Get Murked Up)"
-      },
-      {
-        "num": "#3",
-        "name": "Keep Me Up"
-      },
-      {
-        "num": "#4",
-        "name": "Killa (Watch Out)"
-      },
-      {
-        "num": "#5",
-        "name": "???"
-      },
-      {
-        "num": "#6",
-        "name": "Jet Blown (Big Flex)"
-      },
-      {
-        "num": "#7",
-        "name": "Location"
-      },
-      {
-        "num": "#8",
-        "name": "???"
-      },
-      {
-        "num": "#9",
-        "name": "No Sir"
-      }
-    ]
-  },
-  {
-    "era": "Tsunami Island",
-    "name": "Tsunami Island",
-    "date": "January 2018",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Killa (Watch Out)"
-      },
-      {
-        "num": "#2",
-        "name": "Hurt Too (Don't Get Murked Up)"
-      },
-      {
-        "num": "#3",
-        "name": "Location"
-      },
-      {
-        "num": "#4",
-        "name": "No Sir"
-      },
-      {
-        "num": "#5",
-        "name": "Sleep Walk"
-      },
-      {
-        "num": "#6",
-        "name": "Big Flex (Jet Blown)"
-      },
-      {
-        "num": "#7",
-        "name": "Get It Back"
-      },
-      {
-        "num": "#8",
-        "name": "???"
-      },
-      {
-        "num": "#9",
-        "name": "???"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V1]",
-    "name": "Eternal Atake",
-    "date": "September 2018",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Cant Save Her"
-      },
-      {
-        "num": "#?",
-        "name": "Dont Wanna Wait"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V1]",
-    "name": "Eternal Atake",
-    "date": "November 2018",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Intro (speculated to be 'Let's go' by tm 88)"
-      },
-      {
-        "num": "#?",
-        "name": "Hunnid"
-      },
-      {
-        "num": "#?",
-        "name": "This Way"
-      },
-      {
-        "num": "#?",
-        "name": "Of Course"
-      },
-      {
-        "num": "#?",
-        "name": "Rockstar Living"
-      },
-      {
-        "num": "#?",
-        "name": "Not The Same"
-      },
-      {
-        "num": "#?",
-        "name": "Run It Up"
-      },
-      {
-        "num": "#?",
-        "name": "Kappa"
-      },
-      {
-        "num": "#?",
-        "name": "All My Guap"
-      },
-      {
-        "num": "#?",
-        "name": "Bands"
-      },
-      {
-        "num": "#?",
-        "name": "It's Going Down"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V1]",
-    "name": "Eternal Atake",
-    "date": "2018",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Can't Save Her"
-      },
-      {
-        "num": "#?",
-        "name": "Weds and Thurs"
-      },
-      {
-        "num": "#?",
-        "name": "Risk It All"
-      },
-      {
-        "num": "#?",
-        "name": "Hunnid"
-      },
-      {
-        "num": "#?",
-        "name": "Secure The Bag"
-      },
-      {
-        "num": "#?",
-        "name": "???"
-      },
-      {
-        "num": "#?",
-        "name": "???"
-      },
-      {
-        "num": "#?",
-        "name": "U A Winner (Although Bugz didn't talk about it, we can speculate with the info with have on that song that it was on it and following ''Risk It All'')"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V1]",
-    "name": "Eternal Atake",
-    "date": "2018",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Of Course"
-      },
-      {
-        "num": "#?",
-        "name": "All My Guap"
-      },
-      {
-        "num": "#?",
-        "name": "Pop"
-      },
-      {
-        "num": "#?",
-        "name": "Up On My Price (Prices)"
-      },
-      {
-        "num": "#?",
-        "name": "Urgency"
-      },
-      {
-        "num": "#?",
-        "name": "Not The Same (Secure The Bag)"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V1]",
-    "name": "Eternal Atake",
-    "date": "2018",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "This Way"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V1]",
-    "name": "Eternal Atake",
-    "date": "2018-2019",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Take My Cake"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V1]",
-    "name": "Eternal Atake",
-    "date": "December 2018",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Sanguine Paradise"
-      },
-      {
-        "num": "#?",
-        "name": "Of Course"
-      },
-      {
-        "num": "#?",
-        "name": "Racks"
-      },
-      {
-        "num": "#?",
-        "name": "New Patek"
-      },
-      {
-        "num": "#?",
-        "name": "Rolli ft. Chief Keef"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V1]",
-    "name": "Eternal Atake",
-    "date": "Janurary 2019",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Eternal Atake"
-      },
-      {
-        "num": "#2",
-        "name": "Better Find Closure"
-      },
-      {
-        "num": "#3",
-        "name": "Of Course"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V2]",
-    "name": "WOD Tape / \"Tranquility\" EP",
-    "date": "2019",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "All My Guap"
-      },
-      {
-        "num": "#?",
-        "name": "Zoom"
-      },
-      {
-        "num": "#?",
-        "name": "Watch This"
-      },
-      {
-        "num": "#?",
-        "name": "Of Course"
-      },
-      {
-        "num": "#?",
-        "name": "Music Cap"
-      },
-      {
-        "num": "#6",
-        "name": "- 10. ???"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V2]",
-    "name": "Eternal Atake",
-    "date": "2019",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Eternal Atake [V2]",
-    "name": "Eternal Atake",
-    "date": "July 2019",
-    "quality": "Clear",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Funny Money"
-      },
-      {
-        "num": "#2",
-        "name": "Bust Me"
-      },
-      {
-        "num": "#3",
-        "name": "Cayy Benji"
-      },
-      {
-        "num": "#4",
-        "name": "Main and My Side"
-      },
-      {
-        "num": "#5",
-        "name": "Nothing To Think About"
-      },
-      {
-        "num": "#6",
-        "name": "Want It That Way"
-      },
-      {
-        "num": "#7",
-        "name": "Move"
-      },
-      {
-        "num": "#8",
-        "name": "POP"
-      },
-      {
-        "num": "#9",
-        "name": "Urgency (feat. SYD)"
-      },
-      {
-        "num": "#10",
-        "name": "Immortal (Move The Same)"
-      },
-      {
-        "num": "#11",
-        "name": "Not The Same (Secure The Bag)"
-      },
-      {
-        "num": "#12",
-        "name": "Up On My Price"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V3]",
-    "name": "Eternal Atake",
-    "date": "2020",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Baby Pluto"
-      },
-      {
-        "num": "#2",
-        "name": "Lo Mein"
-      },
-      {
-        "num": "#3",
-        "name": "Silly Watch"
-      },
-      {
-        "num": "#4",
-        "name": "POP"
-      },
-      {
-        "num": "#5",
-        "name": "You Better Move"
-      },
-      {
-        "num": "#6",
-        "name": "Homecoming"
-      },
-      {
-        "num": "#7",
-        "name": "I'm Sorry"
-      },
-      {
-        "num": "#8",
-        "name": "Celebration Station"
-      },
-      {
-        "num": "#9",
-        "name": "Bigger Than Life"
-      },
-      {
-        "num": "#10",
-        "name": "Chrome Heart Tags"
-      },
-      {
-        "num": "#11",
-        "name": "Bust Me"
-      },
-      {
-        "num": "#12",
-        "name": "Prices"
-      },
-      {
-        "num": "#13",
-        "name": "Urgency"
-      },
-      {
-        "num": "#14",
-        "name": "Venetia"
-      },
-      {
-        "num": "#15",
-        "name": "Secure The Bag"
-      },
-      {
-        "num": "#16",
-        "name": "P2"
-      },
-      {
-        "num": "#17",
-        "name": "Futsal Shuffle 2020 - Bonus Track"
-      },
-      {
-        "num": "#18",
-        "name": "That Way - Bonus Track"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V3]",
-    "name": "Eternal Atake (Deluxe)",
-    "date": "2020",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "??? (feat. Lil Baby)"
-      },
-      {
-        "num": "#?",
-        "name": "Too Brazy (with A Boogie wit da Hoodie)"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake [V3]",
-    "name": "Eternal Atake (Deluxe) - LUV vs. The World 2.",
-    "date": "2020",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Myron"
-      },
-      {
-        "num": "#2",
-        "name": "Lotus"
-      },
-      {
-        "num": "#3",
-        "name": "Bean (Kobe)"
-      },
-      {
-        "num": "#4",
-        "name": "Yessirskii"
-      },
-      {
-        "num": "#5",
-        "name": "Wassup"
-      },
-      {
-        "num": "#6",
-        "name": "Strawberry Peels"
-      },
-      {
-        "num": "#7",
-        "name": "I Can Show You"
-      },
-      {
-        "num": "#8",
-        "name": "Moon Relate"
-      },
-      {
-        "num": "#9",
-        "name": "Come This Way"
-      },
-      {
-        "num": "#10",
-        "name": "Trap This Way (This Way)"
-      },
-      {
-        "num": "#11",
-        "name": "No Auto"
-      },
-      {
-        "num": "#12",
-        "name": "Money Spread"
-      },
-      {
-        "num": "#13",
-        "name": "Got The Guap"
-      },
-      {
-        "num": "#14",
-        "name": "Leaders"
-      },
-      {
-        "num": "#1",
-        "name": "Baby Pluto"
-      },
-      {
-        "num": "#2",
-        "name": "Lo Mein"
-      },
-      {
-        "num": "#3",
-        "name": "Silly Watch"
-      },
-      {
-        "num": "#4",
-        "name": "POP"
-      },
-      {
-        "num": "#5",
-        "name": "You Better Move"
-      },
-      {
-        "num": "#6",
-        "name": "Homecoming"
-      },
-      {
-        "num": "#7",
-        "name": "I'm Sorry"
-      },
-      {
-        "num": "#8",
-        "name": "Celebration Station"
-      },
-      {
-        "num": "#9",
-        "name": "Bigger Than Life"
-      },
-      {
-        "num": "#10",
-        "name": "Chrome Heart Tags"
-      },
-      {
-        "num": "#11",
-        "name": "Bust Me"
-      },
-      {
-        "num": "#12",
-        "name": "Prices"
-      },
-      {
-        "num": "#13",
-        "name": "Urgency"
-      },
-      {
-        "num": "#14",
-        "name": "Venetia"
-      },
-      {
-        "num": "#15",
-        "name": "Secure The Bag"
-      },
-      {
-        "num": "#16",
-        "name": "P2"
-      },
-      {
-        "num": "#17",
-        "name": "Futsal Shuffle 2020 - Bonus Track"
-      },
-      {
-        "num": "#18",
-        "name": "That Way - Bonus Track"
-      }
-    ]
-  },
-  {
-    "era": "Pluto x Baby Pluto",
-    "name": "Pluto x Baby Pluto",
-    "date": "2020",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Stripes Like Burberry"
-      },
-      {
-        "num": "#2",
-        "name": "Marni on Me"
-      },
-      {
-        "num": "#3",
-        "name": "Sleeping on the Floor"
-      },
-      {
-        "num": "#4",
-        "name": "Real Baby Pluto"
-      },
-      {
-        "num": "#5",
-        "name": "Drankin n Smokin"
-      },
-      {
-        "num": "#6",
-        "name": "Million Dollar Play"
-      },
-      {
-        "num": "#7",
-        "name": "Plastic"
-      },
-      {
-        "num": "#8",
-        "name": "That's it"
-      },
-      {
-        "num": "#9",
-        "name": "Bought a Bad Bitch"
-      },
-      {
-        "num": "#10",
-        "name": "Rockstar Chainz"
-      },
-      {
-        "num": "#11",
-        "name": "Lullaby"
-      },
-      {
-        "num": "#12",
-        "name": "She Never Been to Pluto"
-      },
-      {
-        "num": "#13",
-        "name": "Off Dat"
-      },
-      {
-        "num": "#14",
-        "name": "I Don't Wanna Break Up"
-      },
-      {
-        "num": "#15",
-        "name": "Bankroll"
-      },
-      {
-        "num": "#16",
-        "name": "Moment of Clarity"
-      }
-    ]
-  },
-  {
-    "era": "Pluto x Baby Pluto",
-    "name": "Pluto x Baby Pluto (Deluxe)",
-    "date": "2020",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Stripes Like Burberry"
-      },
-      {
-        "num": "#2",
-        "name": "Marni on Me"
-      },
-      {
-        "num": "#3",
-        "name": "Sleeping on the Floor"
-      },
-      {
-        "num": "#4",
-        "name": "Real Baby Pluto"
-      },
-      {
-        "num": "#5",
-        "name": "Drankin n Smokin"
-      },
-      {
-        "num": "#6",
-        "name": "Million Dollar Play"
-      },
-      {
-        "num": "#7",
-        "name": "Plastic"
-      },
-      {
-        "num": "#8",
-        "name": "That's it"
-      },
-      {
-        "num": "#9",
-        "name": "Bought a Bad Bitch"
-      },
-      {
-        "num": "#10",
-        "name": "Rockstar Chainz"
-      },
-      {
-        "num": "#11",
-        "name": "Lullaby"
-      },
-      {
-        "num": "#12",
-        "name": "She Never Been to Pluto"
-      },
-      {
-        "num": "#13",
-        "name": "Off Dat"
-      },
-      {
-        "num": "#14",
-        "name": "I Don't Wanna Break Up"
-      },
-      {
-        "num": "#15",
-        "name": "Bankroll"
-      },
-      {
-        "num": "#16",
-        "name": "Moment of Clarity"
-      },
-      {
-        "num": "#17",
-        "name": "Tic Tac"
-      },
-      {
-        "num": "#18",
-        "name": "My Legacy"
-      },
-      {
-        "num": "#19",
-        "name": "Heart in Pieces"
-      },
-      {
-        "num": "#20",
-        "name": "Because of You"
-      },
-      {
-        "num": "#21",
-        "name": "Bust a Move"
-      },
-      {
-        "num": "#22",
-        "name": "Baby Sauke"
-      },
-      {
-        "num": "#23",
-        "name": "Patek"
-      },
-      {
-        "num": "#24",
-        "name": "Over Your Head"
-      }
-    ]
-  },
-  {
-    "era": "Forever Young",
-    "name": "Soundcloud Tape",
-    "date": "2020",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Proud Of You"
-      },
-      {
-        "num": "#?",
-        "name": "Have You (Super Saiyan 2)"
-      },
-      {
-        "num": "#?",
-        "name": "Hey You (Emeralds, Excuse My French, You Over There)"
-      }
-    ]
-  },
-  {
-    "era": "Forever Young",
-    "name": "December 20th, 2020 Livestream\n(and associated December 2020 Live songs)",
-    "date": "2020",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Heaven (Hold On)"
-      },
-      {
-        "num": "#2",
-        "name": "Homies (Show Me)"
-      },
-      {
-        "num": "#3",
-        "name": "I Can't Lie (Sad Raps)"
-      },
-      {
-        "num": "#4",
-        "name": "I Gotta (Ridiculous)"
-      },
-      {
-        "num": "#5",
-        "name": "Do Gangsters Go to Heaven (Thank Her)"
-      },
-      {
-        "num": "#6",
-        "name": "Sinner (Been Up)"
-      },
-      {
-        "num": "#7",
-        "name": "Not My Fault (Gucci Sneaks)"
-      },
-      {
-        "num": "#8",
-        "name": "The Walk (Naw / I Got Swag)"
-      },
-      {
-        "num": "#9",
-        "name": "Prophet (Find Me / Ashanti)"
-      },
-      {
-        "num": "#10",
-        "name": "King Von (Sasuke 2)"
-      },
-      {
-        "num": "#11",
-        "name": "Here's A Rose"
-      },
-      {
-        "num": "#12",
-        "name": "Street Music"
-      },
-      {
-        "num": "#13",
-        "name": "Good In The Hood"
-      },
-      {
-        "num": "#14",
-        "name": "Cold (Go!)"
-      },
-      {
-        "num": "#15",
-        "name": "On My Line (So many girls on my line)"
-      },
-      {
-        "num": "#16",
-        "name": "Have You (Super Saiyan 2)"
-      },
-      {
-        "num": "#17",
-        "name": "Pluto To Mars"
-      },
-      {
-        "num": "#18",
-        "name": "Old Days (Old Ways)"
-      },
-      {
-        "num": "#19",
-        "name": "Tell Me What You Want (Regular)"
-      },
-      {
-        "num": "#20",
-        "name": "Ok Cool!"
-      },
-      {
-        "num": "#21",
-        "name": "Hey You (Emeralds, Excuse My French, You Over There)"
-      },
-      {
-        "num": "#22",
-        "name": "Look At This"
-      },
-      {
-        "num": "#23",
-        "name": "Guap (What's Up)"
-      },
-      {
-        "num": "#24",
-        "name": "Hold On (Don't Wanna Talk About Nothing)"
-      },
-      {
-        "num": "#25",
-        "name": "I Won't Fall"
-      },
-      {
-        "num": "#26",
-        "name": "Even Steven (Street Shit)"
-      },
-      {
-        "num": "#27",
-        "name": "Carlton (By The Morning, Can't Stop)"
-      },
-      {
-        "num": "#28",
-        "name": "Cancel (Lean In The Fanta)"
-      },
-      {
-        "num": "#29",
-        "name": "Keep Coming (Overseas Money)"
-      },
-      {
-        "num": "#30",
-        "name": "3D My Wrist"
-      },
-      {
-        "num": "#31",
-        "name": "Sleep With a Bag"
-      },
-      {
-        "num": "#32",
-        "name": "Proud of You"
-      },
-      {
-        "num": "#33",
-        "name": "Hold Me Back"
-      },
-      {
-        "num": "#1",
-        "name": "Ridiculous (I Gotta)"
-      },
-      {
-        "num": "#2",
-        "name": "I Take No Breaks"
-      },
-      {
-        "num": "#3",
-        "name": "Porsche (Of Course 2)"
-      },
-      {
-        "num": "#4",
-        "name": "Swap That"
-      },
-      {
-        "num": "#5",
-        "name": "Homies (Goosebumps) {Show Me}"
-      },
-      {
-        "num": "#1",
-        "name": "Fell in Love"
-      },
-      {
-        "num": "#2",
-        "name": "Go Crazy (freestyle)"
-      },
-      {
-        "num": "#3",
-        "name": "Sleep With A Bag"
-      },
-      {
-        "num": "#4",
-        "name": "Finessin Hearts Pt. 2"
-      },
-      {
-        "num": "#1",
-        "name": "Better Than Me (Sad Hours)"
-      }
-    ]
-  },
-  {
-    "era": "Forever Young",
-    "name": "Luv Is Rage 3",
-    "date": "2020",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Finessin Hearts Pt. 2"
-      },
-      {
-        "num": "#?",
-        "name": "Have You (Super Saiyan 2)"
-      },
-      {
-        "num": "#?",
-        "name": "Here's A Rose"
-      }
-    ]
-  },
-  {
-    "era": "Forever Young",
-    "name": "Forever Young",
-    "date": "2020-2021",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Forever Young Intro"
-      },
-      {
-        "num": "#?",
-        "name": "Old Me / Stoner"
-      },
-      {
-        "num": "#?",
-        "name": "Pluto To Mars"
-      },
-      {
-        "num": "#?",
-        "name": "Goose Chase (Sleep With a Bag)"
-      },
-      {
-        "num": "#?",
-        "name": "3D My Wrist"
-      },
-      {
-        "num": "#?",
-        "name": "Movie"
-      },
-      {
-        "num": "#?",
-        "name": "Wetter"
-      },
-      {
-        "num": "#?",
-        "name": "Line"
-      },
-      {
-        "num": "#?",
-        "name": "Mama I'm Sorry"
-      },
-      {
-        "num": "#?",
-        "name": "Old Days"
-      },
-      {
-        "num": "#?",
-        "name": "Fell in Love"
-      },
-      {
-        "num": "#?",
-        "name": "Swap (Swap That)"
-      },
-      {
-        "num": "#?",
-        "name": "That Body"
-      },
-      {
-        "num": "#?",
-        "name": "Good In The Hood"
-      },
-      {
-        "num": "#?",
-        "name": "Cold"
-      },
-      {
-        "num": "#?",
-        "name": "I Gotta"
-      },
-      {
-        "num": "#?",
-        "name": "Glocky"
-      },
-      {
-        "num": "#?",
-        "name": "Party With The Demons"
-      },
-      {
-        "num": "#?",
-        "name": "Finessin Hearts Pt. 2"
-      }
-    ]
-  },
-  {
-    "era": "Forever Young",
-    "name": "The Real Uzi 2",
-    "date": "2021",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "It's A 40"
-      },
-      {
-        "num": "#2",
-        "name": "Bank Teller"
-      },
-      {
-        "num": "#3",
-        "name": "Bankroll (Out of Control)"
-      },
-      {
-        "num": "#4",
-        "name": "Slide"
-      },
-      {
-        "num": "#5",
-        "name": "Skin Crawl"
-      },
-      {
-        "num": "#6",
-        "name": "-> #?. ???"
-      },
-      {
-        "num": "#?",
-        "name": "Backpack"
-      },
-      {
-        "num": "#?",
-        "name": "It's Up"
-      }
-    ]
-  },
-  {
-    "era": "Forever Young",
-    "name": "Forever Young",
-    "date": "2021-2022",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Pink Tape [V1]",
-    "name": "Delta Pink Tape",
-    "date": "November 2021",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Space Cadet"
-      },
-      {
-        "num": "#2",
-        "name": "???"
-      },
-      {
-        "num": "#3",
-        "name": "Aye (Yea!) (Rage Music)"
-      },
-      {
-        "num": "#4",
-        "name": "???"
-      },
-      {
-        "num": "#5",
-        "name": "???"
-      },
-      {
-        "num": "#6",
-        "name": "Final Fantasy (not seen in image)"
-      },
-      {
-        "num": "#?",
-        "name": "Red Wraith"
-      },
-      {
-        "num": "#?",
-        "name": "Lean? (Lean)"
-      },
-      {
-        "num": "#?",
-        "name": "Prove A Point"
-      },
-      {
-        "num": "#?",
-        "name": "I Gotta"
-      },
-      {
-        "num": "#?",
-        "name": "Swap"
-      },
-      {
-        "num": "#?",
-        "name": "Astro Kat"
-      },
-      {
-        "num": "#?",
-        "name": "Hate Me"
-      }
-    ]
-  },
-  {
-    "era": "Pink Tape [V1]",
-    "name": "The Pink Tape",
-    "date": "2022",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Demon High"
-      },
-      {
-        "num": "#?",
-        "name": "Astro Kat"
-      },
-      {
-        "num": "#?",
-        "name": "Party With The Demons"
-      }
-    ]
-  },
-  {
-    "era": "RED & WHITE",
-    "name": "Red & White (Soundcloud V1)",
-    "date": "2022",
-    "quality": "N/A",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Daytona (Denim Tears)"
-      },
-      {
-        "num": "#?",
-        "name": "Rage"
-      }
-    ]
-  },
-  {
-    "era": "RED & WHITE",
-    "name": "Red & White (Fan Groupchat Requests)",
-    "date": "2022",
-    "quality": "N/A",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Up The Opp"
-      },
-      {
-        "num": "#?",
-        "name": "3D My Wrist"
-      },
-      {
-        "num": "#?",
-        "name": "Backspace"
-      },
-      {
-        "num": "#?",
-        "name": "Pour Me Numb"
-      },
-      {
-        "num": "#?",
-        "name": "On My Bank *"
-      },
-      {
-        "num": "#?",
-        "name": "Don't Trap Off No iPhone"
-      },
-      {
-        "num": "#?",
-        "name": "Space Cadet"
-      },
-      {
-        "num": "#?",
-        "name": "I Know"
-      },
-      {
-        "num": "#?",
-        "name": "Cigarette"
-      },
-      {
-        "num": "#?",
-        "name": "For Fun"
-      }
-    ]
-  },
-  {
-    "era": "RED & WHITE",
-    "name": "Red & White (Soundcloud V2)",
-    "date": "2022",
-    "quality": "N/A",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Internet"
-      },
-      {
-        "num": "#?",
-        "name": "Pardon Me"
-      },
-      {
-        "num": "#?",
-        "name": "Pour Me Numb"
-      },
-      {
-        "num": "#?",
-        "name": "Flooded The Face"
-      }
-    ]
-  },
-  {
-    "era": "RED & WHITE",
-    "name": "Red & White (Soundcloud V3)",
-    "date": "July 2022",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Space Cadet"
-      },
-      {
-        "num": "#2",
-        "name": "I Know"
-      },
-      {
-        "num": "#3",
-        "name": "Flex Up"
-      },
-      {
-        "num": "#4",
-        "name": "Hittin My Shoulder"
-      },
-      {
-        "num": "#5",
-        "name": "For Fun"
-      },
-      {
-        "num": "#6",
-        "name": "Believe Me"
-      },
-      {
-        "num": "#7",
-        "name": "Issa Hit"
-      },
-      {
-        "num": "#8",
-        "name": "Glock in My Purse"
-      },
-      {
-        "num": "#9",
-        "name": "Final Fantasy"
-      }
-    ]
-  },
-  {
-    "era": "RED & WHITE",
-    "name": "Red & White (Streaming V1)",
-    "date": "July 2022",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "For Fun"
-      },
-      {
-        "num": "#2",
-        "name": "Cigarette"
-      },
-      {
-        "num": "#3",
-        "name": "Issa Hit"
-      },
-      {
-        "num": "#4",
-        "name": "Glock in My Purse"
-      },
-      {
-        "num": "#5",
-        "name": "F.F."
-      }
-    ]
-  },
-  {
-    "era": "RED & WHITE",
-    "name": "Red & White (Soundcloud V4)",
-    "date": "July 2022",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Space Cadet"
-      },
-      {
-        "num": "#2",
-        "name": "I Know"
-      },
-      {
-        "num": "#3",
-        "name": "Flex Up"
-      },
-      {
-        "num": "#4",
-        "name": "Hittin My Shoulder"
-      },
-      {
-        "num": "#5",
-        "name": "Cigarette"
-      },
-      {
-        "num": "#6",
-        "name": "For Fun"
-      },
-      {
-        "num": "#7",
-        "name": "Believe Me"
-      },
-      {
-        "num": "#8",
-        "name": "Issa Hit"
-      },
-      {
-        "num": "#9",
-        "name": "Glock in My Purse"
-      },
-      {
-        "num": "#10",
-        "name": "Final Fantasy"
-      }
-    ]
-  },
-  {
-    "era": "RED & WHITE",
-    "name": "Red & White (Streaming V2)",
-    "date": "July 2022",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Space Cadet"
-      },
-      {
-        "num": "#2",
-        "name": "I Know"
-      },
-      {
-        "num": "#3",
-        "name": "Flex Up"
-      },
-      {
-        "num": "#4",
-        "name": "Hittin My Shoulder"
-      },
-      {
-        "num": "#5",
-        "name": "For Fun"
-      },
-      {
-        "num": "#6",
-        "name": "Cigarette"
-      },
-      {
-        "num": "#7",
-        "name": "Issa Hit"
-      },
-      {
-        "num": "#8",
-        "name": "Glock in My Purse"
-      },
-      {
-        "num": "#9",
-        "name": "F.F."
-      }
-    ]
-  },
-  {
-    "era": "Pink Tape [V3]",
-    "name": "Pink Tape",
-    "date": "August 2022",
-    "quality": "Blocked",
-    "source": "Secondary",
-    "links": [],
-    "tracks": []
-  },
-  {
-    "era": "Pink Tape [V3]",
-    "name": "Pink Tape",
-    "date": "2023",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "For Me"
-      }
-    ]
-  },
-  {
-    "era": "Pink Tape [V3]",
-    "name": "Pink Tape",
-    "date": "2023",
-    "quality": "Blocked",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Rage Music"
-      },
-      {
-        "num": "#?",
-        "name": "Just Wanna Rock"
-      },
-      {
-        "num": "#?",
-        "name": "Ridiculous"
-      },
-      {
-        "num": "#?",
-        "name": "Patience"
-      },
-      {
-        "num": "#?",
-        "name": "Can't Feel My Body"
-      },
-      {
-        "num": "#?",
-        "name": "Pluto To Mars"
-      },
-      {
-        "num": "#?",
-        "name": "All Alone"
-      },
-      {
-        "num": "#?",
-        "name": "Flooded The Face"
-      },
-      {
-        "num": "#?",
-        "name": "She Took The Molly"
-      }
-    ]
-  },
-  {
-    "era": "Pink Tape [V3]",
-    "name": "Pink Tape",
-    "date": "May-June 2023",
-    "quality": "Blocked",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Flood The Face"
-      },
-      {
-        "num": "#2",
-        "name": "Aye"
-      },
-      {
-        "num": "#3",
-        "name": "Nakamaru"
-      },
-      {
-        "num": "#4",
-        "name": "Heartbeat (gunshots)"
-      },
-      {
-        "num": "#5",
-        "name": "Suicide Door (crow)"
-      },
-      {
-        "num": "#6",
-        "name": "Crush'em"
-      },
-      {
-        "num": "#7",
-        "name": "Life Goes On (if (censored) does it [presumed to have been Baby Keem])/Pluto to Mars"
-      },
-      {
-        "num": "#8",
-        "name": "Days Come and Go"
-      },
-      {
-        "num": "#9",
-        "name": "Mama Im Sorry"
-      },
-      {
-        "num": "#10",
-        "name": "Aim Higher"
-      },
-      {
-        "num": "#11",
-        "name": "Seroquel (ft. Don Toliver)"
-      },
-      {
-        "num": "#12",
-        "name": "Just Wanna Rock"
-      },
-      {
-        "num": "#13",
-        "name": "I Gotta"
-      },
-      {
-        "num": "#14",
-        "name": "For Me (porn)"
-      },
-      {
-        "num": "#15",
-        "name": "Global (thrax)"
-      },
-      {
-        "num": "#16",
-        "name": "All of the Lights Are Off"
-      },
-      {
-        "num": "#17",
-        "name": "Bound"
-      },
-      {
-        "num": "#18",
-        "name": "Fire Alarm"
-      },
-      {
-        "num": "#19",
-        "name": "Chop Suey"
-      },
-      {
-        "num": "#20",
-        "name": "Listen to Me"
-      },
-      {
-        "num": "#21",
-        "name": "Switch My Bitch Up"
-      },
-      {
-        "num": "#22",
-        "name": "Ramona"
-      },
-      {
-        "num": "#23",
-        "name": "Rehab"
-      },
-      {
-        "num": "#24",
-        "name": "Baby Metal"
-      },
-      {
-        "num": "#??",
-        "name": "Geek Monster"
-      },
-      {
-        "num": "#??",
-        "name": "Head Crack"
-      },
-      {
-        "num": "#??",
-        "name": "Tribal Tattoo"
-      },
-      {
-        "num": "#??",
-        "name": "Digits"
-      }
-    ]
-  },
-  {
-    "era": "Pink Tape [V3]",
-    "name": "Pink Tape",
-    "date": "June 2023",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Kray (X2)"
-      },
-      {
-        "num": "#?",
-        "name": "Just Wanna Rock"
-      },
-      {
-        "num": "#?",
-        "name": "Pluto To Mars"
-      },
-      {
-        "num": "#?",
-        "name": "Of Course"
-      },
-      {
-        "num": "#?",
-        "name": "Rage Music (Aye)"
-      },
-      {
-        "num": "#?",
-        "name": "Flooded The Face"
-      },
-      {
-        "num": "#?",
-        "name": "It's On Me"
-      },
-      {
-        "num": "#?",
-        "name": "That Fiya"
-      },
-      {
-        "num": "#?",
-        "name": "Chopper"
-      }
-    ]
-  },
-  {
-    "era": "Pink Tape [V3]",
-    "name": "Pink Tape",
-    "date": "June 2023",
-    "quality": "Blocked",
-    "source": "Leaked",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Pass It"
-      }
-    ]
-  },
-  {
-    "era": "Pink Tape [V3]",
-    "name": "Pink Tape",
-    "date": "June 2023",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Flooded The Face"
-      },
-      {
-        "num": "#2",
-        "name": "Suicide Doors"
-      },
-      {
-        "num": "#3",
-        "name": "Aye"
-      },
-      {
-        "num": "#4",
-        "name": "Crush Em"
-      },
-      {
-        "num": "#5",
-        "name": "Amped"
-      },
-      {
-        "num": "#6",
-        "name": "x2"
-      },
-      {
-        "num": "#7",
-        "name": "Died and Came Back"
-      },
-      {
-        "num": "#8",
-        "name": "Spin Again"
-      },
-      {
-        "num": "#9",
-        "name": "That Fiya"
-      },
-      {
-        "num": "#10",
-        "name": "I Gotta"
-      },
-      {
-        "num": "#11",
-        "name": "Endless Fashion"
-      },
-      {
-        "num": "#12",
-        "name": "Mama, I'm Sorry"
-      },
-      {
-        "num": "#13",
-        "name": "All Alone"
-      },
-      {
-        "num": "#14",
-        "name": "Nakamura"
-      },
-      {
-        "num": "#15",
-        "name": "Just Wanna Rock"
-      },
-      {
-        "num": "#16",
-        "name": "Fire Alarm"
-      },
-      {
-        "num": "#17",
-        "name": "CS"
-      },
-      {
-        "num": "#18",
-        "name": "Werewolf"
-      },
-      {
-        "num": "#19",
-        "name": "Pluto To Mars"
-      },
-      {
-        "num": "#20",
-        "name": "Patience"
-      },
-      {
-        "num": "#21",
-        "name": "Days Come and Go"
-      },
-      {
-        "num": "#22",
-        "name": "Rehab"
-      },
-      {
-        "num": "#23",
-        "name": "The End"
-      },
-      {
-        "num": "#24",
-        "name": "Zoom (Bonus Track)"
-      },
-      {
-        "num": "#25",
-        "name": "Of Course (Bonus Track)"
-      },
-      {
-        "num": "#26",
-        "name": "Shardai (Bonus Track)"
-      }
-    ]
-  },
-  {
-    "era": "Barter 16",
-    "name": "Barter 16 [V1]",
-    "date": "August 2023",
-    "quality": "Blocked",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Intro / Scary Stories"
-      },
-      {
-        "num": "#2",
-        "name": "Barter"
-      },
-      {
-        "num": "#3",
-        "name": "Racks"
-      },
-      {
-        "num": "#4",
-        "name": "RIP Ms. Connie"
-      },
-      {
-        "num": "#5",
-        "name": "Stick Up"
-      },
-      {
-        "num": "#6",
-        "name": "Green Diamonds"
-      },
-      {
-        "num": "#7",
-        "name": "Thigh Pads"
-      },
-      {
-        "num": "#8",
-        "name": "Shar Pei"
-      },
-      {
-        "num": "#9",
-        "name": "Butter In It"
-      },
-      {
-        "num": "#10",
-        "name": "???"
-      },
-      {
-        "num": "#11",
-        "name": "Realest From Philly"
-      },
-      {
-        "num": "#12",
-        "name": "Thug Voice"
-      },
-      {
-        "num": "#13",
-        "name": "Workout (feat. Young Thug)"
-      },
-      {
-        "num": "#14",
-        "name": "Bob Marley"
-      },
-      {
-        "num": "#15",
-        "name": "???"
-      },
-      {
-        "num": "#16",
-        "name": "K-Pop"
-      },
-      {
-        "num": "#17",
-        "name": "???"
-      }
-    ]
-  },
-  {
-    "era": "Barter 16",
-    "name": "Barter 16 [V2]",
-    "date": "August 2023",
-    "quality": "Blocked",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "Intro / B16"
-      },
-      {
-        "num": "#2",
-        "name": "Barter"
-      },
-      {
-        "num": "#3",
-        "name": "Racks"
-      },
-      {
-        "num": "#4",
-        "name": "RIP Ms. Connie"
-      },
-      {
-        "num": "#5",
-        "name": "Free Da Goat (feat. Young Thug)"
-      },
-      {
-        "num": "#6",
-        "name": "Green Diamonds"
-      },
-      {
-        "num": "#7",
-        "name": "Thigh Pads"
-      },
-      {
-        "num": "#8",
-        "name": "Shar Pei"
-      },
-      {
-        "num": "#9",
-        "name": "???"
-      },
-      {
-        "num": "#10",
-        "name": "???"
-      },
-      {
-        "num": "#11",
-        "name": "Thug Voice"
-      },
-      {
-        "num": "#12",
-        "name": "Jet (BK)"
-      },
-      {
-        "num": "#13",
-        "name": "Guarantee (feat. Young Thug)"
-      },
-      {
-        "num": "#14",
-        "name": "Realest From Philly"
-      },
-      {
-        "num": "#15",
-        "name": "Workout (feat. Young Thug)"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake 2",
-    "name": "Eternal Atake 2",
-    "date": "2024",
-    "quality": "Blocked",
-    "source": "Secondary",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#?",
-        "name": "Stay Down"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake 2",
-    "name": "Eternal Atake 2",
-    "date": "October 2024",
-    "quality": "Blocked",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "???"
-      },
-      {
-        "num": "#2",
-        "name": "???"
-      },
-      {
-        "num": "#3",
-        "name": "W.. ..y (Wocky)"
-      },
-      {
-        "num": "#4",
-        "name": "...$H"
-      },
-      {
-        "num": "#5",
-        "name": "S.. ..IT (Stop It)"
-      },
-      {
-        "num": "#6",
-        "name": "???"
-      },
-      {
-        "num": "#7",
-        "name": "???"
-      },
-      {
-        "num": "#8",
-        "name": "???"
-      },
-      {
-        "num": "#9",
-        "name": "???"
-      },
-      {
-        "num": "#10",
-        "name": "???"
-      },
-      {
-        "num": "#11",
-        "name": "L..."
-      },
-      {
-        "num": "#12",
-        "name": "N..."
-      },
-      {
-        "num": "#13",
-        "name": "???"
-      },
-      {
-        "num": "#14",
-        "name": "...T"
-      },
-      {
-        "num": "#15",
-        "name": "Chill ebro"
-      },
-      {
-        "num": "#16",
-        "name": "???"
-      },
-      {
-        "num": "#17",
-        "name": "???"
-      },
-      {
-        "num": "#18",
-        "name": "???"
-      },
-      {
-        "num": "#19",
-        "name": "???"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake 2",
-    "name": "Eternal Atake 2",
-    "date": "October 2024",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "I'm Cooked (skit) (feat. bling bling)"
-      },
-      {
-        "num": "#2",
-        "name": "Don't think they ready (pre-game) (Light Year (Practice))"
-      },
-      {
-        "num": "#3",
-        "name": "Aura (intro) (Meteor Man)"
-      },
-      {
-        "num": "#4",
-        "name": "Wocky slush (Paars In The Mars)"
-      },
-      {
-        "num": "#5",
-        "name": "Big time rush (The Rush)"
-      },
-      {
-        "num": "#6",
-        "name": "Stop it (Not An Option)"
-      },
-      {
-        "num": "#7",
-        "name": "Stank (She Stank)"
-      },
-      {
-        "num": "#8",
-        "name": "Leslie (Mr Chow)"
-      },
-      {
-        "num": "#9",
-        "name": "Lyft (Lyft Em Up)"
-      },
-      {
-        "num": "#10",
-        "name": "How ? (Chips and Dip)"
-      },
-      {
-        "num": "#11",
-        "name": "Eye 2 Eye (song cry) (Black Hole)"
-      },
-      {
-        "num": "#12",
-        "name": "Don't do it (Chill Bae)"
-      },
-      {
-        "num": "#13",
-        "name": "Na uh uh (Goddard Song)"
-      },
-      {
-        "num": "#14",
-        "name": "Potion (PerkySex)"
-      },
-      {
-        "num": "#15",
-        "name": "All That (Conceited)"
-      },
-      {
-        "num": "#16",
-        "name": "Chill ebro"
-      },
-      {
-        "num": "#17",
-        "name": "McWhistle leak (Blow Da Whistle)"
-      },
-      {
-        "num": "#18",
-        "name": "floatin (prod. Maaly Raw)"
-      },
-      {
-        "num": "#19",
-        "name": "FTB (Fucking The Bank)"
-      },
-      {
-        "num": "#20",
-        "name": "Thank you for listening"
-      }
-    ]
-  },
-  {
-    "era": "Eternal Atake 2",
-    "name": "Eternal Atake 2",
-    "date": "November 2024",
-    "quality": "Clear",
-    "source": "Uzi",
-    "links": [],
-    "tracks": [
-      {
-        "num": "#1",
-        "name": "We Good"
-      },
-      {
-        "num": "#2",
-        "name": "Light Year (Practice)"
-      },
-      {
-        "num": "#3",
-        "name": "Meteor Man"
-      },
-      {
-        "num": "#4",
-        "name": "Paars In The Mars"
-      },
-      {
-        "num": "#5",
-        "name": "The Rush (feat. Big Time Rush)"
-      },
-      {
-        "num": "#6",
-        "name": "Not An Option"
-      },
-      {
-        "num": "#7",
-        "name": "She Stank"
-      },
-      {
-        "num": "#8",
-        "name": "Mr Chow"
-      },
-      {
-        "num": "#9",
-        "name": "Lyft Em Up"
-      },
-      {
-        "num": "#10",
-        "name": "Chips and Dip"
-      },
-      {
-        "num": "#11",
-        "name": "Black Hole"
-      },
-      {
-        "num": "#12",
-        "name": "Chill Bae"
-      },
-      {
-        "num": "#13",
-        "name": "Goddard Song"
-      },
-      {
-        "num": "#14",
-        "name": "PerkySex"
-      },
-      {
-        "num": "#15",
-        "name": "Conceited"
-      },
-      {
-        "num": "#16",
-        "name": "Space High"
-      }
-    ]
+   "label": "Confirmed Version Available",
+   "color": ""
   }
-]
+ ],
+ "albums": [
+  {
+   "era": "Purple Thoughtz",
+   "name": "Purple Thoughtz",
+   "date": "Jan 19, 2014",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the released version of Purple Thoughtz.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "GG (Intro)"
+    },
+    {
+     "num": "#2",
+     "name": "White Shirt"
+    },
+    {
+     "num": "#3",
+     "name": "Don't Stop"
+    },
+    {
+     "num": "#4",
+     "name": "Puff"
+    },
+    {
+     "num": "#5",
+     "name": "We Workin"
+    },
+    {
+     "num": "#6",
+     "name": "I Got Bandz"
+    },
+    {
+     "num": "#7",
+     "name": "Cartel"
+    },
+    {
+     "num": "#8",
+     "name": "Did It On My Own"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Home Economic$",
+   "name": "Home Economic$ (feat. Reese LaFlare)",
+   "date": "",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the scrapped collab with Reese LaFlare.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Servin (feat. KEY!)"
+    },
+    {
+     "num": "#2",
+     "name": "400 Degrees"
+    },
+    {
+     "num": "#3",
+     "name": "Woe"
+    },
+    {
+     "num": "#4",
+     "name": "Uzi"
+    },
+    {
+     "num": "#5",
+     "name": "Faded"
+    },
+    {
+     "num": "#6",
+     "name": "Pretty Boy Anthem (feat. Lil B)"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "The Real Uzi",
+   "name": "The Real Uzi",
+   "date": "",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the released version of The Real Uzi.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Uzi Intro"
+    },
+    {
+     "num": "#2",
+     "name": "Uzi"
+    },
+    {
+     "num": "#3",
+     "name": "We On It"
+    },
+    {
+     "num": "#4",
+     "name": "Understand"
+    },
+    {
+     "num": "#5",
+     "name": "Trunk Got Birdies"
+    },
+    {
+     "num": "#6",
+     "name": "Whippin"
+    },
+    {
+     "num": "#7",
+     "name": "Decapacitator"
+    },
+    {
+     "num": "#8",
+     "name": "Senor Guapo"
+    },
+    {
+     "num": "#9",
+     "name": "What You Off"
+    },
+    {
+     "num": "#10",
+     "name": "Tropics"
+    },
+    {
+     "num": "#11",
+     "name": "Dumber"
+    },
+    {
+     "num": "#12",
+     "name": "I'm Sorry"
+    },
+    {
+     "num": "#13",
+     "name": "As!an Chicks"
+    },
+    {
+     "num": "#14",
+     "name": "I Don't Know Nuffin"
+    },
+    {
+     "num": "#15",
+     "name": "Plugged In"
+    },
+    {
+     "num": "#16",
+     "name": "Like 50"
+    },
+    {
+     "num": "#17",
+     "name": "Trappin Work"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage",
+   "name": "Luv Is Rage",
+   "date": "",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Intro was allegedly the original intro track to an early copy of Luv Is Rage. It's unknown what else was on this version of the album.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Intro"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Luv Is Rage",
+   "name": "Luv Is Rage (Soundcloud Release)",
+   "date": "",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the soundcloud release of Luv Is Rage.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Safe House"
+    },
+    {
+     "num": "#2",
+     "name": "Banned from TV"
+    },
+    {
+     "num": "#3",
+     "name": "Super Saiyan"
+    },
+    {
+     "num": "#4",
+     "name": "7AM"
+    },
+    {
+     "num": "#5",
+     "name": "Yamborghini Dream"
+    },
+    {
+     "num": "#6",
+     "name": "Right Now"
+    },
+    {
+     "num": "#7",
+     "name": "Moist"
+    },
+    {
+     "num": "#8",
+     "name": "Top"
+    },
+    {
+     "num": "#9",
+     "name": "Queso"
+    },
+    {
+     "num": "#10",
+     "name": "All My Chains"
+    },
+    {
+     "num": "#11",
+     "name": "Belly"
+    },
+    {
+     "num": "#12",
+     "name": "Wit My Crew X 1987"
+    },
+    {
+     "num": "#13",
+     "name": "Nuyork Nights at 21"
+    },
+    {
+     "num": "#14",
+     "name": "Enemies"
+    },
+    {
+     "num": "#15",
+     "name": "Ballin"
+    },
+    {
+     "num": "#16",
+     "name": "Paradise"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage",
+   "name": "Luv Is Rage (Streaming Release)",
+   "date": "",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the streaming release of Luv Is Rage.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Safe House"
+    },
+    {
+     "num": "#2",
+     "name": "Banned from TV"
+    },
+    {
+     "num": "#3",
+     "name": "Super Saiyan"
+    },
+    {
+     "num": "#4",
+     "name": "7AM"
+    },
+    {
+     "num": "#5",
+     "name": "Yamborghini Dream"
+    },
+    {
+     "num": "#6",
+     "name": "Right Now"
+    },
+    {
+     "num": "#7",
+     "name": "Top"
+    },
+    {
+     "num": "#8",
+     "name": "All My Chains"
+    },
+    {
+     "num": "#9",
+     "name": "Belly"
+    },
+    {
+     "num": "#10",
+     "name": "Enemies"
+    },
+    {
+     "num": "#11",
+     "name": "Ballin"
+    },
+    {
+     "num": "#12",
+     "name": "Paradise"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Lil Uzi Vert vs. The World",
+   "name": "Lil Uzi Vert vs. The World",
+   "date": "",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of Lil Uzi Vert vs. The World.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Canadian Goose"
+    },
+    {
+     "num": "#2",
+     "name": "Hi Roller"
+    },
+    {
+     "num": "#3",
+     "name": "Money Longer"
+    },
+    {
+     "num": "#4",
+     "name": "Grab the Wheel"
+    },
+    {
+     "num": "#5",
+     "name": "You Was Right"
+    },
+    {
+     "num": "#6",
+     "name": "Baby Are You Home"
+    },
+    {
+     "num": "#7",
+     "name": "Ps & Qs"
+    },
+    {
+     "num": "#8",
+     "name": "Team Rocket"
+    },
+    {
+     "num": "#9",
+     "name": "Scott and Ramona"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "The Perfect LUV Tape",
+   "name": "The Perfect LUV Tape",
+   "date": "July 2016",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of The Perfect LUV Tape.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Do What I Want"
+    },
+    {
+     "num": "#2",
+     "name": "Of Course We Ghetto Flowers"
+    },
+    {
+     "num": "#3",
+     "name": "Original Uzi (4 of Us)"
+    },
+    {
+     "num": "#4",
+     "name": "Money Mitch"
+    },
+    {
+     "num": "#5",
+     "name": "SideLine Watching (Hold Up)"
+    },
+    {
+     "num": "#6",
+     "name": "I Can Drive"
+    },
+    {
+     "num": "#7",
+     "name": "You're Lost"
+    },
+    {
+     "num": "#8",
+     "name": "Erase Your Social"
+    },
+    {
+     "num": "#9",
+     "name": "Ronda (Winners)"
+    },
+    {
+     "num": "#10",
+     "name": "Seven Million"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "1017 Vs. The World",
+   "name": "1017 vs. the World (w/ Gucci Mane)",
+   "date": "November 2016",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of 1017 vs. the World.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Changed My Phone"
+    },
+    {
+     "num": "#2",
+     "name": "Today"
+    },
+    {
+     "num": "#3",
+     "name": "Blonde Brigitte"
+    },
+    {
+     "num": "#4",
+     "name": "Threesome"
+    },
+    {
+     "num": "#5",
+     "name": "Fresh"
+    },
+    {
+     "num": "#6",
+     "name": "In O4"
+    },
+    {
+     "num": "#7",
+     "name": "Secure The Bag"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage 1.5",
+   "name": "Luv Is Rage 1.5",
+   "date": "February 2017",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of Luv Is Rage 1.5.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Boring Shit"
+    },
+    {
+     "num": "#2",
+     "name": "Luv Scars K.o 1600"
+    },
+    {
+     "num": "#3",
+     "name": "XO TOUR Llif3"
+    },
+    {
+     "num": "#4",
+     "name": "YSL"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage [V2]",
+   "name": "Luv Is Rage 2",
+   "date": "Early 2017",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "An early tracklist for Luv Is Rage 2 from early 2017.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Stay This Way (Flex Up)"
+    },
+    {
+     "num": "#?",
+     "name": "Ain't Enough"
+    },
+    {
+     "num": "#?",
+     "name": "Come This Way"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "2 Luv Is 2 Rage",
+   "name": "2 Luv Is 2 Rage",
+   "date": "July 2017",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of 2 Luv Is 2 Rage",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Like This (Alone Time)"
+    },
+    {
+     "num": "#2",
+     "name": "Bag"
+    },
+    {
+     "num": "#3",
+     "name": "Let You Know (Pretty Mami)"
+    },
+    {
+     "num": "#4",
+     "name": "Loaded"
+    },
+    {
+     "num": "#5",
+     "name": "Pet"
+    },
+    {
+     "num": "#6",
+     "name": "Walking Around With A Bank"
+    },
+    {
+     "num": "#7",
+     "name": "Repercussions"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage [V2]",
+   "name": "Luv Is Rage 2",
+   "date": "Mid 2017",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for an earlier version of Luv Is Rage 2",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "20 Minutes"
+    },
+    {
+     "num": "#2",
+     "name": "Flex By Mistake"
+    },
+    {
+     "num": "#3",
+     "name": "Let U Know"
+    },
+    {
+     "num": "#4",
+     "name": "This That"
+    },
+    {
+     "num": "#5",
+     "name": "Wolf Moon (Moon Relate)"
+    },
+    {
+     "num": "#6",
+     "name": "Sauce It Up"
+    },
+    {
+     "num": "#7",
+     "name": "For Real"
+    },
+    {
+     "num": "#8",
+     "name": "Half Baked (Early 20 Rager)"
+    },
+    {
+     "num": "#9",
+     "name": "Leonardo"
+    },
+    {
+     "num": "#10",
+     "name": "Break The Bank"
+    },
+    {
+     "num": "#11",
+     "name": "Die Today"
+    },
+    {
+     "num": "#12",
+     "name": "Loaded"
+    },
+    {
+     "num": "#13",
+     "name": "Wondergurl (Automatic)"
+    },
+    {
+     "num": "#14",
+     "name": "Xo Tour Llif3 Remix feat. The Weeknd"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage [V2]",
+   "name": "Luv Is Rage 2",
+   "date": "August 2017",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of Luv Is Rage 2",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Two®"
+    },
+    {
+     "num": "#2",
+     "name": "444+222"
+    },
+    {
+     "num": "#3",
+     "name": "Sauce It Up"
+    },
+    {
+     "num": "#4",
+     "name": "No Sleep Leak"
+    },
+    {
+     "num": "#5",
+     "name": "The Way Life Goes"
+    },
+    {
+     "num": "#6",
+     "name": "For Real"
+    },
+    {
+     "num": "#7",
+     "name": "Feelings Mutual"
+    },
+    {
+     "num": "#8",
+     "name": "Neon Guts"
+    },
+    {
+     "num": "#9",
+     "name": "Early 20 Rager"
+    },
+    {
+     "num": "#10",
+     "name": "UnFazed"
+    },
+    {
+     "num": "#11",
+     "name": "Pretty Mami"
+    },
+    {
+     "num": "#12",
+     "name": "How To Talk"
+    },
+    {
+     "num": "#13",
+     "name": "X"
+    },
+    {
+     "num": "#14",
+     "name": "Malfunction"
+    },
+    {
+     "num": "#15",
+     "name": "Dark Queen"
+    },
+    {
+     "num": "#16",
+     "name": "XO Tour Llif3"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage [V2]",
+   "name": "Luv Is Rage 2 (Deluxe)",
+   "date": "November 2017",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of Luv Is Rage 2 (Deluxe)",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Two®"
+    },
+    {
+     "num": "#2",
+     "name": "444+222"
+    },
+    {
+     "num": "#3",
+     "name": "Sauce It Up"
+    },
+    {
+     "num": "#4",
+     "name": "No Sleep Leak"
+    },
+    {
+     "num": "#5",
+     "name": "The Way Life Goes"
+    },
+    {
+     "num": "#6",
+     "name": "For Real"
+    },
+    {
+     "num": "#7",
+     "name": "Feelings Mutual"
+    },
+    {
+     "num": "#8",
+     "name": "Neon Guts"
+    },
+    {
+     "num": "#9",
+     "name": "Early 20 Rager"
+    },
+    {
+     "num": "#10",
+     "name": "UnFazed"
+    },
+    {
+     "num": "#11",
+     "name": "Pretty Mami"
+    },
+    {
+     "num": "#12",
+     "name": "How To Talk"
+    },
+    {
+     "num": "#13",
+     "name": "X"
+    },
+    {
+     "num": "#14",
+     "name": "Malfunction"
+    },
+    {
+     "num": "#15",
+     "name": "Dark Queen"
+    },
+    {
+     "num": "#16",
+     "name": "XO Tour Llif3"
+    },
+    {
+     "num": "#17",
+     "name": "Skir Skirr"
+    },
+    {
+     "num": "#18",
+     "name": "Loaded"
+    },
+    {
+     "num": "#19",
+     "name": "Diamonds All on My Wrist"
+    },
+    {
+     "num": "#20",
+     "name": "20 Min"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage [V2]",
+   "name": "''Album Ideas'' Folder - Luv Is Rage 2 (Deluxe)",
+   "date": "November 2017",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "A folder was found titled ''Album Idea'' and dated to November 20th, 2017. Strangely includes songs that already released on Luv Is Rage 2 and Playboi Carti's Self-Titled.\n\nUzi 808 All My Friends Are Dead 1 26 edit - Bm.m4a\nUzi Kodie Shane Left Me Lone - Bm.m4a\nUzi TM88 Loaded - Gm.m4a\nUzi Nowadays - Ebm.m4a\n01 Uzi Pablo Zabombafoo - Abm.m4a\nUzi Maaly Raw Half Baked rough - Ebm.m4a\nUzi Raf slowed - rough - Cm.m4a\nUzi Just Keep Her - F.m4a \nUzi 20 Till 1 1 16 edi - Abm.m4a\nUzi Cart 2 16 LMM - Am.m4a\nUzi 200 My Dash - Gb.m4a\nUzi Addy (Drugs) - Eb.m4a\nLil Uzi Vert - UZI CARTI SQAUD MM - Dm.m4a",
+   "tracks": [],
+   "availability": "Clear"
+  },
+  {
+   "era": "Luv Is Rage [V2]",
+   "name": "Luv Is Rage 2 (Japanese Release)",
+   "date": "December 2017",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official japanese release of Luv Is Rage 2",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Two®"
+    },
+    {
+     "num": "#2",
+     "name": "444+222"
+    },
+    {
+     "num": "#3",
+     "name": "Sauce It Up"
+    },
+    {
+     "num": "#4",
+     "name": "No Sleep Leak"
+    },
+    {
+     "num": "#5",
+     "name": "The Way Life Goes"
+    },
+    {
+     "num": "#6",
+     "name": "For Real"
+    },
+    {
+     "num": "#7",
+     "name": "Feelings Mutual"
+    },
+    {
+     "num": "#8",
+     "name": "Neon Guts"
+    },
+    {
+     "num": "#9",
+     "name": "Early 20 Rager"
+    },
+    {
+     "num": "#10",
+     "name": "UnFazed"
+    },
+    {
+     "num": "#11",
+     "name": "Pretty Mami"
+    },
+    {
+     "num": "#12",
+     "name": "How To Talk"
+    },
+    {
+     "num": "#13",
+     "name": "X"
+    },
+    {
+     "num": "#14",
+     "name": "Malfunction"
+    },
+    {
+     "num": "#15",
+     "name": "Dark Queen"
+    },
+    {
+     "num": "#16",
+     "name": "XO Tour Llif3"
+    },
+    {
+     "num": "#17",
+     "name": "Skir Skirr"
+    },
+    {
+     "num": "#18",
+     "name": "Loaded"
+    },
+    {
+     "num": "#19",
+     "name": "Diamonds All on My Wrist"
+    },
+    {
+     "num": "#20",
+     "name": "20 Min"
+    },
+    {
+     "num": "#21",
+     "name": "Money Longer"
+    },
+    {
+     "num": "#22",
+     "name": "Do What I Want"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Lil Uzi Vert vs. The World 2 [V1]",
+   "name": "Lil Uzi Vert vs. the World 2",
+   "date": "2017",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "\"Zoom\" was said to be on a Lil Uzi Vert vs. The World 2 tracklist. Nothing else is known about this copy of the album.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Zoom"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Lil Uzi Vert vs. The World 2 [V1]",
+   "name": "Lil Uzi Vert vs. the World 2",
+   "date": "December 2017",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "December 2017 idea folder, in alphabetical order.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "1600"
+    },
+    {
+     "num": "#?",
+     "name": "Diamonds In My Cartis"
+    },
+    {
+     "num": "#?",
+     "name": "Doin' The Most"
+    },
+    {
+     "num": "#?",
+     "name": "I Live It"
+    },
+    {
+     "num": "#?",
+     "name": "I'm Livin'"
+    },
+    {
+     "num": "#?",
+     "name": "Jamaican Flow"
+    },
+    {
+     "num": "#?",
+     "name": "More Hundreds"
+    },
+    {
+     "num": "#?",
+     "name": "Philly"
+    },
+    {
+     "num": "#?",
+     "name": "Run It Up"
+    },
+    {
+     "num": "#?",
+     "name": "Slatt"
+    },
+    {
+     "num": "#?",
+     "name": "Target"
+    },
+    {
+     "num": "#?",
+     "name": "This Way"
+    },
+    {
+     "num": "#?",
+     "name": "U A Winner"
+    },
+    {
+     "num": "#?",
+     "name": "With Your Girl"
+    },
+    {
+     "num": "#?",
+     "name": "Won't Let Me In"
+    },
+    {
+     "num": "#?",
+     "name": "Zoom"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Tsunami Island",
+   "name": "Tsunami Island -  Lil Uzi Paramount StudioA 010218",
+   "date": "January 2018",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Tracklist of recorded songs on Jan 2, 2018 for \"Tsunami Island\", based off OG Filenames",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Sleep Walk"
+    },
+    {
+     "num": "#2",
+     "name": "Hurt Too (Don't Get Murked Up)"
+    },
+    {
+     "num": "#3",
+     "name": "Keep Me Up"
+    },
+    {
+     "num": "#4",
+     "name": "Killa (Watch Out)"
+    },
+    {
+     "num": "#5",
+     "name": "???"
+    },
+    {
+     "num": "#6",
+     "name": "Jet Blown (Big Flex)"
+    },
+    {
+     "num": "#7",
+     "name": "Location"
+    },
+    {
+     "num": "#8",
+     "name": "???"
+    },
+    {
+     "num": "#9",
+     "name": "No Sir"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Tsunami Island",
+   "name": "Tsunami Island",
+   "date": "January 2018",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for \"Tsunami Island\", leaked by Chris. However, this may be inaccurate",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Killa (Watch Out)"
+    },
+    {
+     "num": "#2",
+     "name": "Hurt Too (Don't Get Murked Up)"
+    },
+    {
+     "num": "#3",
+     "name": "Location"
+    },
+    {
+     "num": "#4",
+     "name": "No Sir"
+    },
+    {
+     "num": "#5",
+     "name": "Sleep Walk"
+    },
+    {
+     "num": "#6",
+     "name": "Big Flex (Jet Blown)"
+    },
+    {
+     "num": "#7",
+     "name": "Get It Back"
+    },
+    {
+     "num": "#8",
+     "name": "???"
+    },
+    {
+     "num": "#9",
+     "name": "???"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V1]",
+   "name": "Eternal Atake",
+   "date": "September 2018",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Partial September 2018 tracklist for \"Eternal Atake\". Full tracklist has yet to be revealed. The original partial tracklist that was listed ended up being fake.\n \n#? Our Year\n#?.Cant Save Her\n#?.Dont Wanna Wait",
+   "tracks": [],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V1]",
+   "name": "Eternal Atake",
+   "date": "November 2018",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "November 2018 tracklist for \"Eternal Atake\", posted by @uzirareupdates at some point. It's unknown if we have the full tracklist, but incredibly unlikely. Uzi confirmed that It's Going Down was on a November 2018 tracklist likely being this one.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro (speculated to be 'Let's go' by tm 88)"
+    },
+    {
+     "num": "#?",
+     "name": "Hunnid"
+    },
+    {
+     "num": "#?",
+     "name": "This Way"
+    },
+    {
+     "num": "#?",
+     "name": "Of Course"
+    },
+    {
+     "num": "#?",
+     "name": "Rockstar Living"
+    },
+    {
+     "num": "#?",
+     "name": "Not The Same"
+    },
+    {
+     "num": "#?",
+     "name": "Run It Up"
+    },
+    {
+     "num": "#?",
+     "name": "Kappa"
+    },
+    {
+     "num": "#?",
+     "name": "All My Guap"
+    },
+    {
+     "num": "#?",
+     "name": "Bands"
+    },
+    {
+     "num": "#?",
+     "name": "It's Going Down"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V1]",
+   "name": "Eternal Atake",
+   "date": "2018",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "A copy of EA had 8 placements from producer Bugz Ronin. In a August 2025 QnA, he revealed some of the song that were on said tracklist (it was all that he could remember at the time, didn't seem to intentionally leave out info)",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Can't Save Her"
+    },
+    {
+     "num": "#?",
+     "name": "Weds and Thurs"
+    },
+    {
+     "num": "#?",
+     "name": "Risk It All"
+    },
+    {
+     "num": "#?",
+     "name": "Hunnid"
+    },
+    {
+     "num": "#?",
+     "name": "Secure The Bag"
+    },
+    {
+     "num": "#?",
+     "name": "???"
+    },
+    {
+     "num": "#?",
+     "name": "???"
+    },
+    {
+     "num": "#?",
+     "name": "U A Winner (Although Bugz didn't talk about it, we can speculate with the info with have on that song that it was on it and following ''Risk It All'')"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V1]",
+   "name": "Eternal Atake",
+   "date": "2018",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Pop, Prices, Urgency and a few others were said to be on several Eternal Atake tracklists.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Of Course"
+    },
+    {
+     "num": "#?",
+     "name": "All My Guap"
+    },
+    {
+     "num": "#?",
+     "name": "Pop"
+    },
+    {
+     "num": "#?",
+     "name": "Up On My Price (Prices)"
+    },
+    {
+     "num": "#?",
+     "name": "Urgency"
+    },
+    {
+     "num": "#?",
+     "name": "Not The Same (Secure The Bag)"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V1]",
+   "name": "Eternal Atake",
+   "date": "2018",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "This Way was said to be on 5 different Eternal Atake tracklists. It's unknown what all these tracklists contained.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "This Way"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V1]",
+   "name": "Eternal Atake",
+   "date": "2018-2019",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Take My Cake was confirmed to be on some EA tracklists in 2018 and in 2019.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Take My Cake"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V1]",
+   "name": "Eternal Atake",
+   "date": "December 2018",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Sanguine Paradise Alt. mix Bounced December 14, 2018. Just 6 days after announcing the album was finished, at a live show - Well Fargo Center, PA.\n\n#?.Sanguine Paradise\n#?.Of Course\n#?.Racks\n#?.New Patek \n#?.Rolli ft. Chief Keef",
+   "tracks": [],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V1]",
+   "name": "Eternal Atake",
+   "date": "Janurary 2019",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Partial January 2019 tracklist for \"Eternal Atake\". Full tracklist has yet to be revealed.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Eternal Atake"
+    },
+    {
+     "num": "#2",
+     "name": "Better Find Closure"
+    },
+    {
+     "num": "#3",
+     "name": "Of Course"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V2]",
+   "name": "WOD Tape / \"Tranquility\" EP",
+   "date": "2019",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "A rumored 10 track EP consisting only of songs produced by Working On Dying. It was supposed to drop in March 2019, but Uzi's label wouldn't allow it. Uzi dropped \"Free Uzi\" in response, causing Eternal Atake to be delayed. There's a chance that this EP is fake, as this hasn't been confirmed to exist to this day.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "All My Guap"
+    },
+    {
+     "num": "#?",
+     "name": "Zoom"
+    },
+    {
+     "num": "#?",
+     "name": "Watch This"
+    },
+    {
+     "num": "#?",
+     "name": "Of Course"
+    },
+    {
+     "num": "#?",
+     "name": "Music Cap"
+    },
+    {
+     "num": "#6",
+     "name": "- 10. ???"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V2]",
+   "name": "Eternal Atake",
+   "date": "2019",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for a 2019 version of Eternal Atake owned by Caskets, very similar to May 2019 tracklist.\n\nAtake Intro (WondaGurl)\n It's Going Down\n London\n Zoom\n Rose Gold\n Pack That (The Funny Way)\n Bust Me\n Sanguine Paradise\n Pop Ya\n Up On My Price\n Watch This\n Funny Money (Silly Watch)\n On The Road (Secure The Bag)\n That Way\n Urgency (feat. Syd)\n Cayy Benji",
+   "tracks": [],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V2]",
+   "name": "Eternal Atake",
+   "date": "July 2019",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for a July 10, 2019 version of Eternal Atake.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Funny Money"
+    },
+    {
+     "num": "#2",
+     "name": "Bust Me"
+    },
+    {
+     "num": "#3",
+     "name": "Cayy Benji"
+    },
+    {
+     "num": "#4",
+     "name": "Main and My Side"
+    },
+    {
+     "num": "#5",
+     "name": "Nothing To Think About"
+    },
+    {
+     "num": "#6",
+     "name": "Want It That Way"
+    },
+    {
+     "num": "#7",
+     "name": "Move"
+    },
+    {
+     "num": "#8",
+     "name": "POP"
+    },
+    {
+     "num": "#9",
+     "name": "Urgency (feat. SYD)"
+    },
+    {
+     "num": "#10",
+     "name": "Immortal (Move The Same)"
+    },
+    {
+     "num": "#11",
+     "name": "Not The Same (Secure The Bag)"
+    },
+    {
+     "num": "#12",
+     "name": "Up On My Price"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Eternal Atake [V3]",
+   "name": "Eternal Atake",
+   "date": "2020",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of Eternal Atake",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Baby Pluto"
+    },
+    {
+     "num": "#2",
+     "name": "Lo Mein"
+    },
+    {
+     "num": "#3",
+     "name": "Silly Watch"
+    },
+    {
+     "num": "#4",
+     "name": "POP"
+    },
+    {
+     "num": "#5",
+     "name": "You Better Move"
+    },
+    {
+     "num": "#6",
+     "name": "Homecoming"
+    },
+    {
+     "num": "#7",
+     "name": "I'm Sorry"
+    },
+    {
+     "num": "#8",
+     "name": "Celebration Station"
+    },
+    {
+     "num": "#9",
+     "name": "Bigger Than Life"
+    },
+    {
+     "num": "#10",
+     "name": "Chrome Heart Tags"
+    },
+    {
+     "num": "#11",
+     "name": "Bust Me"
+    },
+    {
+     "num": "#12",
+     "name": "Prices"
+    },
+    {
+     "num": "#13",
+     "name": "Urgency"
+    },
+    {
+     "num": "#14",
+     "name": "Venetia"
+    },
+    {
+     "num": "#15",
+     "name": "Secure The Bag"
+    },
+    {
+     "num": "#16",
+     "name": "P2"
+    },
+    {
+     "num": "#17",
+     "name": "Futsal Shuffle 2020 - Bonus Track"
+    },
+    {
+     "num": "#18",
+     "name": "That Way - Bonus Track"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Eternal Atake [V3]",
+   "name": "Eternal Atake (Deluxe)",
+   "date": "2020",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "It was stated by Uzi on twitter that A Boogie Wit Da Hoodie & Lil Baby were going to be on the deluxe version of Eternal Atake, however their features were cut last minute. We do not know 100% which of their collaborations were meant to be on the deluxe.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "??? (feat. Lil Baby)"
+    },
+    {
+     "num": "#?",
+     "name": "Too Brazy (with A Boogie wit da Hoodie)"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake [V3]",
+   "name": "Eternal Atake (Deluxe) - LUV vs. The World 2.",
+   "date": "2020",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of Eternal Atake (Deluxe) - LUV vs. the World 2.\n\nLUV vs. The World 2:",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Myron"
+    },
+    {
+     "num": "#2",
+     "name": "Lotus"
+    },
+    {
+     "num": "#3",
+     "name": "Bean (Kobe)"
+    },
+    {
+     "num": "#4",
+     "name": "Yessirskii"
+    },
+    {
+     "num": "#5",
+     "name": "Wassup"
+    },
+    {
+     "num": "#6",
+     "name": "Strawberry Peels"
+    },
+    {
+     "num": "#7",
+     "name": "I Can Show You"
+    },
+    {
+     "num": "#8",
+     "name": "Moon Relate"
+    },
+    {
+     "num": "#9",
+     "name": "Come This Way"
+    },
+    {
+     "num": "#10",
+     "name": "Trap This Way (This Way)"
+    },
+    {
+     "num": "#11",
+     "name": "No Auto"
+    },
+    {
+     "num": "#12",
+     "name": "Money Spread"
+    },
+    {
+     "num": "#13",
+     "name": "Got The Guap"
+    },
+    {
+     "num": "#14",
+     "name": "Leaders"
+    },
+    {
+     "num": "#1",
+     "name": "Baby Pluto"
+    },
+    {
+     "num": "#2",
+     "name": "Lo Mein"
+    },
+    {
+     "num": "#3",
+     "name": "Silly Watch"
+    },
+    {
+     "num": "#4",
+     "name": "POP"
+    },
+    {
+     "num": "#5",
+     "name": "You Better Move"
+    },
+    {
+     "num": "#6",
+     "name": "Homecoming"
+    },
+    {
+     "num": "#7",
+     "name": "I'm Sorry"
+    },
+    {
+     "num": "#8",
+     "name": "Celebration Station"
+    },
+    {
+     "num": "#9",
+     "name": "Bigger Than Life"
+    },
+    {
+     "num": "#10",
+     "name": "Chrome Heart Tags"
+    },
+    {
+     "num": "#11",
+     "name": "Bust Me"
+    },
+    {
+     "num": "#12",
+     "name": "Prices"
+    },
+    {
+     "num": "#13",
+     "name": "Urgency"
+    },
+    {
+     "num": "#14",
+     "name": "Venetia"
+    },
+    {
+     "num": "#15",
+     "name": "Secure The Bag"
+    },
+    {
+     "num": "#16",
+     "name": "P2"
+    },
+    {
+     "num": "#17",
+     "name": "Futsal Shuffle 2020 - Bonus Track"
+    },
+    {
+     "num": "#18",
+     "name": "That Way - Bonus Track"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Pluto x Baby Pluto",
+   "name": "Pluto x Baby Pluto",
+   "date": "2020",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of Pluto x Baby Pluto",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Stripes Like Burberry"
+    },
+    {
+     "num": "#2",
+     "name": "Marni on Me"
+    },
+    {
+     "num": "#3",
+     "name": "Sleeping on the Floor"
+    },
+    {
+     "num": "#4",
+     "name": "Real Baby Pluto"
+    },
+    {
+     "num": "#5",
+     "name": "Drankin n Smokin"
+    },
+    {
+     "num": "#6",
+     "name": "Million Dollar Play"
+    },
+    {
+     "num": "#7",
+     "name": "Plastic"
+    },
+    {
+     "num": "#8",
+     "name": "That's it"
+    },
+    {
+     "num": "#9",
+     "name": "Bought a Bad Bitch"
+    },
+    {
+     "num": "#10",
+     "name": "Rockstar Chainz"
+    },
+    {
+     "num": "#11",
+     "name": "Lullaby"
+    },
+    {
+     "num": "#12",
+     "name": "She Never Been to Pluto"
+    },
+    {
+     "num": "#13",
+     "name": "Off Dat"
+    },
+    {
+     "num": "#14",
+     "name": "I Don't Wanna Break Up"
+    },
+    {
+     "num": "#15",
+     "name": "Bankroll"
+    },
+    {
+     "num": "#16",
+     "name": "Moment of Clarity"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Pluto x Baby Pluto",
+   "name": "Pluto x Baby Pluto (Deluxe)",
+   "date": "2020",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the official release of Pluto x Baby Pluto (Deluxe)",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Stripes Like Burberry"
+    },
+    {
+     "num": "#2",
+     "name": "Marni on Me"
+    },
+    {
+     "num": "#3",
+     "name": "Sleeping on the Floor"
+    },
+    {
+     "num": "#4",
+     "name": "Real Baby Pluto"
+    },
+    {
+     "num": "#5",
+     "name": "Drankin n Smokin"
+    },
+    {
+     "num": "#6",
+     "name": "Million Dollar Play"
+    },
+    {
+     "num": "#7",
+     "name": "Plastic"
+    },
+    {
+     "num": "#8",
+     "name": "That's it"
+    },
+    {
+     "num": "#9",
+     "name": "Bought a Bad Bitch"
+    },
+    {
+     "num": "#10",
+     "name": "Rockstar Chainz"
+    },
+    {
+     "num": "#11",
+     "name": "Lullaby"
+    },
+    {
+     "num": "#12",
+     "name": "She Never Been to Pluto"
+    },
+    {
+     "num": "#13",
+     "name": "Off Dat"
+    },
+    {
+     "num": "#14",
+     "name": "I Don't Wanna Break Up"
+    },
+    {
+     "num": "#15",
+     "name": "Bankroll"
+    },
+    {
+     "num": "#16",
+     "name": "Moment of Clarity"
+    },
+    {
+     "num": "#17",
+     "name": "Tic Tac"
+    },
+    {
+     "num": "#18",
+     "name": "My Legacy"
+    },
+    {
+     "num": "#19",
+     "name": "Heart in Pieces"
+    },
+    {
+     "num": "#20",
+     "name": "Because of You"
+    },
+    {
+     "num": "#21",
+     "name": "Bust a Move"
+    },
+    {
+     "num": "#22",
+     "name": "Baby Sauke"
+    },
+    {
+     "num": "#23",
+     "name": "Patek"
+    },
+    {
+     "num": "#24",
+     "name": "Over Your Head"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Forever Young",
+   "name": "Soundcloud Tape",
+   "date": "2020",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "It was stated by Lil Uzi Vert that a soundcloud exclusive tape was in the works. Was said to have \"soundcloud vibes\". It's unknown what tracks were on this tape, but a livestream was done showing off tracks made during the session for the tape.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Proud Of You"
+    },
+    {
+     "num": "#?",
+     "name": "Have You (Super Saiyan 2)"
+    },
+    {
+     "num": "#?",
+     "name": "Hey You (Emeralds, Excuse My French, You Over There)"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Forever Young",
+   "name": "December 20th, 2020 Livestream\n(and associated December 2020 Live songs)",
+   "date": "2020",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "In a series of livestreams on Instagram Live, primarily on December 20th, 2020 but also in the days preceeding and following the 20th, Uzi previewed numerous songs and grails, some in full and most partially. \n\nDecember 20th:",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Heaven (Hold On)"
+    },
+    {
+     "num": "#2",
+     "name": "Homies (Show Me)"
+    },
+    {
+     "num": "#3",
+     "name": "I Can't Lie (Sad Raps)"
+    },
+    {
+     "num": "#4",
+     "name": "I Gotta (Ridiculous)"
+    },
+    {
+     "num": "#5",
+     "name": "Do Gangsters Go to Heaven (Thank Her)"
+    },
+    {
+     "num": "#6",
+     "name": "Sinner (Been Up)"
+    },
+    {
+     "num": "#7",
+     "name": "Not My Fault (Gucci Sneaks)"
+    },
+    {
+     "num": "#8",
+     "name": "The Walk (Naw / I Got Swag)"
+    },
+    {
+     "num": "#9",
+     "name": "Prophet (Find Me / Ashanti)"
+    },
+    {
+     "num": "#10",
+     "name": "King Von (Sasuke 2)"
+    },
+    {
+     "num": "#11",
+     "name": "Here's A Rose"
+    },
+    {
+     "num": "#12",
+     "name": "Street Music"
+    },
+    {
+     "num": "#13",
+     "name": "Good In The Hood"
+    },
+    {
+     "num": "#14",
+     "name": "Cold (Go!)"
+    },
+    {
+     "num": "#15",
+     "name": "On My Line (So many girls on my line)"
+    },
+    {
+     "num": "#16",
+     "name": "Have You (Super Saiyan 2)"
+    },
+    {
+     "num": "#17",
+     "name": "Pluto To Mars"
+    },
+    {
+     "num": "#18",
+     "name": "Old Days (Old Ways)"
+    },
+    {
+     "num": "#19",
+     "name": "Tell Me What You Want (Regular)"
+    },
+    {
+     "num": "#20",
+     "name": "Ok Cool!"
+    },
+    {
+     "num": "#21",
+     "name": "Hey You (Emeralds, Excuse My French, You Over There)"
+    },
+    {
+     "num": "#22",
+     "name": "Look At This"
+    },
+    {
+     "num": "#23",
+     "name": "Guap (What's Up)"
+    },
+    {
+     "num": "#24",
+     "name": "Hold On (Don't Wanna Talk About Nothing)"
+    },
+    {
+     "num": "#25",
+     "name": "I Won't Fall"
+    },
+    {
+     "num": "#26",
+     "name": "Even Steven (Street Shit)"
+    },
+    {
+     "num": "#27",
+     "name": "Carlton (By The Morning, Can't Stop)"
+    },
+    {
+     "num": "#28",
+     "name": "Cancel (Lean In The Fanta)"
+    },
+    {
+     "num": "#29",
+     "name": "Keep Coming (Overseas Money)"
+    },
+    {
+     "num": "#30",
+     "name": "3D My Wrist"
+    },
+    {
+     "num": "#31",
+     "name": "Sleep With a Bag"
+    },
+    {
+     "num": "#32",
+     "name": "Proud of You"
+    },
+    {
+     "num": "#33",
+     "name": "Hold Me Back"
+    },
+    {
+     "num": "#1",
+     "name": "Ridiculous (I Gotta)"
+    },
+    {
+     "num": "#2",
+     "name": "I Take No Breaks"
+    },
+    {
+     "num": "#3",
+     "name": "Porsche (Of Course 2)"
+    },
+    {
+     "num": "#4",
+     "name": "Swap That"
+    },
+    {
+     "num": "#5",
+     "name": "Homies (Goosebumps) {Show Me}"
+    },
+    {
+     "num": "#1",
+     "name": "Fell in Love"
+    },
+    {
+     "num": "#2",
+     "name": "Go Crazy (freestyle)"
+    },
+    {
+     "num": "#3",
+     "name": "Sleep With A Bag"
+    },
+    {
+     "num": "#4",
+     "name": "Finessin Hearts Pt. 2"
+    },
+    {
+     "num": "#1",
+     "name": "Better Than Me (Sad Hours)"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Forever Young",
+   "name": "Luv Is Rage 3",
+   "date": "2020",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "It was stated in an instagram live that \"Luv Is Rage 3\" was on the way, and intended to release in 2021. While 'Finessin Hearts Pt. 2' is confirmed, t's unknown what was on this project, but several snippets were previewed by Uzi on Instagram with the pinned comment saying \"Luv Is Rage 3\". The last 3 songs are assumed to be related due to them either being previewed at the same time, or being \"given\" to DP Beats for \"DP Vs The World 2\" - which very likely could be a lie given DP claims to not have a majority of the songs, updated or old, with vocals (and none released either).\nUzi would also collab with his older producers, from his previous “Luv Is Rage” projects with new recruits.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Finessin Hearts Pt. 2"
+    },
+    {
+     "num": "#?",
+     "name": "Have You (Super Saiyan 2)"
+    },
+    {
+     "num": "#?",
+     "name": "Here's A Rose"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Forever Young",
+   "name": "Forever Young",
+   "date": "2020-2021",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "It was stated in an instagram live that \"Forever Young\" was intended to release in 2021, and was a seperate project from \"Luv Is Rage 3\".\n(WOD Producers are Speculated to have placements)\n#1-?. ???",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Forever Young Intro"
+    },
+    {
+     "num": "#?",
+     "name": "Old Me / Stoner"
+    },
+    {
+     "num": "#?",
+     "name": "Pluto To Mars"
+    },
+    {
+     "num": "#?",
+     "name": "Goose Chase (Sleep With a Bag)"
+    },
+    {
+     "num": "#?",
+     "name": "3D My Wrist"
+    },
+    {
+     "num": "#?",
+     "name": "Movie"
+    },
+    {
+     "num": "#?",
+     "name": "Wetter"
+    },
+    {
+     "num": "#?",
+     "name": "Line"
+    },
+    {
+     "num": "#?",
+     "name": "Mama I'm Sorry"
+    },
+    {
+     "num": "#?",
+     "name": "Old Days"
+    },
+    {
+     "num": "#?",
+     "name": "Fell in Love"
+    },
+    {
+     "num": "#?",
+     "name": "Swap (Swap That)"
+    },
+    {
+     "num": "#?",
+     "name": "That Body"
+    },
+    {
+     "num": "#?",
+     "name": "Good In The Hood"
+    },
+    {
+     "num": "#?",
+     "name": "Cold"
+    },
+    {
+     "num": "#?",
+     "name": "I Gotta"
+    },
+    {
+     "num": "#?",
+     "name": "Glocky"
+    },
+    {
+     "num": "#?",
+     "name": "Party With The Demons"
+    },
+    {
+     "num": "#?",
+     "name": "Finessin Hearts Pt. 2"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Forever Young",
+   "name": "The Real Uzi 2",
+   "date": "2021",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Incomplete tracklist for an alleged The Real Uzi 2 - Possibly fake, source claims the leaker got this from someone in Uzi's camp, may have just been an idea (that lasted a full year)",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "It's A 40"
+    },
+    {
+     "num": "#2",
+     "name": "Bank Teller"
+    },
+    {
+     "num": "#3",
+     "name": "Bankroll (Out of Control)"
+    },
+    {
+     "num": "#4",
+     "name": "Slide"
+    },
+    {
+     "num": "#5",
+     "name": "Skin Crawl"
+    },
+    {
+     "num": "#6",
+     "name": "-> #?. ???"
+    },
+    {
+     "num": "#?",
+     "name": "Backpack"
+    },
+    {
+     "num": "#?",
+     "name": "It's Up"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Forever Young",
+   "name": "Forever Young",
+   "date": "2021-2022",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "A tracklist for Forever Young is said to exist, and in some iteration lasted until March 2022 - despite Pink Tape being announced\n\n.1 -> #?. ???",
+   "tracks": [],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Pink Tape [V1]",
+   "name": "Delta Pink Tape",
+   "date": "November 2021",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "A early tracklist was seen on a white board on @xvirock IG story in late December 2021. It only contained two track names, but the tracklist itself was 6 songs long, with several other songs listed to the side. Possibly a very early version of Red and White",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Space Cadet"
+    },
+    {
+     "num": "#2",
+     "name": "???"
+    },
+    {
+     "num": "#3",
+     "name": "Aye (Yea!) (Rage Music)"
+    },
+    {
+     "num": "#4",
+     "name": "???"
+    },
+    {
+     "num": "#5",
+     "name": "???"
+    },
+    {
+     "num": "#6",
+     "name": "Final Fantasy (not seen in image)"
+    },
+    {
+     "num": "#?",
+     "name": "Red Wraith"
+    },
+    {
+     "num": "#?",
+     "name": "Lean? (Lean)"
+    },
+    {
+     "num": "#?",
+     "name": "Prove A Point"
+    },
+    {
+     "num": "#?",
+     "name": "I Gotta"
+    },
+    {
+     "num": "#?",
+     "name": "Swap"
+    },
+    {
+     "num": "#?",
+     "name": "Astro Kat"
+    },
+    {
+     "num": "#?",
+     "name": "Hate Me"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Pink Tape [V1]",
+   "name": "The Pink Tape",
+   "date": "2022",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "It was said at one point that 'Pink Tape' was a punk rock album.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Demon High"
+    },
+    {
+     "num": "#?",
+     "name": "Astro Kat"
+    },
+    {
+     "num": "#?",
+     "name": "Party With The Demons"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Red and White",
+   "name": "Red & White (Soundcloud V1)",
+   "date": "2022",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "A version of Red & White was said to have multiple grails prior to Uzi asking a groupchat of fans what songs he should put on it",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Daytona (Denim Tears)"
+    },
+    {
+     "num": "#?",
+     "name": "Rage"
+    }
+   ],
+   "availability": "N/A"
+  },
+  {
+   "era": "Red and White",
+   "name": "Red & White (Fan Groupchat Requests)",
+   "date": "2022",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "A version of Red & White was said to have multiple grails prior to Uzi asking a groupchat of fans what songs he should put on it. Included is the (likely uncomplete) list of songs they asked",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Up The Opp"
+    },
+    {
+     "num": "#?",
+     "name": "3D My Wrist"
+    },
+    {
+     "num": "#?",
+     "name": "Backspace"
+    },
+    {
+     "num": "#?",
+     "name": "Pour Me Numb"
+    },
+    {
+     "num": "#?",
+     "name": "On My Bank *"
+    },
+    {
+     "num": "#?",
+     "name": "Don't Trap Off No iPhone"
+    },
+    {
+     "num": "#?",
+     "name": "Space Cadet"
+    },
+    {
+     "num": "#?",
+     "name": "I Know"
+    },
+    {
+     "num": "#?",
+     "name": "Cigarette"
+    },
+    {
+     "num": "#?",
+     "name": "For Fun"
+    }
+   ],
+   "availability": "N/A"
+  },
+  {
+   "era": "Red and White",
+   "name": "Red & White (Soundcloud V2)",
+   "date": "2022",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "A version of Red & White was said to have \"Pardon Me\" and \"Internet\", reinforced by JT previewing these songs in full days after release. Additionally, Vault claims \"Pour Me Numb\" and \"Flooded The Face\" were sent out to Uzi during the rollout, and were considered to drop.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Internet"
+    },
+    {
+     "num": "#?",
+     "name": "Pardon Me"
+    },
+    {
+     "num": "#?",
+     "name": "Pour Me Numb"
+    },
+    {
+     "num": "#?",
+     "name": "Flooded The Face"
+    }
+   ],
+   "availability": "N/A"
+  },
+  {
+   "era": "Red and White",
+   "name": "Red & White (Soundcloud V3)",
+   "date": "July 2022",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "The first version of Red & White released on Soundcloud.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Space Cadet"
+    },
+    {
+     "num": "#2",
+     "name": "I Know"
+    },
+    {
+     "num": "#3",
+     "name": "Flex Up"
+    },
+    {
+     "num": "#4",
+     "name": "Hittin My Shoulder"
+    },
+    {
+     "num": "#5",
+     "name": "For Fun"
+    },
+    {
+     "num": "#6",
+     "name": "Believe Me"
+    },
+    {
+     "num": "#7",
+     "name": "Issa Hit"
+    },
+    {
+     "num": "#8",
+     "name": "Glock in My Purse"
+    },
+    {
+     "num": "#9",
+     "name": "Final Fantasy"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Red and White",
+   "name": "Red & White (Streaming V1)",
+   "date": "July 2022",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "The first version of Red & White released on Streaming.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "For Fun"
+    },
+    {
+     "num": "#2",
+     "name": "Cigarette"
+    },
+    {
+     "num": "#3",
+     "name": "Issa Hit"
+    },
+    {
+     "num": "#4",
+     "name": "Glock in My Purse"
+    },
+    {
+     "num": "#5",
+     "name": "F.F."
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Red and White",
+   "name": "Red & White (Soundcloud V4)",
+   "date": "July 2022",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "The second version of Red & White released on Soundcloud.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Space Cadet"
+    },
+    {
+     "num": "#2",
+     "name": "I Know"
+    },
+    {
+     "num": "#3",
+     "name": "Flex Up"
+    },
+    {
+     "num": "#4",
+     "name": "Hittin My Shoulder"
+    },
+    {
+     "num": "#5",
+     "name": "Cigarette"
+    },
+    {
+     "num": "#6",
+     "name": "For Fun"
+    },
+    {
+     "num": "#7",
+     "name": "Believe Me"
+    },
+    {
+     "num": "#8",
+     "name": "Issa Hit"
+    },
+    {
+     "num": "#9",
+     "name": "Glock in My Purse"
+    },
+    {
+     "num": "#10",
+     "name": "Final Fantasy"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Red and White",
+   "name": "Red & White (Streaming V2)",
+   "date": "July 2022",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "The second version of Red & White released on Streaming",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Space Cadet"
+    },
+    {
+     "num": "#2",
+     "name": "I Know"
+    },
+    {
+     "num": "#3",
+     "name": "Flex Up"
+    },
+    {
+     "num": "#4",
+     "name": "Hittin My Shoulder"
+    },
+    {
+     "num": "#5",
+     "name": "For Fun"
+    },
+    {
+     "num": "#6",
+     "name": "Cigarette"
+    },
+    {
+     "num": "#7",
+     "name": "Issa Hit"
+    },
+    {
+     "num": "#8",
+     "name": "Glock in My Purse"
+    },
+    {
+     "num": "#9",
+     "name": "F.F."
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Pink Tape [V3]",
+   "name": "Pink Tape",
+   "date": "August 2022",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "It's been said the Kanye West had put together a tracklist for Pink Tape in August 2022. It's unknown what this tracklist contained.\n#?.",
+   "tracks": [],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Pink Tape [V3]",
+   "name": "Pink Tape",
+   "date": "2023",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "In a interview done with TMZ, Uzi confirmed that For Me/City Girl would be on the album",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "For Me"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Pink Tape [V3]",
+   "name": "Pink Tape",
+   "date": "2023",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "A version of the album was played for Uzi fan page owners and Gabriel Flores, with conflicting sources on what was played/on the tape. Allegedly no snippets from listening party, and songs played were confirmed to exist by Chris afterwards. Those invited had to have their phone screens facing up and in a corner to show they weren't recording to prevent leaks",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Rage Music"
+    },
+    {
+     "num": "#?",
+     "name": "Just Wanna Rock"
+    },
+    {
+     "num": "#?",
+     "name": "Ridiculous"
+    },
+    {
+     "num": "#?",
+     "name": "Patience"
+    },
+    {
+     "num": "#?",
+     "name": "Can't Feel My Body"
+    },
+    {
+     "num": "#?",
+     "name": "Pluto To Mars"
+    },
+    {
+     "num": "#?",
+     "name": "All Alone"
+    },
+    {
+     "num": "#?",
+     "name": "Flooded The Face"
+    },
+    {
+     "num": "#?",
+     "name": "She Took The Molly"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Pink Tape [V3]",
+   "name": "Pink Tape",
+   "date": "May-June 2023",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for Pink Tape, posted by lyleleduff",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Flood The Face"
+    },
+    {
+     "num": "#2",
+     "name": "Aye"
+    },
+    {
+     "num": "#3",
+     "name": "Nakamaru"
+    },
+    {
+     "num": "#4",
+     "name": "Heartbeat (gunshots)"
+    },
+    {
+     "num": "#5",
+     "name": "Suicide Door (crow)"
+    },
+    {
+     "num": "#6",
+     "name": "Crush'em"
+    },
+    {
+     "num": "#7",
+     "name": "Life Goes On (if (censored) does it [presumed to have been Baby Keem])/Pluto to Mars"
+    },
+    {
+     "num": "#8",
+     "name": "Days Come and Go"
+    },
+    {
+     "num": "#9",
+     "name": "Mama Im Sorry"
+    },
+    {
+     "num": "#10",
+     "name": "Aim Higher"
+    },
+    {
+     "num": "#11",
+     "name": "Seroquel (ft. Don Toliver)"
+    },
+    {
+     "num": "#12",
+     "name": "Just Wanna Rock"
+    },
+    {
+     "num": "#13",
+     "name": "I Gotta"
+    },
+    {
+     "num": "#14",
+     "name": "For Me (porn)"
+    },
+    {
+     "num": "#15",
+     "name": "Global (thrax)"
+    },
+    {
+     "num": "#16",
+     "name": "All of the Lights Are Off"
+    },
+    {
+     "num": "#17",
+     "name": "Bound"
+    },
+    {
+     "num": "#18",
+     "name": "Fire Alarm"
+    },
+    {
+     "num": "#19",
+     "name": "Chop Suey"
+    },
+    {
+     "num": "#20",
+     "name": "Listen to Me"
+    },
+    {
+     "num": "#21",
+     "name": "Switch My Bitch Up"
+    },
+    {
+     "num": "#22",
+     "name": "Ramona"
+    },
+    {
+     "num": "#23",
+     "name": "Rehab"
+    },
+    {
+     "num": "#24",
+     "name": "Baby Metal"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Pink Tape [V3]",
+   "name": "Pink Tape",
+   "date": "June 2023",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "One of the final tracklists for Pink Tape. The track order was confimed to have been completed sometime before June 17th, 2023, and is 27 songs long. 25 main songs, and 2 bonus tracks.\n\n1-27. ???",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Kray (X2)"
+    },
+    {
+     "num": "#?",
+     "name": "Just Wanna Rock"
+    },
+    {
+     "num": "#?",
+     "name": "Pluto To Mars"
+    },
+    {
+     "num": "#?",
+     "name": "Of Course"
+    },
+    {
+     "num": "#?",
+     "name": "Rage Music (Aye)"
+    },
+    {
+     "num": "#?",
+     "name": "Flooded The Face"
+    },
+    {
+     "num": "#?",
+     "name": "It's On Me"
+    },
+    {
+     "num": "#?",
+     "name": "That Fiya"
+    },
+    {
+     "num": "#?",
+     "name": "Chopper"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Pink Tape [V3]",
+   "name": "Pink Tape",
+   "date": "June 2023",
+   "quality": "Leaked",
+   "source": "",
+   "links": [],
+   "description": "\"Pass It\" was said to have been on Pink Tape from June 17th, 2023 until June 24th, 2023, when Carti asked for the song to be taken off Pink Tape. Allegedly he wanted to re-record after SummerSmash but Uzi said it was too late. Released on Youtube as \"Patience\" (instead of the actual song) on 'accident' on June 30th, taken down later - not confirmed but likely track 20 before Carti pulled it",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Pass It"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Pink Tape [V3]",
+   "name": "Pink Tape",
+   "date": "June 2023",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Tracklist for the released version of Pink Tape.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Flooded The Face"
+    },
+    {
+     "num": "#2",
+     "name": "Suicide Doors"
+    },
+    {
+     "num": "#3",
+     "name": "Aye"
+    },
+    {
+     "num": "#4",
+     "name": "Crush Em"
+    },
+    {
+     "num": "#5",
+     "name": "Amped"
+    },
+    {
+     "num": "#6",
+     "name": "x2"
+    },
+    {
+     "num": "#7",
+     "name": "Died and Came Back"
+    },
+    {
+     "num": "#8",
+     "name": "Spin Again"
+    },
+    {
+     "num": "#9",
+     "name": "That Fiya"
+    },
+    {
+     "num": "#10",
+     "name": "I Gotta"
+    },
+    {
+     "num": "#11",
+     "name": "Endless Fashion"
+    },
+    {
+     "num": "#12",
+     "name": "Mama, I'm Sorry"
+    },
+    {
+     "num": "#13",
+     "name": "All Alone"
+    },
+    {
+     "num": "#14",
+     "name": "Nakamura"
+    },
+    {
+     "num": "#15",
+     "name": "Just Wanna Rock"
+    },
+    {
+     "num": "#16",
+     "name": "Fire Alarm"
+    },
+    {
+     "num": "#17",
+     "name": "CS"
+    },
+    {
+     "num": "#18",
+     "name": "Werewolf"
+    },
+    {
+     "num": "#19",
+     "name": "Pluto To Mars"
+    },
+    {
+     "num": "#20",
+     "name": "Patience"
+    },
+    {
+     "num": "#21",
+     "name": "Days Come and Go"
+    },
+    {
+     "num": "#22",
+     "name": "Rehab"
+    },
+    {
+     "num": "#23",
+     "name": "The End"
+    },
+    {
+     "num": "#24",
+     "name": "Zoom (Bonus Track)"
+    },
+    {
+     "num": "#25",
+     "name": "Of Course (Bonus Track)"
+    },
+    {
+     "num": "#26",
+     "name": "Shardai (Bonus Track)"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Barter 16",
+   "name": "Barter 16 [V1]",
+   "date": "August 2023",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "Seen on an Ike Beatz Instagram post/stream.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro / Scary Stories"
+    },
+    {
+     "num": "#2",
+     "name": "Barter"
+    },
+    {
+     "num": "#3",
+     "name": "Racks"
+    },
+    {
+     "num": "#4",
+     "name": "RIP Ms. Connie"
+    },
+    {
+     "num": "#5",
+     "name": "Stick Up"
+    },
+    {
+     "num": "#6",
+     "name": "Green Diamonds"
+    },
+    {
+     "num": "#7",
+     "name": "Thigh Pads"
+    },
+    {
+     "num": "#8",
+     "name": "Shar Pei"
+    },
+    {
+     "num": "#9",
+     "name": "Butter In It"
+    },
+    {
+     "num": "#10",
+     "name": "???"
+    },
+    {
+     "num": "#11",
+     "name": "Realest From Philly"
+    },
+    {
+     "num": "#12",
+     "name": "Thug Voice"
+    },
+    {
+     "num": "#13",
+     "name": "Workout (feat. Young Thug)"
+    },
+    {
+     "num": "#14",
+     "name": "Bob Marley"
+    },
+    {
+     "num": "#15",
+     "name": "???"
+    },
+    {
+     "num": "#16",
+     "name": "K-Pop"
+    },
+    {
+     "num": "#17",
+     "name": "???"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Barter 16",
+   "name": "Barter 16 [V2]",
+   "date": "August 2023",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "Shown by @uzirareupdates on ig, Stick Up was removed and Jet was added",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "Intro / B16"
+    },
+    {
+     "num": "#2",
+     "name": "Barter"
+    },
+    {
+     "num": "#3",
+     "name": "Racks"
+    },
+    {
+     "num": "#4",
+     "name": "RIP Ms. Connie"
+    },
+    {
+     "num": "#5",
+     "name": "Free Da Goat (feat. Young Thug)"
+    },
+    {
+     "num": "#6",
+     "name": "Green Diamonds"
+    },
+    {
+     "num": "#7",
+     "name": "Thigh Pads"
+    },
+    {
+     "num": "#8",
+     "name": "Shar Pei"
+    },
+    {
+     "num": "#9",
+     "name": "???"
+    },
+    {
+     "num": "#10",
+     "name": "???"
+    },
+    {
+     "num": "#11",
+     "name": "Thug Voice"
+    },
+    {
+     "num": "#12",
+     "name": "Jet (BK)"
+    },
+    {
+     "num": "#13",
+     "name": "Guarantee (feat. Young Thug)"
+    },
+    {
+     "num": "#14",
+     "name": "Realest From Philly"
+    },
+    {
+     "num": "#15",
+     "name": "Workout (feat. Young Thug)"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake 2",
+   "name": "Eternal Atake 2",
+   "date": "2024",
+   "quality": "Secondary",
+   "source": "",
+   "links": [],
+   "description": "Admins have claimed that on an earlier Eternal Atake 2 tracklist 'Stay Down' was originally on it before being scrapped.",
+   "tracks": [
+    {
+     "num": "#?",
+     "name": "Stay Down"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake 2",
+   "name": "Eternal Atake 2",
+   "date": "October 2024",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "An earlier Eternal Atake 2 tracklist, partially shown by uzi on an IG post. Has 15 tracks and 4 bonus tracks.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "???"
+    },
+    {
+     "num": "#2",
+     "name": "???"
+    },
+    {
+     "num": "#3",
+     "name": "W.. ..y (Wocky)"
+    },
+    {
+     "num": "#4",
+     "name": "...$H"
+    },
+    {
+     "num": "#5",
+     "name": "S.. ..IT (Stop It)"
+    },
+    {
+     "num": "#6",
+     "name": "???"
+    },
+    {
+     "num": "#7",
+     "name": "???"
+    },
+    {
+     "num": "#8",
+     "name": "???"
+    },
+    {
+     "num": "#9",
+     "name": "???"
+    },
+    {
+     "num": "#10",
+     "name": "???"
+    },
+    {
+     "num": "#11",
+     "name": "L..."
+    },
+    {
+     "num": "#12",
+     "name": "N..."
+    },
+    {
+     "num": "#13",
+     "name": "???"
+    },
+    {
+     "num": "#14",
+     "name": "...T"
+    },
+    {
+     "num": "#15",
+     "name": "Chill ebro"
+    },
+    {
+     "num": "#16",
+     "name": "???"
+    },
+    {
+     "num": "#17",
+     "name": "???"
+    },
+    {
+     "num": "#18",
+     "name": "???"
+    },
+    {
+     "num": "#19",
+     "name": "???"
+    }
+   ],
+   "availability": "Blocked"
+  },
+  {
+   "era": "Eternal Atake 2",
+   "name": "Eternal Atake 2",
+   "date": "October 2024",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "An EA2 tracklist shown by Uzi on an IG post. The IG post was later deleted. Contains 16 tracks and 4 bonus tracks.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "I'm Cooked (skit) (feat. bling bling)"
+    },
+    {
+     "num": "#2",
+     "name": "Don't think they ready (pre-game) (Light Year (Practice))"
+    },
+    {
+     "num": "#3",
+     "name": "Aura (intro) (Meteor Man)"
+    },
+    {
+     "num": "#4",
+     "name": "Wocky slush (Paars In The Mars)"
+    },
+    {
+     "num": "#5",
+     "name": "Big time rush (The Rush)"
+    },
+    {
+     "num": "#6",
+     "name": "Stop it (Not An Option)"
+    },
+    {
+     "num": "#7",
+     "name": "Stank (She Stank)"
+    },
+    {
+     "num": "#8",
+     "name": "Leslie (Mr Chow)"
+    },
+    {
+     "num": "#9",
+     "name": "Lyft (Lyft Em Up)"
+    },
+    {
+     "num": "#10",
+     "name": "How ? (Chips and Dip)"
+    },
+    {
+     "num": "#11",
+     "name": "Eye 2 Eye (song cry) (Black Hole)"
+    },
+    {
+     "num": "#12",
+     "name": "Don't do it (Chill Bae)"
+    },
+    {
+     "num": "#13",
+     "name": "Na uh uh (Goddard Song)"
+    },
+    {
+     "num": "#14",
+     "name": "Potion (PerkySex)"
+    },
+    {
+     "num": "#15",
+     "name": "All That (Conceited)"
+    },
+    {
+     "num": "#16",
+     "name": "Chill ebro"
+    },
+    {
+     "num": "#17",
+     "name": "McWhistle leak (Blow Da Whistle)"
+    },
+    {
+     "num": "#18",
+     "name": "floatin (prod. Maaly Raw)"
+    },
+    {
+     "num": "#19",
+     "name": "FTB (Fucking The Bank)"
+    },
+    {
+     "num": "#20",
+     "name": "Thank you for listening"
+    }
+   ],
+   "availability": "Clear"
+  },
+  {
+   "era": "Eternal Atake 2",
+   "name": "Eternal Atake 2",
+   "date": "November 2024",
+   "quality": "Uzi",
+   "source": "",
+   "links": [],
+   "description": "Official Eternal Atake 2 tracklist first posted by Uzi on IG. The tracklist had earlier been posted in Uzi's \"Alien Language\". Confirmed to be the real tracklist as the songs are seen encrypted on the album preview.",
+   "tracks": [
+    {
+     "num": "#1",
+     "name": "We Good"
+    },
+    {
+     "num": "#2",
+     "name": "Light Year (Practice)"
+    },
+    {
+     "num": "#3",
+     "name": "Meteor Man"
+    },
+    {
+     "num": "#4",
+     "name": "Paars In The Mars"
+    },
+    {
+     "num": "#5",
+     "name": "The Rush (feat. Big Time Rush)"
+    },
+    {
+     "num": "#6",
+     "name": "Not An Option"
+    },
+    {
+     "num": "#7",
+     "name": "She Stank"
+    },
+    {
+     "num": "#8",
+     "name": "Mr Chow"
+    },
+    {
+     "num": "#9",
+     "name": "Lyft Em Up"
+    },
+    {
+     "num": "#10",
+     "name": "Chips and Dip"
+    },
+    {
+     "num": "#11",
+     "name": "Black Hole"
+    },
+    {
+     "num": "#12",
+     "name": "Chill Bae"
+    },
+    {
+     "num": "#13",
+     "name": "Goddard Song"
+    },
+    {
+     "num": "#14",
+     "name": "PerkySex"
+    },
+    {
+     "num": "#15",
+     "name": "Conceited"
+    },
+    {
+     "num": "#16",
+     "name": "Space High"
+    }
+   ],
+   "availability": "Clear"
+  }
+ ]
+}

@@ -13,6 +13,7 @@ export const sosagoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: '',
   accentColor: '#0ea5e9',
   artistLabel: 'Chief Keef',
+  sheetCreator: 'Swaggely, GloTheActivist, Glanesky, Rojas, ej, Cortez, 1017kev',
   cardLetter: 'SOSA',
   logoUrl: '/logos/sosagold.png',
   artistPhotoUrl: '/artists/chiefkeef-v2.jpg',

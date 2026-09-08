@@ -11,9 +11,9 @@ import { retryImageOnError } from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { GlobalSearchPanel, GlobalSearchResult } from './GlobalSearchPanel';
 
-export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'albumcopies' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
+export type Category = 'music' | 'art' | 'recent' | 'recent-production' | 'stems' | 'misc' | 'fakes' | 'albumcopies' | 'groupbuys' | 'related' | 'settings' | 'history' | 'tracklists' | 'released' | 'yedits' | 'comps' | 'videos' | 'playlists' | 'subalbums' | 'concerts' | 'production' | 'contributor';
 
-const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'albumcopies', 'videos', 'tracklists', 'subalbums']);
+const DATA_DRIVEN_TABS = new Set(['art', 'stems', 'misc', 'fakes', 'albumcopies', 'groupbuys', 'videos', 'tracklists', 'subalbums']);
 
 interface NavbarProps {
   searchQuery: string;
@@ -42,6 +42,7 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'misc', label: 'Misc' },
   { key: 'fakes', label: 'Fakes' },
   { key: 'albumcopies', label: 'Album Copies' },
+  { key: 'groupbuys', label: 'Groupbuys' },
   { key: 'released', label: 'Released' },
   { key: 'related', label: 'Related' },
   { key: 'recent', label: 'Recent' },
@@ -50,7 +51,6 @@ const NAV_CATEGORIES: { key: Category; label: string }[] = [
   { key: 'yedits', label: 'Yedit Affiliates' },
   { key: 'comps', label: 'Comps' },
   { key: 'videos', label: 'Videos' },
-  { key: 'playlists', label: 'Playlists' },
   { key: 'subalbums', label: 'Sub Albums' },
   { key: 'concerts', label: 'Concerts' },
   { key: 'production', label: 'Production Projects' },
@@ -114,6 +114,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     if (key === 'misc' && activeConfig.hasMiscTab === false) return false;
     if (key === 'tracklists' && activeConfig.hasTracklistsTab === false) return false;
     if (key === 'albumcopies' && !activeConfig.hasAlbumCopiesTab) return false;
+    if (key === 'groupbuys' && !activeConfig.hasGroupbuysTab) return false;
     if (DATA_DRIVEN_TABS.has(key) && fetchedTabs?.has(key) && !tabsWithData?.has(key)) return false;
     return true;
   }).map(cat => cat.key === 'misc' && activeConfig.miscLabel ? { ...cat, label: activeConfig.miscLabel } : cat);
@@ -132,10 +133,10 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
         <div className="flex-1 flex flex-row items-center justify-between md:justify-start w-full relative gap-3">
           <div className="md:hidden flex items-center shrink-0">
             <img onError={retryImageOnError}
-              src={settings.landingArtistPhotos ? '/logo.png' : (activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png')}
-              alt={activeConfig.SITE_NAME}
+              src="/logo.png"
+              alt="UNVAULTED"
               onClick={onHomeClick}
-              className={`object-contain object-left cursor-pointer hover:opacity-80 transition-opacity duration-300 ${!settings.landingArtistPhotos && activeConfig.navLogoUrl ? 'h-[64px] w-[200px]' : 'h-[48px] w-[160px]'}`}
+              className="object-contain object-left cursor-pointer hover:opacity-80 transition-opacity duration-300 h-[48px] w-[160px]"
             />
           </div>
 
@@ -174,10 +175,10 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
                   )}
                 </AnimatePresence>
               </div>
-              <div className={`hidden md:block shrink-0 overflow-hidden ${!settings.landingArtistPhotos && activeConfig.navLogoUrl ? 'w-[220px] h-[80px]' : 'w-[170px] h-[60px]'}`}>
+              <div className="hidden md:block shrink-0 overflow-hidden w-[170px] h-[60px]">
                 <img onError={retryImageOnError}
-                  src={settings.landingArtistPhotos ? '/logo.png' : (activeConfig.navLogoUrl || activeConfig.logoUrl || '/logo.png')}
-                  alt={activeConfig.SITE_NAME}
+                  src="/logo.png"
+                  alt="UNVAULTED"
                   onClick={onHomeClick}
                   className="w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300"
                   style={{ objectPosition: 'left center' }}
