@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { MaintenanceGate, isMaintenanceUnlocked } from './MaintenanceGate';
 
 // The account/auth service. Community data endpoints are same-origin (/api/community/*),
 // but auth is verified against the live UNVAULTED site (see functions/api/_yedits-auth.ts).
@@ -150,7 +149,6 @@ function ImageInput({ value, onChange, allowLink, placeholder }: {
 export function CreateTrackerPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [unlocked, setUnlocked] = useState(() => isMaintenanceUnlocked('buildtracker_maintenance_unlocked'));
   const [user, setUser] = useState<VGUser | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
 
@@ -163,19 +161,6 @@ export function CreateTrackerPage() {
       .catch(() => setUser(null))
       .finally(() => setAuthChecked(true));
   }, []);
-
-  // Public visitors hit the maintenance gate first; the builder only renders
-  // once the access password has been entered (and remembered).
-  if (!unlocked) {
-    return (
-      <MaintenanceGate
-        title="Build a Tracker is under maintenance"
-        message="We're doing some work behind the scenes. Tracker building will be back and open to the public soon — thanks for your patience."
-        storageKey="buildtracker_maintenance_unlocked"
-        onUnlock={() => setUnlocked(true)}
-      />
-    );
-  }
 
   if (!authChecked) return <Shell><p style={{ color: '#94a3b8' }}>Loading…</p></Shell>;
   if (!user) {
