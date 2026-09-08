@@ -62,6 +62,138 @@ const SHEET_SOURCES: Record<string, SheetSource> = {
       tracklists: '425932540',
     },
   },
+  aapgold: {
+    sheetId: '1rbt_VyQyHEfVRv_XmVBNrwMyF0uMx7FF-1T8-N0wf0E',
+    gids: {
+      unreleased: '1701548408',
+      released: '2062057461',
+      recent: '575509772',
+      stems: '1534576419',
+      fakes: '1315686298',
+      'music-videos': '951684041',
+      'album-copies': '1730161920',
+      tracklists: '1024624532',
+    },
+  },
+  colegold: {
+    sheetId: '1hjMtB-acUEpXYkR6TWQVeVoUzSLrAVIdy1lMoM6aFFw',
+    gids: {
+      unreleased: '233442733',
+      released: '415398936',
+      recent: '809419204',
+      art: '1382334609',
+      stems: '1815223674',
+      tracklists: '1282750024',
+    },
+  },
+  dongold: {
+    sheetId: '1qsO4SuzzB17d5orqbKWHsaQsRdk0lzTSF9rV2FwQf-Q',
+    gids: {
+      unreleased: '1535277716',
+      released: '109676350',
+      recent: '1891166449',
+      art: '1054259274',
+      stems: '999848743',
+      fakes: '1830541966',
+      'music-videos': '689795446',
+      tracklists: '1236129964',
+    },
+  },
+  drizzygold: {
+    sheetId: '1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI',
+    gids: {
+      unreleased: '755606328',
+      recent: '1499423804',
+      art: '1704963883',
+      stems: '271384102',
+      fakes: '1413935661',
+      'music-videos': '1645905193',
+      'album-copies': '1680594839',
+      tracklists: '230473404',
+    },
+  },
+  kdotgold: {
+    sheetId: '1i4OQglDHiiqMDthqfUFPutGmpZzK7n63LaoWApqhQXI',
+    gids: {
+      unreleased: '1169728352',
+      released: '95049489',
+      recent: '1122958563',
+      art: '1807741861',
+      stems: '1574419325',
+      misc: '1439258306',
+      'music-videos': '1743777120',
+      'album-copies': '224191847',
+    },
+  },
+  luckigold: {
+    sheetId: '1zoRNpy7Lvr-JzPqtQLLWRVVDbgKygpBaDf4cC-Lt6k4',
+    gids: {
+      unreleased: '306146520',
+      released: '1101697369',
+      recent: '1422898255',
+      'music-videos': '112443966',
+      tracklists: '1592344998',
+    },
+  },
+  mfgold: {
+    sheetId: '1zEbzMVXFXzuY4wLdPvdQA23lb3RwCSOKqWtHsllXNk8',
+    gids: {
+      unreleased: '1493533867',
+      released: '1686511551',
+      recent: '1476766908',
+      misc: '146029414',
+    },
+  },
+  mjgold: {
+    sheetId: '1i59TKrIZ1OvFFPJFuOMw1VXlvyzaVOH0Wb0vVJp9BTw',
+    gids: {
+      unreleased: '528227019',
+      released: '331829674',
+      recent: '180906153',
+      stems: '314764055',
+      tracklists: '608188924',
+    },
+  },
+  shadygold: {
+    sheetId: '1x9tTOOqH5WpKOoptdQzABSN_x8oZbMgzIGlGH9w1IKA',
+    gids: {
+      unreleased: '1792554832',
+    },
+  },
+  slimegold: {
+    sheetId: '12zc2reK5y8XP6SQhv1ujQtiG9VpJy7yDWwDuE-S-wpc',
+    gids: {
+      unreleased: '0',
+      released: '1510699798',
+      recent: '1507357362',
+      art: '171524654',
+      stems: '197907807',
+      tracklists: '1999300901',
+    },
+  },
+  sosagold: {
+    sheetId: '1oDE9gTnEG7ufPQIOMjLTegfI47qtgNCxngmxxHZL4qA',
+    gids: {
+      unreleased: '1792554832',
+      released: '766098554',
+      recent: '1321754498',
+      'music-videos': '943677178',
+      tracklists: '1885470461',
+    },
+  },
+  vampgold: {
+    sheetId: '1Irtfvymu26CShYowLMMfD-rM0o9CJqE6-BBSlYsAaF4',
+    gids: {
+      unreleased: '0',
+      released: '245504108',
+      recent: '1962169030',
+      art: '487023460',
+      stems: '711785744',
+      misc: '1033793988',
+      fakes: '1412910635',
+      'album-copies': '19287955',
+    },
+  },
 };
 
 // Build the Google Sheets CSV export URL for an artist's tab, or null if the
