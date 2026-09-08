@@ -562,6 +562,24 @@ const SHEET_SOURCES: Record<string, SheetSource> = {
       tracklists: '745709653',
     },
   },
+  daftpunkgold: {
+    sheetId: '1ua9PA27-_LdSddNcU5i4PsvrzI7NMLalsOsXlDTsjuw',
+    gids: {
+      unreleased: '0',
+    },
+  },
+  gibbsgold: {
+    sheetId: '1CCe1DI9VIp0J4MQyTsdMuOriZ9ucmCVMw6nS9j8e4N0',
+    gids: {
+      unreleased: '1913240258',
+    },
+  },
+  westsidegold: {
+    sheetId: '1_dFPF4tSdIuwRUj_UXUFz5qeNVJm-9lCl3zhIGXt0wI',
+    gids: {
+      unreleased: '1783689060',
+    },
+  },
 };
 
 // Build the Google Sheets CSV export URL for an artist's tab, or null if the
