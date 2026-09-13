@@ -9,7 +9,7 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Repeat1, Volume2, X, ChevronUp } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Repeat1, Volume2, X, ChevronUp, Maximize2 } from 'lucide-react';
 import * as audioStore from './audioStore';
 import { parseArtistFromSong } from '../lastfm';
 import { CUSTOM_IMAGES, formatTextWithTags, Img } from '../utils';
@@ -207,6 +207,9 @@ export function GlobalMiniPlayer() {
                 title="Volume"
               />
             </div>
+            <button onClick={() => setExpanded(true)} className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors cursor-pointer" title="Full screen player">
+              <Maximize2 className="w-4 h-4" />
+            </button>
             <button onClick={() => setClosed(true)} className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors cursor-pointer" title="Hide player">
               <X className="w-5 h-5" />
             </button>
