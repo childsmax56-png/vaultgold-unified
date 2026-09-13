@@ -9,6 +9,8 @@ import { UserPlaylist, PlaylistSong, Song, Era } from './types';
 import { ArtImage } from './components/ArtGallery';
 import { eraArtwork } from './eraArtwork';
 import * as audioStore from './player/audioStore';
+import { handleDownloadFile, buildArtistTag, ALBUM_RELEASE_DATES } from './utils';
+import { useSettings } from './SettingsContext';
 
 // Prefer the song's real era cover (bundled per tracker) over whatever was
 // stored (older entries stored the tracker logo). Falls back to the stored image.
@@ -148,6 +150,8 @@ export function PlaylistsPage() {
     removeFromPlaylist, moveSong, setCover, refreshFavorites,
   } = useGlobalPlaylists();
 
+  const { settings } = useSettings();
+
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameValue, setRenameValue] = useState('');
@@ -266,8 +270,10 @@ export function PlaylistsPage() {
     setDownloading(false);
   };
 
-  // Download a single song directly to the user's device. Keyed by index so the
-  // spinner only shows on the row being fetched.
+  // Download a single song directly to the user's device. Routes through the
+  // same handleDownloadFile the tracker uses, so tagged metadata + artwork (when
+  // embedMetadata is on), MP3 conversion, and proxy fallbacks all apply here too.
+  // Keyed by index so the spinner only shows on the row being fetched.
   const downloadSong = async (entry: PlaylistSong, index: number) => {
     const key = `${index}-${entry.url}`;
     if (downloadingSong) return;
@@ -277,9 +283,18 @@ export function PlaylistsPage() {
     }
     setDownloadingSong(key);
     try {
-      const file = await fetchSongFile(entry, entry.songName.replace(/[/\\]/g, '_'));
-      if (!file) { showToast('Couldn’t download this song'); return; }
-      saveAs(file.blob, file.fileName);
+      const eraName = entry.eraName || '';
+      const title = entry.songName.includes(' - ')
+        ? entry.songName.substring(entry.songName.indexOf(' - ') + 3)
+        : entry.songName;
+      const meta = settings.embedMetadata ? {
+        title,
+        artist: entry.artist || buildArtistTag(entry.songName, eraName),
+        album: eraName,
+        year: ALBUM_RELEASE_DATES[eraName]?.split('/').pop(),
+        artworkUrl: songArtwork(entry),
+      } : undefined;
+      await handleDownloadFile(entry.url, entry.songName, settings.tagsAsEmojis, meta, undefined, settings.convertToMp3);
     } catch {
       showToast('Couldn’t download this song');
     } finally {
