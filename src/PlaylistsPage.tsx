@@ -125,6 +125,22 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
   return null;
 }
 
+// Fetch a single entry's audio as a named blob, or null if it isn't directly
+// downloadable / the fetch fails. `baseName` becomes the filename (sans ext).
+async function fetchSongFile(entry: PlaylistSong, baseName: string): Promise<{ blob: Blob; fileName: string } | null> {
+  const rawUrl = entry.url ?? '';
+  if (!rawUrl || !isDirectlyDownloadable(rawUrl)) return null;
+  const fetchUrl = await resolveDownloadUrl(rawUrl);
+  if (!fetchUrl) return null;
+  const res = await fetch(fetchUrl).catch(() => null);
+  if (!res?.ok) return null;
+  const ct = res.headers.get('content-type') ?? '';
+  if (ct.startsWith('text/html') || ct.startsWith('application/json')) return null;
+  const blob = await res.blob();
+  const ext = ct.includes('flac') ? '.flac' : ct.includes('wav') ? '.wav' : '.mp3';
+  return { blob, fileName: `${baseName}${ext}` };
+}
+
 export function PlaylistsPage() {
   const navigate = useNavigate();
   const {
@@ -138,6 +154,7 @@ export function PlaylistsPage() {
   const [creatingNew, setCreatingNew] = useState(false);
   const [newName, setNewName] = useState('');
   const [downloading, setDownloading] = useState(false);
+  const [downloadingSong, setDownloadingSong] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [pendingShare, setPendingShare] = useState<SharedPlaylist | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -227,18 +244,12 @@ export function PlaylistsPage() {
       tracklist += '\n\n';
       if (!rawUrl || !isDirectlyDownloadable(rawUrl)) { skipped++; continue; }
       try {
-        const fetchUrl = await resolveDownloadUrl(rawUrl);
-        if (!fetchUrl) { skipped++; continue; }
-        const res = await fetch(fetchUrl).catch(() => null);
-        if (!res?.ok) { skipped++; continue; }
-        const ct = res.headers.get('content-type') ?? '';
-        if (ct.startsWith('text/html') || ct.startsWith('application/json')) { skipped++; continue; }
-        const blob = await res.blob();
-        const ext = ct.includes('flac') ? '.flac' : ct.includes('wav') ? '.wav' : '.mp3';
-        let fileName = `${baseName}${ext}`;
-        if (usedNames.has(fileName)) fileName = `${baseName} (${i + 1})${ext}`;
+        const file = await fetchSongFile(entry, baseName);
+        if (!file) { skipped++; continue; }
+        let fileName = file.fileName;
+        if (usedNames.has(fileName)) fileName = fileName.replace(/(\.[^.]+)$/, ` (${i + 1})$1`);
         usedNames.add(fileName);
-        zip.file(fileName, blob);
+        zip.file(fileName, file.blob);
         downloaded++;
       } catch { skipped++; }
     }
@@ -253,6 +264,27 @@ export function PlaylistsPage() {
       showToast('Failed to create zip');
     }
     setDownloading(false);
+  };
+
+  // Download a single song directly to the user's device. Keyed by index so the
+  // spinner only shows on the row being fetched.
+  const downloadSong = async (entry: PlaylistSong, index: number) => {
+    const key = `${index}-${entry.url}`;
+    if (downloadingSong) return;
+    if (!entry.url || !isDirectlyDownloadable(entry.url)) {
+      showToast('This song isn’t directly downloadable');
+      return;
+    }
+    setDownloadingSong(key);
+    try {
+      const file = await fetchSongFile(entry, entry.songName.replace(/[/\\]/g, '_'));
+      if (!file) { showToast('Couldn’t download this song'); return; }
+      saveAs(file.blob, file.fileName);
+    } catch {
+      showToast('Couldn’t download this song');
+    } finally {
+      setDownloadingSong(null);
+    }
   };
 
   const isFav = (p: UserPlaylist) => p.id === FAVORITES_ID;
@@ -410,13 +442,18 @@ export function PlaylistsPage() {
                           <div className="text-sm font-medium truncate">{entry.songName}</div>
                           <div className="text-[10px] text-white/40 mt-0.5 truncate">{entry.artist ? `${entry.artist} • ` : ''}{entry.eraName}</div>
                         </div>
-                        {!isFav(selected) && (
-                          <div className="flex items-center gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-                            <button onClick={(e) => { e.stopPropagation(); if (i > 0) moveSong(selected.id, i, i - 1); }} disabled={i === 0} className="p-1 text-white/40 hover:text-white disabled:opacity-20 transition-colors cursor-pointer" title="Move up"><ChevronUp className="w-3.5 h-3.5" /></button>
-                            <button onClick={(e) => { e.stopPropagation(); if (i < selected.songs.length - 1) moveSong(selected.id, i, i + 1); }} disabled={i === selected.songs.length - 1} className="p-1 text-white/40 hover:text-white disabled:opacity-20 transition-colors cursor-pointer" title="Move down"><ChevronDown className="w-3.5 h-3.5" /></button>
-                            <button onClick={(e) => { e.stopPropagation(); removeFromPlaylist(selected.id, entry.url, entry.songName); }} className="p-1 text-white/30 hover:text-red-400 transition-colors cursor-pointer" title="Remove"><X className="w-3.5 h-3.5" /></button>
-                          </div>
-                        )}
+                        <div className="flex items-center gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                          {entry.url && isDirectlyDownloadable(entry.url) && (
+                            <button onClick={(e) => { e.stopPropagation(); downloadSong(entry, i); }} disabled={!!downloadingSong} className="p-1 text-white/40 hover:text-white disabled:opacity-30 transition-colors cursor-pointer" title="Download song"><Download className={`w-3.5 h-3.5 ${downloadingSong === `${i}-${entry.url}` ? 'animate-pulse' : ''}`} /></button>
+                          )}
+                          {!isFav(selected) && (
+                            <>
+                              <button onClick={(e) => { e.stopPropagation(); if (i > 0) moveSong(selected.id, i, i - 1); }} disabled={i === 0} className="p-1 text-white/40 hover:text-white disabled:opacity-20 transition-colors cursor-pointer" title="Move up"><ChevronUp className="w-3.5 h-3.5" /></button>
+                              <button onClick={(e) => { e.stopPropagation(); if (i < selected.songs.length - 1) moveSong(selected.id, i, i + 1); }} disabled={i === selected.songs.length - 1} className="p-1 text-white/40 hover:text-white disabled:opacity-20 transition-colors cursor-pointer" title="Move down"><ChevronDown className="w-3.5 h-3.5" /></button>
+                              <button onClick={(e) => { e.stopPropagation(); removeFromPlaylist(selected.id, entry.url, entry.songName); }} className="p-1 text-white/30 hover:text-red-400 transition-colors cursor-pointer" title="Remove"><X className="w-3.5 h-3.5" /></button>
+                            </>
+                          )}
+                        </div>
                       </div>
                     ))}
                   </div>
