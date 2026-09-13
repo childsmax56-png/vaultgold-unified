@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Play, Trash2, Pencil, Check, X, ChevronUp, ChevronDown, ChevronLeft, ListMusic, Shuffle, ImagePlus, Download, Home, Heart, Share2 } from 'lucide-react';
+import { Plus, Play, Trash2, Pencil, Check, X, ChevronUp, ChevronDown, ChevronLeft, ListMusic, Shuffle, ImagePlus, Download, Home, Heart, Share2, ExternalLink } from 'lucide-react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { useGlobalPlaylists, FAVORITES_ID } from './GlobalPlaylistContext';
@@ -9,7 +9,7 @@ import { UserPlaylist, PlaylistSong, Song, Era } from './types';
 import { ArtImage } from './components/ArtGallery';
 import { eraArtwork } from './eraArtwork';
 import * as audioStore from './player/audioStore';
-import { handleDownloadFile, buildArtistTag, ALBUM_RELEASE_DATES } from './utils';
+import { handleDownloadFile, buildArtistTag, ALBUM_RELEASE_DATES, createSlug } from './utils';
 import { useSettings } from './SettingsContext';
 
 // Prefer the song's real era cover (bundled per tracker) over whatever was
@@ -101,6 +101,17 @@ function decodeShared(encoded: string): SharedPlaylist | null {
     if (data && typeof data.name === 'string' && Array.isArray(data.songs)) return data as SharedPlaylist;
   } catch { /* malformed link */ }
   return null;
+}
+
+// Build an in-app route back to this song on its source tracker. The tracker
+// parses /{slug}/album/{eraSlug} to open the era, then ?song={songSlug} (same
+// createSlug scheme as getSongSlug) auto-plays the matching row.
+function trackerSongPath(entry: PlaylistSong): string | null {
+  if (!entry.tracker) return null;
+  const eraSlug = entry.eraName ? createSlug(entry.eraName) : '';
+  if (!eraSlug) return `/${entry.tracker}/`;
+  const songSlug = createSlug(entry.songName);
+  return `/${entry.tracker}/album/${eraSlug}${songSlug ? `?song=${songSlug}` : ''}`;
 }
 
 function isDirectlyDownloadable(url: string): boolean {
@@ -458,6 +469,9 @@ export function PlaylistsPage() {
                           <div className="text-[10px] text-white/40 mt-0.5 truncate">{entry.artist ? `${entry.artist} • ` : ''}{entry.eraName}</div>
                         </div>
                         <div className="flex items-center gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                          {trackerSongPath(entry) && (
+                            <button onClick={(e) => { e.stopPropagation(); navigate(trackerSongPath(entry)!); }} className="p-1 text-white/40 hover:text-white transition-colors cursor-pointer" title="Visit on original tracker"><ExternalLink className="w-3.5 h-3.5" /></button>
+                          )}
                           {entry.url && isDirectlyDownloadable(entry.url) && (
                             <button onClick={(e) => { e.stopPropagation(); downloadSong(entry, i); }} disabled={!!downloadingSong} className="p-1 text-white/40 hover:text-white disabled:opacity-30 transition-colors cursor-pointer" title="Download song"><Download className={`w-3.5 h-3.5 ${downloadingSong === `${i}-${entry.url}` ? 'animate-pulse' : ''}`} /></button>
                           )}
