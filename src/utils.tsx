@@ -52,13 +52,22 @@ export async function runWithConcurrencyLimit<T>(
 
 // Cover art and photos are stored as full-resolution originals on slow, free
 // hosts (i.ibb.co accounts for 400+ of them). Loading those originals for a
-// 48px thumbnail is the main reason images crawl in. Route remote images
-// through Cloudflare Image Transformations so they're resized to roughly the
-// size we display and cached on Cloudflare's edge instead of hammering the
-// origin host on every view. The feature is only enabled on the production
-// zone; on local dev and *.pages.dev previews we serve the original untouched
-// (and retryImageOnError below falls back to the original if a transform ever
-// fails, so enabling/disabling the feature can never blank an image).
+// 48px thumbnail is the main reason images crawl in. Route images through
+// Cloudflare Image Transformations so they're resized to roughly the size we
+// display and cached on Cloudflare's edge instead of hammering the origin host
+// on every view. The feature is only enabled on the production zone; on local
+// dev and *.pages.dev previews we serve the original untouched.
+//
+// IMPORTANT: the unvaulted.cc zone has Transformations enabled but currently
+// only permits transforming images the zone itself serves. Transforming a
+// REMOTE origin (i.ibb.co, pillows.su, …) returns `403 cf-not-resized`, so
+// sending remote covers through the transform just wastes a round-trip before
+// the onError fallback re-fetches the full original — which is why era covers
+// (e.g. in the mini player) appeared to hang. Until the zone has "resize images
+// from any origin" enabled, we serve remote images directly. Once that toggle
+// is on in the Cloudflare dashboard, flip REMOTE_IMAGE_RESIZE to true to
+// re-enable resizing of the big remote originals.
+const REMOTE_IMAGE_RESIZE = false;
 export function optimizedImage(src: string | undefined | null, width = 400): string | undefined {
   if (!src) return src ?? undefined;
   if (src.startsWith('data:') || src.startsWith('blob:')) return src; // inline / object URLs
@@ -66,6 +75,11 @@ export function optimizedImage(src: string | undefined | null, width = 400): str
   if (src.includes('/cdn-cgi/image/')) return src;                    // already transformed
   if (typeof window === 'undefined') return src;
   if (!window.location.hostname.endsWith('unvaulted.cc')) return src; // feature only on prod zone
+  if (!REMOTE_IMAGE_RESIZE) {                                         // remote origins 403 until the zone allows them
+    let host = '';
+    try { host = new URL(src).hostname; } catch { return src; }
+    if (!host.endsWith('unvaulted.cc')) return src;                   // serve remote covers directly
+  }
   const opts = `width=${Math.round(width)},quality=82,format=auto,fit=cover`;
   return `/cdn-cgi/image/${opts}/${src}`;
 }
