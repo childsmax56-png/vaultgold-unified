@@ -1285,7 +1285,7 @@ export function LandingPage() {
         : '48px',
       // iOS PWA (standalone) renders behind the status bar / Dynamic Island because of
       // viewport-fit=cover + apple-mobile-web-app-status-bar-style=black-translucent.
-      // Offset the top so the header (logo, gear, "The Heist") stays reachable.
+      // Offset the top so the header (logo, gear, game buttons) stays reachable.
       paddingTop: 'max(16px, calc(env(safe-area-inset-top) + 8px))',
       display: 'flex',
       flexDirection: 'column',
@@ -1298,20 +1298,6 @@ export function LandingPage() {
       <header style={{ textAlign: 'center', marginBottom: 40, width: '100%', maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', gap: 8 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-            <a
-              href="/game"
-              title="Play The Heist"
-              style={{
-                background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.35)',
-                borderRadius: 8, padding: '8px 12px', cursor: 'pointer', color: '#FFD700',
-                display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700,
-                textDecoration: 'none', transition: 'background 0.15s', flexShrink: 0,
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.18)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,215,0,0.08)'; }}
-            >
-              🎮 <span className="game-btn-label">The Heist</span>
-            </a>
             <a
               href="/guess"
               title="Play Leakle"

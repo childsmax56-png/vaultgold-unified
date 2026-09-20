@@ -14,7 +14,6 @@ import { getArtistConfig } from './artists/registry.ts';
 import { buildCommunityConfig } from './artists/communityConfigBase.ts';
 import { recordArtistVisit } from './visits.ts';
 import { MyTrackerPage } from './MyTrackerPage.tsx';
-import { GamePage } from './GamePage.tsx';
 import { SnippetGamePage } from './SnippetGamePage.tsx';
 import { YEditsGoldPage } from './YEditsGoldPage.tsx';
 import { ListeningStatsPage } from './ListeningStatsPage.tsx';
@@ -130,7 +129,6 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<SettingsProvider><LandingPage /></SettingsProvider>} />
           <Route path="/my-tracker" element={<SettingsProvider><MyTrackerPage /></SettingsProvider>} />
-          <Route path="/game" element={<GamePage />} />
           <Route path="/guess" element={<SnippetGamePage />} />
           <Route path="/yeditsgold" element={<SettingsProvider><YEditsGoldPage /></SettingsProvider>} />
           <Route path="/listening" element={<SettingsProvider><ListeningStatsPage /></SettingsProvider>} />
