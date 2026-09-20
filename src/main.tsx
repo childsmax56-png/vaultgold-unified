@@ -12,6 +12,7 @@ import { ErrorBoundary } from './ErrorBoundary.tsx';
 import { setActiveConfig, activeConfig } from './artists/activeConfig.ts';
 import { getArtistConfig } from './artists/registry.ts';
 import { buildCommunityConfig } from './artists/communityConfigBase.ts';
+import { recordArtistVisit } from './visits.ts';
 import { MyTrackerPage } from './MyTrackerPage.tsx';
 import { GamePage } from './GamePage.tsx';
 import { SnippetGamePage } from './SnippetGamePage.tsx';
@@ -87,6 +88,15 @@ function CommunityArtistRoute({ slug }: { slug: string }) {
   );
 }
 
+// Records one visit whenever an artist tracker mounts. Rendered inside the
+// keyed ErrorBoundary so it re-runs on every artist change.
+function ArtistVisitTracker({ slug }: { slug: string }) {
+  useEffect(() => {
+    recordArtistVisit(slug);
+  }, [slug]);
+  return null;
+}
+
 function ArtistRoute() {
   const { artist } = useParams<{ artist: string }>();
 
@@ -104,6 +114,7 @@ function ArtistRoute() {
 
   return (
     <ErrorBoundary key={artist}>
+      <ArtistVisitTracker slug={config.slug} />
       <SettingsProvider storagePrefix={config.STORAGE_PREFIX}>
         <App key={artist} />
       </SettingsProvider>

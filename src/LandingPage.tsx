@@ -8,6 +8,15 @@ import { useSettings, LOADING_SCREENS } from './SettingsContext';
 import { Img } from './utils';
 import { SOCIALS_DATA, hasSocials, type SocialEntry } from './socialsData';
 import { useHasActiveAudio } from './player/audioStore';
+import { fetchGlobalVisitCounts, getUserVisitCounts, type VisitCounts } from './visits';
+
+type SortMode = 'featured' | 'az' | 'popular' | 'yours';
+const SORT_OPTIONS: { id: SortMode; label: string }[] = [
+  { id: 'featured', label: 'Featured' },
+  { id: 'az', label: 'A–Z' },
+  { id: 'popular', label: 'Most visited' },
+  { id: 'yours', label: 'Your most visited' },
+];
 
 // Handles the Spotify PKCE OAuth callback that redirects back to unvaulted.cc/?code=...
 // Exchanges the code for tokens and forwards them back to whichever tracker initiated the flow.
@@ -1192,6 +1201,9 @@ export function LandingPage() {
   const [socialOpen, setSocialOpen] = useState(false);
   const [socialsFor, setSocialsFor] = useState<ArtistConfig | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortMode, setSortMode] = useState<SortMode>('featured');
+  const [globalVisits, setGlobalVisits] = useState<VisitCounts>({});
+  const [userVisits] = useState<VisitCounts>(getUserVisitCounts);
   const { settings } = useSettings();
   const showPhotos = true;
   const { user, signInWithGoogle, signOut } = useVGAuth();
@@ -1222,9 +1234,33 @@ export function LandingPage() {
     ? ARTIST_LIST.filter(matchesQuery).sort((a, b) => Number(isFavorite(b.slug)) - Number(isFavorite(a.slug)))
     : null;
 
+  // Load global visit counts once, but only when a sort that needs them is
+  // first selected (keeps the default view request-free).
+  const [visitsLoaded, setVisitsLoaded] = useState(false);
+  useEffect(() => {
+    if (sortMode !== 'popular' || visitsLoaded) return;
+    setVisitsLoaded(true);
+    fetchGlobalVisitCounts().then(setGlobalVisits);
+  }, [sortMode, visitsLoaded]);
+
   const gridList = ARTIST_LIST.filter(c => !c.hidden);
 
   const favoriteConfigs = gridList.filter(c => isFavorite(c.slug));
+
+  // Sorted flat list for the non-featured sort modes. A stable sort keeps the
+  // original (featured) order as the tiebreaker for equal keys.
+  const sortedList = (() => {
+    if (sortMode === 'az') {
+      return [...gridList].sort((a, b) => a.artistLabel.localeCompare(b.artistLabel));
+    }
+    if (sortMode === 'popular') {
+      return [...gridList].sort((a, b) => (globalVisits[b.slug] ?? 0) - (globalVisits[a.slug] ?? 0));
+    }
+    if (sortMode === 'yours') {
+      return [...gridList].sort((a, b) => (userVisits[b.slug] ?? 0) - (userVisits[a.slug] ?? 0));
+    }
+    return gridList;
+  })();
 
   const featured = gridList[0];
   // Pinned 2×2 next to the featured card: Carti, Tyler, A$AP Rocky, Drake
@@ -1332,7 +1368,32 @@ export function LandingPage() {
           />
         </div>
 
-        {!query && favoriteConfigs.length > 0 && (
+        {!query && (
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 2 }}>
+            {SORT_OPTIONS.map(opt => {
+              const active = sortMode === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  onClick={() => setSortMode(opt.id)}
+                  style={{
+                    padding: '6px 12px', borderRadius: 8, cursor: 'pointer',
+                    fontSize: 12, fontWeight: 600, letterSpacing: '0.02em',
+                    border: '1px solid',
+                    borderColor: active ? 'rgba(255,215,0,0.5)' : 'rgba(255,255,255,0.1)',
+                    background: active ? 'rgba(255,215,0,0.12)' : 'rgba(255,255,255,0.04)',
+                    color: active ? '#FFD700' : 'rgba(255,255,255,0.55)',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {!query && sortMode === 'featured' && favoriteConfigs.length > 0 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase' }}>Favorites</span>
             <div className="grid-small">
@@ -1366,6 +1427,19 @@ export function LandingPage() {
                 </div>
               ))
             )}
+          </div>
+        ) : sortMode !== 'featured' ? (
+          <div className="grid-small">
+            {sortedList.map(config => (
+              <div key={config.slug} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <EditorialArtistCard config={config} showPhoto={showPhotos} variant="small" isFavorite={isFavorite(config.slug)} onToggleFavorite={toggleFavorite} />
+                <div style={{ display: 'flex', gap: 6 }}>
+                  {SHEET_URLS[config.slug] && <SheetButton href={SHEET_URLS[config.slug]} accent={config.accentColor} />}
+                  {hasSocials(config.slug) && <SocialsButton accent={config.accentColor} onOpen={() => setSocialsFor(config)} />}
+                  <ShareButton url={`${window.location.origin}/${config.slug}`} accent={config.accentColor} />
+                </div>
+              </div>
+            ))}
           </div>
         ) : (
           <>
