@@ -107,7 +107,7 @@ export function Navbar({ searchQuery, setSearchQuery, filters, setFilters, onHom
     if (key === 'recent' && activeConfig.hasRecentTab === false) return false;
     if (key === 'recent-production' && !activeConfig.SHEET_URL_RECENT_PRODUCTION) return false;
     if (key === 'comps' && !activeConfig.hasCompsTab) return false;
-    if (key === 'subalbums' && activeConfig.hasSubAlbumsTab === false) return false;
+    if (key === 'subalbums' && !activeConfig.hasSubAlbumsTab) return false;
     if (key === 'related' && activeConfig.HIDDEN_ALBUMS.length === 0) return false;
     if (key === 'art' && activeConfig.hasArtTab === false) return false;
     if (key === 'videos' && activeConfig.hasVideosTab === false) return false;

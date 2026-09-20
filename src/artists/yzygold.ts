@@ -15,6 +15,7 @@ export const yzygoldConfig: ArtistConfig = {
   SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/12nGHPPh5dVTfLuBLVQYzC3QgPxKfvp-jgCoNccvEasM/export?format=csv&gid=1385926980',
   hasYeditsTab: true,
   hasCompsTab: false,
+  hasSubAlbumsTab: true,
   accentColor: '#C9A224',
   artistLabel: 'Ye',
   sheetCreator: 'nicole, scarfvass',
