@@ -9,7 +9,7 @@ import { UserPlaylist, PlaylistSong, Song, Era } from './types';
 import { ArtImage } from './components/ArtGallery';
 import { eraArtwork } from './eraArtwork';
 import * as audioStore from './player/audioStore';
-import { handleDownloadFile, buildArtistTag, ALBUM_RELEASE_DATES, createSlug } from './utils';
+import { handleDownloadFile, buildArtistTag, ALBUM_RELEASE_DATES, createSlug, pixeldrainProxyUrl } from './utils';
 import { useSettings } from './SettingsContext';
 
 // Prefer the song's real era cover (bundled per tracker) over whatever was
@@ -135,6 +135,9 @@ async function resolveDownloadUrl(url: string): Promise<string | null> {
       }
     }
   }
+  if (url.includes('i.imgur.com')) return url;
+  if (url.includes('krakenfiles.com/view/')) return `/api/kraken-proxy?url=${encodeURIComponent(url)}`;
+  if (url.includes('pixeldrain.com/u/')) return pixeldrainProxyUrl(url);
   return null;
 }
 
