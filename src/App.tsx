@@ -3133,11 +3133,6 @@ let relatedErasArray = (Object.values(data.eras || {}) as Era[])
 
         <main className={`flex-1 overflow-y-auto relative scroll-smooth bg-[#0a0a0a] flex flex-col ${showPlayer ? 'pb-44 md:pb-28' : ''}`}>
           <div className="flex-1">
-            {ARTIST_SLUG === 'pushagold' && (
-              <div className="mx-6 mt-6 p-4 rounded-xl border border-[var(--theme-color)]/30 bg-[var(--theme-color)]/5 text-sm text-white/60">
-                ⚠️ This tracker is a work in progress. Some eras and songs may be incomplete or missing.
-              </div>
-            )}
             <AnimatePresence mode="wait">
               {activeCategory === 'settings' ? (
                 <SettingsView key="settings" onCategoryChange={setActiveCategory} searchQuery={searchQuery} eras={erasArray} artData={artData} stemsData={stemsData} miscData={miscData} />
