@@ -35,6 +35,7 @@ export const pushagoldConfig: ArtistConfig = {
     "Wrath Of Caine":          "/pushagold/eras/wrath-of-caine.jpg",
     "My Name Is My Name":      "/pushagold/eras/my-name-is-my-name.jpg",
     "Darkest Before Dawn":     "/pushagold/eras/darkest-before-dawn.jpg",
+    "Blowbama":                "/pushagold/eras/blowbama.jpg",
     "DAYTONA":                 "/pushagold/eras/daytona.jpg",
     "It's Almost Dry":         "/pushagold/eras/its-almost-dry.jpg",
     "Let God Sort 'Em Out":    "/pushagold/eras/let-god-sort-em-out.jpg",
