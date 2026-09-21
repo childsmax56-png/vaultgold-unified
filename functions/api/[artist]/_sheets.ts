@@ -202,7 +202,11 @@ const SHEET_SOURCES: Record<string, SheetSource> = {
     gids: {
       unreleased: '1246511510',
       released: '137554735',
-      recent: '1807725908',
+      // recent intentionally omitted: the Recent tab is served from the committed
+      // public/wolfgold/data/recent.csv, scraped from tylertracker.net's mirror
+      // (gid 1356276013) by scripts/build-wolfgold-recent.py. The live wolfgold
+      // sheet's recent tab uses an "Info/Notes" column that mapRecentItem() can't
+      // read, so notes wouldn't show. Do not re-add a recent gid here.
       stems: '1415457574',
       misc: '1044127471',
       'album-copies': '788275515',
