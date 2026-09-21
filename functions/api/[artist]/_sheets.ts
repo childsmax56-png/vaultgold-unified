@@ -162,6 +162,12 @@ const SHEET_SOURCES: Record<string, SheetSource> = {
     sheetId: '1x9tTOOqH5WpKOoptdQzABSN_x8oZbMgzIGlGH9w1IKA',
     gids: {
       unreleased: '1792554832',
+      stems: '965054462',
+      misc: '531726349',
+      fakes: '336831316',
+      released: '1452347467',
+      recent: '824959194',
+      tracklists: '1443132755',
     },
   },
   slimegold: {
