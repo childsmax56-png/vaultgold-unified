@@ -72,7 +72,7 @@ SHEETS = {
     "kengold":        ["1OARID98xCqRaBr8gyQCvI3aD4jKQDGgtedyRaiP_pyo", "372423620"],
     "lonelygold":     ["1J16EyxHqZD4m0VZ6g6SoY_1GC21TU7P2kk9FeteSKvE", "654868102"],
     "macgold":        ["17TycQCSpIm-6DyWId4ve8fVaM7Ewg3lgV1DDNRwauh0", "179600863"],
-    "mjgold":         ["1i59TKrIZ1OvFFPJFuOMw1VXlvyzaVOH0Wb0vVJp9BTw", "1887694071"],
+    "mjgold":         ["1i59TKrIZ1OvFFPJFuOMw1VXlvyzaVOH0Wb0vVJp9BTw", "608188924"],
     "shadygold":      ["1x9tTOOqH5WpKOoptdQzABSN_x8oZbMgzIGlGH9w1IKA", "1443132755"],
     "slimegold":      ["12zc2reK5y8XP6SQhv1ujQtiG9VpJy7yDWwDuE-S-wpc", "1999300901"],
     "smokegold":      ["1-Kd8molYeR1WpmWR81DqmSCGng3g-AVmZfgd752kh3M", "1999300901"],
@@ -198,12 +198,26 @@ def sheet_file_for_gid(z, gid):
     return files
 
 
+DECOY_WORDS = ("wip", "old", "obsolete", "draft", "alt", "backup", "copy")
+
+
 def find_tracklists_sheet(z, files, plain):
-    """Pick the worksheet whose header row looks like the tracklists tab."""
-    best = None
-    for name, path in files:
-        if "tracklist" in name.lower():
+    """Pick the worksheet whose header row looks like the tracklists tab.
+
+    Workbooks often keep stale duplicates alongside the live tab
+    (e.g. 'Tracklists (WIP)' next to 'Tracklists'), so prefer the sheet whose
+    name is exactly 'Tracklists', then any 'tracklist' tab that isn't obviously
+    a decoy, before falling back to the first match."""
+    named = [(name, path) for name, path in files if "tracklist" in name.lower()]
+    for name, path in named:
+        if name.strip().lower() == "tracklists":
             return path
+    for name, path in named:
+        low = name.lower()
+        if not any(w in low for w in DECOY_WORDS):
+            return path
+    if named:
+        return named[0][1]
     # otherwise sniff header rows for 'tracklist' + 'name'
     for name, path in files:
         if path not in z.namelist():
@@ -401,6 +415,20 @@ def parse_legend(cells):
     return []
 
 
+def parse_links(val):
+    """Split a Link(s) cell into a list of distinct http(s) URLs."""
+    if not val:
+        return []
+    urls = re.findall(r"https?://\S+", val)
+    seen, out = set(), []
+    for u in urls:
+        u = u.rstrip(").,;")
+        if u not in seen:
+            seen.add(u)
+            out.append(u)
+    return out
+
+
 def excel_date(val):
     """Convert an Excel serial date to YYYY-MM-DD-ish text, else pass through."""
     if not val:
@@ -449,6 +477,7 @@ def build_from_xlsx(slug, path):
     c_avail = find_col(header_cells, "availab")
     c_qual = find_col(header_cells, "quality")
     c_source = find_col(header_cells, "source")
+    c_link = find_col(header_cells, "link")
 
     # legend: search header rows for the coloured legend cell
     legend = []
@@ -464,20 +493,30 @@ def build_from_xlsx(slug, path):
 
     albums = []
     for rn, cells in rows[header_idx + 1:]:
-        name = (cells.get(c_name, ("", None, None))[0] or "").strip() if c_name else ""
+        raw_name = (cells.get(c_name, ("", None, None))[0] or "").strip() if c_name else ""
         tl_val, _tlc, tl_run = cells.get(c_tl, ("", None, None))
         era = (cells.get(c_era, ("", None, None))[0] or "").strip()
+        tl_stripped = (tl_val or "").strip()
+        has_img = rn in images_by_row
+        description, tracks = split_tracklist(tl_val, tl_run, legend_colors)
+        # When the sheet has a real Name column, drop spacer / legend / guideline
+        # rows: a row with no Name value, no numbered tracklist and no backup
+        # image is a note whose prose merely lands in the era/notes columns — the
+        # era-as-name fallback would otherwise surface it as a bogus "album".
+        if c_name is not None and not raw_name and not tracks and not has_img:
+            continue
+        name = raw_name
         if not name or looks_like_tracklist(name):
             name = era  # sheet has no real name — title the copy by its era
-        if not name and not (tl_val or "").strip():
+        if not name and not tl_stripped:
             continue
-        description, tracks = split_tracklist(tl_val, tl_run, legend_colors)
         date = excel_date(cells.get(c_date, ("", None, None))[0]) if c_date else ""
         availability = ""
         if c_avail:
             availability = (cells.get(c_avail, ("", None, None))[0] or "").strip()
         quality = (cells.get(c_qual, ("", None, None))[0] or "").strip() if c_qual else ""
         source = (cells.get(c_source, ("", None, None))[0] or "").strip() if c_source else ""
+        links = parse_links(cells.get(c_link, ("", None, None))[0]) if c_link else []
 
         # per-album availability colour: first cell on the row whose fill
         # matches a legend swatch
@@ -497,7 +536,7 @@ def build_from_xlsx(slug, path):
             "date": date,
             "quality": quality or source,
             "source": source,
-            "links": [],
+            "links": links,
             "description": description,
             "tracks": tracks,
         }
@@ -539,6 +578,7 @@ def build_from_csv(slug):
     c_qual = col("quality")
     c_avail = col("availab")
     c_source = col("source")
+    c_link = col("link")
     legend = []
     # legend is usually the first data row's first cell (pipe separated)
     if len(rows) > 1 and rows[1] and "|" in rows[1][0]:
@@ -549,9 +589,12 @@ def build_from_csv(slug):
     for r in rows[start:]:
         def cell(i):
             return (r[i] if i is not None and i < len(r) else "").strip()
-        name = cell(c_name) if c_name is not None else ""
+        raw_name = cell(c_name) if c_name is not None else ""
         tl = cell(c_tl)
         era = (r[0] if r else "").strip()
+        if c_name is not None and not raw_name and not tl:
+            continue  # spacer / legend / guideline row
+        name = raw_name
         if not name or looks_like_tracklist(name):
             name = era
         if not name and not tl:
@@ -563,7 +606,7 @@ def build_from_csv(slug):
             "date": cell(c_date),
             "quality": cell(c_qual) or cell(c_source),
             "source": cell(c_source),
-            "links": [],
+            "links": parse_links(cell(c_link)) if c_link is not None else [],
             "description": description,
             "tracks": tracks,
         }
