@@ -11,7 +11,7 @@ export const drizzygoldConfig: ArtistConfig = {
   HARDCODED_SHEET_ID: '1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI',
   HARDCODED_SHEET_GID: '755606328',
   SHEET_URL_UNRELEASED: '',
-  SHEET_URL_RECENT: `https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/export?format=csv&gid=494030977`,
+  SHEET_URL_RECENT: `https://docs.google.com/spreadsheets/d/1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI/export?format=csv&gid=1786784552`,
   accentColor: '#b8860b',
   artistLabel: 'Drake',
   sheetCreator: 'slothsavedearth, takaTyphoon, Luna, FinalxNinja, PhilMcG, Franki8000, raglord, Soulsby, futurefan41, frezling, graceisfriend, Brimcoole',

@@ -103,8 +103,11 @@ const SHEET_SOURCES: Record<string, SheetSource> = {
     sheetId: '1v55XAPLzw1iuWxH1OQKajCIYPhW2BXcLoV4mXDZ55DI',
     gids: {
       unreleased: '755606328',
-      recent: '1499423804',
-      art: '1704963883',
+      recent: '1786784552',
+      // art intentionally omitted: most Art-tab cover art is pasted in as embedded
+      // images (drawings), which the CSV export drops — 140+ of ~207 rows would come
+      // back blank. The committed public/drizzygold/data/art.csv has those images
+      // extracted to local files (scripts/build-drizzygold-art.py); serve that instead.
       stems: '271384102',
       fakes: '1413935661',
       'music-videos': '1645905193',
