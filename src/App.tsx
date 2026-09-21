@@ -116,8 +116,17 @@ function parseCSVText(text: string): Record<string, string>[] {
   }
   if (field || current.length > 0) { current.push(field); rows.push(current); }
   if (rows.length < 2) return [];
-  const headers = rows[0];
-  return rows.slice(1)
+  // Skip leading formula-artifact rows (e.g. a `&COUNTIFS(...)` cell spilled above the
+  // real header on some franktracker-template tabs) so the true header row is used.
+  const isFormulaArtifact = (row: string[]): boolean => {
+    const first = (row[0] ?? '').trim();
+    if (!first) return false;
+    return /^[&=]/.test(first) || first.includes('COUNTIFS(') || first.includes('INDIRECT(');
+  };
+  let headerIdx = 0;
+  while (headerIdx < rows.length - 1 && isFormulaArtifact(rows[headerIdx])) headerIdx++;
+  const headers = rows[headerIdx];
+  return rows.slice(headerIdx + 1)
     .filter(row => row.some(cell => cell.trim() !== ''))
     .map(row => {
       const obj: Record<string, string> = {};
