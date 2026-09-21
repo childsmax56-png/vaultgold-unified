@@ -34,6 +34,7 @@ export const pushagoldConfig: ArtistConfig = {
     "Fear Of God II":          "/pushagold/eras/fear-of-god-ii.jpg",
     "Wrath Of Caine":          "/pushagold/eras/wrath-of-caine.jpg",
     "My Name Is My Name":      "/pushagold/eras/my-name-is-my-name.jpg",
+    "As God As My Witness":    "/pushagold/eras/as-god-as-my-witness.jpg",
     "Darkest Before Dawn":     "/pushagold/eras/darkest-before-dawn.jpg",
     "Blowbama":                "/pushagold/eras/blowbama.jpg",
     "DAYTONA":                 "/pushagold/eras/daytona.jpg",
