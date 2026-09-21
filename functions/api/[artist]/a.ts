@@ -421,11 +421,12 @@ export const onRequestGet: PagesFunction = async (context) => {
       ? (Object.keys(rows[0]).find(k => k === 'Notes') ?? Object.keys(rows[0]).find(k => k.startsWith('Notes')) ?? Object.keys(rows[0]).find(k => k === 'Info') ?? 'Notes')
       : 'Notes';
 
-    // Detect track length and available length columns (wolfgold uses 'Length' / 'Availability').
+    // Detect track length and available length columns (wolfgold uses 'Length' / 'Availability';
+    // sosagold/jayzgold/cudigold/macgold use 'Currently Available'; sosagold uses 'Link').
     const firstRowKeys = rows.length > 0 ? Object.keys(rows[0]) : [];
     const TRACK_LENGTH_KEY = firstRowKeys.find(k => k === 'Track Length') ?? firstRowKeys.find(k => k === 'Length') ?? 'Track Length';
-    const AVAIL_LENGTH_KEY = firstRowKeys.find(k => k === 'Available Length') ?? firstRowKeys.find(k => k === 'Availability') ?? firstRowKeys.find(k => k === 'Portion') ?? 'Available Length';
-    const LINKS_KEY = firstRowKeys.find(k => k === 'Link(s)') ?? firstRowKeys.find(k => k === 'Source') ?? 'Link(s)';
+    const AVAIL_LENGTH_KEY = firstRowKeys.find(k => k === 'Available Length') ?? firstRowKeys.find(k => k === 'Availability') ?? firstRowKeys.find(k => k === 'Currently Available') ?? firstRowKeys.find(k => k === 'Portion') ?? 'Available Length';
+    const LINKS_KEY = firstRowKeys.find(k => k === 'Link(s)') ?? firstRowKeys.find(k => k === 'Source') ?? firstRowKeys.find(k => k === 'Link') ?? 'Link(s)';
 
     const eras: Record<string, any> = {};
 

@@ -1073,16 +1073,19 @@ export default function App() {
               }
             }
           }
+          // Some trackers (sosagold/jayzgold/cudigold/macgold) use 'Currently Available'
+          // for availability, 'Length' for track length, and a plain 'Link' column.
+          const links = item['Link(s)'] || item['Link'] || '';
           return {
             name, extra, extra2,
             description: item.Notes,
-            track_length: item['Track Length'],
+            track_length: item['Track Length'] || item['Length'],
             leak_date: item['Leak\nDate'] || item['Leak Date'],
             file_date: item['File\nDate'] || item['File Date'],
-            available_length: item['Available Length'],
+            available_length: item['Available Length'] || item['Currently Available'],
             quality: item.Quality,
-            url: item['Link(s)'] ? item['Link(s)'].split('\n')[0] : '',
-            urls: item['Link(s)'] ? item['Link(s)'].split('\n') : [],
+            url: links ? links.split('\n')[0] : '',
+            urls: links ? links.split('\n') : [],
           };
         };
         const recentMapped: Song[] = (recentRes.data as any[]).map(mapRecentItem);
@@ -1108,7 +1111,7 @@ export default function App() {
         const sheetQualityKey = findRecentKey('Quality');
         const sheetLeakDateKey = findRecentKey('Leak\nDate', 'Leak Date', 'Surface\nDate', 'Surface Date');
         const sheetFileDateKey = findRecentKey('File\nDate', 'File Date', 'Date of Recording');
-        const sheetAvailableKey = findRecentKey('Available Length', 'Availability');
+        const sheetAvailableKey = findRecentKey('Available Length', 'Availability', 'Currently Available');
         const sheetRecentSongs: Song[] = (SHEET_URL_RECENT && Array.isArray(recentTabRes.data))
           ? (recentTabRes.data as any[])
               .filter((item: any) => {
@@ -1552,7 +1555,7 @@ export default function App() {
         const sheetQualityKey = findRecentKey('Quality');
         const sheetLeakDateKey = findRecentKey('Leak\nDate', 'Leak Date', 'Surface\nDate', 'Surface Date');
         const sheetFileDateKey = findRecentKey('File\nDate', 'File Date', 'Date of Recording');
-        const sheetAvailableKey = findRecentKey('Available Length', 'Availability');
+        const sheetAvailableKey = findRecentKey('Available Length', 'Availability', 'Currently Available');
         const sheetRecentSongs: Song[] = (SHEET_URL_RECENT && Array.isArray(recentTabRes.data))
           ? (recentTabRes.data as any[])
               .filter((item: any) => { const r = (item.Era || '').trim(); return r && !r.includes('\n'); })
