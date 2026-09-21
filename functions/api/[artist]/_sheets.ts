@@ -52,15 +52,15 @@ const SHEET_SOURCES: Record<string, SheetSource> = {
     },
   },
   pushagold: {
-    sheetId: '19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA',
+    sheetId: '1bZ66RGgo5i_RorCtSTh4xX2tXwag2R-Zu3MsEGzrp1A',
     gids: {
-      unreleased: '1932839414',
-      released: '1139120082',
-      recent: '2120181808',
-      'album-copies': '2137086150',
-      stems: '1685079869',
-      art: '1413541492',
-      tracklists: '425932540',
+      unreleased: '44489322',
+      released: '1454863518',
+      recent: '1122958563',
+      stems: '1010941390',
+      'album-copies': '1324887433',
+      'music-videos': '1257792866',
+      art: '1729133432',
     },
   },
   aapgold: {

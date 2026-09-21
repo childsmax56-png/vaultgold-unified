@@ -8,10 +8,10 @@ export const pushagoldConfig: ArtistConfig = {
   SITE_URL: 'https://unvaulted.cc/pushagold/',
   OG_IMAGE_URL: '',
   STORAGE_PREFIX: 'pushagold_',
-  HARDCODED_SHEET_ID: '19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA',
+  HARDCODED_SHEET_ID: '1bZ66RGgo5i_RorCtSTh4xX2tXwag2R-Zu3MsEGzrp1A',
   HARDCODED_SHEET_GID: '',
-  SHEET_URL_UNRELEASED: 'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/gviz/tq?tqx=out:csv&sheet=Unreleased',
-  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/19wsRrbQxQ7sz-LhkEYUlKIcVFvXdcG1hvT58zEY03sA/gviz/tq?tqx=out:csv&sheet=Recent',
+  SHEET_URL_UNRELEASED: 'https://docs.google.com/spreadsheets/d/1bZ66RGgo5i_RorCtSTh4xX2tXwag2R-Zu3MsEGzrp1A/gviz/tq?tqx=out:csv&sheet=Unreleased',
+  SHEET_URL_RECENT: 'https://docs.google.com/spreadsheets/d/1bZ66RGgo5i_RorCtSTh4xX2tXwag2R-Zu3MsEGzrp1A/gviz/tq?tqx=out:csv&sheet=Recent',
   accentColor: '#e88fa0',
   artistLabel: 'Pusha T / Clipse',
   sheetCreator: 'Yousef, The Creator',
@@ -83,6 +83,7 @@ export const pushagoldConfig: ArtistConfig = {
   ERA_MAPPINGS: {},
   hasCompsTab: false,
   hasConcertsTab: false,
+  hasTracklistsTab: false,
 
   TAG_MAP: {
     '⭐': 'Best Of', '🏆': 'Grails', '🥇': 'Wanted', '🏅': 'Wanted',
