@@ -759,10 +759,16 @@ export default function App() {
   function applyTrackerSheetSongs(targetJson: any, sheetData: any) {
     if (!Array.isArray(sheetData)) return;
 
-    // Find the actual name key (header is "Name\n(Join The Discord!)")
+    // Find the actual name/notes keys — the live sheet decorates these headers with a
+    // second line ("Name\n(Check out the Tracker website!)", "Notes\n(Join the Discord!)"),
+    // so a literal item.Notes lookup misses and live-only eras (e.g. new eras absent from
+    // the committed base JSON) render with blank notes.
     const nameKey = sheetData.length > 0
       ? Object.keys(sheetData[0]).find(k => k.startsWith('Name')) || 'Name'
       : 'Name';
+    const notesKey = sheetData.length > 0
+      ? Object.keys(sheetData[0]).find(k => k.startsWith('Notes')) || 'Notes'
+      : 'Notes';
 
     const avLenToCategory = (avLen: string, categories: Record<string, Song[]>): string => {
       const al = avLen.toLowerCase().trim();
@@ -826,7 +832,7 @@ export default function App() {
       const newSong: Song = {
         name: songName,
         extra,
-        description: item.Notes || '',
+        description: item[notesKey] || item.Notes || '',
         track_length: item['Track Length'] || '',
         leak_date: item['Leak\nDate'] || item['Leak Date'] || '',
         file_date: item['File\nDate'] || item['File Date'] || '',
