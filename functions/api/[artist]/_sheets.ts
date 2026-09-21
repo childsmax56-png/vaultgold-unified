@@ -1,4 +1,5 @@
 import { getCommunityTrackerCsv } from './_community';
+import { fetchSheetApiCsv, hasSheetApiSource } from './_sheetsApi';
 
 // Live Google Sheet fallback for trackers that don't ship committed CSVs.
 //
@@ -622,6 +623,14 @@ export async function fetchTrackerCsv(
 ): Promise<string | null> {
   const community = await getCommunityTrackerCsv(env, artist, tab, request);
   if (community !== null) return community;
+
+  // Live via the Sheets API for download-disabled sheets whose plain CSV export
+  // is blocked and strips hrefs (e.g. cactigold). Reconstructs the canonical CSV
+  // with real hyperlink URLs; falls through to the committed snapshot on failure.
+  if (hasSheetApiSource(artist, tab)) {
+    const apiCsv = await fetchSheetApiCsv(artist, tab, env?.GOOGLE_SHEETS_API_KEY);
+    if (apiCsv !== null) return apiCsv;
+  }
 
   // Live Google Sheet first, when this tab has a configured gid.
   const remote = sheetCsvUrl(artist, tab);
