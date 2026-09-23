@@ -90,7 +90,7 @@ function mapEraName(name: string): string {
 }
 
 // Artists whose ERA_ORDER is exhaustive — unlisted rows (e.g. changelog footer) are dropped.
-const EXHAUSTIVE_ERA_ORDER_ARTISTS = new Set(['yzygold', 'kdotgold', 'dongold', 'colegold', 'aapgold', 'mfgold', 'mjgold', 'slimegold', 'sosagold']);
+const EXHAUSTIVE_ERA_ORDER_ARTISTS = new Set(['yzygold', 'kdotgold', 'dongold', 'colegold', 'aapgold', 'mfgold', 'mjgold', 'slimegold', 'sosagold', 'rihannagold']);
 
 // Per-artist ERA_ORDER for artists whose CSVs have eras in the wrong order.
 const ARTIST_ERA_ORDERS: Record<string, string[]> = {
@@ -365,8 +365,8 @@ const ARTIST_ERA_ORDERS: Record<string, string[]> = {
     'Talk That Talk',
     'Unapologetic',
     'ANTI',
-    'R9*',
-    'Ongoing',
+    'R9 [V1]',
+    'R9 [V2]',
   ],
 };
 
