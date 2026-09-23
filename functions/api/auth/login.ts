@@ -10,7 +10,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   if (!login || !password) return json({ error: 'Missing fields' }, 400);
 
   const user = await env.DB.prepare(
-    'SELECT id, username, email, password_hash FROM users WHERE username = ? OR email = ?'
+    'SELECT id, username, email, password_hash FROM users WHERE LOWER(username) = ? OR email = ?'
   ).bind(login.toLowerCase(), login.toLowerCase()).first<{
     id: string; username: string; email: string; password_hash: string;
   }>();

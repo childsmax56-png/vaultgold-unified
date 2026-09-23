@@ -11,6 +11,7 @@ export const rihannagoldConfig: ArtistConfig = {
   HARDCODED_SHEET_GID: '',
   SHEET_URL_UNRELEASED: '',
   SHEET_URL_RECENT: '',
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1HMqjw55sCPUGyI_UBc-JcO881FHzUTX08NvQY9oa61k/edit',
   accentColor: '#dc2626',
   artistLabel: 'Rihanna',
   sheetCreator: 'Jeen & noa',
@@ -31,8 +32,8 @@ export const rihannagoldConfig: ArtistConfig = {
     'Talk That Talk': '/rihannagold/eras/talk-that-talk.jpg',
     'Unapologetic': '/rihannagold/eras/unapologetic.jpg',
     'ANTI': '/rihannagold/eras/anti.jpg',
-    'R9*': '/artists/rihanna.webp',
-    'Ongoing': '/artists/rihanna.webp',
+    'R9 [V1]': '/artists/rihanna.webp',
+    'R9 [V2]': '/artists/rihanna.webp',
   },
 
   ALBUM_RELEASE_DATES: {
@@ -44,8 +45,8 @@ export const rihannagoldConfig: ArtistConfig = {
     'Talk That Talk': '11/18/2011',
     'Unapologetic': '11/19/2012',
     'ANTI': '01/28/2016',
-    'R9*': '??/??/????',
-    'Ongoing': '??/??/????',
+    'R9 [V1]': '??/??/????',
+    'R9 [V2]': '??/??/????',
   },
 
   HIDDEN_ALBUMS: [],
@@ -62,8 +63,8 @@ export const rihannagoldConfig: ArtistConfig = {
     'Talk That Talk',
     'Unapologetic',
     'ANTI',
-    'R9*',
-    'Ongoing',
+    'R9 [V1]',
+    'R9 [V2]',
   ],
 
   TAG_MAP: {},
@@ -73,7 +74,6 @@ export const rihannagoldConfig: ArtistConfig = {
   hasArtTab: false,
   hasVideosTab: false,
   hasMiscTab: false,
-  hasRecentTab: false,
   hasTracklistsTab: false,
   hasSubAlbumsTab: false,
 };
