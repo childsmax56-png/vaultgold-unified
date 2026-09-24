@@ -1463,6 +1463,19 @@ export async function handleDownloadFile(url: string, suggestedName: string, tag
   }
 }
 
+// Some sheets have viewer-downloads disabled or use hyperlinked display text
+// ("Snippet", "Link", "Interview") that the CSV/gviz export strips to plain
+// text, leaving no href behind. Treating that text as a playable URL sends
+// window.open()/audio playback down a bogus path (e.g. window.open('Snippet')
+// navigates the app to a nonexistent route), which looks like the tracker
+// crashing when a song is clicked. A real link is always a full URL, a
+// same-origin proxy path, or a bare audio file — anything else isn't one.
+export function looksLikeRealLink(rawUrl: string): boolean {
+  if (!rawUrl) return false;
+  const u = rawUrl.trim();
+  return /:\/\//.test(u) || u.startsWith('/') || /\.(mp3|m4a|wav|ogg|flac|aac|mp4|mov|zip)(\?|$)/i.test(u);
+}
+
 export function isSongNotAvailable(song: any, rawUrl: string): boolean {
   if (song.quality?.toLowerCase() === 'not available') return true;
   if (!rawUrl) return false;

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loader2, Star } from 'lucide-react';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , Img, relPath, absPath, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, looksLikeRealLink, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription , Img, relPath, absPath, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { useDownloadManager } from '../DownloadManagerContext';
 import { SongTitle, SongExtra } from './SongTitle';
 import { saveAs } from 'file-saver';
@@ -570,7 +570,7 @@ export function StemsView({ eras, stemsData, searchQuery, filters, onPlaySong, c
                     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
                     const isNotAvailable = isSongNotAvailable(song, rawUrl);
                     const lowerUrl = (rawUrl || '').toLowerCase();
-                    const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed');
+                    const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed') || !looksLikeRealLink(rawUrl);
                     const isPlayable = rawUrl.includes('pillows.su/f/') && !isNotAvailable;
                     const isEmpty = isTrulyEmptyLink || isNotAvailable || lowerUrl.includes('n/a');
                     const isCurrentlyPlaying = (currentSong?.url && song.url && currentSong.url === song.url) ||

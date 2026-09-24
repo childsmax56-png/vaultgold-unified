@@ -5,7 +5,7 @@ import { ArrowLeft, Play, ExternalLink, X, Share2, Volume2, Check, Download, Loa
 import { SiYoutube } from 'react-icons/si';
 import { Era, Song, SearchFilters } from '../types';
 import { useState, useMemo, useEffect } from 'react';
-import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, ALBUM_DESCRIPTIONS, ERA_DISCLAIMERS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , Img, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
+import { formatTextWithTags, getCleanSongNameWithTags, matchesFilters, createSlug, getSongSlug, ALBUM_RELEASE_DATES, isSongNotAvailable, looksLikeRealLink, ALBUM_DESCRIPTIONS, ERA_DISCLAIMERS, HIDDEN_ALBUMS, CUSTOM_IMAGES, getArtistName, buildArtistTag, handleDownloadFile, resolveUrl, detectAudioExt, embedID3Tags, embedFLACTags, flacToWav, embedWAVTags, formatTextForNotification, parseNoteDescription, ERA_THEMES , Img, sanitizeFilename, runWithConcurrencyLimit} from '../utils';
 import { activeConfig } from '../artists/activeConfig';
 import { eraArtwork } from '../eraArtwork';
 import { addItemsToGlobalTierList, readGlobalTierLists } from '../tierListStore';
@@ -969,7 +969,7 @@ export function EraDetail({ era, onBack, onPlaySong, searchQuery = '', filters, 
                     const rawUrl = song.url || (song.urls && song.urls.length > 0 ? song.urls[0] : '');
                     const isNotAvailable = isSongNotAvailable(song, rawUrl);
                     const lowerUrl = (rawUrl || '').toLowerCase();
-                    const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed');
+                    const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed') || !looksLikeRealLink(rawUrl);
                     const isYoutubeLink = (rawUrl.includes('youtube.com/watch') || rawUrl.includes('youtu.be/')) && !isNotAvailable;
                     const isPlayable = (rawUrl.includes('pillows.su/f/') || rawUrl.includes('imgur.gg/f/') || rawUrl.includes('i.imgur.com') || rawUrl.includes('krakenfiles.com/view/') || rawUrl.includes('pixeldrain.com/u/')) && !isNotAvailable;
                     const isEmpty = isTrulyEmptyLink || isNotAvailable || lowerUrl.includes('n/a');

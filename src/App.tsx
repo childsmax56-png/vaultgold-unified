@@ -19,7 +19,7 @@ import { handleShareSilent } from './components/EraDetail';
 import { TrackerData, Era, Song, SearchFilters } from './types';
 import { ContributorContext } from './ContributorContext';
 import { ContributorView } from './components/ContributorView';
-import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, ERA_DISCLAIMERS, getArtistName, buildArtistTag, handleDownloadFile, pixeldrainProxyBase } from './utils';
+import { matchesFilters, createSlug, getSongSlug, getCleanSongNameWithTags, isSongNotAvailable, looksLikeRealLink, formatTextForNotification, CUSTOM_IMAGES, HIDDEN_ALBUMS, ALBUM_RELEASE_DATES, ERA_DISCLAIMERS, getArtistName, buildArtistTag, handleDownloadFile, pixeldrainProxyBase } from './utils';
 import { isLastfmLoggedIn, saveLastfmSession, clearLastfmSession, scrobbleTrack, updateNowPlaying, cleanTrackName, parseArtistFromSong, cleanAlbumName } from './lastfm';
 import { logListen, isListeningLoggedIn } from './listening';
 import { isSpotifyLoggedIn, clearSpotifySession, startSpotifyAuth, handleSpotifyCallback } from './spotify';
@@ -1891,7 +1891,7 @@ export default function App() {
     const isNotAvailable = isSongNotAvailable(song, rawUrl);
     
     const lowerUrl = (rawUrl || '').toLowerCase();
-    const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed');
+    const isTrulyEmptyLink = !rawUrl || lowerUrl === 'n/a' || lowerUrl.includes('link needed') || lowerUrl.includes('source needed') || !looksLikeRealLink(rawUrl);
 
     if (isTrulyEmptyLink) return;
 

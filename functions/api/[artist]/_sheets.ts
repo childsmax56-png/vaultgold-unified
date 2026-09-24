@@ -289,20 +289,6 @@ const SHEET_SOURCES: Record<string, SheetSource> = {
       tracklists: '654868102',
     },
   },
-  jojigold: {
-    sheetId: '1FPlWbXnx94y5FODJ2qniLf0BzViNSAmj6Xdfw1ZNwQ4',
-    gids: {
-      unreleased: '990933532',
-      released: '108045339',
-      recent: '583378522',
-      art: '1419046321',
-      stems: '1821222349',
-      misc: '1199844386',
-      fakes: '1461221709',
-      'music-videos': '1271385780',
-      tracklists: '2027576133',
-    },
-  },
   teccagold: {
     sheetId: '15UwihAVwPeS6eIE1FE1J6v7xiBYFkculVrzhMSIcEew',
     gids: {
