@@ -50,8 +50,20 @@ export function parseCSV(text: string): Record<string, string>[] {
     if (!first) return false;
     return /^[&=]/.test(first) || first.includes('COUNTIFS(') || first.includes('INDIRECT(');
   };
+  // Other sheets (e.g. lonelygold) merge a "join our Discord" announcement into the
+  // cell above the header instead, so the export starts with a mostly-empty row like
+  // `,,"Join the Discord server!...",,,` before the real `Era,Name,…` header. Recognize
+  // the true header row by its first cell, and skip any leading row that isn't one when
+  // the row right after it is.
+  const KNOWN_HEADER_FIRST_CELLS = new Set(['era', 'year', 'row', 'album', 'title']);
+  const isHeaderRow = (row: string[]): boolean =>
+    KNOWN_HEADER_FIRST_CELLS.has((row[0] ?? '').trim().toLowerCase());
   let headerIdx = 0;
-  while (headerIdx < rows.length - 1 && isFormulaArtifact(rows[headerIdx])) headerIdx++;
+  while (
+    headerIdx < rows.length - 1 &&
+    !isHeaderRow(rows[headerIdx]) &&
+    (isFormulaArtifact(rows[headerIdx]) || isHeaderRow(rows[headerIdx + 1]))
+  ) headerIdx++;
 
   const headers = rows[headerIdx];
   return rows.slice(headerIdx + 1)
