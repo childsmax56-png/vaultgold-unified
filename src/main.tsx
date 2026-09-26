@@ -7,6 +7,7 @@ import './index.css';
 import { SettingsProvider } from './SettingsContext.tsx';
 import { DownloadManagerProvider } from './DownloadManagerContext.tsx';
 import { DownloadProgressWidget } from './components/DownloadProgressWidget.tsx';
+import { SiteNotice } from './components/SiteNotice.tsx';
 
 import { ErrorBoundary } from './ErrorBoundary.tsx';
 import { setActiveConfig, activeConfig } from './artists/activeConfig.ts';
@@ -123,6 +124,7 @@ function ArtistRoute() {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <SiteNotice />
     <DownloadManagerProvider>
       <GlobalPlaylistProvider>
       <BrowserRouter>
